@@ -1,0 +1,65 @@
+---
+category: On Site Content
+subcategory: Loyalty Landing Page
+topic: Loyalty Program FAQs
+source: helpcenter
+---
+
+Q: What is Loyalty Program FAQs in Joy Loyalty?
+Q: How do I set up Loyalty Program FAQs?
+Q: How do I customize Loyalty Program FAQs on my store?
+A: This feature is available in **all plans.**
+
+### What is "Loyalty Program FAQs" feature?
+
+The Loyalty Program FAQs is a powerful tool that lets you create a dedicated section on your loyalty page to answer your customers' most common questions. Think of it like a helpful information booth that's always ready to provide quick answers and clear up any confusion about your loyalty program.
+
+### Why do you need this feature?
+
+Loyalty Program FAQs on the loyalty page to provide customers with quick answers to common questions, enhancing their understanding of the loyalty program. This helps reduce customer confusion, saves time for both the store and customers, and improves overall satisfaction.
+
+Having FAQs also builds trust by addressing concerns proactively, making it easier for customers to engage with and join the program.
+
+### How to set up Loyalty Program FAQs
+
+1
+
+Navigate to **Embedded Content** on your left menu, then click on **Set up** in the Loyalty Program FAQs
+
+2
+
+Select **Set up** in the Loyalty Program FAQs
+
+3
+
+Select **View theme editor** to activate the Loyalty Program FAQs
+
+4
+
+In **Theme settings**, add the **Joy: Loyalty Program** **FAQs** and customize the block’s colors and description to match your store’s theme
+
+5
+
+Click "**save**" to enable your Loyalty Program FAQs in your loyalty page
+
+### Adding FAQ and arranging their order
+
+1
+
+Navigate to Embedded content, then choose "**Set up**" Loyalty Program FAQs
+
+2
+
+In the **Frequently asked questions**, you can drag and drop FAQs to arrange their display order or click "Add FAQ" for a new question and answer set
+
+3
+
+If you don't want to manually create the FAQs, you can use the AI Generate FAQs feature. This will automatically generate your FAQs list based on your program setting. You can choose which FAQ items you want to keep, and later on, you can update them to match your brand tone.
+
+4
+
+If you want to edit that Q&A set, click on **Edit**
+
+5
+
+Preview your setting by clicking on View theme editor

@@ -1,0 +1,83 @@
+### [hashtag](#which-customer-data-can-joy-migrate) Which Customer Data Can Joy Migrate?
+
+- **Customer Name:** Full name of the customer
+- **VIP Tier Name:** The customer’s rank tier in your loyalty program
+- **Birth Date:** The customer’s birthday
+- **Points Balance:** The current points balance the customer holds
+- **Email:** The customer’s email address
+
+### [hashtag](#what-do-you-need-to-prepare-for-the-migration) What do you need to prepare for the migration?
+
+File format
+
+You need to prepare a CSV file containing the list of your store's loyal customers
+
+circle-exclamation
+
+**Note**: If the customer list exported from the loyalty program managed by Stamped is missing the VIP tier field, you can contact Stamped's team for support in exporting the customer file with all necessary fields
+
+### [hashtag](#how-to-migrate) How to Migrate
+
+1
+
+**Step 1:** Open the Joy Loyalty app → navigate to the `Settings`→ choose `Migration`
+
+2
+
+Select `Migrate my loyalty program from: Stamped`
+
+3
+
+`Upload your loyalty customer data file.`
+
+4
+
+Once uploaded, let's select the data to import
+
+5
+
+`Match your data` columns to Joy attributes
+
+6
+
+`Set up VIP Tier rules`
+
+7
+
+`Select migration method and start Migration`
+
+8
+
+Wait for the migration process to complete
+
+**Step 9:** Review your migrated customer loyalty data in the `Customer` section to ensure everything has transferred correctly.
+
+**Step 10:** Recheck your migration progress and fix Failed Import customers:
+
+- **Successful Imports:** Number of customers successfully migrated.
+- **Failed Imports:** Number of customers not migrated due to errors.
+
+To resolve failed imports, download the **failed\_import** file, make corrections, and upload the file again for review.
+
+circle-exclamation
+
+**How to handle file errors and fix values for re-uploading**
+
+After Joy Loyalty reads your file and reports the number of successful and failed customer imports, follow these steps to ensure no customers are missed:
+
+1. Download the processed file from the **FailedImports** section.
+2. Open the file (a spreadsheet) and apply a filter on the **Status** column to display only the failed customers.
+3. Review the error messages and correct the failed values.
+4. Re-upload the corrected file and review the data again to ensure all customers are successfully imported.
+
+### [hashtag](#overall) Overall
+
+Migrating from Stamped to Joy Loyalty is a simple process that retains essential data. Following these steps will help you complete the migration without disruption to your loyalty program.
+
+If you encounter any issues during the migration process, don't hesitate to contact our support team.
+
+[PreviousMigrationchevron-left](/migration)[NextMigration from Smile to Joy Loyaltychevron-right](/migration/migration-from-smile-to-joy-loyalty)
+
+Last updated 19 days ago
+
+Was this helpful?
