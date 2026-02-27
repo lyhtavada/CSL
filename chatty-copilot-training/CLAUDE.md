@@ -8,18 +8,24 @@ This repo contains training content for the Chatty AI Copilot — a CS support b
 raw-data/           → Source documents (Notion exports, helpcenter crawls)
   helpcenter/       → Crawled from help.chatty.net
   notion/           → Exported from Notion
-  cs-process/       → CS team process docs (Notion exports)
+  chatty-cs-process/ → Chatty-specific CS process source docs
 
 training-data/      → Processed Q&A training files (this is what the bot uses)
   helpcenter/       → Feature docs converted to Q&A
   common-issues/    → Troubleshooting scenarios
-  cs-process/       → CS workflows, escalation, billing, sensitive situations
+  chatty-cs-process/ → Chatty-specific CS workflows and processes
 
 instructions/       → Bot configuration (system prompt, knowledge base)
 
 scripts/            → Python scripts for crawling/generating training data
   crawl_helpcenter.py              → Crawl help.chatty.net sitemap → raw markdown
   generate_helpcenter_training.py  → Convert raw markdown → Q&A training format
+
+../shared-cs-process/ → Shared content used by both Chatty and Joy copilots
+  raw-data/
+    cs-process/     → CS process source docs (Notion exports)
+  training-data/
+    cs-process/     → CS workflows, escalation, billing, sensitive situations
 ```
 
 ## Training Data Format
