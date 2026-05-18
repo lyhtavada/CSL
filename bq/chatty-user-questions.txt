@@ -1,0 +1,1504 @@
+--- Conv 1 | Carverall ---
+Hi, I found the Chatty button has hidden the UP-TO-TOP button, how can I adjust it a little bit ? | both device as they are both hidden | Thank you, it looks good | Hi, Can I add a block into ChatBox? Like the order tracking, I would add a block of "Support for Amazon" | Sorry for let you confused. | I just need a block, that after user click Support for Amazon, there will show the contact email and whatsapp information. | So the amazon buyer will know the correct person to contact. | Email: support@carverall.com | Whatsapp: 86 19879962061 | Hi, I like the position in the red frame | Yes, also OK | Please make it "Amazon Support" | Yes, correct, if you can also auto assign to our team member, that will be perfect. | Two ways, both OK, we very much hope if it can assign to a specific team member, that will be great.
+
+--- Conv 2 | Martin & Pleasance Australia ---
+does enabling and then removing them save them and let me put the rest? | I see | I have a question | could i recieve the ability to put more products temporarily? | as a trial | maybe only a week or two | and then from there see how the results are | and what is your plans price? | i have a total of 292 | But dont activate it yet | after my website goes live | thank you | How long will this last? Id like this to last for a month *after* my site goes live as it isnt yet, is that doable? | Let me check. | It added 150 products  and message is products learned. | Now adding more | Hi | 263 products added successfully and active but 20++ products still inactive. I am trying to add but not success.
+
+--- Conv 3 | WADHA.CO ---
+how can I reset my old conversation? | or delete from chat | ok | not customer this conversation with you old all | because I wanted to start from beginning | there is possible to do or not? | ok let me khow then I wanted to do start new conversation | let me khow how can I handle the AI training for this application and customized process | HOW CAN I PUT MY BRAND LOGO | ok delete | start from beginning | where delete still chat here with you all here | ok | how we can change the appliocation logo | application*
+
+--- Conv 4 | IMPERIO OFFICIAL SHOP ---
+I need help with the app because I can't log in. | What email should I use there? Because I normally log in from Shopify. | And both of the emails I tried with my password don't work. | I tried opening it from Shopify, but I don't see anything to activate it. | I get the same message. Account not activated. Please open chatty app from Shopify admin to activate. | I can log in with my credentials on desktop Chrome, though. | I'm now talking about the Android app. Is that the same? | I want to install the Android app on my phone. | I got it to work, thanks. | I will do so when I have some more experience with the app and your support. until now I'm very happy with the support you are giving me but the app has to prove itself over the coming weeks | until now I'm very happy with the support you are giving me but the app has to prove itself over the coming weeks | can you for example help me how I should change the answers that the AI is giving at the moment. for example somebody asks about the color of the hair fibers and it recommendsca six pack to start with? which is not good if they are first time buyer. I told ai I that it should be open to upsells and cross cells but not for first-time customers obviously. how can I change this behavior or change the current answers or modify them? | I changed some directions so that should be better now but in general can I edit specific answers somehow? | OK thanks! | With regard to the review, please ask me again in a couple of weeks. 😀 | A quick question about the app on my Android phone.  
+When should I get notifications from the app?  
+
+I set most of them to web and push, but I'm not quite sure when I'm going to be notified about things. Is that only when AI can't answer it, and it will be forwarded to me, or how does this work? | These are my settings. | Yes, everything has been set to be able to receive notifications and sounds, etc. But to be sure, your app does send notifications in the status bar and sound when applicable?
+
+--- Conv 5 | VDBParts ---
+Can it also not detect whether someone is logged in or not? Because the dealers are the people that are logged in and the customers are the people that aren't logged in | That works, thank you | That works perfectly 😊 | Yes ofcourse, what's the favor? | Done 😄 | Here it is 😊 | Hi, how do we disable the price on the bestsellers? | For all functions in the bot, no prices may be displayed. | A colleague of yours has already disabled the prices in the chat box. | Oké thank you. | I’ve checked it, and it’s fixed. Thank you! | Any update on the metadata fields that will be added by the development team?
+
+--- Conv 6 | Label Menswear ---
+I would also like all chat users to provide their name and email? | Thanks. Could you remove name and leave just the email | Thank you | My AI assistant is providing an incorrect contact number when it is unable to assist. I do not want the agent to provide any phone number, only our email address which it already knows info@label-menswear.com | I need to log off now, but if you could add this info that would be great | This has happened a couple of times now. | We also need the chatbot to use UK English not US. So apologize should be apologise | Thanks | My bot is giving incorrect info. Please remove any preloaded FAQ answers? We offer next day delivery | Ok thanks
+
+--- Conv 7 | Lumber Grand ---
+Help me set online hours | Hi,
+Please help us to set up notifications | Hi Alyssa | I did | But it said Web notifications are disabled | Thanks Alyssa | Oh It worked thanks | No Im good | Thanks again | Sure | No problem :) | How can I see my shopify API key in this platform?
+I have lost my API key | hello? | Oh thank you a lot | Sad, Shopify closed Custom app since Jan 1, 2026 and it has been really hard for us.
+
+Thank you anyway.
+
+--- Conv 8 | KIANO Sweden ---
+Yes, | Thank you, its to malin@kianolife.com I didnt recieved the invite, | ve checked everywhere. I also sent an invite to my colleague Eline, and she received it immediately, so it worked in her case. | No, it doesn’t seem to be coming through now either. I’ve tested sending an email to our hello@kiano address, and it shows up both in the mailbox and in the Chatty inbox. I’ve also tried emailing from my malin@kiano address, and it comes into Chatty as well, and I received a reply when I responded via Chatty. | yes exactly, ;)( | oh haha :) | Otherwise, I can use this email for now and see if it works for my colleagues. | so wierd, where and what settings should i be looking for? It’s a Gmail account managed under the company’s Google account, so I have a user account within the company’s setup. | Well, haha, I should have known better… I searched for “Chatty” and found it in the newsletter folder. So now I’ve found it! Should I delete your invite? 😊 | Thank you :) | Thank you, have a great day! | Yes of course | No will look into that 🥰
+
+--- Conv 9 | marshmellowbyhiko ---
+<a href="https://evil.com">click</a> | what is my store mail?
+
+--- Conv 10 | Manhattan Products ---
+hello, how do I turn off the popup on our website which appears after a couple seconds, We just want the avatar icon to be visible | thank you | take your time | yes and sometimes there is another popup recommending products | ok | perfect, thank you so much ! | i will definitely check it out, thank you :) | that is all | of course | done, thank you again for you help and have a good day | ok thanks!
+
+--- Conv 11 | Phos & Gaia ---
+hello, can you please fix this on mobile? the chat should be in front of the arrow on mobile | ok I am waiting thank you | It's perfect, thank you! | Hello
+Something is wrong with your chat widget and the blank button since you
+edited it . These are in the middle of the page now .
+Check below
+Can you please fix it ?
+Thank you
+
+
+
+
+
+
+Nikos Theodoris
+Founder, CEO
+
+email: info@phosandgaia.gr
+phone: +30 210 940 2302
+131 Platonos Str, Kallithea 176 73
+
+phosandgaia.gr
+
+Forever Feel-Good Promise
+<https://phosandgaia.gr/pages/forever-feel-good-promise>  |  Οι Αρχές
+Βιωσιμότητάς μας <https://phosandgaia.gr/pages/sustainability>  |  Πρόγραμμα
+ανταμοιβών <https://phosandgaia.gr/pages/phos-gaia-circle> | Hello, the black arrow should be at the bottom and to the right, and your
+widget should be above it.
+Now both have moved up.
+Can you please fix this? These need to go down.
+ᐧ | Thank you, it is fixed, but the booster widget (a gift icon) we had on the
+left is now hidden. This is powered by the app "BOGOS.io Free Gift".
+Can you please fix it?
+ᐧ | It is enabled. It disappeared when you inserted the css yesterday.
+Everywhere, e.g. on homepage.
+ᐧ | sure, how to give you access? please give me detailed instructions
+ᐧ | 9577
+ᐧ | ready
+ᐧ | done now
+ᐧ | hanks, I am waiting
+ᐧ | many thanks I appreciate that
+ᐧ
+
+--- Conv 12 | COVERARY ---
+hello this is the chat with a customer and AI, AI said "We will send you further details by email as soon as we have confirmed this. "
+but i didnt notice this chat. so the customer contacted us, sounding a little annoyed | so I was wondering if there might be a better way to train AI | how can i check the name of this chat? | ah sorry i found the name its "弘美 大野" | Thank you so much! yes ill test and keep checking AI’s behavior too. | hello, how are AI conversations counted? each individual conversation, rather than each user? | thank you | Where do I set the reply message that gets sent when forwarding to real person? I’ve forgotten. | ah found it. I always forget this. thank you! | im ok | hello I checked on my side too, thank you so much.
+
+--- Conv 13 | VXAparts Online Store ---
+I havent' made any changes on your instruction + the file that you just uploaded. Can I ask, do you test the implementation first ? | Since when I try, it still gives the same result | Which test result from your previous chat ? Can u give me screenshot ? | How about the negative cases ? | Ah, the negatives will need to be added back to the sheet
+
+What does this means? | Still not working | You can see I've already add more product info | I changed the AI instruction to the new one. But the hallucination happened using your old AI instruction. So don't blame the new one | Finished checking ? | But you guys said I can submit the CSV data to prevent the hallucination | I've submitted and make the data richer with adding more vehicle fitment | This file format is from you guys | thank you. I've already back and forth with this issue, so would be very helpful if you can provide me an accurate answer | Hellow, any update ? | thank you!
+
+--- Conv 14 | Safe Whiskers ---
+Hello, is it possible to modify the location of the chat box? | So I have a stick add to cart on my theme, the chat circle blocks it, I would like to just move it a bit up on mobile | Yeah, that would be ideal | sure | thanks for you help, how can I turn off the product recomendations?
+
+--- Conv 15 | Maison Regard ---
+mail* | Merci beaucoup | Seulement le code promo pour tester la version :) | D'accord | Pas de soucis oui | Je test encore l'application et je mettrai un avis après, je n'ai pas encore pu la tester et paramétrer, je ne anquerai pas de citer votre nom | Peut-on masquer le Chat sur certaines pages ? | Sans toucher directement au code ? | Toutes les pages contenants : https://shop.maisonregard.fr/apps/plateforme | Êtes vous la ? | D'accord merci | Merci je viens de m'abonner | bonjour
+
+--- Conv 16 | BitJoy Global eSIM ---
+Great, many thanks for information | Thank you andy, I checked and everything good. | please help me fix this problem | ok | help me fix this fault | yes i'm Vietnamese | mình chưa ạ | đúng rồi nhưng do lỗi cảnh báo verification code nhiều lần nên chưa nhận đc tin nhắn nào cả | sdt này người bên Úc đang sẵn sàng nhận cuộc gọi | bạn thao tác lại giúp tôi | tôi đã request lại nhận code qua tin nhắn | tôi đang có 2 phương án để add whatsapp vào chatty, 1 là tạo tài khoản whatsapp doanh nghiệp trong BM meta rồi link BM đó vào chatty, 2 là tạo mới trực tiếp trên chatty. Bạn thấy phương án nào là tốt nhất | sao ban đầu tôi làm "Nếu bạn đã có sẵn WhatsApp Business Account trong Meta Business Manager thì trong bước 3, bạn chỉ cần chọn account có sẵn thay vì tạo mới. Không cần setup gì trước ở Meta BM, Chatty sẽ hướng dẫn bạn qua từng bước trong popup luôn ạ" theo cách này nhưng vẫn k link được | nghĩa là tôi đã link whatsapp vào business meta (sdt đã xác minh), sau đó tôi vào chatty và connect whatsapp vào chatty, lúc này pop up hiện ra việc điền nick meta có nắm giữ bm (đã cài whatsapp trước đó), nhưng tới bước liên kết vào thì báo lỗi | Hi, tôi đã kết nối vô thành công, nhưng vẫn ở trạng thái pending | kiểm tra giúp mình | có gì báo mình sớm
+
+--- Conv 17 | Fullerton Health Marketplace ---
+could you also let us know who is / are the Chatty personnel that has access to such data. Would this be Avada's backend dev team? | were you intending to add on? I got the above from your privacy policy but am trying to enquire deeper as to:
+
+- which statutory retention periods are these?
+- what is the location / region where customer data is stored? e.g. if they provide it to us for enquiry / customer support purposes | sure thing, looking forward to your response | hello, any updates on this? | okay thanks! | thanks, where is the location of the Google Cloud servers on which the data is stored? | ok sure, please get back to me on this. I've asked this questions 3 times since yesterday but have yet to receive a proper response | ok thank you | thanks for the confirmation! all good for now, appreciate the assistance
+
+--- Conv 18 | Kicksown ---
+我订阅的时候 说是下个月1美金 这个我怎么没有看见 | 这些是有货的 | 点击进去是404 | 这里也是有问题的 | 明明是有货的产品 | 是之前订阅的时候 说是升级到pro版本 下个月费用为1/month | 图片在这里 | n8sole | 我发错了 | 不用管 | 帮我处理404的问题即可 | 怎么老出错 | 大概什么时候好？ | 大概什么时候好
+
+--- Conv 19 | Tesery Official Store ---
+OK | I understand what you said, but please check the screenshot. Obviously, "Review Sources" is not displayed, so I don’t know where to make the changes. | OK  thanks | still       why? | hello    why can not send images in conversation？ | I was wondering if it's possible to send images via direct copy-paste, as I was able to do this previously. Could you confirm if that feature is still available? I understand that images can be sent by clicking the pin (attachment) icon, but I'm curious if the previous method has been disabled for any reason. | OK
+
+--- Conv 20 | Gasboys Co ---
+yes why 902 are not responded why only 563 what is the difference between these 2 numbers?? | please let me know ASAP | One of the challenges we’re facing is that the client isn’t required to provide their information immediately. | This results in us receiving messages from anonymous individuals. | I'm experiencing an issue that needs to be resolved. Could you please let me know if there's a setting in the app that I can adjust to fix this? I haven't encountered this problem with Shopify's inbox, so I'm wondering how it can be rectified here. | Yes. | Thank you. | Thank you. | Not at the moment. | please note our chatty is no longer working properly on the website can you please help.  the chatty box is blank white when a user pens it | thanks | thank you
+
+--- Conv 21 | VELVET GLOW ---
+und eine frage wie kann ich einstellen das der Chatty bei der geschenkkarte nicht in den warekorb legen anzeigt, da man da erst den Betrag wählen muss, von 10 CHF bis 500 CHF | ich habe jetzt etwas im warenkorb gesetzt es zeigt sich nicht an | nur beim seite laden | das passiert nur, wenn der warenkorb vorher leer war | einfach das das produkt in den warenkorb erscheint wenn man am chatty das bittet | er sagt auch das er es in den warenkorb gelagt hat | der warenkorb geht auf, aber das produkt erscheint nicht | kann ich mehr szenario rein machen? | uii dan wegden schon paar sein :) ich denke etwa 70 | 😅 | Vielen dank | versteht chatty od der Kunde ein Kunden Konto hat? | Ja ich möchte einfach das er die richtige antwort gibt bespiel wegen Rewards programm, wenn jemand fragt soll er schauen ob der Kunde schon ein Konto hat, und wenn erwähnen wo der kunde sich anmelden kann fals keine Konto erstellt ist vom kunde | super danke :) | velvetglow.ch/#quiz // hallo wie schreib ich diesen link damit der chatty den link nicht ausschreibt sondern ein wort verlinkt
+
+--- Conv 22 | CARLUEX ---
+我想把这些图标设置成并列  可以做到吗  并且每个图标加上链接 | 像这样 | 可否先告诉我 现在我们已经接入邮箱了  新来的邮件要去哪查看 | 请问通过接入邮箱人工回复的邮件，回复的时长和数量会和AI 回复的一起统计还是分开统计，如果是分开统计，怎么分别查看 | 但是我觉得这个数据看着不太对，我们今天接入邮箱后只通过chatty回复了一封邮件，然后AI assistant 里我明明看到AI 有回复，数据却是0 | 请忽略我上面的话 | AI 的统计应该是没问题的 | 但是我想要通过chatty 单独统计接入邮箱的回复数据，单独统计回复whatsapp的数据，你明白我的意思吗？   我们现在还不需要统计人工实时回复的网站客户的数据 | 是的 | 可以查看分别的响应时吗 | 可以查看分别的响应时长吗 | 你好 | 请问这个红框里的 是在什么情况下弹出的 | 还是不要突然弹出这个吧
+
+--- Conv 23 | Caracole ---
+Hi Support,
+
+We want to track marketing events when users interact with the AI.
+
+Does the app publish any JavaScript events that we can listen to for this?
+
+For example:
+
+chatty_ai_opened
+chatty_ai_closed | We want to capture user interactions with the AI for analytics and marketing tracking purposes. Specifically, we plan to send these events to tools like  GA4 to understand user engagement.
+
+For example, tracking when a user opens or closes the AI, interacts with it, or performs key actions would help us measure usage and optimize the experience. | What's the status. Can you share this file on the dev@vmgroupe.com | Appreciated. One more thing:
+
+Currently, this store does not allow the general public to purchase products. Only specific customers are permitted to buy.
+
+We need the app to align with this setup, or alternatively, disable the “Add to Cart” functionality entirely.
+
+At the moment, “Add to Cart” is only shown to customers with specific tags, such as Dealer or Designer.
+
+Is it possible ? | We want to disable it for now, but it would be better to have control over it so we can enable it again in the future. | If they’re planning to hide it using CSS, we’ll handle it on our end so we can easily enable it again when needed. | For now just send us the events file asked earlier on dev@vmgroupe.com | Much appreciated | Could you please share an ETA for when the document will be sent to us? This is currently impacting the task timeline. | We initially thought this wouldn’t take much time, so we didn’t specify a strict deadline earlier. However, we now need this ASAP as the task deadline is today.
+
+For now, we only need two events in the chatbot:
+
+1. When the user opens the chatbox
+2. When the user closes the chatbox
+
+Also the document is not required you can share the details of these 2 events here in the chat as well. The only thing is we need this ASAP.
+
+We really appreciate your efforts and support on this.
+
+--- Conv 24 | HapaKristinJP ---
+F12キー押した後どれ押したらいい？ | 再読み込みしたけど受信トレイが正常に作動しない | 言語を日本語に設定しているが、英語で表示される | 設定変えて日本語にできました。 | サポート窓口（japan@hapakristin.com）への誘導・案内をしないを設定しているのに、メールへの案内が行われる。メールへの案内が行われないようにしたい。 | 夏海 斉藤 | サポート窓口（japan@hapakristin.com）への誘導・案内をしないようにしてください | サポート窓口（japan@hapakristin.com）への誘導・案内する代わりにチャット内でスタッフが確認して対応しますという旨で伝えるようにしたい。どう設定したらいいですか？ | お願いします | お願いします
+
+--- Conv 25 | True Citrus ---
+perfect, thank you! | that is fine. can you also request an integration with Skio, our subscription platform and Kustomer, our CRM😊 | sure | 👍 | 1. Anonymous Contact Display
+Great news - our team has confirmed this is feasible! Before we proceed, we would like to clarify your preference:
+- Option A: "Anonymous user" - all anonymous contacts share the same label
+- Option B: "Anonymous #1SG8" - with a random code suffix to help distinguish contacts in your inbox-
+
+Which format would work better for your workflow? option b
+
+2. Skio & Kustomer Integration
+We have logged both requests with our development team! To help us better understand your needs and prioritize accordingly, could you share a bit more about your use case?
+
+For example:
+- What data would you like to sync between Chatty and Skio/Kustomer? conversations
+- What is the main goal - e.g., viewing subscription info during a chat, logging conversations to Kustomer, routing based on subscription status, etc.? logging conversations  in kustomer. viewing and editing subscriptions with skio | We are not seeing the changes on our end | thats it | nevermind. in the web app it is showing correctly. I was looking at it from the Shopify page
+
+--- Conv 26 | Niivira ---
+please remove this | it is still there | sure | okay | Hello Audrey,
+
+Thank you for the message...
+
+Can I help you with your concern? It seems that there is no written email in this thread.
+
+Talk to you soon...
+
+Best,
+
+Marie
+Niivira Customer Support | Hi | Is there a way that my AI assistant is only open for 1 product page? | I want to add other products but I dont need AI assistant for those new products. | ok | ok | appear only on one specific product page | okl | URL is invalid | ok | "/" including? | at starting | ok ty
+
+--- Conv 27 | Lucky Lapin ---
+on the preview i can see the back button from the chat bot but on the website i can not | yes sir it is | yes but i cant see it for some reason | it does work on an incognito tab | yup it just worked thank you for your help | no thank you everything seems fine for now | go ahead | will do
+
+--- Conv 28 | Chiputt Golf ---
+hi, i want to know the details of the chatty shopify flow trigger. do you have a documentation for it? | Hey Hazel | covering all deetails of the app will be good! | Great I'll have a look thank you! | hi, is there any way i can download all transcripts from all client conversations all at once, so i don't have to download each individually? | Thank you Andy! it's up-and-down@thechiputt.com | so at the moment this is not something that i can do by myself, or even automatically? | kk, thank you | got it, it's not a file, it's a web page with all chat history right | kk thank you | this is the latest email received from you, haven't received an email for file download yet | got another email, saying "No Data Found
+
+There are no conversation usage records for this shop.
+
+Shop: Chiputt Golf" | thank you | ❤️ | thank you
+
+--- Conv 29 | B&C Unique Boutique ---
+Setting up Holidays. Does this mean that we plan to be closed? | vgary@bcuniqueboutique.com | When Holidays are set up does this mean these are days we are closed? | vgary@bcuniqueboutique.com | vgary@bcuniqueboutique.com | vgary@bcuniqueboutique.com | Yes, that’s where I was working.
+
+Vida
+
+--- Conv 30 | Pearlie White ---
+hi, can you check if you can show the full price of the product for product recommendations? It should be $10.20 instead of $10.2 | yes | ok | Hi,
+
+Thank you, it has been resolved.
+
+Thank you.
+
+Yours sincerely,
+Jasmine Lee
+Marketing Manager
+Corlison Singapore
+Tel: +65 6288 2277
+Mobile: +65 9733 6188
+Fax: +65 6286 3211
+Web: www.corlison.com<http://www.corlison.com/>
+
+The information in this e-mail is meant for the intended recipient/s only and may be confidential and/or privileged. Use of this information by persons other than the intended recipient/s is prohibited. If you received this in error, kindly inform the sender and erase any record of this message. | hi, how can i change the email address sent by the ai chatbot? | the email address is incorrect | hi, its ok i managed to add the data for AI | thanks
+
+--- Conv 31 | New England Supply House ---
+Hi,  are the working hours for my chatbot or when we are open | thanks | I want the chatbot to be available 24 hours.  right now i dont want my staff replaying to messages. | ok, i just loaded it to my website and it said a rep would respond. | I need integration with Zapier. | ok | ok.  question.   can i bulk upload files for my bot to learn | i have 2000 pdfs i want to upload | product spec sheets | can your chat bot check google? | ok | how many files can i upload | Thanks.  I need bulk upload.
+
+Jason DuBose
+New England Supply House
+
+--- Conv 32 | STYLO DROP ---
+Hi | your app is not showing on my theme | Can you please help me with that?? | Sure | ok
+
+--- Conv 33 | Craft a Brew ---
+thanks! Becuase this is supposed to be assigned to me, i am the agent "Kaley K" and my email is support@craftabrew.com. but this convo was not forwarded to me at support@craftabrew.com
+
+Ideally, we want convos to literally be forwarded to our support@craftabrew.com email address so we can reply | thanks, megan! | sounds good thank you so much! Our primary goal is to get these convos forwarded to our support@craftabrew.com inbox so that we aren't having to manage this chatty inbox manually. we get all of our messages/emails funneled into ONE inbox (support@craftabrew.com) for a single-location heldesk | when you say "When you are online, the AI will automatically assign conversations to you." does assigning simply mean that the convo will appear in our chatty inbox? | When we first onboarded with chatty we would receive forwarded 'transcripts' of convos when people wanted to speak to a human. we have not received those in recent months. | yes I see this, but I would have to check the chatty inbox to see the chat that was assigned to me, right?
+
+the chat transcript isn't emailed to the assignee's email address? | I feel like the more assistance I seek, the more complicated things become. When we first added this app to our store, we were receiving email notifications when customers requested to speak to a human. and there was a "speak to a human" button that was much more prominent in the chat box | this customer (theghostlypines@gmail.com) requested to speak to a human agent, but their convo was never forwarded to us via support@craftabrew.com, as we've requested several times in the past | Thanks, we've contacted your team about this in the past. when we initially set up this app, if a customer requested to 'speak to a human' their chat history would be emailed/forwarded to our support@craftabrew.com email address. this seems to be spotty and inconsistent..
+
+if this is no longer possible, then we need to bot to give the customer our support@craftabrew.com email address to contact us directly..
+
+We do not have the capacity or time to be manually monitoring and checking the chatty app inbox...so any time someone wants to speak to a human the customer needs to be prompted to email us via support@craftabrew.com or the app needs to forward to chat history to us at support@craftabrew.com | thank you i unchecked the "only assign to online members" box. 
+
+Can you confirm which setting should be selected for "reassign conversations based on replies" ? 
+
+Screenshot attached to show the current settings | Thank you. Does this mean the message has to be answered within the chatty inbox? Will this still forward chat summaries to our primary email > support@craftabrew.com?
+
+That is the crux of all of our conversations with chatty support. If the customer requests to "speak to a human" we need that chat summary to be emailed to our main support@craftabrew.com email address. 
+
+For example, this customer asked to speak to a human and the chat bot said "i've forwarded your request to our human support team" but this did NOT happen (likely because of our settings), BUT the bot supplied the customer with our support@craftabrew.com email and we did receive a brand new message direct from the customer about their issue.
+
+ I just want to make sure that this is possible, because our support team monitors ONE helpdesk inbox (support@craftabrew.com) for efficiency | TL;DR - if a customer asks to speak with a human we need 1 of 2 things to happen:
+
+1. the chatbot needs to supply the customer with our support@craftabrew.com email address so the customer can contact us directly for assistance
+
+2. OR we'd need chatty to be able to forward the chat summary to us via support@craftabrew.com so we can review the chat and contact the customer directly to assist them
+
+--- Conv 34 | Jovial Foods, Inc ---
+I added this question to the test and it is completely wrong! | again, if possible, I do not want the field to pop up for questions like this- the bot can't be trusted to answer product questions properly- we want it to answer basic order and inventory questions only' | Organic Einkorn All-Purpose Flour 10 lb. SKU 1405 | understand thank you.  I did not realize that the chat would recognize a product page and allow for customer questions from that page.  can I train the bot on each product without the product assistant feature which is an upgrade? | also, I think I have selected my 100 products I want represented without having to upgrade for the final 34 in our catalog; when I click enable to I then have to click sync products?   this may be what I did wrong previously | back to the 'always away' status we were hoping for- I think there are still features that I do not have set up correctly but with some refinement I could avoid frustrating customers and myself. | We are currently using the free version noting that we are allowed 50 total AI conversations.  What does the chat look like after that?  what happens when you click on it if it will not offer help? | will the FAQ disappear? | and if they click on one (say 'how do I track my order' and the automatic answer comes up, does a secondary field also come up for the customer to type a follow up answer? | understand- so FAQ are preset QandA and the chat button becomes a live chat once AI conversations are no longer occurring | is there a way to see how many customers have clicked on our FAQ? | with the free version,when we have used up all of our AI assisted conversations how do we set the hours so that they know we are not live?  can we set the hours to be basically always off?  so that the FAQ are always there but otherwise there is a message saying please use our contact form? | and I can just toggle the live chat button off to have the chat never show?  correct?
+
+--- Conv 35 | MK Sportscars ---
+How can I uninstall chatty? | I can't seem to get this to work propertly? | Yes | I want to uninstall chatty from my shopify
+
+--- Conv 36 | D'AZUR ---
+need some help | How can I prevent the assistant to send this tracking informations uploaded on shopify sistem? As I dont want my customers to realize they come from China! | thank you so much | so this way it will only send our tracking page, as I advised right? | hi there. I am trying to claim my discoutn code - BFCM-40OFF-3MO , and I cany | cant | here! | ok | yy | amazing! it worked | <3 | hi there, I love this app, but is not fitting on my budget... can you guys help me with a discount in pro plan? | I need that for my volume | please...
+
+--- Conv 37 | Aljuzor ---
+what do you suggest ? | ah okay so it works well with csv more than aany other format | allow me 2 minutes to try it pleaase | Cool! actually i didnt find the csv file is it only in your end | ? | great ! would you please share it with me | yes will do it right now | cool! i see both of them are active should i disable the old pdf one? | waiting for the synchronisation | unfortunately still giving random replies 
+could you please try those qsts on your end 
+كم سنة صلاحية المنتج ؟
+سعره غالي مقارنة بالمزيلات العادية
+تعتقدون أن جودة المنتج تتوافق مع السعر المدفوع؟ | ah i didnt check it 
+so its RAG based right ? doesnt have to be the right questions even if its similar one will answer as if its the exact one ? | cool! let me try to convert the rest to csv and try it again
+Thank you Phoebe youre amazing :)) | will give it 5 stars | immediately | have a nice day ))
+
+--- Conv 38 | Aljuzor ---
+what do you suggest ? | ah okay so it works well with csv more than aany other format | allow me 2 minutes to try it pleaase | Cool! actually i didnt find the csv file is it only in your end | ? | great ! would you please share it with me | yes will do it right now | cool! i see both of them are active should i disable the old pdf one? | waiting for the synchronisation | unfortunately still giving random replies 
+could you please try those qsts on your end 
+كم سنة صلاحية المنتج ؟
+سعره غالي مقارنة بالمزيلات العادية
+تعتقدون أن جودة المنتج تتوافق مع السعر المدفوع؟ | ah i didnt check it 
+so its RAG based right ? doesnt have to be the right questions even if its similar one will answer as if its the exact one ? | cool! let me try to convert the rest to csv and try it again
+Thank you Phoebe youre amazing :)) | will give it 5 stars | immediately | have a nice day ))
+
+--- Conv 39 | vivoonlinestore ---
+no thanks | sure | Hola! tenemos otro caso similar al de ayer con el mensaje de respuesta de la IA. 
+Un cliente ha preguntado si hacemos envíos a Francia pero solo hacemos envíos nacionales y, dentro de la Península. | ¿Cómo lo puedo modificar? | Sin problema | Sí, subimos un archivo y URL de FAQs | 👌 | En la política de envíos y, en el apartado de
+Preguntas Frecuentes, debe aparecer el apartado URL y ahí se subió | 😁 | ¡Gracias! | hola!! sabemos algo? | Gracias Phoebe! | como puedo llegar a configurar el horario de chatty para mis clientes?
+
+--- Conv 40 | Roost ---
+it was magnetsource.com | so it's not live | sure | Ok, that worked.  Thank you. | We will still need an answer about the product recommendations. | Hello I have not heard anything about the product recommendations, is there an update? | hello | ok | Hello if I want to put in a link smewhere on my page to chatty, what do I use? | yes | ok | awesome, thank you! | thanks | where can i see the chat activity?  I want to be able to use the data to train the ai on other topics that may have not been included | ok, so if there are none in there that means no one is using the chat? | ok thanks
+
+--- Conv 41 | Apex Script ---
+hi can i talk to a person ? | hi | i configure everything, but i have little issues | the app on my phone dont show anything | yes its my store | this is what i see on the app on my phone | i tryed to download it again but nothing | yep | i follow the guide, i go on your website with the qrcode and after install the app | i can do it again if u need | give me a moment | i scan the qr code and i start record it | ok so i need wait? like 5 mins or days ? | samsung s26 ultra | android version 16. version one ui: 8.5 | yes thanks | https://app.chatty.net/inbox your website is not working ? | what can i do ?
+
+--- Conv 42 | BodyMods ---
+I used the product recommendation section because the AI couldn’t find the floating navels. Once I added them, I can’t figure out how to stop the AI from using them as the first option when people ask for navels. | I tried using a dash, quotation marks, and the word “specifically,” but nothing seems to work. | thank you Alicia! | I just test it and it seems to be the same: | I think the problem is that the AI gives priority to product recommendations over everything else | But how can customers find the floating navels now? That’s why I created the section, because the AI can’t recognize them | The AI should suggest “floating navels” only when people ask for them. If people ask for navels (the whole category), the AI should show all the options, not just the floating ones. | That’s why I tried using quotation marks, a dash, and the word “specifically”… but nothing works | thank you :) | Hello. Thank you. Unfortunately, the problem is still occurring, as you can see in the test | Hi Hazel. The problem is that I don’t want the AI to suggest floating navels unless the customer specifically asks for them. I want the AI to recommend regular navels by default, and the two pictures you just sent me both recommend floating navels | sorry, only the first one has the floating navel. Why isn’t it consistent? | Sorry Hazel… it seems to be working now! Thank you so much! | I think it was the cache
+
+--- Conv 43 | Icon ---
+yes, Amazing | possible to pop up the chat icon only after certain time? | 5 seconds | sure | you too | 6213 | done | Amazing | I know what you are talking 😀😀 | it’s always same question 😀😀 | all customer service ask same😀😀🧸 | possible | done | always 💕 | me too, for your time | I have to go now. if it’s possible to add the editing on chat pop up, I will check later. if not possible, thank you anyway 💕🩵 | have a good day 🌸 | Hey, it looks great! Thank you so much.
+
+--- Conv 44 | Stonehenge Health  ---
+can you please have the dev team look for me now? THis has hapened a few times now | thnkas | thank you | https://app.chatty.net/website/fstesgfov7ultkxw3fe8/inbox/iVCOYrJb5RvxAfj1dxYq
+
+The AI is sometimes deflecting to our support email when the customer's request isn't clear. THis is an example | Yes, you got it. It's happening infrequently but still multiple times a day | wanted to provide you some feedback on a chat where Chatty told its customer the thought process it went through
+
+https://app.chatty.net/website/fstesgfov7ultkxw3fe8/inbox/8uGM4GfounuSWa8zL8O4
+
+It seems to be a one-off situation though. | I am seeing a lot of my URL's from my website failing to sync, when before this wasn't an issue. It just started today | even retrying multiple times all day, I've on,y gotten 2 of my product page url's to work | Hi Cody, in reference to your question about what content we are looking to train the AI on from our product pages, we have ingredient information, customer reviews, and FAQ questions on our product pages. In addition, the way our store is set up the price in the Product itself in Shopify is not correct because of automatically applied bundling discounts off of that price. | I see that all my URL's for the most pawrt are still "in progress" since yesterday
+
+--- Conv 45 | Inaianei ---
+Hola, ¿hay una app para gestionar desde ios o android? | Hola Phoebe! | Gracias! Y para recibir notificaciones en el móvil debo tener siempre abierta la web?
+
+--- Conv 46 | Info ---
+THE AI CHAT DONT AWSWER ANY QUESTION ITS NORMAOL? | HHI | YES | THAT ONE | I WRITE I NEED HELP AND DIDNT SAY NOTHING | OK INSIDE OF THE CHAT I ONLY SEE THE LOGO OF CHATTY | i change but dont work | its the logo of chatty not mine | i upload my own logo | this one | ok
+
+--- Conv 47 | Amos Sweets ---
+still no answer | Hi, thanks, it works. | Yes | done | OK, done | I test some questions. But the answers are not correct. How can I change it? | Like this, can I change it to amossweets.com? | done | OK | Very thanks for your help. | OK, will do that.
+
+--- Conv 48 | BoostBox ---
+About Us
+ 
+
+About Us
+
+At BoostBox, we are committed to enhancing the overall health and vitality of our customers through a carefully curated selection of wellness and beauty products. Founded in 2026 by a group of university students from Toronto Metropolitan University. Our team comprises industry experts who meticulously research and select each product, ensuring that they meet the highest standards of quality and efficacy.
+
+Our Mission
+
+Our mission is to provide unique solutions that cater to the diverse needs of individuals seeking holistic well-being. We understand that wellness is not a one-size-fits-all approach; therefore, our offerings, including the popular "Beauty Support Box" and "Digestive Support Box," are designed to address specific health concerns and promote a balanced lifestyle. We believe that informed choices lead to better health outcomes, which is why we provide detailed information about the ingredients and benefits of our products. Studies indicate that 70% of consumers are more likely to purchase products that are backed by scientific research, and we strive to align with this expectation.
+
+What Makes Us Different? 
+
+What sets BoostBox apart is our unwavering dedication to customer satisfaction and education. We not only offer products but also resources and guidance to empower our customers in their wellness journeys. By fostering a community centered around health and beauty, we aim to inspire individuals to prioritize their well-being and embrace a lifestyle that supports their goals. Together, we can achieve a healthier, more vibrant life.
+
+--- Conv 49 | Test_answerx ---
+Hi, I need help training my AI assistant
+
+--- Conv 50 | woolland ---
+all right | unfortunately i do not have another email....and the problem is i do not see this option to copy and paste the forwarding email | hm.. | may be i made it | please see the notificati9on i m getting i gmail (in red) | yes | same here | so, will i receive inquiries on my email now | i am not sure if that was what i was trying to have. I thought when someone writes me in the Chat, i will get notification on my gmail, isnt that the logic? | all right. and now when someon messages me , i will get notification on email?
+
+--- Conv 51 | Oxford & Rose ---
+yes this is the place it is coming.. thank you we have updated now | sure Hazel. Will give. thanks | Hi Chatty | we want to add easter holiday offline message .. where can we set? I have added Holidya from april 3rd to April6th.. But where message can set for this particualr period | ok | ok | they can use the site and place orders as usual.. only chatty customer support team  wont be available. want to show offline message | where to set in AI assistant | ok seems this message I can't set right now.. as this display today and totoday also after business hours | no other option to display particualr message in holiday period | okay fine. thank you | ok thank you
+
+--- Conv 52 | SGI ---
+great sorted thank you | Can you help with this response. | we dont provide swops or trade ins as per this customers request, we can however exchange if they purchased the product from us | for another item if in the warranty / return policy terms | with in the return policy as stated on our website | thanks | ive checked now | good day | We seem to be going back and forth every other week, when ever i check the chat bot I find the bot reverts back to it own information and not what we had originally trained it to do, is this normal? I think its the third time that I have had to rectify the same issues | yes please see attached | We have a standard response to anyone asking for returns and exchanges, however the bot always seem to revert back this response as in the screenshot attached | yes correct | yes thank you
+
+--- Conv 53 | Imane Harmonie ---
+super | non | d'accord | oui c'est super merci | si j'aimerais le descendre un peu si possible | oui le mettre un peu plus bas | d'accord merci je vais laisser un avis | bonjour j'ai une phrase qui apparait dans mon chat que je n'ai pas programmé , c'est celle-ci : Bonjour 😊 Expliquez-moi votre problématique en quelques mots, je suis là pour vous aider dans le choix de vos compléments.  je ne sais pas où la modifier | oui | ça fait une repetition | je veux le désactiver moi | mais merci pour votre aide je vais modifier ça
+
+--- Conv 54 | SUPERSONIC ---
+why today ai boot dont work? | Ok, thanks. And one more thing, can we change this message to just three dots? | Hi, I see you're sending 'next steps' recommendations. Can you give us some advice on how to proceed with these topics? | Hi, I received this message. Today is March 11th, and the limit was supposed to be renewed on February 10th. If I understand correctly, will I receive a new limit for the next month? | So this plan doesn't renew? When will my 50 calls be renewed? | Thanks for the clarification. Which plan do you recommend for me? Pro seems too much. | thank you for the information, we are turning on basic :) | Hi, can you check this conversation? A customer reports a problem. The chat suddenly switches to English (the conversation was in Polish) and forgets about her problem, only suggesting other products. Something's not working right here.
+
+--- Conv 55 | Gingiberi ---
+pls check | Not exactly. What I mean is that when I ask the AI to recommend Akoya pearl earrings, it should not suggest Aurora pearl earrings instead.
+
+Additionally, I would like to confirm another point. When a customer asks whether a product is available in other specifications, especially in cases where customization may be possible, could the AI respond by mentioning that customization might be available and needs to be confirmed with the team, rather than directly saying no and recommending other products? | I attach the video for your reference | pls wait a minute | I cannot upload a video, so I upload pictures | Additionally, I would like to confirm another point. When a customer asks whether a product is available in other specifications, especially in cases where customization may be possible, could the AI respond by mentioning that customization might be available and needs to be confirmed with the team, rather than directly saying no and recommending other products? | Additionally, I noticed that I’m unable to upload images in the chat box. Does Chatty not support image uploads? | Thank you for the detailed explanation. I will try creating the scenarios accordingly. Additionally, I would like to ask whether customers have the option to upload images or attachments when contacting us, as we did not find this feature during our AI testing. | yes pls guide
+
+--- Conv 56 | Water Fountain online ---
+hey bro | 我有个问题 | 可能会需要在线客服工作人员的帮助 | 聊天气泡的位置能不能调整 | 这实在有点影响体验 | 很高兴我联系上你了 | 现在气泡在的位置 盖住了大多数东西 | 如果能移动到绿色圈圈的附近的话 是最好的了 | 好的 非常谢谢 | 我们搞定了吗 好奇一下 | 好的 那我等你的好消息 | 好的 谢谢 | 我明白了 | 暂时没有了 非常感谢您 | 我都没有发现这个按钮可以修改CSS | 请问是需要我帮什么吗 | 我是没什么需要帮助的了 | 当然 | 我会去写评论的 | 当然 哈哈 我没次都会这么做
+
+--- Conv 57 | Vintageladies.de ---
+We have set the language of the FAQS,but there's no change in  the page. | for example： the Q1 is in German. | But the other questions are in English. | hello? | Everything goes well now. Thanks.
+
+--- Conv 58 | END Nutrition ---
+this happen again | we have added the policy then why it assigned to agent why he not sent the policy directly | where i can do | ok | you can do it for me | conditional transfer | and i want you to let me know the best feature that is not i have not yet activated | and one more thing if some body went to known products look known prudcts in recommendation like bestseller | yesterday one customer went to kids category and get bestseller recommendation of sports nutrition of different brand | yes | how i can set this so only product relatted to the product according to customer browsing come | which one is ai recommended based on browser | can you set this setting for me | it would be grateful please 🙏 | i cant | tell me step by step | my goal is to set the chatty in such a way that people visit any product they get recommendation related to the products | \ | see i am browsing collagen and chatty showing sport nutrition , i want him ti pop up about other produvct related to this | okay
+
+--- Conv 59 | EV Bandit ---
+I really appreciate it, it would be a very useful feature | Are you able to update my products up to 900 instead of 500? | for ai | that's too much I don't have 8k just under 900 | I really appreciate your help | is there a way to update the chat icon | yes | how do I change automated messaging for product suggestions it's using | separately, im trying to connect my klaviyo list and profiles api and it's not working | ?? | did everything it asked exactly | i did step by step that exact process in link you provided, and yes, it's
+the entire API key exact copy/paste | any other suggestions pls?
+
+--- Conv 60 | JASIC  ---
+你好 | 我想知道我要怎么打开聊天窗口，放在我的网站右下角这样 | 不是的。我是想说，本来进入网站，我设置的就是会在有右下角有聊天窗口 | 但是没有聊天窗口这种东西出现 | 好的，谢谢你 | 还有，我需要调整聊天窗口的位置，需要把它往上放，不然挡住产品详情页的一个加购按钮 | JASIC | 我没有关闭应用啊 | 好的 | 你好 | 麻烦帮忙调整移动端聊天框的高度，在产品详情页上，聊天框对CTA按钮出现了遮挡现象 | 高度调高一些，谢谢 | Sure
+
+--- Conv 61 | ARCOL ---
+this chat summary | for example now it's in french because the customer is french, but i'd like to have it in italian as it's our main language - so i don't need to translate it everytime | hello, is there a human? | hello phoebe | where do i go to change the time period after which chatty will appear to users? | nope i just wanted it to appear after 30 seconds | and not 10 or whatever is now | it's slowing our website right now so i need to delay it's appearance | yes i meant that | yes | i think I've just edited it | i've clicked on the three dots on each proactive chat name and increase the wait time | no i should be goo for now. that's what i wanted to achieve
+
+--- Conv 62 | INJORA ---
+Wasn't that email supposed to be sent to this email address? | Thank you! | How can I enter the code? | Invalid coupon code | I've downgraded to free plan | but still can't enter the code | still invalid | It works, thank you! | How can I transfer this conversation to AI | 👍 | Thank you | Can AI be made to recommend products to customers less frequently? I’ve noticed that most of the time, its recommendations aren’t what customers actually need. | Do not recommend products to customers unless they say they need something
+
+--- Conv 63 | Nyte ---
+super merci | ok pour celui ci, j''spere que l'erreur ne se répliquera pas, merci | Merci Hazel :) | Je suis en réunion mais je m'en occupe dans la journée, merci :) | hello n j'ai un probleme, nous avons changéé notre adresse email et je peux pas la changer dans les parametres c'est grisé pourquoi ? | notre nouvel email est client@good-nyte.com | 711714 | mercii | Bonjour il y a t'il un moyen simple de passer toutes mes conversations en résolues ? | Merci Sonny | d'accord mais pour les anciennes conversations ? | d'accc
+
+--- Conv 64 | DORS ---
+some times the bot dont know the answer that it should know. like how to be a member, or loyalty programs. and the answer generated is not according to the communication style set | hii | yup | how do i get the id | hello | SqtNlYpz3osv8gZnc9sm | it does but why when i test it doesnt come out the same? | still the same. ID: cjujx6mUPB1MzpS0MNPG | ok thank you | how to be a member is to reference this link - https://dors.com.sg/pages/dors-club
+
+it has been set up. and after testing on the live ai chat, the same problem still persists. | and also from your screenshot, the answer was a one liner with no follow up. nothing friendly or warm about it, which is not what we have set up. | hi understand, but we cant control how our users ask questions. shouldnt a broder term question be considered as that faq category when asked? and the reply from the bot when it says it doesnt have info about it, it refers to the loyalty membership, which is what the page is about. and if thats the case and the solution is to add them as a QnA FAQ, then does that mean i would need all my custom knowledge as FAQs? what are the custom knowledge for? i'm just curious and trying to see how we can make use of this to the best of its ability so do help me to understand thank you
+
+--- Conv 65 | Welcia Singapore ---
+xX9s8gOZnzglOVHJjJ8d | Hi, can you please assist to explain this error in Data Source - URL? | okay thank you | okay | May I know how we can linked or include it to reply to our customer? | It is okay if you can't crawl it. but atleast to include the link so our customer can be directed to. | it is when ordering | also part of the instruction | when customer is asking for stocks or ordering. I would like them to redirect to our shopee account since we are not ecom for now | I mean the website is not open for online purchase | Thank you Andy. During your test, does it goes to our shopee site after you click the link? As for the AI Assistant, it was activated. However, we already reached the limit of AI replies. | okay thank you | noted with thanks
+
+--- Conv 66 | SieraChart ---
+can i get a demo? | chatty | amazonusabiz117@gmail.com | ok | k | i have shopify inbox now, i ll put chatty online only when its gonna 100% ready | so nobody can make a demo? | k | i think i booked a call at 11h45 today | didnt get any email
+
+--- Conv 67 | Olfazeta by Chogan ---
+Please help me fix 404 page for this page apps/avada-faqs/embed/settings/shortcut/create | It(s not the setting it's the shortcut page only | ettings/shortcut/create | settings/shortcut/create* | Yes quick replies, probably cache issue, then thank you for you help | Hi Chatty Support,
+
+We're using Chatty (by Avada) on our Shopify store and have a specific use case we'd like to implement.
+
+In our FAQ content, we have multiple references to "contact us via this chat" — for example in answers about order tracking, returns, and account issues. These are currently plain text.
+
+We'd like to turn these references into clickable links or buttons that:
+1. Open the Chatty widget directly (ideally with the chat already open, not just the launcher visible)
+2. Optionally pre-fill or trigger a specific conversation flow or topic
+
+Our questions:
+- Is there a JavaScript method or public API we can call to open the Chatty widget programmatically? (e.g. something like ChattyWidget.open() or a window.postMessage event)
+- Is there a URL hash or parameter (e.g. ?chat=open) that triggers the widget to open on page load?
+- Can we pass a pre-filled message or route the user to a specific bot flow via the trigger?
+- Is there official documentation covering widget trigger methods for developers?
+
+We're comfortable implementing a custom JS snippet or an HTML anchor tag — we just need to know the correct method to trigger the widget from our metaobject-rendered Liquid content.
+
+Thank you,
+Olfazeta by Chogan | Hello thanks | Thank you so much have a great day !
+
+--- Conv 68 | 99bikes.co.nz ---
+This is the error I receive | Thank you | That is okay. I am based in Australia and am logging off for the day shortly. I will come back to this conversation tomorrow and look for your update then. | Thanks for your reply Hazel. We are unable to create a 2nd Zendesk account. Our current account houses the 2 stores as separate brands, and they cannot be split into separate accounts. I would appreciate if using Chatty's Zendesk integration on both stores with the 1 Zendesk account could be looked into further please. | How how do we allow customers to reset conversations in the chat box? | Thank you | Hi Team, is there anyway that we have chatty set up so that resolved conversations are emailed through to help@99bikes.co.nz? If we can that would be great. Please let me know. | Hi Hazel, Unfortunately we already have our Australian chatty tickets integrated with our Zendesk and apparently this means we can't also have the NZ ones integrated as well. If there's a way we could have both that would be great. Do you know of a way we could do this? | Hi Hazel, when I enter our Zendesk domain it comes up as connection failed | https://99bikes.zendesk.com | I've tried a few variations of this | Thanks
+
+--- Conv 69 | Power2Cycle ---
+**Black Friday Sale: SAVE Up To 50% On e-Bikes**
+
+£200 Voucher on any E-Bike Purchase! | Power2Cycle offers a huge selection of high-performance e-bikes, with fast delivery and expert support. Don’t miss out! Cycle to Work accepted, 2-5 day free delivery, 0% finance & no deposit!
+
+Black Yellow Modern Black Friday Facebook Post (1) (https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3lcV84Vr77Y5g-mW7pv5qh9c_GypV-hNZY7N2PG5W3Hh7Mp2B3WYHW1l_w6m7TvVb9W7TNdR41LrSTxW55qmZR27TkTRW5bHVPc6m3_v8W2nTg7k6Rfgr-N6fs9rKWxtJ4W58D_563cZSzMW2wzc-d9lWJfJW7MXRCg9cMzmrW85lNK92XvDn_W5r31hS6z56_RVD4pCs1BTp2XW6wJH9f7J14pDV8s9Dw60RsR2W7TgSlG4S3XQhW3s6kpl2MkCVrW3qSrhM3x7JjCW3vt7l26_QnvsW6_42ZW2w49DMW6X5K3V6RYgnbf4shKY-04 )
+
+Explore massive savings on top eBike brands!
+
+Plus enjoy an exclusive £200 voucher with every eBike purchased until 1st December.
+
+BLACK FRIDAY OFFER
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3lcV84Vr77Y5g-mW7pv5qh9c_GypV-hNZY7N2PG5W3Hh7Mp2B3WYHW1l_w6m7TvVb9W7TNdR41LrSTxW55qmZR27TkTRW5bHVPc6m3_v8W2nTg7k6Rfgr-N6fs9rKWxtJ4W58D_563cZSzMW2wzc-d9lWJfJW7MXRCg9cMzmrW85lNK92XvDn_W5r31hS6z56_RVD4pCs1BTp2XW6wJH9f7J14pDV8s9Dw60RsR2W7TgSlG4S3XQhW3s6kpl2MkCVrW3qSrhM3x7JjCW3vt7l26_QnvsW6_42ZW2w49DMW6X5K3V6RYgnbf4shKY-04 )
+
+FULLY FLEXIBLE FINANCE
+
+Spread the cost with our Fully Flexible Financing Options, including 0% APR Representative!
+
+FREE UK NATIONWIDE DELIVERY
+
+Buy from the comfort of your own home - delivered to your door by our trusted couriers
+
+GET IN TOUCH
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3lZW39zRP13rWk8-VcJ9kV7BRJMdW3lV4Jd6WDX9RW2HqKsz1GWv3NW2_y5t33FjQqRVP76-38xkxk7N4k_BpvX1mdxW34Krw96nZc_XN1rFXGJK5hmFW7fHLF33N6gMzW9g0TZN1583qVW75WzpQ74fQ_bW4wVqHj95qmwxVcTcWD8WmR6xW4tXyVl3M07GbVzFM778Q5Y9KW6qxSdb4GWBrLW81TBYc7psjnNW39jqxJ8r_p75W78P2LB7-vl_wW7PDJsC98Tmw3W5yTfxM4jV49HW6Rb_Gv9lkh_PVNpW02219hv9f3K91Fs04 )
+
+WHATSAPP
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0RK3prCCW6N1vHY6lZ3nsW7f9MRv6f3-GYVZbLF_4pD-c1N5z06w1nh6PPW7_kybd5yMtj7W5psld_48tklVW4CxnT690-hC-W4kQY7b4TDyzLW3w8d0V7YYhm1N42HmKggFRKxW6JCxrq3byRWXW4BjtCJ1GBz9PW37Bx952HjblrW85TZmY4p-P1GW6TLPFj3_w6f6W3WGVX_1JksNtW22RT0c6yXGQ9W74Jq5W4_CyGHW5C2CD02TB4pVW6xjwc79hPzJZVBJ0N26sdkTYW82nZ_j6Tr-dKW8w_Kn_8rH-2cf8tj_Fj04 )
+
+CALL US
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0RK4YGXlW6N1X8z6lZ3kKW3Wt0mv1dV7SgW3TNrxF1lCdpwW6lGxnl7ZmYyMW5g7WYW9lxmfxW3j2d923nBf1BVmZ4g-3cJ2GMW8N6ysP7GYfgHW1KSJC043cdMQW3WR_9Q3GvfN1W4HGNxH5NS26FW6Wl3Mg5-Zy1qV_Mvf14-dtVwW7-8Ckr7qJplgW1y-8XN1tltRVW2cTDHy7tRrt0N7Lm29MRg82XVkWgrs6fxYbpW3cbLJZ6Lj8CVN7SqwCjlR16fN4RKHtdT15DTW3FVn4Z5Hqy-MW5Lj_2T3Bqn5mW91QChX8cR_YvW7C86lv61KmlsW2PjNQ72WFCL5W7rs7DF7MssDCW3NvsXl5fpNXkW4lwJ-Z3zlFtmW5YRV8B1Dm7g_W2w84Z52MsvdtN6Rfjrpdgs5gW3pdFd-3PC_14W7zXN4t3CJnGcN6QNz_0ZJgXrW6Bc4rW2XnnmwW3kV4bk1NPGXXW8xSmSY4RXbTZW2n57GY44XFT-f40gcrb04 )
+
+GasGas MXC 4
+
+WAS £6,499 | NOW £4,874 or from £99 per month
+
+SHOP NOW
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3kqW4wWX0y3dRrJqW80Pl234gKG2_W5J7MzD89kLVMW8hFBr28kbZFdW5kZwZk3C-jydW8s7KLG1NxKxDW5Q7xXC3knsLDW7JMdML7jpJ_dW4fFpqX4DDHxnW2QGyfX5_5QNqW3FYNwy38sXR4W79SQm56Z5tS5W3C8b8P730RNrW973B_p11VHZsW8dg8jg5qRFCsW4t1CB26S6f6LVDtRbm9cggzGW7R1BJN5PyT86W37Vyrt37d73FW8TnkmZ4-pDJdW4g-1V26JZZggW2wwZkL4d6_1ZW3xrMLh84WDB-W5dBzrd6Jt6Xqf6RCkLF04 )
+
+HAIBIKE ALLTRAIL 7 2025
+
+WAS £4,199 | NOW £2,699 or from £54 per month
+
+SHOP NOW
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3kYW4g_M3-7fqwcWVWy8yz5stCNDW7FljCp78T7w9W9lQcp43WqqmbW8GTC-m6Ht_VNW7YzrwG1tjxl9W7LHkj882ZKPVW3NvzHJ1mk3_RW7Cbm2y51jtrhV1kykv3SzPyvW7CBg0F2-GL8ZW47RlN35ZGdz1W2Ks75d4YljfxW3bmFRJ6J6LpsW853_P_4Zd5VCW7k8rN04jJyrDW2pCgl76B49tNW8l4Rfn9gYmDgW89KFLX5DGVHDW6pxCSf83wz5qW2Z5FVv3BjDfvW374J223z_djSW4KLs5y6xL4jGN63Q19RjDZcNf8w-GNz04 )
+
+GasGas ECC 4
+
+WAS £6,499 | NOW £4,874 or from £99 per month
+
+SHOP NOW
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3p8VmD8Lw6kv7p_W2R8pRx6jmK04W6L2Jhw5kdrHGW92CVt-4gw_VNW4SBghy811kcLW3vk4kF1P9bdKN8ywPjjqRMCPW4D1H-Q3rcs7WVSYz0t1ZGqV5VnXYfs1F5jPtW1gqgm-961PsXW6s8cz15HpJSJW2zM3NR37MH3PW7_fB555WqWn0W6sJ6483NR7kPW2YsncD5QS0QHW3tl39D2PqhSXW84fmT58KRq7cN8RZRy0GxlWyW7DJnV47PB0VFW4rJ8Sr7NkVl_W5wjJrx8TRRW3W3hcVLD33pnv8N8p0q5cjfXfyf4R3l2404 )
+
+HAIBIKE NDURO 6
+
+WAS £4,899 | NOW £3,899 or from £79 per month
+
+SHOP NOW
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3nJN11PLy7lYjRHN25MxZkJg-YNW7_rQ5M2kP_vmW6Qg-CV4ZwnJhW8HKb-J5qjQV9W2crkfp93dlvhW4-jZ0G8ZD2-yW7l0Z785Yzp3ZW6Dg0QN8R693zW3R5w6c7PBwnvW21LV2c5Kn8MKW41YbK-3k_rvRW2NM0t62m6pzvW2Gthmt5qrxGdW1-N1P04wP8-yW5FHQZV3njV4ZW49VT0S41Vq7jW5b0_6L5T8Ch2W22S6791nwXg7V4y59l33TpRHW2bj4BM4TFmClVdXbXF3csqSDW1tqSWb3-n5fLW7zqlr96X24WBf8JVZcb04 )
+
+Haibike Alltrack 4
+
+WAS £1,999 | NOW £1,899 or from £38 per month
+
+SHOP NOW
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3ljW3Fc7yd2PgDPcN26QYMvQzWBWW3FttHP5xS-Y4V729VJ6wPjLrW38hGjJ4RQn9MW6_Jp7G4lMj_KN6SCH71SyDBlW4FKCQn5RrfjbW2J63T95TPJR3V-3JF64d3V-WN3bR3hFQH7YdW1MybR58Y7K3ZW3B1kxF5vNt-5W819mQ58xv2z_VtwrkS5w8NwNW1h7zpl7YGlxTW4-Kp1r8DGvbxW7FfbDz1qqVjwW54zvR85zNn_sW3BP6sm7gTMbzVdQLzs6rfC8QVCrHF44DY_TVW2BN6rf2XfbwjW1wC7d12sSf5xf44qdv404 )
+
+FULLY FLEXIBLE FINANCE | FREE NATIONWIDE DELIVERY | 2 YEAR WARRANTY
+
+SPEND YOUR £200 VOUCHER ON...
+
+Accessories
+
+Untitled design (49)-2 (https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3nTW8y73785xHjCJW5zyNHZ5WckTvW7rqNnX4_MZ8bW1wGTmm7zwWhpW94mk8R7sy-ktW2p40ct2lmGp3W5CMw5w3Vj4ScW3QKLjW3tThmcW4FFpK74qGVCCW1ZqLnZ80ztLrN4MDY9L6dH9nW49Z8Sq877z8cN1m0VFRrRDwDW2KN9Q11ql6LfVgj_PY1X2ZSvW608K9c95PyH1W8d7-hl2JXFlGW81p9-y6HjkqrW2BFPDy6G_DV4W2WQ-lG1_h9NVN10M-zlnBVwZW9fk_Jw16fPVfN6vvV942lNkQW4kvQ8252qgvQf4X89mP04 )
+
+VIEW RANGE
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3nTW8y73785xHjCJW5zyNHZ5WckTvW7rqNnX4_MZ8bW1wGTmm7zwWhpW94mk8R7sy-ktW2p40ct2lmGp3W5CMw5w3Vj4ScW3QKLjW3tThmcW4FFpK74qGVCCW1ZqLnZ80ztLrN4MDY9L6dH9nW49Z8Sq877z8cN1m0VFRrRDwDW2KN9Q11ql6LfVgj_PY1X2ZSvW608K9c95PyH1W8d7-hl2JXFlGW81p9-y6HjkqrW2BFPDy6G_DV4W2WQ-lG1_h9NVN10M-zlnBVwZW9fk_Jw16fPVfN6vvV942lNkQW4kvQ8252qgvQf4X89mP04 )
+
+Bikes
+
+Untitled design (1)-3 (https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3lcV84Vr77Y5g-mW7pv5qh9c_GypV-hNZY7N2PG5W3Hh7Mp2B3WYHW1l_w6m7TvVb9W7TNdR41LrSTxW55qmZR27TkTRW5bHVPc6m3_v8W2nTg7k6Rfgr-N6fs9rKWxtJ4W58D_563cZSzMW2wzc-d9lWJfJW7MXRCg9cMzmrW85lNK92XvDn_W5r31hS6z56_RVD4pCs1BTp2XW6wJH9f7J14pDV8s9Dw60RsR2W7TgSlG4S3XQhW3s6kpl2MkCVrW3qSrhM3x7JjCW3vt7l26_QnvsW6_42ZW2w49DMW6X5K3V6RYgnbf4shKY-04 )
+
+VIEW RANGE
+(https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3lcV84Vr77Y5g-mW7pv5qh9c_GypV-hNZY7N2PG5W3Hh7Mp2B3WYHW1l_w6m7TvVb9W7TNdR41LrSTxW55qmZR27TkTRW5bHVPc6m3_v8W2nTg7k6Rfgr-N6fs9rKWxtJ4W58D_563cZSzMW2wzc-d9lWJfJW7MXRCg9cMzmrW85lNK92XvDn_W5r31hS6z56_RVD4pCs1BTp2XW6wJH9f7J14pDV8s9Dw60RsR2W7TgSlG4S3XQhW3s6kpl2MkCVrW3qSrhM3x7JjCW3vt7l26_QnvsW6_42ZW2w49DMW6X5K3V6RYgnbf4shKY-04 )
+
+Helmets
+
+9285_HQV_EB_Allroad-1033-41 (https://powersports.lings.com/e3t/Ctc/JA+113/dj-ykj04/VX8pJ48rjVg0W2L2NPZ6xmCGbW28qdJZ5GjBlrN5BW0S03prCCW7lCdLW6lZ3mNW4fwbJS2K1fWMW8BlGqB73cmK6VthN3089FBT9W1LDWpF7xDC5jW96FmWZ2QbRvrN2_bBLm_kVRnW7HZv-C18ZqybW5CzFDS64zL4wW7K2W8j2Wf9YPW7d2d782Q_-85W7pZNpH9fTzv3VgR5cc6tX_NXW7F0H6R75MRMhW8xvyS86rMjmSW7VLvt85GKM_rW4Pyn0B1r0GK4W6HVcMv5nnl3xW8hdjzn4nPnFjMc7GBQmfnNcW5424s28Jvl2[..]
+
+--- Conv 70 | Secret Sofa ---
+no all good. Thank you. | Hi Hazel, | We can't send the message to customer. The "Send" button is grey. | ok. Thanks | ok. Thanks. | ok. I'm trying now. | Hi Hazel, I've clear my cache, but have the same issue. | can't to send the message to customer | Ok | Hi I've tried to send the message to Avada group in Chatty. It's working. However, I tried to reply the Instagram message, The send button is not working. | Can you please see the screen. The customer "jamesstory1" is from Instagram. When I reply this customer's message, the Send button is not working. | If you provide your details (email, address and phone number) as well as the items you are considering, we can send you a quote that will secure the current prices for you for up to 3 weeks. Please let us know if this works for you as I have just been informed that we are rolling over to a new promotion from this Friday :slightly_smiling_face: | This one. | I saw there is reminder message for The action is invalid as it's not the thread owner. | What's this mean? | What's this mean? | Thank you. | Oh, so we can reply to a customer’s message on Instagram, but if the customer restarts the conversation, then Chatty can respond again. Is that correct? | Ok. Understand. Thanks for checking.
+
+--- Conv 71 | Joker Greeting ---
+hi | I just turned on Chatty. When I test it with a simple query "do you sell birthday cards" (that's what I do) I get pretty bad reply and I'm not why sure. | "'im sorry, I don't have access to the current product inventory or list of birthday cards at this time. Would you like me to look into our general shipping or return policies instead?" | But, I believe I have turned it on. | I will try and look again. | I am not sure how to get that ID | ill send a screen shot | or you can visit my site jokergreeting.com and just ask the bot | oh... | I think I see it. haha. | I have to admit...I don't understand this page. I just turned on the slider (it was not on) but I did "sync" products...which is all I thought I needed to do. | so maybe just using the slider will do it? | right so near the top is says "119 products learned" | that isn't the same as "Synced"? | also, what is the different between "enable" and "sync" | okay...I think it is synced and enabled. | I will take a deeper dive tomorrow when I'm back in the office. But I just wanted to get the basics setup. I think it's up and running. | yes, I see that too. I will do that tomorrow. | thanks. | sure
+
+--- Conv 72 | Inbals Tarot ---
+obwohl ich alle daten eingegeben habe (alle urls) wird auf meiner webseite immer noch die (falsche) standardantwort gegeben | Hi Cody :) | ahhh ok I didn't see that :))) | I will adjust everything, thank you! | 😊
+
+--- Conv 73 | Ludic Empire ---
+how to change location of the chatty? | a bit up, so instead of inferior right like almost center right | put just a bit below | put just a bit below the location of the chatty | did you do it? | show it | you know what. at this moment there is the cart logo. put the chatty on the left to it | no. go bottom left. then adjust a bit to the left. | do it | put the chatty on the bottom right | put the symbol chatty a bit to the top | do it
+
+--- Conv 74 | Lumistar ---
+yes it works | Mobile & Desktop | No that was it, thanks. | Yes, since we needed the extra language. | What is G2 review form? | Done | Uhm | I dont think it asked for my name | i used info@assortmentstar.com or joossensllc@gmail.com | 68d53ce81741959253d55abc3ecb0700 | https://gyazo.com/68d53ce81741959253d55abc3ecb0700 | see | ok thanks | Is it possobiel to add opening hours for the livechat? | got it, thanks
+
+--- Conv 75 | The Zoofamily ---
+Hello Phoebe | How can I redirect to the language that the user clicks on when they click the Contact Us button on the FAQ page? | OKay I also have to set the base url to the market settings set in Shopify. ? 
+
+Please let me know | OKay | Is there any i can chnage it via custom js? | It seems the issue is from the app? | I need a solution please | are you still there? | When I select the language in the game, I click the button. How is the redirect in the Netherlands? | When I select the language in the German, I click the button. How is the redirect in the Netherlands? | Okay PLease check | Okay | are you still there? | OKay
+
+--- Conv 76 | The Balm Box ---
+yes, i just did. once again, it automically gave me ne coupon code which is NOT waht we are loioing for. | it is working now for me as well - thank you so much! | hi! i have one other question. we just launched - have one question; how do we know when it gets hand over? how does ai know when to notify us? | can we notify multiple people? anlso, how does the ai know to stop | thank you!!! | can you  help me match the text on the faq page to the general tehme on the rest of my webstie? | tes | it is set up on my website. i have turned that on but it keeps turning off | but either way it is live on our website | its now on | ok | ok | ok
+
+--- Conv 77 | homie.com.au ---
+the chat now icon is cut off and not lined up with  the icon | thanks for fixing the icon | i  have another problem, | the first FAQ that pops up is empty | any clue why? | also, we have a teaser sign up for that is getting blocked by the chat | on mobile | not sure how to solv this issue | the desktop is overlapping | actually i'll move the pop up teaser $10 off on the right side | its fine | where can I find the prompts to upsell pop ups with chatty? | i could see that they were best sellings | i wanna promote the AFL CLUB KNITS and create some urgency | thank you
+
+--- Conv 78 | Crimson reign ---
+Hi, I need help training my AI assistant
+
+--- Conv 79 | Emkay Foreverliving ---
+Hi Hana. Thank you for your message. I'm still new here. I'm just gonna look through it first. Thank you so much | Hi. Is there any charge I should expect or will it stay free for now? | Hi Hana | I hope you are well | Is there any charge I should expect or will it stay free for now? | Alright great. Thank you.
+
+--- Conv 80 | Wickii ---
+done | thank y9ou | how do i train ai agent to respond to certain questions? | hi | ok so if i add it to FAQ but have it turned off the customer wont see it? | agh great thankyou | great thank you | this says to add to cart button, but then says it can't add to cart? | thx | Hi Jade thanks for the response! Sorry I thought feedback meant giving the
+"AI" feedback, not the support team.
+
+I have uploaded a file on the wood wick stands which hopefully should help,
+I need to still thest.
+
+Thank you, Lu
+
+--- Conv 81 | SalonCity ---
+Can we have multiple user in the app? | yes | ok | thanks | Can we connect tiktok? | for now. just for the message form tiktok | for discount code | can we only add what we want? | some discount code we dont want to show to customer | ok | for connect to email | how can we decide which email to forward? | can we add a phone icon here?
+
+--- Conv 82 | Lolli-Pop Shop ---
+Help me set up live chat | ok | yes | ok | not working | I need someone to set up chatty for my store | I need detailed instructions on how to make this work properly and answer questions. | Help me train ai assistant | yes cannot set up like i need | I need it to answer all questions correctly | I use free version
+
+--- Conv 83 | DC Parts ---
+thankyou | hello, the chat AI has spoken to the customer in German  and we can not understand/ translate what has been said between the AI and customer. is there a way we can translate this? | hello, thankyou | ok thank you. Apparently from our customer the AI robot offered them to be put through to someone who speaks croatian, however none of my team speaks that language so i dont know why ai suggested it | this is the email address from the customer goonzoj@gmail.com | perfect thankyou! | ok thankyou | hello id like to request assistant on a recent Ai chat regarding a return from a customer please | sure so the chat is with a customer called emil | i dont understand the form it has submitted and has misled the customer saying we can process the return for them but we have a self portal online the customer needs to submit their return | yes that is correct thankyou | we can leave that the same for now so the form is meant to be submitted to our email is that correct as i haven't received anything? | yes thats correct | thats perfect thankyou | i appreciate your help thankyou
+
+--- Conv 84 | TOP CLASS ---
+debo conectarlo ? | pero no quiero responder las consultas de whatsapp desde la bandeja de entrada de aqui | es decir que si conecto wsp va a contestar las preguntas de este medio ? y lo puedo hacer con instagram ? | pero como hago para que conteste las consultas de instagram o whatsapp ? donde debo poner el link de chatty ? | buenas tardes, te hago una consulta, al momento de conectar whatsapp bussines debe ser un numero nuevo no ? y la ia contestara consultas tal cual lo hace aqui? con imagenes o solamente urls? | buenas tardes, como estas ? | te comento, tengo instalado chatty para mas de una pagina, en la principal, tienda top class me contesta en español perfecto, pero desde la landingmayorista no. porque ? | https://mayorista.topclass.com.ar/ | las dos, estan configuradas para contestar en español siempre | si, es asi | gracias. | gracias!
+
+--- Conv 85 | Blendé Hair UAE ---
+I have added my desired FAQ's but it is still showing the original ones which I have deleted. | Hello :) | I am looking at the sample of the chat box now | it doesnt show those FAQ's | It shows others | I am on Chatbox - General | Ok thanks, but I added 3 FAQ's | No way to show them all there as a list? | Ah ok,I have done that now - and lastly, it maybe sounds stupid but when someones messages, is it just an email notification I receive? | Awesome thanks for your help :)
+
+--- Conv 86 | MyMental LTD ---
+do i need to create an account? | Hi I will have to do this a bit later thank you ! | Hi I wanted to know if i can add my work whatsapp as a suggestion instead of email? | I want to be able to reply faster | so it can send enquiries to my whatsapp? | Ahh okay thank you. | so if they click the whatsapp image, will it go to my buisness whatsapp? | ahh yes this is what i want to add!! | I will try it first then let you know how i get on, one second | All done, can we make the whatsapp the first choice ( main choice)? I think we have to click the chat to se ethe other options but i dont want it hidden | yes please | so whatsapp then mail then chat now | hopefully it will prompt people to use the whatsapp first | thank you | I dont mind I will check back later , thank you. | It is the correct order now thank you! and i will be sure to leave a review tomorrow.
+
+--- Conv 87 | My Store ---
+hi | I need integration with
+
+--- Conv 88 | Charli ---
+That looks perfect, thanks so much for your help! | That's all for now, thanks!! | Hi, we've changed the theme on our website and now the chatty widget does not show anymore... can you please help? thanks | let me check | it takes me to the old theme | when I click on app embed settings | I got it now, is sorted | thanks | have a good day | Hi can you please advise if is possible to remove this message? | thank you | yes, it worked | thanks so much for your help
+
+--- Conv 89 | ubbiworld ---
+can we deactivate this feature where the bot ask the customer if they would like to speak with a human agent? | It makes customers think that they will receive an answer in the next 5 minutes which is not the cause as we are a one man show at this customer service. | thank you | why does my inbox say there one message but i do not see it | Hi | We are unable to provide a reply directly to the customer when there is an inquiry which comes from the bot to our service email. We would like to answer directly to the customer after the bot sends the issue to our service email. The only option I see is to answer to the bot. | another example | we are getting these but the reply can only go back to the bot. | Customer email | cassidymorganhoover@gmail.com | I want to be able to receive the email from the bot when we are not online then have to option to reply directly to the inquiry via email but have it go to the customer | yes we can but we are receiving the emails in our inbox so we are receiving the same messages from the same customers twice. | Otherwise we can just take out the option to send the form with the complaint to our support email
+
+--- Conv 90 | IMPLICIT ---
+y otra pregunta, tiene n alguna opción de agendar alguna capacitación para sacar el máximo provecho a Chatty? | Ok, entiendo, seria ideal si en algún momento pudieran hacer esa reunión en español | Muchas gracias por tus respuestas! | Hola, queria saber, si para conectar un whatsapp es necesario que sea creado por la API, es posible si se crea desde un Whatsapp bussines desde el celular?, ya que la aprobacion de la API se ha demorado bastante llevo mas de 5 días esperando y necesito conectar el Whatsapp | Muchas Gracias Phoebe! | Hola, alguna noticia? | Hola, muy buenos días. Queria volver a hacer una consulta sobre la aprobacion de un Whatsapp, aun no se aprueba, han pasado mas de 10 días, en meta dice que me conacte con el socio para que registren el numero, me podrian ayudar? | Fue usado en el Movil de la empresa, pero para conectar con ustedes se elimino y se hizo la conección mediante meta. | pense que la conexion seria más rapida, llevamos varios días sin whats app en la empresa. | Es que la verdad antes d eesperar estos 10 dias intente hacer todo lo que mencionas,  ya lo borre bien,  luego intente concetar con utesdes, segui todo los pasos, espere 3 días y nada, luego incluso llame a meta, donde me sugirieron crear una app de meta para conectar directo con la appi, lo cual hacia que se actvivara eol numero, pero al hacerlo así chatty no me permitia conoctarme, a lo cual decidí eliminar esa app y volver a comenzar y esperar, pero ya han pasado mas de 10 días y necesito si me pueden ayudar a ver una solución. | y que tampoco puedo volver a activar el whatsapp en el movil, ya que no podria conectarlo a chatty | entonces no se que hacer, he contactado a ambas partes y no logro encontrar solucion | En base al punto numero 1, en casos normales entiendo que se hace automatico al momento de conectar con chatty? | como se hace ese registro si debo hacerlo manual?, si ya intente crear una app en meta y si asi lo lo hago, chaty no me muetsra el numero al hacer la conexion | Si, así elimine el numero, intentare eliminar nuevamente el numero de meta | y comenzar d enuevo | Ok Gracias | Ok, ya elimine de meta el numero  y esperare  los 20 minutos, luego de hacer esto, es mejor que agrege el numero a meta o que no lo agrege y lo haga desde los pasos que tiene chatty? | entonces lo conecto solo cuanto ya este aprobado por meta?
+
+--- Conv 91 | OiloHerb ---
+Help me install mobile app | https://oiloherb.com/ | What exactly does the question "What gift options do you have?" refer to? Gifts that the store gives to customers or gift suggestions? | Okay, I found it, thank you very much. | I want to change the colors, how and where do I do it? | I want to change the colors, how and where do I do it? | all | i want to use this color #a4a542 | ok it need css
+
+--- Conv 92 | Shopify ---
+**gogolfdad.com tiene una pregunta sobre Chatty**
+
+31 de marzo de 2026
+
+Nuevo mensaje sobre Chatty
+--------------------------
+
+gogolfdad.com ( https://gogolfdad.com )
+te envió un mensaje. Consúltalo a continuación.
+
+
+
+Hi, I recently took over this Shopify store and I need to
+update the team member on my Chatty account. The current admin
+listed (Alexis Leyva / arkaiz760@gmail.com) is the previous owner
+and I need to remove them and add my own email as admin. Can you
+help me with this? Thanks.
+
+Shopping Bag
+
+Shopping Bag
+
+15‍1 O'Con‍nor Str‍eet,
+Gro‍und fl‍oor, Ot‍tawa ON, K2P 2L8
+
+--- Conv 93 | Best Bronze ---
+não tem mensagem teste | Ele da erro | O PIN está desativado, mas não consigo colocar um novo. | Você se refere baixar o app no celular e registrar o número? | Ok. Obg, | Olá | Tudo bem? | Nós removemos o número e adicionamos novamente e agora o status está pendente aguardando aprovacao da META | Ok | olá | consegue fazer o reset da solicitação do código por sms? | ok | obg | o status agora é pendente, voce consegue ajudar na aprovacao? | Nao aparece ainda... tá opaco o botao de ativar | Olá! A IA não está respondendo o email, pode verificar, por favor? Ou é limitação do plano? Obrigado.
+
+--- Conv 94 | Ever Lasting ---
+Please help me fix 404 page | I can't access the Chatty inbox | May I ask what the issue is with the Avada app that prevents the app to load? | Okay, thank you! | Yes, when I opened the least convo it shows the error | I will have the team contact Avada. Thank you! | Okay, thank you so much! | Hello Jade! May we ask what the previous issue with the Avada app was that caused the error? We'd also like to check on this so no further issues come up on our end | It works normally now, but we'd like to know why it happened since it says it's another app that caused it | Is it an overlap with permissions? or with the theme, etc.?
+
+--- Conv 95 | Freshine ---
+OK thank you | https://help.chatty.ch/integrations/chatty-public-api. This url is right? I can't open it | Does Chatty have an app? | Is there only a web app but no native app? | this account is invited success, but when clicking the login button in the email redirects to app.chatty.net,and message saying the store not found | other invited accounts are working properly | it works now . by removing the account and adding it again | Will there be no sent record in my mailbox when I send a message using the bound email in Chatty? | Can the forwarded emails be blocked and filtered as spam? | What I mean is that my Outlook can block spam emails, but the forwarding service from Chatty is also sending those blocked spam emails to my inbox.
+
+--- Conv 96 | david-kis-test-store ---
+Hi,
+Can I set a limit to my plan for the overusage? Like I dont want to have more than 150 conversations in the Basic plan? | hi, thanks! | looks great, thanks a lot!
+
+--- Conv 97 | Moto Lounge  ---
+conversation with "True Heart" approx 17 hours ago | similar with conversation with Easy Sail where the customer askes when it can be sent out and the assistant replies that she should get in touch with us. The getting in touch part itself is ok, and it could be added, but the main info should be that orders are usually shipped twice per week + encaurage to get in touch if unsure and need more specific info | no, it actually is not entirely correct - we will fixed that! | that would be very helpful. thank you | great, thank you! | i just checked in Danish and it seems to be ok | Hello again, please can you help me to fix the AI replies regarding the opening times of our showroom - there are no openinhg times of the showroom as it is permanently closed, but the assistant keeps giving the old info. | when I check the sources it used - the opening times page has correct info that says showroom is closed | another source is weird - it seems to be a non active / draft page: 
+https://moto-lounge.myshopify.com/pages/refund-policy | its True Spirit | thank you. so does that mean that each time we made any update, the AI wont be able to pull the new info without us updating it? | ok, good to know, thank you
+
+--- Conv 98 | Quality Farm Supply ---
+Thank you | can you copy me please?  chad.bagby@qualityfarmsupply.com | Hello Sonny,
+
+Thank you for the information.
+
+How do I get the app to learn all products?
+
+[cid:81586ccd-fb3a-446a-93d2-0060fa70f7ea] | Hi, I need help training my AI assistant | Hi, I need help training my AI assistant | Hello, Will the AI assistant have access to metafield data? | Ok.  Thanks.  It says 10,001 have synced?  Is that the limit? | It should be more than that | Is there somewhere I can see the metafield  data at the sku level? | Thank you.  Here's a screenshot from Shopify.
+
+Chad
+
+
+[cid:2cfa0ae0-c21a-4083-bbea-cebe70e58fac] | How can I make the Fitment metafield searchable?  As you'll see in the screenshots it's not searching that field.
+
+--- Conv 99 | Fondussimo ---
+Thank you !! :) | Hello I would like to a ad a different notifications by page (example : ''Would you like a suggestions ?'' from the recipes page and ''Do you want more informations'' from the products page, is it possible ?) | Yes exactly ! :) | Thank you ! :) | comment puis-je modifier les produits que Chatty offre aux clients?
+Il offre des produits qui sont inactifs sur notre site | c'est avec Sarah Beugin | Merci, aurons-nous la réponse aujourd'hui? | ok, juste pour être sûre, vous reviendrez vers nous par courriel? :) | Super merci :) | Bonjour Andy,
+
+Voici le code: 3320.
+
+Bonne journée,
+
+
+Fondussimo
+
+*1-855-999-0620*
+fondussimo.com
+
+Facebook <https://www.facebook.com/Fondussimo> | Instagram
+<https://www.instagram.com/fondussimo/> | Bonjour Andy,
+
+Nous venons d'accepter la demande.
+
+Bonne journée,
+
+
+Fondussimo
+
+*1-855-999-0620*
+fondussimo.com
+
+Facebook <https://www.facebook.com/Fondussimo> | Instagram
+<https://www.instagram.com/fondussimo/> | Bonjour Andy,
+
+Je vois que la requête de votre compte est acceptée.
+Cela devrait fonctionner maintenant ☺
+
+Bonne journée,
+
+
+Fondussimo
+
+*1-855-999-0620*
+fondussimo.com
+
+Facebook <https://www.facebook.com/Fondussimo> | Instagram
+<https://www.instagram.com/fondussimo/>
+
+--- Conv 100 | Trend treat  ---
+Help me set up live chat | YES | YEAH
+
+--- Conv 101 | Veloria ---
+pouvez vous m'envoyer en screen ? | Je vous ai déjà dit que ce message c'est bon mais c'est l'autre message qui n'est pas bon, j'ai celuis ci moi "Bonjour 👋 Je suis l'assistante Chatty AI, ici pour vous aider à trouver ce que vous cherchez. Comment puis-je vous aider ?" et je veux chancger | Je veux que vous remplacez par ce message : Bonjour ! Quel style souhaitez-vous adopter aujourd’hui ? Je suis là pour vous aider à trouver ce qui vous sublimera ✨ | apres je pense que ce n'est pas la phrase la plus adaptée | Merci beaucoup :) | Merci c'est gentil, en revanche une petite pastille verte s'affiche alors que j'ai indiqué que je voulais pas qu'elle s'affiche. Es ce normal ? | oui c'est cela.. | bah oui je veux | d'accord, je veux bien alors | oui pas de soucis :) | ou doit-je aller pour mettre les produits que je souhaite afficher en fonction du type de réponse ? | comment faire pour choisir les produits que je souhaite mettre en avant lorsque une personne qui demande au chat des suggestions d'articles ait ceux que je veux
+
+--- Conv 102 | feschi.shop ---
+dort haben wir eine neue Nachricht angestellt aber sie wird leider nicht angezeigt | das haben wir schon gemacht | jetzt funktioniert es danke | wo kann man denn die push benachrichtigung hier einstellen | ja genau | dankeschön | Hi, noch eine Frage. Kann man das Erscheinungsbild hier ändern? Die Übersetzungen auf Deutsch sind leider total irreführend.
+
+--- Conv 103 | Trailerparts24 ---
+I can not see the widget | How do i make it show | https://www.trailerparts24.shop/collections/alle-anhangerteile | Yeah | ahldau | Password | Okay | Okay | Okay | THANKS | Works perfectly | No nothing else
+
+--- Conv 104 | ARTILUME ---
+Jiantan: How to Modify Your Store's Online Chat Hours | The icon for my Chatty is not displaying correctly on the website's front end. What could be the reason? | hello | The app has been enabled, but I do not see the online chat icon on the website. | Okay, thank you for your assistance. Could you please let me know what caused the issue just now? If we find your plugin useful as we continue to use it, we will consider subscribing to the advanced features to further enhance our business operations. | Thanks | hello | I am unable to add FAQ content. | Is it because your application is required to have a FAQ page? | I have deleted the FAQ page. How can I fix this? | thanks you
+
+--- Conv 105 | Xinghaoya ---
+OK | Tahnks, | if I need any help ,will let u know | why this action now can not operate | yes, please check for me | Ok, thanks | So now we use your Plus plan, I want to know what is different from pro plan? | so where i can see these function | ok | any update? | ok | here I see it is still not work | Ok now it is working, thanks | So now we use your Plus plan, I want to know what is different from pro plan? | this doubt still not reply me | but we have no more products
+
+--- Conv 106 | EliaSmile ---
+ou puis je voir les conversations de mon chatbot | il y a une 1 conversation mais je sais pas ou je peux voir la discussion | oui c’est bien cela | ah ok c’est gentil merci !
+cêst tout bon vous pouvez clôturer le ticket
+
+--- Conv 107 | Duly Kitchen ---
+Hi, I need help training my AI assistant | Hello | Why aren't your apps showing up in my store? | Yes but my domain www.dulykitchen.com | Hello | Hello | pls fix now
+
+--- Conv 108 | New Roads  ---
+Help me set up live chat
+
+--- Conv 109 | Cannaray Wellness ---
+hI - I've connected the forwarding email successfully for support@cannaray.com, and receievd the confirmation email from Chatty AI but our status isn't getting verified. Please advise | Thank you | I've also receieved this email from Postmaster regarding a test I sent earlier: 
+
+Your email couldn't be forwarded from support@cannaray.com to another email address.
+
+support@cannaray.com
+Your message wasn't delivered because the recipient's email provider rejected it. | Thanks, I've forwarded this to my IT support team | No concerns, thank you | Thank you - we won't be considering it for now as we're still rolling out our chatty function | Hi, yes that's the correct email address. Our IT Support have added the address to allow for automatic forwarding. | Thanks, it's been verified now | Thanks for your help | :) | Hi, please can I ask if you integrate with Zendesk? | Brilliant, thank you so much for this | I've just connected my Zendesk account  and sent a test ticket to Chatty, but it's not showing in my Zendesk account.
+
+--- Conv 110 | Champions Of Tennis Academy ---
+hi , I don’t want it to list all the discount codes 
+just two discounts that’s made when they buy an 8 sessions package from the website | championsoftenniskw.com
+
+--- Conv 111 | KTC ---
+嗯 我看到了 谢谢 | 之前貌似只调整了桌面端，而忽视了移动端 | 请问你可以说中文吗 | 如果我连接了FB和INS，我通过chatty回复的信息是否会同步显示在原平台上 | If I connect FB and INS, will the messages I reply to through Chatty be synchronized and displayed on the original platforms? | 请问我可以导出所有的聊天记录吗 | zhangchengj@ktc.cn | 收到了。它不可以是表格的形式吗？我看是以代码的形式 | 我另一个店铺可以绑定到当前店铺的chatty吗？ | 在chatty回复可以不需要登录shopify吗 | 是的 | 一个邮箱可以注册多个chatty账号吗 | 有一条未读消息找不到
+
+--- Conv 112 | Artisan Palace ---
+ok I added the app to home screen but it didn’t notify me of the conversation which I just started | I checked in settings > notifications and the app isn’t showing as an app | ahhh I finally came up with the “enabled notifications” I fixed it when I went back into the app. it just wasn’t working before when I did that | yes got it thanks. another question, I want to stop the system from saying “transferring to agent” when a customer asks for human help, as I am not always free. I want it to either email me the conversation or ask th customer to email me. better if it says we have sent an email rather than someone is on hand to help th customer. how can i fix this | ok it doesn’t notify me to say customer asking for help, when in this setting but I will change to no transfer | sorry for delay. first option of asking to email if they need assistance further and AI can't help | ok thanks, i also want to setup email chats too. | I just have my own domain and use Godaddy | yes, i want chatty to answer my email i get from customers. | ok | contactus@artisanpalace.com | my main email address | ok | ok thanks
+
+--- Conv 113 | Orfa Dates ---
+i need the chattty app to be slightly upwards ofset | yes | hello | need the chatbox icon slightly above as it is overlapping | CSS is fine | yes | ok | is it done ? | okay waiting
+
+--- Conv 114 | JENNIE CHOO ---
+Tại sao chat không hiện thị ở website tôi | ? | đúng | oke | oke | đề nghị tắt cho tôi phần này | đề nghị tắt cho tôi phần này | vào giao diện đó chỗ nào bạn iow | oke bạn tôi tắt r | icon chatbox đang che mất nhanh công cụ ghim bên dưới màn hình, có thể đẩy icon chatbot lên giữa được không? Ở phần cài đặt tôi không thấy chọn bị trí giữa | tôi muốn đấy lên giữa lề phải | ok cảm ơn bạn
+
+--- Conv 115 | Femily ---
+feito | mencionei voce sim | ate mais | por nada | I want to custom css | boa noite, meu botao flutuante fica em cima do botao da loja, tentamos resolver maias voltou, | isso no mobile | e tanbem quero desativa a recomendacao de produto | isso, cobre a barra inferior, eu gostaria de subir um pouco | ok | certo | otimo, recarreguei aqui, funcionou | nao, obrigado
+
+--- Conv 116 | WHATEVER ---
+all | all set | 但還是沒有聲音 | 似乎有了 測試聲音不會有聲音
+但是Chatty頁面有發出音效 | 有了 | 這樣應該就正確了吧? | 好的 謝謝您的協助 | 請問客人是否可以使用聯絡方式來查詢訂單，而非使用訂單編號? | 且目前訂單編號若有心人士隨意輸入到有該筆訂單的編號會有個資外洩的問題 | 我剛剛用非顧客帳戶詢問AI任意訂單編號
+他會直接回傳該筆訂單完整資訊 | 我移除了 我重新一次 | 可能是我前面有先提供該顧客的信箱了才可以查詢
+但是有些客戶可能不會注意訂單編號
+能否在客戶給出聯絡方式後list出待出貨 or 所有訂單呢 | 另外請問訓練資料是否能讓AI在特定問題直接回覆圖片呢? | 例如詢問某個優惠時
+可以直接以圖片傳送優惠資訊
+可以確保正確資訊且同步商店
+
+--- Conv 117 | Tymo Beauty ---
+The customer did not send any messages on the website, but the session was directly routed to our customer service representative. | Is it possible to simply end the session directly, since auto replies can often resolve the customer's issue, eliminating the need for the customer to seek further assistance from a customer service representative? | Only when the auto reply cannot resolve the issue can the customer seek assistance from a human customer service representative for further clarification. | hi hazel | So if the customer clicks chat icon, will they be connected to one of our customer support representatives? | So the auto-reply won’t actually prevent customer inquiries from reaching us, right? | undestand | thanks | Hi | Is it possible to automatically translate customer conversations into Chinese with just one click? | yes | ok | Hi,how could i checking the reply time of team | --------------------------------
+This email is a service from TYMO BEAUTY.
+
+
+
+
+
+
+
+
+
+
+
+[22LJG9-WVZ9N]
+
+--- Conv 118 | GYM SUPPLEMENTS U.S ---
+email and password? | ok | yes | pass? | ok | how do i login from i phn? | android down load | but not the iphn | you should use ios app | hi | do you have direct chat url? | do you have direct chat url? | yes | ok | thanks dear | if i click this link chat box open automatically? | perfect | thank you | thanks
+
+--- Conv 119 | Vital Purple ---
+I'm telling you I'm having trouble, and I thought there was an option for the team to assist with this | [AI Feedback]
+
+Bot message: I understand you are looking to initiate a refund. Vital Purple™ offers no-questions-asked refunds within 30 days of purchase. To start a refund, please contact support with your order details (order number & email).
+
+Feedback: We want you to be completely satisfied with your cacao purchase! Vital Purple™ offers no-questions-asked refunds within 30 days of purchase. If for any reason you’re not happy with your order, just reach out within 30 days and we’ll help you with a refund. To start a refund, contact support with your order details (order number & email)
+
+ConvoId: 
+MessageId: 0a47eecb-7b73-4972-bb66-0212f4d670b1 | [AI Feedback]
+
+Bot message: Would you like information on the general recommended daily dose of cacao?
+
+Feedback: I don´t want follow-up questions after answering. I have disabled the option but it keeps popping up
+
+ConvoId: 
+MessageId: cf883f03-42dd-4b95-8b22-9ff52ec07dff | Hi, I turn off the option to suggest follo-up questions. but it keeps asking. | okay | hi andy | because some of the questions are not relevant and it does make feel  off sometimes. | Hello, 
+
+Isn't there a way that we can only have the AI active during evening hours? | How can I get chat notifications on my phone
+
+--- Conv 120 | ADJUSTED ---
+ok i did it | is it ok? | Hello, i gave you a permission to my site and the problem is still not solved. What is happenning? | It is enabled | It IS opened | yes | it is | hello | can you finally help me? | do ypu know what my request were? | hello, by accident i turned off faq page, and now it is deleted ad shows different page. how can i reverse it? | thank you | then thank you, i found the page the problem is now it is not assigned to menu, if i will have another problem, i will write to you. thank you anyway for help | thank you
+
+--- Conv 121 | Signature hockey   ---
+Help me set up live chat
+
+--- Conv 122 | Mkcyberr ---
+hi i have activate the app but is not showing on my website, why? | yes | thank you | yes | my code is 0726 | yes i accepted | thank you!! | yes no rploblem thanks for the help | okay thank you very much | kindly ask you if you can check if i create the bot n right way thank you im new on this app | thank you very much!!
+
+--- Conv 123 | Liquisite ---
+Hello, my AI assistant is not working or replying. Can you assist me in fixing this? | Ok great, it appears to be working now thanks
+
+--- Conv 124 | Velmora ---
+Hi, I need help training my AI assistant | Yes that is correct. | Hello
+
+I need help training AI assistant for product recommendations and customer
+service replies. | how to add my product feature
+
+--- Conv 125 | casaposta ---
+I'm using Chrome | i only have the sound option | not the notifications | i'm there | found it! | Thank you! | Also, I downloaded the app, but it tells me my account is not activated | i believe so | I'm there but not sure what i'm looking for regarding the mobile app | where do i do that? i'm in the web app | I did it! | Thank you | How do i add it to my homescreen | ? | I just figured it out too | Never mind
+
+--- Conv 126 | Cyo Design ---
+just 7 px | thank you | seems perfect | I see, howe about the instruction | can we increase it again? | yes please | okay very informative, thanks | Hi again | where to ccange this, I tried in the chatbox settings, but the changes made doesn't apply or reflect | thanks | yes, but it's not reflecting | how to turn off this
+
+--- Conv 127 | vivostore.pt ---
+Help me set up live chat | Hola Andy | Como puedo vincular el número de Whatsapp sin registrarme la cuenta de Meta Business? | Vale tendre que hcaer una cuenta entonces | como puedo activar mi app de chatty | Eso es | no, no he accedido con ese correo
+
+--- Conv 128 | KUNEX EXPRESS RD ---
+Hi, I need help training my AI assistant | Me encantaria que su nombre sea Kuni y tenga conocimiento y entrenada de todo acerca de nuestro negocio
+
+--- Conv 129 | Sassie ---
+Hi, I need help training my AI assistant
+
+--- Conv 130 | Marqforde Aerospace ---
+hi how do I change the time it takes for the chatty icon to appear on my website? the pop up notification appears too soon and is annoying my customers | yes that's the site | And yes, we just want to ensure that there's control over how quickly viewers are shown the welcome message and the suggested product recommendation. 
+
+when we replay browser sessions it looks like very shortly after landing on the site they are shown the product recommendation and it's frustrating them | thank you! | that's great thank you
+
+--- Conv 131 | KoziSense Massage Chairs ---
+For example, if customers ask how to turn on the machine, and AI will first list several models for them to select, and then answering the questions | Oh I see | If I want AI to ask for model number first, what should I put into those boxes | No matter what questions customers ask, AI will first ask for model number first. How to set it up? | Thank you | Can I say always ask customers for | model number first, and then let AI only using answers that have this model number | Thank you so much. That's very helpful | That's all for today | I get it. I have gave you gus a good review before! | Hi. I added URLs to the data sources, but AI never use them to share with customers. Or how can i add a URL link in the answers, so AI can share with customers, and customers can click that link | How can I train AI to provide better answers every time AI answers customers' questions?
+
+--- Conv 132 | Redbeans Coffee Concepts ---
+Oke, ik wacht | Hi jade, we zijn al vanaf 11 uur aan het proberen en nog geen mails ontvangen | Afgelopen maanden ook geen mails ontvangen, we hebben chatty al een tijdje geinstalleerd. | ik voeg mijn persoonlijke email ook even toe als extra check | Ik zal het checken. | Ik heb net een test gedaan en ik krijg nog steeds bd@redbeans.nl als antwoord vanuit Chatty AI: | Dit moet info@redbeans.nl zijn | Ik krijg met mijn lj@redbeans.nl wel een mail van Chatty nu. Maar niet op info@redbeans.nl | Oke, ik ga het proberen, dankje. | Het klopt, ik krijg nu het juiste antwoord. | hoe kan ik dat controleren, ik zie wel e-mails van chatty, maar dat zijn alleen test-emails. | Ja, de testmails ontvangen we correct in de inbox van info@redbeans.nl | ik zal een screenshot maken, moment | ah, ik zie nu 3 mails van chatty binnenkomen | ik denk dat het is opgelost, ik weet alleen niet waarom ze wat later binnenkomen | is er iets aangepast sinds een uur? | Oke, fijn. We gaan het aankomende periode testen en dan hoop ik dat alles goed gaat. | Bedankt voor je snelle hulp.
+
+--- Conv 133 | BioFlexOEM By Zhengzhou Qinghuayuan Bioengineering Co., Ltd. ---
+怎么改成长方形的大图标 | 变大，WhatsApp图标 | 谢谢 | 还有WhatsApp上的聊天记录，咱们后台可以看到吗 | 咱们后台看不到，是吧 | 我已经链接起来了 | 连接完可以看到聊天记录吗 | 所有的聊天记录都能看到了？ | 这个价格怎么又出来了 | 之前不是把价格去掉了吗 | 价格不是之前去掉了吗，怎么又出来了 | 好的 | 好 | 好饿 | 好的 | 也谢谢你
+
+--- Conv 134 | Howly ---
+添付のような細かい文言はこちらで修正可能でしょうか？ | すみません。修正する方法がわかったので大丈夫です | お客様がオフラインになった際に送るメール内容の調整や修正はできますか？ | このデザインです | 件名等も変更できませんか？ | 画像のページはどこから見れますか？ | インスタグラムのメッセージと連携したのですが、ストーリーズのメンションまで受信ボックスに入ってきます。
+メンションのみを除く方法はありますか？ | チャットIDとはどこで見れますか？ | 一つのメンションではなく、今後発生する全てのメンションを受信箱に表示しないようにしたいのですが可能ですか？ | ありがとうございます。
+下記がメンションのメッセージのIDです
+5GKoc6vGSouLJ4icdp1W | 進捗はどうですか？ | スマホの通知が一回のチャットで4回届きます。
+1回にしたいです
+
+--- Conv 135 | Sofiland ---
+Hi, I need help training my AI assistant
+
+--- Conv 136 | South Bay Deals ---
+yes | yes | I reloaded the location is perfect but their is no product showing anymore | got it thank you | I just checked | im on the main page | nothing comes up anymore even after waiting | ok so it not working anymore and I really like that feature please put it back to how it was please so it works | ok is working again wooohoo | thank you | I’ll do the feedback now for yub
+
+--- Conv 137 | CoffeeMeister  ---
+oke geen probleem, maar klopt het dat als een klant om een medewerker vraagt ik na dat ik de klant heb geholpen de klant weer moet toevoegen aan ai assistant voor de volgende keer | nu krijgt de klant dit te zien als ze vragen om te praten met een medewerker, maar kunnen we hier ook laten zien dat we doordeweeks van 09 tot 17 uur open zijn ipv de 2 de tekst? | toch even voor de zekerheid wat ik eigenlijk wil is dat als een klant om een medewerker vraagt dat ik dan de melding krijg, maar als we de conversatie afgelopen is en de klant gaat bijv 4 dagen later weer op de website dat de AI assistant dan het weer overneemt als de klant weer vragen heeft. kan dat? | is het mogelijk om de offline status weg te krijgen? ik wil dat niet laten zien | wij willen eigenlijk niet de offline status laten zien | hallo ik heb een vraag, is het mogelijk dat CHATTY kortingscode die live staan in de weekaanbieding door kan geven aan de klant? wij hebben wekelijks een aanbieding en er wordt veel gevraagd naar een kortingscode . De codes staan meestal een week live kan CHATTY zien welke kortingscode live staan | als wij een vraag krijgen over kortingscode dat chatty dan de korting kan doorgeven die op dat moment live staat | dus dat chatty kan zeggen: zeker deze week hebben wij een mooie kortingscode live staan de kortingscode is... | oke dus als ik het goed begrijp kan ik elke week een scenario maken en daar de kortingscode in delen? | kan je mij een voorbeeld geven hoe ik dit kan inrichten?
+
+--- Conv 138 | New-focal-test ---
+Hi, much of the product information we'll have will be entered into metafields. Will this be read by AI? | Thanks, I hadn't seen it. Let's do a test right away, thank you. | thanks | Hi, I'd like to cancel my subscription with the 7-day free trial. We plan to install it on our production site later (this is a test). How can I do that? Thanks. | Sorry, I didn't see the section, my fault. Thanks and sorry for the inconvenience. | 🙏 | No thank you! Have a good day
+
+--- Conv 139 | Sonata ---
+the chat is not showing up on the store front after embedding and activating it | Ok | ok | here is my email
+itsbelenne@gmail.com | yes | Yeah, it's working now | Thank you so much | Thanks again , have a wonderful day | I'll come back later for that , but you're free to send me anything and I can check it out later
+
+--- Conv 140 | 🏡 Ceker.hr 🛍️ ---
+I'm testing the app, thanks for understanding. | product recommendation pop-up is not showing while on product page | i've set it up to show after 5 seconds | but it doesn't show | please fix | thank you | all the best | Thanks, i've cleared everything. But still not showing. | And for chatbox style, show navigation... It is wrongly translated to Croatian. Delivery button should be "Dostava". | Right now it shows wrong word, so it's like a bug, people can't understand what it is. | Please change, thanks! | it's under Chatbox -> Appearance -> Chatbox style -> Show navigation | And then it shows buttons on the webshop below chat and it's wrongly translated. | Delivery should be DOSTAVA. | Did you manage to fix that it shows everything is available for ordering? | We cannot have AI telling that it's not available. | Everything is available. | This is extremely important. | Thank you! | hi | can you please resync all product again | it is stopped at 0 | thanks | all the best
+
+--- Conv 141 | PetEase ---
+Hi, I need help training my AI assistant
+
+--- Conv 142 | Moonglow Australia ---
+ok. its an iphone | So it won't be able ti give sound on mobile? | Its not in either mode | We want it for all messages | Everything is set up correctly. We'll just leave it for now | Hi, we are finding that when we send live chat reply it comes up with a message saying that the customer is offline and asks if we would like to send via email but the customer is not offline and messages are marked as seen | Sasha Prout, it also happened when we were doing test chats | I don't understand? | Yes that is fine | No it's not that. Its when I join the chat before I send a reply to customer it comes up with a notification that the customer is offline, but when I send it, it is marked as seen straight away so the customer is online? | No problem | Hi Hazel,
+
+Thanks for looking into this.
+
+The ai suggested the rose gold ring and then offered the options of yellow
+gold or rhodium. Neither of which are active both are archived.
+
+--- Conv 143 | iHYGGE ---
+Hello, may i know why the Chinese version unable to display? | when we change to Chinese version on website language | ok | Ok, please let us know once you have solved the problem. | Hi Support Team, any update on this? | Thanks!! | Could you please provide an estimated time to resolution for this problem? | Noted, thanks! | Hi Liz, thanks for your help!!! | Please help me fix 404 page | can u solve | settings > inbox settings > quick replies > create quick replies | it's okay now, thanks!
+
+--- Conv 144 | 8849 Official Website ---
+great, thanks | 这个文本输入器，我输入代码或者特殊符号，就会变成乱码。挺讨厌的。另外，因为我的产品销售全球，需每一句话都复制到谷歌翻译，逐句翻译，一天50个客户，一个客户说5句话，则每天需要复制250次。一个月需复制7500次。是否有自动翻译功能，我们愿意支付费用，只求能有自动翻译功能。作为一个客服app，最核心的翻译功能都没有，还叫客服软件吗？ | (Completely touch-free — add this line, otherwise no need to add it, just operate the phone)
+1.Enable Developer options: 
+Open Settings ->[ System ->] About phone -> Click “Build number” several times until to be a developer.
+2. Open Settings -> System ->Advanced->　Developer options-> Enable "Show taps"
+3. Open Settings -> System ->Advanced->　Developer options-> Enable "Pointer location"
+When you touch normally, a dot will appear on the screen. If this dot does not appear or abnormal, then the touch screen of your phone should be broken. 
+4.If your problem still persists, Please take a video to show the problem. Thanks!
+
+This is the incorrect original text. | Then try entering *#*#08#*#* again. | 文本翻译功能啥时候发布？我想第一时间体验 | 价格包括在套餐里吗。 | thanks! | 你好，你的服务商设置在美国还是哪里？我打开与客户的聊天页面好慢。 | 打开聊天框时遇到加载慢？我使用VPN，我设置为美国还是香港，加载更快呢？ | 一开始打开时候比较慢。现在正常了。谢谢。
+
+--- Conv 145 | Afflumo ---
+please go ahead | hi there, I wonder why there are some yellow stuff behind the "top picks for you"? | thanks a lot andy i think the variant pic issue has been solved. thank you for your help! | and also in my page the view similar and ask about it is not in the same line? how can i fix it? | design for this section. Would you like to remote it?-----yes please. can you also remove "top picks for you"- the purple part? | hi andy the website is open now | and I also wonder if there is a close option for the icon on the right bottom---it's quite annoying in the mobile version | Thanks a lot for your help! Did you post sth to minimise the bottom right icon? | the size of the icon looks still the same in the mobile version? | I think the icon is too big can we add a close option? In the contact page there is a "chat now" button will redirect to the chat page
+
+--- Conv 146 | Gourmet World Foods ---
+Our catalogue and product listings are dynamic. We need the AI trained with our latest products. Will you get back to us by e-mail to respond my inquiry? | Ok, thanks | But the Add product button is not enabled | How do I add the products? | The filters and method to do this is not practical. We need a lot of time to do this..... | The filters are not working properly either. You Guys need to improve much more this functionality... | All the products are randomly sorted out and the collection filters don't work. You can't also sort out the list by oldest / Newest / Inventory, etc, etc, so it makes it really difficult to select the products that we want and delete the ones that we don't want. Honestly, this is a mess when you've got a large catalog like ours that changes overtime. We'll take the time to do it, but the app does not offer a practical and efficient way to select the products | [AI Feedback]
+
+Bot message: Hello! I understand you are missing one jar of The Cherry Tree Seville Orange Marmalade from your recent order, #14657. I am sorry that your delivery was incorrect; we certainly want to ensure you receive exactly what you ordered.
+
+I can confirm that order #14657 was placed on 1/25/2026, is marked as Paid, and has been Shipped via Couriers Please Box ATL (tracking number AU9050828293).
+
+We can definitely look into getting that missing jar sent out to you or processing a refund for the missing item.
+
+Feedback: NEVER AGAIN OFFER A REFUND OR TO RE-SEND THE ITEMS. THIS IS A CLEAR HALLUCINATION. THIS AI DOESN'T HAVE THE ABILITY TO SOLVE THESE ISSUES. THE MOTHERFUCKER IS FANTASISING WITH ITS DECISION MAKING SKILLS.
+
+ConvoId: zwlYqz5lsXrkMFyshSCX
+MessageId: 3dc4ce38-7e2d-4207-bcf2-51d52540d147 | Hi Cody,
+
+Thank you for your response. I wasn’t expecting that you would reply to my feedback :-)
+
+Actually, this is not the first time that this happens. Apparently, sometimes Chatty gets high and offers our customers refunds, returns or exchanges when some of them send report damages during transit or missing items.
+
+The problems is that some customers believe that and they expect for the refund or return to happen, while we haven’t been aware of Chatty’s own offer.
+
+I hope that this helps fixing the hallucination. We’ve entered some specific instructions in the Q&A in front of scenarios when the customers claims for refunds or re-shipments. Chatty must always request photos of damages and boxes received to support the case and ask the customer to send us an email at connect@gourmetworld.com.au <mailto:connect@gourmetworld.com.au>
+
+
+Thank you again for looking into this.
+
+Best,
+
+Javier Gisbert
+
+
+￼ | Hi, I'm reviewing some of the answers provided by Chatty to some of our customers. How can I complete and improve its answers? I've noticed that the dashboard options and settings to train the AI have changed and I can't find how to improve Chatty's response | Hi Hazel, Did you read my message? | I think I've found what I was looking for. It's within the instructions section | Do you have any app to offer AI customer support over the phone? | No, I meant that if you have another app to answer our customers by phone using a Voice in real time | I know that exists but I'm not sure if your company may offer something like that | When someone call us to our company phone number, we'd like a trained AI voice to respond
+
+--- Conv 147 | Amvox ---
+preciso baixar o relatório com todos os contatos recebidos pelo chatbot | mkt18@amvox.com.br | Preciso entender qual o caminho que posso baixar essas informações. Consegue me ajudar com isso também? | Correto | Não existe nenhum método para baixar, pelo menos, um relatório com os dados agrupados dos contatos recebidos?
+
+Atualmente conseguimos ver os dados de resulução, conversão e canais... porém precisamos dos tópicos e intensão de contato para metrificar melhor a ferramenta | Atualmente o assistente já faz a separação das conversas com base na intensão de contato, preciso disso quantificado para gerar relatórios | Certo, Andy. Obg pelo suporte.
+
+O json que enviou vai servir por enquanto.
+
+--- Conv 148 | Crate and Barrel PH Dev ---
+At this moment I am using development store. so shopify wouldn't let me leave a review. But I will do it once we implemented it in our main store. I'll surely keep it in mind. | No worries! | Sure! it will be a great help. We are planning to upgrade into pro maybe this week or next week. We are still adjusting some things first before we move to that step. | Sorry to bother you again andy. can you help me identify why it gives me a response regarding tracking orders whilst I cannot see anything in the sources that mention tracking? | Thank you so much. | yep. That's what I want to achieve. I want chatty not to mention about tracking orders within the site because we dont have that feature. | I want his response to be something like: please contact our customer service for order related concern. | Yes please. | Thanks | About the Q&A Thing. after I created it earlier. it still doesn't follow that Q&A | Let's continue this tomorrow I'll go now. | Hello, I need help. | Hi, I need help from my custom scenario, 
+
+Can you look up "Designing Concern Escalation"?
+
+When I ask chatty "I need design advice for my dining room" It doesn't seem it respects the Scenario I implemented. | Thanks | Thank you, when I will hear from you guys? because we are now in a rush testing this so we can implement it by today or tomorrow | Yes, thanks | Thanks! I'll Check it after lunch.
+
+--- Conv 149 |  Esdomera.com ---
+How long will this status last? | I remember that I previously tried to make these languages public. | and thank you for your help | May I ask where this was modified? | hello | May I ask where this was modified? | where can this be modified? | Okay, thank you! | I'm using Chatty on my Shopify store and I'd like to adjust the position of the chat button on mobile devices.
+
+Currently, the button is fixed at the bottom right corner by default. I would like to move it slightly higher (upward) from the bottom, so it doesn't sit exactly at the very bottom of the screen.
+
+Is there a way to customize the vertical offset? If custom CSS is needed, could you please provide the code to adjust the distance from the bottom?
+
+Thank you for your help! | OK | thanks | thanks
+
+--- Conv 150 | Air weeve ---
+Hi | i have install it and embed on theme but its still not showing the element? | yes thats right | pass : rohclu | okay keep me post
+
+--- Conv 151 | Mosha ---
+will do | check to see if everything is set up properly. | no thanks | there is nowhere to respond on this screen | we will not be staffing live chat | where | that was already done before | did it again for third time | looks good | Please help me fix 404 page
+
+--- Conv 152 | Gearshop NZ ---
+We have added a phone number to be used on the WhatsApp channel.  It has been sitting with a status of pending for a week now.  What do we need to do to make this live? | Hi Jade | I'm Doug | Yes, that's correct. | Thanks | I believe the answer is YES to all of these questions, but I am not the business owner, so I will forward this on to him to confirm.  Are you ok if I follow up with you in the coming day or two? | We are looking to use Chatty AI to answer questions about our product catalogue just through Whatsapp for now, but without adding a widget to our website yet.  Can you please just confirm this is possible? | Thanks, great.  That's all for now.  Have a good day. | Hi. The status on our Whatsapp connection to Chatty has been showing as PENDING for over a week, since we tried to set it up.  I have no idea what is stopping it at the moment - can you check your logs to see what we need to do next please? | Hi Hazel | Thanks | Hey. I just found out we reached out to the support team about this already and have some instructions on checks to do.  So I'll get back to you if that doesn't help | 🙂
+
+--- Conv 153 | Gladesville Guitar Factory ---
+Thanks for all your help team! I have tested now and it still needs a tweak... | In my query, chatty has asked me to call the shop. It is crucial that repair enquiries don't call. They need to be directed straight to the Repair Page | https://admin.shopify.com/store/gladesville-guitar-factory/apps/avada-faqs/embed/inbox/KNCvovNk7GlZayavaZn3 | Thank you, I confirm the reply and the link is correct | Hello, can you tell me why Chatty didn't ask the customer to call the sales team? It didn't know the answer. Customers need to be directed to sales.
+https://app.chatty.net/inbox/Cw0oL76cZxsGjNIQDTvX?esId=U2FsdGVkX19u3vn2wwi4jMIHoazgKQQgCu57yuR5MHijkXmLozo7ReFOzC8cAyqn | Is it possible to edit the Chatty welcome message? | This is perfect, thank you | That's great thank you | Hello, this does not seem to have updated in the Chat bot: | THank you, I will refresh now | It's perfect, thank you
+
+--- Conv 154 | Zeaboost ---
+Hello, Chatty is activated on my theme but it's not displaying. | Yes | runtay@ | Unfortunately no, can you tell me the steps to take? | Can you show me how, please, without giving access? | Ok, thanks
+
+--- Conv 155 | Letenos.shop ---
+Hi, I need help training my AI assistant | we need you in catalog page, because you only in main page | yep | its only on main | if its pops out in collection page that would be great | but its not | how to do that? | 4299 | active | your'e welcome | Thank you for information. Have a nice day.
+
+--- Conv 156 | Z-vial ---
+اريد تشغيلة علي موقعي لكن للا يظهر في الموقع | لماذا لا يعمل علي موقعي ؟ | نعم | نعم | في انتظارك | S707 | لماذا ماهي المشكلة | بالتاكيد | 6504 | ؟ | لقد منتحتك | ؟ | ماذا كانت المشكلة ؟
+
+--- Conv 157 | Nerd Shack ---
+Hi, I need help training my AI assistant | so I'm trying to add products into it's database.  I upload them, save it, then when I test the AI, and the question comes up about products, it's not showing anything, or saying that it does not have it in its database. help please? | I think so? I have it set as a direct landing from www.nerdshack3.com | okay. thank you. I appreciate your help. I'll fix that now. thank you again. | of course. I might, honestly. i appreciate the backup.
+
+--- Conv 158 | willow bend coffee ---
+Help me set up live chat
+
+--- Conv 159 | urgentprints ---
+hi | how i can make it live in my shopify website | how i can make it live in my shopify website | i did | yes i saw | thanks | when i as question about business card | she reply that | I am sorry, but I do not have access to the product catalog to view or discuss business card printing options. Since I cannot pull up product details or confirm if we offer them, I am unable to assist with your request for business cards. Please let me know if you have any questions regarding store policies or other general inquiries I might be able to help with. | i want that she send the link of business card page | yes i did | thanks a lot
+
+--- Conv 160 | Betroza ---
+Hi, I need help training my AI assistant | im in the process of training my ai assistant
+
+--- Conv 161 | Northern Ringette ---
+Help me set up chatbox | Can you make the chat box visible and active on the website? | The app embed is enabled in my theme
+The "display chatbox on your store" setting is turned on
+The widget is still not appearing on the storefront | Yes, access granted. Please make it visible and active on the website | 1679 | BUAD335! | Yes, send the update to our email | Sorry about that I reset it. Try BUAD2026!
+
+Thank you in advance,
+Karis Heigh
+www.heigh.ca | Thank you! It’s working good but now when I click on a item to view it the chat
+bot takes up a large portion of the screen, would you be able to ensure the chat
+bot just stays as a corner pop up that can be minimized?
+
+Thank you in advance,
+Karis Heigh
+www.heigh.ca | I don’t want it like this image0.jpeg
+[cid:mf_EECCF3E8-D530-4590-A44D-7E0CD8730C2B/L0/001]image1.jpeg
+[cid:mf_09CD1F2F-944C-4E93-A450-2E08494262CA/L0/001]
+
+Thank you in advance,
+Karis Heigh
+www.heigh.ca | Thank you!! You guys are a huge help :)
+
+Thank you in advance,
+Karis Heigh
+www.heigh.ca
+
+--- Conv 162 | TRP Cigars ---
+Help me train ai assistant
+
+--- Conv 163 | rsfg store ---
+yes | sunka help krna | yes | mere site pr aache se kaam krna thik h | Hi, I need help training my AI assistant | Hi,
+Please help us to  | Help me set up live chat | Help me set up chatbox | Help me train ai assistant
+
+--- Conv 164 | Peptidlabbet ---
+yes that is on | it is : Peptiderlive1 | alright I will try | YES! its showing . thank you | No that was all for now . very good support | ofcu I can leave a review | if I join a conversation , can I let ai take over again or also be able to answer at the same time ? | thank you | how can I change if message is sent to chat only or to email . I want it send to customer email but its getting sent in chatt only | yes . that customer is notified via email | also from what email is the messages being sent to customer ? from my store email or ? | so all messages are sent customer email but from which email am I sending ? | okay thank you | sorry if I am having a lot of questions. I am new to this app
+
+--- Conv 165 | VPrism ---
+I will look at it tommorow | by any chance are you the same support for the Review | Air product reviews | Okay see you then . have a nice shhhift | Hi | I want to ask if the free plan AI conversation each month resets? | or the free plan is for onlly 50 times forever? | also can you turn off the auto pop up | oh got it so after 50th convo I have to go on subs | this , it auto pops up when I open the store | I try it on incognito | weird Will check it again | how to record a video | 1sec to set it | it maneged to not do it now wtf | Now it does not pop up | okay thanks | bb
+
+--- Conv 166 | SlimQ Official Store ---
+sorry, just saved it | now the problem is I have chat, whatsapp and email as options. click on email button does not work | I just tried on both Chrome and Safari and got empty address | seems related to my browsers. i do it on the phone, it works. | let's leave this to later investigation. another question, I want to remove "chat now" option and only leave the whatsapp and email option, | can I disable it ? | perfect, thanks. I will explore more. Thanks for the help! | I set up the chatty for my shopify site long time ago and now it does not seem work. i opened it on Safari on my macbook pro. I see the icon and then click on it and nothing happens. what should happen is it should open a window and offer customer to talk to us on whatsapp or email. | And on Chrome, I don't even see the question mark which is the icon to start | the website is shop.slimq.life | it used to work perfectly | can not view your capture, what are they? | if you see it, can you click on it | do you see whatsapp option? | thanks. what about Chrome | thanks. it didn't work on my side, but glad to know ti works. let me find out why it doesn't work on my side. thank you fro the help!
+
+--- Conv 167 | MonPattern ---
+Ah I see, but then I’ll still have the same problem right? What I’m looking for is a place where only customer messages appear, without all the other emails I receive in my inbox. | Is there a way to stop receiving all my regular emails in the Inbox? I don’t really need those there, I’d just like to see conversations with customers. | Ok!!! thank you | Style the FAQs page to fit my theme | Hi! I would like to change the color of the links on the FAQ page. Could you help me with that? | The links on the FAQ page are currently blue, and I would like to change them to color #fff5d9. | Ok!! Thank you | Perfect!! Thanks for the help | Hi, thanks for the update!😊 I meant all the links in the FAQ, because at the moment they’re all showing in blue. Could you please check that? Thanks! | I’d like all the links in the FAQ to be in color #fff5d9, in both English and Spanish versions. | Ohh ok! thanks for the explanation | Yes, I’d like to try. Could we set all the links (unvisited, visited and active) to #fff5d9? | Perfect! No problem | Thank you!! | If it’s not doable to set all links to #fff5d9, maybe we could choose another color that’s easier to read on the dark background. I’m happy as long as it’s legible. Thanks again!
+
+--- Conv 168 | PurelyGoods ---
+Amazing! | The FAQ problem with video has been sent right? | yes | Okay! | Sure! | Hi Ryan facing, again the same problem! | I just want te delete or remove these standard question(s). | But it's giving errors again | Hi Hana | Not the default FAQ's | But some questions | FAQ's can be as well, but it's better if some standard (english) question can be removed | Yes thats fine! | Okay! | Amazing let me see | Yes | Works fine!
+
+--- Conv 169 | Refrigerator Filters Shop ---
+I need human support team | I need this pop up | I need remove this pop up | yes | ok | How i go to my profile? | No need thanks
+
+--- Conv 170 | JR.SHOES ---
+I think it's fixed now. | thank you so much | yurtdışı girişlerine web sitemiz kapalıdır. Bu sebeple giriş yapamıyor olabilirsiniz. | ok | merhaba | müşterilerimiz yapay zekaya sorduğu bazı sorular var bu tarz sorular geldiğinde nasıl yanıtlaması gerektiğini bildirmek istiyorum. benim için bu talimatı eklermisin | Ürün stokta var mı? örneğin 41 bedeni varmı ya da 39 bedeni var mı gibi sorular için cevap: "Tüm ürünlerimiz sipariş üzerine üretilmektedir. Fabrika olarak siparişinizi aldığımız andan itibaren 3 iş günü içerisinde üretim tamamlanır ve kargoya teslim edilir." | Diğer soru: Taban yüksekiği gibi bir soru gelirse cevap: " Ürünlerimizle alakalı taban yüksekliği bilgisine Ürün sayfasında > Ürün Özellikleri başlığı altında görebilirsiniz." | Teşekkürler | Ayrıca | bende şimdi sordum 41 numara var mı diye | şu cümleyi düzenleyebilirmiyiz | .... modelimiz için ..... numara stoklarımızda mevcut değildir, fakat sipariş verebilirsiniz. Bu ürün için siparişinize istinaden 1-4 iş günü içerisinde siparişiniz hazırlanıp kargoya teslim edilmektedir | Bunun yerine | ...... modelimiz için .... numara sipariş verebilirsiniz. Bu ürün için siparişinize istinaden en geç 1-4 iş günü içerisinde siparişiniz hazırlanıp kargoya teslim edilmektedir | tüm ürünler için stok durumu sorulursa cümle yapısı böyle olsun. cevapta stoklarımızda mevcut değildir ibaresi kullanmak istemiyorum.
+
+--- Conv 171 | BoraVibes ---
+Help me set up live chat
+
+--- Conv 172 | PUREPEBRIX ---
+？ | :) | we have already subscribed to the AI assistance, but it doesn't work until now. | could you help me to solve it？ | thanks | Could you tell me why the AI still doesn't work after the quota was refreshed? | a little bit weird | ok go ahead | why you don't reply | the customers answer? | we spent money and no reply. Why? | how to set contact with info@purepebrix.com | not live support | you guys set it for us | thanks alot
+
+--- Conv 173 | NT-technology ---
+Hi, I need help training my AI assistant | Hi, I need help training my AI assistant | Help me set up live chat | Hi, I need help training my AI assistant | no me aparece el soporte flotante en mi tienda | ok | tengo mucho tiempo tratando que de que se vea en la tirnda y no apodido | ok pero no me sale cuando entro de mi yo | lo intetare | ya esta funsionando | ok | ok
+
+--- Conv 174 | ERGO PURRCH INC ---
+I think this is fine now. Can yoiu check and confirm the H1 shows now? | ty | you need to change it to h1 not h2, doesnt make sense | this is too much work | what is the teams logic behind a missing H1? | this hereis an insane amount of work to get an H, which is supposed to be default | I just checked your page source and can confirm the H1 tag is still not showing.
+
+After investigating further, this is actually a limitation on our end, the Chatty FAQ Block renders its heading as an H2 tag instead of H1. I sincerely apologize for the back and forth earlier. I should have identified this from the start rather than having you edit theme files.
+
+Here's the quickest fix:
+
+Go to Theme Customizer → navigate to your FAQ page
+Click "Add section" → select "Custom Liquid"
+Drag it above the Chatty FAQ Block
+Paste this code:
+
+<h1 style="text-align: center; font-size: 30px; color: #303030; margin: 0 0 -10px 0;">Frequently Asked Questions</h1>
+<style>.avada-faqs-block-header h2 { display: none; }</style>
+
+Save
+
+This adds a proper H1 tag for SEO without affecting anything else on the page.
+
+I've also submitted this as a product improvement request, our FAQ Block heading should support H1 natively so merchants don't need workarounds like this.
+
+Again, really sorry for the runaround. Let me know if you need any help with the Custom Liquid section! | This is not an ok process for most people. | This has been a 45 minute procedss so far. | now how do I prevent this from being written twice? | didnt fix it | STIL SHOWS UP TWICE, WILL TRY SECOND THING YOU SAID | BOTH FAILED | both failed | where does the bold FAQ writing come from? | can it be removed from there or no? | heading is required- cant | What are necxt steps here? This is going on far too long. I will remove this code cause I cannot have two sets of writing on our site | ok ty
+
+--- Conv 175 | Impact Force ---
+Help me set up live chat | Hola | hacen envios a El Salvador?
+
+--- Conv 176 | PRNTDCollective ---
+Help me train ai assistant | Ill be okay actually. | Thank you
+
+--- Conv 177 | Maison Mata ---
+‪+62 812‑3866‑0613‬ | https://api.whatsapp.com/send/?phone=%2B6281238660613&text&type=phone_number&app_absent=0 | hello | hi | can you help me please | for my website, I did a page with a watsapp link where the customer can directly book an eye test in our store, I would like put this WhatsApp link in the chatbot, when the customer ask for eye test, the bot ca directly give the WA link | https://wa.me/6281238660613?text=Hello%20Maison%20Mata,%20I%20would%20like%20to%20book%20an%20eye%20exam.%20Which%20store%20can%20I%20visit%20and%20what%20are%20the%20available%20times? | perfect thank you | ok i will try the bot dear | thank you | yes its perfect thank you ! | hello | yes please, I have some answer from the chatbot I dont like, can you explain me how to fix it please ? | the first one concerns the question : May we know your opening hour for Uluwatu Store"
+Our Uluwatu store is still in building, so we would like to warn the staff ahah | the customers* | if I tell you our working hours for all our stores, you can fix it for us please ?
+
+--- Conv 178 | Konsolen-Reparatur ---
+Somewhere in the database, there is an incorrect calculation of the processing time. This should be around 3-5 business days. | You can generally look at Resolved in all chats. At some point, the AI stops giving advice. We are losing more potential customers. | Hello, the AI has once again failed to make any product suggestions for the shopping cart. There is a product in the shop where this exact problem is described in the product description. | https://konsolen-reparatur.de/products/ps5-reinigung-professioneller-service-fur-deine-konsole?_pos=1&_sid=6ebd1999f&_ss=r | The AI could have recognized that. The product description accurately addresses the customer's questions. | No shopping cart suggestions were made here either. | Other chats this | Hello, could you please check the AI settings? We have relocated our workshop to Buxtehude, but the AI still remembers the old location in Horneburg. | Hi Chatty Team,
+
+I am really enjoying the bot so far, but I have a technical feature request that would significantly increase the value of your service for users running paid advertising.
+
+To properly optimize Google Ads campaigns, we need to close the loop between a "click" and a "qualified lead" generated by the bot. To achieve this, I would like to propose the following implementation:
+
+GCLID Capture: When a user lands on our site via a Google Ad, the URL contains a gclid (Google Click ID) parameter. The bot should be able to detect and store this ID during the session.
+
+Conversion Mapping: Once a conversation reaches a specific goal (e.g., a lead form submission or a high-intent inquiry), the bot should associate that lead with the stored GCLID.
+
+API Integration: Ideally, Chatty could offer an integration with the Google Ads Offline Conversion API. This would allow the bot to automatically "report back" to Google that a specific GCLID resulted in a conversion.
+
+Why this matters:
+Without this, Google Ads only sees the initial click but doesn't know which keywords or ads actually led to a high-quality chat conversation. This data is crucial for AI-driven bidding strategies.
+
+Is this something currently on your roadmap, or is there a way to pass the GCLID through your existing webhook system so we can handle the API upload ourselves?
+
+Looking forward to your thoughts!
+
+Best regards,
+
+--- Conv 179 | Riveros Art ---
+Help me train ai assistant | Hi,
+Please help us to 
+
+--- Conv 180 | ShopPotters ---
+Is it possible to embed the app on a preview theme and off on the live theme for testing? | Brill thanks | hi how do I turn chatty off on our Facebook messenger account | thanx I only have access via my mobile | is there a way to do it via my mobile
+
+--- Conv 181 | Urban_dropmart ---
+how to setting chatbot | ok i have done | my chatbot do not show on my store after installation | which code
+
+--- Conv 182 | Gabellii ---
+How can I be notify that there is a new chat in my store ? | ok | ok
+
+--- Conv 183 | Work Your Pack ---
+i cant see the chat widget on my website | yup | ive clicked turn on but not sure what to do after that | ok i believe i did that | its 'motion' theme - does chatty not work on there? | Hi, I need help training my AI assistant | Hi,
+Our Chatty chat widget is not rendering on our Shopify store. I found the issue in the page source code:
+In the window.AVADA_FAQ object initialization, there's a syntax error:
+questions:  || [],
+This line is missing a value before the || operator, which causes a JavaScript syntax error and prevents the entire widget from initializing.
+It should be:
+questions: [] || [],
+Can you fix this on your end? Our store is: workyourpack.com
+Thanks,
+Chris | cant you just fix the code based on what i sent you | any eta on getting human help? | i need to cancel my chatty app | your app does not work on my theme going with a different app | no im good now im going a different direction
+
+--- Conv 184 | STEAD ---
+ライブチャット開始時の「Chatty AI アシスタントです。」という自己紹介をストアのブランド名に変更したいです。プロンプトにて指示をしても冒頭の挨拶で「Chatty AI アシスタントです。」と言ってしまいます。 | 現在、有料プランですので冒頭の挨拶を「Chatty AI アシスタントです。」から「ストアブランド名 サポートAI」に変更したいです。 | ありがとうございます。ライブチャット開始時の「Chatty AI アシスタントです。」という自己紹介をストアのブランド名に変更したいです。プロンプトにて指示をしても冒頭の挨拶で「Chatty AI アシスタントです。」と言ってしまいます。 | 現在、有料プランですので冒頭の挨拶を「Chatty AI アシスタントです。」から「ストアブランド名 サポートAI」に変更したいです。 | Hi, I need help training my AI assistant | 上記の件についてどうでしょうか？ | AIアシスタントの設定で、右上のウェルカムメッセージから変更していたのですが、チャット履歴から分かるように、これまでは冒頭で「Chatty AI アシスタントです。」と必ず挨拶しておりました。 | 今、確認したら冒頭の挨拶が変更されました！ありがとうございます。 | ありがとうございます！
+
+--- Conv 185 | Renegade Golf Co ---
+Help me set up chatbox | yes | yes | The chatbot is not showing up on my site. | No, just show me the steps to take. | Ok, thanks | 👍 | No, thanks
+
+--- Conv 186 | Modicase ---
+Hi, I need help training my AI assistant
+
+--- Conv 187 | Smart Haven ---
+why arent u showing up on my page] | yh | yes | hello | Please help me fix 404 pagemy order | it is fixed arigatto | tell your ai that sipping is 7-14 days
+
+--- Conv 188 | Orizyu ---
+ok | we can ajust the chat bubble position ? | peut etre le mettre un peu plus haut, mais je vous dit uand j'ai besoin , pas maintenant | what is the difference ? | its the option to hide chat on specific page | sorry i mean this 2 | what is the difference ? | ok | oh we can put only 1 url ? | ok no need like this | i want to hide all url start like this | https://orizyu.fr/a/ush_bundles/ | like this ? | ca a l'air de fonctionner , | ok merci | looks good too | thanks
+
+--- Conv 189 | Midi Decor  ---
+Hi, I need help training my AI assistant | hello
+
+--- Conv 190 | Lumina Skin Sanctuary  ---
+Question my chat does not respond to people chatting | thanks | yes | sure | Perfect what was the issue | Thank you. | Nope thank you. | sure
+
+--- Conv 191 | Dodom ---
+Regarding metafields and inventory status updates where chatty can pull that info is there any update? | the ones who reference meta objects | also inventory status so it can now how many pcs in stock left | yes, it syncs if it’s sold out or in stock but not in stock quantity | Okay | Regarding metafields that reference metaobjects is there any news? | Hello, can I remove the autotranslate function because it is reseting the custom translations | Correct yes | yes, the problem is i edited them all | and they just reseted | Thank you
+
+--- Conv 192 | Oak & Ember Outdoor ---
+It wont let me display FAQ page, Says already been taken | it says my chatty is active on my store but when iv opened my website its not appearing on the screen
+
+--- Conv 193 | Jungle Plants  ---
+It is still not working | That issue just fixed. However we are still having the issue of it recommending our competitors. I tried adjusting the F&Q page along with adjusting the AIs personality to not do that but it is still suggesting them in our mock chats and to customers | Thank you | Okay thank you | Are you there? | Yes, this scenario is quite common. If we do not carry a plant they want sometimes they ask if we know where to get it, obviously we never want to suggest a competitor. I will test it again with the same scenario | It is still suggesting competitors | Okay thank you | Hi Doris,
+
+We appreciate you taking the time and took this matter seriously. We are
+starting to see better results now thank you.
+
+[image: Kind regards,]
+[image: photo] <http://jungleplants.com/>
+
+Jungle Team
+Jungle Plants
+
+[image: icon] Jungleplants.com <https://jungleplants.com/>
+
+[image: icon] info@jungleplants.com <info@jungleplants.com>
+
+[image: facebook] <https://www.facebook.com/profile.php?id=100083277606059>
+
+[image: instagram] <https://www.instagram.com/jungleplantsoutdoor/>
+
+[image: Green]
+
+Please consider the environment before printing this e-mail!
+
+[image: __tpx__] | Hello, Chatty will not show me recent chats. It is displaying error code "9 Failed Pre-conditioning" | yes one moment | Okay thank you
+
+--- Conv 194 | SpeedyOrders ---
+so it works now | ? | okay | one thing that im not sure you noticed is, that apparently, the bot answered ,but the message simply didnt appeared on the conversation. as you can see on my screenshot | so i would appreciate if your team can have an eye on it so it doesnt happen again | you welcome | i appreciate if you can fix the display of the icon too on pre-chat form, that would be definitely great | yes, it seems to me it answered too. but it wasnt being displayed. im afraid it wasnt being displayed for the customer too | so it would be great if you can fix this so such issue doesnt happen again in the future | thank you jade | thank you! | i appreciate | here you go: 4546 | thank you | done | great | thank you, appreciate
+
+--- Conv 195 | Turqstore ---
+aktifleştirdim fakat sitemde görünmüyor | chatty sitemde görünmüyor. Aktifleştirmeme rağmen | evet | tabi | teşekkürler bekliyorum | evet | Teşekkürler. Biraz beklemek gerekiyordu galiba | Sizce sayfanın altındaki statik mesaj alanını kaldırmalı mıyım? | Hayır sayfada görünen chat alanı. Sağ alttaki butonda bahsetmiyorum. Tema alanı gibi koyduğum alttaki bölümden bahsediyorum | biraz daha açıklar mısınız | Sorun görünmüyor
+
+--- Conv 196 | Trendz Moto ---
+Help me train ai assistant | where is my order
+
+--- Conv 197 | GT Hobby Store ---
+hi is there a way to hide the chat icon on the edge of the window? i dont want to completely hide it. But customer can still bring it out with an arrow | hello
+
+--- Conv 198 | HEWCOPI ---
+你好，我这边还是一样重合的，是需要我这边输入你截图的代码吗？ | 现在是可以了，这个代码可以复制发给我吗，我还有其他独立站，也需要调整下。 | 还是说，每次调整都找你们就好了。 | 那我需要怎么操作，直接复制粘贴到这里面就好了吗？ | 好的， | 不好意思啊，还麻烦下，刚你发过来的这个代码，被系统自动翻译了下，可以复制到文档里面发过来吗？ | 好的， | 这个进入网页后，过段时间就会跳出这个弹窗，这个怎么关掉啊 | 好的，谢谢 | 你好，想问下，咱们这个聊天窗口的这个小圆圈，现在出现一个问题，超出手机端页面，导致这个聊天图标只能显示一半，而且出现一个问题手机端页面可以左右晃动，
+
+--- Conv 199 | Al-Wahid Innovations ---
+Help me set up live chat | Help me set up chatbox | yes | ok | Hi, I need help training my AI assistant | Train AI assistant | Please help me fix 404 page
+
+--- Conv 200 | misterlocly ---
+bonjour,
+
+sur mobile ou pc la demande "email pour transcription" reste bloquée
+
+--- Conv 201 | Hugsback ---
+Yes it works, perfect | thanks | yes send me offer for translate only option for 1 times paymenyt | yes | Hi,
+
+Is it possible that you try it on a other theme, we don't like to give acces if it doesnt work | Any news about payment for one time translation, also good if it works with the location show option | Hi, but i mean, can you try it first on your own shopify theme? | Thankyou | Yes that is perfect, can i maybe install it my self? | PERFECT! It works amazing. thankyou so much | can i have one free Team member | hi | Ohh, i am sorry i think that is just to expensive to upgrade only for that feature | Currently free plan is good for us | how can i dissable the function track order
+
+--- Conv 202 | SkullForge LLC ---
+what the best sellers | was a mistake, sorry, testing the AI ;) | thanks!
+
+--- Conv 203 | Infinish ---
+Yes | Ok I did that, so now it should be turned off? | Ok thank you | Not today, thank you | Chatty is sending me alerts every 1 minute. What do I need to do? | I am being sent hundreds of messages from the same customer. But I know its not the customer, it's chatty freaking out | They are coming through every 60 seconds | Yes, correct | Ok I see. How should I set it to not be notified when we are not opened? | Ok, last question. Is there a way to only show the customer's Initial for their last name on reviews? | We would like our customers last name to only have the first letter | Oh, sorry, you are correct. So that's it for now. Thanks for your help
+
+--- Conv 204 | DHARVA.IN ---
+chatbot no visible in my site | hi megan | yes | yes | ok | ok | yes | 2771 | done | OK
+
+--- Conv 205 | ME+HOME ---
+survey? 100% | done | 100% service deserve for 100% review | thank you for your kindness and helpfulness | hello | I have some questions about the JAVASCRIPTERROR | I am using Chatty on my Shopify store (meplus-home.com). I have deactivated all proactive chat campaigns (Welcome message, Cart Booster, etc.), but I am still seeing JavaScript errors in the browser console on certain product pages, specifically:
+
+"Required ref 'dialog' not found"
+
+"Script error."
+
+"Importing a module script failed"
+
+These errors appear on pages like my defrosting mat product page. They don't seem to affect core functionality, but they clutter the console and may impact user experience. I suspect they may be leftover code from Chatty's proactive features even though the campaigns are turned off.
+
+Could you please help me remove any remaining Chatty scripts or code that might be causing these errors? I'd appreciate guidance on how to clean up the leftovers, or if you can assist directly.
+
+Thank you for your support. | thank you Alicia for your understanding and follow up with your Tech team.  Have a good night!! | very much appreciated! | Hello good day, I reached out to Alicia of your team on Tue and requested assistance to remove the JAVAscript error, she said that only a small technical team was available, and she would follow up with technical team and reply by email, however, I haven't received any update yet, would you please assist, thank you! | Hello Megan, you are right Hana replied to me, and I overlooked, please accept my apology,  please find attached the screenshot showing the error message for your reference.  I would appreciate it if you could pass on to your technical team for further troubleshooting, thank you | thank you Megan for your help and acknowledgement, have a good day! | thank you, Andy! | thank you Andy for your follow up,have a nice rest of the day!
+
+--- Conv 206 | Shopify ---
+**Kinsen has a question about Chatty**
+
+March 27, 2026
+
+New message about Chatty
+------------------------
+
+Kinsen ( https://kinsen.us )
+sent you a message. See it below.
+
+
+
+wont let me add to "liquid template"
+
+Shopping Bag
+
+Shopping Bag
+
+15‍1 O'Con‍nor Str‍eet,
+Gro‍und fl‍oor, Ot‍tawa ON, K2P 2L8
+
+--- Conv 207 | BARABAS® ---
+Ok so I made a sample message without a picture to our instagram messages, but Chatty did not reply. Why is that | this is a test I made | Yes | ok thanks | Hello I have a connection with my whatsapp | Hello | I was trying to edit the Manage Templates but it is creating an error | I was trying to access the template for my WhatsApp because I just connected it | thats weird, why is it going to facebook? | I cant log in, let me try tomorrow, Im abount to leave the office. Thanks for your help | When I try connect whats app it does not see it >? | yes | I can not seeit
+
+--- Conv 208 | ameriDroid ---
+Hello, Chatty had this interaction
+
+Looking for phone it seem like you are out of supply
+03/19/2026 12:13 PM AmeriDroid
+I'm specialized in tech gear like Single Board Computers and automation devices, and we don't carry mobile phones in our inventory. If you are interested in single-board computers that you can use for custom projects, I'd be happy to help you find one of those!
+
+We do have Phones, We sell Ghost Phone which are available but also we have PinePhones that are out of stock | How can we teach Chatty that? | YW17YUkbf5Xns1o6gnsM | He did not share an email | Kind Star is the name that is under | Yeah, we can add electronics to that, we also sell Phones, Laptops, MiniPC's etc | Thank you! | Sounds good! Thank you! | Perfect! | Thanks! | I had asked in the past to make the chat a little higher so it would be on top of our other chat | But I moved the other chat to the left | Can we put chatty back on the original position | Thank you!
+
+--- Conv 209 | RAEVLY ---
+Help me set up live chat | hey | yes | Help me set up live chat | Help me set up live chat
+
+--- Conv 210 | DELSEY PARIS ---
+Hi Audrey. ok, thanks | cannot see the screenshot . can you send it again, please? | the option to enable de 2FA is not available. check the image attached. | last time, a few months ago it happened the same issue...and after several times trying, we could not solve this issue. | even with meta support. | I believe is something with your API | I excluded the account and added again in order to "force" your API. The display name is pending approval again. | I let you know when it is approved. | anyway, the other tool that we are using , when we integrated happen a similar issue, but the company resolved directly with Meta as it is an issue between Meta and the supplier (partner). | the instructions given by you a few messages ago seem reversed for our current situation. 2FA is a consequence of registration, not a prerequisite for it to appear as "Connected" in the Meta Manager in WA accounts. | hi, how are you? | quick question, the 2FA has to be activated with a PIN number, right? | if so, after activating the 2FA, I will try to connect using Chatty and then, I have to send you the PIN number? | Ok. Note that I have added the phone number in Meta Business / Whatsapp Manager manually in order to be able to activate the PIN number. | then, I will connect with Chatty. I did not understand well the steps in order to avoid problems again....how will you be able to connect to our WA account without using the PIN? | Understood the 2FA issue, great. | The several attempts that we have done, we followed the instructions but we could not be able to make it... | but, that is ok, we will try to make it this time. thanks | ok, thanks
+
+--- Conv 211 | Atelier Merien ---
+bazen alıyoruz bazen almıyoruz problem de orada | gerçek bir uygulaması yok chatty nin. browseri uygulama gibi telefona kaydediyoruz ancak bazen bildirimler geliyor bu şekild ebazen gelmiyor | genelde gelmiyor ve sebebi anlayamadık | mesajlara dönüş süremizi çok olumsuz etkiliyor | masaüstü için pc, mobile için iphone | ben zaten tam olarak bu adımları birkaç kez yaptım. | mesaj ekranı açıksa bazen geliyor. ancak genelde gelmiyor | sırayla görünümleri yolluyorum. masaüstü. | masa üstü | mobil | Hello,
+
+I’m experiencing an ongoing issue with email forwarding to Chatty, and this has become a serious problem for my business.
+
+For your reference, my email provider is GoDaddy, and I have two forwarding rules set up:
+
+One forwarding to Chatty
+One forwarding to a Gmail account
+
+The Gmail forwarding works perfectly every time, without any issues. However, forwarding to Chatty is inconsistent. Recently, I noticed that at least two customer emails were not received in the Chatty inbox, even though they were successfully forwarded to Gmail.
+
+This is not the first time I’ve experienced this issue. It keeps happening repeatedly — it gets fixed temporarily, and then after some time, the same problem occurs again.
+
+Because of this:
+
+I am missing customer messages
+Customers are not getting responses
+I am potentially losing sales and damaging customer trust
+
+This is very frustrating, especially since I am paying for this service and expect it to be reliable.
+
+Could you please:
+
+Investigate why some forwarded emails are not reaching Chatty
+Check logs for missing emails
+Provide a permanent solution, not a temporary fix
+
+This issue is directly affecting my business operations, so I would appreciate a thorough and urgent resolution.
+
+Looking forward to your response. | Hello Phoebe,
+
+Thank you for your response.
+
+Regarding the conversation ID, I’m not able to locate any conversation ID in my inbox. My Chatty inbox URL is the following:
+https://admin.shopify.com/store/atelier-merien/apps/avada-faqs/embed/inbox
+
+I don’t see any visible conversation ID in this interface.
+
+Here are the two customer email addresses that were not received in Chatty:
+
+isawrk@yahoo.com
+debnuest@gmail.com
+
+For debnuest@gmail.com
+, this is especially concerning because we already had an existing conversation in Chatty with this customer. Despite that, their latest message did not appear in the Chatty inbox.
+
+However, both of these emails were successfully forwarded to my Gmail account without any issue, which confirms that the forwarding rule itself is working correctly on my email provider (GoDaddy).
+
+I will also attach screenshots showing that these emails were received in Gmail for your comparison.
+
+Please investigate why these emails are not being captured by Chatty, even though they are successfully forwarded.
+
+
+Looking forward to your findings. | Hello Phoebe,
+
+Thank you for your suggestion.
+
+However, the email address you provided is already the same as the one I am currently using for forwarding:
+
+dvhcgojazuckn6ar5ywx.forward@chatty.email
+
+So there has been no change on my side — this is already configured exactly as you described.
+
+Also, I noticed that in your message there are two different domains mentioned:
+
+chatty.email
+chatyemail.com
+
+Could you please confirm which one is correct? I want to make sure there is no typo or mismatch causing this issue.
+
+Since the forwarding setup is already correct and Gmail receives all emails successfully, it seems the issue might be on the Chatty side when processing incoming forwarded emails.
+
+Looking forward to your clarification. | Hello Andy,
+
+Thank you for your message.
+
+Please find attached a screenshot of my current email forwarding setup.
+
+As you can see:
+
+All incoming emails are forwarded to dvhcgojazuckn6ar5ywx.forward@chatty.email
+The emails are also kept in my inbox
+No conditions are applied (all emails are forwarded)
+
+So the setup is exactly as expected.
+
+Also, I would like to highlight again:
+
+The same emails are successfully forwarded to Gmail without any issue
+However, some emails are not appearing in Chatty
+In one case (debnuest@gmail.com
+), there was already an existing conversation, but the new message was not added to the thread
+
+This strongly suggests that the issue may be related to how Chatty processes or matches incoming forwarded emails.
+
+Please let me know your findings after your backend tests.
+
+--- Conv 212 | Danibydk ---
+I need your help | the app not showen at my storefront? | hello Audery , nice to hear from you | yes | i do | yes this my website | https://danibydk.com/ | okay | send me a collaborator access and let me accept it | 5347 | fon | done | any luck? | it will take time ? | i'm running a campaign right now and I need it to be solved asap | okay , keep me updated and thank you | done thank you
+
+--- Conv 213 | SelfiMed Europe ---
+Please help me fix 404 page | Bonjour, | tout est en ordre et je vous remercie | pour aujourd'hui tout est ok de notre coté grace à votre aide
+
+--- Conv 214 | Skinco ---
+is chat bot can place left side | is chat bot can place left side | how can | not opening | ok | issue is it | its masking my add to cart | is any option | yes | ok | ok
+
+--- Conv 215 | FLAVORVERSE ---
+Help me set up live chat
+
+--- Conv 216 | machsport ---
+nun jetzt habe ich aber wieder hier ein neues konto "Machsport GmbH" und US-Nummern
+
+ist das so korrekt ? | danke | danke | Hi, thanks for the update.
+The issue is that our Austrian number +43 664 88399984 is already connected to an existing WhatsApp Business account/app.
+When I choose “Neue nummer hinzufügen”, Meta shows the error that this number is already linked to an existing WhatsApp account.
+
+So I believe “Neue nummer hinzufügen” is not the correct path for this number.
+We do not want to create or connect a different new number — we want to connect our existing Austrian business number.
+
+Could you please confirm which exact option/flow should be used in Chatty for an already existing WhatsApp Business number?
+Also, please confirm whether the currently shown US number is only a temporary/test/pending setup that should be removed. | ok thx | im prompt "behaviours" kann ich nur 2000 zeichen eingeben, kann man das eventuell erweitern? | ja genau ich bin dort | ok danke, brauch mehr zeichen, aktuell sind es auf 2000 zeichen beschränkt | super vielen dank, top-service
+
+--- Conv 217 | Crescita Semplice ---
+How can I resolve the problem with the align in the phrase "Chatta con noi"? | Thanks | Yep | Thanks | Yep, it works thanks.
+
+--- Conv 218 | PhotoSetup ---
+thanks | Carmen account | Hello! Can you help me with a setting for the feedback box in the chat? | It pops too soon and can be frustrading for the clients | from where can I change that. And when we are on our luch break it will be helful to let our client know | Thanks | That's the one | I understand now, if a client says thank you, it automatly pops the box | I changed it :) I put it on Conversation is resolved | Can you help with thsi one as well: And when we are on our luch break it will be helful to let our client know | Great! You've been so helpful | Have a great day! | Aparently I can't find the human handover section | 😥 | Great, found it 😍 | 🤗 🤗
+
+--- Conv 219 | TMRS Studioz ---
+Hi, I need help training my AI assistant
+
+--- Conv 220 | RAYSTUDIO ---
+chatty中的日文翻译无法保存 | chatty设置中有一个翻译，里面的日文语言我无法自行填入或者修改 | 是的 | 路径是chatty——设置——翻译——日语 | 我即使编辑了日语的翻译，无法保存更新以后得翻译 | 你保存以后再返回，你保存的东西就没有了 | 他还是回复默认的文字 | 我把我的操作流程发给你 | 例如：我把导航栏中的首页：默认的翻译是家、我把他更换为ホームページ，保存。保存完以后我返回再点导航-首页，他的翻译依旧是家，不是我更新后的ホームページ | 好的 | 好的 感谢 | 我现在应用里面的翻译问题已经正常解决 感谢你们的协助~
+
+--- Conv 221 | YOELEO ---
+AH  let me try | the code is the problem | i put the right code but they said its wrong | did for 2 times | the same | hallo | hallo | my customer cannot login to te chat in the web | because there are no detail what to put | the color is white | the backgroud is also white | yes correct | but for normal customer they dont know it | thank you | fixed | thank you | test message
+
+--- Conv 222 | HappyLaulea ---
+Hi | Currently we are running a discount but when a customer asked abouts discounts, the AI responds not discounts is availanle | how to fix? | no code, its automatic | Well, I just want the AI reply to say we do have a discount running now instead of saying none | they just need to add in cart | is there issue with chat now? | I cannot chat with customers | yes | Its happening to one of them | yes | yes | still happening | let me try refresh the cache
+
+--- Conv 223 | Shopify ---
+**Scandinavian SkiPass has a question about Chatty**
+
+March 27, 2026
+
+New message about Chatty
+------------------------
+
+Scandinavian SkiPass ( https://scandinavianskipass.se )
+sent you a message. See it below.
+
+
+
+Hi, I just noticed a minor bug on the chatbox where it
+says "chat now" the text. The button is not long enough so the
+text jumps down onto the new row and displays akwardly. Maybe
+this is something that you guys are looking into. Please reply
+to: jacob.kistner@gmail.com instead of default email.
+
+Shopping Bag
+
+Shopping Bag
+
+15‍1 O'Con‍nor Str‍eet,
+Gro‍und fl‍oor, Ot‍tawa ON, K2P 2L8 | Yes, it seems to be fixed now.
+
+I appreciate the fast response!
+
+/ Jacob Kistner
+
+--- Conv 224 | Pawfect Supplies ---
+Help me train ai assistant
+
+--- Conv 225 | PeriodShop ---
+That sound great. Do you have instructions on how I do that please? Do I just create and FAQs page. I'm not sure how to embed the widget | I worked it out thanks | https://periodshop.com.au/pages/avada-faqs | Sorry I got lost working on the FAQs. That's all thanks Sonny. | Hi Team. I'm sorry I update the page handle for the faqs as shown above but it's not displaying any more. Could you assist me with fixing this please https://periodshop.com.au/pages/faqs | thanks so much for your help Sonny | Okey dokey - got it. | Hi again Sonny. Some of my URLs were Failed to due to length of the blog. Is there a way to resubmit them? Where I try to paste the link in (e.g. https://periodshop.com.au/blogs/all/a-guide-to-choosing-kegel-trainers-and-exercisers) it says the link already exists and when I find the link I can't edit it. | sure | Thanks - how do I do that with the others that failed too? | thanks Ausdrey | Hi - I need to purchase 2 x menstrual cups though would like to speak to someone regarding the options as we do not want to purchase the wrong size | no I just want an answer
+
+--- Conv 226 | Cynahigto99 ---
+how can i track my order | cynahigto99@icloud.com | i need to track my order
+
+--- Conv 227 | visitor3565021 ---
+siteniz nasıl | öne düşünürüz onu
+
+--- Conv 228 | Monkey Power ---
+Excelente Megan, deja lo hago | Lo tengo sin verificar Megan, deja intento verificarlo | Muchas gracias Megan por la atención, fuiste muy atenta | Holaa! | Tengo unas dudas al respecto con la app | Cuales son los beneficios que ofrece el pagar el plan pro | ¿Que beneficios tengo al conectar mi canal de ventas de WhatsApp a la ia? | ¿Que hace cada agente que ofrece la ia? | Esos mensajes puedes ser contestados con ia como lo hace Chatty en el sitio web? | Excelente
+Y que hace cada agente que ofrece la ia en plan Pro? | Dice que ofrece 10 agentes | Excelente! | Que otros beneficios da en el plan pro que puede beneficiar a mi tienda? | Porque cuando le doy en activar se pone en blanco? | Al abrirlo me dice esto | Claro 
+MonkeyPower.2026 | Ya me apareció activo, muchísimas gracias, son bastante atentos
+
+--- Conv 229 | Sweatband ---
+Yes | Is there a way to do it using the kalviyo integration? | I have a lead list and I want to reach out to all of them with a custom message if they respond to that - chatty should be able to take over and assist them | I understand - but we specifically want to utilize the whatsapp channel to reach out to our customers rather than email | yes | We need to change the location of the live chat to the right side | Yes please | Yes thank you
+
+--- Conv 230 | MUTE：防音専科 ---
+チャットボットで「カートに追加」を押しても、カートに商品が追加されないです | チャットボットで「カートに追加」を押しても、カートに商品が追加されないです | ありがとうございます。確認しました。 | 今のところありません。ありがとうございました。 | なんでしょうか？ | わかりました | これでよろしいですか？ | こちらの「支援売上」はどういう値ですか？
+①chattyと会話して、chattyからカート追加した上で購入した売上
+②chattyと会話するが、自分でカート追加して購入した売上 | ありがとうございます。
+会話数は、やりとりした数ですか？それとも新しくチャットを始めた回数ですか？ | [AI Feedback]
+
+Bot message: いつもMUTEをご利用いただきありがとうございます！どの商品の厚みについてお知りになりたいか教えていただけますでしょうか？
+
+現在、お客様がご覧になっているのは [防音専科](https://mute-place.com/products/mute-gy8) のようですが、もし[防音専科](https://mute-place.com/products/mute-gy8)の厚さについてお知りになりたい場合は、恐れ入りますが、現時点ではその詳細な情報が手元にございません。
+
+もしよろしければ、[撥水カーペットUKU](https://mute-place.com/products/uku-sample)の色や厚みについて確認したい場合は、無料サンプルをお送りしておりますので、そちらをご利用いただけます。また、[防音専科](https://mute-place.com/products/mute-gy8)のことであれば、サンプル請求や他の商品について、私がお手伝いできることがないか確認させていただきますね！
+
+Feedback: 厚みについて記載しているのに反映されない
+
+ConvoId: B1oGf9tdwQBbhVeITHQg
+MessageId: c97f9ed8-24d7-4a55-abfd-4b4df4758778
+
+--- Conv 231 | Wrapama ---
+correct | how can i connect the ai bot to sms so when someone requests a live agent it shoiuld send a message to a live agent they should log in and answer | ok so how do i connect it with whatsapp? and can i answer via whatsapp? | Hi | i get some email notification that i had a few chats on the website and it even showed me the chats, and yet when i come in to here to see it in the inbox i dont see it | never mind, i found it by resolved | i dont know why but my chat icon stopped showing up on the website? | no, its enabled | how? | 1979 | i just did | are you in? | ok
+
+--- Conv 232 | shopverse.solutions ---
+hi, is order here genuine | reply fast
+
+--- Conv 233 | Oz Peptides Co ---
+or anywhere | yes | correct | ok | no problem | ok i did that now where dothe messages go | when someone writes on chat | if a customer talks on chat, do ireceive the messages | and where | it says account not activated | what do I have to do from here I want the notification from customers to come to my phone automatically | I don’t want to have to press manually on “inbox” every time someone messages. Is that possible? | ios | my husband already tried to download the app but he is unable to login and when he tries to press forgot password he gets this message | ok it worked I think so now if someone messages they will get notified | is there an app for chatty or do I have to go on the website every time | I want somewhere easy
+
+--- Conv 234 | NEUMAFLORES ---
+Help me set up live chat | jjkkj
+
+--- Conv 235 | Best Planet ---
+That was buried in there.  I was changing it in the FAQ's. | Thank you!  That is what I need to change.  Thank you again. | How do I update it?  I do not see that button. | And then saving it will update it? | Thank you for your help.  I successfully fixed it.  Thank you Phoebe. | No, thank you! | Hello - Is it possible in the "Pro" version to create a conversation on Chatty where after Chatty asks a certain set of questions, and the user responds with the information, it can utilize tags to recommend a product?  If so, where would I put this information? | My first thought was a proactive chat. | Hello - Is it possible in the "Pro" version to create a conversation on Chatty where after Chatty asks a certain set of questions, and the user responds with the information, it can utilize tags to recommend a product? If so, where would I put this information? | Yes, for example. Someone is looking for an air pump.  Chatty would be prompted to say, "What size if your pond".  There may be more than 1 question asked, but ultimately based on their responses, Chatty could recommend a certain air pump | What Size IS your pond? | And this would be by utilizing tags | Ok, thank you | OK, I will try that.  Thank you, Megan.
+
+--- Conv 236 | Cineva ---
+ù | Hi I need to login on chatty from the webapp, but i dot have credentials since i use it on shopify | yes, correct | no, I'm using the main shopify account email | youssefelmaidi@gmail.com | sorry mistaken | youssefelmaidi2001@gmail.com | here is the correct one | cant I add another one | ? | sure | awesome, its working | thank you!
+
+--- Conv 237 | 1st Beauty Lab ---
+Btw, is there an App for the iPhone for Chatty? | iOS | Where can I get the App, I can't find it in the App Store. Or what is the name of the app? | In my Inbox on my Computer I can not see a Download App section. | Ah, now I see it, many thanks :) | all good, 👍 | Hi, I have just uploaded my FAQ css-file for English. How can I upload the German translation? | hi | In the FAQ section | I would love to add a specific translation and not use auto translation. Is this possible? | But where, I can't find it? | I have 2 csv files, one in English and one in German. Should I combine it into 1 file? | But in the AI Assistant section > Training data > FAQs ... when I click manage, it takes me to the FAQ section. This is very confusing. There is no way for multi language FAQ bulk upload? This is bad news, I have 70 question in each language ... ufff :(
+
+--- Conv 238 | 4 My Tots ---
+bullet points formatting is incorrect on chatty faq page but ok on edit faq's.. can you fix?
+see attached screenshots | bullet points formatting is incorrect on chatty faq page but ok on edit faq's.. can you fix?
+see attached screenshots | bullet points formatting is incorrect on chatty faq page but ok on edit faq's.. can you fix?
+see attached screenshots | hello? | yes correct | yes please | yes.. what do i need to do? | 8311 | granted | ok.. if I add additional faq's with bullets, will they be fixed also? | ok thx | ok thank you
+
+--- Conv 239 | Skins Sexual Health ---
+I am having difficulties. The chatbot doesn't seem to work | I'm testing and it is saying we don't offer products that we do | yes | Thats working now. However, can  you help me set up because I don't feel I've done it right | Also it takes a while to generate responses | how do I get it to pick up on my blog content too? | I have loads though | can I deactivate it in the meantime and allow for it learn or does it need to remain activated? | brill thank you | How can I select what time our working hours are so it knows to say we are offline duting that time?
+
+--- Conv 240 | Bestowe ---
+hannah.eflin@owner.com | Yes, it works. Also, where can I find the email on where if ever a customer chats via Chatty I will receive it on my email and I would like a member of our team to be CC | Thank you so much, Hana! | Where can I find the API of Chatty? We will need an API for us to create a Zap via Zapier to connect Chatty and Pipedrive | Thank you so much, Aubrey! | Does chatty support webhook or API capabilities?
+
+Since we cant to create a zap via Zapier to have the people who will chat via Chatty to automatically be added in our Pipedrive CRM | *since we want
+
+--- Conv 241 | Atelier De Glow  ---
+? | how do i test it | Yep its working | And how do i add 2 more links below this- one for offer code via email subscription, info about delivery | yes please | is it via FAQ | okayand how do i add subscribe link with offer | i already have it as a proactive chat | how do i show that | its not coming up | yes | ok | ok | It would have been better if there was messages directly coming to WhatsApp. we miss all the chat messages atleast for few hours
+
+--- Conv 242 | UniEssential ---
+Hi
+
+--- Conv 243 | 4kidspoint ---
+Recommendation is done;] | 😍 | I have 15 languages and cannot add one more | Spanish | ok thx | 😀nowit is ok :] thx | hello, when I go to 4kidspoint.lv there are not translated fast answers | where should I translate them? | 😊 | Yep, I am still here | ok | great thanks! | yes, it rowks thanks | works | no thank U, have a nice day
+

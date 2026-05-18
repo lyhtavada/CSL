@@ -2,3 +2,7 @@
 __pycache__/
 *.pyc
 .env
+
+# Obsidian vault — personal knowledge base, not tracked in repo
+liz-vault/
+bq/sa.json

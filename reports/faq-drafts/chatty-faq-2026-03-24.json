@@ -1,0 +1,2485 @@
+{
+  "generated_at": "2026-03-24T17:05:37.545780+07:00",
+  "days": 7,
+  "total_conversations": 206,
+  "topic_summary": {
+    "Other / General": 21,
+    "AI / chatbot not working": 16,
+    "Human handover / agent": 14,
+    "Integration": 8,
+    "Email / inbox issues": 5,
+    "Billing / plan / pricing": 3,
+    "Widget / UI display": 3,
+    "Feature request": 1
+  },
+  "conversations": [
+    {
+      "session_id": "session_2138e4f2-0bee-4c50-9be3-e0e452107845",
+      "updated_at": "2026-03-24 17:01",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Esmaltia",
+      "email": "info@esmaltia.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_327cf3ec-201d-4801-baae-eca7a9bc417a",
+      "updated_at": "2026-03-24 16:59",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "don't ask for rv yet"
+      ],
+      "merchant": "Xinghaoya",
+      "email": "business@xinghaoya.net",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_986b1b94-46f9-4a8b-b5b2-3b99ab9ff0db",
+      "updated_at": "2026-03-24 16:23",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "SAKURA TORMES Fine Jewelry",
+      "email": "info@sakuratormes.com",
+      "first_message": "管理画面はどこですか？",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_79b57cbd-c3d7-4434-ae68-d7798b65b5e4",
+      "updated_at": "2026-03-24 16:06",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Freshine",
+      "email": "support@freshinelife.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_b1009ccc-4e56-43eb-aba8-895851ece238",
+      "updated_at": "2026-03-24 16:03",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "chatty-feedback"
+      ],
+      "merchant": "Tesery Official Store",
+      "email": "li@tesery.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_bdf65e18-f618-46f7-888e-fb5f7190b640",
+      "updated_at": "2026-03-24 15:57",
+      "segments": [
+        "app_chatty",
+        "triage"
+      ],
+      "merchant": "Shopify",
+      "email": "marketing.tohjo@gmail.com",
+      "first_message": "**MiauMall has a question about Chatty**\n\nMarch 24, 2026\n\nNew message about Chatty\n------------------------\n\nMiauMall ( https://miaumall.com )\nsent you a message. See it below.\n\n\n\nChatty still refers customers to outdated information.\nFor example, we recently updated our shipping rates (The minimum\nthreshold for free shipping has increased. It is now $149 for the\nUSA, but Chatty still tells customers it is $129, despite all\nsources being updated).\n\nShopping Bag\n\nShopping Bag\n\n15‍1 O'Con‍nor Str‍eet,\nGro‍und fl‍oor, Ot‍tawa ON, K2P 2L8",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_189c71d5-be72-456b-a44d-0016c47fd38c",
+      "updated_at": "2026-03-24 15:51",
+      "segments": [
+        "app_chatty",
+        "review_yes_chatty"
+      ],
+      "merchant": "Phos & Gaia",
+      "email": "info@phosandgaia.gr",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_74f21536-af22-4c34-8aea-b9af62d3a305",
+      "updated_at": "2026-03-24 15:32",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Freyza",
+      "email": "info@freyza.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_80e63836-5365-4a87-b420-804be2d2a7e1",
+      "updated_at": "2026-03-24 15:30",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Dwarves Bags",
+      "email": "lovevanessaleathershoes@gmail.com",
+      "first_message": "如果顾客不满意Ai assistant 的答案，需要找人工，怎么找呢",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_765129d2-eb6d-4039-917c-0dacec58c4ed",
+      "updated_at": "2026-03-24 15:27",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "END Nutrition",
+      "email": "endnutritiongcc@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_a4e9b411-292d-461c-8c2e-4f812b7639ec",
+      "updated_at": "2026-03-24 15:21",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Lumibricks",
+      "email": "lumibricks2025@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_342a5574-38d2-4213-bc1b-dd2c6cd0f962",
+      "updated_at": "2026-03-24 14:58",
+      "segments": [
+        "free-ai",
+        "app_faqs",
+        "app_chatty"
+      ],
+      "merchant": "HOZO",
+      "email": "meilin@hozodesign.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_9e4f100b-0066-4bb1-ba94-af7e6589f0e0",
+      "updated_at": "2026-03-24 14:22",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "MiauMall",
+      "email": "marketing.tohjo@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_533fa4bf-46ae-45b3-9d0a-8733ca6ec4cd",
+      "updated_at": "2026-03-24 13:32",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Crate and Barrel PH Dev",
+      "email": "anakarinaisabel.g.santiago@smretail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_641eb8d7-2457-4256-a2e7-88003a306147",
+      "updated_at": "2026-03-24 11:40",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "CARLUEX",
+      "email": "hi@carluex.store",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_6a6ef53b-8ff9-4685-8c6c-27f0095be33d",
+      "updated_at": "2026-03-24 11:23",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "BBChoupette",
+      "email": "boutique.bbchoupette@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_05b3d75c-6c44-47ab-8ac3-b028130cd781",
+      "updated_at": "2026-03-24 10:07",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Daixidreadology",
+      "email": "customerservice@daixidreadology.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_4819b458-ac61-492f-af6a-8762e0a9de8c",
+      "updated_at": "2026-03-24 08:19",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Landfall Outpost",
+      "email": "josh@pokenesttcg.com",
+      "first_message": "i have a meeting set up for thursday",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_579d4d29-50b7-4486-a87a-82e9c20832cb",
+      "updated_at": "2026-03-24 08:19",
+      "segments": [
+        "app_chatty",
+        "g2_pending",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "VELVET GLOW",
+      "email": "myvelvetglow@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_0220e616-ebe4-4554-a46c-b169d52c3c4b",
+      "updated_at": "2026-03-24 08:13",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "KUALA",
+      "email": "daniele@kualastyle.com",
+      "first_message": "Is there API to chatty? so I could integrate this solution in our support whastapp system?",
+      "topic": "Integration"
+    },
+    {
+      "session_id": "session_3a1743ef-7729-44cd-ad8d-ab753dabb351",
+      "updated_at": "2026-03-24 08:07",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Koch & Co Pty Ltd",
+      "email": "support@koch.com.au",
+      "first_message": "how can i only load active items in product knowledge, i dont want to include inactive and draft",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_02a02b33-a33f-44b4-85cf-41e2ce04c3e2",
+      "updated_at": "2026-03-24 07:53",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "HapaKristinJP",
+      "email": "japan@hapakristin.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_d84df3fb-3d3a-4470-a64a-547a549d4da4",
+      "updated_at": "2026-03-24 07:29",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Cherish _Closets",
+      "email": "gracecherish349@gmail.com",
+      "first_message": "Hi, I need help training my AI assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_c497318d-bf70-4033-b877-fd2023d7a4fa",
+      "updated_at": "2026-03-24 06:27",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Gearshop NZ",
+      "email": "sales@gearshop.co.nz",
+      "first_message": "We have added a phone number to be used on the WhatsApp channel.  It has been sitting with a status of pending for a week now.  What do we need to do to make this live?",
+      "topic": "Integration"
+    },
+    {
+      "session_id": "session_20225eda-d385-49d3-a460-cc11dfa5055b",
+      "updated_at": "2026-03-24 05:28",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Eagle National Supply",
+      "email": "service@eaglenationalcorp.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_b685f1cc-9dce-4bb8-ba01-90d6a11346e2",
+      "updated_at": "2026-03-24 05:18",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "By.mscreations",
+      "email": "bymscreations93@gmail.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_1a5445b8-a701-4931-b53c-84be9149e917",
+      "updated_at": "2026-03-24 05:09",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_g2"
+      ],
+      "merchant": "Stonehenge Health ",
+      "email": "support@stonehengehealth.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_7eeb38d0-2591-456f-bf37-88c7103b6a04",
+      "updated_at": "2026-03-24 05:04",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Sanderson Lacrosse",
+      "email": "hello@sandersonlacrosse.com",
+      "first_message": "hi. is it possible to use chatty inside a section on my shopify store?",
+      "topic": "Integration"
+    },
+    {
+      "session_id": "session_a4ed1d3b-d9af-433b-b131-b51084083894",
+      "updated_at": "2026-03-24 04:37",
+      "segments": [
+        "app_chatty",
+        "review_yes_chatty"
+      ],
+      "merchant": "ME+HOME",
+      "email": "mehome.online@outlook.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_680ed0ae-d0cc-478f-a782-0c090a9b00af",
+      "updated_at": "2026-03-24 04:03",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Stienhardt",
+      "email": "general@stienhardt.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_b8a16106-5e88-433e-affe-323e4b892621",
+      "updated_at": "2026-03-24 00:16",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Tempo Tea Bar",
+      "email": "hello@tempoteabar.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_3777965c-d397-4556-b571-29b68d28acba",
+      "updated_at": "2026-03-23 23:20",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "COSÉA Skincare Lab",
+      "email": "sandra_estrella_@hotmail.com",
+      "first_message": "where i can change the time to open the chatty message?",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_55cc5f56-736b-4e76-9a00-6f8f0ed58199",
+      "updated_at": "2026-03-23 22:34",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "KartSim",
+      "email": "sales@kart-sim.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_e82aeae5-f7e3-4883-b1c2-08612c763408",
+      "updated_at": "2026-03-23 21:50",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Afflumo",
+      "email": "afflumo@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_38981660-d33b-4b13-bb94-c48ef449d275",
+      "updated_at": "2026-03-23 21:47",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Neuropic",
+      "email": "support@peakflowspace.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_789cbd50-f9c7-4416-b7ec-1cbb1a2c2179",
+      "updated_at": "2026-03-23 21:41",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Guadalupe Cid Arg",
+      "email": "mariacc1984@hotmail.com",
+      "first_message": "hola , quiero saber si en el chat hay informacion sobre la pagina que esta viendo el cliente \n\npor ejemplo si el cliente pregunta . que talle tiene la modelo de la foto ? \nque se pueda ver si es que toma el control un humano para responder desde donde envio la pregunta",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_fbf5f127-65f6-4952-8452-fcdc399fc60c",
+      "updated_at": "2026-03-23 21:26",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "houseofwisdombeauty",
+      "email": "houseofwisdombeauty@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_ac059711-4e10-48ca-a904-7bec63255ec0",
+      "updated_at": "2026-03-23 21:09",
+      "segments": [
+        "app_chatty",
+        "review_yes_chatty"
+      ],
+      "merchant": "Cyo Design",
+      "email": "design@cyodesign.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_08eb453c-2214-47c7-a303-8549740ea5ac",
+      "updated_at": "2026-03-23 21:05",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty",
+        "ai_request_form"
+      ],
+      "merchant": "Sweatband",
+      "email": "support@sweatband.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_99f8abd8-b31b-4150-ab32-a2c457cc34aa",
+      "updated_at": "2026-03-23 20:11",
+      "segments": [
+        "app_chatty",
+        "triage"
+      ],
+      "merchant": "Shopify",
+      "email": "maaenterprisesecommerce@gmail.com",
+      "first_message": "**इनेज Herbal  has a question about Chatty**\n\nMarch 19, 2026\n\nNew message about Chatty\n------------------------\n\nइनेज Herbal ( https://enejhherbal.com )\nsent you a message. See it below.\n\n\n\nI had selected the $0 monthly plan, but an extra amount\nhas been deducted from my account. Please check this issue,\ncancel my subscription, and process a refund. Thank you.\n\nShopping Bag\n\nShopping Bag\n\n15‍1 O'Con‍nor Str‍eet,\nGro‍und fl‍oor, Ot‍tawa ON, K2P 2L8",
+      "topic": "Billing / plan / pricing"
+    },
+    {
+      "session_id": "session_683982f9-526b-4a45-8c84-ecb133ae03f7",
+      "updated_at": "2026-03-23 20:09",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "chatty-feedback"
+      ],
+      "merchant": "True Citrus",
+      "email": "heidi.carney@truecitrus.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_4f508e7d-a26f-4235-8016-e9dff5e7e146",
+      "updated_at": "2026-03-23 19:20",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "MusicCityVacuums",
+      "email": "oreck6@msn.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_e7f2b3a4-0556-435a-8a1a-ef00582564a8",
+      "updated_at": "2026-03-23 19:03",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Yoga Searcher",
+      "email": "dune@yogasearcher.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_b38635f8-8615-4e0f-ab5a-5799de159235",
+      "updated_at": "2026-03-23 18:56",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "yunari.ch",
+      "email": "info@yunari.ch",
+      "first_message": "hallo",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_c721a992-8167-4c13-a565-c08da2324cf4",
+      "updated_at": "2026-03-23 18:12",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "isella",
+      "email": "info@isella.se",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_17a109d0-8ecf-4332-bfb4-477327f09d93",
+      "updated_at": "2026-03-23 18:09",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Label Menswear",
+      "email": "info@label-menswear.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_d266ac64-7495-4f0d-95f6-1bf58dc225ba",
+      "updated_at": "2026-03-23 17:32",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "KANTOORMEUBELS.ONLINE",
+      "email": "info@kantoormeubels.online",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_4a8e5752-189b-4919-8fba-1d13c8b7b04e",
+      "updated_at": "2026-03-23 17:24",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Dr. David Jack",
+      "email": "skincare@drdavidjack.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_ae8661b0-dbb7-4db9-aafd-83273c31985d",
+      "updated_at": "2026-03-23 16:12",
+      "segments": [
+        "rv_yes_chatty",
+        "app_faqs",
+        "chatty-feedback",
+        "review_yes_chatty",
+        "app_chatty"
+      ],
+      "merchant": "HapaKristinTW",
+      "email": "hapakristintaiwan@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_5e71f65b-5ad1-41c7-9a3a-ed50aff4b559",
+      "updated_at": "2026-03-23 15:56",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Elumedo",
+      "email": "info@elumedo.de",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_5f7ee685-e6b5-4f47-9231-bf8022b28975",
+      "updated_at": "2026-03-23 15:13",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Be Weird",
+      "email": "support@beweird.in",
+      "first_message": "hello i want see the all products",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_67ead256-a418-49c4-b029-ad78b001deee",
+      "updated_at": "2026-03-23 14:13",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Bodymart.in",
+      "email": "rsridevi12@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_1e50fd4b-0582-4b6b-8618-c00af1b3cb93",
+      "updated_at": "2026-03-23 13:50",
+      "segments": [
+        "app_chatty",
+        "g2_pending",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "UA Worldwide",
+      "email": "sales@uaworldwide.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_cf5b669c-f9d9-4c15-864b-a273e4812ca2",
+      "updated_at": "2026-03-23 11:50",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Kicksown",
+      "email": "support@kicksown.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_438e33e3-74a0-46eb-b77b-9a72c95c7234",
+      "updated_at": "2026-03-23 11:06",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Wonder Lab",
+      "email": "emmanuelilaye85@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_692d2b81-9834-4c19-ae84-48b99fd12afa",
+      "updated_at": "2026-03-23 10:01",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "SarnaiVITASHOP",
+      "email": "sarnaivitashop@gmail.com",
+      "first_message": "сайн уу",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_08df5bed-721f-4b7f-9385-c4444f8f8fdf",
+      "updated_at": "2026-03-23 08:38",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "INJORA",
+      "email": "injorarc@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_be0dd80f-9072-419d-878d-1028effaace7",
+      "updated_at": "2026-03-23 08:33",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "BioFlexOEM",
+      "email": "qhyuan@qhyuan.freeqiye.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_9ced6fab-cd9e-43c3-9c97-98d523f19589",
+      "updated_at": "2026-03-23 08:25",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "SHONE",
+      "email": "sales6@shonelighting.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_20742cd7-8bf7-4ba7-b62f-ad91b4dfa760",
+      "updated_at": "2026-03-23 06:04",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Ninetynine Dreams",
+      "email": "ninetyninedreams.customer@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_3690bd43-6f32-43ac-8d23-320bc545803e",
+      "updated_at": "2026-03-23 05:17",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Inbals Tarot",
+      "email": "contact@inbalstarot.com",
+      "first_message": "obwohl ich alle daten eingegeben habe (alle urls) wird auf meiner webseite immer noch die (falsche) standardantwort gegeben",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_15105d69-0c85-42b6-a878-756881ef5d4a",
+      "updated_at": "2026-03-23 03:46",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "BioBazar",
+      "email": "biobazar05@gmail.com",
+      "first_message": "can i use my phone to answer live chats",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_d0166e6d-fcf0-4156-8d85-bd3643fc5ce3",
+      "updated_at": "2026-03-23 03:14",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "YZBRAND ",
+      "email": "yzbrand@cwxem1-k9.co.site",
+      "first_message": "Help me train ai assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_2afaad71-c5f1-44c9-8763-4446bcd13e01",
+      "updated_at": "2026-03-23 00:37",
+      "segments": [
+        "app_chatty",
+        "rv_yes_chatty",
+        "app_faqs",
+        "chatty"
+      ],
+      "merchant": "REFLECTME",
+      "email": "sanjana@reflectmedolls.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_1adb991d-a696-46d0-9686-dfc937aabe4c",
+      "updated_at": "2026-03-23 00:28",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Ryel Nova ",
+      "email": "ryelnova@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_0c0a61d6-d624-420a-aa7c-bd56682f0b87",
+      "updated_at": "2026-03-23 00:09",
+      "segments": [
+        "chat",
+        "app_faqs",
+        "review_yes_faq",
+        "app_chatty"
+      ],
+      "merchant": "Zeespares.in",
+      "email": "zeespares@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_feeff030-529b-445a-91c2-2daa45a807a7",
+      "updated_at": "2026-03-22 23:23",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "bCasual",
+      "email": "info@bcasual.cl",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_703e8e90-f4f8-4611-9cc1-a7eecaae667c",
+      "updated_at": "2026-03-22 23:09",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "PetVinitys",
+      "email": "trikihagair@yahoo.fr",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_df7dcdb7-20d2-46bc-9a29-ab32f9f0dffa",
+      "updated_at": "2026-03-22 23:08",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Orvion",
+      "email": "info@orvionstore.in",
+      "first_message": "can you tell me the return policy",
+      "topic": "Feature request"
+    },
+    {
+      "session_id": "session_8fd153c0-1647-4e1b-84c3-45902f3caf3c",
+      "updated_at": "2026-03-22 22:05",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "QR Blkn",
+      "email": "info.qr.blkn@gmail.com",
+      "first_message": "Hi, I need help training my AI assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_901cba55-1d67-4b10-9f0c-5f6361006382",
+      "updated_at": "2026-03-22 19:51",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_g2"
+      ],
+      "merchant": "Le Royaume de Lecki",
+      "email": "s.guiraud@royaumedelecki.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_f3e2fbd6-5c4f-4f74-ab4f-410039384c61",
+      "updated_at": "2026-03-22 17:58",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Best Planet",
+      "email": "carol@best-planet.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_e1a24a45-2c41-4096-8b08-024b8d2b7d15",
+      "updated_at": "2026-03-22 17:05",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Le Émir ",
+      "email": "customersupport@leemir.co",
+      "first_message": "Hi, I need help training my AI assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_7da0971e-41d9-4da7-8258-a82655957d3b",
+      "updated_at": "2026-03-22 16:24",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Let's Conceive",
+      "email": "teamletsconceive@gmail.com",
+      "first_message": "Hi, I need help training my AI assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_cfdbb91f-d87f-415b-af43-ba3c3c6903c2",
+      "updated_at": "2026-03-22 13:47",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "NestLinkStore",
+      "email": "nestlinkstore@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_a21ad5a1-d61e-4112-bb78-fec0a918be02",
+      "updated_at": "2026-03-22 10:53",
+      "segments": [
+        "app_chatty",
+        "escalate-human",
+        "app_faqs",
+        "warning"
+      ],
+      "merchant": "Scently254",
+      "email": "lakonalake@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_83eac136-cd67-465e-a989-9cde5b7492c9",
+      "updated_at": "2026-03-22 07:36",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Maison du mobilier ",
+      "email": "contact@maisondumobilier.fr",
+      "first_message": "Hi, I need help training my AI assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_c93ee520-01c2-409b-b628-65805184864b",
+      "updated_at": "2026-03-22 03:09",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Moto Gallery ",
+      "email": "ryan@motogallery.com",
+      "first_message": "Hello",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_5494afd1-8e4f-4bcb-9d85-7508f6562c84",
+      "updated_at": "2026-03-21 22:08",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Mucho Divertido",
+      "email": "muchodivertido@hotmail.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_ff93b53c-a0d7-47ac-9d88-f855b8f13a6c",
+      "updated_at": "2026-03-21 21:17",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Feetyx® Site Officiel | N°1 des semelles en France",
+      "email": "lucasecommerce2026@hotmail.com",
+      "first_message": "comment mettre la bulle de chat plus haut",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_5a16ee20-8d96-409e-9d60-2fd91041ed54",
+      "updated_at": "2026-03-21 20:08",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Bella Mode",
+      "email": "willi.seidlich@gmx.de",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_f46a82d1-db2f-41fd-b2b8-d4b122d6b6e7",
+      "updated_at": "2026-03-21 19:20",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Outlaws Fashion",
+      "email": "suman@outlawsfashion.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_0a76bfe4-e031-48e3-9237-e3104ceae2bc",
+      "updated_at": "2026-03-21 19:00",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Outdoors Lifestyle",
+      "email": "letschat@outdoorslifestyle.com.au",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_2afe1cf5-d39c-4d79-8025-1a35825cfe69",
+      "updated_at": "2026-03-21 18:57",
+      "segments": [
+        "app_chatty",
+        "rv_yes_chatty",
+        "app_faqs"
+      ],
+      "merchant": "cafetwin",
+      "email": "marketing@cafetwin.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_aec1915a-9934-40cc-93b2-66540b84955b",
+      "updated_at": "2026-03-21 18:15",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Almond Muse",
+      "email": "almondmuse@hotmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_7fcde2d8-687c-4dac-a3a6-9d323fd36749",
+      "updated_at": "2026-03-21 17:56",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Jiby Dog Crew",
+      "email": "info@jibydogcrew.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_1793b721-eb4e-4841-93b8-3e2d7148017a",
+      "updated_at": "2026-03-21 17:00",
+      "segments": [
+        "app_chatty",
+        "chatty-feedback"
+      ],
+      "merchant": "Todo Importa",
+      "email": "todoimporta.global@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_bfd9647d-c7fa-425a-bcab-ce771284c0ab",
+      "updated_at": "2026-03-21 15:24",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "GLARADO",
+      "email": "erayyilmazart@gmail.com",
+      "first_message": "app var mı ips",
+      "topic": "Integration"
+    },
+    {
+      "session_id": "session_5ffc81a5-765c-4611-8529-b38d29cb63d7",
+      "updated_at": "2026-03-21 14:21",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Spike's Durian - All Season MSW",
+      "email": "hello@spikedurian.sg",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_8b196939-024b-45f5-be4b-19a4a37a0c43",
+      "updated_at": "2026-03-21 09:11",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Fresh Sip Gear",
+      "email": "contact@freshsipgear.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_0af19398-fbe7-46fe-83b9-44f152573bdd",
+      "updated_at": "2026-03-21 07:56",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Milky Goodness",
+      "email": "rebecca@milkygoodness.com.au",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_16c78d04-bebb-41e7-9521-0630f3bd79f0",
+      "updated_at": "2026-03-21 05:28",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Dermedic",
+      "email": "hello@dermedic-store.com",
+      "first_message": "quiero conectar con growave",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_b082d247-768b-4880-93cd-7676678eb052",
+      "updated_at": "2026-03-21 05:08",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Oeser",
+      "email": "marcomeraja35@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_bc1a4b1a-68a5-4296-87db-4921adeda707",
+      "updated_at": "2026-03-21 01:06",
+      "segments": [
+        "app_faqs"
+      ],
+      "merchant": "Monday Monarch",
+      "email": "admin@mondaymonarch.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_922538c5-2128-4459-9e25-c88ef7c00f78",
+      "updated_at": "2026-03-21 00:02",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "4kidspoint",
+      "email": "aleksandrabalon@ergopoint.pl",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_be9f3f4d-e5ca-4d73-8390-a742f8fa9e8c",
+      "updated_at": "2026-03-20 22:44",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "triage",
+        "chatty-feedback"
+      ],
+      "merchant": "umakov.sk",
+      "email": "info@umakov.sk",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_e7d1d6ad-c1c2-44c5-8481-35903b25ed5c",
+      "updated_at": "2026-03-20 22:09",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Mahari",
+      "email": "mahari.customercare@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_dd5043c0-63ee-4ebf-844b-685791c9f6ae",
+      "updated_at": "2026-03-20 22:05",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Trend and Bend",
+      "email": "trendandbendltd@gmail.com",
+      "first_message": "I WANT TO CHANGE THE CHAT HEADER TEXT COLOR TO WHITE",
+      "topic": "Widget / UI display"
+    },
+    {
+      "session_id": "session_6d4f8070-c9a8-49ac-bb4e-63acdf640141",
+      "updated_at": "2026-03-20 21:40",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Licence24.ch",
+      "email": "hello@licence24.ch",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_051d8798-83a3-4f92-9ca1-adc61e435e1e",
+      "updated_at": "2026-03-20 21:18",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Mr Happy Calcetines",
+      "email": "ventaonline@mrhappy.com.co",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_5640db56-a62e-4aaf-a174-31d1805acd54",
+      "updated_at": "2026-03-20 21:05",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "ameriDroid",
+      "email": "bo@ameridroid.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_5180b949-1e05-425d-9f57-a430fc4e0ba8",
+      "updated_at": "2026-03-20 14:35",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Roost",
+      "email": "simone@decorohome.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_b7480866-b9d4-48b2-a669-8183f79f9c2b",
+      "updated_at": "2026-03-20 13:54",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "BENI",
+      "email": "hello@benifabrics.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_9113a8b8-1e35-4c1a-a5c5-245a7782584e",
+      "updated_at": "2026-03-20 13:45",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "NORSKK",
+      "email": "info@norskk.nl",
+      "first_message": "hello, i have a button in the chat with no text on it. It is the right button. Do you have any idea how i can fix this?",
+      "topic": "Widget / UI display"
+    },
+    {
+      "session_id": "session_932cee42-3dba-4f66-a723-b553f40ffd19",
+      "updated_at": "2026-03-20 13:30",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "JolieSKN",
+      "email": "customerservice@jolieskn.com",
+      "first_message": "Please help me with verifying forwarding email status",
+      "topic": "Email / inbox issues"
+    },
+    {
+      "session_id": "session_279ac209-c8f9-403d-9a21-18c0c8e68315",
+      "updated_at": "2026-03-20 13:00",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "B&B Organics",
+      "email": "info@bnborganics.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_d9a3b615-2201-41ea-8a84-cfdd80c361a6",
+      "updated_at": "2026-03-20 12:40",
+      "segments": [
+        "app_chatty",
+        "rv_yes_chatty",
+        "app_faqs"
+      ],
+      "merchant": "VXAparts Online Store",
+      "email": "support@vxaparts.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_d7095d42-5cbb-49d6-91a1-7bce9fbc2c31",
+      "updated_at": "2026-03-20 12:14",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Vopho",
+      "email": "info@vopho.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_f50bc52a-ac2e-4c6e-9517-1c10f54fa466",
+      "updated_at": "2026-03-20 11:47",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Auraani",
+      "email": "infonexonweb@gmail.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_e3fe07fe-1a45-433a-b251-d8699bf3c6ec",
+      "updated_at": "2026-03-20 08:43",
+      "segments": [
+        "app_chatty",
+        "g2_pending",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "SAMPUR",
+      "email": "sav@sampur.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_0cd2f877-ac11-44cf-ab9f-e15d1f75fa54",
+      "updated_at": "2026-03-20 06:24",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Renovatio Labs",
+      "email": "info@renovatio-labs.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_f93cf54d-e3f9-43d7-b972-4fc0c727f712",
+      "updated_at": "2026-03-20 04:04",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "IMPLICIT",
+      "email": "contacto@implicit.cl",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_a373518f-afed-43c1-b083-48a57e921313",
+      "updated_at": "2026-03-20 03:27",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "NEUMAFLORES",
+      "email": "ventasneumaflores@gmail.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_727345ca-52f7-4146-a8b0-00cc8f0e950c",
+      "updated_at": "2026-03-20 02:04",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "BERLINMAUER",
+      "email": "leonardo@oesteargentino.com.ar",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_221ce5a0-df67-4a5e-a54c-eb52499b1711",
+      "updated_at": "2026-03-20 01:58",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Spooky Slices",
+      "email": "shawn.jackson@shopify.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_65459b1f-eb5e-4227-940d-fbe6eb5eee65",
+      "updated_at": "2026-03-20 01:54",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "ViTAC Solutions",
+      "email": "info@vitacsolutions.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_e7d0de38-f066-4493-ba46-5020b6a765d5",
+      "updated_at": "2026-03-20 00:33",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Pettypurse",
+      "email": "schneiderb638@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_28a734c3-c63d-49bf-8737-466aef7181b6",
+      "updated_at": "2026-03-20 00:32",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "For Your Intimacy ",
+      "email": "fyiparties@gmail.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_5f8391ac-0951-450b-a4be-dd94c8c94085",
+      "updated_at": "2026-03-20 00:22",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Mala Handworks",
+      "email": "hello@malahandworks.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_474e7c8e-3ef9-466f-adc5-146b5fdba3a8",
+      "updated_at": "2026-03-19 22:31",
+      "segments": [
+        "app_chatty",
+        "triage"
+      ],
+      "merchant": "Shopify",
+      "email": "ryan.mccowan@bollmanauto.com",
+      "first_message": "**Bollman Power & Equipment has a question about Chatty**\n\nMarch 19, 2026\n\nNew message about Chatty\n------------------------\n\nBollman Power & Equipment ( https://www.bollmanpower.com )\nsent you a message. See it below.\n\n\n\nChatty does not let us know when someone wants to contact\nus or when there is a message and we are missing oppotrunities\n\nShopping Bag\n\nShopping Bag\n\n15‍1 O'Con‍nor Str‍eet,\nGro‍und fl‍oor, Ot‍tawa ON, K2P 2L8",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_4d0d0a20-1f6d-46a0-ae0f-277eea2de466",
+      "updated_at": "2026-03-19 22:16",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Coaltown Coffee",
+      "email": "hello@coaltowncoffee.co.uk",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_cf815418-5977-43f8-ad47-480f3156d093",
+      "updated_at": "2026-03-19 21:50",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "chatty-feedback"
+      ],
+      "merchant": "True Citrus",
+      "email": "heidi.carney@truecitrus.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_ebbeb3f6-84a4-4098-b737-19063a9df0ea",
+      "updated_at": "2026-03-19 20:56",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Mexicada",
+      "email": "support@mexicada.shop",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_0e792d2a-9d9b-4d9a-8be3-cedd6be5f0a2",
+      "updated_at": "2026-03-19 20:18",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "IOAKU by Fanny Ek",
+      "email": "fanny@ioaku.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_d0541a50-5930-4908-aba5-8f3f53218596",
+      "updated_at": "2026-03-19 19:54",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Walk Like A Pro",
+      "email": "walklikeapro665@gmail.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_62814124-83d1-48fe-8fba-121f836ebb2c",
+      "updated_at": "2026-03-19 19:08",
+      "segments": [
+        "app_faqs",
+        "review_yes_chatty",
+        "4-star",
+        "app_chatty",
+        "review_yes_g2"
+      ],
+      "merchant": "H&T",
+      "email": "shoponline@handt.co.uk",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_1f8a2485-d1b6-4692-98d8-ac179e5271d6",
+      "updated_at": "2026-03-19 18:50",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Daniel Oxford Hardware",
+      "email": "sales@danieloxford.com",
+      "first_message": "do you have an app",
+      "topic": "Integration"
+    },
+    {
+      "session_id": "session_ff4b337a-5142-4076-b328-9359b020be63",
+      "updated_at": "2026-03-19 18:26",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Kingstone Sculpture",
+      "email": "sculpturekingstone@gmail.com",
+      "first_message": "你们有移动app吗",
+      "topic": "Integration"
+    },
+    {
+      "session_id": "session_0ca28b56-918b-4673-a91c-9219df251745",
+      "updated_at": "2026-03-19 15:36",
+      "segments": [
+        "app_faqs",
+        "chatty-feedback",
+        "review_yes_chatty",
+        "app_chatty",
+        "triage"
+      ],
+      "merchant": "DAMBAT Jastrzębski S.K.A.",
+      "email": "biuro@dambat.pl",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_8c1964e5-bbec-4636-a7d2-91d2d0567a5b",
+      "updated_at": "2026-03-19 14:47",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "canfish.store",
+      "email": "sales@canfishcam.com",
+      "first_message": "我想要关闭弹窗推荐",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_55c1a529-a2ce-41c0-8bde-0a01e4be90f4",
+      "updated_at": "2026-03-19 13:47",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Wallke Ebike",
+      "email": "sales@wallkeebike.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_3c7f686a-b664-4537-975a-664f1f67cf54",
+      "updated_at": "2026-03-19 13:44",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Modern Shade",
+      "email": "support@modernshade.org",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_9046e306-6e60-4cb9-9721-a5ae2892e5a9",
+      "updated_at": "2026-03-19 13:11",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Aurum Home",
+      "email": "mariorabi@outlook.com",
+      "first_message": "Hello",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_4ed90e45-bd0b-4b67-a603-9194b19bcba2",
+      "updated_at": "2026-03-19 11:49",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Sassy.is",
+      "email": "sassy@sassy.is",
+      "first_message": "how can i train my Ai ?",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_827f0abd-8fa4-42cd-a840-08ac06a22565",
+      "updated_at": "2026-03-19 11:05",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Cololeaf",
+      "email": "cololeaf@outlook.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_e1c3c31e-442c-47ca-8bfe-beb6bf21eb13",
+      "updated_at": "2026-03-19 10:51",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "TUNO",
+      "email": "hello@tunowear.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_a1fba34a-a1d0-4a59-807a-13133207a22d",
+      "updated_at": "2026-03-19 10:37",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Agripunct",
+      "email": "iagaru.alessio@yahoo.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_e92106cb-073b-4513-9e61-0d6da635ca0c",
+      "updated_at": "2026-03-19 10:18",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_trustpilot"
+      ],
+      "merchant": "Korean Ultrasound Beauty Devices | Estella Official",
+      "email": "sales@metasonic.kr",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_fae5fa8f-f8df-46e0-a934-1d25cbcee4c2",
+      "updated_at": "2026-03-19 09:32",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Johnny Reb",
+      "email": "info@johnnyreb.com.au",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_d6eadeb4-bf3a-47da-8434-939fac04a129",
+      "updated_at": "2026-03-19 09:21",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "NEW ZEALAND BED COMPANY",
+      "email": "contact@nzbeds.co.nz",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_49aac28c-7793-4626-a221-c8195a0b57ea",
+      "updated_at": "2026-03-19 09:17",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty",
+        "careful-support-required"
+      ],
+      "merchant": "8849 Official Website",
+      "email": "support@8849tech.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_42d3bc85-d215-42da-9dc8-cf8d53019486",
+      "updated_at": "2026-03-19 09:03",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "chatty-feedback"
+      ],
+      "merchant": "Kopke Group Wine Shop",
+      "email": "antonio.coelho@kopkegroup.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_383d8941-f980-46bb-bba4-cbb5a93601cf",
+      "updated_at": "2026-03-19 08:22",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Trevit",
+      "email": "support@trevit.store",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_0a03a511-a7cc-4f40-97f7-fe9852be0edb",
+      "updated_at": "2026-03-19 07:56",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Adored Kids Toys",
+      "email": "6409796@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_837bbec7-9842-4219-ab98-babffaa31183",
+      "updated_at": "2026-03-19 07:50",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "DELSEY PARIS",
+      "email": "ecom@delsey.com.br",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_1e7066ba-9f13-4e71-9381-ce60829c4561",
+      "updated_at": "2026-03-19 06:22",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Yellowline Coffee Roasters",
+      "email": "chris@yellowlinecoffee.com.au",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_b162a9f2-fdc3-4ce6-8afc-45ecb5ed92ef",
+      "updated_at": "2026-03-19 05:08",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Andreine",
+      "email": "seliak.milan@gmail.com",
+      "first_message": "Hi, Mám všetko nastavené, testovací chat mi funguje, ale na frontende mi nefungujú prednastavené otázky ani umelá inteligencia",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_370a4969-f201-45e7-9785-0d5ab316519c",
+      "updated_at": "2026-03-19 04:49",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Host Lab Tools",
+      "email": "hostlabtools@gmail.com",
+      "first_message": "I can't find the option to enable notifications. What can I do?",
+      "topic": "Email / inbox issues"
+    },
+    {
+      "session_id": "session_aa73614d-1623-4daf-9f40-bc833e96a344",
+      "updated_at": "2026-03-19 03:47",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Farida Floral",
+      "email": "info@faridafloral.com",
+      "first_message": "do you guys have a mobile app",
+      "topic": "Integration"
+    },
+    {
+      "session_id": "session_b255deb5-9bbe-463e-8629-0337d7b31450",
+      "updated_at": "2026-03-19 03:00",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Wrapama",
+      "email": "jkrausz@wrapama.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_d0ed5aa3-1c21-47bc-a5f1-409951aec746",
+      "updated_at": "2026-03-19 02:14",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "chatty-feedback"
+      ],
+      "merchant": "Luminicell",
+      "email": "info@luminicell.com",
+      "first_message": "[AI Feedback]\n\nBot message: Hello! I can certainly help you with storage conditions for our products.\n\nFor **Luminicell products**, they are delivered at ambient shipment condition, but upon receiving them, you should store them under recommended storage conditions of **4°C**.\n\nRegarding **Cellaris™** and **Vascular Tracker™**, they are stable at room temperature for a couple of days. However, we strongly recommend storing all probes and solutions at **4°C**. Please do not freeze our products.\n\nIs there a specific product you were looking for details on, or can I help you find and browse any products?\n\nFeedback: Luminicell products are Cellaris™ and Vascular Tracker™. Therefore you can use phrasing “Luminicell products” and the combination “Cellaris™ and Vascular Tracker™” interchangeably \n\nConvoId: \nMessageId: 199a774f-ac85-46f9-b69f-b8a0e6288ee8",
+      "topic": "Billing / plan / pricing"
+    },
+    {
+      "session_id": "session_df0397eb-7f8e-4bdf-8cf2-058eec047f4b",
+      "updated_at": "2026-03-19 01:46",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Vera Haus",
+      "email": "shop@verahaussectionals.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_d46c2058-d8ce-4d1b-a32f-b9a4e9ccf993",
+      "updated_at": "2026-03-19 00:53",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "DIVÖ",
+      "email": "darayusdhabhar@gmail.com",
+      "first_message": "how can i train my bot?",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_c6e0cfb2-2fa0-4deb-b99d-ddd83c87fe6c",
+      "updated_at": "2026-03-19 00:04",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Bestowe",
+      "email": "catherine@bestowegifting.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_c515916a-8d99-430c-b70b-2670fe9db793",
+      "updated_at": "2026-03-18 23:58",
+      "segments": [
+        "careful-support-required",
+        "app_faqs",
+        "1* review",
+        "high_risk",
+        "app_chatty"
+      ],
+      "merchant": "AgozTech",
+      "email": "info@agoztech.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_b7fd8775-4a4f-4f6a-ab02-3a80131b2d96",
+      "updated_at": "2026-03-18 23:53",
+      "segments": [
+        "app_chatty",
+        "rv_yes_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Oilo",
+      "email": "clayton@oilostudio.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_be1c9fde-4a0f-454a-b1d3-0a8edd126120",
+      "updated_at": "2026-03-18 23:40",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "casimir",
+      "email": "info@casimir.shop",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_4970b0c9-ca8e-4035-b9a3-44533f7ca8e2",
+      "updated_at": "2026-03-18 23:10",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Anthony's",
+      "email": "pedidos@tiendasanthonys.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_17a534ad-9782-45fb-90af-722453f8703a",
+      "updated_at": "2026-03-18 22:37",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "The Bali Concept",
+      "email": "contact@thebaliconcept.co.uk",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_c69bf7b6-168d-4dc2-b7bf-c0ffcfc88555",
+      "updated_at": "2026-03-18 21:44",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Meldershop.nl",
+      "email": "ashrafelbakali@outlook.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_ab6b713f-2b57-4c5b-9dbc-1a05eb3a01e1",
+      "updated_at": "2026-03-18 20:56",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "E-Streetbikes",
+      "email": "admin@e-streetbikes.de",
+      "first_message": "Hallo",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_1b2ff847-58f3-47ea-adb4-34e0a191d888",
+      "updated_at": "2026-03-18 20:27",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "PrimeNest",
+      "email": "oranbusi00@gmail.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_38d03db0-f14f-4ad4-b3b7-2132a3445717",
+      "updated_at": "2026-03-18 20:13",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Lumina Ladies",
+      "email": "lumina.ladies.contact@gmail.com",
+      "first_message": "hello",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_6e302b19-b156-4d5f-9003-9bb3b01ae661",
+      "updated_at": "2026-03-18 18:28",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Morelle Jewels",
+      "email": "morellejewels@gmail.com",
+      "first_message": "i am not able to sync products",
+      "topic": "Integration"
+    },
+    {
+      "session_id": "session_9167d8fc-6516-4c37-9ee8-f3119482cd05",
+      "updated_at": "2026-03-18 17:35",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "PawSwing®",
+      "email": "service@paw-swing.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_ee42c67c-87b3-42e5-afff-04f7c6266490",
+      "updated_at": "2026-03-18 17:08",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty",
+        "chatty-feedback"
+      ],
+      "merchant": "BodyMods",
+      "email": "orders@bodymods.ca",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_2f857737-5255-4e29-b4bd-83fe72cc1398",
+      "updated_at": "2026-03-18 17:08",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Delight",
+      "email": "hi@delightmytaste.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_674ec95d-c1f8-41ad-a4af-edc84bc2116d",
+      "updated_at": "2026-03-18 16:50",
+      "segments": [
+        "app_chatty",
+        "triage"
+      ],
+      "merchant": "Manuel Bonilla",
+      "email": "bonillarius@gmail.com",
+      "first_message": "**Question for Chatty app**\n\nHi,\n\nI downloaded your app and am trying it out in free mode. I’m training the\nAI, but I’d like to know how I can disable or hide these options: “Show AI\nthinking steps,” “Display reasoning process,” or “Show search status.” I’m\nnot sure what to call them. I tried using a command or prompt in\nBoundaries, but it didn’t work.\n\nThank you for your help.",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_90e173d3-0c50-49f0-aaf7-7b5d68326263",
+      "updated_at": "2026-03-18 16:09",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Stick on Tiles Australia",
+      "email": "info@stickontiles.com.au",
+      "first_message": "I want to use more category icons",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_9c4fc8df-c0c7-4261-aa7f-44c55f3adcfd",
+      "updated_at": "2026-03-18 15:30",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "iTour",
+      "email": "itourtranslatormarketing@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_8ff06f7b-7d71-4f5d-8ee0-b3db7ee6488b",
+      "updated_at": "2026-03-18 13:23",
+      "segments": [
+        "app_chatty",
+        "rv_yes_chatty",
+        "app_faqs",
+        "4-star"
+      ],
+      "merchant": "AOKI GLOBAL Online Store",
+      "email": "global_info@aoki-hd.co.jp",
+      "first_message": "Hi, support team\nIf you scroll the screen without pressing the chat icon, messages will appear behind the icon, as shown in the attached image.\nCould you tell me how to hide the messages?",
+      "topic": "Widget / UI display"
+    },
+    {
+      "session_id": "session_61ef3914-b760-4d39-88e9-9ade2eebd236",
+      "updated_at": "2026-03-18 12:45",
+      "segments": [
+        "app_chatty",
+        "triage"
+      ],
+      "merchant": "Jeff",
+      "email": "jeff@injora.com",
+      "first_message": "Hi Nolan,\nThanks for your message and the offer.\nCould you please let me know how to apply the 10% discount?\nRegarding the case study, since we have only been using Chatty for a few days, we would prefer to evaluate the performance firstly.\nThanks for your understanding, and we look forward to seeing how Chatty performs for us.",
+      "topic": "Email / inbox issues"
+    },
+    {
+      "session_id": "session_0cac466b-17c3-47f7-a613-627ee7fde12a",
+      "updated_at": "2026-03-18 12:02",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "PrettyBirds",
+      "email": "binhxinh.kp@gmail.com",
+      "first_message": "Hi, I need help training my AI assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_f66943bd-4e7e-464d-914a-16a170cbc1d4",
+      "updated_at": "2026-03-18 11:59",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Talis Us",
+      "email": "mmtalisus@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_6a72a5a9-97bb-4b3b-ae1d-4bcf86b7bdd7",
+      "updated_at": "2026-03-18 11:04",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "SKYROVER",
+      "email": "after-sales@skyroverdrone.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_ce9c92b7-a9d2-46ec-851c-c50f981dd3cd",
+      "updated_at": "2026-03-18 10:36",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Fast Tuning Car",
+      "email": "contact@fasttuningcar.com",
+      "first_message": "Help me train ai assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_32e2d3be-d213-42bc-b087-e0279c3c48ec",
+      "updated_at": "2026-03-18 09:28",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "VERA HAUS",
+      "email": "shop@verahaussectionals.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_bf8336b5-bf9a-43dd-b229-674e1f690e06",
+      "updated_at": "2026-03-18 09:04",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "InfinityDress.co.uk",
+      "email": "shop@infinitydress.com",
+      "first_message": "我的两个站infinitydress AU 和UK都使用了chatty, 但是我的两个站的工单系统使用的是一个，现在已为AU集成工单系统zendesk，UK集成时无法完成，请问可以两个chatty帐号同时和一个工单系统集成吗？",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_f8a12dbb-9c6b-4483-a67e-e3913671a975",
+      "updated_at": "2026-03-18 08:46",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "STEAD",
+      "email": "info@stead-japan.co.jp",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_4f3f9a27-7857-42b0-887b-d810e947df0a",
+      "updated_at": "2026-03-18 08:32",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty",
+        "review_trustpilot"
+      ],
+      "merchant": "Anna Lohe Art",
+      "email": "hello@annalohe.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_16d7ab9c-ddd2-4d4e-8b6a-0c4b5a2b56d9",
+      "updated_at": "2026-03-18 06:57",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "AOKI GLOBAL Online Store",
+      "email": "global_info@aoki-hd.co.jp",
+      "first_message": "Hi, I would like to change admins email address.  Could you tell me how?",
+      "topic": "Email / inbox issues"
+    },
+    {
+      "session_id": "session_58e5eb37-8f11-46ab-ab01-1e0fd9c5a61a",
+      "updated_at": "2026-03-18 05:02",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "chatnative_store01",
+      "email": "umse2008@gmail.com",
+      "first_message": "Hi, I need help training my AI assistant",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_f912117c-fd41-468a-9b63-bf582174ba87",
+      "updated_at": "2026-03-18 02:50",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Ever Well Health",
+      "email": "info@everwellhealthbali.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_158635b6-46c6-4a2e-b530-6f2a662da65f",
+      "updated_at": "2026-03-18 01:54",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Easychoice",
+      "email": "olemartin@easychoice.no",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_25e25c03-3f79-4a9a-85e9-82f706f5a09f",
+      "updated_at": "2026-03-18 01:32",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "My Store",
+      "email": "glimnixlight@gmail.com",
+      "first_message": "It's a joke that there are no free plans.\n\n\n\nThe last update is bad.",
+      "topic": "Billing / plan / pricing"
+    },
+    {
+      "session_id": "session_51ee9a1b-bba4-46a5-a6de-bea2cf790dc3",
+      "updated_at": "2026-03-18 01:23",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Anderic",
+      "email": "help@anderic.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_5cf50519-e1be-4df5-a15f-3fcf79493816",
+      "updated_at": "2026-03-18 00:58",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "TSURU COUTEAUX",
+      "email": "info@tsurucouteaux.com",
+      "first_message": "Help me set up live chat",
+      "topic": "Human handover / agent"
+    },
+    {
+      "session_id": "session_ab85e76d-cd2f-4b16-8c39-6ef72fed2b1a",
+      "updated_at": "2026-03-18 00:23",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Magnum Wrapping",
+      "email": "bao@magnumwrapping.com",
+      "first_message": "I am not receiving an email to activate my account",
+      "topic": "Email / inbox issues"
+    },
+    {
+      "session_id": "session_2615557d-ec39-41eb-ad04-21300ffa644c",
+      "updated_at": "2026-03-18 00:22",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Wrap-Wizards.com - Premium Car Mockups Templates",
+      "email": "info@wrap-wizards.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_20b9a961-a4b7-4a03-935c-fa318bcb6d6a",
+      "updated_at": "2026-03-18 00:15",
+      "segments": [
+        "app_chatty",
+        "chatty-feedback"
+      ],
+      "merchant": "STEAD",
+      "email": "info@stead-japan.co.jp",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_55bbb7f6-4c16-4b85-af62-7c9da67c9427",
+      "updated_at": "2026-03-17 23:58",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "ATELIER POMME",
+      "email": "hello@atelierpomme.nl",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_e2e984b5-1e92-4a34-bac2-677001d0b95f",
+      "updated_at": "2026-03-17 23:43",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Vera Cares",
+      "email": "support@vera-cares.com",
+      "first_message": "verander luca india naar Emma - Vera Cares",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_5654ea86-87f6-45ba-93bd-305f2b599c91",
+      "updated_at": "2026-03-17 23:38",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "XELIO",
+      "email": "christelle.jeannot25@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_787d077e-87b1-4a0d-827b-98365e9e4e82",
+      "updated_at": "2026-03-17 23:06",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "Cannaray Wellness",
+      "email": "hello@cannaray.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_0e2228eb-7eae-4eee-8a62-3723164ad07f",
+      "updated_at": "2026-03-17 22:55",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Spirit Earth Collective",
+      "email": "jv@instantmanifestationsecrets.com",
+      "first_message": "How can I have my ai assistant gain access to my products if a customer had a questions?",
+      "topic": "AI / chatbot not working"
+    },
+    {
+      "session_id": "session_ccf0f442-b9d2-4811-aa0a-130f63872426",
+      "updated_at": "2026-03-17 22:10",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "Huntdoor",
+      "email": "info@huntdoor.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_a3df5980-81cd-4676-8d83-890ccf50977c",
+      "updated_at": "2026-03-17 21:59",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "visitor3557943",
+      "email": "",
+      "first_message": "打不开了 怎么回事",
+      "topic": "Other / General"
+    },
+    {
+      "session_id": "session_6d8c4ad6-4d46-4231-bec0-3f87c3b72bbe",
+      "updated_at": "2026-03-17 21:53",
+      "segments": [
+        "app_chatty"
+      ],
+      "merchant": "Desnudo Coffee",
+      "email": "memberships@desnudocoffee.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_5b9c1384-2e67-4b63-8af6-683832cbf183",
+      "updated_at": "2026-03-17 21:26",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "NOE",
+      "email": "amit@sniper-m.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_047b7d35-1701-4966-9a1f-64dd021d9e40",
+      "updated_at": "2026-03-17 20:55",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "chatty-feedback"
+      ],
+      "merchant": "True Citrus",
+      "email": "heidi.carney@truecitrus.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_d571941a-97ef-433d-9234-9c288a25aa60",
+      "updated_at": "2026-03-17 20:48",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "triage"
+      ],
+      "merchant": "Ms. Chu",
+      "email": "cindycms@mschusoapandbeaut.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_6d52120b-ab1d-4192-a4b4-4d2caf6a16fa",
+      "updated_at": "2026-03-17 20:09",
+      "segments": [
+        "app_faqs",
+        "chatty-feedback",
+        "email",
+        "app_chatty",
+        "triage"
+      ],
+      "merchant": "Personal Projector ",
+      "email": "oliver@personalprojector.co.uk",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_7a1a5dd1-0a31-4bf0-b0db-0d799a0eef50",
+      "updated_at": "2026-03-17 20:03",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "GENEVIVE",
+      "email": "czsales@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_5239f9d5-1a30-4df5-a39c-30a900520d70",
+      "updated_at": "2026-03-17 18:18",
+      "segments": [
+        "app_chatty",
+        "app_faqs"
+      ],
+      "merchant": "COVERARY",
+      "email": "info@coverary.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_1c69fc20-214a-4c04-9015-bb9318c491a0",
+      "updated_at": "2026-03-17 18:15",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "review_yes_chatty"
+      ],
+      "merchant": "اكسسوارات جويل",
+      "email": "sales@sa-jewel.com",
+      "first_message": null,
+      "topic": "No message"
+    },
+    {
+      "session_id": "session_9c48305a-f987-45d8-b413-dd1ef45cd92c",
+      "updated_at": "2026-03-17 17:57",
+      "segments": [
+        "app_chatty",
+        "app_faqs",
+        "ai_request_form"
+      ],
+      "merchant": "GYM SUPPLEMENTS U.S",
+      "email": "gymsuppus@gmail.com",
+      "first_message": null,
+      "topic": "No message"
+    }
+  ]
+}

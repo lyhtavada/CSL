@@ -1,0 +1,18 @@
+{
+  "pollIntervalMinutes": 15,
+  "reminderDelayMinutes": 60,
+  "message": "ace tìm hoặc tạo chat để fu với KH rồi log lại actions mình đã làm nha!",
+  "reminderMessage": "nhắc lại: ace chưa reply thread này nha! Tìm/tạo chat fu với KH rồi log actions vào đây.",
+  "fallbackUserId": "U02GT4PC6RH",
+  "chattyCS": {
+    "PhuongNT":  "U07CGHSHNMB",
+    "PhuongNT01": "U07CGHSHNMB",
+    "AnhBD":     "U09DC212XN0",
+    "HienPT":    "U09FYACFH2T",
+    "ChauHM":    "U08TZM2LL74",
+    "MinhBT":    "U08GX75N5CZ",
+    "PhuongTTM": "U0A84BE00FK",
+    "TrangNTH":  "U09FJ7F2G1Z",
+    "Linhtlk":   "U0AHSHQU59T"
+  }
+}

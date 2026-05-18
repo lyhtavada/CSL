@@ -1,0 +1,6 @@
+
+> cs-remind-bot@1.0.0 start
+> node index.js
+
+✅ CS Remind Bot started (bot=U020J353RQ8, polling every 60min)
+[2026-04-01T07:06:56.551Z] Tagged 6 CS who haven't reacted/replied to 1774939909.222329
