@@ -11,12 +11,13 @@
 
 Joy MC trả phí cần setup widget + loyalty page nhanh để đạt time-to-value sớm. Hiện tại MC tự setup → mất nhiều ngày, dễ bỏ cuộc giữa chừng, churn cao trong 30 ngày đầu.
 
-**DFY giải quyết:** CS chủ động audit store + viết recommendation cụ thể cho MC → MC chỉ cần apply theo checklist → time-to-value rút ngắn còn vài ngày.
+**DFY giải quyết:** CS chủ động audit store (tập trung vào widget và loyalty page để đảm bảo onbrand setup) + viết recommendation cụ thể cho MC → MC chỉ cần apply theo checklist → time-to-value rút ngắn còn vài ngày → giảm churn và tạo cơ hội xin review khi MC đã thấy giá trị.
 
 **Mục tiêu đo lường:**
 - Adoption rate ≥ 60% trong 14 ngày
 - Avg time từ Crisp inbound → recommendation sent: ≤ 4 giờ
 - Reduce 30-day churn của Joy MC trả phí
+- Review conversion rate từ MC đã adopted
 
 ---
 
@@ -24,7 +25,11 @@ Joy MC trả phí cần setup widget + loyalty page nhanh để đạt time-to-v
 
 **Eligibility (đồng thời thỏa cả 2):**
 1. MC đang dùng plan **trả phí** (Essential / Advanced / Ultimate của Joy)
-2. Message Crisp inbound có intent liên quan **setup / customize / hiển thị** widget hoặc loyalty page
+2. MC thuộc ít nhất một trong các nhóm store sau:
+   - **New install** — cài app trong vòng 30 ngày, chưa kịp setup hoàn chỉnh
+   - **Installed but not launched** — cài lâu nhưng loyalty program chưa live (widget ẩn, page chưa accessible, hoặc không có earning program nào active)
+   - **Launched but not on-brand** — đã live nhưng widget chưa match theme store (màu, font, wording, icon lạc tông)
+3. Message Crisp inbound có intent liên quan **setup / customize / hiển thị** widget hoặc loyalty page — hoặc CS chủ động phát hiện store thuộc nhóm trên khi xử lý case khác
 
 **Keyword reference (CS dùng để self-check intent của Crisp message):**
 
@@ -52,16 +57,15 @@ Joy MC trả phí cần setup widget + loyalty page nhanh để đạt time-to-v
 
 | # | Status | Khi nào | Owner | SLA chuyển status |
 |---|---|---|---|---|
-| 1 | **New** | CS vừa tạo ticket (sau khi đánh giá Crisp message eligible) | CS tự tạo + assign | ≤ 30 phút từ lúc nhận Crisp |
-| 2 | **Auditing** | CS đang check store theo checklist | CS được assign | ≤ 4 giờ |
-| 3 | **Recommendations Sent** | Đã gửi rcm cho MC qua Crisp/email | CS | — |
-| 4 | **Following Up** | Đã FU ít nhất 1 lần | CS | Theo FU schedule (§4) |
-| 5 | **Adopted** ✅ | MC apply ≥ 80% recommendation | (close) | — |
+| 1 | **New** | CS vừa tạo ticket (sau khi đánh giá store eligible) | CS tự tạo + assign | ≤ 30 phút từ lúc nhận Crisp |
+| 2 | **Recommendation Sent** | Đã gửi rcm cho MC qua Crisp/email | CS | ≤ 4 giờ từ New |
+| 3 | **Following Up** | Đã FU ít nhất 1 lần | CS | Theo FU schedule (§4) |
+| 4 | **Adopted** ✅ | MC apply ≥ 80% recommendation | (close) | — |
+| 5 | **Partially Adopted** 🔶 | MC apply 50–79% recommendation | (close, log lý do chưa đủ) | — |
 | 6 | **No Adoption** ❌ | Hết FU window, MC không apply hoặc không response | (close, log lý do) | — |
 
 ### 3.2 Sub-tag (optional, dùng cho phân tích)
 
-- `Partial Adoption` — MC apply 50-79% rcm
 - `No Response` — MC không reply suốt FU window
 - `Declined` — MC reply nhưng từ chối apply
 - `Blocked` — MC muốn apply nhưng gặp issue (bug, plan limit, theme conflict,…)
@@ -69,12 +73,12 @@ Joy MC trả phí cần setup widget + loyalty page nhanh để đạt time-to-v
 ### 3.3 Transition rules
 
 ```
-New → Auditing       (CS pick ticket)
-Auditing → Recommendations Sent   (CS gửi rcm)
-Recommendations Sent → Following Up   (sau FU1)
-Following Up → Adopted   (MC apply ≥80%)
-Following Up → No Adoption   (sau FU3 vẫn ko adopt)
-Any → No Adoption   (MC explicit decline)
+New → Recommendation Sent     (CS audit xong + gửi rcm)
+Recommendation Sent → Following Up   (sau FU1)
+Following Up → Adopted             (MC apply ≥80%)
+Following Up → Partially Adopted   (MC apply 50-79% sau FU window)
+Following Up → No Adoption         (sau FU3 vẫn ko adopt)
+Any → No Adoption                  (MC explicit decline)
 ```
 
 ---
@@ -100,32 +104,42 @@ CS tự quản lý FU, không bot remind. Khuyến nghị CS dùng calendar/remi
 
 Ticket auto-generate kèm checklist này. CS tick + viết note cho từng item.
 
-### 5.1 Widget audit
+### 5.1 Widget audit — Màu sắc & branding
 
-- [ ] Widget có hiển thị trên storefront không? (desktop + mobile)
-- [ ] Widget position có hợp lý không? (ko đè cart, chat, hoặc nội dung quan trọng)
-- [ ] Màu sắc/branding có match theme store không?
-- [ ] Wording CTA có rõ ràng + hấp dẫn không?
-- [ ] Icon/animation có quá ồn ào hoặc quá mờ nhạt không?
+- [ ] Màu primary đã match store chưa? (Joy tự detect — mở store picker, chọn từ brand colors)
+- [ ] Background color match dark/light theme của store không? (chỉnh sau khi set primary)
+- [ ] Button color + text color có ăn theo primary không, hay lệch tông?
+- [ ] Logo trên widget header đã thay chưa? (dùng ảnh transparent, bỏ chữ nếu có logo)
+- [ ] Ảnh header có contrast tốt với text không? (nếu không → bật overlay opacity)
+- [ ] Currency icon đã custom chưa? (dùng emoji hoặc upload icon riêng để brand hóa)
+- [ ] Guest card / Member card image đã thay chưa? (nếu có VIP tier: ảnh + icon từng tier)
 
-### 5.2 Loyalty page audit
+### 5.2 Widget audit — Layout & content
 
-- [ ] Page có accessible từ main nav / footer / account page không?
-- [ ] Hero banner có giải thích value proposition không? (KH được gì khi join)
-- [ ] Earning programs có hiển thị đủ + clear không?
-- [ ] Redeeming options có hấp dẫn không? (discount value thực tế)
-- [ ] VIP tiers (nếu có) có hiển thị benefit cụ thể không?
-- [ ] Page có mobile responsive không?
-- [ ] CTA "Sign up / Join" có visible + dễ click không?
+- [ ] Layout chọn Drawer hay Widget popup? (recommend Drawer — rộng hơn, UX tốt hơn)
+- [ ] Nếu dùng Drawer: deep link đã setup chưa? (mở widget từ account page / header / menu)
+- [ ] On-brand language đã bật chưa? (đổi "earn/redeem/complete" → wording phù hợp brand voice)
+- [ ] Program description + detailed description đã viết chưa? (dùng AI trong app để gen, rồi review + chỉnh)
+- [ ] Footer menu style có match store không? (clean store → label only; phức tạp → có icon)
+- [ ] Các block không cần thiết đã ẩn chưa? (referral, marketing opt-in, v.v.)
+- [ ] Login with Shop đã bật chưa? (recommended — sau login tự mở lại đúng trang widget)
 
-### 5.3 Setup health
+### 5.3 Widget audit — Earning & Redeem blocks
+
+- [ ] Earning block: số programs hiển thị có hợp lý không? (default 5 — không nên show tất cả)
+- [ ] Thứ tự programs đã sort hợp lý chưa? (program quan trọng nhất lên đầu)
+- [ ] Icon của từng earning program đã custom chưa? (có thể dùng ảnh lớn làm banner khi click vào)
+- [ ] Redeem block: layout đã chọn phù hợp với style store chưa?
+
+### 5.4 Setup health
 
 - [ ] Earning programs đang active ≥ 3 (Place order, Sign up, Birthday, Social share, Review,…)
 - [ ] Redeeming options ≥ 2 và có ít nhất 1 option entry-level (vd 100 pts = $5)
 - [ ] Email notifications đã enabled (welcome, points earned, reward redeemed)
 - [ ] Integration phù hợp đã bật (Klaviyo / Chatty / POS / Judge.me) — nếu plan support
+- [ ] Wishlist extension đã recommend cho MC chưa? (nếu plan support)
 
-### 5.4 Output format — Recommendation message
+### 5.5 Output format — Recommendation message
 
 CS dùng template (§6.2) để soạn message gửi MC. Mỗi recommendation cần:
 - **What** — rcm cụ thể là gì (vd: "Đổi màu widget từ #FF0000 sang #4CAF50")
