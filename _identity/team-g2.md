@@ -3,8 +3,6 @@
 **CS Leader:** Hoàng Thị Ly (Liz)
 **CS Group:** 2
 
-> **TODO:** Bổ sung Slack ID cho Linda (LinhTLK)
-
 | # | Tên | Role | App | State | Nickname (KPI) | Slack ID | Trello username | Tên hiển thị | Email | Năm sinh | SĐT | PC |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 4 | Hoàng Thị Ly | CSL | — | Fulltime | LyHT | U02GT4PC6RH | liz_avada | Liz | lyht@avada.io | 1999 | 0986144814 | công ty |
@@ -21,4 +19,4 @@
 | 69 | Lê Thị Thu Thảo | Remote | Joy | Partime | ThaoLTT | U09M3EHCGE6 | rosie_avada | Rosie | thaoltt.ctv@avadagroup.com | 2001 | | |
 | 80 | Hoàng Minh Châu | CS | Chatty | Partime | ChauHM | U08TZM2LL74 | cody_avada | Cody | chauhm@avadagroup.com | 1998 | | cá nhân |
 | 87 | Trần Thị Mai Phương | CTV | Chatty | Training | PhuongTTM | U0A84BE00FK | phoebe_avada | Phoebe | phuongttm.ctv@avadagroup.com | 1998 | | |
-| 90 | Trương Lê Khánh Linh | CS | — | Training | LinhTLK | | linda1_avada | Linda | linhtlk@avadagroup.com | 2002 | 0942795456 | |
+| 90 | Trương Lê Khánh Linh | CS | — | Training | LinhTLK | U0AHSHQU59T | linda1_avada | Linda | linhtlk@avadagroup.com | 2002 | 0942795456 | |
