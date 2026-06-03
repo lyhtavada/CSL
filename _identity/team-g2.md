@@ -3,12 +3,11 @@
 **CS Leader:** Hoàng Thị Ly (Liz)
 **CS Group:** 2
 
-> **TODO:** Bổ sung Slack ID cho Abby (NganDT) và Linda (LinhTLK)
+> **TODO:** Bổ sung Slack ID cho Linda (LinhTLK)
 
 | # | Tên | Role | App | State | Nickname (KPI) | Slack ID | Trello username | Tên hiển thị | Email | Năm sinh | SĐT | PC |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 4 | Hoàng Thị Ly | CSL | — | Fulltime | LyHT | U02GT4PC6RH | liz_avada | Liz | lyht@avada.io | 1999 | 0986144814 | công ty |
-| 6 | Dương Thị Ngân | CS | — | Fulltime | NganDT | | abby_avada | Abby | ngandt@avadagroup.com | 1999 | 366481734 | công ty |
 | 9 | Hoàng Mỹ Hằng | CS | Joy | Fulltime | HangHM | U07GG0A8NDQ | hana_avada | Hana | hanghm@avadagroup.com | 1998 | 382957228 | công ty |
 | 20 | Chu Thanh Vân | CS | Joy | Fulltime | VanCT | U0605TGBC2H | audrey_avada | Audrey | vanct@avadagroup.com | 1998 | 833633683 | công ty |
 | 29 | Phạm Khánh Ly | CS | Joy | Fulltime | LyPK | U073WRYK763 | alyssa_avada | Alyssa | lypk@avadagroup.com | 1998 | 0936777151 | công ty |
