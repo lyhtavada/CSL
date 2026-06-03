@@ -1,0 +1,14 @@
+{
+  "name": "telegram-control",
+  "version": "1.0.0",
+  "description": "Telegram bot: điều khiển Claude Code từ xa (chỉ owner). Nhắn prompt → chạy claude -p → trả kết quả",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
