@@ -6,7 +6,9 @@ const { spawn } = require('child_process');
 const TOKEN    = process.env.TELEGRAM_BOT_TOKEN;
 const OWNER_ID = Number(process.env.TELEGRAM_OWNER_ID);
 const REPO_DIR = require('path').resolve(__dirname, '../..');   // /Users/avada/CSL
-const ALLOWED_TOOLS = 'Read,Bash,Edit,Write,Grep,Glob';
+// Đọc + chạy (BigQuery, skill) — KHÔNG cho Edit/Write để bot không tự sửa file.
+// Lưu ý: Bash vẫn ghi file được (echo>, rm) — chỉ đừng yêu cầu bot làm vậy.
+const ALLOWED_TOOLS = 'Read,Bash,Grep,Glob';
 const TIMEOUT_MS = 10 * 60 * 1000;   // 10 phút / lệnh
 
 if (!TOKEN || !OWNER_ID) {
@@ -71,7 +73,7 @@ function isOwner(msg) {
 bot.onText(/^\/start$/, (msg) => {
   if (!isOwner(msg)) return;
   bot.sendMessage(msg.chat.id,
-    '👋 Betty đây. Nhắn gì mình chạy Claude Code trên máy Liz luôn.\n\n' +
+    '👋 Betty đây (chế độ chỉ-đọc). Hỏi gì mình đọc repo trả lời, không sửa file.\n\n' +
     '/new — bắt đầu phiên mới (quên ngữ cảnh cũ)\n' +
     '/status — xem trạng thái');
 });
