@@ -14,7 +14,8 @@ import datetime as dt
 import urllib.request
 
 OUT = "/tmp/csdaily"
-LIZ_SLACK_ID = "U02GT4PC6RH"
+# Post target: #cs-2-daily channel (bot must be invited). Falls back to Liz DM if unset.
+SLACK_TARGET = "C0B8042TXQ9"
 PLAN_RANK = {"Enterprise": 0, "Advanced": 1, "Plus": 2, "Pro": 3, "Basic": 4}
 SEV_RANK = {"unanswered": 0, "needs_improve": 1, "good": 2, "excellent": 3}
 
@@ -193,11 +194,7 @@ def build(env):
 
 def post_slack(env, text):
     tok = env["SLACK_BOT_TOKEN_AVADA"]
-    # open DM
-    req = urllib.request.Request("https://slack.com/api/conversations.open",
-        data=json.dumps({"users": LIZ_SLACK_ID}).encode(),
-        headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"})
-    ch = json.load(urllib.request.urlopen(req))["channel"]["id"]
+    ch = SLACK_TARGET
     # Slack message limit ~40k chars; chunk on section dividers if needed
     chunks = []
     cur = ""
