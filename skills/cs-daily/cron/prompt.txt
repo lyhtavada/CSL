@@ -1,0 +1,10 @@
+Run the /cs-daily skill end-to-end for the last 24h window (9:00 yesterday → 9:00 today VN) and post the report to the #cs-2-daily Slack channel.
+
+Follow skills/cs-daily/SKILL.md exactly:
+1. Run fetch.py to pull Crisp transcripts and build classify batches.
+2. Classify every session (issue, quality, follow-up) and write /tmp/csdaily/classified.json. You may do this with a Workflow fan-out over the cls_batch files, or inline — but you MUST classify ALL sessions, do not skip any batch.
+3. Run enrich.py.
+4. Detect review asks for every session and write /tmp/csdaily/reviews.json (Workflow fan-out over rv_batch files, or inline — cover ALL sessions).
+5. Run render.py to post to Slack.
+
+Do not ask any questions — run autonomously to completion. If a step fails, retry once before giving up. At the end, print a one-line summary of total conversations, paid follow-ups, and review asks.
