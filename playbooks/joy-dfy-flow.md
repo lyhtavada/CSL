@@ -2,7 +2,7 @@
 
 **Owner:** Liz (CS Leader)
 **Created:** 2026-05-18
-**Updated:** 2026-05-20
+**Updated:** 2026-05-25
 
 > Xem mục đích & tinh thần DFY: [`joy-dfy-intro.md`](./joy-dfy-intro.md)
 
@@ -45,17 +45,22 @@ CS chủ động offer free white-glove service cho MC, dùng shortcut `!v4-rcm`
 
 **Bước thực hiện:**
 
-1. CS nhận chat của MC đang online → đánh giá store eligible → tạo ticket DFY bằng cách click button **[DFY]** embed trong Crisp chat hoặc prompt TS agent qua extension → ticket tự tạo kèm đầy đủ checklist: **level 1 (basic branding), level 2 (full visual), level 3 (full onbrand)**, set label `DFY-new`
-2. CS audit store → chọn level phù hợp → update label `DFY-in-progress` → chủ động setup widget theo checklist
+1. CS nhận chat của MC đang online → đánh giá store eligible → tạo ticket DFY bằng cách click button **[DFY]** embed trong Crisp chat hoặc prompt TS agent qua extension → ticket tự tạo kèm đầy đủ checklist, set label `DFY-new`
+2. CS audit store → update label `DFY-in-progress` → chủ động setup widget theo checklist (Required trước, Recommended nếu phù hợp)
 3. Sau khi có kết quả, CS dùng button **Preview on store** → **quay video ngắn kết quả** (highly recommended — MC dễ follow hơn nhiều so với email dài kèm ảnh) → gửi qua Crisp
-4. Done → gắn label level đạt được (`DFY-1` / `DFY-2` / `DFY-3`) → update label `DFY-adopted` → close ticket + chụp ảnh hoặc quay video post vào phần comment để phục vụ tính point
+4. Done → nếu convert được review từ flow DFY: gắn thêm `review-yes` → chụp ảnh hoặc quay video post vào phần comment để phục vụ tính point → **không close ticket ngay**, để mở chờ follow-up
+5. **Follow-up sau 2–5 ngày** → CS check lại store xem MC có đang dùng/giữ customization không:
+   - **Có adopt** (widget vẫn match, MC hài lòng) → gắn label `DFY-adopted` → close ticket
+   - **Chưa thấy update / MC không phản hồi** → gửi reminder email (template `!dfy-remind`) → gắn label `DFY-no-adopt` → close ticket
 
 > SLA: Bắt buộc phải có kết quả hoàn thiện và báo KH trong vòng **48H** sau khi tạo ticket. Nếu ticket quá 48H không có update → escalate Liz.
 
+> **Lưu ý tính point:** Follow-up đúng hạn + gắn đủ tag (`DFY-adopted` hoặc `DFY-no-adopt`, `review-yes` nếu có) là điều kiện bắt buộc để ticket được tính vào points.
+
 **Lưu ý:**
 - Nếu là MC cũ (đang dùng widget cũ) → **tuyệt đối không ấn Switch to unified widget** nếu chưa được sự đồng ý của MC
-- CS có thể hoàn thành từng level và show kết quả sơ bộ với MC trước để tăng khả năng xin review — sau đó hẹn MC gửi kết quả hoàn thiện sau
-- CS được khuyến khích tự do sáng tạo và custom thêm cho phù hợp với store, miễn là đã đảm bảo hoàn thành checklist của level đã chọn
+- CS có thể show kết quả sơ bộ với MC trước để tăng khả năng xin review — sau đó hẹn MC gửi kết quả hoàn thiện sau
+- CS được khuyến khích tự do sáng tạo và custom thêm cho phù hợp với store — miễn là Required items đã hoàn thành
 
 ---
 
@@ -63,35 +68,40 @@ CS chủ động offer free white-glove service cho MC, dùng shortcut `!v4-rcm`
 
 Ticket auto-generate kèm checklist này. CS tick + viết note cho từng item.
 
-CS chọn level cao nhất mình đạt được — level cao hơn bao gồm tất cả items của level dưới.
+Mục tiêu của DFY không phải là tick hết checklist — mà là làm cho widget **trông như một phần tự nhiên của store đó**. Mỗi store có thương hiệu, màu sắc, phong cách riêng (tối giản hay sặc sỡ, cao cấp hay gần gũi…), CS cần chủ động đọc store trước rồi mới bắt tay vào setup.
 
-### Level 1 — Basic Branding
+Checklist chia 2 phần: **Required** (bắt buộc mọi store) và **Recommended** (CS tự đánh giá — thêm nếu phù hợp, skip nếu không, ghi note lý do).
 
-- [ ] Primary color + button color + text color
-- [ ] Logo ở widget header
-- [ ] Point icon đã custom
-- [ ] Loyalty program name + point label phù hợp brand
-- [ ] Header background image
+### Required
 
-### Level 2 — Full Visual *(Level 1 +)*
-
-- [ ] Membership card images (guest + member)
-- [ ] My coupon images
-- [ ] Way to earn/redeem banner image
+- [ ] Primary color + button color + text color phù hợp với brand, độ tương phản tốt
+- [ ] Logo ở widget header (nếu thấy phù hợp)
+- [ ] Point icon đã custom hợp lý
+- [ ] Loyalty program name
+- [ ] Point label phù hợp brand
+- [ ] Header background image (nếu thấy phù hợp)
+- [ ] Login with Shop đã bật nếu store có Login with shop option
+- [ ] Drawer type
+- [ ] Button shape giống với button shape ở store
+- [ ] Content từng block đã viết lại onbrand (đặc biệt welcome messages)
+- [ ] Referral banner image nếu store có chạy referral program
+- [ ] Membership card images — Guest view
+- [ ] Membership card images — Member view
+- [ ] Ảnh của member profile sau khi login
+- [ ] Các block không cần thiết đã ẩn
+- [ ] Footer menu match với store
 - [ ] Program order đã sort hợp lý
 
-### Level 3 — Full Onbrand *(Level 1 + 2 +)*
+### Recommended
 
-- [ ] Tier banner (nếu có VIP tier)
-- [ ] VIP icon đã thay theo từng tier
-- [ ] Content từng block đã viết lại onbrand
-- [ ] Các block không cần thiết đã ẩn
-- [ ] Footer menu style match store
-- [ ] Login with Shop đã bật
+- [ ] My coupon images
+- [ ] Ways to earn / redeem images
+- [ ] Tier icon custom theo từng tier
+- [ ] Tier banner custom theo store
 
 ### Bonus
 
-- [ ] Video walkthrough/ explain
+- [ ] Video walkthrough / explain
 
 
 ---

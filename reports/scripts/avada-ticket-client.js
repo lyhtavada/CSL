@@ -4,8 +4,11 @@
  * Base URL: https://avada-ts-a9cb0.web.app/api/external
  */
 
+require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
+
 const BASE_URL = 'https://avada-ts-a9cb0.web.app/api/external';
-const API_KEY = 'avd_b6597a0df66cbacba036989a549096cc4a8676af23b8cce70bd13b4ca62ef7ea';
+const API_KEY = process.env.AVD_TICKET_API_KEY;
+if (!API_KEY) throw new Error('Missing AVD_TICKET_API_KEY in .env');
 
 const headers = {
   'Content-Type': 'application/json',

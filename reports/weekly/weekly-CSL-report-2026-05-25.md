@@ -1,22 +1,7 @@
-#!/bin/bash
-# Gen weekly CSL report mỗi thứ 2 lúc 1PM
-# Tạo file mới với ngày tuần hiện tại
-
-SCRIPTS_DIR="$(dirname "$0")"
-REPORTS_DIR="$SCRIPTS_DIR/../weekly"
-DATE=$(date +"%Y-%m-%d")
-WEEK=$(date +"%Y-W%V")
-OUTPUT="$REPORTS_DIR/weekly-CSL-report-$DATE.md"
-
-# Tính Mon-Sun của tuần trước
-LAST_MON=$(date -v-7d -v-mon +"%d/%m")
-LAST_SUN=$(date -v-7d -v+sun +"%d/%m/%Y")
-
-cat > "$OUTPUT" << EOF
 # CS Group 2 (Retention) — Weekly Report
-**Date**: $(date +"%d/%m/%Y") | **Meeting**: Thứ 2, 15:00 | **Prepared by**: Liz
+**Date**: 25/05/2026 | **Meeting**: Thứ 2, 15:00 | **Prepared by**: Liz
 **Gửi trước**: 13:00 cùng ngày (trước meeting 2 tiếng)
-**Week**: $WEEK | **Period**: $LAST_MON – $LAST_SUN
+**Week**: 2026-W22 | **Period**: 18/05 – 24/05/2026
 
 ---
 
@@ -82,11 +67,3 @@ cat > "$OUTPUT" << EOF
 - Breakdown ticket theo app
 - Agent workload detail
 - Full ticket list nếu cần
-EOF
-
-echo "Generated: $OUTPUT"
-
-# Auto-fill Top Issues từ Avada Ticket API
-echo "Filling Top Issues..."
-python3 "$SCRIPTS_DIR/scan-weekly-issues.py" --week "$(date +%Y-%m-%d)"
-

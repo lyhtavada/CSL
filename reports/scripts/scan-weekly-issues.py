@@ -52,9 +52,13 @@ def fetch_tickets(start_date: datetime.date, end_date: datetime.date, app_name: 
 
 
 # ── Classifier ──────────────────────────────────────────────────────────────
-def classify_category(subject: str, description: str, ts_status: str) -> str:
+def classify_category(subject: str, description: str, ts_status: str, app: str = "") -> str:
     t = (subject + " " + description[:300]).lower()
-    if any(w in t for w in ["ai ", "bot ", "trả lời", "response", "reply", "knowledge", "source", "accuracy", "duplicate", "ngôn ngữ", "language", "ai response", "ai không", "ai not"]):
+    if app.lower() == "joy loyalty":
+        ai_keywords = ["ai agent", "ai không", "ai not", "ai trả lời", "ai response", "joyce"]
+    else:
+        ai_keywords = ["ai ", "bot ", "trả lời", "response", "reply", "knowledge", "source", "accuracy", "duplicate", "ngôn ngữ", "language", "ai response", "ai không", "ai not"]
+    if any(w in t for w in ai_keywords):
         return "AI accuracy/quality"
     if any(w in t for w in ["sync", "product sync", "pending", "training data", "train", "data source"]):
         return "Sync / training data"
@@ -78,16 +82,18 @@ def classify_category(subject: str, description: str, ts_status: str) -> str:
 # ── Analyzer ────────────────────────────────────────────────────────────────
 EXCLUDE_STATUSES = {"sale_request", "billing", "feature_request"}
 
-def analyze(tickets: list) -> list:
+def analyze(tickets: list, app: str = "") -> list:
     groups = defaultdict(list)
     for t in tickets:
         ts_status = t.get("tsStatus", "")
         if ts_status in EXCLUDE_STATUSES:
             continue
+        if t.get("subject", "").strip().startswith("[DFY]"):
+            continue
         subject = t.get("subject", "")
         description = t.get("description") or ""
         ticket_id = t.get("ticketId", "")
-        cat = classify_category(subject, description, ts_status)
+        cat = classify_category(subject, description, ts_status, app)
         groups[cat].append({"subject": subject, "ticketId": ticket_id, "tsStatus": ts_status})
 
     result = []
@@ -172,10 +178,10 @@ def main():
     for app in APPS:
         print(f"  {app}...")
         tickets = fetch_tickets(monday, sunday, app)
-        filtered = [t for t in tickets if t.get("tsStatus") not in EXCLUDE_STATUSES]
+        filtered = [t for t in tickets if t.get("tsStatus") not in EXCLUDE_STATUSES and not t.get("subject", "").strip().startswith("[DFY]")]
         print(f"    {len(tickets)} tickets fetched, {len(filtered)} after filter")
         totals[app] = len(filtered)
-        results[app] = analyze(tickets)
+        results[app] = analyze(tickets, app)
 
     chatty_md = format_top_issues(results["Chatty"], "Chatty", totals["Chatty"])
     joy_md    = format_top_issues(results["JOY Loyalty"], "Joy", totals["JOY Loyalty"])

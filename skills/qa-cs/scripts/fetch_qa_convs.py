@@ -15,17 +15,13 @@ import time
 import requests
 from pathlib import Path
 
-# Load credentials
-ENV_PATH = Path(__file__).parent.parent.parent.parent.parent / "crispchat" / ".env"
-if ENV_PATH.exists():
-    for line in ENV_PATH.read_text().splitlines():
-        if "=" in line and not line.startswith("#"):
-            k, v = line.split("=", 1)
-            os.environ.setdefault(k.strip(), v.strip())
+# Load credentials from CSL/.env
+from dotenv import dotenv_values
+_env = dotenv_values(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".env"))
 
-KEY = os.environ.get("CRISP_API_KEY", "60053ee7-54a7-4426-b0c7-66fc7eadee5a")
-SECRET = os.environ.get("CRISP_API_SECRET", "72f3cd4146cea1ac60ab5164f5e143fc35e3bd6280313fb961527067f92c5e31")
-WEBSITE_ID = "72a663b0-4cda-4e3b-8878-426bdd79364c"
+KEY = _env["CRISP_API_KEY"]
+SECRET = _env["CRISP_API_SECRET"]
+WEBSITE_ID = _env["CRISP_WEBSITE_RETENTION"]
 
 auth = base64.b64encode(f"{KEY}:{SECRET}".encode()).decode()
 HEADERS = {"Authorization": f"Basic {auth}", "X-Crisp-Tier": "plugin"}

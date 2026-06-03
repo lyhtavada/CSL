@@ -43,9 +43,20 @@ CSL/                               ← Liz's workspace (this repo)
 │       └── shared-cs-process/     ← Shared processes (escalation, billing, etc.)
 ├── bots/                          ← Slack bots & automations
 ├── playbooks/                     ← Specs, SOPs, PRDs
+│   ├── joy-dfy-flow.md            ← Joy DFY CS flow + checklist (Required/Recommended)
+│   ├── joy-dfy-intro.md           ← Joy DFY tinh thần & mục đích
+│   ├── chatty-dfy-flow.md         ← Chatty DFY flow (coming)
+│   └── cs-transformation/         ← CS transformation plan + training materials
 ├── skills/                        ← Claude skills
 ├── cs-test/                       ← QA test data
+├── templates/                     ← Email templates
 └── reports/
+    ├── weekly/                    ← Weekly CSL reports (auto-generated Thứ 2)
+    ├── dfy/
+    │   ├── joy/                   ← Joy DFY tracker by month (joy-dfy-YYYY-MM.md)
+    │   └── chatty/                ← Chatty DFY tracker (coming)
+    ├── ai-agent-performance/      ← Daily AI agent performance reports
+    └── analysis/                  ← Ad-hoc analysis reports
 
 ~/ai-copilot-training/             ← Separate repo for AI training data
 ├── chatty/                        ← Training data + scripts for Chatty AI
@@ -84,7 +95,7 @@ Key data sources: pricing info comes from chatty.net/pricing. FAQ/training data 
 - Internal notes to Liz: Vietnamese is fine
 - When drafting replies for merchants: follow tone rules in `_identity/tone-and-voice.md`
 - When triaging cases: refer to escalation matrix and refund rules in `kb/cs-process/shared-cs-process/`
-- **When Liz pastes a Crisp chat URL** (`app.crisp.chat/website/.../inbox/session_...`): automatically invoke `/read-crisp` — fetch and summarize the conversation without being asked
+- **When Liz pastes a Crisp chat URL** (`app.crisp.chat/website/.../inbox/session_...`): automatically fetch and summarize the conversation without being asked. Use Python + `google-cloud-bigquery` to query `avada-crm.avada_cs.crisp_chats` — do NOT use Crisp API (40-message limit) and do NOT use MCP query tool (no access). See `skills/read-crisp/SKILL.md` for full instructions.
 
 ## Available Skills
 
@@ -108,6 +119,9 @@ Skills live in `skills/[name]/SKILL.md`. Use the Skill tool to invoke them.
 | `/chatty-test-grader` | Grade Chatty AI knowledge test from Google Form CSV |
 | `/bot-status` | Check which bots are running, restart if down |
 | `/read-crisp` | Auto-triggered when Liz pastes a Crisp chat URL — fetch + summarize conversation |
+| `/ai-perf` | Given a list of session IDs (Joy + Chatty), fetch full transcripts from BigQuery → classify sessions → generate daily AI agent performance report |
+| `/dfy-tracker` | Pull DFY tickets from Avada Ticket API → group by CS → generate tracker report (week or month, Joy or Chatty) |
+| `/mine-chat-faqs` | Mine FAQ from real Crisp chats (BigQuery `avada_cs.crisp_chats`) by segment + window → cluster questions → write standard answers. Runs weekly via launchd; output to `claw-weebhook-crisp-chat/Liz/faq_from_chats/` |
 
 ## Bots
 
@@ -117,7 +131,5 @@ Bots live in `bots/`. Config in `bots/[name]/config.json` — editable without r
 |-----|---------|-------------|
 | `chatty-feedback-bot` | Tag on-duty CS when merchant feedback arrives | Local process |
 | `cs-remind-bot` | Remind CS who haven't reacted to @channel after 24h | Local process |
-| `chatty-insight-bot` | Weekly digest of #chatty-cs-issues + draft FAQs | Local process |
-| `call-followup` | Web form for CS to log call notes → Supabase | Supabase cloud |
 
 Local bots: `cd bots/[name] && npm start`. Use `/bot-status` to check if they're running.

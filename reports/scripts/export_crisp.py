@@ -1,8 +1,10 @@
-import urllib.request, json, base64, time, datetime, csv, sys
+import urllib.request, json, base64, time, datetime, csv, sys, os
+from dotenv import dotenv_values
 
-API_KEY = "60053ee7-54a7-4426-b0c7-66fc7eadee5a"
-API_SECRET = "72f3cd4146cea1ac60ab5164f5e143fc35e3bd6280313fb961527067f92c5e31"
-WEBSITE_ID = "72a663b0-4cda-4e3b-8878-426bdd79364c"
+_env = dotenv_values(os.path.join(os.path.dirname(__file__), "..", "..", ".env"))
+API_KEY = _env["CRISP_API_KEY"]
+API_SECRET = _env["CRISP_API_SECRET"]
+WEBSITE_ID = _env["CRISP_WEBSITE_RETENTION"]
 TZ = datetime.timezone(datetime.timedelta(hours=7))
 cutoff = datetime.datetime.now(tz=TZ) - datetime.timedelta(days=30)
 

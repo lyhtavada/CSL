@@ -31,7 +31,17 @@ Draft customer-facing replies for Avada Support Team in Liz's voice.
 - No jargon without explanation
 
 **Email format (when Liz is taking over or writing directly):**
-Start with: "Hi there, This is Liz from Avada Support Team."
+Use this structure:
+
+Hi there,
+
+This is Liz from [app] Support Team. I'm following up on [topic].
+
+[Body paragraphs]
+
+Best regards,
+Liz
+
 Do not use a subject line unless asked.
 
 **Chat format:** Jump straight to empathy + answer. No formal intro needed.

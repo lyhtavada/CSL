@@ -1,0 +1,11 @@
+Run the mine-chat-faqs skill for BOTH apps, fully autonomously — do not ask me any questions, use the defaults below.
+
+For each app:
+  - Joy:    segment app_joy
+  - Chatty: segment app_chatty,app_faqs
+  - Window: last 7 days
+  - Fetch with scripts/fetch_chats.py, read the JSON + the app's KB (Joy: agents/joy-loyalty-agent/knowledge/, Chatty: agents/chatty-agent/knowledge/), cluster questions into feature categories, and write one correct standard answer per FAQ in English.
+  - Dedup against prior dated files in Liz/faq_from_chats/{app}/ and mark each FAQ 'new' or 'recurring', with a "What changed since last run" block.
+  - Write the output to Liz/faq_from_chats/{app}/{app}_{start}_{end}.md using the real window dates.
+
+Do NOT copy anything into the agent KB or run /deploy-agent. Output stays under Liz/ only. When done, print a one-line summary per app (file path + new/recurring counts).
