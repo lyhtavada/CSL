@@ -57,10 +57,18 @@ def parse_iso(t):
     return dt.datetime.fromisoformat(t.replace("Z", "+00:00"))
 
 # ---- Admin API ----
-def api_get(env, path):
+def api_get(env, path, retries=3):
     base = env["AVD_API_BASE"]; tok = env["AVD_TOKEN"]
     req = urllib.request.Request(f"{base}{path}", headers={"Authorization": f"Bearer {tok}"})
-    return json.load(urllib.request.urlopen(req, timeout=30))
+    last = None
+    for attempt in range(retries):
+        try:
+            return json.load(urllib.request.urlopen(req, timeout=30))
+        except Exception as e:  # transient SSL/network errors
+            last = e
+            import time
+            time.sleep(1.5 * (attempt + 1))
+    raise last
 
 # ---- BigQuery client ----
 def bq_client(env):
