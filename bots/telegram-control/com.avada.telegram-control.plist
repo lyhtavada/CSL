@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.avada.telegram-control</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/node</string>
+    <string>/Users/avada/CSL/bots/telegram-control/index.js</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/avada/CSL/bots/telegram-control</string>
+
+  <!-- launchd không có PATH mặc định — bot cần gọi `claude` CLI qua Bash tool -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+
+  <!-- Bật ngay khi load + tự bật lại nếu crash → chạy 24/7 -->
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <!-- Đợi 10s trước khi restart nếu crash liên tục, tránh spin -->
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/telegram-control.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/telegram-control.log</string>
+</dict>
+</plist>

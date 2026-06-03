@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.avada.caffeinate-ac</string>
+
+  <!-- -s: chống sleep CHỈ khi cắm sạc (AC). Rút sạc → máy sleep bình thường (tiết kiệm pin).
+       -i: chống idle sleep. Giữ telegram-control bot sống 24/7 khi cắm điện. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/caffeinate</string>
+    <string>-s</string>
+    <string>-i</string>
+  </array>
+
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/caffeinate-ac.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/caffeinate-ac.log</string>
+</dict>
+</plist>
