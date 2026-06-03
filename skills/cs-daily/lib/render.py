@@ -100,12 +100,9 @@ def build(env):
         L.append(f"TOP ISSUES — {label}")
         L.append("")
         cnt = Counter(x["issue"] for x in arr)
-        ranked = sorted(arr, key=lambda x: (not x.get("paid"), not x["needs_followup"], -cnt[x["issue"]]))
-        for i, x in enumerate(ranked[:4], 1):
-            flag = " ⚠️" if x["needs_followup"] else ""
-            L.append(f"{i}. {x['issue']} — {nm(x)} {plan_tag(x)}")
-            L.append(f"   {x['topic']}. CS ({x['cs_nick']}): {x['quality_note']}{flag}")
-            L.append("")
+        for i, (issue, c) in enumerate(cnt.most_common(3), 1):
+            L.append(f"{i}. {issue} ({c})")
+        L.append("")
 
     top_issues(joy, "JOY LOYALTY")
     L.append("---"); L.append("")
@@ -138,23 +135,19 @@ def build(env):
 
     L.append("⭐ XIN REVIEW (trong session)")
     L.append("")
-    L.append(f"• CS đã xin review: {len(asks)} session")
-    L.append(f"• ✅ Xin được: {len(got)} | ⏳ Chưa phản hồi: {len(noresp)} | ❌ Từ chối: {len(declined)}")
+    L.append(f"• Asks: {len(asks)} | ✅ {len(got)} | ⏳ {len(noresp)} | ❌ {len(declined)}")
     L.append("")
-    if got:
-        L.append("✅ Xin được:")
-        for rid, r in got:
-            shop, cs = info(rid)
-            L.append(f"  • {shop} — CS: {cs}. {r['note']}")
-        L.append("")
-    if declined:
-        L.append("❌ Bị từ chối:")
-        for rid, r in declined:
-            shop, cs = info(rid)
-            L.append(f"  • {shop} — CS: {cs}. {r['note']}")
+    cs_asks = Counter()
+    for rid, _ in asks:
+        x = byid.get(rid)
+        if x and x.get("cs_nick"):
+            cs_asks[x["cs_nick"]] += 1
+    if cs_asks:
+        top_cs = ", ".join(f"{nick} ({c})" for nick, c in cs_asks.most_common(3))
+        L.append(f"🏆 CS xin nhiều nhất: {top_cs}")
         L.append("")
     if noresp:
-        L.append("⏳ Xin nhưng chưa phản hồi (cần follow-up):")
+        L.append("⏳ Cần follow-up:")
         for rid, r in noresp:
             shop, cs = info(rid)
             L.append(f"  • {shop} — CS: {cs}. {r['note']}")
@@ -164,31 +157,25 @@ def build(env):
 
     good = [x for x in s if x["quality"] in ("excellent", "good")]
     bad = [x for x in s if x["quality"] in ("needs_improve", "unanswered") and x["cs_nick"] in TEAM]
-    exc = [x for x in s if x["quality"] == "excellent"]
     L.append("👥 CS PERFORMANCE")
     L.append("")
-    L.append("✅ Tốt:")
-    for x in exc[:3]:
-        L.append(f"• {x['issue']}: CS ({x['cs_nick']}) {x['quality_note']}")
-    L.append(f"• +{max(len(good)-3,0)} cases handled well")
+    L.append(f"✅ Tốt: {len(good)} cases handled well")
     L.append("")
     L.append("⚠️ Cần cải thiện:")
-    for x in bad:
-        L.append(f"• {nm(x)} ({x['cs_nick']}): {x['quality_note']}")
+    if bad:
+        for x in bad:
+            L.append(f"• {nm(x)} ({x['cs_nick']}): {x['quality_note']}")
+    else:
+        L.append("• Không có")
     L.append("")
     L.append("---")
     L.append("")
 
     setup = sum(1 for x in s if "Setup" in x["issue"])
     bugs = sum(1 for x in s if x["issue"] == "Bug")
-    active = sorted({x["cs_nick"] for x in s if x["cs_nick"] in TEAM})
-    pct = round(100 * len(got) / max(len(asks), 1))
     L.append("💡 INSIGHT")
-    L.append(f"• {setup} setup questions → cần improve onboarding docs")
-    L.append(f"• {bugs} bug reports → theo dõi escalation với dev")
-    L.append(f"• {len(asks)} lần xin review, {len(got)} thành công ({pct}%) → {len(noresp)} session cần nhắc lại")
-    L.append(f"• {len(paid_fu)} paid customers cần follow-up → ưu tiên trong 24h")
-    L.append(f"• Agents active (G2): {', '.join(active)}")
+    L.append(f"• {setup} setup questions + {bugs} bug reports")
+    L.append(f"• {len(paid_fu)} paid customers cần follow-up trong 24h")
     return "\n".join(L)
 
 

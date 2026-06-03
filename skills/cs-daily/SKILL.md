@@ -61,10 +61,11 @@ Renders `report.txt` and posts to Liz's Slack DM (auto-chunked for Slack length 
 ## Report sections (in order)
 1. **TỔNG QUAN** — total + Joy/Chatty split
 2. **⏰ CHECKIN/CHECKOUT** — late (>5 min) / miss checkin / miss checkout
-3. **TOP ISSUES** — Joy + Chatty, top 4 each (paid + follow-up prioritized)
+3. **TOP ISSUES** — Joy + Chatty, top 3 issue categories each (with case count, no shop detail)
 4. **⚠️ PAID PLANS — TOP 3** — highest-value paid shops needing follow-up + count of the rest
-5. **⭐ XIN REVIEW** — asks / got / no-response / declined, with shop + CS detail
-6. **👥 CS PERFORMANCE** + **💡 INSIGHT**
+5. **⭐ XIN REVIEW** — stats (asks/got/no-response/declined) + CS ranking (most asks) + no-response list cần follow-up
+6. **👥 CS PERFORMANCE** — count cases handled well + "Cần cải thiện" list
+7. **💡 INSIGHT** — 2 dòng: setup+bug counts, paid follow-up count
 
 ## Notes
 - Default to running the full pipeline end-to-end. Show Liz the rendered report; only post to Slack after the render step succeeds.
