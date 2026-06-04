@@ -14,6 +14,14 @@ Scoring follows `playbooks/qa-weekly-rubric.md`.
 
 Liz says `/qa-weekly`, "QA tuần này / tuần trước", "chấm QA tuần cho team".
 
+## Lịch tự chạy
+
+Tự chạy **Thứ 2, 14:00** qua launchd (`com.avada.qa-weekly`, plist ở
+`~/Library/LaunchAgents/`, runner `cron/run-weekly.sh` + `cron/prompt.txt`).
+Cron chấm tuần vừa kết thúc + tạo report, rồi **gửi toàn bộ kết quả cho Liz duyệt
+qua Slack DM** — KHÔNG tự DM cho CS. Liz review xong, ra lệnh thì mới gửi CS
+(`send_dm.py --send`). Log: `/tmp/qa-weekly.log`.
+
 ## Parameters
 
 - **Period** (default: **last completed week**, Mon–Sun):

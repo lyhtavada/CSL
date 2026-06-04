@@ -1,0 +1,30 @@
+Chạy QA weekly cho team CS 2 (in-house) cho TUẦN VỪA KẾT THÚC (Thứ 2 → Chủ Nhật gần nhất). Hôm nay là Thứ 2, nên tuần cần chấm là tuần trước đó.
+
+Làm đúng theo skill `skills/qa-weekly/SKILL.md` và rubric `playbooks/qa-weekly-rubric.md`. Các bước:
+
+1. Tính khoảng ngày tuần trước (Mon–Sun) và ISO week (vd 2026-W22).
+
+2. Fetch sessions in-house:
+   python3 skills/qa-weekly/scripts/fetch_sessions.py --start <MON> --end <SUN> --out /tmp/qa_weekly_sessions.json --sample 30 --only-type in-house
+
+3. Với mỗi CS trong file đó, fetch transcript:
+   python3 skills/qa-weekly/scripts/fetch_transcripts.py --sessions-file /tmp/qa_weekly_sessions.json --cs <Name> --out /tmp/qa_tx_<Name>.txt
+
+4. Chấm bằng workflow fan-out (1 subagent/CS):
+   Workflow scriptPath=skills/qa-weekly/qa-weekly.workflow.js, args = mảng tên CS (vd ["Hana","Audrey",...]).
+   ĐỢI workflow chạy xong (nó chạy ngầm; kiểm tra task output cho tới khi có kết quả đủ số CS).
+
+5. So với tuần trước nếu folder reports/qa-weekly/qa-weekly-<tuần trước>/ tồn tại.
+
+6. Viết report mỗi CS + summary vào folder reports/qa-weekly/qa-weekly-<ISO-week>/ theo đúng format rubric (có Nhận xét chung, giọng thẳng thắn, xưng "bạn").
+
+7. Build payload DM /tmp/qa_dm_payload.json (sender = Ly (Liz) + avatar).
+
+QUAN TRỌNG — DỪNG TẠI ĐÂY, KHÔNG GỬI CHO CS:
+- KHÔNG chạy send_dm.py --send. Tuyệt đối không DM cho bất kỳ CS nào.
+- Thay vào đó, gửi TOÀN BỘ kết quả cho LIZ để review qua Slack DM (channel U02GT4PC6RH) dưới tên Avada bot:
+  + 1 tin mở đầu: tiêu đề "🔎 QA TUẦN <ISO-week> — <N> CS in-house — CHỜ DUYỆT", điểm TB team, danh sách điểm từng CS, và nhắc "Liz xem xong, ra lệnh thì mới gửi cho CS."
+  + Sau đó gửi lần lượt từng report (mỗi CS 1 tin, ghi rõ "Gửi tới: <tên>") đúng nội dung sẽ DM cho CS.
+  + Nếu có severe flag (KN8/QT11/KT1), highlight riêng để Liz xem kỹ — đặc biệt KT1 về giá/limit có thể do KB outdated, nhắc Liz verify.
+
+Sau khi gửi xong cho Liz, in ra log: đã chấm bao nhiêu CS, điểm TB, đường dẫn folder report, và "Đã gửi Liz duyệt — chờ lệnh gửi CS." rồi kết thúc.
