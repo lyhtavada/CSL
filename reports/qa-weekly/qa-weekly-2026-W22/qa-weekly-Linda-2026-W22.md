@@ -5,7 +5,7 @@
 **Phân bố:** 🌟1 ✅14 🟡5 🟠1 🔴1 ⛔0
 
 ## 📝 Nhận xét chung
-Bạn rất linh hoạt đa ngôn ngữ và chủ động đề xuất cho khách — đó là điểm mạnh đáng quý. Tuần này điểm bị kéo xuống chủ yếu do lỗi chính tả/typo lặp lại và sót placeholder template. Đây là thứ dễ sửa nhất: đọc lại 1 lượt trước khi gửi, dùng shortcut chuẩn cho câu mở đầu. Sửa được phần này điểm bạn sẽ lên rõ.
+Bạn linh hoạt đa ngôn ngữ và chủ động — điểm mạnh thật. Nhưng phải nói thẳng: điểm tuần này bị kéo xuống thấp nhất nhóm chủ yếu vì 2 thứ rất cơ bản — lỗi chính tả/typo lặp lại ở nhiều chat, và sót placeholder '[Your Name]' khi gửi template. Những lỗi này làm khách nghi ngờ tính chuyên nghiệp, và đáng tiếc vì nó dễ sửa nhất. Việc cần làm ngay: đọc lại 1 lượt trước khi gửi, dùng shortcut chuẩn cho câu mở đầu. Sửa được phần này điểm bạn sẽ lên rõ rệt.
 
 ## ✅ Điểm tốt
 - **[P2]** Rất chủ động: ở chat #1 sau khi bật AI cho email channel, mình tự đề xuất thêm các setting hữu ích (auto re-assign, lọc spam để tiết kiệm AI conversation limit) mà KH chưa kịp hỏi — KH đồng ý 'Enable this!' (chat #1)

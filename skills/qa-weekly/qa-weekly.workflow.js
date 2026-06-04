@@ -30,7 +30,7 @@ const RESULT_SCHEMA = {
     },
     overall: {
       type: 'string',
-      description: 'Nhận xét tổng quan 2-4 câu về CS tuần này: phong cách làm việc, điểm mạnh nổi bật nhất, hướng cần tập trung. Giọng coaching, tiếng Việt. Gọi CS là "bạn" (trung lập) — KHÔNG gọi "em".',
+      description: 'Nhận xét tổng quan 2-4 câu về CS tuần này: phong cách làm việc, điểm mạnh nổi bật nhất, và RÕ RÀNG hướng cần tập trung. Giọng THẲNG THẮN, không vòng vo — gọi tên vấn đề trực diện và nêu hệ quả để CS hiểu mình thiếu ở đâu, đừng lấp liếm bằng giọng quá nhẹ. Tiếng Việt. Gọi CS là "bạn" (trung lập) — KHÔNG gọi "em".',
     },
     chat_labels: {
       type: 'object',
@@ -131,7 +131,7 @@ ${cs.prevReportPath
 
 CS metadata: app=${cs.app}, chats sampled=${cs.sampled} of ${cs.total} total this week.
 
-Also write `overall`: 2-4 câu tiếng Việt tóm tắt tuần của CS này — phong cách làm việc, điểm mạnh nổi bật nhất, và 1 hướng cần tập trung. Giọng coaching, gọi CS là "bạn" (trung lập), KHÔNG gọi "em".
+Also write `overall`: 2-4 câu tiếng Việt tóm tắt tuần của CS này — phong cách làm việc, điểm mạnh nổi bật nhất, và RÕ RÀNG hướng cần tập trung. Giọng THẲNG THẮN, gọi tên vấn đề trực diện + nêu hệ quả (làm khách hỏi lại / hiểu sai / kéo dài chat) để CS hiểu chính xác mình thiếu ở đâu — KHÔNG vòng vo, không hạ nhẹ mức độ. Khen có cơ sở, không xã giao. Gọi CS là "bạn" (trung lập), KHÔNG gọi "em".
 
 Return the structured result. cs must be exactly "${cs.name}".`
 }

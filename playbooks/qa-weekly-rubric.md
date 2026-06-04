@@ -200,8 +200,17 @@ Crisp inbox theo cú pháp Slack `<url|text>`:
 **Câu chốt cuối (cố định):**
 `_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_`
 
-**Giọng điệu:** khích lệ, cụ thể, mỗi điểm cần cải thiện luôn kèm **1 gợi ý hành động**.
-Khen trước, góp ý sau. Không dùng từ "phạt", "trừ điểm", "vi phạm".
+**Giọng điệu:** thẳng thắn, rõ ràng, cụ thể — **không vòng vo, không lấp liếm**.
+Mục tiêu là để CS hiểu chính xác mình đang thiếu ở đâu và phải sửa gì, không phải
+để dễ chịu. Mỗi điểm cần cải thiện luôn kèm **1 gợi ý hành động cụ thể**.
+
+- **Gọi tên vấn đề thẳng:** "câu trả lời chưa đúng trọng tâm khách hỏi", không nói
+  tránh thành "có thể rõ hơn một chút". Nêu rõ **hệ quả**: vấn đề này làm khách phải
+  hỏi lại / kéo dài chat / hiểu sai.
+- **Khen có cơ sở, không khen xã giao** — chỉ nêu điểm tốt khi thật sự nổi bật.
+- Vẫn tôn trọng và mang tính xây dựng, nhưng **không hạ nhẹ mức độ** của lỗi. Lỗi
+  lặp lại nhiều lần phải nói rõ là "lặp lại, cần ưu tiên sửa".
+- Tránh từ "phạt", "trừ điểm", "vi phạm" (đây là coaching, không phải kỷ luật).
 
 **Xưng hô:** gọi CS là **"bạn"** (trung lập), KHÔNG gọi "em". Tránh xưng "chị/mình"
 trong nội dung nhận xét — chỉ dùng "bạn" để khách quan, đỡ tạo khoảng cách trên/dưới.

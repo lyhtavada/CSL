@@ -5,7 +5,7 @@
 **Phân bố:** 🌟2 ✅15 🟡1 🟠0 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Một tuần ổn định, bạn nắm context tốt và tư vấn đúng hướng. Tone với khách chuyên nghiệp. Hướng tập trung: bám sát đúng câu hỏi khách thay vì trả lời hơi rộng, sẽ giúp khách thấy được giải quyết thẳng vấn đề.
+Bạn nắm context tốt và tone chuyên nghiệp. Vấn đề chính tuần này: vài chat trả lời hơi rộng, chưa bám đúng câu khách hỏi — khiến khách phải tự lọc thông tin hoặc hỏi lại. Cần sửa: đọc kỹ đúng câu hỏi, trả lời thẳng cái khách cần trước, rồi mới bổ sung.
 
 ## ✅ Điểm tốt
 - **[P2]** Chủ động phát hiện và xử lý vấn đề khách chưa kịp nêu — tự nhận ra nút loyalty bị nút gift che và nút widget che phần dưới màn hình mobile, đề xuất chỉnh ngay: 'I noticed that the loyalty button is being covered by a gift button. Would you like me to change its position from left to right?' và 'I've just adjusted the widget button on the mobile version so that it does not cover the bottom of the screen.' (chat #4)

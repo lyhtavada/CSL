@@ -5,7 +5,7 @@
 **Phân bố:** 🌟2 ✅19 🟡0 🟠5 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Bạn hỗ trợ nhiệt tình, xử lý được khối lượng chat lớn trong tuần. Có một số chat còn vài lỗi nhỏ về quy trình/diễn đạt làm điểm chưa cao. Hướng tập trung: chăm chút phần chốt chat — báo khách bước tiếp theo rõ ràng trước khi đóng.
+Bạn nhiệt tình và gánh được khối lượng chat lớn. Nhưng điểm đáng lưu ý: nhiều chat dính lỗi nhỏ lặp lại về quy trình và diễn đạt (5 chat ở mức Minor) — gộp lại kéo điểm xuống rõ. Đây là lỗi 'chất lượng đồng đều', không phải lỗi nặng đơn lẻ. Cần sửa: chăm chút phần chốt chat — báo khách bước tiếp theo rõ ràng trước khi đóng, đừng để lửng.
 
 ## ✅ Điểm tốt
 - **[P3]** Xử lý request đổi support email từng bước rất gọn và rõ — confirm email muốn nhận noti, gửi verification, test noti, rồi chủ động transfer admin role. KH làm theo được ngay, không phải hỏi lại. (chat #5)

@@ -5,7 +5,7 @@
 **Phân bố:** 🌟1 ✅17 🟡0 🟠1 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Bạn xử lý ổn định, tone tốt với khách. Một vài chat còn trả lời hơi chung chung chưa đi thẳng vào điều khách cần. Tuần tới bạn thử cụ thể hóa từng bước rõ ràng hơn, khách sẽ dễ làm theo.
+Bạn ổn định, tone tốt. Điểm yếu rõ tuần này: một số chat trả lời chung chung, chưa đi thẳng vào điều khách cần — khách đọc xong vẫn chưa biết phải làm gì cụ thể. Cần sửa: thay vì nói nguyên tắc chung, đưa ra từng bước cụ thể khách làm theo được ngay.
 
 ## ✅ Điểm tốt
 - **[P1]** Giữ tone bình tĩnh, ấm khi KH bực: KH nói widget revamp 'it's a disaster', Sonny không phòng thủ mà revert ngay text/images và đổi layout classic — KH chốt 'now it's ok, thank you' (chat #16)
