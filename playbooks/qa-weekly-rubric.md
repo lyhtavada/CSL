@@ -102,8 +102,13 @@ Mỗi chat trong mẫu được xếp 1 trong 4 nhãn:
 
 ## 5. Format report gửi CS (qua Slack DM)
 
+**Tiêu đề bắt buộc ở đầu mỗi tin** — dòng đầu luôn là banner cố định để CS
+nhận ra ngay và search lại được (search "QA TUẦN" trong Slack ra hết):
+
 ```
-*QA Tuần [W##] — [Tên CS]*  📅 [dd/mm – dd/mm]
+📋 *QA TUẦN — BÁO CÁO CỦA [Tên CS]*
+🗓️ Tuần [W##] · [dd/mm – dd/mm]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📊 *Điểm tuần:* 86/100 — Tốt  (▲ +4 so với tuần trước)
 🔍 Đã QA: 30 chat
