@@ -184,6 +184,10 @@ const results = await parallel(
       label: `qa:${cs.name}`,
       phase: 'Grade',
       schema: RESULT_SCHEMA,
+      // Sonnet is plenty for rubric-based grading and uses far less quota than
+      // Opus — 9 Opus graders over 30-chat transcripts hit the subscription
+      // usage limit. Sonnet keeps the fan-out within budget.
+      model: 'sonnet',
     })
   )
 )
