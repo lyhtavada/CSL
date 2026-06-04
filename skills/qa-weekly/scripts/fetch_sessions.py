@@ -160,6 +160,8 @@ def main():
     ap.add_argument("--end", required=True, help="YYYY-MM-DD (Sunday)")
     ap.add_argument("--out", required=True)
     ap.add_argument("--sample", type=int, default=30)
+    ap.add_argument("--exclude", default="",
+                    help="comma-separated CS nicknames to skip (e.g. Liz)")
     ap.add_argument("--env", default=os.path.join(
         os.path.dirname(__file__), "..", "..", "..", ".env"))
     args = ap.parse_args()
@@ -180,11 +182,13 @@ def main():
     print(f"Fetched {len(sessions)} unique sessions for {args.start}..{args.end}",
           file=sys.stderr)
 
+    exclude = {x.strip() for x in args.exclude.split(",") if x.strip()}
+
     by_cs = {}
     for s in sessions:
         nick = (s.get("agentUser") or {}).get("nickname")
-        if not nick or nick not in roster:
-            continue  # skip AI-bot/unassigned and non-G2 agents
+        if not nick or nick not in roster or nick in exclude:
+            continue  # skip AI-bot/unassigned, non-G2, and excluded agents
         by_cs.setdefault(nick, []).append({
             "session_id": s.get("session_id"),
             "website_id": s.get("website_id"),

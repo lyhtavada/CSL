@@ -39,8 +39,11 @@ Derive `iso_week` (e.g. `2026-W22`) and the previous week tag for comparison.
 ```bash
 python3 skills/qa-weekly/scripts/fetch_sessions.py \
   --start <MON> --end <SUN> \
-  --out /tmp/qa_weekly_sessions.json --sample 30
+  --out /tmp/qa_weekly_sessions.json --sample 30 --exclude Liz
 ```
+
+By default exclude Liz herself (`--exclude Liz`) — she's the reviewer, not a
+gradee. Add more names comma-separated to skip others.
 
 Groups all sessions by `agentUser.nickname`, keeps only Team G2 members
 (mapped to Slack ID + email via `_identity/team-g2.md`), drops AI-bot /
