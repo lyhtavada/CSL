@@ -164,6 +164,9 @@ nhận ra ngay và search lại được (search "QA TUẦN" trong Slack ra hế
 📊 *Điểm tuần:* 86/100 — Tốt  (▲ +4 so với tuần trước)
 🔍 Đã QA: 30 chat
 
+📝 *Nhận xét chung*
+Tuần này em xử lý chắc tay, tone với khách rất ấm và chủ động. Điểm mạnh nhất là giải thích có bước, khách làm theo được ngay. Hướng tập trung tuần tới: confirm lại yêu cầu khách trước khi tư vấn để tránh hiểu lệch.
+
 ✅ *Điểm tốt tuần này*
 • Empathy tốt — giữ bình tĩnh khi KH bực về charge (chat #3, #17)
 • Giải thích rõ ràng, có bước — KH làm theo được ngay (chat #8)

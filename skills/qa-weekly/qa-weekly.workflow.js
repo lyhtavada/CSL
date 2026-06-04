@@ -28,6 +28,10 @@ const RESULT_SCHEMA = {
       type: 'integer',
       description: 'chats actually scored (exclude ones with no messages from this CS)',
     },
+    overall: {
+      type: 'string',
+      description: 'Nhận xét tổng quan 2-4 câu về CS tuần này: phong cách làm việc, điểm mạnh nổi bật nhất, hướng cần tập trung. Giọng coaching, viết như Liz nhận xét về bạn ấy. Tiếng Việt.',
+    },
     chat_labels: {
       type: 'object',
       description: 'count of chats per per-chat label (6 buckets)',
@@ -126,6 +130,8 @@ ${cs.prevReportPath
     : 'There is no previous report — set vs_last_week to "Tuần đầu, chưa có dữ liệu so sánh."'}
 
 CS metadata: app=${cs.app}, chats sampled=${cs.sampled} of ${cs.total} total this week.
+
+Also write `overall`: 2-4 câu tiếng Việt tóm tắt tuần của CS này — phong cách làm việc, điểm mạnh nổi bật nhất, và 1 hướng cần tập trung. Giọng coaching, như Liz viết nhận xét cá nhân cho bạn ấy.
 
 Return the structured result. cs must be exactly "${cs.name}".`
 }
