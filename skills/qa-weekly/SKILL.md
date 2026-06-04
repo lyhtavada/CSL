@@ -72,6 +72,13 @@ reads that CS's transcript file + the rubric, returns structured JSON
 (score, label distribution, strengths with chat refs, improvements with quotes).
 Workflow runs in background and reports once when ALL CS are done.
 
+Pass `args` as a **plain array of CS nicknames**, e.g.
+`["Alicia","Andy",...]`. The script builds `/tmp/qa_tx_<name>.txt` paths itself
+and reads app/chat-count from each transcript. **Quirk:** the runtime may deliver
+`args` as a JSON *string*, not a parsed array — the script handles both
+(`JSON.parse` if string). If a run returns `{results:[]}` with log
+"No CS to grade", check the args shape in the workflow output log.
+
 ### Step 5 — Compare to last week (main thread)
 
 For each CS, read last week's report in `reports/qa-weekly/` if it exists.

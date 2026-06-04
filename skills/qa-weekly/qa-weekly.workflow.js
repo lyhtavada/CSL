@@ -132,11 +132,18 @@ Return the structured result. cs must be exactly "${cs.name}".`
 
 phase('Grade')
 
-// args can arrive as: {week, rubricPath, cs:[...]}  OR  a bare array of names
-// OR {names:[...]}. Normalize so a stringified/odd-shaped arg still works.
-const RUBRIC = (args && args.rubricPath) ||
+// args may arrive as a STRING (JSON-encoded) instead of a parsed value —
+// the runtime passes it verbatim. Parse it if so.
+let A = args
+if (typeof A === 'string') {
+  try { A = JSON.parse(A) } catch (e) { A = null }
+}
+
+// A can be: {week, rubricPath, cs:[...]}  OR  a bare array of names
+// OR {names:[...]}. Normalize so any shape works.
+const RUBRIC = (A && A.rubricPath) ||
   '/Users/avada/CSL/playbooks/qa-weekly-rubric.md'
-const WEEK = (args && args.week) || '2026-W22'
+const WEEK = (A && A.week) || '2026-W22'
 
 function csFromName(name) {
   return {
@@ -150,16 +157,16 @@ function csFromName(name) {
 }
 
 let csList = []
-if (args && Array.isArray(args.cs) && args.cs.length) {
-  csList = args.cs
-} else if (Array.isArray(args) && args.length) {
-  csList = args.map((x) => (typeof x === 'string' ? csFromName(x) : x))
-} else if (args && Array.isArray(args.names) && args.names.length) {
-  csList = args.names.map(csFromName)
+if (A && Array.isArray(A.cs) && A.cs.length) {
+  csList = A.cs
+} else if (Array.isArray(A) && A.length) {
+  csList = A.map((x) => (typeof x === 'string' ? csFromName(x) : x))
+} else if (A && Array.isArray(A.names) && A.names.length) {
+  csList = A.names.map(csFromName)
 }
 
 if (!csList.length) {
-  log('No CS to grade — empty args.cs (args shape: ' + JSON.stringify(args).slice(0, 200) + ')')
+  log('No CS to grade — args shape: ' + JSON.stringify(A).slice(0, 200))
   return { week: WEEK, results: [] }
 }
 
@@ -186,7 +193,7 @@ const severe = graded.filter((g) => (g.severe_flags || []).length > 0)
 
 return {
   week: WEEK,
-  prevWeek: (args && args.prevWeek) || null,
+  prevWeek: (A && A.prevWeek) || null,
   count: graded.length,
   severe,
   results: graded,
