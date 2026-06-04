@@ -131,7 +131,7 @@ ${cs.prevReportPath
 
 CS metadata: app=${cs.app}, chats sampled=${cs.sampled} of ${cs.total} total this week.
 
-Also write `overall`: 2-4 câu tiếng Việt tóm tắt tuần của CS này — phong cách làm việc, điểm mạnh nổi bật nhất, và RÕ RÀNG hướng cần tập trung. Giọng THẲNG THẮN, gọi tên vấn đề trực diện + nêu hệ quả (làm khách hỏi lại / hiểu sai / kéo dài chat) để CS hiểu chính xác mình thiếu ở đâu — KHÔNG vòng vo, không hạ nhẹ mức độ. Khen có cơ sở, không xã giao. Gọi CS là "bạn" (trung lập), KHÔNG gọi "em".
+Also write the 'overall' field: 2-4 câu tiếng Việt tóm tắt tuần của CS này — phong cách làm việc, điểm mạnh nổi bật nhất, và RÕ RÀNG hướng cần tập trung. Giọng THẲNG THẮN, gọi tên vấn đề trực diện + nêu hệ quả (làm khách hỏi lại / hiểu sai / kéo dài chat) để CS hiểu chính xác mình thiếu ở đâu — KHÔNG vòng vo, không hạ nhẹ mức độ. Khen có cơ sở, không xã giao. Gọi CS là "bạn" (trung lập), KHÔNG gọi "em".
 
 Return the structured result. cs must be exactly "${cs.name}".`
 }
