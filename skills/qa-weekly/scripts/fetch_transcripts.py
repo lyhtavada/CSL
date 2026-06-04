@@ -18,6 +18,7 @@ message).
 import argparse
 import json
 import os
+import re
 import sys
 import warnings
 
@@ -84,6 +85,28 @@ def fetch(client, session_ids):
     return convs
 
 
+_IMG_JSON = re.compile(r'\{[^{}]*"(?:url|name|type)"\s*:[^{}]*\}')
+_LONG_URL = re.compile(r'https?://storage\.crisp\.chat/\S+')
+_ANY_LONG_URL = re.compile(r'https?://\S{60,}')
+
+
+def clean_content(text):
+    """Strip heavy junk the grader can't use: image/file JSON blobs and long
+    storage URLs. Keeps the message readable, cuts ~25% of transcript size."""
+    if not text:
+        return text
+    # image/file attachment messages → placeholder
+    if _IMG_JSON.search(text):
+        t = _IMG_JSON.sub("[hình ảnh/file]", text)
+    else:
+        t = text
+    # bare crisp storage URLs → placeholder
+    t = _LONG_URL.sub("[link ảnh]", t)
+    # any other very long URL → trimmed (keep domain for context)
+    t = _ANY_LONG_URL.sub(lambda m: m.group(0)[:50] + "…", t)
+    return t.strip()
+
+
 def render(convs, session_meta):
     """Render transcripts as readable text, numbered, with metadata header."""
     out = []
@@ -105,7 +128,7 @@ def render(convs, session_meta):
             else:
                 label = who or "?"
             ts = m["ts"][11:19] if len(m["ts"]) > 19 else m["ts"]  # HH:MM:SS
-            content = m["content"].replace("\n", " ").strip()
+            content = clean_content(m["content"].replace("\n", " ").strip())
             if content:
                 out.append(f"[{ts}] {label}: {content}")
     return "\n".join(out)

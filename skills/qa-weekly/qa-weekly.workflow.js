@@ -102,16 +102,18 @@ CRITICAL RULES:
 - The weekly score reflects ONLY chat quality with the customer. Keep the scope disclaimer (in the DM format) intact in vs_last_week/notes context — never imply this is a full performance review.
 - Be fair and developmental. This report is DM'd to the CS — accurate, specific, encouraging.
 
-KNOWLEDGE CHECK (KT1/KT2) — MANDATORY, verify against the real agent KB:
-- Do NOT judge knowledge/pricing/feature/policy claims from your own memory. Open the actual KB the AI agent uses.
-- KB index (file → what it covers): /Users/avada/CSL/skills/qa-weekly/references/kb-index.md
-  Chatty KB dir: /Users/avada/claw-weebhook-crisp-chat/agents/chatty-agent/knowledge/
-  Joy KB dir:    /Users/avada/claw-weebhook-crisp-chat/agents/joy-loyalty-agent/knowledge/
-- For each chat: detect app (Joy/Chatty from segments) → if the CS makes a factual claim (price, limit, feature, refund policy), look it up in the index → Read the 1-3 relevant KB files → compare.
-  - Claim CONTRADICTS KB (wrong price/limit/feature) → KT1 (Critical). Quote the CS line AND the correct KB line in evidence.
-  - KB clearly has the answer but CS went in circles / answered incompletely / said "can't be done" when KB says it can → KT2 (Critical).
-- Open KB files ONLY when a chat has a claim worth verifying — never read the whole KB (keep it light).
-- No matching KB file / not sure → skip, do not speculate.
+KNOWLEDGE CHECK (KT1/KT2) — verify against KB, but be efficient:
+- Do NOT judge knowledge claims from your own memory.
+- PRICING is the most common claim — it is embedded below, so for any price/plan/limit claim, check against THIS table directly. Do NOT open a KB file for pricing.
+
+  JOY (orders/mo free quota): Starter $0 = 250 · Essential $29 = 500 · Advanced $129 = 2,000 · Ultimate $499 = 7,000. (Starter's figure is in transactions.) Free trial 14d Essential/Advanced, 30d Ultimate; Starter free forever; 30-day refund after upgrade.
+  CHATTY (per month unless noted): Free $0 = 50 AI convo lifetime, 100 products, 1 member, 90d history · Basic $19.99 = 50 AI/mo, 500 products, 5 members, 12mo history · Pro $68.99 = 300 AI/mo, 8,000 products, 10 members, unlimited history · Plus $199 = 700 AI/mo, 20,000 products, unlimited members.
+
+- For NON-pricing claims (specific feature behavior, refund/policy edge cases): only THEN consult the KB. Index: /Users/avada/CSL/skills/qa-weekly/references/kb-index.md ; dirs: chatty-agent/knowledge/ and joy-loyalty-agent/knowledge/ under /Users/avada/claw-weebhook-crisp-chat/agents/. Read at most 1-2 files, only when a chat genuinely has a checkable non-price claim.
+  - Claim CONTRADICTS the table/KB → KT1: quote the CS line + the correct value.
+  - KB clearly has the answer but CS went in circles / said "can't be done" when it can → KT2.
+- Most chats have NO claim worth verifying — don't force it. If two KB files disagree (e.g. team-member count), that's a KB bug → severe_flag for Liz, NOT the CS's fault.
+- No claim / not sure → skip, do not speculate, do not open KB.
 
 SCORING — THREE-AXIS model (per rubric §2-§3). Each chat is scored on 3 independent axes that sum to 0-100:
   • Trục 1 MINDSET (0-34): ownership (theo tới cùng, không đẩy việc/đóng lửng) + empathy (thấu cảm, trấn an đúng lúc) + proactive (chủ động vì lợi ích KH) + effort (nỗ lực làm KH hài lòng, kiên nhẫn với KH khó). ~34 xuất sắc, ~25 ổn, ~15 máy móc, ~5 vô cảm/đẩy việc.
