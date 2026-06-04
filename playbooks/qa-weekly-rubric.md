@@ -165,7 +165,7 @@ nhận ra ngay và search lại được (search "QA TUẦN" trong Slack ra hế
 🔍 Đã QA: 30 chat
 
 📝 *Nhận xét chung*
-Tuần này em xử lý chắc tay, tone với khách rất ấm và chủ động. Điểm mạnh nhất là giải thích có bước, khách làm theo được ngay. Hướng tập trung tuần tới: confirm lại yêu cầu khách trước khi tư vấn để tránh hiểu lệch.
+Tuần này bạn xử lý chắc tay, tone với khách rất ấm và chủ động. Điểm mạnh nhất là giải thích có bước, khách làm theo được ngay. Hướng tập trung tuần tới: confirm lại yêu cầu khách trước khi tư vấn để tránh hiểu lệch.
 
 ✅ *Điểm tốt tuần này*
 • Empathy tốt — giữ bình tĩnh khi KH bực về charge (chat #3, #17)
@@ -202,6 +202,9 @@ Crisp inbox theo cú pháp Slack `<url|text>`:
 
 **Giọng điệu:** khích lệ, cụ thể, mỗi điểm cần cải thiện luôn kèm **1 gợi ý hành động**.
 Khen trước, góp ý sau. Không dùng từ "phạt", "trừ điểm", "vi phạm".
+
+**Xưng hô:** gọi CS là **"bạn"** (trung lập), KHÔNG gọi "em". Tránh xưng "chị/mình"
+trong nội dung nhận xét — chỉ dùng "bạn" để khách quan, đỡ tạo khoảng cách trên/dưới.
 
 ---
 

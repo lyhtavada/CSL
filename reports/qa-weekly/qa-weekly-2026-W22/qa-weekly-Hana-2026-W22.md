@@ -5,7 +5,7 @@
 **Phân bố:** 🌟2 ✅20 🟡0 🟠2 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Em hỗ trợ tận tâm và chắc về kiến thức sản phẩm. Tuần này có vài chat hiểu chưa đúng ý khách dẫn đến tư vấn hơi lệch. Hướng tập trung: confirm lại đúng nhu cầu khách trước khi đưa giải pháp — em vốn trả lời tốt, chỉ cần nắm đúng vấn đề từ đầu.
+Bạn hỗ trợ tận tâm và chắc về kiến thức sản phẩm. Tuần này có vài chat hiểu chưa đúng ý khách dẫn đến tư vấn hơi lệch. Hướng tập trung: confirm lại đúng nhu cầu khách trước khi đưa giải pháp — bạn vốn trả lời tốt, chỉ cần nắm đúng vấn đề từ đầu.
 
 ## ✅ Điểm tốt
 - **[P2]** Chủ động đưa workaround khi chưa được hỏi — vụ Cookiebot/GDPR, ngoài việc xác nhận thẳng thắn Joy chưa tích hợp CMP, mình còn gợi ý whitelist fonts.bunny.net dưới mục Necessary để KH dùng tạm trong lúc chờ dev. Rất đáng khen vì biến một limitation thành lời khuyên hữu ích. (chat #3)

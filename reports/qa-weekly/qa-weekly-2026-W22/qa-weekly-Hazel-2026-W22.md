@@ -5,7 +5,7 @@
 **Phân bố:** 🌟3 ✅16 🟡0 🟠2 🔴0 ⛔1
 
 ## 📝 Nhận xét chung
-Em đọc context rất kỹ khi nhận ca giữa chừng và tone ấm, biết trấn an khách đúng lúc. Tuần này có 1 case khai thác KB chưa tới (noti iOS) và vài lần hiểu lệch ý khách. Hướng tập trung: với case kỹ thuật, tra KB kỹ trước khi troubleshoot vòng để cắt ngắn thời gian.
+Bạn đọc context rất kỹ khi nhận ca giữa chừng và tone ấm, biết trấn an khách đúng lúc. Tuần này có 1 case khai thác KB chưa tới (noti iOS) và vài lần hiểu lệch ý khách. Hướng tập trung: với case kỹ thuật, tra KB kỹ trước khi troubleshoot vòng để cắt ngắn thời gian.
 
 ## ✅ Điểm tốt
 - **[P2]** Chủ động đề xuất giải pháp/cảnh báo trước khi KH kịp hỏi — gợi ý welcome message rõ ràng hơn, chủ động giải thích vì sao không nhận noti cho hội thoại AI handle. (chat #1, chat #13, chat #6)

@@ -5,7 +5,7 @@
 **Phân bố:** 🌟3 ✅4 🟡0 🟠0 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Tuần đầu của em rất ấn tượng — mẫu nhỏ (7 chat) nhưng chất lượng đồng đều, nhiều chat xuất sắc. Em nắm vấn đề nhanh và giải thích gọn. Cứ giữ phong độ này, tuần tới mẫu nhiều hơn sẽ phản ánh rõ hơn.
+Tuần đầu của bạn rất ấn tượng — mẫu nhỏ (7 chat) nhưng chất lượng đồng đều, nhiều chat xuất sắc. Bạn nắm vấn đề nhanh và giải thích gọn. Cứ giữ phong độ này, tuần tới mẫu nhiều hơn sẽ phản ánh rõ hơn.
 
 ## ✅ Điểm tốt
 - **[P1]** Trấn an khách đang lo lắng rất đúng lúc — khách reply 'i was worried a bit thank you!' / 'omg thank you so much!'. Tone ấm, kiên nhẫn suốt buổi onboarding dài (chat #3)

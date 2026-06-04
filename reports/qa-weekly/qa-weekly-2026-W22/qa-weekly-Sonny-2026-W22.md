@@ -5,7 +5,7 @@
 **Phân bố:** 🌟1 ✅17 🟡0 🟠1 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Em xử lý ổn định, tone tốt với khách. Một vài chat còn trả lời hơi chung chung chưa đi thẳng vào điều khách cần. Tuần tới em thử cụ thể hóa từng bước rõ ràng hơn, khách sẽ dễ làm theo.
+Bạn xử lý ổn định, tone tốt với khách. Một vài chat còn trả lời hơi chung chung chưa đi thẳng vào điều khách cần. Tuần tới bạn thử cụ thể hóa từng bước rõ ràng hơn, khách sẽ dễ làm theo.
 
 ## ✅ Điểm tốt
 - **[P1]** Giữ tone bình tĩnh, ấm khi KH bực: KH nói widget revamp 'it's a disaster', Sonny không phòng thủ mà revert ngay text/images và đổi layout classic — KH chốt 'now it's ok, thank you' (chat #16)

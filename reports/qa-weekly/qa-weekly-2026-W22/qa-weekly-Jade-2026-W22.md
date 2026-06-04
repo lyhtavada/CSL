@@ -5,7 +5,7 @@
 **Phân bố:** 🌟0 ✅27 🟡1 🟠0 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Em làm việc rất đều tay, gần như không có lỗi lớn nào trong tuần — đa số chat đạt chuẩn. Đây là nền tảng tốt. Để bật lên mức xuất sắc, em thử thêm sự chủ động: gợi ý thêm cho khách hoặc giải thích rõ 'tại sao' chứ không chỉ 'làm thế nào'.
+Bạn làm việc rất đều tay, gần như không có lỗi lớn nào trong tuần — đa số chat đạt chuẩn. Đây là nền tảng tốt. Để bật lên mức xuất sắc, bạn thử thêm sự chủ động: gợi ý thêm cho khách hoặc giải thích rõ 'tại sao' chứ không chỉ 'làm thế nào'.
 
 ## ✅ Điểm tốt
 - **[P3]** Hướng dẫn POS permission cực rõ ràng, chia 2 trường hợp (Individual vs Role-based) từng bước, KH làm theo và fix được ngay (chat #2)

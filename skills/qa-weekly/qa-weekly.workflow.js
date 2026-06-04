@@ -30,7 +30,7 @@ const RESULT_SCHEMA = {
     },
     overall: {
       type: 'string',
-      description: 'Nhận xét tổng quan 2-4 câu về CS tuần này: phong cách làm việc, điểm mạnh nổi bật nhất, hướng cần tập trung. Giọng coaching, viết như Liz nhận xét về bạn ấy. Tiếng Việt.',
+      description: 'Nhận xét tổng quan 2-4 câu về CS tuần này: phong cách làm việc, điểm mạnh nổi bật nhất, hướng cần tập trung. Giọng coaching, tiếng Việt. Gọi CS là "bạn" (trung lập) — KHÔNG gọi "em".',
     },
     chat_labels: {
       type: 'object',
@@ -131,7 +131,7 @@ ${cs.prevReportPath
 
 CS metadata: app=${cs.app}, chats sampled=${cs.sampled} of ${cs.total} total this week.
 
-Also write `overall`: 2-4 câu tiếng Việt tóm tắt tuần của CS này — phong cách làm việc, điểm mạnh nổi bật nhất, và 1 hướng cần tập trung. Giọng coaching, như Liz viết nhận xét cá nhân cho bạn ấy.
+Also write `overall`: 2-4 câu tiếng Việt tóm tắt tuần của CS này — phong cách làm việc, điểm mạnh nổi bật nhất, và 1 hướng cần tập trung. Giọng coaching, gọi CS là "bạn" (trung lập), KHÔNG gọi "em".
 
 Return the structured result. cs must be exactly "${cs.name}".`
 }

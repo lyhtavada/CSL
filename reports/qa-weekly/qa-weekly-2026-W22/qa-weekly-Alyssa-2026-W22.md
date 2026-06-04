@@ -5,7 +5,7 @@
 **Phân bố:** 🌟4 ✅17 🟡1 🟠0 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Em xử lý rất vững và đa dạng tình huống, đặc biệt kiên nhẫn với khách khó và case đa ngôn ngữ. Điểm mạnh nổi bật là chủ động đề xuất giải pháp khách chưa kịp hỏi. Lưu ý nhỏ: soát lại trước khi gửi để tránh gửi trùng tin nhắn.
+Bạn xử lý rất vững và đa dạng tình huống, đặc biệt kiên nhẫn với khách khó và case đa ngôn ngữ. Điểm mạnh nổi bật là chủ động đề xuất giải pháp khách chưa kịp hỏi. Lưu ý nhỏ: soát lại trước khi gửi để tránh gửi trùng tin nhắn.
 
 ## ✅ Điểm tốt
 - **[P5]** Luôn confirm lại đúng vấn đề/đúng store trước khi xử lý, không bắt khách lặp lại. Ví dụ: 'May I confirm this is your store... for better support?' và 'Just to confirm, you would like to remove the account jut-man@hotmail.co.uk from Joy's system?' (chat #11, chat #2, chat #23)
