@@ -93,7 +93,8 @@ ${cs.prevReportPath ? `3. LAST WEEK'S REPORT: ${cs.prevReportPath} — for the v
 CRITICAL RULES:
 - A single chat may contain messages from SEVERAL CS (shift handoffs). Score ONLY messages labeled "CS (${cs.name})". Do NOT blame or credit "${cs.name}" for other CS's messages.
 - Every improvement MUST quote the actual chat line as evidence. If you can't quote it, don't report it.
-- Skip anything not observable from chat (workshift, Trello cards, review system, ratings). Those are for monthly QA, not weekly.
+- Skip anything not observable from chat (workshift, Trello cards, review system, ratings, TS/dev coordination, shift handoff, post-chat follow-up). Those are for monthly QA, not weekly — do NOT speculate about them or let them affect the score.
+- The weekly score reflects ONLY chat quality with the customer. Keep the scope disclaimer (in the DM format) intact in vs_last_week/notes context — never imply this is a full performance review.
 - Be fair and developmental. This report is DM'd to the CS — accurate, specific, encouraging.
 
 KNOWLEDGE CHECK (KT1/KT2) — MANDATORY, verify against the real agent KB:

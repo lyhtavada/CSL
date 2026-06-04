@@ -12,6 +12,24 @@ Khác với QA tháng (`qa-policy.md` — penalty, kỷ luật, CEO duyệt), ru
 
 ---
 
+## 0. Phạm vi & giới hạn (đọc trước)
+
+QA tuần này **chỉ nhìn thấy nội dung chat với khách hàng**. Nó **KHÔNG** đánh giá
+được — và điểm tuần KHÔNG phản ánh — những phần sau:
+
+- Phối hợp với **TS/dev**: tạo ticket, chất lượng ticket, follow-up đúng hạn
+- **Bàn giao ca**, assign chat/card, cập nhật status nội bộ
+- Việc **xử lý sau khi đóng chat** (card pending, update KH khi dev trả kết quả)
+- **Xin review** thật sự, rating của KH, checkin/workshift
+- Thái độ & teamwork ngoài kênh chat
+
+→ Vì vậy điểm QA tuần là **một lát cắt coaching về kỹ năng chat**, không phải
+đánh giá năng lực toàn diện. Một CS điểm chat cao vẫn có thể yếu ở ticket/handoff
+và ngược lại. **Đánh giá toàn diện thuộc về QA tháng** (`qa-policy.md`, có đủ
+data Trello/ticket/rating). Disclaimer này phải xuất hiện trong mọi DM gửi CS.
+
+---
+
 ## 1. Sampling
 
 - **30 session/CS/tuần** (Thứ 2 → Chủ Nhật)
@@ -159,6 +177,8 @@ nhận ra ngay và search lại được (search "QA TUẦN" trong Slack ra hế
 
 🔗 *Chat đã QA (24):*
 <crisp_url|#1 Cuura Malaysia> · <crisp_url|#2 Nicholas Davies> · …
+
+_📌 Lưu ý: Đánh giá này chỉ dựa trên *nội dung chat với khách*. Chưa bao gồm việc phối hợp với TS/dev, tạo & follow-up ticket, bàn giao ca, hay xin review — những phần đó nằm ngoài phạm vi chat. Đây là feedback để cải thiện, không phải đánh giá toàn diện._
 
 _Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
 ```
