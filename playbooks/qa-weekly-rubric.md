@@ -89,24 +89,34 @@ quan** → so claim với KB:
 
 ## 3. Cách tính điểm tuần (theo mẫu, không phải penalty)
 
-Mỗi chat trong mẫu được xếp 1 trong 4 nhãn:
+Mỗi chat trong mẫu được xếp 1 trong 6 nhãn. **Mốc chuẩn của một chat xử lý
+"đúng và đủ" là 90, KHÔNG phải 100.** Điểm 100 chỉ dành cho chat thật sự nổi
+bật (có điểm sáng P1–P5 rõ rệt). Đã quote được lỗi thì chat đó không thể đạt
+mốc chuẩn — phải tụt theo mức lỗi nặng nhất.
 
 | Nhãn | Nghĩa | Điểm chat |
 |------|-------|-----------|
-| ✅ **Clean** | Không lỗi, xử lý ổn | 100 |
-| 🟡 **Minor** | Chỉ lỗi Low/Moderate, không hại KH | 80 |
-| 🟠 **Major** | Có lỗi High | 60 |
-| 🔴 **Critical** | Có lỗi Critical/Urgent | 30 |
+| 🌟 **Xuất sắc** | Sạch lỗi **+ có điểm sáng P1–P5 rõ rệt** (empathy/proactive/giải thích xuất sắc) | 100 |
+| ✅ **Đạt chuẩn** | Sạch lỗi, xử lý đúng & đủ nhưng không có gì nổi bật | 90 |
+| 🟡 **Minor-Low** | Có lỗi **Low** (vd KN1, QT5/6) | 80 |
+| 🟠 **Minor-Mod** | Có lỗi **Moderate** (vd KN2/3/6/7, QT18, QT9) | 70 |
+| 🔴 **Major** | Có lỗi **High** (vd KN4/5, QT22/25) | 55 |
+| ⛔ **Critical** | Có lỗi **Critical/Urgent** (vd QT11, KT1, KN8) | 30 |
 
-**Điểm tuần = trung bình điểm các chat trong mẫu.**
+> Một chat lấy điểm theo **lỗi nặng nhất** của nó. Nhiều lỗi cùng mức không trừ
+> chồng (rubric tuần là coaching, không cộng dồn penalty như QA tháng).
 
-> Tính trên % chất lượng của mẫu → so tuần-qua-tuần công bằng, không bị một chat tệ kéo cả tuần về 0 như cách trừ penalty.
+**Điểm tuần = trung bình điểm các chat trong mẫu** (làm tròn). Chat không có
+message nào của CS đang xét → loại khỏi mẫu, không tính.
 
-**Phân loại tổng:**
-- 90–100: Xuất sắc
-- 80–89: Tốt
-- 70–79: Đạt, cần cải thiện vài điểm
-- <70: Cần coaching 1-1
+> Tính trên % chất lượng của mẫu → so tuần-qua-tuần công bằng, không bị một chat
+> tệ kéo cả tuần về 0 như cách trừ penalty.
+
+**Phân loại tổng (đã siết — Xuất sắc thật sự khó đạt):**
+- **95–100: Xuất sắc** 🌟
+- **85–94: Tốt** 👍
+- **75–84: Đạt** — cần cải thiện vài điểm
+- **<75: Cần coaching 1-1** 🤝
 
 ---
 
