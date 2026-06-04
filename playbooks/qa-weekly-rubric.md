@@ -40,105 +40,89 @@ data Trello/ticket/rating). Disclaimer này phải xuất hiện trong mọi DM 
 
 ---
 
-## 2. Tiêu chí chấm (chỉ những gì thấy được từ chat)
+## 2. Ba trục đánh giá (mỗi chat chấm 3 trục, mỗi trục ~33 điểm)
 
-Mỗi chat được soi qua 2 nhóm: **lỗi cần cải thiện** (map về code QA tháng để nhất quán) và **điểm sáng** (để khen).
+Mỗi chat được chấm trên **3 trục độc lập**, mỗi trục tối đa ~33 điểm → tổng 100.
+Trọng tâm là **chất lượng phục vụ khách hàng** (mindset + kiến thức), không chỉ
+soi lỗi quy trình.
 
-### A. Lỗi quan sát-được-từ-chat
+### Trục 1 — 🧠 MINDSET phục vụ KH (0–34đ)
 
-Chỉ dùng các code mà transcript đủ bằng chứng. Bỏ qua mọi lỗi cần data ngoài chat
-(workshift, checkin, Trello/ticket, review-system, rating, lưu data) — để QA tháng xử lý.
+CS có thật sự **đặt mình vào vị trí khách và muốn giải quyết tới cùng** không —
+hay chỉ làm cho xong việc. Đây là "cái tâm" trong support.
 
-| Code | Lỗi | Mức | Soi cái gì trong chat |
-|------|-----|-----|----------------------|
-| QT5 | Thiếu thông tin cơ bản (URL, email, store) trước khi xử lý | Low | CS xử lý mà chưa thu thập đủ định danh shop |
-| QT6 | Xin quyền không giải thích / không liệt kê đủ | Low | Lúc xin permission, có nói rõ xin gì + để làm gì không |
-| QT7 | Xin quyền admin khi không cần | Moderate | Xin quyền rộng hơn mức vấn đề cần |
-| QT8 | First response chậm (>2 phút) | Moderate | Khoảng cách timestamp tin đầu KH → tin đầu CS *(chỉ ghi nhận, xem mục 4)* |
-| QT9 | Hỏi vòng vo, kéo dài hội thoại | Moderate | Hỏi thừa, không đi thẳng vấn đề |
-| QT10 | Không theo flow xử lý của app (confirm URL, refund, downgrade…) | Moderate | So với flow trong `kb/cs-process/` |
-| QT11 | Bỏ tin nhắn KH trong ca (không phản hồi) | Critical | KH nhắn, không có phản hồi nào của CS |
-| QT12 | Thiếu minh bạch — không giải thích quá trình/nguyên nhân | Critical | Báo "đã xong" mà không nói làm gì/vì sao |
-| QT18 | Kết thúc mà không báo KH bước tiếp theo | Moderate | Chat đóng lửng, KH không biết chờ gì |
-| QT22 | Bỏ sót câu hỏi của KH | High | KH hỏi 2 ý, CS chỉ trả lời 1 |
-| QT25 | Hẹn kiểm tra rồi im luôn | High | "Để em check rồi báo lại" → không quay lại |
-| KT1 | Sai thông tin tính năng / giá / chính sách | Critical | **Đối chiếu KB agent** (xem mục Knowledge bên dưới) — claim của CS có khớp KB không |
-| KT2 | Có FAQ/guide đầy đủ mà không dùng, support lòng vòng | Critical | Vấn đề đã có sẵn trong KB agent mà CS mò lại từ đầu / trả lời thiếu |
-| KN1 | Sai ngữ pháp/chính tả, tin nhắn thiếu chuyên nghiệp | Low | Lỗi viết rõ rệt, ảnh hưởng hình ảnh |
-| KN2 | Hỏi lại thứ KH đã cung cấp trong cùng chat | Moderate | CS hỏi cái KH nói rồi |
-| KN3 | Hướng dẫn chưa rõ, KH khó hiểu | Moderate | KH phải hỏi lại "ý anh là sao" |
-| KN5 | Hiểu sai vấn đề → tư vấn sai hướng | High | Giải pháp lệch với điều KH thật sự cần |
-| KN6 | Chưa đủ thông tin đã kết luận | Moderate | Chốt vấn đề khi chưa hỏi đủ |
-| KN7 | Trả lời chung chung, không giải quyết trực tiếp | Moderate | Câu trả lời mơ hồ, không có bước cụ thể |
-| KN8 | Câu mất lịch sự, gây phản ứng tiêu cực | Urgent | Tone vô lễ/cộc lốc, KH phản ứng |
+| Khía cạnh | Tốt (cộng điểm) | Tệ (trừ điểm) |
+|-----------|-----------------|----------------|
+| **Ownership** | Theo đuổi vấn đề tới khi KH thật sự xong; không đẩy đi / đóng chat lửng | Đẩy việc, đóng chat khi KH chưa xong, "không phải việc của tôi" |
+| **Thấu cảm** | Hiểu cảm xúc/tình huống KH, trấn an đúng lúc khi KH bực/lo | Máy móc, lạnh lùng, phớt lờ cảm xúc KH |
+| **Chủ động vì KH** | Đề xuất thêm giải pháp/cảnh báo KH chưa kịp hỏi, nghĩ xa hơn yêu cầu | Chỉ làm đúng câu hỏi, không nghĩ thêm cho KH |
+| **Nỗ lực làm KH hài lòng** | Đi thêm một bước để KH happy; kiên nhẫn với KH khó | Làm tối thiểu cho xong, bỏ cuộc khi KH khó |
 
-> KN8 / QT11 / KT1 nếu xuất hiện → **flag riêng cho Liz xem trước khi DM**, không tự gửi.
+- **~34đ:** mindset xuất sắc rõ rệt ở nhiều khía cạnh (KH cảm nhận được sự tận tâm).
+- **~25đ:** ổn, phục vụ đàng hoàng nhưng không nổi bật.
+- **~15đ:** máy móc, làm cho xong, thiếu sự quan tâm.
+- **~5đ:** vô cảm/đẩy việc/bỏ mặc KH (kèm QT11 bỏ tin nhắn, KN8 mất lịch sự).
 
-#### Kiểm tra kiến thức (KT1/KT2) — BẮT BUỘC đối chiếu KB agent
+### Trục 2 — 📚 KIẾN THỨC (0–33đ) — BẮT BUỘC đối chiếu KB
 
-Khi chấm 2 lỗi kiến thức, **không dựa vào hiểu biết chung** — phải mở KB thật
-mà con AI agent dùng để verify từng claim CS nói (giá, tính năng, giới hạn,
-chính sách refund…):
+Tư vấn có **đúng** không. Sai kiến thức là nguy hiểm nhất (KH tin rồi làm sai).
+**Không dựa vào hiểu biết chung** — phải mở KB thật mà AI agent dùng để verify:
 
 - **Chatty KB:** `/Users/avada/claw-weebhook-crisp-chat/agents/chatty-agent/knowledge/`
 - **Joy KB:** `/Users/avada/claw-weebhook-crisp-chat/agents/joy-loyalty-agent/knowledge/`
-- **Index để tra nhanh file nào:** `skills/qa-weekly/references/kb-index.md`
-  (mỗi file kèm "applies_when" → biết mở đúng file)
+- **Index tra nhanh:** `skills/qa-weekly/references/kb-index.md` (mỗi file kèm "applies_when")
 
-Cách làm: với mỗi chat, xác định app (Joy/Chatty theo segment) → nếu CS có
-claim về kiến thức/giá/chính sách → tra index → **Read đúng 1–3 file KB liên
-quan** → so claim với KB:
-- Claim **trái** KB (sai giá, sai giới hạn, sai tính năng) → **KT1 (Critical)**, quote cả câu CS nói + dòng KB đúng.
-- KB có sẵn câu trả lời rõ mà CS **lòng vòng / trả lời thiếu / bảo "không làm được"** trong khi KB nói được → **KT2 (Critical)**.
-- Chỉ mở file KB khi chat có claim cần verify — **không đọc cả KB** (giữ nhẹ).
-- Không tìm thấy file KB phù hợp / không chắc → **bỏ qua, không suy diễn**.
+Cách làm: chat có claim về giá/tính năng/giới hạn/chính sách → tra index → Read
+1–3 file KB liên quan → so claim với KB.
 
-### B. Điểm sáng (để khen có cơ sở)
+- **~33đ:** mọi claim đúng KB, nắm vững sản phẩm, tư vấn chính xác.
+- **~22đ:** đúng nhưng có chỗ chưa chắc / trả lời thiếu so với KB có sẵn.
+- **~10đ:** dùng KB sẵn mà support lòng vòng (KT2), hoặc bảo "không làm được" khi KB nói được.
+- **~0đ:** **sai thông tin** giá/tính năng/chính sách (KT1) — claim trái KB.
 
-| Code | Điểm tốt | Nhận diện trong chat |
-|------|----------|---------------------|
-| P1 | Empathy tốt | KH bực/lo, CS giữ tone ấm, trấn an đúng lúc |
-| P2 | Chủ động (proactive) | Đề xuất giải pháp/cảnh báo KH chưa kịp hỏi |
-| P3 | Giải thích rõ ràng, có bước | Hướng dẫn từng bước, KH làm theo được ngay |
-| P4 | Xử lý gọn, đúng flow | Đi thẳng vấn đề, đúng quy trình, không vòng vo |
-| P5 | Đọc kỹ context | Nắm vấn đề từ đầu, không bắt KH lặp lại |
+> KB có thể **outdated** → nếu claim CS trái KB nhưng nghi KB sai (vd app hiện số
+> khác), **flag cho Liz verify**, đừng vội trừ điểm/kết tội CS.
+
+### Trục 3 — 🛠️ KỸ NĂNG XỬ LÝ (0–33đ)
+
+Cách trình bày & xử lý — rõ ràng, đúng flow, không lỗi giao tiếp.
+
+| Tốt | Lỗi (trừ điểm) |
+|-----|----------------|
+| Giải thích có bước, KH làm theo được ngay | KN3 hướng dẫn khó hiểu · KN7 trả lời chung chung |
+| Đi thẳng vấn đề, không vòng vo | QT9 hỏi vòng vo · KN2 hỏi lại thứ KH đã nói |
+| Hiểu đúng vấn đề trước khi tư vấn | KN5 hiểu sai → tư vấn sai · KN6 kết luận khi chưa đủ thông tin |
+| Báo rõ bước tiếp theo, không bỏ sót | QT18 đóng chat lửng · QT22 bỏ sót câu hỏi · QT25 hẹn rồi im |
+| Viết chuyên nghiệp | KN1 sai ngữ pháp/chính tả |
+
+- **~33đ:** xử lý gọn, rõ ràng, đúng flow, không lỗi.
+- **~22đ:** ổn nhưng có 1 lỗi nhẹ (Low/Moderate).
+- **~10đ:** có lỗi nặng (High: hiểu sai, bỏ sót câu hỏi).
+- **~0đ:** xử lý hỏng (bỏ tin nhắn KH, gây hậu quả).
+
+> **Flag riêng cho Liz** trước khi DM nếu có: KN8 (mất lịch sự), QT11 (bỏ KH),
+> KT1 (sai kiến thức), hoặc thao tác gây hậu quả trên live store.
 
 ---
 
-## 3. Cách tính điểm tuần (theo mẫu, không phải penalty)
+## 3. Cách tính điểm
 
-Mỗi chat trong mẫu được xếp 1 trong 6 nhãn. **Mốc chuẩn của một chat xử lý
-"đúng và đủ" là 85, KHÔNG phải 100.** Điểm 100 chỉ dành cho chat thật sự nổi
-bật (có điểm sáng P1–P5 rõ rệt). Đã quote được lỗi thì chat đó không thể đạt
-mốc chuẩn — phải tụt theo mức lỗi nặng nhất.
+**Điểm 1 chat = Mindset (0–34) + Kiến thức (0–33) + Xử lý (0–33) = 0–100.**
 
-| Nhãn | Nghĩa | Điểm chat |
-|------|-------|-----------|
-| 🌟 **Xuất sắc** | Sạch lỗi **+ có điểm sáng P1–P5 rõ rệt** (empathy/proactive/giải thích xuất sắc) | 100 |
-| ✅ **Đạt chuẩn** | Sạch lỗi, xử lý đúng & đủ nhưng không có gì nổi bật | 85 |
-| 🟡 **Minor-Low** | Có lỗi **Low** (vd KN1, QT5/6) | 72 |
-| 🟠 **Minor-Mod** | Có lỗi **Moderate** (vd KN2/3/6/7, QT18, QT9) | 60 |
-| 🔴 **Major** | Có lỗi **High** (vd KN4/5, QT22/25) | 45 |
-| ⛔ **Critical** | Có lỗi **Critical/Urgent** (vd QT11, KT1, KN8) | 25 |
+Chat không có message nào của CS đang xét → loại khỏi mẫu, không tính.
 
-> Thang được **kéo giãn** (baseline 85, lỗi phạt nặng) để điểm phân hóa rõ giữa
-> các CS — tránh dồn cục quanh một mức. Một chat đạt-chuẩn 85, có điểm sáng mới
-> lên 100; một lỗi Low đã kéo xuống 72.
+**Điểm tuần = trung bình điểm các chat trong mẫu** (làm tròn).
 
-> Một chat lấy điểm theo **lỗi nặng nhất** của nó. Nhiều lỗi cùng mức không trừ
-> chồng (rubric tuần là coaching, không cộng dồn penalty như QA tháng).
+> Hệ quả của mô hình 3 trục: một CS **đúng kỹ thuật nhưng vô cảm/máy móc** sẽ mất
+> ~⅓ điểm ở trục Mindset → không thể đạt cao. Một CS **tận tâm + đúng kiến thức**
+> nhưng có vài typo nhỏ vẫn giữ điểm cao. Đây là chủ đích: đề cao phục vụ KH bằng
+> cái tâm và sự chính xác, không chỉ đúng quy trình.
 
-**Điểm tuần = trung bình điểm các chat trong mẫu** (làm tròn). Chat không có
-message nào của CS đang xét → loại khỏi mẫu, không tính.
-
-> Tính trên % chất lượng của mẫu → so tuần-qua-tuần công bằng, không bị một chat
-> tệ kéo cả tuần về 0 như cách trừ penalty.
-
-**Phân loại tổng (đã siết — Xuất sắc thật sự khó đạt):**
-- **95–100: Xuất sắc** 🌟
-- **85–94: Tốt** 👍
-- **75–84: Đạt** — cần cải thiện vài điểm
-- **<75: Cần coaching 1-1** 🤝
+**Phân loại tổng:**
+- **90–100: Xuất sắc** 🌟 — tận tâm, đúng kiến thức, xử lý mượt
+- **80–89: Tốt** 👍
+- **70–79: Đạt** — ổn nhưng thiếu một trục rõ rệt
+- **<70: Cần coaching 1-1** 🤝
 
 ---
 

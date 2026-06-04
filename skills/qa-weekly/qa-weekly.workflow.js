@@ -32,18 +32,19 @@ const RESULT_SCHEMA = {
       type: 'string',
       description: 'Nhận xét tổng quan 2-4 câu về CS tuần này: phong cách làm việc, điểm mạnh nổi bật nhất, và RÕ RÀNG hướng cần tập trung. Giọng THẲNG THẮN, không vòng vo — gọi tên vấn đề trực diện và nêu hệ quả để CS hiểu mình thiếu ở đâu, đừng lấp liếm bằng giọng quá nhẹ. Tiếng Việt. Gọi CS là "bạn" (trung lập) — KHÔNG gọi "em".',
     },
-    chat_labels: {
+    axis_avg: {
       type: 'object',
-      description: 'count of chats per per-chat label (6 buckets)',
+      description: 'điểm trung bình từng trục trên toàn mẫu (để thấy CS yếu trục nào)',
+      required: ['mindset', 'knowledge', 'skill'],
       properties: {
-        excellent: { type: 'integer', description: 'sạch + điểm sáng → 100' },
-        standard: { type: 'integer', description: 'sạch, đạt chuẩn → 90' },
-        minor_low: { type: 'integer', description: 'lỗi Low → 80' },
-        minor_mod: { type: 'integer', description: 'lỗi Moderate → 70' },
-        major: { type: 'integer', description: 'lỗi High → 55' },
-        critical: { type: 'integer', description: 'lỗi Critical/Urgent → 30' },
-        excluded: { type: 'integer', description: 'không có msg của CS này' },
+        mindset: { type: 'number', description: 'TB trục Mindset (0-34)' },
+        knowledge: { type: 'number', description: 'TB trục Kiến thức (0-33)' },
+        skill: { type: 'number', description: 'TB trục Kỹ năng xử lý (0-33)' },
       },
+    },
+    excluded: {
+      type: 'integer',
+      description: 'số chat loại khỏi mẫu (không có message của CS này)',
     },
     strengths: {
       type: 'array',
@@ -112,23 +113,24 @@ KNOWLEDGE CHECK (KT1/KT2) — MANDATORY, verify against the real agent KB:
 - Open KB files ONLY when a chat has a claim worth verifying — never read the whole KB (keep it light).
 - No matching KB file / not sure → skip, do not speculate.
 
-SCORING (per rubric §3 — baseline is 85, NOT 100; scale is stretched for spread):
-- *** YOU MUST SCORE EVERY SINGLE CHAT in the transcript file. *** The file has N chats (CHAT #1 … CHAT #N). Go through ALL of them one by one — do NOT stop after a handful, do NOT just summarize the "notable" ones. Each chat gets exactly one label.
-- chats_reviewed MUST equal (total chats in file − excluded). If the file has 30 chats and you exclude 0, chats_reviewed = 30. A low number means you skipped chats — that is a BUG, don't do it.
-- chat_labels MUST sum to the total number of chats in the file (excellent + standard + minor_low + minor_mod + major + critical + excluded = N).
-- A correctly & fully handled chat = 85 ("standard"). 100 is ONLY for chats that are clean AND show a clear P1-P5 strength (real empathy/proactive/excellent explanation). Do not give 100 by default.
-- A chat takes the score of its WORST error: Low→72, Moderate→60, High→45, Critical/Urgent→25. If you can quote an error, the chat cannot be 85/100.
-- Multiple errors of the same level do NOT stack — use the single worst error.
-- Exclude (count in the 'excluded' field, not in the score) ONLY chats with zero messages from this CS. Every chat that has at least one "CS (${cs.name})" line MUST be scored.
-- Weekly score = mean of scored chats, rounded.
-- Map to overall label (TIGHTENED): 95-100 Xuất sắc, 85-94 Tốt, 75-84 Đạt, <75 Cần coaching.
+SCORING — THREE-AXIS model (per rubric §2-§3). Each chat is scored on 3 independent axes that sum to 0-100:
+  • Trục 1 MINDSET (0-34): ownership (theo tới cùng, không đẩy việc/đóng lửng) + empathy (thấu cảm, trấn an đúng lúc) + proactive (chủ động vì lợi ích KH) + effort (nỗ lực làm KH hài lòng, kiên nhẫn với KH khó). ~34 xuất sắc, ~25 ổn, ~15 máy móc, ~5 vô cảm/đẩy việc.
+  • Trục 2 KNOWLEDGE (0-33): tư vấn ĐÚNG, verified against the real agent KB (see KB rules above). ~33 mọi claim đúng KB; ~22 đúng nhưng thiếu/chưa chắc; ~10 KT2 (KB có sẵn mà lòng vòng); ~0 KT1 (sai giá/tính năng/chính sách). KB outdated → flag Liz, đừng vội trừ.
+  • Trục 3 SKILL (0-33): rõ ràng, đúng flow, không lỗi giao tiếp. Trừ cho KN3/KN7 (khó hiểu/chung chung), QT9/KN2 (vòng vo/hỏi lại), KN5/KN6 (hiểu sai/kết luận sớm), QT18/22/25 (đóng lửng/bỏ sót/hẹn rồi im), KN1 (typo). ~33 mượt không lỗi; ~22 1 lỗi nhẹ; ~10 lỗi nặng; ~0 hỏng.
 
-Before returning: count the chats in the file. Confirm chat_labels sums to that count. If it doesn't, you skipped some — go back and score them.
+Chat score = mindset + knowledge + skill (0-100). The 3-axis model means: a CS who is technically correct but cold/robotic loses ~⅓ at Mindset; a caring + accurate CS with minor typos still scores high. This is intentional — reward serving the customer with heart AND accuracy, not just following process.
 
-POSITIVE CODES (rubric §2B): P1 empathy, P2 proactive, P3 clear-stepwise, P4 concise-on-flow, P5 reads-context.
-Find 2-4 genuine strengths with chat number refs (e.g. "chat #3").
+*** YOU MUST SCORE EVERY SINGLE CHAT. *** The file has N chats (CHAT #1 … CHAT #N). Go through ALL one by one — do NOT stop after a handful or only summarize "notable" ones. chats_reviewed MUST equal (N − excluded). A low number = you skipped chats = BUG.
+- excluded = ONLY chats with zero "CS (${cs.name})" lines. Every chat with at least one MUST be scored.
+- Weekly score = mean of per-chat (mindset+knowledge+skill), rounded.
+- axis_avg = mean of each axis across scored chats (shows which axis the CS is weak on).
+- Map overall label: 90-100 Xuất sắc, 80-89 Tốt, 70-79 Đạt, <70 Cần coaching.
 
-SEVERE FLAGS: if you find KN8 (rude), QT11 (ignored customer), or KT1 (wrong info), list them in severe_flags.
+Before returning: confirm you scored all N chats (chats_reviewed + excluded = N).
+
+For strengths/improvements, tag each with which axis it belongs to (Mindset/Kiến thức/Kỹ năng) plus the relevant code. Find genuine strengths (not flattery) and concrete improvements with quotes + action tips.
+
+SEVERE FLAGS: if you find KN8 (rude), QT11 (ignored customer), KT1 (wrong info), or a live-store mistake, list them in severe_flags.
 
 ${cs.prevReportPath
     ? 'Compare to last week: score delta, repeated error codes, fixed error codes.'
