@@ -1,0 +1,168 @@
+#!/usr/bin/env python3
+"""
+Fetch full chat transcripts from BigQuery for a list of session IDs and
+write a clean, readable transcript file the grading subagent can read.
+
+Usage:
+  python3 fetch_transcripts.py --sessions-file /tmp/qa_weekly_sessions.json \
+      --cs Hazel --out /tmp/qa_transcripts_Hazel.txt
+
+  # or pass session ids directly (comma separated):
+  python3 fetch_transcripts.py --session-ids session_a,session_b \
+      --out /tmp/t.txt
+
+Reads BQ service-account creds from CSL/.env (BQ_SA_CLIENT_EMAIL,
+BQ_SA_PRIVATE_KEY). Table: avada-crm.avada_cs.crisp_chats (flat — one row per
+message).
+"""
+import argparse
+import json
+import os
+import sys
+import warnings
+
+warnings.filterwarnings("ignore")  # silence py3.9 EOL / urllib3 noise
+
+from google.cloud import bigquery
+from google.oauth2 import service_account
+
+TABLE = "avada-crm.avada_cs.crisp_chats"
+
+
+def load_env(path):
+    env = {}
+    if os.path.exists(path):
+        with open(path) as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                env[k.strip()] = v.strip().strip('"').strip("'")
+    return env
+
+
+def bq_client(env):
+    key = (env.get("BQ_SA_PRIVATE_KEY") or "").replace("\\n", "\n")
+    info = {
+        "type": "service_account",
+        "project_id": "avada-crm",
+        "private_key": key,
+        "client_email": env.get("BQ_SA_CLIENT_EMAIL"),
+        "token_uri": "https://oauth2.googleapis.com/token",
+    }
+    creds = service_account.Credentials.from_service_account_info(info)
+    return bigquery.Client(project="avada-crm", credentials=creds)
+
+
+def fetch(client, session_ids):
+    """Return {session_id: [msg, ...]} ordered by time."""
+    q = f"""
+    SELECT session_id, timestamp, fromType, type, content,
+           userNickname, agentEmail, customerNickname, shopifyDomain,
+           conversationState
+    FROM `{TABLE}`
+    WHERE session_id IN UNNEST(@sids)
+      AND type IN ('text', 'note', 'file', 'picker', 'field')
+    ORDER BY session_id, timestamp ASC
+    """
+    job = client.query(q, job_config=bigquery.QueryJobConfig(
+        query_parameters=[
+            bigquery.ArrayQueryParameter("sids", "STRING", session_ids)]))
+    convs = {}
+    for r in job:
+        convs.setdefault(r["session_id"], []).append({
+            "ts": str(r["timestamp"]),
+            "from": r["fromType"],
+            "content": r["content"] or "",
+            "agent": r["agentEmail"],
+            "nick": r["userNickname"],
+            "customer": r["customerNickname"],
+            "shop": r["shopifyDomain"],
+            "state": r["conversationState"],
+        })
+    return convs
+
+
+def render(convs, session_meta):
+    """Render transcripts as readable text, numbered, with metadata header."""
+    out = []
+    for i, (sid, msgs) in enumerate(convs.items(), 1):
+        meta = session_meta.get(sid, {})
+        shop = (msgs[0]["shop"] if msgs else None) or meta.get("shopifyDomain", "?")
+        state = msgs[0]["state"] if msgs else "?"
+        out.append(f"\n{'='*70}")
+        out.append(f"CHAT #{i}  |  session: {sid}")
+        out.append(f"Shop: {shop}  |  State: {state}  |  "
+                   f"App: {meta.get('app_seg','?')}")
+        out.append("=" * 70)
+        for m in msgs:
+            who = m["from"]
+            if who == "operator":
+                label = f"CS ({m['nick'] or m['agent'] or 'agent'})"
+            elif who == "user":
+                label = f"Customer ({m['customer'] or 'KH'})"
+            else:
+                label = who or "?"
+            ts = m["ts"][11:19] if len(m["ts"]) > 19 else m["ts"]  # HH:MM:SS
+            content = m["content"].replace("\n", " ").strip()
+            if content:
+                out.append(f"[{ts}] {label}: {content}")
+    return "\n".join(out)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--sessions-file", help="output of fetch_sessions.py")
+    ap.add_argument("--cs", help="CS nickname to pull from sessions-file")
+    ap.add_argument("--session-ids", help="comma-separated session ids")
+    ap.add_argument("--out", required=True)
+    ap.add_argument("--env", default=os.path.join(
+        os.path.dirname(__file__), "..", "..", "..", ".env"))
+    args = ap.parse_args()
+
+    env = load_env(args.env)
+    session_ids, session_meta = [], {}
+
+    if args.sessions_file and args.cs:
+        data = json.load(open(args.sessions_file))
+        cs = data["by_cs"].get(args.cs)
+        if not cs:
+            print(f"ERROR: CS '{args.cs}' not in sessions file", file=sys.stderr)
+            sys.exit(1)
+        for s in cs["sessions"]:
+            sid = s["session_id"]
+            session_ids.append(sid)
+            segs = s.get("segments", [])
+            app = "Joy" if any("joy" in x for x in segs) else (
+                "Chatty" if any("chatty" in x for x in segs) else "?")
+            session_meta[sid] = {"shopifyDomain": s.get("shopifyDomain"),
+                                 "app_seg": app}
+    elif args.session_ids:
+        session_ids = [s.strip() for s in args.session_ids.split(",") if s.strip()]
+    else:
+        print("ERROR: need --sessions-file+--cs or --session-ids",
+              file=sys.stderr)
+        sys.exit(1)
+
+    if not session_ids:
+        print("ERROR: no session ids", file=sys.stderr)
+        sys.exit(1)
+
+    client = bq_client(env)
+    convs = fetch(client, session_ids)
+    # Preserve the sampled order even if BQ returns a subset
+    ordered = {sid: convs[sid] for sid in session_ids if sid in convs}
+    text = render(ordered, session_meta)
+
+    header = (f"QA TRANSCRIPTS — CS: {args.cs or '(adhoc)'}\n"
+              f"Sessions requested: {len(session_ids)} | "
+              f"with messages: {len(ordered)}\n")
+    with open(args.out, "w") as f:
+        f.write(header + text)
+    print(f"Wrote {len(ordered)}/{len(session_ids)} transcripts → {args.out}",
+          file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()
