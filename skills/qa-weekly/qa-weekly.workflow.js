@@ -108,9 +108,9 @@ KNOWLEDGE CHECK (KT1/KT2) — MANDATORY, verify against the real agent KB:
 - Open KB files ONLY when a chat has a claim worth verifying — never read the whole KB (keep it light).
 - No matching KB file / not sure → skip, do not speculate.
 
-SCORING (per rubric §3 — baseline is 90, NOT 100):
-- A correctly & fully handled chat = 90 ("standard"). 100 is ONLY for chats that are clean AND show a clear P1-P5 strength (real empathy/proactive/excellent explanation). Do not give 100 by default.
-- A chat takes the score of its WORST error: Low→80, Moderate→70, High→55, Critical/Urgent→30. If you can quote an error, the chat cannot be 90/100.
+SCORING (per rubric §3 — baseline is 85, NOT 100; scale is stretched for spread):
+- A correctly & fully handled chat = 85 ("standard"). 100 is ONLY for chats that are clean AND show a clear P1-P5 strength (real empathy/proactive/excellent explanation). Do not give 100 by default.
+- A chat takes the score of its WORST error: Low→72, Moderate→60, High→45, Critical/Urgent→25. If you can quote an error, the chat cannot be 85/100.
 - Multiple errors of the same level do NOT stack — use the single worst error.
 - Exclude chats with zero messages from this CS (don't score handoff colleagues).
 - Weekly score = mean of scored chats, rounded.

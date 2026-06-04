@@ -108,18 +108,22 @@ quan** → so claim với KB:
 ## 3. Cách tính điểm tuần (theo mẫu, không phải penalty)
 
 Mỗi chat trong mẫu được xếp 1 trong 6 nhãn. **Mốc chuẩn của một chat xử lý
-"đúng và đủ" là 90, KHÔNG phải 100.** Điểm 100 chỉ dành cho chat thật sự nổi
+"đúng và đủ" là 85, KHÔNG phải 100.** Điểm 100 chỉ dành cho chat thật sự nổi
 bật (có điểm sáng P1–P5 rõ rệt). Đã quote được lỗi thì chat đó không thể đạt
 mốc chuẩn — phải tụt theo mức lỗi nặng nhất.
 
 | Nhãn | Nghĩa | Điểm chat |
 |------|-------|-----------|
 | 🌟 **Xuất sắc** | Sạch lỗi **+ có điểm sáng P1–P5 rõ rệt** (empathy/proactive/giải thích xuất sắc) | 100 |
-| ✅ **Đạt chuẩn** | Sạch lỗi, xử lý đúng & đủ nhưng không có gì nổi bật | 90 |
-| 🟡 **Minor-Low** | Có lỗi **Low** (vd KN1, QT5/6) | 80 |
-| 🟠 **Minor-Mod** | Có lỗi **Moderate** (vd KN2/3/6/7, QT18, QT9) | 70 |
-| 🔴 **Major** | Có lỗi **High** (vd KN4/5, QT22/25) | 55 |
-| ⛔ **Critical** | Có lỗi **Critical/Urgent** (vd QT11, KT1, KN8) | 30 |
+| ✅ **Đạt chuẩn** | Sạch lỗi, xử lý đúng & đủ nhưng không có gì nổi bật | 85 |
+| 🟡 **Minor-Low** | Có lỗi **Low** (vd KN1, QT5/6) | 72 |
+| 🟠 **Minor-Mod** | Có lỗi **Moderate** (vd KN2/3/6/7, QT18, QT9) | 60 |
+| 🔴 **Major** | Có lỗi **High** (vd KN4/5, QT22/25) | 45 |
+| ⛔ **Critical** | Có lỗi **Critical/Urgent** (vd QT11, KT1, KN8) | 25 |
+
+> Thang được **kéo giãn** (baseline 85, lỗi phạt nặng) để điểm phân hóa rõ giữa
+> các CS — tránh dồn cục quanh một mức. Một chat đạt-chuẩn 85, có điểm sáng mới
+> lên 100; một lỗi Low đã kéo xuống 72.
 
 > Một chat lấy điểm theo **lỗi nặng nhất** của nó. Nhiều lỗi cùng mức không trừ
 > chồng (rubric tuần là coaching, không cộng dồn penalty như QA tháng).
