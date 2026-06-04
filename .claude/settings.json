@@ -1,4 +1,12 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp *)",
+      "mcp__avada-analytic-mcp__*",
+      "Skill(update-config)",
+      "Skill(update-config:*)"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -19,11 +27,6 @@
           }
         ]
       }
-    ]
-  },
-  "permissions": {
-    "allow": [
-      "Bash(claude mcp *)"
     ]
   }
 }
