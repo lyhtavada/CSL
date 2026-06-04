@@ -91,7 +91,7 @@ function gradePrompt(cs, rubricPath) {
 
 Read these two files:
 1. RUBRIC: ${rubricPath} — the weekly QA rubric (scoring, error codes, positive codes, DM format).
-2. TRANSCRIPTS: ${cs.transcriptPath} — this week's sampled chats for CS "${cs.name}".
+2. TRANSCRIPTS: ${cs.transcriptPath} — this week's sampled chats for CS "${cs.name}". The file is divided into blocks "CHAT #1", "CHAT #2", … up to "CHAT #N". FIRST count how many CHAT blocks the file has (grep/scan for "CHAT #") — that N is how many chats you MUST score. Read and label every one.
 ${cs.prevReportPath ? `3. LAST WEEK'S REPORT: ${cs.prevReportPath} — for the vs_last_week comparison.` : ''}
 
 CRITICAL RULES:
@@ -113,12 +113,17 @@ KNOWLEDGE CHECK (KT1/KT2) — MANDATORY, verify against the real agent KB:
 - No matching KB file / not sure → skip, do not speculate.
 
 SCORING (per rubric §3 — baseline is 85, NOT 100; scale is stretched for spread):
+- *** YOU MUST SCORE EVERY SINGLE CHAT in the transcript file. *** The file has N chats (CHAT #1 … CHAT #N). Go through ALL of them one by one — do NOT stop after a handful, do NOT just summarize the "notable" ones. Each chat gets exactly one label.
+- chats_reviewed MUST equal (total chats in file − excluded). If the file has 30 chats and you exclude 0, chats_reviewed = 30. A low number means you skipped chats — that is a BUG, don't do it.
+- chat_labels MUST sum to the total number of chats in the file (excellent + standard + minor_low + minor_mod + major + critical + excluded = N).
 - A correctly & fully handled chat = 85 ("standard"). 100 is ONLY for chats that are clean AND show a clear P1-P5 strength (real empathy/proactive/excellent explanation). Do not give 100 by default.
 - A chat takes the score of its WORST error: Low→72, Moderate→60, High→45, Critical/Urgent→25. If you can quote an error, the chat cannot be 85/100.
 - Multiple errors of the same level do NOT stack — use the single worst error.
-- Exclude chats with zero messages from this CS (don't score handoff colleagues).
+- Exclude (count in the 'excluded' field, not in the score) ONLY chats with zero messages from this CS. Every chat that has at least one "CS (${cs.name})" line MUST be scored.
 - Weekly score = mean of scored chats, rounded.
 - Map to overall label (TIGHTENED): 95-100 Xuất sắc, 85-94 Tốt, 75-84 Đạt, <75 Cần coaching.
+
+Before returning: count the chats in the file. Confirm chat_labels sums to that count. If it doesn't, you skipped some — go back and score them.
 
 POSITIVE CODES (rubric §2B): P1 empathy, P2 proactive, P3 clear-stepwise, P4 concise-on-flow, P5 reads-context.
 Find 2-4 genuine strengths with chat number refs (e.g. "chat #3").
