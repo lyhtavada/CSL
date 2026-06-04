@@ -1,64 +1,70 @@
 #!/usr/bin/env python3
 """
-Fetch Crisp sessions for a given week from the Public Admin API, group by CS,
-filter to Team G2 members, sample up to 30 per CS.
+Fetch the sessions each in-house CS actually handled in a given week, from
+BigQuery (NOT the Crisp `assigned` field — that only marks one owner per
+session and misses 70-90% of the chats a CS really touched).
+
+A session counts for CS X in week W if X sent >= MIN_MSGS operator messages
+*within* week W (so a chat a CS only greeted/handed-off doesn't count, and a
+chat is attributed to the week the CS actually worked it — even if the customer
+first wrote in an earlier week).
+
+Sampling: up to --sample per CS, biased toward longer chats (more CS messages
+in-week = a real case handled, not a one-liner).
 
 Usage:
   python3 fetch_sessions.py --start 2026-05-26 --end 2026-06-01 \
-      --out /tmp/qa_weekly_sessions.json [--sample 30]
+      --out /tmp/qa_weekly_sessions.json --sample 30 --only-type in-house
 
-Output JSON shape:
-  {
-    "period": {"start": "...", "end": "...", "iso_week": "2026-W22"},
-    "by_cs": {
-      "Hazel": {
-        "slack_id": "U09FYACFH2T", "email": "hienpt@avadagroup.com",
-        "total": 47, "sampled": 30,
-        "sessions": [{"session_id": "...", "website_id": "...",
-                      "shopifyDomain": "...", "customerEmail": "...",
-                      "createdAt": "...", "segments": [...]}, ...]
-      }, ...
-    }
-  }
+Output JSON shape (same as before, so downstream scripts are unchanged):
+  {"period": {...}, "by_cs": {"Hazel": {slack_id, email, name, app, type,
+                              total, sampled, sessions:[{session_id, ...}]}}}
 """
 import argparse
 import datetime as dt
 import json
 import os
 import sys
-import urllib.request
+import warnings
 
-API_BASE = "https://us-central1-avada-crm.cloudfunctions.net/publicAdminApi/api"
+warnings.filterwarnings("ignore")
 
-# Joy + Chatty retention website. Team G2 handles these.
-# We do NOT hard-filter on website here — we keep all apps a G2 CS handled,
-# since the rubric covers both Joy and Chatty.
+from google.cloud import bigquery
+from google.oauth2 import service_account
+
+TABLE = "avada-crm.avada_cs.crisp_chats"
+MIN_MSGS = 3  # CS must send >= this many in-week to "own" the chat
 
 TEAM_FILE = os.path.join(os.path.dirname(__file__), "..", "..", "..",
                          "_identity", "team-g2.md")
 
 
 def load_env(path):
-    """Minimal .env loader (KEY=VALUE, ignores quotes/comments)."""
     env = {}
-    if not os.path.exists(path):
-        return env
-    with open(path) as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            k, v = line.split("=", 1)
-            env[k.strip()] = v.strip().strip('"').strip("'")
+    if os.path.exists(path):
+        with open(path) as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                env[k.strip()] = v.strip().strip('"').strip("'")
     return env
 
 
-def load_team_roster(path):
-    """Parse team-g2.md markdown table → {nickname: {slack_id, email, name, app}}.
+def bq_client(env):
+    key = (env.get("BQ_SA_PRIVATE_KEY") or "").replace("\\n", "\n")
+    creds = service_account.Credentials.from_service_account_info({
+        "type": "service_account", "project_id": "avada-crm",
+        "private_key": key, "client_email": env.get("BQ_SA_CLIENT_EMAIL"),
+        "token_uri": "https://oauth2.googleapis.com/token",
+    })
+    return bigquery.Client(project="avada-crm", credentials=creds)
 
-    Maps the Crisp 'Tên hiển thị' (display name = agentUser.nickname in
-    crispSessions) to Slack ID + email.
-    """
+
+def load_team_roster(path):
+    """Parse team-g2.md → {email_lower: {nickname, slack_id, email, name, app,
+    type}}. Keyed by email since we attribute via agentEmail from BigQuery."""
     roster = {}
     if not os.path.exists(path):
         print(f"WARN: roster not found at {path}", file=sys.stderr)
@@ -68,29 +74,22 @@ def load_team_roster(path):
             if not line.strip().startswith("|"):
                 continue
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
-            # Header / separator rows
-            if len(cells) < 11 or cells[0] in ("#", "") or set(cells[0]) <= {"-"}:
+            if len(cells) < 10 or cells[0] in ("#", "") or set(cells[0]) <= {"-"}:
                 continue
-            # Columns: # | Tên | Role | App | State | Nickname(KPI) | Slack ID |
-            #          Trello | Tên hiển thị | Email | ...
             try:
                 slack_id = cells[6]
-                display = cells[8]   # "Tên hiển thị" = Crisp nickname
+                display = cells[8]      # Crisp nickname
                 email = cells[9]
                 app = cells[3]
                 name = cells[1]
-                # "Loại" = last column: in-house / remote / csl
                 cs_type = cells[13] if len(cells) > 13 else ""
             except IndexError:
                 continue
-            if not display or not slack_id.startswith("U"):
+            if not email or "@" not in email:
                 continue
-            roster[display] = {
-                "slack_id": slack_id,
-                "email": email,
-                "name": name,
-                "app": app,
-                "type": cs_type,
+            roster[email.lower()] = {
+                "nickname": display, "slack_id": slack_id, "email": email,
+                "name": name, "app": app, "type": cs_type,
             }
     return roster
 
@@ -101,60 +100,60 @@ def iso_week(date_str):
     return f"{y}-W{w:02d}"
 
 
-def _fetch_range(token, start, end, limit=3000):
-    """Single /crispSessions call for a [start, end) date range.
-
-    NOTE: the API's `page`/`cursor` params are ignored server-side — only
-    `limit` is honored (caps ~2000/call). So we never paginate a single call;
-    instead the caller chunks the week into day-sized ranges (see
-    fetch_sessions) so each call stays under the cap.
+def fetch_by_cs(client, emails, start, end):
+    """For each email, return the sessions where that CS sent >= MIN_MSGS
+    operator messages within [start, end). Biased sample order = most in-week
+    CS messages first (longer/real cases). Also pulls session metadata."""
+    # end is inclusive day → query through end+1 day
+    end_excl = (dt.date.fromisoformat(end) + dt.timedelta(days=1)).isoformat()
+    q = f"""
+    WITH in_week AS (
+      SELECT agentEmail, session_id, COUNT(*) AS cs_msgs
+      FROM `{TABLE}`
+      WHERE timestamp >= @start AND timestamp < @end
+        AND fromType = 'operator'
+        AND LOWER(agentEmail) IN UNNEST(@emails)
+      GROUP BY agentEmail, session_id
+      HAVING cs_msgs >= {MIN_MSGS}
+    ),
+    meta AS (
+      SELECT session_id,
+             ANY_VALUE(website_id) website_id,
+             ANY_VALUE(shopifyDomain) shopifyDomain,
+             ANY_VALUE(customerEmail) customerEmail,
+             ANY_VALUE(segments) segments
+      FROM `{TABLE}`
+      WHERE session_id IN (SELECT session_id FROM in_week)
+      GROUP BY session_id
+    )
+    SELECT w.agentEmail, w.session_id, w.cs_msgs,
+           m.website_id, m.shopifyDomain, m.customerEmail, m.segments
+    FROM in_week w JOIN meta m USING (session_id)
+    ORDER BY w.agentEmail, w.cs_msgs DESC
     """
-    url = (f"{API_BASE}/crispSessions?start={start}&end={end}&limit={limit}")
-    req = urllib.request.Request(
-        url, headers={"Authorization": f"Bearer {token}"})
-    with urllib.request.urlopen(req, timeout=90) as resp:
-        return json.loads(resp.read().decode()).get("data", [])
-
-
-def fetch_sessions(token, start, end):
-    """Fetch all sessions in [start, end] by querying one day at a time and
-    merging (dedup by session_id). Day chunks keep each call under the
-    server-side ~2000-record cap so nothing is silently dropped."""
-    all_sessions = []
-    seen = set()
-    d0 = dt.date.fromisoformat(start)
-    d1 = dt.date.fromisoformat(end)
-    day = d0
-    while day <= d1:
-        nxt = day + dt.timedelta(days=1)
+    job = client.query(q, job_config=bigquery.QueryJobConfig(
+        query_parameters=[
+            bigquery.ScalarQueryParameter("start", "TIMESTAMP", start),
+            bigquery.ScalarQueryParameter("end", "TIMESTAMP", end_excl),
+            bigquery.ArrayQueryParameter("emails", "STRING",
+                                         [e.lower() for e in emails]),
+        ]))
+    by_email = {}
+    for r in job:
+        seg = r["segments"]
         try:
-            batch = _fetch_range(token, day.isoformat(), nxt.isoformat())
-        except Exception as e:
-            print(f"ERROR fetching {day}: {e}", file=sys.stderr)
-            batch = []
-        kept = 0
-        for s in batch:
-            sid = s.get("session_id")
-            if sid and sid not in seen:
-                seen.add(sid)
-                all_sessions.append(s)
-                kept += 1
-        if len(batch) >= 2000:
-            print(f"WARN: {day} hit {len(batch)} records — may be capped, "
-                  f"some sessions could be missing", file=sys.stderr)
-        print(f"  {day}: {kept} new ({len(batch)} returned)", file=sys.stderr)
-        day = nxt
-    return all_sessions
-
-
-def sample(lst, n, seed):
-    """Deterministic sample of n items (no Math.random equivalent needed —
-    stable across reruns for the same week)."""
-    if len(lst) <= n:
-        return lst
-    # Stable stride sampling, seeded by week so reruns match.
-    step = len(lst) / n
-    return [lst[int(i * step)] for i in range(n)]
+            seg = json.loads(seg) if isinstance(seg, str) else (seg or [])
+        except Exception:
+            seg = []
+        by_email.setdefault(r["agentEmail"].lower(), []).append({
+            "session_id": r["session_id"],
+            "website_id": r["website_id"],
+            "shopifyDomain": r["shopifyDomain"],
+            "customerEmail": r["customerEmail"],
+            "segments": seg,
+            "cs_msgs": r["cs_msgs"],
+        })
+    return by_email
 
 
 def main():
@@ -163,73 +162,58 @@ def main():
     ap.add_argument("--end", required=True, help="YYYY-MM-DD (Sunday)")
     ap.add_argument("--out", required=True)
     ap.add_argument("--sample", type=int, default=30)
-    ap.add_argument("--exclude", default="",
-                    help="comma-separated CS nicknames to skip (e.g. Liz)")
-    ap.add_argument("--only-type", default="",
-                    help="only include CS whose 'Loại' matches "
-                         "(e.g. in-house). Empty = all.")
+    ap.add_argument("--exclude", default="")
+    ap.add_argument("--only-type", default="")
     ap.add_argument("--env", default=os.path.join(
         os.path.dirname(__file__), "..", "..", "..", ".env"))
     args = ap.parse_args()
 
     env = load_env(args.env)
-    token = env.get("AVD_TOKEN") or os.environ.get("AVD_TOKEN")
-    if not token:
-        print("ERROR: AVD_TOKEN not found in .env or environment",
-              file=sys.stderr)
-        sys.exit(1)
-
     roster = load_team_roster(TEAM_FILE)
     if not roster:
-        print("ERROR: empty roster — cannot map CS to Slack", file=sys.stderr)
+        print("ERROR: empty roster", file=sys.stderr)
         sys.exit(1)
 
-    sessions = fetch_sessions(token, args.start, args.end)
-    print(f"Fetched {len(sessions)} unique sessions for {args.start}..{args.end}",
-          file=sys.stderr)
-
-    exclude = {x.strip() for x in args.exclude.split(",") if x.strip()}
+    exclude = {x.strip().lower() for x in args.exclude.split(",") if x.strip()}
     only_type = args.only_type.strip().lower()
 
-    by_cs = {}
-    for s in sessions:
-        nick = (s.get("agentUser") or {}).get("nickname")
-        if not nick or nick not in roster or nick in exclude:
-            continue  # skip AI-bot/unassigned, non-G2, and excluded agents
-        if only_type and roster[nick].get("type", "").lower() != only_type:
-            continue  # skip CS not matching the requested type (e.g. remote)
-        by_cs.setdefault(nick, []).append({
-            "session_id": s.get("session_id"),
-            "website_id": s.get("website_id"),
-            "shopifyDomain": s.get("shopifyDomain"),
-            "customerEmail": s.get("customerEmail"),
-            "createdAt": s.get("createdAt"),
-            "segments": s.get("segments", []),
-        })
+    # Which CS to fetch: filter roster by type + exclude
+    targets = {}
+    for email, info in roster.items():
+        if only_type and info.get("type", "").lower() != only_type:
+            continue
+        if info["nickname"].lower() in exclude or info["name"].lower() in exclude:
+            continue
+        if info.get("type", "").lower() == "csl":
+            continue  # never grade the CSL
+        targets[email] = info
+    if not targets:
+        print("ERROR: no target CS after filtering", file=sys.stderr)
+        sys.exit(1)
 
-    out = {
-        "period": {"start": args.start, "end": args.end,
-                   "iso_week": iso_week(args.start)},
-        "by_cs": {},
-    }
-    for nick, sess in sorted(by_cs.items()):
-        info = roster[nick]
-        sampled = sample(sess, args.sample, seed=args.start)
+    client = bq_client(env)
+    by_email = fetch_by_cs(client, list(targets.keys()), args.start, args.end)
+
+    out = {"period": {"start": args.start, "end": args.end,
+                      "iso_week": iso_week(args.start)},
+           "by_cs": {}}
+    for email, info in targets.items():
+        sess = by_email.get(email, [])
+        # already ordered by cs_msgs DESC → take top N (longest/real cases)
+        sampled = sess[:args.sample]
+        nick = info["nickname"]
         out["by_cs"][nick] = {
-            "slack_id": info["slack_id"],
-            "email": info["email"],
-            "name": info["name"],
-            "app": info["app"],
-            "total": len(sess),
-            "sampled": len(sampled),
-            "sessions": sampled,
+            "slack_id": info["slack_id"], "email": info["email"],
+            "name": info["name"], "app": info["app"], "type": info["type"],
+            "total": len(sess), "sampled": len(sampled), "sessions": sampled,
         }
 
     with open(args.out, "w") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
     print(f"Wrote {len(out['by_cs'])} CS → {args.out}", file=sys.stderr)
-    for nick, d in out["by_cs"].items():
-        print(f"  {nick}: {d['sampled']}/{d['total']} chats", file=sys.stderr)
+    for nick, d in sorted(out["by_cs"].items()):
+        print(f"  {nick}: {d['sampled']}/{d['total']} chats "
+              f"(>= {MIN_MSGS} msg in-week)", file=sys.stderr)
 
 
 if __name__ == "__main__":

@@ -59,10 +59,18 @@ automatically; no need for `--exclude Liz`.)
 
 Current in-house (9): Hana, Audrey, Alyssa, Jade, Sonny, Andy, Hazel, Phoebe, Linda.
 
-Groups all sessions by `agentUser.nickname`, keeps only Team G2 members
-(mapped to Slack ID + email via `_identity/team-g2.md`), drops AI-bot /
-unassigned chats, samples ≤30 per CS. Queries **one day at a time** because the
-API's `page`/`cursor` params are ignored — only `limit` works (~2000 cap/call).
+**Source = BigQuery, NOT the Crisp `assigned` field.** The API's `agentUser`
+only marks ONE owner per session and misses 70-90% of the chats a CS actually
+worked (multiple CS touch one chat across shifts). Instead we query
+`avada-crm.avada_cs.crisp_chats` by `agentEmail`:
+
+- A session counts for CS X in week W **only if X sent ≥3 operator messages
+  within week W**. This (a) attributes the chat to the week the CS actually
+  worked it — even if the customer first wrote earlier — and (b) drops chats a
+  CS only greeted/handed-off (1-2 lines).
+- Sample = top 30 by in-week CS-message count (longest/real cases first).
+- CS mapped via `agentEmail` → `_identity/team-g2.md`; `--only-type in-house`
+  filters by the "Loại" column; CSL never graded.
 
 ### Step 3 — Fetch transcripts per CS (main thread)
 
