@@ -1,34 +1,34 @@
 # QA Tuần 2026-W22 — Jade
 **Giai đoạn:** 26/05 – 01/06  
-**Điểm:** 87/100 — Tốt  
+**Điểm:** 84/100 — Tốt  
 **Đã QA:** 30 chat  
-**3 trục:** 🧠 Mindset 30.1/34 · 📚 Kiến thức 29/33 · 🛠️ Xử lý 28.2/33
+**3 trục:** 🧠 Mindset 27.6/34 · 📚 Kiến thức 28.7/33 · 🛠️ Xử lý 27.4/33
 
 ## 📝 Nhận xét chung
-Tuần này Jade thể hiện phong cách làm việc có trách nhiệm và nhất quán: chủ động follow-up qua email sau khi chat kết thúc, xử lý nhiều ngôn ngữ (EN/FR/ES/ZH) không bị áp lực, và đặc biệt xuất sắc ở các case kỹ thuật phức tạp như POS permissions, AI training, DNS/domain setup. Điểm mạnh nổi bật nhất là ownership — Jade ít khi đóng chat lửng, thường chủ động hỏi tiếp và gửi email follow-up khi ca kết thúc. Cần tập trung cải thiện ở hai điểm: (1) câu văn đôi khi viết sai ngữ pháp hoặc bị lỗi rõ ("our all does not have", "Thank you very much for your helo") làm giảm tính chuyên nghiệp và có thể khiến khách không hiểu đúng; (2) một số thông tin về Joy Loyalty cần kiểm tra lại trước khi nói — ví dụ trong chat #4 Jade nói "250 commandes gratuites" nhưng theo KB đây là giới hạn transaction chứ không phải orders, dễ gây hiểu sai về cách tính phí.
-
-## ⚠️ Cần Liz xem trước
-- KT2 (borderline): Chat #4 — Jade nói '250 commandes gratuites' thay vì '250 transactions'. Hệ quả: khách có thể hiểu Starter cho 250 đơn hàng miễn phí, trong khi thực tế là 250 loyalty transactions. Liz review trước khi DM.
+Tuần này bạn thể hiện rõ điểm mạnh ở ownership: tiếp nhận ca handoff mượt, chủ động follow-up kết quả, và xử lý được nhiều loại case phức tạp (Joy POS, Smile.io migration, AI scenario training, Chatty auto-translate bug). Chat 18 (Littolo House) là điểm sáng thật sự — phân tích use case phức tạp ra kế hoạch 2 phase cụ thể cho thấy bạn nắm sản phẩm vững và chịu suy nghĩ thay khách. Điểm cần tập trung nhất là trục Skill: trong một số chat bạn đưa ra câu trả lời chưa chắc mà không báo rõ, hoặc mở câu hỏi xác nhận không cần thiết khi thông tin đã đủ — điều này làm khách phải nhắn thêm và chat kéo dài. Nếu cải thiện được sự gọn gàng trong bước giải thích và confirm thông tin, bạn hoàn toàn có thể lên Xuất sắc.
 
 ## ✅ Điểm tốt
-- **[P1]** Ownership rõ ràng: Jade thường xuyên gửi email follow-up sau khi ca kết thúc để chốt kết quả, ví dụ chat #7 (FAQ page fix), #12 (proactive chat + AI return flow), #22 (widget CSS position). Khách không cần phải hỏi lại. (#7, #12, #22, #17)
-- **[P2]** Xử lý kỹ thuật phức tạp tốt: POS permissions (chat #19 với hướng dẫn 2 tùy chọn rõ ràng theo từng loại account), cashback tiered program (chat #18 với Phase 1/Phase 2 logic mạch lạc), Joy DNS domain setup (chat #10). (#19, #18, #10, #13)
-- **[P3]** Hỗ trợ đa ngôn ngữ (EN/FR/ES/ZH) ổn định — không từ chối, không bị phân tâm, duy trì chất lượng ngang nhau qua các ngôn ngữ. (#2, #4, #9, #15)
-- **[P4]** Proactive upsell/DFY đúng lúc và tự nhiên: ở chat #8, #10, #16, Jade giới thiệu widget mới (DFY) sau khi đã giải quyết xong vấn đề chính — không gây cảm giác ép khách. (#8, #10, #16)
+- **[P1]** Ownership rõ ràng xuyên suốt nhiều chat: tiếp nhận handoff đúng cách, không để khách chờ không có thông tin, chủ động follow-up kết quả kỹ thuật (chat #7: fix chatty:cart:changed event; chat #22: gửi link screenshot kết quả CSS; chat #30: email chủ động về metafield conflict). (#7, #22, #30)
+- **[P2]** Kiến thức sản phẩm vững: phân tích use case cashback 2-phase cho Littolo House (chat #18) chuẩn kỹ thuật, giải thích rõ Rule Engine vs Redeem programs, nêu đúng giới hạn plan. Chat #19 (Joy POS permission) cũng cung cấp hướng dẫn đầy đủ cho cả 2 permission model mà không cần phải tra lại. (#18, #19)
+- **[P3]** Chủ động đề xuất thêm giá trị cho khách khi không được hỏi: offer unified widget upgrade tự nhiên trong chat #4, #8, #22; đề xuất Chatty Lab tool trong chat #6; hướng dẫn email notifications sau khi giải quyết xong vấn đề chính trong chat #9. (#4, #8, #22)
+- **[P4]** Tone ấm và kiên nhẫn với khách khó — giữ được chuyên nghiệp với AGARO khi merchant tỏ thái độ muốn uninstall (chat #26), và với AWNL Taiwan khi merchant liên tục nói 'please take a look at my previous chat, I dont think you understand my issue' (chat #29). (#26, #29)
 
 ## 🔧 Cần cải thiện
-- **[KN1 · Moderate]** Lỗi ngữ pháp và typo lặp lại trong chat làm giảm tính chuyên nghiệp.
-  - *Dẫn chứng:* Chat #1: 'Thank you very much for your helo' — 'helo' thay vì 'help'. Chat #5: 'If it does it work, feel free to let me know' — sai cú pháp. Chat #11: 'Currently, our all does not have a separate sign up flow' — câu bị l
-  - → Trước khi gửi tin, đọc lại câu một lần. Với các câu dài hoặc kỹ thuật, viết nháp rồi check lại. Đặc biệt chú ý khi copy-paste template có thể chứa lỗi.
-- **[KT2 · Moderate]** Diễn đạt thiếu chính xác về Joy Starter plan limit — nói 'orders' thay vì 'transactions', có thể khiến khách hiểu sai về cách tính phí.
-  - *Dẫn chứng:* Chat #4: [16:47:15] 'chaque mois vous aurez 250 commandes gratuites' — KB xác nhận giới hạn Starter là 250 transactions, không phải orders. 1 đơn hàng có thể tạo nhiều transactions.
-  - → Khi tư vấn về plan limit của Joy, dùng chính xác từ 'transactions' và giải thích ngắn: '1 order có thể tạo nhiều transactions (earn + redeem)'. Kiểm tra lại KB kb_pricing.md trước khi giải thích billing.
-- **[KN3 · Low]** Một số câu trả lời kỹ thuật hơi mơ hồ hoặc không trả lời thẳng câu hỏi của khách, khiến khách phải hỏi thêm.
-  - *Dẫn chứng:* Chat #9 [11:46:16]: Khách hỏi cụ thể về migration từ Smile.io và cần chuyển đổi điểm không. Jade trả lời chung chung 'Vous pouvez accéder à la section Clients > Importer' mà không confirm rõ có cần chuyển đổi hay không —
-  - → Khi khách hỏi yes/no (ví dụ 'có cần chuyển đổi không?'), trả lời thẳng yes/no trước, sau đó mới giải thích. Tránh chỉ nêu path mà bỏ qua câu hỏi gốc.
-- **[QT18 · Low]** Ở một số chat ngắn, Jade kết thúc mà không chốt bước tiếp theo rõ ràng cho khách.
-  - *Dẫn chứng:* Chat #28: Jade hỏi code collaborator, khách paste '[PYN6DK-KE1LK]' rồi Jade không phản hồi và ca kết thúc. Phoebe tiếp ca sau 45 phút mới pick up. Khách đã ra đi không rõ issue được giải quyết chưa.
-  - → Cuối ca, nếu đang đợi thông tin từ khách, gửi thêm 1 tin chốt: 'Tôi sẽ bàn giao cho bạn đồng nghiệp tiếp tục theo dõi, họ sẽ liên hệ bạn ngay khi nhận được code.' Tránh để chat trống không.
+- **[KN6 · Moderate]** Kết luận hoặc tư vấn khi chưa hiểu đủ vấn đề — trong chat #21 khách gửi 3 lần 'Please help me fix 404 page' (đây là cụm từ bot trigger của Chatty, không phải mô tả lỗi thật), nhưng Jade trả lời như đây là lỗi app thật: 'You can try reloading the app page many times/ clearing the browser's cache'. Điều này khiến khách không được hướng dẫn đúng.
+  - *Dẫn chứng:* CS (Jade): You can try reloading the app page many times/ clearing the browser's cache, and then accessing the Chatty app again to check if the issue can be addressed.
+  - → Khi khách lặp đúng một câu nhiều lần mà không bổ sung thông tin, hãy dừng lại và xác nhận ý định thật: 'It looks like this might be a preset trigger phrase — could you tell me specifically which page or section you're having trouble with?' Đừng rush vào giải pháp generic.
+- **[QT9 · Moderate]** Hỏi lại thông tin không cần thiết, làm vòng vo flow — chat #13 (POS loyalty pass): Jade hỏi 'Can you kindly share the customer's email' rồi sau đó hỏi tiếp 'May I know where I can access the Loyalty Pass block', dù khách đã cho biết ngay từ đầu họ dùng Apple Wallet Pass và chỉ cần xác nhận quy trình scan. Câu hỏi thứ 2 không cần thiết vì Jade tự tìm được.
+  - *Dẫn chứng:* CS (Jade): May I know where I can access the Loyalty Pass block on the website to generate a code on my end? — và ngay sau đó: CS (Jade): Ah I can see it here, no worries
+  - → Trước khi hỏi khách thêm thông tin, hãy tự kiểm tra trước trong app/store xem có tìm được không. Nếu tự tìm được thì tự xử lý, chỉ hỏi khi thực sự cần input của khách.
+- **[KN3 · Low]** Câu trả lời không rõ ràng khi khách cần hướng dẫn cụ thể — chat #24 (EKA Packaging): khách mô tả rõ 'conversations marked as inactivity have no automatic reply' kèm screenshot. Jade xác nhận AI Agent đang off, nhưng phần giải thích về inactivity vs AI connection không đủ rõ để khách tự làm theo: 'For the inactivity notice, I think it is related to your Automatic resolution setting'  — dùng 'I think' mà không xác nhận, và không dẫn khách vào đúng setting.
+  - *Dẫn chứng:* CS (Jade): Yes, it will automatically respond to new messages. For the inactivity notice, I think it is related to your Automatic resolution setting. Can you kindly share with us the conversation ID of the related conver
+  - → Khi đã nhìn thấy vấn đề (AI off), dẫn khách thẳng vào giải pháp: 'The AI Agent is currently off — once you turn it on, it will respond to new messages automatically. For the inactivity label, this is triggered by the Auto Resolution setting at Settings > Inbox > Auto Resolution. Would you like me to walk you through both?' Tránh 'I think' và tránh hỏi conversation ID khi chưa cần thiết.
+- **[KN1 · Low]** Lỗi ngữ pháp nhỏ trong chat tiếng Anh: 'our all does not have a separate sign up flow' (chat #11) — viết tắt tối nghĩa ('all' thay cho 'app'), có thể gây nhầm lẫn cho khách không phải người bản ngữ.
+  - *Dẫn chứng:* CS (Jade): Currently, our all does not have a separate 'sign up' flow for customers to join the loyalty program yet.
+  - → Soát lại trước khi gửi tin dài. Câu này nên là: 'Currently, our app does not have a separate sign-up flow for customers to join the loyalty program yet.' Lỗi nhỏ nhưng tích lũy nhiều lần ảnh hưởng đến sự chuyên nghiệp.
+- **[KN7 · Low]** Câu trả lời chung chung khi cần cụ thể hơn — chat #25 (AnointDebib): khách hỏi về widget load delay, Jade giải thích đây là expected behavior (widget loads after page) nhưng không đề xuất bất kỳ giải pháp cụ thể nào để giảm cảm giác lag, cũng không commit rõ có escalate không.
+  - *Dẫn chứng:* CS (Jade): Regarding the widget appearance, I would like to share that this is currently the expected behavior. The widget is designed to appear only after the page has finished loading completely, which is why it may sh
+  - → Khi giải thích 'expected behavior', luôn kèm theo 1 trong 2: (1) bước tiếp theo cụ thể ('Our tech team will check if there's a way to reduce this delay — I've created a ticket'), hoặc (2) workaround thực tế. Đừng để khách cảm giác bị đưa vào ngõ cụt.
 
 ## 📈 So tuần trước
-Tuần đầu, chưa có dữ liệu so sánh.
+Tuần đầu, chưa có dữ liệu so sánh

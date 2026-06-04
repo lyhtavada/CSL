@@ -1,31 +1,30 @@
 # QA Tuần 2026-W22 — Andy
 **Giai đoạn:** 26/05 – 01/06  
-**Điểm:** 83/100 — Tốt  
+**Điểm:** 84/100 — Tốt  
 **Đã QA:** 30 chat  
-**3 trục:** 🧠 Mindset 27.7/34 · 📚 Kiến thức 27.7/33 · 🛠️ Xử lý 27.6/33
+**3 trục:** 🧠 Mindset 28.3/34 · 📚 Kiến thức 28.2/33 · 🛠️ Xử lý 27.8/33
 
 ## 📝 Nhận xét chung
-Andy có phong cách làm việc đáng tin cậy và ấm áp — bạn xử lý được cả những chat dài phức tạp lẫn các ca nhanh, duy trì được tone tốt với khách xuyên suốt. Điểm mạnh nổi bật nhất là khả năng đa ngôn ngữ (Pháp, Đức, Ý, Tây Ban Nha, Trung) và ownership ở những ca kỹ thuật nghiêm trọng (mất sale $3k ở chat #14). Tuy nhiên có 1 điểm cần sửa ngay: ở chat #16 bạn khẳng định dữ liệu chat lịch sử "sẽ bị xóa vĩnh viễn khi downgrade" — trong khi KB nội bộ ghi rõ "Downgrading does not delete your data" — nếu thông tin này sai, khách có thể ra quyết định downgrade dựa trên thông tin không chính xác và sau đó khiếu nại. Ngoài ra, ở chat #6 bạn giải thích cùng một nội dung về FCR 75% lặp lại 4 lần mà không thay đổi cách giải thích — khách phải hỏi đi hỏi lại, kéo dài chat không cần thiết. Tuần tới: chú trọng verify trước khi xác nhận thông tin về plan/billing, và khi khách hỏi lại nhiều lần thì cần đổi cách giải thích hoặc escalate.
-
-## ⚠️ Cần Liz xem trước
-- CHAT #16: Potential KT1 — Andy confirmed 'older chats will be deleted after downgrading' and 'permanently lost and cannot be recovered', which directly contradicts KB entry: 'Downgrading does not delete your data or settings.' Liz to verify actual downgrade data retention behavior before DM is sent.
+Andy có phong cách làm việc khá nhất quán: warmth thật sự, ownership cao — bạn hiếm khi để khách rơi vào khoảng trống không có người theo dõi. Điểm mạnh nổi bật nhất là khả năng xử lý nhiều kịch bản kỹ thuật phức tạp (Zendesk, FCR metric, pixel disconnect, delay widget, chat history sau downgrade) với độ chính xác tốt và luôn theo đến khi có kết quả. Điểm cần tập trung: một số lần khi khách hỏi sâu ("why 75%?", "it's not logical"), bạn lặp lại câu trả lời cũ hoặc phản hồi hơi cắt đoạn mà không giải thích thêm — điều này làm khách phải hỏi lại hoặc cảm thấy bị bác bỏ. Trục Skill thấp nhất trong 3 trục: một vài chat kết thúc thiếu chốt bước tiếp theo rõ ràng hoặc confirm từ khách, dẫn đến chat lửng.
 
 ## ✅ Điểm tốt
-- **[P1]** Ownership xuất sắc ở những ca kỹ thuật phức tạp và dài. Chat #1 (HotTubs24) kéo dài nhiều giờ với hàng chục vấn đề chồng chất — Andy theo đến cùng, đánh dấu urgent, lấy theme access, và cập nhật khách liên tục. Chat #14 (American Muscle Docks) khách mất sale $3k vì AI sai — Andy nhận case, escalate, tự thêm scenario, và follow-up kết quả trong cùng phiên. (CHAT #1, CHAT #14)
-- **[P3]** Chủ động phát hiện vấn đề khách chưa hỏi tới. Chat #1: proactively chỉ ra notification settings chưa đúng khi khách chỉ hỏi về AI. Chat #11: tự thêm email hỗ trợ vào AI knowledge base sau khi xử lý xong yêu cầu chính. Chat #3: chủ động nhận ra khách đang dùng default FAQs và đề xuất cập nhật. (CHAT #1, CHAT #3, CHAT #11)
-- **[P2]** Empathy tự nhiên và không gượng. Chat #3: chủ động chuyển sang tiếng Pháp khi khách nói 'my English is basic' — không cần khách yêu cầu. Chat #18: thể hiện sự thấu hiểu thực về áp lực chi phí AI của khách ('So sorry to hear so... The AI cost is really high lately due to the pricing increase'). (CHAT #3, CHAT #18)
-- **[P1]** Đa ngôn ngữ ổn định và chất lượng. Andy phục vụ khách bằng Pháp (#3), Đức (#4), Ý (#10), Tây Ban Nha (#22, #23), Trung (#29) trong cùng một tuần — không chỉ dịch máy mà còn maintain được tone ấm và nội dung chính xác. (CHAT #3, CHAT #4, CHAT #10, CHAT #22, CHAT #23, CHAT #29)
+- **[P1]** Ownership cao và nhất quán: Andy theo sát đến khi vấn đề được giải quyết, tự động gửi follow-up email sau khi tech team fix xong (chat #1, #14, #18, #29, #30). Không bỏ khách giữa chừng kể cả ca dài. (#1, #14, #18, #29, #30)
+- **[P2]** Kiến thức sản phẩm vững: xử lý chính xác nhiều scenario kỹ thuật — chat history sau downgrade (#16), FCR 75% logic (#6), pixel disconnect (#29), AI email-only Pro/Plus (#29), conversation limit logic Free plan (#7, #16). (#6, #16, #29)
+- **[P3]** Warmth và relationship-building thật sự: không phải set đặt, khách trong nhiều chat phản hồi tích cực ('You are really good', 'top team', 'you just made my day much better'). Andy tạo được cảm giác khách được chăm sóc cá nhân. (#1, #2, #5, #15)
 
 ## 🔧 Cần cải thiện
-- **[KT1 · Critical]** Xác nhận sai rằng chat history sẽ bị xóa vĩnh viễn khi downgrade — trong khi KB nói ngược lại
-  - *Dẫn chứng:* CS (Andy): 'The older chats will be deleted after downgrading' và 'Your removed chats will be permanently lost and can not be recovered' (CHAT #16)
-  - → Trước khi xác nhận bất kỳ hành vi nào liên quan đến billing/plan/data retention, cần tra KB hoặc hỏi lead — đặc biệt là câu hỏi về 'điều gì xảy ra khi downgrade'. KB hiện nói 'Downgrading does not delete your data or settings' — nếu thực tế khác thì cần flag để cập nhật KB. Không được khẳng định một chiều khi chưa chắc.
-- **[KN7 · Moderate]** Giải thích FCR 75% lặp lại nguyên văn 4 lần mà không thay đổi cách diễn đạt — khách phải hỏi lại nhiều lần, kéo dài chat
-  - *Dẫn chứng:* CS (Andy): 'That is the current logic at the moment.' (x2), 'We will calculate the first response time of the 75% conversations that have the fastest reply', 'As I mentioned, the 75% of the conversations have the fastes 
-  - → Khi khách hỏi lại cùng một câu sau 2-3 lần, đây là tín hiệu cách giải thích chưa hiệu quả — cần đổi góc độ (ví dụ: dùng số cụ thể 'nếu có 100 conversation, ta loại 25 chậm nhất, tính trung bình 75 còn lại'), hoặc thừa nhận giới hạn thông tin và escalate sang tài liệu/lead.
-- **[KN3 · Low]** Giải thích hành vi auto-resolve trả lời hơi vòng vo khi khách hỏi về Zendesk ticket cho các conversation chưa resolve
-  - *Dẫn chứng:* CS (Andy): 'At the moment, all of your conversations will be auto resolved after 60 minutes due to your current settings -> therefore you won't miss any resolved ones as they will be created as a ticket on Zendesk' (CHAT
-  - → Với các câu hỏi về flow (điều gì xảy ra với conversation X → Zendesk Y), nên dùng format bước từng bước: 'Bước 1: conversation được resolve (tự động sau 60 phút hoặc thủ công). Bước 2: ngay khi resolve, Zendesk ticket được tạo.' Tránh ghép nhiều điều kiện vào một câu.
+- **[KN7 · Moderate]** Lặp lại câu trả lời cũ mà không giải thích thêm khi khách tiếp tục hỏi — khách phải hỏi nhiều lần hơn cần thiết.
+  - *Dẫn chứng:* Chat #6: Khách hỏi 'why 75% conversations? not all?' → Andy: 'That is the current logic at the moment.' Khách hỏi lại 'how to locate the 75% conversations?' → Andy: 'We shall manually check on each conversations in the I
+  - → Khi khách hỏi lý do đằng sau một logic, đừng chỉ nói 'that is the current logic' — thêm 1 câu giải thích tại sao: 'We exclude the slowest 25% to avoid outliers skewing your team's average.' Một câu đủ để khách không cần hỏi lại.
+- **[KN3 · Low]** Một số hướng dẫn kỹ thuật thiếu bước chốt 'confirm từ khách' sau khi thực hiện thay đổi — khách không biết mình cần làm gì tiếp theo.
+  - *Dẫn chứng:* Chat #8: Andy set up auto-reply setting cho EKA Packaging, nhưng khi khách hỏi lại 'the tests you just sent to me still have no automatic reply' — Andy chỉ nói 'We are double-checking this to ensure the system automatica
+  - → Sau mỗi lần thực hiện thay đổi cho khách, luôn kết bằng: 'I just [action]. Could you please refresh and test from your end? Let me know what you see.' Không để khách phải tự đoán.
+- **[QT18 · Low]** Một số chat kết thúc mà không có chốt rõ ràng hoặc bước tiếp theo — đặc biệt khi vấn đề chưa 100% giải quyết nhưng khách im.
+  - *Dẫn chứng:* Chat #26 (Mama's Desserts): Andy giải thích không thể connect Knowledge Base app, đề xuất CSV import. Khách chỉ respond bằng auto-reply email 2 lần. Andy không gửi thêm message xác nhận hoặc hướng dẫn bước tiếp theo — ch
+  - → Khi khách không confirm sau một đề xuất, hãy gửi thêm 1 tin nhắn ngắn: 'Let me know if you'd like me to guide you through the CSV import process. I'm here when you're ready.' Đừng để mở đầu chat lửng.
+- **[KN5 · Low]** Một vài lần có xu hướng tư vấn trước khi xác nhận đúng vấn đề — dẫn đến tốn thêm round.
+  - *Dẫn chứng:* Chat #1 (line 138): Khi khách giải thích muốn chatbox chỉ embedded dưới product mà không redirect ngay, Andy phản hồi 'It is not logical if you allow your customers to input the questions there and then not direct them t
+  - → Với yêu cầu customize hoặc UX không thông thường, hỏi thêm 1 câu để hiểu full context trước khi giải thích: 'Could you help me understand what you'd like to happen after a customer types their question?' Hiểu xong rồi mới tư vấn.
 
 ## 📈 So tuần trước
 Tuần đầu, chưa có dữ liệu so sánh.

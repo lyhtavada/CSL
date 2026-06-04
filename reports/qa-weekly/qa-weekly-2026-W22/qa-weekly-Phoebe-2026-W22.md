@@ -1,31 +1,31 @@
 # QA Tuần 2026-W22 — Phoebe
 **Giai đoạn:** 26/05 – 01/06  
-**Điểm:** 85/100 — Tốt  
+**Điểm:** 83/100 — Tốt  
 **Đã QA:** 24 chat  
-**3 trục:** 🧠 Mindset 28.3/34 · 📚 Kiến thức 28.4/33 · 🛠️ Xử lý 28/33
+**3 trục:** 🧠 Mindset 27.5/34 · 📚 Kiến thức 27.9/33 · 🛠️ Xử lý 27.1/33
 
 ## 📝 Nhận xét chung
-Tuần này Phoebe thể hiện phong cách làm việc chắc tay và có trách nhiệm — nổi bật nhất là khả năng tiếp nhận ca bàn giao giữa chừng, nắm bắt context nhanh, và chủ động hoàn thành issue thay vì chờ đợi. Kiến thức sản phẩm Chatty ổn định, không có claim sai nào nghiêm trọng. Điểm cần tập trung: một số thời điểm bạn hỏi lại thông tin khách đã cung cấp (chat #10: khách đã paste toàn bộ nội dung FAQ mà bạn vẫn xin screenshot), hoặc giải thích chưa đúng trọng tâm câu hỏi (chat #11: khách hỏi về form khi transfer sang human, bạn trả lời về pre-chat form) — những lỗi này khiến khách phải giải thích lại, kéo dài chat không cần thiết. Cải thiện bước "xác nhận lại ý khách trước khi trả lời" sẽ đẩy điểm lên rõ rệt.
+Tuần này bạn thể hiện phong cách làm việc đều tay, ổn định ở hầu hết các chat — đặc biệt nổi bật ở những case phức tạp (Chat #1 Richpanel + human handover, Chat #13 spare parts, Chat #9 proactive chat fix) nơi bạn vừa đọc tình huống nhanh, vừa deliver kết quả cụ thể có screenshot/link. Mindset ownership tốt: bạn không bỏ lửng, theo đuổi case tới khi xong và chủ động cập nhật khách kể cả khi chưa có solution cuối cùng. Điểm cần tập trung: ở một số chat bạn chưa nắm đúng yêu cầu khách ngay lần đầu (Chat #11: hỏi về email notification nhưng tư vấn về pre-chat form data; Chat #10: khách paste URL + FAQ content nhưng bạn hỏi URL lại nhiều lần) — kiểu hiểu lệch này làm khách phải giải thích lại, kéo dài chat không cần thiết và giảm trust. Thêm vào đó, một số chat ngắn (Chat #24, #21) có độ trễ phản hồi dài mà không có thông báo trước cho khách.
 
 ## ✅ Điểm tốt
-- **[P1]** Ownership xuyên suốt ca dài và phức tạp — chat #1 (AlphaInfuse) là ví dụ điển hình: Phoebe tiếp nhận giữa chừng, tổng hợp toàn bộ issue còn tồn đọng, gửi update kỹ thuật chi tiết 3 điểm vào cuối ca, không bỏ sót bất kỳ vấn đề nào. (#1)
-- **[P2]** Proactive trên nhiều chat — chủ động sync sản phẩm, bật AI cho khách, re-sync custom knowledge URLs bị stuck mà không cần được yêu cầu. Khách tại chat #4 và #6 đều được hỗ trợ vượt hơn câu hỏi ban đầu. (#2, #4, #6)
-- **[P3]** Kiến thức pricing chính xác — xác nhận đúng Basic 50 AI/tháng + $0.40/extra và Free plan 50 lifetime conversations không reset hàng tháng, không có claim nào trái KB. (#2, #3, #7)
-- **[P4]** Xử lý đa ngôn ngữ tốt — chat #3 (tiếng Đức), #12 (tiếng Pháp), #18 và #20 (tiếng Tây Ban Nha) đều được phục vụ đúng ngôn ngữ, tone tự nhiên. (#3, #12, #18, #20)
+- **[P1]** Ownership tốt — theo đuổi case tới cùng, không bỏ lửng. Ở Chat #1 Phoebe nhận case từ Linda, tóm tắt đầy đủ ngữ cảnh, kiểm tra kỹ scenario vs. After-sales conflict, tạo 2 tickets riêng biệt, và gửi update tổng hợp chi tiết (17:03) dù cuối tuần. Ở Chat #9, sau khi fix xong còn gửi follow-up email xác nhận kết quả có link demo. (#1, #9, #13)
+- **[P3]** Chủ động vì khách — trong nhiều chat Phoebe không chỉ giải quyết câu hỏi được hỏi mà còn chủ động phát hiện và fix thêm vấn đề chưa được báo: Chat #4 tự đồng bộ URLs 'In Progress', Chat #7 nhắc khách dùng Test AI mode để tiết kiệm quota, Chat #2 proactively sync products và bật AI knowledge data. (#4, #7, #2)
+- **[P2]** Empathy đúng lúc với khách khó — ở Chat #13 khi khách (AGARO) đang chuẩn bị rời app do chi phí, Phoebe sau khi giải quyết xong technical issue thì viết một message retention có dẫn chứng cụ thể (hỏi budget kỳ vọng, chuyển cho Nolan) — thể hiện đặt lợi ích giữ khách lên trên. (#13, #1)
+- **[P5]** Trình bày kết quả rõ ràng, có cấu trúc — Chat #1 update tổng hợp lúc 17:03 liệt kê 3 điểm rõ ràng với screenshots/links. Chat #24 trả lời câu hỏi German/English setup bằng 2 bước cụ thể. Khách có thể làm theo ngay không cần hỏi lại. (#1, #24, #21)
 
 ## 🔧 Cần cải thiện
-- **[KN2 · Moderate]** Hỏi lại thông tin khách đã cung cấp, khiến khách phải giải thích lần nữa.
-  - *Dẫn chứng:* Chat #10 [12:27]: CS (Phoebe): "Could you please help me to take a screenshot so that I can preview it better?" — trong khi khách ở tin nhắn trước đó đã paste toàn bộ nội dung About Us và FAQ với nội dung rõ ràng.
-  - → Trước khi xin thêm thông tin, đọc lại các tin nhắn gần nhất của khách. Nếu nội dung đã đủ để xử lý, hãy bắt tay vào giải quyết luôn thay vì xin thêm evidence.
-- **[KN5 · Moderate]** Hiểu lệch câu hỏi, tư vấn sai feature ban đầu trước khi được Liz gợi ý điều chỉnh.
-  - *Dẫn chứng:* Chat #11 [10:24]: CS (Phoebe): "the pre-chat form requires customers to provide their name and email before they can continue chatting. Please note that this data will automatically sync to the conversation details here.
-  - → Khi khách đề cập đến 'query form' hoặc form mà khách điền khi nói chuyện với AI, hãy clarify ngay: đây là pre-chat form hay After-sales/human handover form? Câu hỏi một dòng sẽ tránh được việc giải thích sai hoàn toàn.
-- **[KN3 · Low]** Một số tin nhắn briefing/update quá chung chung ở những thời điểm khách đang chờ — không mang thêm thông tin.
-  - *Dẫn chứng:* Chat #5 [11:21]: CS (Phoebe): "Hello Anirban, This is Phoebe from Avada, I'm happy to assist you today. Thank you for getting back! Please rest assured that you'll be updated as soon as there's any progress. Have a great
-  - → Khi nhảy vào một case đang pending, ít nhất nêu được bước tiếp theo cụ thể: 'Mình đã forward lên Nolan, dự kiến sẽ có update trong X giờ' — dù ngắn nhưng cho khách biết mình đang ở đâu trong quy trình.
-- **[KN6 · Low]** Giải thích tính năng hơi vội trong tình huống phức tạp, dẫn đến customer confusion.
-  - *Dẫn chứng:* Chat #1 [13:48]: CS (Phoebe): "Yes, with the existing custom scenarios added and with the Human handover, AI should ask for the reason and unassign itself from the conversation" — câu trả lời mơ hồ, không rõ là sẽ ask re
-  - → Khi chưa chắc 100% về behavior của một setting combination, hãy nói thẳng: 'Mình đang test thử — sẽ confirm kết quả ngay thay vì đưa ra kết luận trước khi test xong.'
+- **[KN5 · Moderate]** Hiểu lệch yêu cầu khách trước khi tư vấn — tư vấn sai trọng tâm, khách phải giải thích lại, kéo dài chat và giảm trust.
+  - *Dẫn chứng:* Chat #11: Khách hỏi 'I noticed that chatty isnt sending us any query form filled by customer to our emails' (muốn nhận email khi có form submission). Phoebe trả lời về pre-chat form data đồng bộ vào Inbox: 'the pre-chat 
+  - → Trước khi tư vấn, đọc lại toàn bộ câu hỏi và xác định: khách đang gặp vấn đề gì, họ muốn outcome gì? Nếu không chắc thì hỏi 1 câu confirm ngắn trước ('Để chắc mình hiểu đúng — bạn muốn nhận email notification mỗi khi AI xử lý xong form phải không?') thay vì tư vấn luôn.
+- **[KN2 · Low]** Hỏi lại thông tin khách đã cung cấp, gây cảm giác không theo dõi conversation.
+  - *Dẫn chứng:* Chat #10: Khách vừa paste toàn bộ nội dung About Us + FAQ và nói 'I pasted about us and FAQ for the 404 page FAQ'. Phoebe trả lời: 'Could you please help me to take a screenshot so that I can preview it better?' — khách 
+  - → Trước khi hỏi thêm, scroll lên đọc lại 5-7 message gần nhất của khách. Chỉ hỏi thêm khi thực sự thiếu thông tin, không hỏi lại những gì đã có trong chat.
+- **[QT18 · Low]** Một số chat Phoebe disappear trong thời gian dài mà không thông báo rõ cho khách, hoặc kết thúc phần tham gia mà không chốt rõ step tiếp theo.
+  - *Dẫn chứng:* Chat #24: Phoebe greet lúc 15:17, rồi im đến 16:47 (90 phút) mới trả lời, không có message 'để mình kiểm tra' trong khoảng đó. Chat #15: Phoebe hỏi screenshot lúc 14:46 rồi chat dừng hẳn ở phía Phoebe — không rõ có resol
+  - → Nếu cần thời gian kiểm tra >10 phút, gửi một message ngắn 'Để mình kiểm tra, khoảng X phút sẽ có kết quả nhé!' Khi kết thúc phần xử lý của mình trong một chat dài, luôn confirm bước tiếp theo cho khách hoặc báo rõ ai sẽ follow up.
+- **[KN6 · Low]** Một lần kết luận chưa đủ thông tin, đặt câu hỏi vòng vòng thay vì đọc context sẵn có.
+  - *Dẫn chứng:* Chat #18 (MUS): Khách hỏi về 'idioma y descripción acorde a nuestro mercado uruguayo'. Phoebe hỏi lại: '¿Podría por favor indicarme si desea mostrar el chatbox en Uruguay?' — quá rộng và không đúng trọng tâm. Sau đó tiếp
+  - → Khi khách nhắc đến country/market cụ thể, ngay lập tức map sang ngôn ngữ và confirm 1 câu: 'Bạn muốn chatbox hiển thị bằng tiếng Tây Ban Nha cho thị trường Uruguay đúng không?' Không cần hỏi từng step riêng lẻ.
 
 ## 📈 So tuần trước
 Tuần đầu, chưa có dữ liệu so sánh.

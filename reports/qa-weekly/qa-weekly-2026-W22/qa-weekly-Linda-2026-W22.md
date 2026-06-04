@@ -1,36 +1,31 @@
 # QA Tuần 2026-W22 — Linda
 **Giai đoạn:** 26/05 – 01/06  
-**Điểm:** 79/100 — Đạt  
+**Điểm:** 81/100 — Tốt  
 **Đã QA:** 30 chat  
-**3 trục:** 🧠 Mindset 26.7/34 · 📚 Kiến thức 26.8/33 · 🛠️ Xử lý 25.5/33
+**3 trục:** 🧠 Mindset 27.1/34 · 📚 Kiến thức 28.5/33 · 🛠️ Xử lý 25.7/33
 
 ## 📝 Nhận xét chung
-Tuần này Linda xử lý khối lượng chat lớn với tinh thần chủ động và tận tâm rõ rệt — bạn sẵn sàng vào thẳng cấu hình, chạy test AI, sửa issue thực tế trên store thay vì chỉ hướng dẫn lý thuyết. Điểm mạnh nổi bật nhất là ownership: theo case đến cùng, tự làm thay vì đẩy khách tự xử. Tuy nhiên, điểm yếu cần tập trung ngay là kỹ năng diễn đạt: lỗi chính tả lặp lại nhiều chat (jusst, expactation, double-chẹc, assisst, forr, lòa), câu trả lời đôi khi vòng vo trước khi đi vào vấn đề — hệ quả trực tiếp là khách phải hỏi lại hoặc chỉnh lại bạn giữa chừng. Nếu không cải thiện kỹ năng viết, chất lượng phục vụ tốt của bạn sẽ bị giảm đi đáng kể vì khách cảm nhận được sự thiếu chuyên nghiệp trong từng tin nhắn.
-
-## ⚠️ Cần Liz xem trước
-- KB inconsistency flag (không phải lỗi CS): Chat #18 — faq_team.md ghi Pro=5 total nhưng faq_pricing.md ghi Pro=10 members. Linda nói '10 member in total'. Liz verify và update KB trước khi feedback CS.
+Tuần này bạn thể hiện phong cách làm việc chủ động và có tâm — sẵn sàng đào sâu vào case phức tạp, test AI thực tế thay vì chỉ hướng dẫn lý thuyết, và không bỏ lửng khi khách hàng chưa xong. Đây là điểm mạnh thật sự và nhất quán qua nhiều chat. Điểm yếu rõ nhất là ngôn ngữ: lỗi ngữ pháp/chính tả xuất hiện khá đều đặn ("We're very appreciate", "let me done a quick test", "double-chẹc", "forr", "jusst", "expactation") — dù không gây hiểu nhầm nghiêm trọng, nhưng khi gặp hàng loạt như vậy trong một chat, khách sẽ cảm nhận được sự thiếu chau chuốt và điều đó ảnh hưởng đến uy tín chuyên nghiệp. Cần tập trung sửa ngay: đọc lại trước khi gửi, đặc biệt các câu xác nhận hoặc tóm tắt quan trọng.
 
 ## ✅ Điểm tốt
-- **[P1]** Ownership mạnh — chủ động vào cấu hình, chạy test AI, debug trực tiếp trên store thay vì chỉ hướng dẫn. KH không cần tự làm nhiều. (#1, #4, #5, #25)
-- **[P3]** Proactive về tips và tối ưu: thường xuyên gợi ý Sync Store Page, Review Source, Best Seller setup, AI re-engage sau khi xử lý xong yêu cầu chính — thể hiện tư duy nghĩ xa hơn yêu cầu của khách. (#1, #3, #9, #13)
-- **[P2]** Follow-up có trách nhiệm: gửi email cập nhật cho KH sau ca, theo dõi tiến trình G2 review, báo kết quả rõ ràng. (#4, #10, #21, #23)
+- **[P1]** Chủ động tự test AI thực tế trên store của khách và cung cấp screenshot/video kết quả, thay vì chỉ hướng dẫn lý thuyết. Điều này giúp khách thấy rõ vấn đề được xử lý và tăng niềm tin vào support. (#1, #10, #16, #25)
+- **[P2]** Ownership tốt — không bỏ lửng case giữa chừng, chủ động follow-up sau ca (gửi email cập nhật kết quả, ping lại khi có tin mới từ dev team). Nhiều case kéo dài nhiều ngày Linda vẫn tiếp tục theo dõi. (#4, #21, #23, #25)
+- **[P3]** Chủ động cung cấp mẹo hữu ích ngoài phạm vi câu hỏi ban đầu (Sync Store Page, Review Source, AI re-engage setting) — đúng tinh thần proactive, giúp khách cài đặt tốt hơn mà không cần hỏi thêm. (#2, #3, #5, #9)
+- **[P4]** Kiên nhẫn với những khách hàng khó tính hoặc chat rất dài với nhiều vấn đề chồng chất (AlphaInfuse nhiều issues liên tiếp, MoreShopping phàn nàn về giá). Không mất bình tĩnh, luôn duy trì tone tích cực. (#1, #12)
 
 ## 🔧 Cần cải thiện
-- **[KN1 · Moderate]** Lỗi chính tả và ngữ pháp lặp lại nhiều chat — làm giảm hình ảnh chuyên nghiệp
-  - *Dẫn chứng:* Chat #1: 'double-chẹc it on your end', 'Let me done a quick test', 'expactation', 'jusst show the reason'; Chat #14: 'I've already sent it to our team to check the lòa page forr you'; Chat #6: 'We're very appreciate your
-  - → Trước khi gửi, đọc lại lần cuối — đặc biệt với các tin nhắn dài. Cài extension kiểm tra chính tả cho tiếng Anh. Tập trung vào các lỗi lặp nhiều nhất: 'just', 'assistance', 'double-check'.
-- **[QT9 · Moderate]** Hỏi vòng vo trước khi đi vào vấn đề — khách phải nhắc lại hoặc chỉnh lại bạn
-  - *Dẫn chứng:* Chat #17: Linda hỏi 'You mean that Chatty takes a few seconds to load when you open the page, am I right?' → 'Can you kindly share details about what you want' → khách phải nhắc lại: 'I think you misunderstood me'. Chat 
-  - → Đọc kỹ và xem hết ảnh/video KH gửi trước khi hỏi. Nếu cần xác nhận, hỏi 1 câu cụ thể, không hỏi mở chung chung.
-- **[QT22 · Moderate]** Bỏ sót câu hỏi khi KH hỏi nhiều vấn đề cùng lúc
-  - *Dẫn chứng:* Chat #1 [11:39:40]: KH hỏi 3 vấn đề (human handoff, AI reply about shipping, refund setup). Linda trả lời về refund/AI settings nhưng không đề cập shipping query cho đến nhiều tin sau. Chat #25 [09:35:33]: KH hỏi về vega
-  - → Khi KH hỏi nhiều vấn đề, tóm tắt list và xử lý từng cái. Ví dụ: 'Tôi thấy bạn có 3 câu hỏi, để tôi xử lý lần lượt: 1)... 2)... 3)...'
-- **[KT2 · Low]** Phản hồi ban đầu chưa chính xác về metafield vs tag trong Chatty product sync
-  - *Dẫn chứng:* Chat #25 [09:35:33]: KH báo AI không nhận diện sản phẩm vegan/gluten-free từ Shopify metafield. Linda hướng dẫn 'add more detailed product descriptions' — sai hướng. KH phải giải thích lại là dùng metafield. Linda sau đó
-  - → Khi gặp case AI không đọc được thông tin sản phẩm, hỏi KH lưu data đó ở đâu (metafield, tag, description) trước khi đưa hướng dẫn. Verify KB về metafield support trong Chatty.
-- **[KT1 · Low]** Claim về số team member của Pro plan có thể sai — cần Liz verify KB inconsistency trước khi xác nhận
-  - *Dẫn chứng:* Chat #18 [10:54:00]: CS (Linda): 'We have pro plan that you can add 10 member in total' — KB faq_team.md ghi Pro = 4 additional (5 total), nhưng faq_pricing.md ghi '10 team members'. Hai file KB mâu thuẫn nhau.
-  - → [FLAG CHO LIZ] Verify số team member chính xác cho Pro plan trong KB trước khi coaching Linda về điểm này. Nếu KB sai thì update KB, không phải lỗi CS.
+- **[KN1 · Moderate]** Lỗi ngữ pháp và chính tả xuất hiện đều đặn trong nhiều chat, giảm tính chuyên nghiệp của phản hồi.
+  - *Dẫn chứng:* "We're very appreciate your understand and cooperation" (chat #1); "let me done a quick test" (chat #1, #10); "double-chẹc" (chat #1); "Thanks for informations" (chat #3); "expactation" (chat #1); "I already test the AI 
+  - → Trước khi gửi các tin nhắn xác nhận hoặc tóm tắt quan trọng, đọc lại nhanh 5 giây để bắt lỗi. Ưu tiên sửa các cụm hay mắc: 'appreciate' (không dùng 'We're very appreciate'), 'it works' (không 'it work'), 'let me do' (không 'let me done').
+- **[KN5 · Moderate]** Một số trường hợp hiểu lệch yêu cầu khách, dẫn đến tư vấn sai hướng trước khi điều chỉnh lại.
+  - *Dẫn chứng:* Chat #17: Khách hỏi về lazy loading (chỉ muốn biết có cấu hình được không), Linda ban đầu xử lý như là một bug report và escalate lên tech team. Phải mất thêm 2 tin nhắn mới hiểu đúng yêu cầu.
+  - → Với các câu hỏi kỹ thuật ngắn gọn, đọc lại một lần trước khi trả lời để xác định đây là 'how-to question' hay 'bug report'. Nếu không chắc, hỏi một câu xác nhận ngắn thay vì escalate ngay.
+- **[QT9 · Low]** Một số trường hợp hỏi lại thông tin khách đã cung cấp hoặc vòng vo khi tìm ID/link conversation, kéo dài chat không cần thiết.
+  - *Dẫn chứng:* Chat #3: Khách gửi link session nhưng Linda hỏi lại "May I ask the name or the ID of that convo" và sau đó hỏi lại store URL — dù thông tin đã có trong chat context hoặc CRM.
+  - → Trước khi hỏi khách thêm, kiểm tra context chat và CRM một lần. Nếu cần hỏi, gộp thành một câu duy nhất ('Bạn có thể chia sẻ tên chat và store URL không?' thay vì hỏi từng cái).
+- **[QT18 · Low]** Một số chat ngắn kết thúc mà không có chốt rõ bước tiếp theo hoặc offer hỗ trợ thêm, đặc biệt với các case mà vấn đề chưa được confirm hoàn toàn.
+  - *Dẫn chứng:* Chat #30: Khách hỏi về chargeback process, Linda hỏi clarifying question nhưng chat kết thúc ở đó mà không có follow-up sau khi khách offline.
+  - → Với các case đang chờ khách phản hồi, để lại một tin nhắn chốt rõ: 'Mình sẽ chờ câu trả lời từ bạn để tiếp tục xử lý. Nếu bạn offline, mình sẽ gửi update qua email [email].'
 
 ## 📈 So tuần trước
-Tuần đầu, chưa có dữ liệu so sánh.
+Tuần đầu, chưa có dữ liệu so sánh
