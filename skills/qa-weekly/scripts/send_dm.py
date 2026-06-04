@@ -8,6 +8,10 @@ has reviewed. Supports --dry-run (default) — must pass --send to actually DM.
 Payload file (JSON):
   {
     "week": "2026-W22",
+    "sender": {                              // optional — DM appears as Liz
+      "username": "Ly (Liz)",
+      "icon_url": "https://avatars.slack-edge.com/.../512.png"
+    },
     "messages": [
       {"cs": "Hazel", "slack_id": "U09FYACFH2T",
        "text": "*QA Tuần W22 — Hazel* ...markdown..."},
@@ -42,9 +46,17 @@ def load_env(path):
     return env
 
 
-def post_dm(token, slack_id, text):
-    body = json.dumps({"channel": slack_id, "text": text,
-                       "unfurl_links": False, "unfurl_media": False}).encode()
+def post_dm(token, slack_id, text, sender=None):
+    msg = {"channel": slack_id, "text": text,
+           "unfurl_links": False, "unfurl_media": False}
+    if sender:
+        # Requires chat:write.customize scope (Avada bot has it).
+        # Note: Slack still shows an APP badge next to the name — unavoidable.
+        if sender.get("username"):
+            msg["username"] = sender["username"]
+        if sender.get("icon_url"):
+            msg["icon_url"] = sender["icon_url"]
+    body = json.dumps(msg).encode()
     req = urllib.request.Request(
         SLACK_API, data=body, method="POST",
         headers={"Authorization": f"Bearer {token}",
@@ -72,10 +84,13 @@ def main():
 
     payload = json.load(open(args.payload))
     msgs = payload.get("messages", [])
+    sender = payload.get("sender")
     only = set(s.strip() for s in args.only.split(",")) if args.only else None
 
     mode = "SEND" if args.send else "DRY-RUN"
-    print(f"[{mode}] Week {payload.get('week')} — {len(msgs)} messages\n")
+    as_who = sender.get("username") if sender else "avada_bot (default)"
+    print(f"[{mode}] Week {payload.get('week')} — {len(msgs)} messages "
+          f"— gửi dưới tên: {as_who}\n")
 
     sent, skipped, failed = 0, 0, 0
     for m in msgs:
@@ -94,7 +109,7 @@ def main():
             sent += 1
             continue
         try:
-            res = post_dm(token, sid, m["text"])
+            res = post_dm(token, sid, m["text"], sender)
             if res.get("ok"):
                 print(f"  ✓ {cs} → DM sent ({res.get('channel')})")
                 sent += 1
