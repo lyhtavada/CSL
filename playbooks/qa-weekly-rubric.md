@@ -44,8 +44,8 @@ Chỉ dùng các code mà transcript đủ bằng chứng. Bỏ qua mọi lỗi 
 | QT18 | Kết thúc mà không báo KH bước tiếp theo | Moderate | Chat đóng lửng, KH không biết chờ gì |
 | QT22 | Bỏ sót câu hỏi của KH | High | KH hỏi 2 ý, CS chỉ trả lời 1 |
 | QT25 | Hẹn kiểm tra rồi im luôn | High | "Để em check rồi báo lại" → không quay lại |
-| KT1 | Sai thông tin tính năng / giá / chính sách | Critical | Đối chiếu `kb/` + chatty.net/pricing |
-| KT2 | Có FAQ/guide đầy đủ mà không dùng, support lòng vòng | Critical | Vấn đề đã có sẵn doc mà CS mò lại từ đầu |
+| KT1 | Sai thông tin tính năng / giá / chính sách | Critical | **Đối chiếu KB agent** (xem mục Knowledge bên dưới) — claim của CS có khớp KB không |
+| KT2 | Có FAQ/guide đầy đủ mà không dùng, support lòng vòng | Critical | Vấn đề đã có sẵn trong KB agent mà CS mò lại từ đầu / trả lời thiếu |
 | KN1 | Sai ngữ pháp/chính tả, tin nhắn thiếu chuyên nghiệp | Low | Lỗi viết rõ rệt, ảnh hưởng hình ảnh |
 | KN2 | Hỏi lại thứ KH đã cung cấp trong cùng chat | Moderate | CS hỏi cái KH nói rồi |
 | KN3 | Hướng dẫn chưa rõ, KH khó hiểu | Moderate | KH phải hỏi lại "ý anh là sao" |
@@ -55,6 +55,25 @@ Chỉ dùng các code mà transcript đủ bằng chứng. Bỏ qua mọi lỗi 
 | KN8 | Câu mất lịch sự, gây phản ứng tiêu cực | Urgent | Tone vô lễ/cộc lốc, KH phản ứng |
 
 > KN8 / QT11 / KT1 nếu xuất hiện → **flag riêng cho Liz xem trước khi DM**, không tự gửi.
+
+#### Kiểm tra kiến thức (KT1/KT2) — BẮT BUỘC đối chiếu KB agent
+
+Khi chấm 2 lỗi kiến thức, **không dựa vào hiểu biết chung** — phải mở KB thật
+mà con AI agent dùng để verify từng claim CS nói (giá, tính năng, giới hạn,
+chính sách refund…):
+
+- **Chatty KB:** `/Users/avada/claw-weebhook-crisp-chat/agents/chatty-agent/knowledge/`
+- **Joy KB:** `/Users/avada/claw-weebhook-crisp-chat/agents/joy-loyalty-agent/knowledge/`
+- **Index để tra nhanh file nào:** `skills/qa-weekly/references/kb-index.md`
+  (mỗi file kèm "applies_when" → biết mở đúng file)
+
+Cách làm: với mỗi chat, xác định app (Joy/Chatty theo segment) → nếu CS có
+claim về kiến thức/giá/chính sách → tra index → **Read đúng 1–3 file KB liên
+quan** → so claim với KB:
+- Claim **trái** KB (sai giá, sai giới hạn, sai tính năng) → **KT1 (Critical)**, quote cả câu CS nói + dòng KB đúng.
+- KB có sẵn câu trả lời rõ mà CS **lòng vòng / trả lời thiếu / bảo "không làm được"** trong khi KB nói được → **KT2 (Critical)**.
+- Chỉ mở file KB khi chat có claim cần verify — **không đọc cả KB** (giữ nhẹ).
+- Không tìm thấy file KB phù hợp / không chắc → **bỏ qua, không suy diễn**.
 
 ### B. Điểm sáng (để khen có cơ sở)
 

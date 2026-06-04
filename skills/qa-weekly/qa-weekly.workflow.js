@@ -90,6 +90,17 @@ CRITICAL RULES:
 - Skip anything not observable from chat (workshift, Trello cards, review system, ratings). Those are for monthly QA, not weekly.
 - Be fair and developmental. This report is DM'd to the CS — accurate, specific, encouraging.
 
+KNOWLEDGE CHECK (KT1/KT2) — MANDATORY, verify against the real agent KB:
+- Do NOT judge knowledge/pricing/feature/policy claims from your own memory. Open the actual KB the AI agent uses.
+- KB index (file → what it covers): /Users/avada/CSL/skills/qa-weekly/references/kb-index.md
+  Chatty KB dir: /Users/avada/claw-weebhook-crisp-chat/agents/chatty-agent/knowledge/
+  Joy KB dir:    /Users/avada/claw-weebhook-crisp-chat/agents/joy-loyalty-agent/knowledge/
+- For each chat: detect app (Joy/Chatty from segments) → if the CS makes a factual claim (price, limit, feature, refund policy), look it up in the index → Read the 1-3 relevant KB files → compare.
+  - Claim CONTRADICTS KB (wrong price/limit/feature) → KT1 (Critical). Quote the CS line AND the correct KB line in evidence.
+  - KB clearly has the answer but CS went in circles / answered incompletely / said "can't be done" when KB says it can → KT2 (Critical).
+- Open KB files ONLY when a chat has a claim worth verifying — never read the whole KB (keep it light).
+- No matching KB file / not sure → skip, do not speculate.
+
 SCORING (per rubric §3):
 - Label each chat: Clean(100) / Minor(80, only Low/Moderate) / Major(60, has High) / Critical(30, has Critical/Urgent).
 - Weekly score = mean of per-chat scores, rounded.
