@@ -87,14 +87,16 @@ and reads app/chat-count from each transcript. **Quirk:** the runtime may delive
 
 ### Step 5 — Compare to last week (main thread)
 
-For each CS, read last week's report in `reports/qa-weekly/` if it exists.
-Compute score delta, repeated error codes, and fixed error codes. First week →
-"Tuần đầu, chưa có dữ liệu so sánh."
+For each CS, read last week's report in
+`reports/qa-weekly/qa-weekly-<YYYY-W(##-1)>/` if it exists. Compute score delta,
+repeated error codes, and fixed error codes. First week → "Tuần đầu, chưa có dữ
+liệu so sánh."
 
 ### Step 6 — Write reports + team summary
 
-- Per CS: `reports/qa-weekly/qa-weekly-<CS>-<YYYY-Www>.md`
-- Team summary for Liz: `reports/qa-weekly/qa-weekly-summary-<YYYY-Www>.md`
+One folder per week — `reports/qa-weekly/qa-weekly-<YYYY-Www>/`:
+- Per CS: `qa-weekly-<CS>-<YYYY-Www>.md`
+- Team summary for Liz: `qa-weekly-summary-<YYYY-Www>.md`
   (score table, who needs coaching, flagged severe issues)
 
 ### Step 7 — Liz reviews, then DM
