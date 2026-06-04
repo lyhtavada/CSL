@@ -1,25 +1,25 @@
 # QA Tuần 2026-W22 — Audrey
 **Giai đoạn:** 26/05 – 01/06  
-**Điểm:** 86/100 — Tốt  
-**Đã QA:** 18 chat  
-**Phân bố:** 🌟2 ✅15 🟡1 🟠0 🔴0 ⛔0
+**Điểm:** 84/100 — Đạt  
+**Đã QA:** 30 chat  
+**Phân bố:** 🌟3 ✅25 🟡0 🟠1 🔴1 ⛔0
 
 ## 📝 Nhận xét chung
-Bạn nắm context tốt và tone chuyên nghiệp. Vấn đề chính tuần này: vài chat trả lời hơi rộng, chưa bám đúng câu khách hỏi — khiến khách phải tự lọc thông tin hoặc hỏi lại. Cần sửa: đọc kỹ đúng câu hỏi, trả lời thẳng cái khách cần trước, rồi mới bổ sung.
+Audrey có nền tảng kỹ năng chat chắc — tone ổn định, chủ động xử lý, và nhiều ca cho thấy khả năng đọc context tốt (tự phát hiện vấn đề, fix trước khi khách hỏi). Điểm mạnh rõ nhất là proactive: chat #3 và #15 là những ví dụ thực sự nổi bật. Điểm cần tập trung ngay: đọc kỹ thông tin khách đã cung cấp trước khi đưa ra giả định về store hoặc vấn đề — chat #1 cho thấy việc đoán sai URL khi context đã đầy đủ làm khách phải đính chính hai lần, mất thời gian và để lại ấn tượng xử lý ẩu. Chat #27 cũng cho thấy pattern tương tự: check store xong rồi nhận xét sai hướng, khách phải chỉnh lại. Hai trường hợp này không phải tai nạn ngẫu nhiên — chúng phản ánh thói quen bỏ qua bước đọc lại context trước khi hành động.
 
 ## ✅ Điểm tốt
-- **[P2]** Chủ động phát hiện và xử lý vấn đề khách chưa kịp nêu — tự nhận ra nút loyalty bị nút gift che và nút widget che phần dưới màn hình mobile, đề xuất chỉnh ngay: 'I noticed that the loyalty button is being covered by a gift button. Would you like me to change its position from left to right?' và 'I've just adjusted the widget button on the mobile version so that it does not cover the bottom of the screen.' (chat #4)
-- **[P3]** Giải thích kỹ thuật rõ ràng, có bước, làm khách theo được ngay — hướng dẫn cập nhật SPF record cho GoDaddy, chỉ đúng record cần sửa, ghép include:mailgun.org vào record hiện có và còn tự test gửi mail xác nhận: 'you need to combine your existing record... v=spf1 include:mailgun.org +mx +a +ip4:198.57.247.252 ~all' và 'Let me test it on my end... the email was successfully sent to my inbox' (chat #13)
-- **[P3]** Trả lời câu hỏi về điểm/redeem mạch lạc, dẫn khách tới đúng nơi xem hoạt động — 'these are the redemption activities, so it only displays the points redeemed and the discount code generated on that day' và chỉ rõ kiểm tra coupon từ Shopify Discounts. (chat #2)
-- **[P5]** Đọc kỹ context khi nhận ca từ đồng nghiệp, không bắt khách lặp lại — vào tiếp vụ floating cart của Carl, tự xác định theme, thêm CSS z-index và báo kết quả gọn gàng: 'we've addressed your concern by adding a CSS code to adjust the z-index of our widget button'. Tương tự khi tiếp ca Sonny: 'Sonny's shift is over, so please let me know if you have any further questions'. (chat #18, chat #11)
+- **[P2]** Chủ động phát hiện vấn đề khách chưa hỏi — chat #3: thấy loyalty button bị gift button che và tự đề xuất đổi vị trí ngay, không chờ khách report; chat #15: phát hiện setting 'display after login' là nguyên nhân widget không hiển thị và xử lý luôn. (#3, #15)
+- **[P3]** Hướng dẫn kỹ thuật theo từng bước, rõ ràng và có thể làm theo ngay — chat #8: giải thích SPF record, chỉ rõ đúng bản ghi TXT nào cần sửa (tránh bản ghi Google Site Verification), test email delivery xong rồi mới đóng; khách confirm thành công. (#8)
+- **[P5]** Đọc kỹ context trước khi trả lời — chat #3: nắm ngay vấn đề widget bị che, không bắt khách lặp lại; chat #15: vào store kiểm tra trước, xác định nguyên nhân chính xác ('only display after login') mà không hỏi vòng vòng. (#3, #15)
+- **[P4]** Xử lý các ca multi-thread phức tạp (nhiều issue song song, nhiều ngày) gọn gàng và theo dõi đến nơi — chat #18 và #13: tổng hợp outstanding items, cập nhật khách đúng hạn, không để issue lọt giữa chừng. (#13, #18)
 
 ## 🔧 Cần cải thiện
-- **[KN1 · Low]** Gửi nhầm tin nhắn canned không liên quan đến vấn đề của khách. Khách (Alien Surface) đang hỏi về điểm loyalty không bị trừ sau khi refund đơn, nhưng mình gửi email báo 'đã migrate VIP Tiers data sang EU store' — nội dung của một case khác hẳn. May là sau đó mình đã gửi tin đính chính, nhưng khách có thể bị rối.
-  - *Dẫn chứng:* [11:42:19] CS (Audrey): I'm delighted to share with you that we have successfully migrated the customers' VIP Tiers data to your EU store. ... [11:48:09] CS (Audrey): Hi again! I'd like to inform you 
-  - → Trước khi gửi mỗi tin canned, đọc lại 1 lần xem nội dung có khớp đúng vấn đề khách đang hỏi không — nhất là các template dài. Nếu lỡ gửi nhầm, đính chính ngay kèm 1 câu xin lỗi ngắn để khách không hiểu lầm.
-- **[QT18 · Moderate]** Một vài chat tư vấn xong nhưng kết thúc hơi lửng, chưa chốt rõ bước tiếp theo cho khách. Ở chat #3, khi khách hỏi cách hiện point calculator, mình báo cần nâng cấp plan rồi dừng, chưa hỏi khách có muốn được hỗ trợ nâng cấp / xem hướng dẫn tiếp không.
-  - *Dẫn chứng:* [15:48:00] CS (Audrey): I've checked and noticed that you're currently in the Free plan, while this feature is supported on the Essential plan [15:48:26] CS (Audrey): In this case, you may want to con
-  - → Sau khi báo điều kiện (plan/giới hạn), luôn chốt 1 bước tiếp theo rõ ràng: 'Nếu anh/chị muốn, em có thể gửi link so sánh plan / hỗ trợ set up ngay sau khi nâng cấp nhé' để khách biết nên làm gì tiếp.
+- **[KN5 · High]** Xác định sai store khi context đã rõ, khiến khách phải đính chính hai lần
+  - *Dẫn chứng:* CS (Audrey): 'Ah, asumo que te gustaría cambiar el enlace de inicio de sesión para este sitio web https://aguascalientes-travel.myshopify.com/password' — trong khi khách đã nói rõ nhiều lần muốn chỉnh link trên nekane.mx
+  - → Trước khi đưa ra giả định về store/URL, scroll lên đọc lại toàn bộ những gì khách đã cung cấp trong chat. Nếu khách đã nêu URL cụ thể, dùng đúng URL đó — không đoán.
+- **[KN7 · Moderate]** Câu hỏi của khách đã khá rõ nhưng vẫn hỏi lại 'I'm not sure I understood your question correctly', rồi khi check store lại tập trung vào trạng thái draft milestone hiện tại thay vì câu hỏi về behavior khi xóa/tạo lại — khách phải đính chính: 'My question has nothing to do with the current draft'
+  - *Dẫn chứng:* CS (Audrey): 'I'm not sure I understood your question correctly. To better assist you, could you please elaborate a bit more?' sau câu hỏi: 'If it is deleted and recreated, will the purchase data collection be reset?' — 
+  - → Khi khách hỏi về behavior/logic của app, ưu tiên trả lời từ kiến thức sản phẩm trước, chỉ check store khi cần data cụ thể. Đừng nhầm 'kiểm tra store' với 'trả lời câu hỏi'. Nếu thực sự không rõ, tóm tắt lại hiểu của mình trước khi hỏi thêm.
 
 ## 📈 So tuần trước
-Tuần đầu, chưa có dữ liệu so sánh. (Lưu ý: điểm tuần chỉ phản ánh chất lượng chat với khách — chưa gồm phối hợp TS/dev, tạo & follow-up ticket, bàn giao ca hay xin review; đó là phạm vi QA tháng.)
+Tuần đầu, chưa có dữ liệu so sánh.

@@ -1,28 +1,24 @@
 # QA Tuần 2026-W22 — Andy
 **Giai đoạn:** 26/05 – 01/06  
-**Điểm:** 81/100 — Đạt  
-**Đã QA:** 26 chat  
-**Phân bố:** 🌟2 ✅19 🟡0 🟠5 🔴0 ⛔0
+**Điểm:** 84/100 — Đạt  
+**Đã QA:** 9 chat  
+**Phân bố:** 🌟1 ✅7 🟡0 🟠1 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Bạn nhiệt tình và gánh được khối lượng chat lớn. Nhưng điểm đáng lưu ý: nhiều chat dính lỗi nhỏ lặp lại về quy trình và diễn đạt (5 chat ở mức Minor) — gộp lại kéo điểm xuống rõ. Đây là lỗi 'chất lượng đồng đều', không phải lỗi nặng đơn lẻ. Cần sửa: chăm chút phần chốt chat — báo khách bước tiếp theo rõ ràng trước khi đóng, đừng để lửng.
+Tuần này bạn xử lý vững, tone với khách ổn định và thái độ hỗ trợ thật sự. Điểm mạnh rõ nhất là khả năng đọc context và linh hoạt ngôn ngữ — chuyển sang tiếng Pháp khi khách khó hiểu tiếng Anh là điểm cộng thực sự, không phải kỹ năng ai cũng làm được. Tuy nhiên, khi khách yêu cầu ví dụ cụ thể hoặc giải thích rõ hơn về một metric (chat #6 — FCR 75%), bạn lặp lại "That is the current logic at the moment" ba lần mà không có ví dụ hay giải thích thêm — khách nói thẳng "I am confused" nhưng vẫn không được giải đáp. Đây là lỗi giao tiếp thực sự: câu trả lời chung chung trong khi khách cần con số cụ thể, dẫn đến khách bỏ cuộc thay vì hiểu. Tuần tới, khi khách hỏi "why" hoặc "can you give me an example" — đó là tín hiệu cần dừng lại và giải thích cụ thể hơn, không nên lặp cùng một câu.
 
 ## ✅ Điểm tốt
-- **[P3]** Xử lý request đổi support email từng bước rất gọn và rõ — confirm email muốn nhận noti, gửi verification, test noti, rồi chủ động transfer admin role. KH làm theo được ngay, không phải hỏi lại. (chat #5)
-- **[P2]** Chủ động làm hơn KH yêu cầu: tự sync products xong còn 'added the important URLs I could find on your website to the AI knowledge base' và nhờ KH check thiếu sót — giúp AI train tốt hơn mà KH chưa kịp xin. (chat #2, chat #5)
-- **[P5]** Trả lời chính xác các câu hỏi plan/limit phức tạp đúng KB: Free 100 products + random activate, Basic 12 tháng vs Free 90 ngày chat history, Pro 300 AI conversations/tháng (cả gói năm) + $0.4/extra. Không sai con số nào. (chat #22, chat #8)
-- **[P1]** Tone ấm, kiên nhẫn xuyên suốt nhiều ngôn ngữ (Đức, Nhật, Ý) và nhiều ca dài. KH House Of Beyond thúc giục liên tục ('Did you check? Andy') vẫn giữ bình tĩnh, KH cuối chat khen và chào thân thiện. (chat #9, chat #13, chat #25)
+- **[P5]** Chat #3 (Blumia Lab): Bạn chủ động hỏi xác nhận thị trường mục tiêu trước khi tư vấn ('Aux francophones uniquement?'), sau đó chuyển sang hỗ trợ hoàn toàn bằng tiếng Pháp khi khách gặp khó khăn với tiếng Anh. Đây là đọc context rõ ràng và hành động kịp thời — khách kết thúc chat với '你êtes top'. (#3)
+- **[P2]** Chat #1 (HotTubs24): Bạn chủ động phát hiện cài đặt notification của khách chỉ chọn 'assigned conversations' và gợi ý bật 'unassigned conversations' trước khi khách hỏi — đúng thứ khách cần. (#1)
+- **[P4]** Chat #4 (Clendo) và Chat #9 (AlphaInfuse): Xử lý gọn, đúng trọng tâm, không vòng vo. Chat #9 đặc biệt ngắn gọn và đủ — giải thích auto-resolve + Resolved tab đúng ngay lần đầu. (#4, #9)
 
 ## 🔧 Cần cải thiện
-- **[QT10 · Moderate]** Đề nghị review kèm phần thưởng (free month) — vi phạm policy Shopify/G2 trong ref_ask-for-review: 'Strictly Prohibited — Offering anything in exchange for a review (discounts, free months, perks)'.
-  - *Dẫn chứng:* chat #18: 'https://www.g2.com/products/chatty/take_survey  As a thank you, we're delighted to offer you a free month for Basic and Pro plans. Just send us a quick screenshot after submitting it...' — 
-  - → Bỏ hẳn phần 'free month/discount để đổi review'. Dùng template review trung tính đã được duyệt (không gắn quà). Nếu có chương trình G2 incentive riêng thì tách khỏi lời mời review, đừng gộp 'review → get free month'.
-- **[QT10 · Moderate]** Hướng dẫn KH nội dung review ('mention Andy') — policy cấm 'Telling the merchant what to write or guiding the content'.
-  - *Dẫn chứng:* chat #9: 'If possible, hope you mention "Andy" in the review :P'; lặp lại ở chat #18: 'If possible, hope you mention "Andy" in the review :$'
-  - → Không gợi ý KH viết gì hay nhắc tên mình trong review. Chỉ gửi link review trung tính rồi cảm ơn, để KH tự do viết.
-- **[QT10 · Moderate]** Pre-screen cảm xúc trước khi xin review ('a tiny favor') — policy cấm 'Pre-screening for sentiment before asking (may I ask a favor?)'. Có lúc còn xin review khi task vẫn đang chờ tech team.
-  - *Dẫn chứng:* chat #12: 'Ahh, while you are still here, could I ask for a tiny favor, please? :P' (xin review trong khi icon-resize task chưa xong); chat #26: 'Ahh, while you are still here, could I ask for a tiny 
-  - → Theo 4-step flow: hỏi 'Is there anything else I can help with?' và chốt KH hết vấn đề trước, rồi gửi thẳng lời mời review trung tính — không mở đầu bằng 'may I ask a favor'. Đừng xin review khi còn task pending.
+- **[KN3 · Moderate]** Giải thích metric FCR 75% lặp đi lặp lại mà không có ví dụ cụ thể, khiến khách nói thẳng là bị confused nhưng vẫn không được làm rõ.
+  - *Dẫn chứng:* CS (Andy): 'That is the current logic at the moment.' (lặp lại 3 lần tại [05:52:42], [06:05:04], [10:17:39]). Customer (Xtra Store): 'I am confused with the rate 75%'
+  - → Khi khách nói 'confused' hoặc hỏi 'why' lần hai — đó là tín hiệu phải dừng và cho ví dụ số cụ thể. Ví dụ: 'Nếu bạn có 100 chat, sort theo FRT từ nhanh nhất, hệ thống lấy 75 chat đầu để tính trung bình — 25 chat chậm nhất bị loại ra.' Một dòng ví dụ như vậy sẽ cắt đứt vòng lặp.
+- **[KN7 · Moderate]** Khi khách hỏi cho ví dụ về FCR, Andy trả lời vague thay vì cung cấp ví dụ số cụ thể theo yêu cầu.
+  - *Dẫn chứng:* Customer (Xtra Store): 'sorry, could you please give me example?' — CS (Andy): 'Unfortunately we don't have the example available at the moment' [05:54:16]
+  - → Khi KB hoặc logic có thể xây dựng ví dụ số được, không nên từ chối. Tự tạo ví dụ giả định để minh họa logic ('Giả sử bạn có 100 chat và FRT của chúng là...') — không cần dữ liệu thật của khách.
 
 ## 📈 So tuần trước
-Tuần đầu, chưa có dữ liệu so sánh. (Lưu ý: điểm này chỉ dựa trên nội dung chat với khách — chưa gồm phối hợp TS/dev, tạo & follow-up ticket, bàn giao ca hay xin review thực tế; không phải đánh giá năng lực toàn diện.)
+Tuần đầu, chưa có dữ liệu so sánh.

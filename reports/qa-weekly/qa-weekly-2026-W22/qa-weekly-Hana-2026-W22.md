@@ -1,25 +1,25 @@
 # QA Tuần 2026-W22 — Hana
 **Giai đoạn:** 26/05 – 01/06  
-**Điểm:** 84/100 — Đạt  
-**Đã QA:** 24 chat  
-**Phân bố:** 🌟2 ✅20 🟡0 🟠2 🔴0 ⛔0
+**Điểm:** 92/100 — Tốt  
+**Đã QA:** 11 chat  
+**Phân bố:** 🌟5 ✅6 🟡0 🟠0 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Bạn tận tâm và chắc kiến thức sản phẩm. Nhưng tuần này có vài chat hiểu chưa đúng ý khách rồi tư vấn lệch hướng — đây là vấn đề đáng lưu ý vì nó làm khách phải giải thích lại từ đầu, kéo dài chat. Việc cần làm: confirm lại đúng nhu cầu khách bằng 1 câu trước khi đưa giải pháp. Bạn trả lời tốt khi đã nắm đúng vấn đề — mấu chốt là nắm đúng từ đầu.
+Bạn có một tuần chat chất lượng cao — xử lý chắc tay trên nhiều ngôn ngữ (Tây Ban Nha, Trung, Pháp, Anh), câu hỏi phức tạp về tính năng không làm khó bạn, và bạn chủ động offer DFY + audit setup cho merchant thay vì chỉ trả lời thụ động. Điểm nổi bật nhất là khả năng đọc context sâu — bạn phát hiện referral program đang tắt và tự bật luôn mà không cần merchant hỏi, hay tự scan cả store và đưa ra 3 gợi ý ưu tiên. Hướng cần chú ý tuần tới: khi merchant đã nói rõ "ưu tiên vấn đề X, bỏ qua Y", bạn cần tôn trọng điều đó cho đến hết chat — việc quay lại gợi ý Y làm merchant cảm thấy bạn không thực sự nghe; nếu lặp lại nhiều lần sẽ kéo dài chat vô ích. Ngoài ra, với câu hỏi yes/no đơn giản, hãy trả lời thẳng trước rồi mới hỏi thêm nếu cần — không để merchant phải hỏi lại.
 
 ## ✅ Điểm tốt
-- **[P2]** Chủ động đưa workaround khi chưa được hỏi — vụ Cookiebot/GDPR, ngoài việc xác nhận thẳng thắn Joy chưa tích hợp CMP, mình còn gợi ý whitelist fonts.bunny.net dưới mục Necessary để KH dùng tạm trong lúc chờ dev. Rất đáng khen vì biến một limitation thành lời khuyên hữu ích. (chat #3)
-- **[P3]** Giải thích rõ ràng, có bước + ví dụ cụ thể — hướng dẫn biến số email ({{earning_discount}}, {{discount_code}}) kèm luôn một câu mẫu KH copy dùng được ngay, lại còn ghi rõ biến chỉ chạy trong notification của app. KH làm theo được liền. (chat #8)
-- **[P5]** Đọc kỹ context, không tư vấn sai hướng — KH báo 'Joy review block hiện 2 lần', mình kiểm tra và nhận ra block đó là của Judge.me chứ không phải Joy, lịch sự hướng KH sang đúng team thay vì mò sửa app mình. (chat #16)
-- **[P1]** Tôn trọng & đồng cảm với KH — vụ coupon revoke lỗi, KH nói không muốn làm phiền customer đang bực để quay video, mình không ép, vẫn nhận log issue lại cho có record. Giữ tone ấm, không cứng nhắc theo quy trình. (chat #18)
+- **[P2]** Chủ động offer DFY widget service và audit setup store mà không cần merchant hỏi — đề xuất 3 hướng cải thiện loyalty program (loyalty page, referral, account page) sau khi tự review store. (chat #1, chat #3, chat #10)
+- **[P3]** Hướng dẫn rõ ràng, có bước cụ thể cho các flow phức tạp: Shopify Flow workaround cho 4th order milestone, VIP tier multiplier setup, point variable explanation. (chat #4, chat #5, chat #7)
+- **[P5]** Đọc kỹ context hiện tại trước khi action — tìm được account customer qua email khi search by name không ra, phát hiện referral block đã add nhưng program đang off và tự enable. (chat #3, chat #4)
+- **[P1]** Tone ấm, nhất quán trên nhiều ngôn ngữ — giữ được sự kiên nhẫn và thân thiện khi chat kéo dài nhiều giờ với merchant Tây Ban Nha và Trung Quốc. (chat #1, chat #2, chat #5)
 
 ## 🔧 Cần cải thiện
-- **[KN3 · Moderate]** Hai tin nhắn liền nhau mâu thuẫn nhau về cách tính milestone, dễ làm KH bối rối — một tin nói chi tiêu cũ vẫn được tính, tin sau lại nói chỉ tính từ ngày bắt đầu 1/6.
-  - *Dẫn chứng:* Chat #23, Hana 09:29: "Any customer who has already spent 60,000 THB or more will qualify for the new milestone reward... The thresholds are independent, not additive." Ngay sau đó 09:31: "Joy will co
-  - → Trước khi gửi, đọc lại xem 2 tin có khớp logic không. Ở case này yếu tố quyết định là start date — nên chốt 1 câu rõ ràng: 'Vì milestone có start date 1/6 nên chỉ tính chi tiêu TỪ 1/6; nếu muốn tính cả lịch sử thì bỏ start date đi'. Tránh đưa 2 hướng rồi để KH tự hỏi lại.
-- **[QT9 · Moderate]** Xử lý export hơi vòng — hỏi 'vì sao muốn export' tạo chút friction, rồi export thiếu field phải làm lại 2 lần (lần 1 thiếu lifetime points, lần 2 thiếu các cột KH cần) thay vì confirm danh sách cột ngay từ đầu.
-  - *Dẫn chứng:* Chat #22, Hana: "To proceed further, may I know why you want to export the customer data please?" → KH: "cause i need it... just send the file please". Sau đó export 3 lần mới đủ; KH phải tự liệt kê: 
-  - → Với yêu cầu export, hỏi gọn ngay từ đầu 'Anh/chị muốn file gồm những cột nào ạ?' rồi export 1 lần đủ. Câu hỏi 'vì sao cần export' nên bỏ hoặc làm mềm hơn để không khiến KH thấy bị gác cửa.
+- **[QT9 · Moderate]** Tiếp tục offer loyalty page setup sau khi merchant đã nói rõ 'không cần bận tâm cái đó, lo subscription trước'
+  - *Dẫn chứng:* [07:50:09] Customer: '这个现在没那么重要 先帮我弄订阅吧' → [07:56:24] CS (Hana): 'I can confirm that you want to setup the Loyalty page, correct?' / [08:03:40] Customer: '现在先不用管这个' → [08:03:40] CS (Hana): 'I understand. We support multi
+  - → Khi merchant đã nói skip một topic, đừng gợi lại trong cùng ca — ghi nhớ ưu tiên của merchant và chỉ quay lại nếu họ chủ động hỏi. Việc offer lại làm merchant thấy bạn không nghe, và kéo dài chat không cần thiết.
+- **[KN3 · Moderate]** Trả lời vòng vo cho câu hỏi yes/no đơn giản, bắt merchant hỏi lại
+  - *Dẫn chứng:* [06:59:26] Customer (Shermaine Wee): 'still have customer account page, right?' → [07:02:57] CS (Hana): 'May I confirm that you refer to the loyalty reward on account page correct?'
+  - → Với câu hỏi đóng đơn giản, confirm Yes/No ngay lập tức rồi mới add thêm context nếu cần. Không nên đảo ngược — hỏi lại trước khi trả lời làm merchant phải đợi thêm một vòng không cần thiết.
 
 ## 📈 So tuần trước
-Tuần đầu, chưa có dữ liệu so sánh. (Lưu ý phạm vi: điểm tuần chỉ dựa trên nội dung chat với khách — chưa gồm phối hợp TS/dev, tạo & follow-up ticket, bàn giao ca hay xin review; không phải đánh giá năng lực toàn diện.)
+Tuần đầu, chưa có dữ liệu so sánh.

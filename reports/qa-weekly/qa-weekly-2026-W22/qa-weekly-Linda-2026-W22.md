@@ -1,31 +1,25 @@
 # QA Tuần 2026-W22 — Linda
 **Giai đoạn:** 26/05 – 01/06  
-**Điểm:** 80/100 — Đạt  
-**Đã QA:** 22 chat  
-**Phân bố:** 🌟1 ✅14 🟡5 🟠1 🔴1 ⛔0
+**Điểm:** 85/100 — Tốt  
+**Đã QA:** 12 chat  
+**Phân bố:** 🌟3 ✅7 🟡2 🟠1 🔴0 ⛔0
 
 ## 📝 Nhận xét chung
-Bạn linh hoạt đa ngôn ngữ và chủ động — điểm mạnh thật. Nhưng phải nói thẳng: điểm tuần này bị kéo xuống thấp nhất nhóm chủ yếu vì 2 thứ rất cơ bản — lỗi chính tả/typo lặp lại ở nhiều chat, và sót placeholder '[Your Name]' khi gửi template. Những lỗi này làm khách nghi ngờ tính chuyên nghiệp, và đáng tiếc vì nó dễ sửa nhất. Việc cần làm ngay: đọc lại 1 lượt trước khi gửi, dùng shortcut chuẩn cho câu mở đầu. Sửa được phần này điểm bạn sẽ lên rõ rệt.
+Tuần này Linda xử lý được lượng chat đa dạng và khó — từ DFY setup phức tạp, hỗ trợ đa ngôn ngữ (Hà Lan, Trung Quốc), đến leo thang giữa ca. Điểm mạnh rõ nhất là tinh thần chủ động: Linda thường xuyên tự kiểm tra AI, đưa thêm tips hữu ích và theo dõi sau khi xong việc. Tuy nhiên, lỗi ngữ pháp tiếng Anh lặp lại ở nhiều chat ("We're very appreciate", "Let me done", "double-chẹc") — đây không phải lỗi nhỏ khi chat với khách quốc tế vì nó ảnh hưởng trực tiếp đến tính chuyên nghiệp trong mắt merchant. Bạn cần xem lại câu trước khi gửi, đặc biệt những câu quan trọng về kết quả hay cam kết.
 
 ## ✅ Điểm tốt
-- **[P2]** Rất chủ động: ở chat #1 sau khi bật AI cho email channel, mình tự đề xuất thêm các setting hữu ích (auto re-assign, lọc spam để tiết kiệm AI conversation limit) mà KH chưa kịp hỏi — KH đồng ý 'Enable this!' (chat #1)
-- **[P3]** Giải thích rõ ràng có bước: chat #13 tìm ra đúng nguyên nhân KH không downgrade được ('please select Continue to Downgrade instead of Keep Current Plan') khiến KH nhận ra mình nhầm; chat #4 giải thích mạch lạc xung đột Ciwi Translator dịch metafield avada_faq làm hỏng JSON khiến widget không hiện (chat #4, chat #13)
-- **[P1]** Giữ tone ấm và bình tĩnh khi KH gấp/căng: chat #9 KH stress vì sắp vào giờ ra đơn ('ICON位置挡住这个问题非常致命'), mình vẫn trấn an, báo thời gian cụ thể và xử lý từng bước; chat #18 (HammerHouse) kiên nhẫn qua chuỗi feedback rất dài (chat #9, chat #18)
-- **[P4]** Đa ngôn ngữ linh hoạt, đi thẳng vấn đề đúng ngôn ngữ KH: trả lời mượt bằng tiếng Trung (#2, #5, #7, #9), tiếng Thụy Điển (#1), tiếng Đức (#12, #16) đúng flow (chat #1, chat #2, chat #7, chat #12)
+- **[P2]** Chủ động cung cấp tips và cải thiện ngoài phạm vi câu hỏi: trong chat #1 tự kiểm tra AI, đề xuất thêm dữ liệu product/discount; trong chat #5 đề xuất và thực hiện Q&A sync, bật AI re-engage setting mà khách chưa hỏi. (#1, #5)
+- **[P3]** Giải thích kỹ thuật rõ ràng và chính xác: trong chat #9 giải thích sự khác biệt giữa 'View Similar' (AI-driven) và 'View Product' (static link) đúng bản chất tính năng; trong chat #11 giải thích rõ cách Proactive Chat hoạt động khi AI bật vs. tắt. (#9, #11)
+- **[P5]** Đọc context trước khi trả lời: trong chat #12 đọc lại toàn bộ cuộc trao đổi giữa Liz và khách (kế hoạch nâng 600 conversations, 10% discount) rồi thực thi chính xác mà không bắt khách giải thích lại. (#12)
+- **[P4]** Xử lý gọn và đúng flow khi nhận bàn giao ca: chat #12 tiếp nối Liz mượt mà, không vòng vo, hoàn thành extension limit đúng như đã hứa với khách. (#12)
 
 ## 🔧 Cần cải thiện
-- **[KN5 · High]** Hiểu sai yêu cầu KH rồi định escalate trước khi nắm rõ vấn đề. KH chỉ hỏi có setting nào để lazy-load app không, nhưng mình lại hiểu thành 'app làm chậm trang' và báo đang check với tech team — KH phải đính chính.
-  - *Dẫn chứng:* KH: 'I just need to know if you have a way (through some settings) to lazy load the app... it slows down the loading of my page' → trước đó CS: 'we're currently checking with our technical team...' và
-  - → Trước khi chốt hướng xử lý hay đẩy tech team, confirm lại đúng 1 câu yêu cầu của KH ('Ý anh là muốn tìm setting lazy-load đúng không ạ?'). Khi nắm rõ, mình đã trả lời rất tốt (app đã có lazy load) — chỉ cần confirm sớm hơn.
-- **[KN7 · Moderate]** Trả lời chung chung, chưa giải quyết trực tiếp câu hỏi. KH hỏi 3 lần cách đơn giản nhất để có vài review cho sản phẩm, nhưng câu trả lời lại xoay sang gợi ý set scenario AI gửi review request — không đúng trọng tâm KH cần.
-  - *Dẫn chứng:* KH: 'i just need a few reviews for my products, what is the easiest way to do this' → CS: 'I suggest setting up a scenario for the AI so that whenever customers receive or purchase a product, the AI c
-  - → Khi KH lặp lại cùng câu hỏi, dừng lại confirm họ muốn gì (thêm review section/Air Reviews hay xin review thật?) rồi trả lời thẳng đúng nhu cầu thay vì đưa giải pháp gần đúng.
-- **[KN1 · Low]** Một số tin có lỗi chính tả/đánh máy ảnh hưởng tính chuyên nghiệp — lặp lại ở vài chat. (Liz cũng đã nhắc sửa trực tiếp 1 câu trong chat #22.)
-  - *Dẫn chứng:* 'Hey, I'm come back.' (chat #22, Liz nhắc 'sửa nhé em'); 'Sound amzing!' (chat #22); 'This is Lind afrom Avada Group' (chat #20); 'check the lòa page forr you' (chat #19); 'Secyurity' (chat #4)
-  - → Đọc lại 1 lượt trước khi gửi, hoặc dùng text shortcut chuẩn cho các câu mở đầu/kết ('This is Linda from Avada Group', 'I'm back') để tránh typo lặp.
-- **[KN1 · Low]** Sót placeholder template trong tin gửi KH — quên thay tên trước khi gửi (sau đó đã gửi lại bản đúng).
-  - *Dẫn chứng:* chat #12: '...Please let me know if you'd like any further adjustments. Best regards, [Your Name]'
-  - → Khi dùng template, soát 2 chỗ hay sót: tên ('[Your Name]') và link screenshot, trước khi nhấn gửi.
+- **[KN1 · Low]** Lỗi ngữ pháp tiếng Anh lặp lại ở nhiều chat, ảnh hưởng tính chuyên nghiệp khi giao tiếp với merchant quốc tế.
+  - *Dẫn chứng:* Chat #1: 'I already test the AI again and could you help me double-chẹc it on your end?' / 'Let me done a quick test for you.' / 'We're very appreciate your understand and cooperation' — lỗi này được Liz nhắc nhở trực ti
+  - → Trước khi nhấn gửi những câu quan trọng (kết quả, hẹn hò, cam kết), đọc lại 1 lần. Đặc biệt chú ý: 'appreciate' không dùng với 'very' mà phải là 'We really appreciate'; động từ chính phải đúng dạng (done → do, double-chẹc → double-check).
+- **[KN3 · Moderate]** Câu phản hồi mơ hồ khiến khách có thể hiểu nhầm yêu cầu của mình không được thực hiện đúng.
+  - *Dẫn chứng:* Chat #6: Khách hỏi 'how can i change the delivery days it supposed to be 1-2 days not 3-5 days', Linda trả lời 'I see that it already been adjust into 3-5 days' — câu này nghe như Linda đang xác nhận trạng thái hiện tại 
+  - → Khi khách yêu cầu thay đổi, xác nhận ngay hành động sẽ làm: 'Got it — I'll update the FAQ to show 1-2 days instead. Give me a moment.' Tránh paraphrase lại trạng thái cũ mà không nêu rõ bước tiếp theo.
 
 ## 📈 So tuần trước
-Tuần đầu, chưa có dữ liệu so sánh. (Lưu ý: điểm tuần này chỉ phản ánh chất lượng nội dung chat với khách — chưa bao gồm phối hợp TS/dev, tạo & follow-up ticket, bàn giao ca hay xin review; đó là phạm vi của QA tháng.)
+Tuần đầu, chưa có dữ liệu so sánh.
