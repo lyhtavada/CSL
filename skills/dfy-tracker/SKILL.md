@@ -1,7 +1,7 @@
 ---
 name: dfy-tracker
-description: Generate a DFY ticket tracker report for Joy (or Chatty) by week or month. Groups by CS, shows ticket link, created date, status, task completion, tags (adopted/no-adopt/etc), and a Point column for manual entry.
-version: 1.0.0
+description: Generate a DFY ticket tracker report for Joy (or Chatty) by week or month. Pulls only open tickets, groups by CS, shows ticket link, created date, status, task completion, tags (adopted/no-adopt/etc), and an auto-calculated Point column based on scoring tags.
+version: 1.1.0
 ---
 
 # DFY Tracker Skill
@@ -64,7 +64,9 @@ Use `members[].isCreate === true` → `displayName`. Fallback to `memberUpdate.d
 
 | Date | Ticket | Store | Status | Tasks | Tags | Point |
 |------|--------|-------|--------|-------|------|-------|
-| 2026-05-22 | [JOY-...](link) | store.myshopify.com | Done | 15/16 | DFY-adopted | |
+| 2026-05-22 | [JOY-...](link) | store.myshopify.com | In progress | 15/16 | DFY-1, DFY-video | 90 |
+| 2026-05-23 | [JOY-...](link) | store2.myshopify.com | In progress | 8/12 | DFY-coupon-images | 5 |
+| **Total** | | | | | | **95** |
 ```
 
 - **Status:** `In progress` (only open tickets are fetched; closed tickets are excluded in step 2)
@@ -111,8 +113,13 @@ Add a **Total** row per CS summing the Point column.
 
 Print summary first:
 ```
-App: Joy | Period: 2026-05 | Total: 60 tickets | CS: 12
+App: Joy | Period: 2026-05 | Total: 60 tickets (open only) | CS: 12 | Total points: 1240
 Saved: reports/dfy/joy/joy-dfy-2026-05.md
 ```
 
-Then show per-CS breakdown (ticket count only, not full table — too long for chat).
+Then show per-CS breakdown (ticket count + total points only, not full table — too long for chat):
+```
+- Mai: 8 tickets | 320 pts
+- Hương: 6 tickets | 210 pts
+...
+```
