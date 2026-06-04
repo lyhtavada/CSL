@@ -24,15 +24,21 @@ const RESULT_SCHEMA = {
       type: 'string',
       enum: ['Xuất sắc', 'Tốt', 'Đạt', 'Cần coaching'],
     },
-    chats_reviewed: { type: 'integer' },
+    chats_reviewed: {
+      type: 'integer',
+      description: 'chats actually scored (exclude ones with no messages from this CS)',
+    },
     chat_labels: {
       type: 'object',
-      description: 'count of chats per label',
+      description: 'count of chats per per-chat label (6 buckets)',
       properties: {
-        clean: { type: 'integer' },
-        minor: { type: 'integer' },
-        major: { type: 'integer' },
-        critical: { type: 'integer' },
+        excellent: { type: 'integer', description: 'sạch + điểm sáng → 100' },
+        standard: { type: 'integer', description: 'sạch, đạt chuẩn → 90' },
+        minor_low: { type: 'integer', description: 'lỗi Low → 80' },
+        minor_mod: { type: 'integer', description: 'lỗi Moderate → 70' },
+        major: { type: 'integer', description: 'lỗi High → 55' },
+        critical: { type: 'integer', description: 'lỗi Critical/Urgent → 30' },
+        excluded: { type: 'integer', description: 'không có msg của CS này' },
       },
     },
     strengths: {
@@ -101,10 +107,13 @@ KNOWLEDGE CHECK (KT1/KT2) — MANDATORY, verify against the real agent KB:
 - Open KB files ONLY when a chat has a claim worth verifying — never read the whole KB (keep it light).
 - No matching KB file / not sure → skip, do not speculate.
 
-SCORING (per rubric §3):
-- Label each chat: Clean(100) / Minor(80, only Low/Moderate) / Major(60, has High) / Critical(30, has Critical/Urgent).
-- Weekly score = mean of per-chat scores, rounded.
-- Map to label: 90-100 Xuất sắc, 80-89 Tốt, 70-79 Đạt, <70 Cần coaching.
+SCORING (per rubric §3 — baseline is 90, NOT 100):
+- A correctly & fully handled chat = 90 ("standard"). 100 is ONLY for chats that are clean AND show a clear P1-P5 strength (real empathy/proactive/excellent explanation). Do not give 100 by default.
+- A chat takes the score of its WORST error: Low→80, Moderate→70, High→55, Critical/Urgent→30. If you can quote an error, the chat cannot be 90/100.
+- Multiple errors of the same level do NOT stack — use the single worst error.
+- Exclude chats with zero messages from this CS (don't score handoff colleagues).
+- Weekly score = mean of scored chats, rounded.
+- Map to overall label (TIGHTENED): 95-100 Xuất sắc, 85-94 Tốt, 75-84 Đạt, <75 Cần coaching.
 
 POSITIVE CODES (rubric §2B): P1 empathy, P2 proactive, P3 clear-stepwise, P4 concise-on-flow, P5 reads-context.
 Find 2-4 genuine strengths with chat number refs (e.g. "chat #3").
