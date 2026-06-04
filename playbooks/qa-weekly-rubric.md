@@ -32,11 +32,15 @@ data Trello/ticket/rating). Disclaimer này phải xuất hiện trong mọi DM 
 
 ## 1. Sampling
 
-- **30 session/CS/tuần** (Thứ 2 → Chủ Nhật)
-- Nếu CS có >30 chat: random 30
-- Nếu <30: lấy hết, ghi rõ số thực tế trong report
-- Nguồn session: public CRM API (log chat theo ca) → group theo CS
-- Transcript đầy đủ: BigQuery `crispchat_history` theo `session_id`
+- **Chỉ QA CS in-house** (cột "Loại" = `in-house` trong `_identity/team-g2.md`) —
+  bỏ remote/CTV và CSL. Hiện 9 CS.
+- **Tối đa 30 chat/CS/tuần** (Thứ 2 → Chủ Nhật). Sample ưu tiên chat dài
+  (case CS thật sự xử lý), không phải chat ghé 1-2 câu.
+- **Nguồn = BigQuery** `avada-crm.avada_cs.crisp_chats`, lọc theo `agentEmail`.
+  Một session tính cho CS X ở tuần W nếu **X gửi ≥3 message trong tuần W**
+  (quy chat về đúng tuần CS làm + bỏ chat handoff). KHÔNG dùng field `assigned`
+  của API (chỉ gắn 1 owner/session → mất 70-90% chat thật).
+- Transcript đầy đủ: cùng table, theo `session_id` (đã tự bỏ ảnh/URL rác).
 
 ---
 

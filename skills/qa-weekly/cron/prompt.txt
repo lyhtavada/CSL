@@ -10,13 +10,19 @@ Làm đúng theo skill `skills/qa-weekly/SKILL.md` và rubric `playbooks/qa-week
 3. Với mỗi CS trong file đó, fetch transcript:
    python3 skills/qa-weekly/scripts/fetch_transcripts.py --sessions-file /tmp/qa_weekly_sessions.json --cs <Name> --out /tmp/qa_tx_<Name>.txt
 
-4. Chấm bằng workflow fan-out (1 subagent/CS):
-   Workflow scriptPath=skills/qa-weekly/qa-weekly.workflow.js, args = mảng tên CS (vd ["Hana","Audrey",...]).
-   ĐỢI workflow chạy xong (nó chạy ngầm; kiểm tra task output cho tới khi có kết quả đủ số CS).
+4. Chấm bằng workflow fan-out (1 subagent Sonnet/CS), CHIA BATCH:
+   - Workflow scriptPath=skills/qa-weekly/qa-weekly.workflow.js, args = mảng tên CS.
+   - CHẠY THEO BATCH 4-5 CS/lần, KHÔNG chạy cả 9 cùng lúc (9 grader × 30 chat dễ chạm usage limit của subscription → fail cả mẻ). Vd batch 1 = 5 CS đầu, batch 2 = 4 CS còn lại.
+   - Sau mỗi batch: lưu kết quả từng CS ra /tmp/qa_w22_<CS>.json (đọc từ task output file). ĐỢI batch xong mới chạy batch sau.
+   - Nếu CS nào FAIL (workflow trả thiếu / "without calling StructuredOutput"), chạy lại riêng CS đó.
+   - VERIFY mỗi CS: chats_reviewed + excluded phải = số CHAT trong transcript. Nếu chấm thiếu nhiều (vd 10/30) → chạy lại CS đó.
+   - Mỗi kết quả CS có: score, axis_avg (mindset/knowledge/skill), overall, strengths, improvements, severe_flags.
 
 5. So với tuần trước nếu folder reports/qa-weekly/qa-weekly-<tuần trước>/ tồn tại.
 
-6. Viết report mỗi CS + summary vào folder reports/qa-weekly/qa-weekly-<ISO-week>/ theo đúng format rubric (có Nhận xét chung, giọng thẳng thắn, xưng "bạn").
+6. Viết report mỗi CS + summary vào folder reports/qa-weekly/qa-weekly-<ISO-week>/ theo đúng format rubric:
+   - Mỗi report: điểm + breakdown 3 trục (🧠 Mindset/34 · 📚 Kiến thức/33 · 🛠️ Xử lý/33), Nhận xét chung (giọng thẳng thắn, xưng "bạn", KHÔNG "em"), điểm tốt, cần cải thiện (quote + action), so tuần trước.
+   - Summary: bảng điểm có cột từng trục (axis_avg) để thấy CS yếu trục nào, + flag cần Liz verify.
 
 7. Build payload DM /tmp/qa_dm_payload.json (sender = Ly (Liz) + avatar).
 
@@ -25,6 +31,6 @@ QUAN TRỌNG — DỪNG TẠI ĐÂY, KHÔNG GỬI CHO CS:
 - Thay vào đó, gửi TOÀN BỘ kết quả cho LIZ để review qua Slack DM (channel U02GT4PC6RH) dưới tên Avada bot:
   + 1 tin mở đầu: tiêu đề "🔎 QA TUẦN <ISO-week> — <N> CS in-house — CHỜ DUYỆT", điểm TB team, danh sách điểm từng CS, và nhắc "Liz xem xong, ra lệnh thì mới gửi cho CS."
   + Sau đó gửi lần lượt từng report (mỗi CS 1 tin, ghi rõ "Gửi tới: <tên>") đúng nội dung sẽ DM cho CS.
-  + Nếu có severe flag (KN8/QT11/KT1), highlight riêng để Liz xem kỹ — đặc biệt KT1 về giá/limit có thể do KB outdated, nhắc Liz verify.
+  + Nếu có severe flag (KN8 mất lịch sự / QT11 bỏ KH / KT1 sai kiến thức / sự cố live-store / KB mâu thuẫn), highlight riêng để Liz xem kỹ — đặc biệt claim giá/limit có thể do KB outdated hoặc 2 file KB không khớp, nhắc Liz verify KB trước, đừng vội kết tội CS.
 
 Sau khi gửi xong cho Liz, in ra log: đã chấm bao nhiêu CS, điểm TB, đường dẫn folder report, và "Đã gửi Liz duyệt — chờ lệnh gửi CS." rồi kết thúc.
