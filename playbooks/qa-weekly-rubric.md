@@ -128,8 +128,21 @@ nhận ra ngay và search lại được (search "QA TUẦN" trong Slack ra hế
 • KN5 (tư vấn sai) giảm từ 4 → 1 chat — tiến bộ rõ
 • QT18 (chốt bước tiếp theo) vẫn lặp lại — tuần này focus điểm này nhé
 
-🔗 *Chat đã QA:* [link 1] · [link 2] · … (file đính kèm full list)
+🔗 *Chat đã QA (24):*
+<crisp_url|#1 Cuura Malaysia> · <crisp_url|#2 Nicholas Davies> · …
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
 ```
+
+**Chat đã QA — bắt buộc hyperlink:** mỗi chat hiện **tên customer** (lấy
+`customerNickname` từ BigQuery, fallback email → "Khách") và link thẳng vào
+Crisp inbox theo cú pháp Slack `<url|text>`:
+- URL: `https://app.crisp.chat/website/{website_id}/inbox/{session_id}`
+- Số `#N` khớp số chat trong transcript (chat #N trong report = #N trong link)
+- Nguồn data: file `*_index.json` do `fetch_transcripts.py` xuất ra
+
+**Câu chốt cuối (cố định):**
+`_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_`
 
 **Giọng điệu:** khích lệ, cụ thể, mỗi điểm cần cải thiện luôn kèm **1 gợi ý hành động**.
 Khen trước, góp ý sau. Không dùng từ "phạt", "trừ điểm", "vi phạm".

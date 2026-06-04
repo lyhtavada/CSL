@@ -137,7 +137,9 @@ def main():
             app = "Joy" if any("joy" in x for x in segs) else (
                 "Chatty" if any("chatty" in x for x in segs) else "?")
             session_meta[sid] = {"shopifyDomain": s.get("shopifyDomain"),
-                                 "app_seg": app}
+                                 "app_seg": app,
+                                 "website_id": s.get("website_id"),
+                                 "customerEmail": s.get("customerEmail")}
     elif args.session_ids:
         session_ids = [s.strip() for s in args.session_ids.split(",") if s.strip()]
     else:
@@ -162,6 +164,28 @@ def main():
         f.write(header + text)
     print(f"Wrote {len(ordered)}/{len(session_ids)} transcripts → {args.out}",
           file=sys.stderr)
+
+    # Sidecar: chat index for the DM "Chat đã QA" links.
+    # {chat_no, customer, crisp_url} — built in the same sampled order so
+    # chat #N in the transcript matches chat #N here.
+    index = []
+    for i, sid in enumerate([s for s in session_ids if s in ordered], 1):
+        msgs = ordered[sid]
+        meta = session_meta.get(sid, {})
+        # customer display: nickname > email > "Khách"
+        cust = next((m["customer"] for m in msgs if m.get("customer")), None)
+        wid = meta.get("website_id") or (
+            "72a663b0-4cda-4e3b-8878-426bdd79364c")
+        index.append({
+            "chat_no": i,
+            "session_id": sid,
+            "customer": cust or meta.get("customerEmail") or "Khách",
+            "crisp_url": f"https://app.crisp.chat/website/{wid}/inbox/{sid}",
+        })
+    idx_path = args.out.rsplit(".", 1)[0] + "_index.json"
+    with open(idx_path, "w") as f:
+        json.dump(index, f, ensure_ascii=False, indent=2)
+    print(f"Wrote chat index ({len(index)}) → {idx_path}", file=sys.stderr)
 
 
 if __name__ == "__main__":
