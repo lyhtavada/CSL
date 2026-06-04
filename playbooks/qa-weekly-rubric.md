@@ -100,6 +100,11 @@ Cách trình bày & xử lý — rõ ràng, đúng flow, không lỗi giao tiế
 - **~10đ:** có lỗi nặng (High: hiểu sai, bỏ sót câu hỏi).
 - **~0đ:** xử lý hỏng (bỏ tin nhắn KH, gây hậu quả).
 
+> **Ngôn ngữ:** Crisp có live translate sẵn → CS trả lời đúng tiếng KH **KHÔNG
+> phải điểm cộng**, đừng khen "đa ngôn ngữ" (máy dịch hết). Ngược lại, **chỉ flag
+> khi KH gửi 1 tiếng mà CS gửi tiếng khác** (lệch ngôn ngữ) → KH phải tự dịch →
+> tính lỗi KN3, trừ điểm trục Skill. Cùng ngôn ngữ = bình thường, không nhận xét.
+
 > **Flag riêng cho Liz** trước khi DM nếu có: KN8 (mất lịch sự), QT11 (bỏ KH),
 > KT1 (sai kiến thức), hoặc thao tác gây hậu quả trên live store.
 
