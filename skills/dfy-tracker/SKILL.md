@@ -36,7 +36,9 @@ Headers: X-API-Key: {AVD_TICKET_API_KEY}
 Params: startDate, endDate, appName ("JOY Loyalty" or "Chatty")
 ```
 
-Filter: `subject.startsWith("[DFY]")`
+Filter:
+- `subject.startsWith("[DFY]")`
+- **Only open tickets** — exclude closed/resolved tickets (`ticketStatus !== "closed"`)
 
 ### 3. Fetch tags
 
@@ -65,7 +67,7 @@ Use `members[].isCreate === true` → `displayName`. Fallback to `memberUpdate.d
 | 2026-05-22 | [JOY-...](link) | store.myshopify.com | Done | 15/16 | DFY-adopted | |
 ```
 
-- **Status:** `Done` if `ticketStatus = closed`, else `In progress`
+- **Status:** `In progress` (only open tickets are fetched; closed tickets are excluded in step 2)
 - **Tasks:** `{completed}/{total}`
 - **Tags:** comma-separated tag names from `tagIds`
 - **Point:** empty — Liz fills manually
@@ -79,14 +81,14 @@ Use `members[].isCreate === true` → `displayName`. Fallback to `memberUpdate.d
 
 | Tag | Meaning |
 |-----|---------|
+| DFY-1 | Level đạt được |
 | DFY-adopted | MC giữ lại widget sau follow-up |
-| DFY-no-adopt | MC không adopt |
+| DFY-coupon-images | DFY làm coupon images |
 | DFY-following-up | Đang chờ follow-up |
-| DFY-partial | Làm được một phần |
-| DFY-new | Ticket mới tạo |
-| DFY-rec-sent | Đã gửi kết quả cho MC |
+| DFY-no-adopt | MC không adopt |
+| DFY-tier-banner | DFY làm tier banner |
+| DFY-tier-icon | DFY làm tier icon |
 | DFY-video | Có quay video kết quả |
-| DFY-1 / DFY-2 / DFY-3 | Level đạt được |
 | review-yes | Convert được review từ DFY flow |
 
 ## Output
