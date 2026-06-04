@@ -79,6 +79,8 @@ def load_team_roster(path):
                 email = cells[9]
                 app = cells[3]
                 name = cells[1]
+                # "Loại" = last column: in-house / remote / csl
+                cs_type = cells[13] if len(cells) > 13 else ""
             except IndexError:
                 continue
             if not display or not slack_id.startswith("U"):
@@ -88,6 +90,7 @@ def load_team_roster(path):
                 "email": email,
                 "name": name,
                 "app": app,
+                "type": cs_type,
             }
     return roster
 
@@ -162,6 +165,9 @@ def main():
     ap.add_argument("--sample", type=int, default=30)
     ap.add_argument("--exclude", default="",
                     help="comma-separated CS nicknames to skip (e.g. Liz)")
+    ap.add_argument("--only-type", default="",
+                    help="only include CS whose 'Loại' matches "
+                         "(e.g. in-house). Empty = all.")
     ap.add_argument("--env", default=os.path.join(
         os.path.dirname(__file__), "..", "..", "..", ".env"))
     args = ap.parse_args()
@@ -183,12 +189,15 @@ def main():
           file=sys.stderr)
 
     exclude = {x.strip() for x in args.exclude.split(",") if x.strip()}
+    only_type = args.only_type.strip().lower()
 
     by_cs = {}
     for s in sessions:
         nick = (s.get("agentUser") or {}).get("nickname")
         if not nick or nick not in roster or nick in exclude:
             continue  # skip AI-bot/unassigned, non-G2, and excluded agents
+        if only_type and roster[nick].get("type", "").lower() != only_type:
+            continue  # skip CS not matching the requested type (e.g. remote)
         by_cs.setdefault(nick, []).append({
             "session_id": s.get("session_id"),
             "website_id": s.get("website_id"),

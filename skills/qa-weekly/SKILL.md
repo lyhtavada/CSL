@@ -39,11 +39,17 @@ Derive `iso_week` (e.g. `2026-W22`) and the previous week tag for comparison.
 ```bash
 python3 skills/qa-weekly/scripts/fetch_sessions.py \
   --start <MON> --end <SUN> \
-  --out /tmp/qa_weekly_sessions.json --sample 30 --exclude Liz
+  --out /tmp/qa_weekly_sessions.json --sample 30 \
+  --only-type in-house
 ```
 
-By default exclude Liz herself (`--exclude Liz`) — she's the reviewer, not a
-gradee. Add more names comma-separated to skip others.
+**Only QA in-house CS** (`--only-type in-house`) — remote/CTV are not graded
+weekly. The "Loại" column in `_identity/team-g2.md` marks each CS as
+`in-house` / `remote` / `csl`. To change who's graded, edit that column — no
+code change. (Liz the CSL is `csl` and never in `in-house`, so she's excluded
+automatically; no need for `--exclude Liz`.)
+
+Current in-house (9): Hana, Audrey, Alyssa, Jade, Sonny, Andy, Hazel, Phoebe, Linda.
 
 Groups all sessions by `agentUser.nickname`, keeps only Team G2 members
 (mapped to Slack ID + email via `_identity/team-g2.md`), drops AI-bot /
