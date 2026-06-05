@@ -159,20 +159,28 @@ cảnh từng chat, ép thành điểm dễ chấm oan.
 ### Bước 1 — Loại chat đã có review (không cần xin nữa)
 
 Chat **đã có review rồi** thì CS **không cần và không nên** xin lại — xin nữa là
-thừa, làm phiền KH. Nhận biết qua field **`segment`** trong BigQuery: chat đã có
-review nếu `segment` chứa một trong các giá trị:
+thừa, làm phiền KH. Nhận biết qua field **`segments`** trong BigQuery (STRING chứa
+JSON-array dạng text, vd `["app_joy","review_yes_joy"]`). Chat đã có review nếu
+`segments` chứa một trong các tag:
 
-- `review_yes_joy` (Joy)
-- `rv_yes_chatty` hoặc `review_yes_chatty` (Chatty)
+- **Joy:** `review_yes_joy`
+- **Chatty:** `review_yes_chatty`, `rv_yes_chatty`, **và `review_yes_faq`**
+  (Chatty mang segment `app_faqs`/`app_chatty` — tên cũ là FAQ app, nên review tag
+  cũng có biến thể `..._faq`; bỏ sót tag này sẽ tính oan CS Chatty)
 
 → Các chat này **loại khỏi mẫu "đáng lẽ nên xin"**. KHÔNG được tính là "thiếu xin".
 
 ```sql
--- nhận diện chat đã có review (match bất kỳ biến thể nào)
-LOWER(CAST(segment AS STRING)) LIKE '%review_yes_joy%'
-  OR LOWER(CAST(segment AS STRING)) LIKE '%rv_yes_chatty%'
-  OR LOWER(CAST(segment AS STRING)) LIKE '%review_yes_chatty%'
+-- nhận diện chat ĐÃ CÓ review (loại khỏi mẫu)
+LOWER(segments) LIKE '%review_yes_joy%'
+  OR LOWER(segments) LIKE '%review_yes_chatty%'
+  OR LOWER(segments) LIKE '%rv_yes_chatty%'
+  OR LOWER(segments) LIKE '%review_yes_faq%'
 ```
+
+> ⚠️ **KHÔNG nhầm với tag tiềm năng:** `g2_potential_review`, `video_potential`
+> nghĩa là chat *có tiềm năng* xin review — **chưa** phải đã review. Các chat này
+> **vẫn nằm trong mẫu "nên xin"**, thậm chí là tín hiệu rõ nhất để khuyến khích CS xin.
 
 ### Bước 2 — Xác định chat "đáng lẽ nên xin"
 
