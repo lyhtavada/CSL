@@ -9,7 +9,7 @@ _App: JOY Loyalty | Period: 2026-05-29 → 2026-06-04_
 - **Adopted:** 5
 - **No-adopt:** 0
 - **Following-up:** 2
-- **Tỉ lệ adopt:** 100%  _(adopted / đã có verdict 5)_
+- **Tỉ lệ adopt:** 22%  _(adopted 5 / tickets tạo trong tuần 23)_
 - **CS tham gia:** 5
 
 ## sonny_avada (5 tickets)
