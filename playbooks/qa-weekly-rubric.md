@@ -31,7 +31,8 @@ QA tuần này **chỉ nhìn thấy nội dung chat với khách hàng**. Nó **
 → Vì vậy điểm QA tuần là **một lát cắt coaching về kỹ năng chat**, không phải
 đánh giá năng lực toàn diện. Một CS điểm chat cao vẫn có thể yếu ở ticket/handoff
 và ngược lại. **Đánh giá toàn diện thuộc về QA tháng** (`qa-policy.md`, có đủ
-data Trello/ticket/rating). Disclaimer này phải xuất hiện trong mọi DM gửi CS.
+data Trello/ticket/rating). Tinh thần này phải giữ khi viết DM — không được ngụ ý
+điểm tuần là đánh giá năng lực toàn diện (dù DM không cần in dòng disclaimer dài).
 
 ---
 
@@ -245,8 +246,6 @@ Tuần này bạn xử lý chắc tay, tone với khách rất ấm và chủ đ
 
 🔗 *Chat đã QA (24):*
 <crisp_url|#1 Cuura Malaysia> · <crisp_url|#2 Nicholas Davies> · …
-
-_📌 Lưu ý: Đánh giá này chỉ dựa trên *nội dung chat với khách*. Chưa bao gồm việc phối hợp với TS/dev, tạo & follow-up ticket, bàn giao ca, hay rating thật của khách — những phần đó nằm ngoài phạm vi chat. (Phần xin review ở trên chỉ là ghi nhận hành vi, không tính vào điểm.) Đây là feedback để cải thiện, không phải đánh giá toàn diện._
 
 _Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
 ```
