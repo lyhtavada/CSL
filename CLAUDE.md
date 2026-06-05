@@ -120,7 +120,8 @@ Skills live in `skills/[name]/SKILL.md`. Use the Skill tool to invoke them.
 | `/bot-status` | Check which bots are running, restart if down |
 | `/read-crisp` | Auto-triggered when Liz pastes a Crisp chat URL — fetch + summarize conversation |
 | `/ai-perf` | Given a list of session IDs (Joy + Chatty), fetch full transcripts from BigQuery → classify sessions → generate daily AI agent performance report |
-| `/dfy-tracker` | Pull DFY tickets from Avada Ticket API → group by CS → generate tracker report (week or month, Joy or Chatty) |
+| `/dfy-tracker` | **Monthly DFY KPI** — pull DFY tickets from Avada Ticket API → group by CS → report with Point scoring (Joy or Chatty) |
+| `/dfy-weekly` | **Weekly DFY monitoring** (Fri→Thu) — Overview (created/open/adopted/no-adopt/adopt rate %) + per-CS breakdown, no points |
 | `/mine-chat-faqs` | Mine FAQ from real Crisp chats (BigQuery `avada_cs.crisp_chats`) by segment + window → cluster questions → write standard answers. Runs weekly via launchd; output to `claw-weebhook-crisp-chat/Liz/faq_from_chats/` |
 
 ## Bots

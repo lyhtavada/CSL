@@ -1,22 +1,25 @@
 ---
 name: dfy-tracker
-description: Generate a DFY ticket tracker report for Joy (or Chatty) by week or month. Pulls only open tickets, groups by CS, shows ticket link, created date, status, task completion, tags (adopted/no-adopt/etc), and an auto-calculated Point column based on scoring tags.
-version: 1.1.0
+description: Generate a MONTHLY DFY KPI tracker report for Joy (or Chatty). Pulls only open tickets, groups by CS, shows ticket link, created date, status, task completion, tags, and an auto-calculated Point column based on scoring tags. This is the monthly KPI scoring report — for the weekly monitoring report (Overview + adopt rate, no points), use /dfy-weekly.
+version: 1.2.0
 ---
 
-# DFY Tracker Skill
+# DFY Tracker Skill (Monthly KPI)
 
-Generate a DFY ticket tracker from Avada Ticket API, grouped by CS.
+Generate a **monthly DFY KPI** tracker from Avada Ticket API, grouped by CS, with Point scoring.
+
+> **Weekly vs monthly:** This skill is for **monthly KPI** (Point column for scoring CS performance). For the **weekly monitoring** report (Overview block with adopt rate %, breakdown without points), use `/dfy-weekly` instead.
 
 ## Trigger
 
-When Liz says `/dfy-tracker` or asks to "pull DFY tickets", "tạo DFY tracker", "xem DFY tháng X", "DFY tuần này".
+When Liz says `/dfy-tracker` or asks to "pull DFY tickets", "tạo DFY tracker", "xem DFY tháng X", "DFY KPI tháng".
+(For "DFY tuần này" / weekly → use `/dfy-weekly`.)
 
 ## Parameters
 
 Liz can specify:
 - **App:** `joy` (default) or `chatty`
-- **Period:** `week` (current or last week) or `month` (e.g. `tháng 5`, `2026-05`)
+- **Period:** `month` (e.g. `tháng 5`, `2026-05`) — first to last day of the month
 - **Filter:** exclude Liz's own tickets without tags (default: on)
 
 If not specified, default to **last month**, **Joy**.
@@ -25,8 +28,8 @@ If not specified, default to **last month**, **Joy**.
 
 ### 1. Determine date range
 
-- **Week:** Mon–Sun of the specified or last week
-- **Month:** first to last day of the specified month
+- **Month:** first to last day of the specified month (default: last month)
+- (Weekly ranges are handled by `/dfy-weekly`, not here.)
 
 ### 2. Fetch tickets from API
 
