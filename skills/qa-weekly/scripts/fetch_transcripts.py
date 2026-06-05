@@ -29,6 +29,24 @@ from google.oauth2 import service_account
 
 TABLE = "avada-crm.avada_cs.crisp_chats"
 
+# Segment tags meaning "this chat ALREADY has a review" → CS không cần xin nữa.
+# Joy: review_yes_joy · Chatty (segment app_faqs/app_chatty, tên cũ FAQ app):
+# review_yes_chatty / rv_yes_chatty / review_yes_faq. (Confirmed on BQ 2026-06-05.)
+# KHÔNG tính g2_potential_review / video_potential — đó là *tiềm năng*, chưa review.
+REVIEW_DONE_TAGS = (
+    "review_yes_joy",
+    "review_yes_chatty",
+    "rv_yes_chatty",
+    "review_yes_faq",
+)
+
+
+def review_status(segments):
+    """'done' nếu chat đã có review (loại khỏi mẫu xin), else 'open'."""
+    blob = " ".join(segments or []).lower() if isinstance(segments, list) \
+        else str(segments or "").lower()
+    return "done" if any(t in blob for t in REVIEW_DONE_TAGS) else "open"
+
 
 def load_env(path):
     env = {}
@@ -116,8 +134,11 @@ def render(convs, session_meta):
         state = msgs[0]["state"] if msgs else "?"
         out.append(f"\n{'='*70}")
         out.append(f"CHAT #{i}  |  session: {sid}")
+        rv = meta.get("review_status", "open")
+        rv_txt = ("ĐÃ CÓ review (không cần xin)" if rv == "done"
+                  else "chưa có review")
         out.append(f"Shop: {shop}  |  State: {state}  |  "
-                   f"App: {meta.get('app_seg','?')}")
+                   f"App: {meta.get('app_seg','?')}  |  Review: {rv_txt}")
         out.append("=" * 70)
         for m in msgs:
             who = m["from"]
