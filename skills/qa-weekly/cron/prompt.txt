@@ -16,13 +16,13 @@ Làm đúng theo skill `skills/qa-weekly/SKILL.md` và rubric `playbooks/qa-week
    - Sau mỗi batch: lưu kết quả từng CS ra /tmp/qa_w22_<CS>.json (đọc từ task output file). ĐỢI batch xong mới chạy batch sau.
    - Nếu CS nào FAIL (workflow trả thiếu / "without calling StructuredOutput"), chạy lại riêng CS đó.
    - VERIFY mỗi CS: chats_reviewed + excluded phải = số CHAT trong transcript. Nếu chấm thiếu nhiều (vd 10/30) → chạy lại CS đó.
-   - Mỗi kết quả CS có: score, axis_avg (mindset/knowledge/skill), overall, strengths, improvements, severe_flags.
+   - Mỗi kết quả CS có: score, axis_avg (mindset/knowledge/skill), overall, strengths, improvements, severe_flags, review_ask (theo dõi xin review — observe-only, KHÔNG tính điểm).
 
 5. So với tuần trước nếu folder reports/qa-weekly/qa-weekly-<tuần trước>/ tồn tại.
 
 6. Viết report mỗi CS + summary vào folder reports/qa-weekly/qa-weekly-<ISO-week>/ theo đúng format rubric:
-   - Mỗi report: điểm + breakdown 3 trục (🧠 Mindset/34 · 📚 Kiến thức/33 · 🛠️ Xử lý/33), Nhận xét chung (giọng thẳng thắn, xưng "bạn", KHÔNG "em"), điểm tốt, cần cải thiện (quote + action), so tuần trước.
-   - Summary: bảng điểm có cột từng trục (axis_avg) để thấy CS yếu trục nào, + flag cần Liz verify.
+   - Mỗi report: điểm + breakdown 3 trục (🧠 Mindset/34 · 📚 Kiến thức/33 · 🛠️ Xử lý/33), Nhận xét chung (giọng thẳng thắn, xưng "bạn", KHÔNG "em"), điểm tốt, cần cải thiện (quote + action), 🌟 Xin review (từ review_ask: đã xin X/Y chat phù hợp — ghi rõ "không tính điểm"), so tuần trước.
+   - Summary: bảng điểm có cột từng trục (axis_avg) để thấy CS yếu trục nào, + cột xin review (asked/eligible), + flag cần Liz verify.
 
 7. Build payload DM /tmp/qa_dm_payload.json (sender = Ly (Liz) + avatar).
 

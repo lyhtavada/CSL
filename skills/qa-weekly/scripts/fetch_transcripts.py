@@ -182,6 +182,7 @@ def main():
                 "Chatty" if any("chatty" in x for x in segs) else "?")
             session_meta[sid] = {"shopifyDomain": s.get("shopifyDomain"),
                                  "app_seg": app,
+                                 "review_status": review_status(segs),
                                  "website_id": s.get("website_id"),
                                  "customerEmail": s.get("customerEmail")}
     elif args.session_ids:

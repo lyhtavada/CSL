@@ -80,6 +80,18 @@ const RESULT_SCHEMA = {
       description: 'KN8 / QT11 / KT1 occurrences needing Liz review before DM',
       items: { type: 'string' },
     },
+    review_ask: {
+      type: 'object',
+      description: 'THEO DÕI xin review — KHÔNG tính vào score (rubric §4.1). Chỉ ghi nhận hành vi CS chủ động mời KH để lại review Shopify.',
+      required: ['eligible', 'asked', 'note'],
+      properties: {
+        eligible: { type: 'integer', description: 'số chat "đáng lẽ nên xin": KH hài lòng/đã xử lý xong VÀ chat header ghi "Review: chưa có review". LOẠI chat header ghi "Review: ĐÃ CÓ review".' },
+        asked: { type: 'integer', description: 'trong số eligible, bao nhiêu chat CS có chủ động xin review (phải quote được câu xin)' },
+        well_timed: { type: 'integer', description: 'số lần xin đúng lúc (KH vừa hài lòng/cảm ơn)' },
+        mistimed: { type: 'integer', description: 'số lần xin sai lúc (KH chưa xong/đang bực) → cần coaching nhẹ' },
+        note: { type: 'string', description: '1-2 câu tiếng Việt ghi nhận: xin X/Y chat phù hợp, có bỏ lỡ chat vàng không, đúng/sai lúc. Giọng nhẹ (ghi nhận, KHÔNG phải lỗi). Không có chat eligible → "Tuần này không có chat phù hợp để xin review."' },
+      },
+    },
     vs_last_week: {
       type: 'string',
       description: 'comparison text vs previous week report, or "Tuần đầu, chưa có dữ liệu so sánh"',
@@ -135,6 +147,13 @@ Before returning: confirm you scored all N chats (chats_reviewed + excluded = N)
 For strengths/improvements, tag each with which axis it belongs to (Mindset/Kiến thức/Kỹ năng) plus the relevant code. Find genuine strengths (not flattery) and concrete improvements with quotes + action tips.
 
 SEVERE FLAGS: if you find KN8 (rude), QT11 (ignored customer), KT1 (wrong info), or a live-store mistake, list them in severe_flags.
+
+REVIEW-ASK TRACKING (rubric §4.1) — fill 'review_ask'. This is OBSERVE-ONLY, it does NOT affect the score:
+- Each chat header has a "Review:" field. "ĐÃ CÓ review" = KH đã để review rồi → CS không cần xin → EXCLUDE from eligible. "chưa có review" = candidate.
+- eligible = chats with Review:"chưa có review" AND where the customer was satisfied / issue resolved (KH cảm ơn, khen, "thanks/perfect", vấn đề xong). NOT angry/unresolved/one-liner chats.
+- asked = of those eligible, how many the CS actually invited a Shopify review in (must be quotable, e.g. "would you mind leaving us a review", "cho shop xin 5 sao"). well_timed vs mistimed as in the schema.
+- note: gently record "đã xin X/Y chat phù hợp", whether golden chats were missed, timing. Light tone — this is recognition, never a deduction. No eligible chat → say so.
+- Do NOT speculate: only count a chat as eligible when the transcript clearly shows satisfaction. When unsure, leave it out.
 
 ${cs.prevReportPath
     ? 'Compare to last week: score delta, repeated error codes, fixed error codes.'

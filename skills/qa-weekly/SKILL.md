@@ -21,6 +21,8 @@ Weekly score = mean of per-chat scores. Labels: 90+ Xuất sắc · 80–89 Tố
 
 **Language note:** Crisp has live-translate, so replying in the customer's language is NOT a strength (never praise "đa ngôn ngữ"). Only flag when the customer writes in one language and the CS replies in a *different* one → KN3 (Skill deduction).
 
+**Review-ask tracking (observe-only, NOT scored):** rubric §4.1. The grader also records whether the CS proactively asked satisfied customers for a Shopify review — *behavior is visible in chat*. Chats that **already have a review** are excluded via the `segments` field (`review_yes_joy`, `review_yes_chatty`, `rv_yes_chatty`, `review_yes_faq`); `fetch_transcripts.py` stamps each chat header with `Review: ĐÃ CÓ / chưa có`. This is recognition for coaching, never a point deduction. The customer's *actual rating* stays out of scope.
+
 ## When to use
 
 Liz says `/qa-weekly`, "QA tuần này / tuần trước", "chấm QA tuần cho team".
@@ -104,6 +106,7 @@ Run the workflow `skills/qa-weekly/qa-weekly.workflow.js`. One **Sonnet** subage
 per CS reads that CS's transcript + the rubric and returns structured JSON:
 `score`, `axis_avg` (mindset/knowledge/skill), `overall` (nhận xét chung),
 `strengths`, `improvements` (with quotes + action), `severe_flags`,
+`review_ask` (xin review — observe-only, không tính điểm),
 `chats_reviewed` + `excluded`. Runs in background; reports when all CS are done.
 
 Pass `args` as a **plain array of CS nicknames**, e.g. `["Hana","Andy",...]`.
@@ -135,9 +138,11 @@ liệu so sánh."
 One folder per week — `reports/qa-weekly/qa-weekly-<YYYY-Www>/`:
 - Per CS: `qa-weekly-<CS>-<YYYY-Www>.md` — score + 3-axis breakdown,
   **📝 Nhận xét chung** (direct/"thẳng thắn" tone, calls the CS "bạn", never
-  "em"), strengths, improvements (quote + action), vs-last-week.
+  "em"), strengths, improvements (quote + action), **🌟 Xin review** block from
+  `review_ask` (đã xin X/Y, ghi rõ "không tính điểm"), vs-last-week.
 - Team summary for Liz: `qa-weekly-summary-<YYYY-Www>.md` — score table with
-  per-axis averages, who needs coaching, severe/KB-verify flags.
+  per-axis averages, who needs coaching, severe/KB-verify flags, **+ một cột
+  xin review (asked/eligible)** để Liz thấy ai hay quên xin.
 
 ### Step 7 — Liz reviews, then DM
 
