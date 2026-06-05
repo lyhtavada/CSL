@@ -27,10 +27,47 @@ rm -rf /tmp/csdaily
 # don't accidentally switch into paid-API mode.
 unset ANTHROPIC_API_KEY
 
-"$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
-  --model claude-opus-4-8 \
-  --fallback-model claude-sonnet-4-6 \
-  --dangerously-skip-permissions \
-  >> "$LOG" 2>&1
+# Retry on transient auth failures. At 09:00 the OAuth token can still be
+# expired/unrefreshed, surfacing as "401 Invalid authentication credentials".
+# A short wait lets the token refresh, so retry a few times with backoff
+# before giving up. Each retry's output goes into a temp file we can grep.
+PROMPT="$(cat "$PROMPT_FILE")"
+MAX_ATTEMPTS=3
+SLEEP_SECS=(60 120 240)   # 1m, 2m, 4m backoff between attempts
 
-echo "===== done: $(date) =====" >> "$LOG"
+attempt=1
+while [ "$attempt" -le "$MAX_ATTEMPTS" ]; do
+  echo "----- attempt $attempt/$MAX_ATTEMPTS: $(date) -----" >> "$LOG"
+  RUN_OUT="$(mktemp)"
+
+  set +e
+  "$CLAUDE_BIN" -p "$PROMPT" \
+    --model claude-opus-4-8 \
+    --fallback-model claude-sonnet-4-6 \
+    --dangerously-skip-permissions \
+    > "$RUN_OUT" 2>&1
+  rc=$?
+  set -e
+
+  cat "$RUN_OUT" >> "$LOG"
+
+  # Success = exit 0 AND no auth error in the output.
+  if [ "$rc" -eq 0 ] && ! grep -qiE "401|Invalid authentication|Failed to authenticate" "$RUN_OUT"; then
+    rm -f "$RUN_OUT"
+    echo "===== done (attempt $attempt): $(date) =====" >> "$LOG"
+    exit 0
+  fi
+
+  rm -f "$RUN_OUT"
+  echo "----- attempt $attempt failed (rc=$rc) -----" >> "$LOG"
+
+  if [ "$attempt" -lt "$MAX_ATTEMPTS" ]; then
+    wait_s="${SLEEP_SECS[$((attempt-1))]}"
+    echo "----- waiting ${wait_s}s before retry (token may refresh) -----" >> "$LOG"
+    sleep "$wait_s"
+  fi
+  attempt=$((attempt+1))
+done
+
+echo "===== FAILED after $MAX_ATTEMPTS attempts: $(date) =====" >> "$LOG"
+exit 1
