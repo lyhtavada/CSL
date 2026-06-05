@@ -32,6 +32,38 @@ import urllib.request
 
 SLACK_API = "https://slack.com/api/chat.postMessage"
 
+# Slack truncates long `text` silently. Keep each chunk well under the limit
+# and split at line boundaries so markdown/sentences don't break mid-way.
+MAX_CHARS = 2800
+
+
+def split_message(text, limit=MAX_CHARS):
+    """Split a long message into <=limit-char chunks at line boundaries.
+
+    Never breaks a line in the middle. A single line longer than `limit`
+    (rare) is hard-split as a last resort.
+    """
+    if len(text) <= limit:
+        return [text]
+    chunks, cur = [], ""
+    for line in text.split("\n"):
+        # +1 for the newline we'll re-add
+        if cur and len(cur) + 1 + len(line) > limit:
+            chunks.append(cur)
+            cur = ""
+        if len(line) > limit:
+            # single line too long — flush, then hard-split it
+            if cur:
+                chunks.append(cur)
+                cur = ""
+            for i in range(0, len(line), limit):
+                chunks.append(line[i:i + limit])
+            continue
+        cur = line if not cur else cur + "\n" + line
+    if cur:
+        chunks.append(cur)
+    return chunks
+
 
 def load_env(path):
     env = {}
@@ -46,7 +78,7 @@ def load_env(path):
     return env
 
 
-def post_dm(token, slack_id, text, sender=None):
+def _post_one(token, slack_id, text, sender=None):
     msg = {"channel": slack_id, "text": text,
            "unfurl_links": False, "unfurl_media": False}
     if sender:
@@ -63,6 +95,23 @@ def post_dm(token, slack_id, text, sender=None):
                  "Content-Type": "application/json; charset=utf-8"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode())
+
+
+def post_dm(token, slack_id, text, sender=None):
+    """Send a DM, splitting long text into multiple sequential messages.
+
+    Returns the result of the LAST chunk (or the first failure). A long
+    report is delivered as several DMs in order, each labelled (part N/M).
+    """
+    chunks = split_message(text)
+    total = len(chunks)
+    last = None
+    for i, chunk in enumerate(chunks, 1):
+        body = chunk if total == 1 else f"{chunk}\n\n_(phần {i}/{total})_"
+        last = _post_one(token, slack_id, body, sender)
+        if not last.get("ok"):
+            return last  # stop on first failure
+    return last
 
 
 def main():
@@ -104,8 +153,10 @@ def main():
             failed += 1
             continue
         preview = m["text"].split("\n")[0][:70]
+        nparts = len(split_message(m["text"]))
         if not args.send:
-            print(f"  • {cs} → {sid}: {preview}…")
+            parts_note = f" [{nparts} phần]" if nparts > 1 else ""
+            print(f"  • {cs} → {sid}{parts_note}: {preview}…")
             sent += 1
             continue
         try:
