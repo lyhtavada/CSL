@@ -20,8 +20,13 @@ QA tuần này **chỉ nhìn thấy nội dung chat với khách hàng**. Nó **
 - Phối hợp với **TS/dev**: tạo ticket, chất lượng ticket, follow-up đúng hạn
 - **Bàn giao ca**, assign chat/card, cập nhật status nội bộ
 - Việc **xử lý sau khi đóng chat** (card pending, update KH khi dev trả kết quả)
-- **Xin review** thật sự, rating của KH, checkin/workshift
+- **Rating thật của KH** (KH có bấm sao không, mấy sao), checkin/workshift
 - Thái độ & teamwork ngoài kênh chat
+
+> **Lưu ý về xin review:** *hành vi* CS có chủ động xin review hay không thì
+> transcript **thấy được** → QA tuần **có theo dõi** (xem section 4.1, chỉ ghi
+> nhận, không tính điểm). Cái transcript KHÔNG thấy là *kết quả* — KH có thật sự
+> để review/rating hay không — phần đó vẫn ngoài phạm vi.
 
 → Vì vậy điểm QA tuần là **một lát cắt coaching về kỹ năng chat**, không phải
 đánh giá năng lực toàn diện. Một CS điểm chat cao vẫn có thể yếu ở ticket/handoff
@@ -140,7 +145,57 @@ Chat không có message nào của CS đang xét → loại khỏi mẫu, không
 - **QT8 (FRT >2p):** chỉ **ghi nhận**, không tính vào điểm tuần — vì policy ghi "trừ point toàn bộ agent trong ca", khó gán cho 1 CS từ transcript. Để Liz tham khảo.
 - **Cần bằng chứng mới ghi lỗi:** mỗi lỗi phải **quote được câu chat** làm dẫn chứng. Không suy diễn.
 - **Không chắc thì bỏ qua**, không đoán — thà sót còn hơn ghi oan, vì report này gửi thẳng cho CS.
-- **Lỗi cần data ngoài chat** (follow-up Trello, review, checkin…): KHÔNG chấm ở tuần. Nếu nghi ngờ, ghi 1 dòng "cần check thêm ngoài chat" cho Liz, không tính điểm.
+- **Lỗi cần data ngoài chat** (follow-up Trello, checkin…): KHÔNG chấm ở tuần. Nếu nghi ngờ, ghi 1 dòng "cần check thêm ngoài chat" cho Liz, không tính điểm.
+
+---
+
+## 4.1 Theo dõi xin review (chỉ ghi nhận — KHÔNG tính điểm)
+
+Mục này theo dõi *hành vi* CS có chủ động xin merchant để lại review Shopify hay
+không. **Không cộng/trừ vào điểm tuần** — giống cách xử lý QT8 — chỉ đếm và report
+để Liz coaching riêng. Lý do không tính điểm: xin review phụ thuộc nhiều vào ngữ
+cảnh từng chat, ép thành điểm dễ chấm oan.
+
+### Bước 1 — Loại chat đã có review (không cần xin nữa)
+
+Chat **đã có review rồi** thì CS **không cần và không nên** xin lại — xin nữa là
+thừa, làm phiền KH. Nhận biết qua field **`segment`** trong BigQuery: chat đã có
+review nếu `segment` chứa một trong các giá trị:
+
+- `review_yes_joy` (Joy)
+- `rv_yes_chatty` hoặc `review_yes_chatty` (Chatty)
+
+→ Các chat này **loại khỏi mẫu "đáng lẽ nên xin"**. KHÔNG được tính là "thiếu xin".
+
+```sql
+-- nhận diện chat đã có review (match bất kỳ biến thể nào)
+LOWER(CAST(segment AS STRING)) LIKE '%review_yes_joy%'
+  OR LOWER(CAST(segment AS STRING)) LIKE '%rv_yes_chatty%'
+  OR LOWER(CAST(segment AS STRING)) LIKE '%review_yes_chatty%'
+```
+
+### Bước 2 — Xác định chat "đáng lẽ nên xin"
+
+Trong số chat **chưa có** segment review, chỉ tính những chat **phù hợp để xin**:
+
+- KH đã được giải quyết xong vấn đề / tỏ ra hài lòng (cảm ơn, khen, "perfect"…)
+- Không phải chat đang bực, đang phàn nàn, hay vấn đề chưa xử lý xong
+- Không phải chat ghé 1-2 câu, hỏi nhanh rồi đi
+
+→ Đây là tử số/mẫu số: **đã xin / số chat đáng lẽ nên xin**.
+
+### Bước 3 — Ghi nhận
+
+Với mỗi chat "đáng lẽ nên xin", xem CS **có chủ động xin review** không (quote câu
+xin làm bằng chứng). Tổng hợp thành 1 dòng cho Liz + 1 dòng nhẹ trong DM CS:
+
+- Đếm: `đã xin X / Y chat phù hợp`
+- Nếu CS xin **đúng lúc, tự nhiên** (KH vừa hài lòng) → ghi nhận điểm tốt.
+- Nếu **bỏ lỡ nhiều** chat vàng (KH happy mà không xin) → gợi ý nhẹ, không phải lỗi.
+- Nếu CS xin **sai lúc** (KH chưa xong/đang bực mà đã xin) → flag để coaching.
+
+> **Không suy diễn:** chỉ tính 1 chat là "phù hợp để xin" khi có bằng chứng KH hài
+> lòng trong transcript. Không chắc → bỏ qua, đừng kéo tử/mẫu số sai lệch.
 
 ---
 
@@ -170,6 +225,11 @@ Tuần này bạn xử lý chắc tay, tone với khách rất ấm và chủ đ
 • [QT18] 3 chat kết thúc mà chưa báo KH bước tiếp theo (#5, #14, #22)
    → Luôn chốt: "Em sẽ báo lại trong [x]" trước khi đóng
 
+🌟 *Xin review (chỉ ghi nhận, không tính điểm)*
+• Đã xin review ở 3/7 chat khách hài lòng — còn bỏ lỡ vài chat KH khen mà chưa xin
+   → Khi KH vừa cảm ơn/khen là thời điểm vàng để mời để lại review nhé
+• (Các chat KH đã có review thì không cần xin lại — đã loại khỏi đếm)
+
 📈 *So với tuần trước*
 • Điểm tăng từ 82 → 86 👏
 • KN5 (tư vấn sai) giảm từ 4 → 1 chat — tiến bộ rõ
@@ -178,7 +238,7 @@ Tuần này bạn xử lý chắc tay, tone với khách rất ấm và chủ đ
 🔗 *Chat đã QA (24):*
 <crisp_url|#1 Cuura Malaysia> · <crisp_url|#2 Nicholas Davies> · …
 
-_📌 Lưu ý: Đánh giá này chỉ dựa trên *nội dung chat với khách*. Chưa bao gồm việc phối hợp với TS/dev, tạo & follow-up ticket, bàn giao ca, hay xin review — những phần đó nằm ngoài phạm vi chat. Đây là feedback để cải thiện, không phải đánh giá toàn diện._
+_📌 Lưu ý: Đánh giá này chỉ dựa trên *nội dung chat với khách*. Chưa bao gồm việc phối hợp với TS/dev, tạo & follow-up ticket, bàn giao ca, hay rating thật của khách — những phần đó nằm ngoài phạm vi chat. (Phần xin review ở trên chỉ là ghi nhận hành vi, không tính vào điểm.) Đây là feedback để cải thiện, không phải đánh giá toàn diện._
 
 _Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
 ```

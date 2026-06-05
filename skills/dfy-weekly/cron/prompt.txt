@@ -1,0 +1,14 @@
+Run the /dfy-weekly skill for Joy for the current week.
+
+The week runs Friday → Thursday. Today is Friday, so the target week is the 7 days ending yesterday (Thursday): i.e. last Friday through yesterday Thursday. Compute the exact startDate (last Friday) and endDate (yesterday, Thursday) yourself from today's date.
+
+Follow skills/dfy-weekly/SKILL.md exactly:
+- Read AVD_TICKET_API_KEY from CSL/.env
+- Fetch tickets from https://avada-ts-a9cb0.web.app/api/external/tickets/by-date with appName="JOY Loyalty", startDate, endDate
+- Fetch tags from https://avada-ts-a9cb0.web.app/api/external/tags
+- Identify DFY tickets (subject starts with [DFY]), determine CS creator (members[].isCreate), apply the open-only / sale_request / liz-no-tag filters
+- Build the Overview block (tickets created, open, adopted, no-adopt, following-up, adopt rate = adopted / tickets created in week, CS count)
+- Build per-CS breakdown tables: Date | Ticket | Store | Status | Tasks | Tags  (NO Point column)
+- Save to reports/dfy/joy/joy-dfy-{YYYY-W##}.md using the ISO week of the Thursday end date
+
+After writing the file, commit it to git with message "dfy-weekly: auto report {YYYY-W##}" and print the saved path plus the Overview numbers.
