@@ -1,7 +1,7 @@
 ---
 name: dfy-weekly
-description: Generate a WEEKLY DFY ticket tracker report for Joy (or Chatty). Week runs Friday→Thursday. Shows an Overview block (tickets created, open, adopted, no-adopt, following-up, adopt rate %) plus a per-CS breakdown table with ticket link, created date, store, status, task completion, and tags. NO Point column (weekly is for monitoring, not KPI scoring — use /dfy-tracker for monthly KPI with points).
-version: 1.0.0
+description: Generate a WEEKLY DFY ticket tracker report for Joy (or Chatty). Week runs Friday→Thursday. Shows an Overview block (tickets created, open, adopted, no-adopt, following-up, adopt rate %) plus a per-CS breakdown table with ticket link, created date, store, task completion, and tags. NO Point column (weekly is for monitoring, not KPI scoring — use /dfy-tracker for monthly KPI with points).
+version: 1.1.0
 ---
 
 # DFY Weekly Skill
@@ -81,16 +81,16 @@ Group the filtered (open) tickets by CS, sort CS by ticket count desc, rows by c
 ```markdown
 ## {CS Name} ({n} tickets)
 
-| Date | Ticket | Store | Status | Tasks | Tags |
-|------|--------|-------|--------|-------|------|
-| 2026-05-29 | [JOY-260529-uXXGdw](https://avada-ts-a9cb0.web.app/t/JOY-260529-uXXGdw) | store.myshopify.com | done_for_you | 18/22 | DFY-1 |
+| Date | Ticket | Store | Tasks | Tags |
+|------|--------|-------|-------|------|
+| 2026-05-29 | [JOY-260529-uXXGdw](https://avada-ts-a9cb0.web.app/t/JOY-260529-uXXGdw) | store.myshopify.com | 18/22 | DFY-1 |
 ```
 
 - **Ticket link:** `https://avada-ts-a9cb0.web.app` + `shortUrl` (e.g. `/t/JOY-...`).
 - **Store:** `store[0].domain`.
-- **Status:** `tsStatus` (fallback `ticketStatus`).
 - **Tasks:** `{completed}/{total}` from `tasks[]`.
-- **Tags:** comma-separated DFY tag names only.
+- **Tags:** comma-separated DFY tag names only. Tag IDs live in `ticket.tagIds` (array) — map via `/api/external/tags`. Drop any tagId not in the 9-tag DFY set.
+- **No Status column** — DFY tickets are all `tsStatus=done_for_you`, so the column adds no signal.
 - **No Total/Point row** — weekly report does not score points.
 
 ### 9. Save file
