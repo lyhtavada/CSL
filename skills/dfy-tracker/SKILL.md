@@ -1,7 +1,7 @@
 ---
 name: dfy-tracker
-description: Generate a MONTHLY DFY KPI tracker report for Joy (or Chatty). Pulls only open tickets, groups by CS, shows ticket link, created date, status, task completion, tags, and an auto-calculated Point column based on scoring tags. This is the monthly KPI scoring report — for the weekly monitoring report (Overview + adopt rate, no points), use /dfy-weekly.
-version: 1.2.0
+description: Generate a MONTHLY DFY KPI tracker report for Joy (or Chatty). Pulls only open tickets, groups by CS, shows ticket link, created date, status, task completion, tags, and an auto-calculated Point column based on scoring tags. This is the monthly KPI scoring report — for the weekly monitoring report (Overview + adopt rate, no points), use /dfy-weekly. Runs automatically on the 2nd of each month (launchd) for last month's Joy tickets.
+version: 1.3.0
 ---
 
 # DFY Tracker Skill (Monthly KPI)
@@ -51,19 +51,45 @@ GET https://avada-ts-a9cb0.web.app/api/external/tags
 
 Map `tagIds` on each ticket to tag names.
 
-### 4. Determine CS (creator)
+### 4. Determine CS (creator) and map to KPI nickname
 
 Use `members[].isCreate === true` → `displayName`. Fallback to `memberUpdate.displayName`.
+
+Then **map the CS to their KPI nickname** (the abbreviated name used for KPI, e.g. `VanCT`, `HangHM`). The report and grouping must use the **nickname**, not the raw `displayName`/`trello username`.
+
+Map via the `trello username` the API returns (or `displayName` as fallback):
+
+| trello username | displayName | Nickname (KPI) |
+|---|---|---|
+| liz_avada | Liz | LyHT |
+| hana_avada | Hana | HangHM |
+| audrey_avada | Audrey | VanCT |
+| alyssa_avada | Alyssa | LyPK |
+| sonny_avada | Sonny | HuyTC |
+| alicia_avada | Alicia | AnhLN |
+| rosie_avada | Rosie | ThaoLTT |
+| jade_avada | Jade | PhuongNT |
+| mirra_avada | Mirra | MinhBT |
+| andy_avada | Andy | AnhBD |
+| hazel_avada | Hazel | HienPT |
+| megan_avada | Megan | TrangNTH |
+| cody_avada | Cody | ChauHM |
+| phoebe_avada | Phoebe | PhuongTTM |
+| linda1_avada | Linda | LinhTLK |
+
+> Source of truth: `_identity/team-g2.md` (columns "Nickname (KPI)" + "Trello username"). If a new CS appears in the API but not in this table, fall back to the raw `displayName` and flag it in the output so the table here can be updated.
 
 ### 5. Filter
 
 - Exclude Liz's tickets (`liz_avada`) that have no tags (test tickets)
 - Exclude tickets with `tsStatus = "sale_request"`
 
-### 6. Group by CS and generate markdown table
+### 6. Group by CS (nickname) and generate markdown table
+
+Group by the **KPI nickname** from step 4.
 
 ```markdown
-## {CS Name} ({n} tickets)
+## {Nickname} ({n} tickets)
 
 | Date | Ticket | Store | Status | Tasks | Tags | Point |
 |------|--------|-------|--------|-------|------|-------|
@@ -120,9 +146,18 @@ App: Joy | Period: 2026-05 | Total: 60 tickets (open only) | CS: 12 | Total poin
 Saved: reports/dfy/joy/joy-dfy-2026-05.md
 ```
 
-Then show per-CS breakdown (ticket count + total points only, not full table — too long for chat):
+Then show per-CS breakdown by **nickname** (ticket count + total points only, not full table — too long for chat):
 ```
-- Mai: 8 tickets | 320 pts
-- Hương: 6 tickets | 210 pts
+- VanCT: 8 tickets | 320 pts
+- HangHM: 6 tickets | 210 pts
 ...
 ```
+
+## Automated monthly run (launchd)
+
+This skill runs automatically on the **2nd of each month at 15:00** local time via launchd (`com.avada.dfy-tracker-monthly`), generating the report for **last month's Joy tickets** and committing it.
+
+- Cron source: `skills/dfy-tracker/cron/` (plist + `run-monthly.sh` + `prompt.txt` + `install.sh`)
+- Install once (Liz runs in Terminal): `bash ~/CSL/skills/dfy-tracker/cron/install.sh`
+- Log: `/tmp/dfy-tracker-monthly.log`
+- **Machine off on the 2nd?** launchd skips the run (no catch-up). Run it manually the next day: `bash ~/CSL/skills/dfy-tracker/cron/run-monthly.sh`

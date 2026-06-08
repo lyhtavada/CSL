@@ -1,0 +1,15 @@
+Run the /dfy-tracker skill for Joy for LAST month (the calendar month before the current one).
+
+Today is the 2nd of the month, so the target period is the entire previous month: from the 1st to the last day of last month. Compute the exact startDate (first day of last month) and endDate (last day of last month) yourself from today's date.
+
+Follow skills/dfy-tracker/SKILL.md exactly:
+- Read AVD_TICKET_API_KEY from CSL/.env
+- Fetch tickets from https://avada-ts-a9cb0.web.app/api/external/tickets/by-date with appName="JOY Loyalty", startDate, endDate
+- Fetch tags from https://avada-ts-a9cb0.web.app/api/external/tags
+- Identify DFY tickets (subject starts with [DFY]), open only (ticketStatus !== "closed")
+- Determine CS creator (members[].isCreate), then MAP each CS to their KPI nickname using the mapping table in the skill (e.g. Audrey → VanCT, Hana → HangHM). Group and label by nickname, NOT the raw displayName.
+- Apply the filters: exclude liz_avada tickets with no tags, exclude tsStatus="sale_request"
+- Build per-CS (by nickname) tables: Date | Ticket | Store | Status | Tasks | Tags | Point, with a Total row per CS summing Point (use the Point rules in the skill)
+- Save to reports/dfy/joy/joy-dfy-{YYYY-MM}.md using last month's year-month
+
+After writing the file, commit it to git with message "dfy-tracker: auto monthly report {YYYY-MM}" and print the saved path plus the summary line (total tickets, CS count, total points).
