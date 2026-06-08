@@ -19,7 +19,7 @@ _App: JOY Loyalty | Period: 2026-05-29 → 2026-06-04_
 | 2026-05-29 | [JOY-260529-uXXGdw](https://avada-ts-a9cb0.web.app/t/JOY-260529-uXXGdw) | maison-berger-shop.myshopify.com | 18/22 | DFY-1 |
 | 2026-05-29 | [JOY-260529-wkWNgy](https://avada-ts-a9cb0.web.app/t/JOY-260529-wkWNgy) | south-metro-music.myshopify.com | 18/22 | DFY-1, DFY-adopted |
 | 2026-05-31 | [JOY-260531-6feBtW](https://avada-ts-a9cb0.web.app/t/JOY-260531-6feBtW) | 89ndfd-ka.myshopify.com | 18/21 | DFY-adopted, DFY-1 |
-| 2026-06-02 | [JOY-260602-XHh4jA](https://avada-ts-a9cb0.web.app/t/JOY-260602-XHh4jA) | e6776f-29.myshopify.com | 17/21 | DFY-1 |
+| 2026-06-02 | [JOY-260602-XHh4jA](https://avada-ts-a9cb0.web.app/t/JOY-260602-XHh4jA) | e6776f-29.myshopify.com | 17/21 | DFY-1 | Sonny làm thêm case này
 | 2026-06-03 | [JOY-260603-US9tqs](https://avada-ts-a9cb0.web.app/t/JOY-260603-US9tqs) | 25pxim-ex.myshopify.com | 17/21 | DFY-1, DFY-adopted |
 
 ## alyssa_avada (4 tickets)
@@ -51,3 +51,5 @@ _App: JOY Loyalty | Period: 2026-05-29 → 2026-06-04_
 | Date | Ticket | Store | Tasks | Tags |
 |------|--------|-------|-------|------|
 | 2026-06-02 | [JOY-260602-yLX5DM](https://avada-ts-a9cb0.web.app/t/JOY-260602-yLX5DM) | odaites-4.myshopify.com | 15/21 | DFY-adopted |
+
+
