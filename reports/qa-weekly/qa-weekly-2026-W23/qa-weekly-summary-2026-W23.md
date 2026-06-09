@@ -1,7 +1,7 @@
 # QA Weekly Summary — 2026-W23 (01/06 – 07/06)
 **Team in-house (9 CS) · rubric 3 trục · coaching, không phải penalty**
 
-> ⚠️ CHỜ LIZ DUYỆT — chưa gửi cho CS. Reports/DM build xong, đợi lệnh.
+> ✅ ĐÃ GỬI 9/9 DM cho CS ngày 09/06/2026 (dưới tên Ly/Liz). Sonny gửi chung đợt (severe live-store #6 viết ở mục cải thiện).
 
 | CS | Điểm | Δ W22 | 🧠 Mind | 📚 Know | 🛠️ Skill | Chat | Xin review | Flag |
 |---|---|---|---|---|---|---|---|---|
