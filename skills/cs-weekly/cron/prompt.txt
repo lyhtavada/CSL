@@ -1,0 +1,14 @@
+Run the /cs-weekly skill for BOTH apps (Chatty and Joy) for last week.
+
+Today is Monday. The target period is Monday → Sunday of LAST week: i.e. the 7 days ending yesterday (Sunday). Compute the exact startDate (last week's Monday) and endDate (yesterday, Sunday) yourself from today's date.
+
+Follow skills/cs-weekly/SKILL.md exactly. For EACH app (chatty, then joy):
+- Pull metrics: python3 skills/cs-weekly/scripts/fetch_metrics.py --app {app} --start {start} --end {end} --json  (tickets created, DFY created, chats)
+- Pull reviews: python3 skills/cs-weekly/scripts/fetch_reviews.py --slug {joyio|chatty} --start {start} --end {end} --json  (App Store, sort_by=newest)
+- Cluster top issues from the period's chats (fetch_chats.py with enough --days to cover the period, then read JSON; cluster into 3-5 themes by volume, each with a 1-line fix/KB pointer; flag any repeated bug)
+- Scan Slack channel C07RNAY9ZC6 for releases in the period using SLACK_BOT_TOKEN_AVADA; link permalinks via chat.getPermalink; keep only releases relevant to that app
+- Fill the §2 metrics table, compare vs last week by reading the previous week's report file if it exists (show ▲▼)
+- Write the report using reports/weekly-cs/TEMPLATE.md. Fill §1-4 and the §6 win line from data. Leave §5 Coaching and the Shoutout/Focus lines as "_(Liz điền)_" placeholders (Liz reviews these). Keep it ~1 screen; hide empty sub-blocks.
+- Save to reports/weekly-cs/{chatty|joy}/{app}-cs-weekly-{YYYY-W##}.md using the ISO week of the Sunday end date.
+
+After writing BOTH files, commit them to git with message "cs-weekly: auto report {YYYY-W##}" and print the saved paths plus the headline numbers (tickets / chats / DFY / reviews) for each app.
