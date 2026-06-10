@@ -20,7 +20,7 @@ Tuần này Chatty nhận **261 chats** và **91 tickets** — volume ổn đị
 | Reviews (App Store) | 11 (4.9★) | _(điền)_ | — |
 
 _Nguồn: Ticket API · `avada_cs.crisp_chats` (segments app_chatty + app_faqs) · Shopify App Store reviews (sort_by=newest). Period 01–07/06. Tuần đầu chạy nên chưa có baseline tuần trước — từ tuần sau sẽ auto so sánh ▲▼._
-⚠️ **Review cần lưu ý:** 02/06 có 1 review 4★ — nên đọc xem merchant góp ý gì.
+_Tuần này không có review ≤3★ (1 review 4★ ngày 02/06, còn lại 5★) → không cần scan feed bad-review._
 _Chatty chưa có DFY program → DFY created = 0 là bình thường._
 
 ---

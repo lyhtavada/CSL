@@ -20,7 +20,7 @@
 | Reviews (App Store) | {N} ({avg}★) | {N-1} ({avg}★) | {▲▼} |
 
 _Nguồn: Ticket API · `avada_cs.crisp_chats` · DFY ticket tags · Shopify App Store reviews (sort_by=newest). Period {START}–{END}._
-{Nếu có review ≤3★ trong tuần → thêm dòng: ⚠️ **Review cần lưu ý:** {ngày} {rating}★ — nên đọc xem merchant góp ý gì.}
+{Nếu có review ≤3★ trong tuần → thêm dòng: ⚠️ **Review cần lưu ý:** {ngày} {rating}★ — nên đọc xem merchant góp ý gì. [Thread bad-review]({SLACK_PERMALINK G019ZF7GM7H}) — nếu không thấy trong feed thì ghi _(không thấy trong feed bad-review)_.}
 {Chatty chưa có DFY program → DFY created = 0 là bình thường, không phải sụt.}
 
 ---

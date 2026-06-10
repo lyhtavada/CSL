@@ -74,6 +74,23 @@ Keep only releases relevant to the report's app. For each, get a permalink via
 `chat.getPermalink` and link it. If none → omit the release sub-block. Write 1 line
 per release on what it means for support ("when merchant asks X → now they can Y").
 
+### 5b. Low reviews (≤3★) → link the bad-review thread
+
+ONLY if §3 found a review **≤3★** in the period. The Slack group `G019ZF7GM7H` is an
+auto-feed of reviews that need attention (one message per review: `[App name] Review
+by {store} published {date} ...`). For each low review:
+```python
+requests.get("https://slack.com/api/conversations.history",
+  headers={"Authorization": f"Bearer {SLACK_BOT_TOKEN_AVADA}"},  # same token as release channel
+  params={"channel":"G019ZF7GM7H","oldest":<start ts>,"latest":<end+2d ts>,"limit":100})
+```
+Match a message by **app name in the `[...]` prefix + the published date ≈ the review
+date** (feed posts may lag the review by a day → widen the window a couple days).
+On match → `chat.getPermalink` and attach the thread link next to that review in §2's
+"⚠️ Review cần lưu ý" line. If no match (the feed doesn't carry every review, only
+flagged ones) → keep the review note but say `_(không thấy trong feed bad-review)_`,
+do NOT fabricate a link. 4★ and above do NOT trigger this scan.
+
 ### 6. Write the report
 
 Use `reports/weekly-cs/TEMPLATE.md`. Fill §1–4 + §6-win from data. Leave §5 (Coaching)
@@ -107,7 +124,10 @@ Print the saved path(s) + the headline numbers.
 - **Period is Mon→Sun of LAST week**, not a rolling 7-day window.
 - **Reviews:** ALWAYS `sort_by=newest`. App Store's default page order is NOT by
   date, so any early-stop on a non-sorted feed silently drops reviews.
-- **Slack release channel** `C07RNAY9ZC6` only opens with `SLACK_BOT_TOKEN_AVADA`.
+- **Slack channels** both open ONLY with `SLACK_BOT_TOKEN_AVADA`:
+  release feed `C07RNAY9ZC6` (§5) and bad-review feed `G019ZF7GM7H` (§5b).
+- **Bad-review scan triggers only for ≤3★** (Liz's rule). The feed is sparse
+  (not every review) — no match ≠ error; just note it and skip the link.
 - Chatty has no DFY program yet → `dfy_created` is 0; keep the row but it's expected.
 - This is team-facing: tone clear and encouraging, language Vietnamese (per workspace
   default for internal team content), short.
