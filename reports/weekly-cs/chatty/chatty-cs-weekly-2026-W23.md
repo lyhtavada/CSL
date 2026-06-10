@@ -6,7 +6,7 @@
 ---
 
 ## ⚡ TL;DR
-Tuần này Chatty nhận **261 chats** và **91 tickets** — volume ổn định. Điểm nóng nhất vẫn là **merchant cần hỗ trợ setup AI agent** (chiếm phần lớn chat). Có **1 bug đáng chú ý: phản hồi/note bị gán nhầm conversation** — nhiều merchant report, cần nắm để trấn an + báo dev. Release mới: **AI Human Handover redesign** (đã có auto-trigger). App Store: **11 review, 4.9★** — rất tốt, có 1 review 4★ ngày 02/06 nên check xem merchant góp ý gì.
+Tuần này Chatty nhận **261 chats** và **91 tickets** — volume ổn định. Điểm nóng nhất vẫn là **merchant cần hỗ trợ setup AI agent** (chiếm phần lớn chat). Có **1 bug đáng chú ý: phản hồi/note bị gán nhầm conversation** — nhiều merchant report, cần nắm để trấn an + báo dev. Release mới: **AI Human Handover redesign** (đã có auto-trigger). App Store: **11 review, 4.9★** — rất tốt (10×5★, 1×4★), không có review thấp.
 
 ---
 
@@ -27,7 +27,7 @@ _Chatty chưa có DFY program → DFY created = 0 là bình thường._
 
 ## 🔥 Top issues tuần này
 
-_Chủ đề merchant hỏi/than nhiều nhất — đọc để trả lời nhanh & đúng._
+_Chủ đề merchant hỏi/than nhiều nhất (cluster từ chat) — đọc để trả lời nhanh & đúng. Sắp theo độ phổ biến._
 
 1. **Setup AI agent** — nhiều nhất trong tuần
    → _Cách xử lý:_ Dẫn merchant qua flow AI agent → Instruction → train data. Link helpcenter AI setup. Nếu cần extend limit → quy trình `handle-extend-limit`.
@@ -43,6 +43,8 @@ _Chủ đề merchant hỏi/than nhiều nhất — đọc để trả lời nha
 
 5. **Integration** (TikTok shop, WhatsApp sync đổi số, email assign vào account đã xóa)
    → _Cách xử lý:_ Confirm scope tích hợp hiện có; WhatsApp/email lỗi → thu info escalate dev.
+
+_(Chat không gán nhãn sẵn → xếp theo mức độ phổ biến, không phải con số tuyệt đối.)_
 
 ---
 
