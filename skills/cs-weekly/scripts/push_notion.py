@@ -101,6 +101,15 @@ def table_block(rows):
 def md_to_blocks(md):
     blocks = []
     lines = md.split("\n")
+    # Strip the redundant header (H1 title + Period line + intro quote + its divider)
+    # — the Notion sub-page title already carries app + week + date range, so we start
+    # the body at the first "## " heading (TL;DR).
+    first_h2 = next((idx for idx, ln in enumerate(lines) if ln.strip().startswith("## ")), None)
+    if first_h2 is not None:
+        head = "\n".join(lines[:first_h2])
+        looks_like_report_header = head.lstrip().startswith("# ") or "**Period:**" in head
+        if looks_like_report_header:
+            lines = lines[first_h2:]
     i = 0
     while i < len(lines):
         line = lines[i]

@@ -1,9 +1,4 @@
-# {APP} CS Weekly — {WEEK_LABEL}
-**Period:** {START} – {END} (Thứ 2 → Chủ nhật tuần trước) · **Prepared by:** Betty (review: Liz)
-
-> _Bản tin tuần cho team CS {APP}. Đọc 2 phút để nắm tình hình + cập nhật cần biết khi support merchant._
-
----
+_(Title của Notion sub-page đã chứa app + tuần + date range → KHÔNG lặp lại H1/Period ở đầu body. Bắt đầu thẳng từ TL;DR.)_
 
 ## ⚡ TL;DR
 {2-3 câu tóm tắt tuần: volume, điểm nóng nhất, 1 thứ cần lưu ý.}
