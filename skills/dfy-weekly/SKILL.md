@@ -58,7 +58,7 @@ Only the 9 known DFY tags are relevant (see Tag reference). **Drop any tagId not
 
 Use `members[].isCreate === true` → `displayName`. Fallback to `memberUpdate.displayName`.
 
-### 6. Filter (for the breakdown + adopted/no-adopt/following counts)
+### 6. Filter (for the breakdown + Overview counts)
 
 - **Open only:** exclude `ticketStatus === "closed"`.
 - Exclude `tsStatus === "sale_request"`.
@@ -158,12 +158,12 @@ _(Liz điền — feedback khi review với CS)_
 
 ## Output (chat summary)
 
-Print the Notion URL first, then headline numbers + per-CS counts:
+Print the Notion URL first, then headline numbers (with compare) + per-CS counts:
 ```
-App: Joy | Week: 2026-05-29 → 2026-06-04 | Số ticket: 18 | Adopted: 5 | Không tag adopted: 13
-Notion: https://www.notion.so/...   (new sub-page, top of "Joy DFY - Weekly")
+App: Joy | Week: 2026-05-30 → 2026-06-05 | Tổng ticket: 14 (▼ -11) | Adopted: 8 / 57% (▼ -15%) | Không tag adopted: 6 (▼ -1)
+Notion: https://app.notion.com/p/...   (new sub-page, top of "Joy DFY Weekly")
 
-- sonny_avada: 5 tickets
-- alyssa_avada: 4 tickets
+- sonny_avada: 6 tickets
+- hana_avada: 3 tickets
 ...
 ```
