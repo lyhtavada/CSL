@@ -2,7 +2,8 @@
 #
 # Weekly DFY report run — invoked by launchd (com.avada.dfy-weekly).
 # Runs Claude Code headless to generate the Joy DFY weekly report (Fri→Thu)
-# and save it into reports/dfy/joy/joy-dfy-{YYYY-W##}.md.
+# and publish it as a NEW Notion sub-page (newest on top) under the
+# "Joy DFY Weekly" page. No repo file, no git commit.
 #
 # Manual run:  bash run-weekly.sh
 #

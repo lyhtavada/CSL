@@ -1,7 +1,7 @@
 ---
 name: dfy-weekly
-description: Generate a WEEKLY DFY ticket tracker report for Joy (or Chatty). Week runs Friday→Thursday. Shows an Overview block (tickets created, open, adopted, no-adopt, following-up, adopt rate %) plus a per-CS breakdown table with ticket link, created date, store, task completion, and tags. NO Point column (weekly is for monitoring, not KPI scoring — use /dfy-tracker for monthly KPI with points).
-version: 1.1.0
+description: Generate a WEEKLY DFY ticket tracker report for Joy (or Chatty). Week runs Friday→Thursday. Publishes a new Notion sub-page (newest on top) under the "Joy DFY Weekly" page — NOT a repo file. Shows a 3-line Overview (số ticket, adopted, ticket không có tag adopted) plus a per-CS breakdown table with ticket link, created date, store, task completion, and tags. NO Point column (weekly is for monitoring, not KPI scoring — use /dfy-tracker for monthly KPI with points).
+version: 2.0.0
 ---
 
 # DFY Weekly Skill
@@ -66,13 +66,11 @@ Use `members[].isCreate === true` → `displayName`. Fallback to `memberUpdate.d
 
 ### 7. Compute Overview
 
-- **Tickets tạo trong tuần** = total DFY tickets created in the range (BEFORE open-only filter — counts closed too). This is the denominator for adopt rate.
-- **Open (đang theo dõi)** = count after the open-only filter (step 6).
-- **Adopted** = tickets (in the filtered set) tagged `DFY-adopted`.
-- **No-adopt** = tickets tagged `DFY-no-adopt`.
-- **Following-up** = tickets tagged `DFY-following-up`.
-- **Tỉ lệ adopt** = `adopted / tickets tạo trong tuần` (rounded to whole %). Show the fraction inline, e.g. `22%  _(adopted 5 / tickets tạo trong tuần 23)_`.
-- **CS tham gia** = number of distinct CS creators in the filtered set.
+Keep the Overview to 3 lines (per Liz's template):
+
+- **Số ticket** = count of DFY tickets in the filtered (open) set from step 6 — the same set the per-CS breakdown tables are built from, so the numbers reconcile.
+- **Adopted** = tickets in that set tagged `DFY-adopted`.
+- **Ticket không có tag adopted** = `Số ticket − Adopted`.
 
 ### 8. Breakdown table per CS — NO Point column
 
@@ -93,33 +91,44 @@ Group the filtered (open) tickets by CS, sort CS by ticket count desc, rows by c
 - **No Status column** — DFY tickets are all `tsStatus=done_for_you`, so the column adds no signal.
 - **No Total/Point row** — weekly report does not score points.
 
-### 9. Save file
+### 9. Push to Notion (NOT a file)
 
-- Joy: `reports/dfy/joy/joy-dfy-{YYYY-W##}.md` (ISO week number)
-- Chatty: `reports/dfy/chatty/chatty-dfy-{YYYY-W##}.md`
+The weekly report is published as a **new Notion sub-page**, newest on top — it is NOT saved to the repo and NOT committed to git.
 
-Use the ISO week of the range's end (Thursday) for `W##`.
+1. Build the markdown report (see Report format below) and write it to a temp file, e.g. `/tmp/joy-dfy-{YYYY-W##}.md`.
+2. Push it as a sub-page under the parent page:
+
+```
+python3 skills/dfy-weekly/scripts/push_notion.py \
+  --parent 36fb0da449f1808d8b3df436c87f7345 \
+  --title "Joy DFY - {DD/MM} → {DD/MM}" \
+  --md /tmp/joy-dfy-{YYYY-W##}.md
+```
+
+- **Parent page** (Joy DFY Weekly): `36fb0da449f1808d8b3df436c87f7345`
+- The script sets `position: page_start` → **the new sub-page lands at the TOP** of the parent (newest first). Don't change this.
+- **Title** must be `Joy DFY - {start} → {end}` with the Fri→Thu date range (e.g. `Joy DFY - 30/05 → 05/06`).
+- The first line of the markdown is the `#` H1; it duplicates the title inside the page body, which is fine.
 
 ## Report format
 
 ```markdown
-# Joy DFY Tracker — Week {start} → {end}
-
-_App: JOY Loyalty | Period: {start} → {end}_
+# Joy DFY - {start} → {end}
 
 ## Overview
 
-- **Tickets tạo trong tuần:** 23
-- **Open (đang theo dõi):** 15
+- **Số ticket:** 23
 - **Adopted:** 5
-- **No-adopt:** 0
-- **Following-up:** 2
-- **Tỉ lệ adopt:** 22%  _(adopted 5 / tickets tạo trong tuần 23)_
-- **CS tham gia:** 5
+- **Ticket không có tag adopted:** 18
 
 ## {CS Name} ({n} tickets)
 ... breakdown tables ...
 ```
+
+Overview notes:
+- **Số ticket** = total DFY tickets created in the week (the open-only filtered set used for the breakdown — same number the per-CS tables add up to).
+- **Adopted** = tickets tagged `DFY-adopted`.
+- **Ticket không có tag adopted** = `Số ticket − Adopted` (everything still pending / not yet adopted).
 
 ## Tag reference (DFY tag set)
 
@@ -139,10 +148,10 @@ _App: JOY Loyalty | Period: {start} → {end}_
 
 ## Output (chat summary)
 
-Print summary first, then per-CS counts:
+Print the Notion URL first, then headline numbers + per-CS counts:
 ```
-App: Joy | Week: 2026-05-29 → 2026-06-04 | Created: 23 | Open: 15 | Adopted: 5 | No-adopt: 0 | Adopt rate: 22%
-Saved: reports/dfy/joy/joy-dfy-2026-W23.md
+App: Joy | Week: 2026-05-29 → 2026-06-04 | Số ticket: 18 | Adopted: 5 | Không tag adopted: 13
+Notion: https://www.notion.so/...   (new sub-page, top of "Joy DFY - Weekly")
 
 - sonny_avada: 5 tickets
 - alyssa_avada: 4 tickets

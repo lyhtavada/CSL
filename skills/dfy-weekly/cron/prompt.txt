@@ -7,8 +7,11 @@ Follow skills/dfy-weekly/SKILL.md exactly:
 - Fetch tickets from https://avada-ts-a9cb0.web.app/api/external/tickets/by-date with appName="JOY Loyalty", startDate, endDate
 - Fetch tags from https://avada-ts-a9cb0.web.app/api/external/tags
 - Identify DFY tickets (subject starts with [DFY]), determine CS creator (members[].isCreate), apply the open-only / sale_request / liz-no-tag filters
-- Build the Overview block (tickets created, open, adopted, no-adopt, following-up, adopt rate = adopted / tickets created in week, CS count)
-- Build per-CS breakdown tables: Date | Ticket | Store | Status | Tasks | Tags  (NO Point column)
-- Save to reports/dfy/joy/joy-dfy-{YYYY-W##}.md using the ISO week of the Thursday end date
+- Build the 3-line Overview block: Số ticket (filtered open set), Adopted (DFY-adopted), Ticket không có tag adopted (= Số ticket − Adopted)
+- Build per-CS breakdown tables: Date | Ticket | Store | Tasks | Tags  (NO Point column, NO Status column)
+- Write the markdown to a temp file /tmp/joy-dfy-{YYYY-W##}.md (ISO week of the Thursday end date). The H1 first line must be "# Joy DFY - {start} → {end}".
 
-After writing the file, commit it to git with message "dfy-weekly: auto report {YYYY-W##}" and print the saved path plus the Overview numbers.
+Then publish to Notion as a NEW sub-page (newest on top — do NOT save into the repo, do NOT commit to git):
+  python3 skills/dfy-weekly/scripts/push_notion.py --parent 36fb0da449f1808d8b3df436c87f7345 --title "Joy DFY - {DD/MM} → {DD/MM}" --md /tmp/joy-dfy-{YYYY-W##}.md
+
+The title MUST be "Joy DFY - {start} → {end}" with the Fri→Thu date range. The script positions the sub-page at page_start so it lands at the TOP of the parent. After pushing, print the Notion page URL plus the Overview numbers (số ticket / adopted / không tag adopted). Do NOT commit anything to git.
