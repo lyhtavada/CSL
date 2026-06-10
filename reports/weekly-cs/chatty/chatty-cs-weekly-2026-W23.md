@@ -1,12 +1,12 @@
-# Chatty CS Weekly — 2026-W24
-**Period:** 03/06 – 09/06/2026 · **Prepared by:** Betty (review: Liz)
+# Chatty CS Weekly — 2026-W23
+**Period:** 01/06 – 07/06/2026 (Thứ 2 → Chủ nhật tuần trước) · **Prepared by:** Betty (review: Liz)
 
 > _Bản tin tuần cho team CS Chatty. Đọc 2 phút để nắm tình hình + cập nhật cần biết khi support merchant._
 
 ---
 
 ## ⚡ TL;DR
-Tuần này Chatty nhận **313 chats** và **74 tickets** — volume ổn định. Điểm nóng nhất vẫn là **merchant cần hỗ trợ setup AI agent** (chiếm phần lớn chat). Có **1 bug đáng chú ý: phản hồi/note bị gán nhầm conversation** — nhiều merchant report, cần nắm để trấn an + báo dev. Release mới: **AI Human Handover redesign** (đã có auto-trigger).
+Tuần này Chatty nhận **261 chats** và **91 tickets** — volume ổn định. Điểm nóng nhất vẫn là **merchant cần hỗ trợ setup AI agent** (chiếm phần lớn chat). Có **1 bug đáng chú ý: phản hồi/note bị gán nhầm conversation** — nhiều merchant report, cần nắm để trấn an + báo dev. Release mới: **AI Human Handover redesign** (đã có auto-trigger). App Store: **2 review, 5.0★** — giữ phong độ.
 
 ---
 
@@ -14,11 +14,12 @@ Tuần này Chatty nhận **313 chats** và **74 tickets** — volume ổn đị
 
 | Chỉ số | Tuần này | Tuần trước | |
 |---|---|---|---|
-| Tickets created (API) | 74 | _(điền)_ | — |
-| Chats (BigQuery) | 313 | _(điền)_ | — |
+| Tickets created (API) | 91 | _(điền)_ | — |
+| Chats (BigQuery) | 261 | _(điền)_ | — |
 | DFY created | 0 | 0 | — |
+| Reviews (App Store) | 2 (5.0★) | _(điền)_ | — |
 
-_Nguồn: Ticket API · `avada_cs.crisp_chats` (segments app_chatty + app_faqs) · Period 03–09/06. Tuần đầu chạy nên chưa có baseline tuần trước — từ tuần sau sẽ auto so sánh ▲▼._
+_Nguồn: Ticket API · `avada_cs.crisp_chats` (segments app_chatty + app_faqs) · Shopify App Store reviews. Period 01–07/06. Tuần đầu chạy nên chưa có baseline tuần trước — từ tuần sau sẽ auto so sánh ▲▼._
 
 ---
 
@@ -66,8 +67,8 @@ _(Liz review/bổ sung)_
 
 ## 🌟 Ghi nhận & tinh thần
 
-- 🙌 **Shoutout:** _(Liz điền — CS xử lý tốt case khó / CSAT cao tuần này)_
-- ✅ **Win tuần này:** _(Liz điền)_
+- 🙌 **Shoutout:** _(Liz điền — CS xử lý tốt / CSAT cao tuần này)_
+- ✅ **Win tuần này:** App Store giữ 5.0★ (2 review mới đều 5 sao).
 - 🎯 **Focus tuần tới:** _(Liz điền)_
 
 ---

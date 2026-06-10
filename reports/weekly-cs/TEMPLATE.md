@@ -1,5 +1,5 @@
 # {APP} CS Weekly — {WEEK_LABEL}
-**Period:** {START} – {END} · **Prepared by:** Betty (review: Liz)
+**Period:** {START} – {END} (Thứ 2 → Chủ nhật tuần trước) · **Prepared by:** Betty (review: Liz)
 
 > _Bản tin tuần cho team CS {APP}. Đọc 2 phút để nắm tình hình + cập nhật cần biết khi support merchant._
 
@@ -17,8 +17,9 @@
 | Tickets created (API) | {N} | {N-1} | {▲▼ %} |
 | Chats (BigQuery) | {N} | {N-1} | {▲▼ %} |
 | DFY created | {N} | {N-1} | {▲▼ %} |
+| Reviews (App Store) | {N} ({avg}★) | {N-1} | {▲▼} |
 
-_Nguồn: Ticket API · `avada_cs.crisp_chats` · DFY ticket tags. Period {START}–{END}._
+_Nguồn: Ticket API · `avada_cs.crisp_chats` · DFY ticket tags · Shopify App Store reviews. Period {START}–{END}._
 
 ---
 
