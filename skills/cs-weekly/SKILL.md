@@ -1,7 +1,7 @@
 ---
 name: cs-weekly
-description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest), then clusters top issues from chats, scans the #product-release Slack channel for releases in the period, and publishes a team-facing report as a new sub-page under the app's Notion page (one sub-page per week, title includes the date range). Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
-version: 1.1.0
+description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest) — each compared vs the prior week — then clusters top issues from chats, scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
+version: 1.2.0
 ---
 
 # CS Weekly Skill
@@ -147,12 +147,17 @@ python3 skills/cs-weekly/scripts/notify_slack.py \
   --notion-url {the URL printed by push_notion.py in step 7}
 ```
 - **CS channel IDs:**
-  - Chatty: `C0AUQ2TCSE9`   ("chatty squad")
-  - Joy:    `C07MSUX0VPA`   ("Joy faq")
+  - Chatty: `C0AUQ2TCSE9`   (`chatty-squad`)
+  - Joy:    `C07MSUX0VPA`   (`joy-faqs`)
 - Auth: `SLACK_BOT_TOKEN_AVADA` (bot = `avada_bot`). The bot must be a member of the
   channel — if posting fails with `not_in_channel`, invite `@avada_bot` there once.
+  (Both channels already have the bot.)
+- **Posts AS LIZ** — `--as-user` is ON by default: the script live-fetches Liz's
+  profile (`U02GT4PC6RH`) and posts with her name + avatar. Slack still shows a small
+  "APP" tag (unavoidable with a bot token). Pass `--no-as-user` to post as plain bot.
 - The title should match the Notion sub-page title (app + week + date range).
 - Sends Block Kit: header + TL;DR + "📄 Xem full trên Notion" button.
+- To preview layout safely, post to Liz's DM: `--channel U02GT4PC6RH`.
 
 Print the Notion page URL(s), the Slack post confirmation, and the headline numbers
 (tickets / chats / DFY / reviews) for each app. Do NOT commit anything to git — there
@@ -186,3 +191,7 @@ is no .md file in the repo.
   (Chatty/Joy IDs in §7). No .md in the repo, no git commit. Title MUST carry the
   date range. `NOTION_API_KEY` from `.env`; integration is already shared with both
   parent pages (re-share if push 404s). Notion API, not MCP — survives headless cron.
+- **Slack digest (step 8)** runs AFTER the Notion push and links to it — Notion is the
+  source of truth, Slack is just the ping. Posts AS LIZ (name + avatar) via the Avada
+  bot to `chatty-squad` (`C0AUQ2TCSE9`) / `joy-faqs` (`C07MSUX0VPA`). If the Notion
+  push fails, skip the Slack post for that app (don't ping a broken link).

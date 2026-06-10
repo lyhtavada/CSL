@@ -14,8 +14,8 @@ Follow skills/cs-weekly/SKILL.md exactly. For EACH app (chatty, then joy):
   python3 skills/cs-weekly/scripts/push_notion.py --parent {PARENT} --title "{App} CS Weekly — W## ({DD–DD/MM/YYYY})" --md /tmp/{app}-cs-weekly-{YYYY-W##}.md
   Parent page IDs: Chatty = 37bb0da449f180729d79fcfc6d43c35a, Joy = 37bb0da449f18054b553c00929e711cb. The title MUST include the date range.
 
-- Notify the app's CS Slack channel via the Avada bot (after the Notion push):
+- Notify the app's CS Slack channel via the Avada bot (ONLY after the Notion push succeeds — if push failed, skip the Slack post for that app, don't ping a broken link):
   python3 skills/cs-weekly/scripts/notify_slack.py --channel {CHANNEL} --title "{App} CS Weekly — W## ({DD–DD/MM/YYYY})" --tldr "{the TL;DR text}" --notion-url {URL printed by push_notion.py}
-  CS channel IDs: Chatty = C0AUQ2TCSE9 (chatty squad), Joy = C07MSUX0VPA (Joy faq). Token = SLACK_BOT_TOKEN_AVADA. The title matches the Notion sub-page title; the message is Block Kit (header + TL;DR + "Xem full trên Notion" button).
+  CS channel IDs: Chatty = C0AUQ2TCSE9 (chatty-squad), Joy = C07MSUX0VPA (joy-faqs). Token = SLACK_BOT_TOKEN_AVADA. The message posts AS LIZ (--as-user default ON → her name + avatar), Block Kit (header + TL;DR + "Xem full trên Notion" button). The title matches the Notion sub-page title.
 
 After pushing BOTH apps to Notion AND notifying both CS channels, print the Notion page URLs, the Slack post confirmations, plus the headline numbers (tickets / chats / DFY / reviews) for each app. Do NOT commit anything to git.
