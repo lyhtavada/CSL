@@ -29,7 +29,7 @@ When Liz says `/cs-weekly`, "CS weekly", "report tuần cho team CS", or via cro
 ### 1. Determine period (Mon→Sun of last week)
 
 Compute `start` (Monday) and `end` (Sunday) as YYYY-MM-DD. Note the ISO week of the
-Sunday end date for the filename (`W##`).
+Sunday end date (`W##`) — used in the Notion sub-page title and the temp filename.
 
 ### 2. Pull metrics (per app) — with `--compare` for ▲▼
 
