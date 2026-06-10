@@ -1,6 +1,11 @@
 Run the /dfy-weekly skill for Joy for the current week.
 
-The week runs Friday → Thursday. Today is Friday, so the target week is the 7 days ending yesterday (Thursday): i.e. last Friday through yesterday Thursday. Compute the exact startDate (last Friday) and endDate (yesterday, Thursday) yourself from today's date.
+The week runs Friday → Thursday. The target week is the **most recently COMPLETED** Fri→Thu week — i.e. it ends on the most recent Thursday that is strictly before today, and starts on the Friday 6 days before that Thursday.
+
+This cron normally fires on Friday, so the target week is last Friday → yesterday (Thursday). But do NOT hardcode "today is Friday" — compute it from today's actual date so a late/catch-up run (Sat/Sun) still reports the same completed week:
+- endDate = the most recent Thursday strictly before today
+- startDate = that Thursday minus 6 days (the Friday)
+Example: if today is Fri 2026-06-05, the completed week is Fri 2026-05-30 → Thu 2026-06-04. If today is Fri 2026-06-12, it's Fri 2026-06-05 → Thu 2026-06-11.
 
 Follow skills/dfy-weekly/SKILL.md exactly:
 - Read AVD_TICKET_API_KEY from CSL/.env

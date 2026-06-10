@@ -28,7 +28,11 @@ If not specified, default to **current week (Fri→Thu)**, **Joy**.
 ### 1. Determine date range
 
 - Week = **Friday → Thursday** (7 days).
-- "Current week" = the most recent Friday up to today's Thursday.
+- **Default = the most recently COMPLETED Fri→Thu week**, i.e. the week ending on the most recent Thursday strictly before today:
+  - `endDate` = most recent Thursday before today
+  - `startDate` = that Thursday − 6 days (the Friday)
+  - E.g. run on Fri 2026-06-05 → report Fri 2026-05-30 → Thu 2026-06-04. ("Tuần trước" = tuần vừa kết thúc, không dính ngày đang chạy.)
+- Don't hardcode "today is Friday" — compute from the actual date so a late/catch-up run (Sat/Sun) still reports the same completed week.
 - If Liz gives an explicit range, use it verbatim.
 
 ### 2. Fetch tickets from API
