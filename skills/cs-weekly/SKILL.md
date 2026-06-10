@@ -133,8 +133,30 @@ python3 skills/cs-weekly/scripts/push_notion.py \
   blocks (headings, table, lists, quote, divider, inline bold/italic/code/links),
   strips any redundant leading H1/Period header, and prints the new page URL.
 
-Print the Notion page URL(s) + the headline numbers (tickets / chats / DFY / reviews)
-for each app. Do NOT commit anything to git — there is no .md file in the repo.
+The script prints the new page URL — capture it for step 8.
+
+### 8. Notify the CS Slack channel (after Notion push)
+
+For each app, post a digest to its CS channel via the Avada bot: the TL;DR + a button
+to the Notion report.
+```bash
+python3 skills/cs-weekly/scripts/notify_slack.py \
+  --channel {CHANNEL_ID} \
+  --title "{App} CS Weekly — W## ({DD–DD/MM/YYYY})" \
+  --tldr "{the §1 TL;DR text from the report}" \
+  --notion-url {the URL printed by push_notion.py in step 7}
+```
+- **CS channel IDs:**
+  - Chatty: `C0AUQ2TCSE9`   ("chatty squad")
+  - Joy:    `C07MSUX0VPA`   ("Joy faq")
+- Auth: `SLACK_BOT_TOKEN_AVADA` (bot = `avada_bot`). The bot must be a member of the
+  channel — if posting fails with `not_in_channel`, invite `@avada_bot` there once.
+- The title should match the Notion sub-page title (app + week + date range).
+- Sends Block Kit: header + TL;DR + "📄 Xem full trên Notion" button.
+
+Print the Notion page URL(s), the Slack post confirmation, and the headline numbers
+(tickets / chats / DFY / reviews) for each app. Do NOT commit anything to git — there
+is no .md file in the repo.
 
 ## Report sections (TEMPLATE.md)
 

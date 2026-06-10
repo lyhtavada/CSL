@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+"""
+Post a CS-weekly digest to the app's CS Slack channel via the Avada bot.
+
+Sends a formatted message (Slack Block Kit): a header (app + week), the TL;DR text,
+and a button linking to the full Notion report.
+
+Usage:
+  python3 notify_slack.py \
+    --channel C0XXXXXX \
+    --title "Chatty CS Weekly — W23 (01–07/06/2026)" \
+    --tldr-file /tmp/chatty_tldr.txt \
+    --notion-url https://www.notion.so/...
+
+  # or pass the TL;DR inline:
+  python3 notify_slack.py --channel C0.. --title "..." --tldr "Chatty tuần này..." --notion-url https://...
+
+Auth: SLACK_BOT_TOKEN_AVADA from CSL/.env (bot = avada_bot, team Avada Group).
+The bot must be a member of the target channel (invite it once if posting 404s
+with not_in_channel).
+"""
+import os, sys, json, argparse
+import requests
+from dotenv import load_dotenv
+
+ENV_PATH = "/Users/avada/CSL/.env"
+
+
+def build_blocks(title, tldr, notion_url):
+    return [
+        {"type": "header",
+         "text": {"type": "plain_text", "text": f"📊 {title}", "emoji": True}},
+        {"type": "section",
+         "text": {"type": "mrkdwn", "text": f"*TL;DR*\n{tldr}"}},
+        {"type": "actions",
+         "elements": [
+             {"type": "button",
+              "text": {"type": "plain_text", "text": "📄 Xem full trên Notion", "emoji": True},
+              "url": notion_url,
+              "style": "primary"}
+         ]},
+        {"type": "context",
+         "elements": [{"type": "mrkdwn",
+                       "text": "_Bản tin tự động từ `/cs-weekly` · góp ý gửi Liz_"}]},
+    ]
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--channel", required=True, help="Slack channel ID")
+    ap.add_argument("--title", required=True, help="App + week, e.g. 'Chatty CS Weekly — W23 (01–07/06/2026)'")
+    ap.add_argument("--notion-url", required=True, help="Full Notion page URL")
+    ap.add_argument("--tldr", help="TL;DR text inline")
+    ap.add_argument("--tldr-file", help="Path to a file containing the TL;DR text")
+    a = ap.parse_args()
+
+    if a.tldr_file:
+        with open(a.tldr_file, encoding="utf-8") as f:
+            tldr = f.read().strip()
+    elif a.tldr:
+        tldr = a.tldr.strip()
+    else:
+        print("ERROR: provide --tldr or --tldr-file", file=sys.stderr)
+        sys.exit(2)
+
+    load_dotenv(ENV_PATH)
+    tok = os.environ["SLACK_BOT_TOKEN_AVADA"]
+
+    blocks = build_blocks(a.title, tldr, a.notion_url)
+    # `text` is the notification fallback (shown in the channel list / push).
+    payload = {
+        "channel": a.channel,
+        "text": f"{a.title} — {tldr[:120]}",
+        "blocks": blocks,
+        "unfurl_links": False,
+    }
+    r = requests.post(
+        "https://slack.com/api/chat.postMessage",
+        headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"},
+        data=json.dumps(payload),
+    ).json()
+    if not r.get("ok"):
+        print(f"ERROR posting to Slack: {r.get('error')}", file=sys.stderr)
+        sys.exit(1)
+    print(f"Posted to {a.channel} (ts={r.get('ts')})")
+
+
+if __name__ == "__main__":
+    main()
