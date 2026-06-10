@@ -6,7 +6,7 @@
 ---
 
 ## ⚡ TL;DR
-Tuần này Chatty nhận **261 chats** và **91 tickets** — volume ổn định. Điểm nóng nhất vẫn là **merchant cần hỗ trợ setup AI agent** (chiếm phần lớn chat). Có **1 bug đáng chú ý: phản hồi/note bị gán nhầm conversation** — nhiều merchant report, cần nắm để trấn an + báo dev. Release mới: **AI Human Handover redesign** (đã có auto-trigger). App Store: **2 review, 5.0★** — giữ phong độ.
+Tuần này Chatty nhận **261 chats** và **91 tickets** — volume ổn định. Điểm nóng nhất vẫn là **merchant cần hỗ trợ setup AI agent** (chiếm phần lớn chat). Có **1 bug đáng chú ý: phản hồi/note bị gán nhầm conversation** — nhiều merchant report, cần nắm để trấn an + báo dev. Release mới: **AI Human Handover redesign** (đã có auto-trigger). App Store: **5 review, 4.8★** — vẫn tốt, có 1 review 4★ ngày 02/06 nên check xem merchant góp ý gì.
 
 ---
 
@@ -17,7 +17,7 @@ Tuần này Chatty nhận **261 chats** và **91 tickets** — volume ổn đị
 | Tickets created (API) | 91 | _(điền)_ | — |
 | Chats (BigQuery) | 261 | _(điền)_ | — |
 | DFY created | 0 | 0 | — |
-| Reviews (App Store) | 2 (5.0★) | _(điền)_ | — |
+| Reviews (App Store) | 5 (4.8★) | _(điền)_ | — |
 
 _Nguồn: Ticket API · `avada_cs.crisp_chats` (segments app_chatty + app_faqs) · Shopify App Store reviews. Period 01–07/06. Tuần đầu chạy nên chưa có baseline tuần trước — từ tuần sau sẽ auto so sánh ▲▼._
 
@@ -68,7 +68,7 @@ _(Liz review/bổ sung)_
 ## 🌟 Ghi nhận & tinh thần
 
 - 🙌 **Shoutout:** _(Liz điền — CS xử lý tốt / CSAT cao tuần này)_
-- ✅ **Win tuần này:** App Store giữ 5.0★ (2 review mới đều 5 sao).
+- ✅ **Win tuần này:** App Store 5 review mới, 4.8★ (4 cái 5 sao, 1 cái 4 sao).
 - 🎯 **Focus tuần tới:** _(Liz điền)_
 
 ---
