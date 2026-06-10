@@ -142,10 +142,13 @@ def md_to_blocks(md):
 
 def create_page(parent_id, title, blocks):
     # Notion caps children at 100 per request → create with first 100, append the rest.
+    # position page_start → new sub-page lands at the TOP of the parent (newest first,
+    # so the report list doesn't grow downward over time).
     payload = {
         "parent": {"type": "page_id", "page_id": parent_id},
         "properties": {"title": [{"type": "text", "text": {"content": title}}]},
         "children": blocks[:100],
+        "position": {"type": "page_start"},
     }
     r = requests.post(f"{API}/pages", headers=H(), data=json.dumps(payload))
     if r.status_code != 200:
