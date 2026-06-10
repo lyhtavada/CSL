@@ -55,13 +55,6 @@ _(Liz review/bổ sung)_
 - **Lỗi hay gặp:** {1-2 lỗi từ QA/chat review} → cách làm đúng
 - **Reminder quy trình:** {escalation / refund / extend-limit…}
 
-### 📌 Case khó của tuần
-_(Betty đề xuất candidate, Liz chọn 1)_
-
-> **Tình huống:** {…}
-> **Cách xử lý:** {…}
-> **Bài học:** {…}
-
 ---
 
 ## 🌟 Ghi nhận & tinh thần

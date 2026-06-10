@@ -62,18 +62,6 @@ _(Liz review/bổ sung)_
 - **Lỗi hay gặp:** _(Liz điền từ QA tuần này)_
 - **Reminder quy trình:** Khi merchant report bug đồng loạt (như bug gán nhầm conversation) → đừng xử lý lẻ tẻ, gom screenshot + domain, escalate 1 lần, báo team để trả lời nhất quán.
 
-### 📌 Case khó của tuần
-_(Betty đề xuất — Liz chọn 1 để viết thành case study)_
-
-| # | Dấu hiệu | Độ dài | Session |
-|---|---|---|---|
-| 1 | Chat rất dài, phức tạp | 156 msgs | `session_994cfe87…` |
-| 2 | "not working" — chat dài | 146 msgs | `session_755c226e…` |
-| 3 | **Refund** liên quan | 95 msgs | `session_433e7c1b…` |
-| 4 | "not working" | 95 msgs | `session_fa397576…` |
-
-→ Liz chọn 1 → Betty fetch full transcript qua BigQuery, viết thành: **Tình huống → Cách xử lý → Bài học**.
-
 ---
 
 ## 🌟 Ghi nhận & tinh thần
