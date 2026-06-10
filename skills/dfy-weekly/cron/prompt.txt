@@ -7,8 +7,13 @@ Follow skills/dfy-weekly/SKILL.md exactly:
 - Fetch tickets from https://avada-ts-a9cb0.web.app/api/external/tickets/by-date with appName="JOY Loyalty", startDate, endDate
 - Fetch tags from https://avada-ts-a9cb0.web.app/api/external/tags
 - Identify DFY tickets (subject starts with [DFY]), determine CS creator (members[].isCreate), apply the open-only / sale_request / liz-no-tag filters
-- Build the 3-line Overview block: Số ticket (filtered open set), Adopted (DFY-adopted), Ticket không có tag adopted (= Số ticket − Adopted)
+- ALSO fetch the previous Fri→Thu week (the 7 days before startDate) with the same filters, so the Overview can show week-over-week deltas.
+- Build the 3-line Overview block WITH compare vs last week:
+  * Tổng ticket: {this} ▲/▼ {delta} _(tuần trước {prev})_
+  * Adopted: {this} ({pct}%) ▲/▼ {delta_pct}% _(tuần trước {prev}, {prev_pct}%)_   — delta on the percentage
+  * Ticket không có tag adopted: {this} ▲/▼ {delta} _(tuần trước {prev})_
 - Build per-CS breakdown tables: Date | Ticket | Store | Tasks | Tags  (NO Point column, NO Status column)
+- End the report with a "---" divider then a "## Note" section containing the placeholder "_(Liz điền — feedback khi review với CS)_".
 - Write the markdown to a temp file /tmp/joy-dfy-{YYYY-W##}.md (ISO week of the Thursday end date). The H1 first line must be "# Joy DFY - {start} → {end}".
 
 Then publish to Notion as a NEW sub-page (newest on top — do NOT save into the repo, do NOT commit to git):

@@ -64,13 +64,19 @@ Use `members[].isCreate === true` → `displayName`. Fallback to `memberUpdate.d
 - Exclude `tsStatus === "sale_request"`.
 - Exclude `liz_avada` tickets that have no tags (test tickets).
 
-### 7. Compute Overview
+### 7. Compute Overview (with week-over-week compare)
 
-Keep the Overview to 3 lines (per Liz's template):
+The Overview compares **this week vs the previous Fri→Thu week**. Fetch the previous week too: run the same fetch + filter (steps 2-6) for the 7 days immediately before the current range (e.g. current `30/05→05/06` → previous `23/05→29/05`).
 
-- **Số ticket** = count of DFY tickets in the filtered (open) set from step 6 — the same set the per-CS breakdown tables are built from, so the numbers reconcile.
-- **Adopted** = tickets in that set tagged `DFY-adopted`.
-- **Ticket không có tag adopted** = `Số ticket − Adopted`.
+Compute for BOTH weeks: `Số ticket` (filtered open set), `Adopted` (DFY-adopted), `Adopted %` = adopted / số ticket, `Không tag adopted` = số ticket − adopted.
+
+Then render 3 lines, each showing the delta vs last week:
+
+- **Tổng ticket:** `{this}` `{▲ +N / ▼ -N / = 0}` _(tuần trước {prev})_
+- **Adopted:** `{this} ({this_pct}%)` `{▲ +N% / ▼ -N% / = 0%}` _(tuần trước {prev}, {prev_pct}%)_ — delta is on the **percentage** (this_pct − prev_pct).
+- **Ticket không có tag adopted:** `{this}` `{▲ +N / ▼ -N / = 0}` _(tuần trước {prev})_
+
+Arrow rule: `▲` when up, `▼` when down, `=` when unchanged. Note `▲` on "không tag adopted" is bad, but keep the arrow purely directional — don't recolor by good/bad.
 
 ### 8. Breakdown table per CS — NO Point column
 
@@ -117,18 +123,22 @@ python3 skills/dfy-weekly/scripts/push_notion.py \
 
 ## Overview
 
-- **Số ticket:** 23
-- **Adopted:** 5
-- **Ticket không có tag adopted:** 18
+- **Tổng ticket:** 14 ▼ -11 _(tuần trước 25)_
+- **Adopted:** 8 (57%) ▼ -15% _(tuần trước 18, 72%)_
+- **Ticket không có tag adopted:** 6 ▼ -1 _(tuần trước 7)_
 
 ## {CS Name} ({n} tickets)
 ... breakdown tables ...
+
+---
+
+## Note
+
+_(Liz điền — feedback khi review với CS)_
 ```
 
-Overview notes:
-- **Số ticket** = total DFY tickets created in the week (the open-only filtered set used for the breakdown — same number the per-CS tables add up to).
-- **Adopted** = tickets tagged `DFY-adopted`.
-- **Ticket không có tag adopted** = `Số ticket − Adopted` (everything still pending / not yet adopted).
+- The **Note** section is always the LAST block, after the per-CS breakdown, separated by a `---` divider. Leave the placeholder `_(Liz điền — feedback khi review với CS)_` so Liz fills it in Notion when reviewing with the team.
+- See step 7 for how each Overview line + its ▲▼ delta is computed.
 
 ## Tag reference (DFY tag set)
 
