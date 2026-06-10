@@ -114,13 +114,13 @@ python3 skills/dfy-weekly/scripts/push_notion.py \
 - **Parent page** (Joy DFY Weekly): `36fb0da449f1808d8b3df436c87f7345`
 - The script sets `position: page_start` → **the new sub-page lands at the TOP** of the parent (newest first). Don't change this.
 - **Title** must be `Joy DFY - {start} → {end}` with the Fri→Thu date range (e.g. `Joy DFY - 30/05 → 05/06`).
-- The first line of the markdown is the `#` H1; it duplicates the title inside the page body, which is fine.
+- The markdown body must **NOT** start with an `#` H1 — that would duplicate the page title. Start directly at `## Overview`.
 
 ## Report format
 
-```markdown
-# Joy DFY - {start} → {end}
+The page title (set via `--title`) already shows "Joy DFY - {start} → {end}", so the body must **NOT** repeat it as an H1. Start the body directly at `## Overview`.
 
+```markdown
 ## Overview
 
 - **Tổng ticket:** 14 ▼ -11 _(tuần trước 25)_

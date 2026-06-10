@@ -14,7 +14,7 @@ Follow skills/dfy-weekly/SKILL.md exactly:
   * Ticket không có tag adopted: {this} ▲/▼ {delta} _(tuần trước {prev})_
 - Build per-CS breakdown tables: Date | Ticket | Store | Tasks | Tags  (NO Point column, NO Status column)
 - End the report with a "---" divider then a "## Note" section containing the placeholder "_(Liz điền — feedback khi review với CS)_".
-- Write the markdown to a temp file /tmp/joy-dfy-{YYYY-W##}.md (ISO week of the Thursday end date). The H1 first line must be "# Joy DFY - {start} → {end}".
+- Write the markdown to a temp file /tmp/joy-dfy-{YYYY-W##}.md (ISO week of the Thursday end date). Do NOT start the body with an "# Joy DFY - ..." H1 — the page title already shows that. The body must start directly at "## Overview".
 
 Then publish to Notion as a NEW sub-page (newest on top — do NOT save into the repo, do NOT commit to git):
   python3 skills/dfy-weekly/scripts/push_notion.py --parent 36fb0da449f1808d8b3df436c87f7345 --title "Joy DFY - {DD/MM} → {DD/MM}" --md /tmp/joy-dfy-{YYYY-W##}.md
