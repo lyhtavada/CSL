@@ -78,7 +78,7 @@ per release on what it means for support ("when merchant asks X → now they can
 
 ### 5b. Low reviews (≤3★) → link the bad-review thread
 
-ONLY if §3 found a review **≤3★** in the period. The Slack group `G019ZF7GM7H` is an
+ONLY if step 3 found a review **≤3★** in the period. The Slack group `G019ZF7GM7H` is an
 auto-feed of reviews that need attention (one message per review: `[App name] Review
 by {store} published {date} ...`). For each low review:
 ```python
@@ -88,17 +88,22 @@ requests.get("https://slack.com/api/conversations.history",
 ```
 Match a message by **app name in the `[...]` prefix + the published date ≈ the review
 date** (feed posts may lag the review by a day → widen the window a couple days).
-On match → `chat.getPermalink` and attach the thread link next to that review in §2's
-"⚠️ Review cần lưu ý" line. If no match (the feed doesn't carry every review, only
+On match → `chat.getPermalink` and attach the thread link next to that review in the
+report's §2 "⚠️ Review cần lưu ý" line. If no match (the feed doesn't carry every review, only
 flagged ones) → keep the review note but say `_(không thấy trong feed bad-review)_`,
 do NOT fabricate a link. 4★ and above do NOT trigger this scan.
 
 ### 6. Write the report
 
-Use `reports/weekly-cs/TEMPLATE.md`. Fill §1–4 + §6-win from data. Leave §5 (Coaching)
-and the Shoutout/Focus lines for Liz to review — these need her judgment; write
-`_(Liz điền)_` placeholders, but you MAY pre-fill a process reminder if a repeated
-bug/issue warrants it.
+Use `reports/weekly-cs/TEMPLATE.md`. Fill the report's §1–4 + the §6-win from data.
+Leave the report's §5 (Coaching) and the Shoutout/Focus lines for Liz to review —
+these need her judgment; write `_(Liz điền)_` placeholders, but you MAY pre-fill a
+process reminder if a repeated bug/issue warrants it.
+
+**Do NOT add an H1 title / Period line / intro quote at the top** — the Notion
+sub-page title already carries app + week + date range. The body starts straight at
+`## ⚡ TL;DR` (the template already omits these; `push_notion.py` also strips any
+leading H1/Period block as a safety net).
 
 Write the filled report to a TEMP file (not committed to the repo — reports live in
 Notion only):
@@ -121,9 +126,12 @@ python3 skills/cs-weekly/scripts/push_notion.py \
   - Joy:    `37bb0da449f18054b553c00929e711cb` ("Joy CS Weekly")
 - **Title MUST include the date range** (Liz's rule), format:
   `Chatty CS Weekly — W23 (01–07/06/2026)`.
+- **New sub-page lands at the TOP** of the parent (the script sends
+  `position: page_start`) so the newest report is always first — no scrolling down
+  as reports accumulate.
 - Auth: `NOTION_API_KEY` from `.env`. The script parses the markdown into Notion
-  blocks (headings, table, lists, quote, divider, inline bold/italic/code/links)
-  and prints the new page URL.
+  blocks (headings, table, lists, quote, divider, inline bold/italic/code/links),
+  strips any redundant leading H1/Period header, and prints the new page URL.
 
 Print the Notion page URL(s) + the headline numbers (tickets / chats / DFY / reviews)
 for each app. Do NOT commit anything to git — there is no .md file in the repo.
