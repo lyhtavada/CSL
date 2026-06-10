@@ -8,8 +8,10 @@ Follow skills/cs-weekly/SKILL.md exactly. For EACH app (chatty, then joy):
 - If any review is ≤3★ (check low_reviews in the output), scan Slack group G019ZF7GM7H (token SLACK_BOT_TOKEN_AVADA) for that review by app name + published date, attach the thread permalink to the "Review cần lưu ý" line in §2; if no match, note "(không thấy trong feed bad-review)" — do not fabricate a link. 4★+ does not trigger this.
 - Cluster top issues from the period's chats (fetch_chats.py with enough --days to cover the period, then read JSON; cluster into 3-5 themes by volume, each with a 1-line fix/KB pointer; flag any repeated bug)
 - Scan Slack channel C07RNAY9ZC6 for releases in the period using SLACK_BOT_TOKEN_AVADA; link permalinks via chat.getPermalink; keep only releases relevant to that app
-- Fill the §2 metrics table, compare vs last week by reading the previous week's report file if it exists (show ▲▼)
-- Write the report using reports/weekly-cs/TEMPLATE.md. Fill §1-4 and the §6 win line from data. Leave §5 Coaching and the Shoutout/Focus lines as "_(Liz điền)_" placeholders (Liz reviews these). Keep it ~1 screen; hide empty sub-blocks.
-- Save to reports/weekly-cs/{chatty|joy}/{app}-cs-weekly-{YYYY-W##}.md using the ISO week of the Sunday end date.
+- Fill the §2 metrics table; for the "tuần trước" column re-run fetch_metrics + fetch_reviews on the PRIOR Mon→Sun window and show ▲▼ vs this week
+- Write the report using reports/weekly-cs/TEMPLATE.md. Fill §1-4 and the §6 win line from data. Leave §5 Coaching and the Shoutout/Focus lines as "_(Liz điền)_" placeholders (Liz reviews these). Keep it ~1 screen; hide empty sub-blocks. Write it to a temp file /tmp/{app}-cs-weekly-{YYYY-W##}.md (ISO week of the Sunday end date). Do NOT save into the repo or commit to git — reports live in Notion only.
+- Push to Notion as a new sub-page under the app's parent page:
+  python3 skills/cs-weekly/scripts/push_notion.py --parent {PARENT} --title "{App} CS Weekly — W## ({DD–DD/MM/YYYY})" --md /tmp/{app}-cs-weekly-{YYYY-W##}.md
+  Parent page IDs: Chatty = 37bb0da449f180729d79fcfc6d43c35a, Joy = 37bb0da449f18054b553c00929e711cb. The title MUST include the date range.
 
-After writing BOTH files, commit them to git with message "cs-weekly: auto report {YYYY-W##}" and print the saved paths plus the headline numbers (tickets / chats / DFY / reviews) for each app.
+After pushing BOTH apps to Notion, print the Notion page URLs plus the headline numbers (tickets / chats / DFY / reviews) for each app. Do NOT commit anything to git.

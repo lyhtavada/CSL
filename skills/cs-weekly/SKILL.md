@@ -1,7 +1,7 @@
 ---
 name: cs-weekly
-description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest), then clusters top issues from chats, scans the #product-release Slack channel for releases in the period, and writes a team-facing report. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
-version: 1.0.0
+description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest), then clusters top issues from chats, scans the #product-release Slack channel for releases in the period, and publishes a team-facing report as a new sub-page under the app's Notion page (one sub-page per week, title includes the date range). Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
+version: 1.1.0
 ---
 
 # CS Weekly Skill
@@ -98,22 +98,41 @@ and the Shoutout/Focus lines for Liz to review — these need her judgment; writ
 `_(Liz điền)_` placeholders, but you MAY pre-fill a process reminder if a repeated
 bug/issue warrants it.
 
-Save to:
-- Chatty: `reports/weekly-cs/chatty/chatty-cs-weekly-{YYYY-W##}.md`
-- Joy:    `reports/weekly-cs/joy/joy-cs-weekly-{YYYY-W##}.md`
+Write the filled report to a TEMP file (not committed to the repo — reports live in
+Notion only):
+- Chatty: `/tmp/chatty-cs-weekly-{YYYY-W##}.md`
+- Joy:    `/tmp/joy-cs-weekly-{YYYY-W##}.md`
 
 Keep it ~1 screen. Hide any sub-block with nothing new.
 
-### 7. Commit
+### 7. Push to Notion (one sub-page per week)
 
-`git add` the report(s) and commit: `cs-weekly: auto report {YYYY-W##}`.
-Print the saved path(s) + the headline numbers.
+Each report becomes a NEW sub-page under the app's parent Notion page:
+```bash
+python3 skills/cs-weekly/scripts/push_notion.py \
+  --parent {PARENT_PAGE_ID} \
+  --title "{App} CS Weekly — W## ({DD–DD/MM/YYYY})" \
+  --md /tmp/{app}-cs-weekly-{YYYY-W##}.md
+```
+- **Parent page IDs** (Notion integration already shared with these pages):
+  - Chatty: `37bb0da449f180729d79fcfc6d43c35a` ("Chatty CS Weekly")
+  - Joy:    `37bb0da449f18054b553c00929e711cb` ("Joy CS Weekly")
+- **Title MUST include the date range** (Liz's rule), format:
+  `Chatty CS Weekly — W23 (01–07/06/2026)`.
+- Auth: `NOTION_API_KEY` from `.env`. The script parses the markdown into Notion
+  blocks (headings, table, lists, quote, divider, inline bold/italic/code/links)
+  and prints the new page URL.
+
+Print the Notion page URL(s) + the headline numbers (tickets / chats / DFY / reviews)
+for each app. Do NOT commit anything to git — there is no .md file in the repo.
 
 ## Report sections (TEMPLATE.md)
 
 1. **TL;DR** — 2-3 sentences from the data.
 2. **📊 Tình hình support** — table: tickets / chats / DFY / reviews, vs last week (▲▼).
-   Last week's baseline: read the previous week's report file if it exists.
+   Last week's baseline: re-run fetch_metrics/fetch_reviews for the PRIOR Mon→Sun
+   window (cheap, deterministic) rather than reading an old report — there is no
+   .md file in the repo anymore.
 3. **🔥 Top issues** — 3-5 themes from chats, each with a fix/KB pointer.
 4. **🆕 Cập nhật sản phẩm & policy** — releases from #product-release + known bugs open.
 5. **💡 Coaching & lưu ý** — Liz reviews/fills.
@@ -131,3 +150,7 @@ Print the saved path(s) + the headline numbers.
 - Chatty has no DFY program yet → `dfy_created` is 0; keep the row but it's expected.
 - This is team-facing: tone clear and encouraging, language Vietnamese (per workspace
   default for internal team content), short.
+- **Output is Notion-only** — one sub-page per week under the app's parent page
+  (Chatty/Joy IDs in §7). No .md in the repo, no git commit. Title MUST carry the
+  date range. `NOTION_API_KEY` from `.env`; integration is already shared with both
+  parent pages (re-share if push 404s). Notion API, not MCP — survives headless cron.
