@@ -59,18 +59,8 @@ def fetch(slug, start, end, max_pages=40):
     return rows
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--slug", required=True, help="joyio (Joy) or chatty (Chatty)")
-    ap.add_argument("--start", required=True, help="YYYY-MM-DD inclusive")
-    ap.add_argument("--end", required=True, help="YYYY-MM-DD inclusive")
-    ap.add_argument("--json", action="store_true")
-    a = ap.parse_args()
-
-    start = datetime.datetime.strptime(a.start, "%Y-%m-%d").date()
-    end = datetime.datetime.strptime(a.end, "%Y-%m-%d").date()
-
-    rows = fetch(a.slug, start, end)
+def summarize(slug, start, end):
+    rows = fetch(slug, start, end)
     inwin = [(d, r) for d, r in rows if start <= d <= end]
     n = len(inwin)
     avg = round(sum(r for _, r in inwin if r) / n, 2) if n else 0.0
@@ -78,11 +68,9 @@ def main():
     for _, r in inwin:
         dist[r] = dist.get(r, 0) + 1
     low = [{"date": str(d), "rating": r} for d, r in inwin if r and r <= 3]
-
-    out = {
-        "slug": a.slug,
-        "start": a.start,
-        "end": a.end,
+    return {
+        "start": str(start),
+        "end": str(end),
         "count": n,
         "avg": avg,
         "distribution": {str(k): v for k, v in sorted(dist.items(), reverse=True)},
@@ -90,14 +78,36 @@ def main():
         "reviews": [{"date": str(d), "rating": r} for d, r in sorted(inwin, reverse=True)],
     }
 
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--slug", required=True, help="joyio (Joy) or chatty (Chatty)")
+    ap.add_argument("--start", required=True, help="YYYY-MM-DD inclusive")
+    ap.add_argument("--end", required=True, help="YYYY-MM-DD inclusive")
+    ap.add_argument("--compare", action="store_true",
+                    help="also pull the prior Mon→Sun week for ▲▼ comparison")
+    ap.add_argument("--json", action="store_true")
+    a = ap.parse_args()
+
+    start = datetime.datetime.strptime(a.start, "%Y-%m-%d").date()
+    end = datetime.datetime.strptime(a.end, "%Y-%m-%d").date()
+
+    this = summarize(a.slug, start, end)
+    out = {"slug": a.slug, "this_week": this}
+    if a.compare:
+        d = datetime.timedelta(days=7)
+        out["prev_week"] = summarize(a.slug, start - d, end - d)
+
     if a.json:
         print(json.dumps(out, ensure_ascii=False, indent=2))
     else:
-        print(f"{a.slug}: {n} reviews {a.start}–{a.end} | avg {avg}★ | dist {out['distribution']}")
-        if low:
-            print(f"  ⚠️ low (≤3★): {low}")
-        for rv in out["reviews"]:
-            print(f"   {rv['date']}  {rv['rating']}★")
+        t = this
+        print(f"{a.slug}: {t['count']} reviews {t['start']}–{t['end']} | avg {t['avg']}★ | dist {t['distribution']}")
+        if t["low_reviews"]:
+            print(f"  ⚠️ low (≤3★): {t['low_reviews']}")
+        if a.compare:
+            p = out["prev_week"]
+            print(f"  prev: {p['count']} reviews {p['start']}–{p['end']} | avg {p['avg']}★")
 
 
 if __name__ == "__main__":

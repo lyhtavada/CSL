@@ -31,24 +31,26 @@ When Liz says `/cs-weekly`, "CS weekly", "report tuần cho team CS", or via cro
 Compute `start` (Monday) and `end` (Sunday) as YYYY-MM-DD. Note the ISO week of the
 Sunday end date for the filename (`W##`).
 
-### 2. Pull metrics (per app)
+### 2. Pull metrics (per app) — with `--compare` for ▲▼
 
 ```bash
-python3 skills/cs-weekly/scripts/fetch_metrics.py --app {chatty|joy} --start {start} --end {end} --json
+python3 skills/cs-weekly/scripts/fetch_metrics.py --app {chatty|joy} --start {start} --end {end} --compare --json
 ```
-Returns `tickets_created`, `dfy_created`, `chats`. Sources: Ticket API
-(`AVD_TICKET_API_KEY`), BigQuery `avada_cs.crisp_chats` (Chatty = segments
-`app_chatty,app_faqs`; Joy = `app_joy`).
+`--compare` returns BOTH `this_week` and `prev_week` (the prior Mon→Sun window) so you
+can compute ▲▼ for §2 — **the comparison data is re-pulled live from source, not read
+from an old file** (reports live in Notion only). Each block has `tickets_created`,
+`dfy_created`, `chats`. Sources: Ticket API (`AVD_TICKET_API_KEY`), BigQuery
+`avada_cs.crisp_chats` (Chatty = segments `app_chatty,app_faqs`; Joy = `app_joy`).
 
-### 3. Pull App Store reviews (per app)
+### 3. Pull App Store reviews (per app) — with `--compare`
 
 ```bash
-python3 skills/cs-weekly/scripts/fetch_reviews.py --slug {joyio|chatty} --start {start} --end {end} --json
+python3 skills/cs-weekly/scripts/fetch_reviews.py --slug {joyio|chatty} --start {start} --end {end} --compare --json
 ```
-Slugs: Joy = `joyio`, Chatty = `chatty`. Returns `count`, `avg`, `distribution`,
-`low_reviews` (≤3★ — call these out in the report). The script uses
-`?sort_by=newest&page=N` and takes the FIRST date/rating per block — do NOT change
-this (see the script header for the 3 bugs this avoids).
+`--compare` returns `this_week` + `prev_week`. Slugs: Joy = `joyio`, Chatty = `chatty`.
+Each block has `count`, `avg`, `distribution`, `low_reviews` (≤3★ — call these out).
+The script uses `?sort_by=newest&page=N` and takes the FIRST date/rating per block —
+do NOT change this (see the script header for the 3 bugs this avoids).
 
 ### 4. Cluster top issues from chats
 
@@ -130,9 +132,9 @@ for each app. Do NOT commit anything to git — there is no .md file in the repo
 
 1. **TL;DR** — 2-3 sentences from the data.
 2. **📊 Tình hình support** — table: tickets / chats / DFY / reviews, vs last week (▲▼).
-   Last week's baseline: re-run fetch_metrics/fetch_reviews for the PRIOR Mon→Sun
-   window (cheap, deterministic) rather than reading an old report — there is no
-   .md file in the repo anymore.
+   Get "tuần trước" from the `--compare` flag's `prev_week` block (re-pulled live from
+   source) — there is no .md file in the repo to read. Show ▲▼ % for tickets/chats,
+   ▲▼ count for reviews.
 3. **🔥 Top issues** — 3-5 themes from chats, each with a fix/KB pointer.
 4. **🆕 Cập nhật sản phẩm & policy** — releases from #product-release + known bugs open.
 5. **💡 Coaching & lưu ý** — Liz reviews/fills.

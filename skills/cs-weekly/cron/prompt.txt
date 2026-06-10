@@ -3,12 +3,12 @@ Run the /cs-weekly skill for BOTH apps (Chatty and Joy) for last week.
 Today is Monday. The target period is Monday → Sunday of LAST week: i.e. the 7 days ending yesterday (Sunday). Compute the exact startDate (last week's Monday) and endDate (yesterday, Sunday) yourself from today's date.
 
 Follow skills/cs-weekly/SKILL.md exactly. For EACH app (chatty, then joy):
-- Pull metrics: python3 skills/cs-weekly/scripts/fetch_metrics.py --app {app} --start {start} --end {end} --json  (tickets created, DFY created, chats)
-- Pull reviews: python3 skills/cs-weekly/scripts/fetch_reviews.py --slug {joyio|chatty} --start {start} --end {end} --json  (App Store, sort_by=newest)
+- Pull metrics: python3 skills/cs-weekly/scripts/fetch_metrics.py --app {app} --start {start} --end {end} --compare --json  (returns this_week + prev_week for ▲▼; tickets created, DFY created, chats)
+- Pull reviews: python3 skills/cs-weekly/scripts/fetch_reviews.py --slug {joyio|chatty} --start {start} --end {end} --compare --json  (this_week + prev_week; App Store, sort_by=newest)
 - If any review is ≤3★ (check low_reviews in the output), scan Slack group G019ZF7GM7H (token SLACK_BOT_TOKEN_AVADA) for that review by app name + published date, attach the thread permalink to the "Review cần lưu ý" line in §2; if no match, note "(không thấy trong feed bad-review)" — do not fabricate a link. 4★+ does not trigger this.
 - Cluster top issues from the period's chats (fetch_chats.py with enough --days to cover the period, then read JSON; cluster into 3-5 themes by volume, each with a 1-line fix/KB pointer; flag any repeated bug)
 - Scan Slack channel C07RNAY9ZC6 for releases in the period using SLACK_BOT_TOKEN_AVADA; link permalinks via chat.getPermalink; keep only releases relevant to that app
-- Fill the §2 metrics table; for the "tuần trước" column re-run fetch_metrics + fetch_reviews on the PRIOR Mon→Sun window and show ▲▼ vs this week
+- Fill the §2 metrics table; the "tuần trước" column comes from the prev_week block of the --compare output (live from source, no file needed); show ▲▼ % for tickets/chats and ▲▼ count for reviews
 - Write the report using reports/weekly-cs/TEMPLATE.md. Fill §1-4 and the §6 win line from data. Leave §5 Coaching and the Shoutout/Focus lines as "_(Liz điền)_" placeholders (Liz reviews these). Keep it ~1 screen; hide empty sub-blocks. Write it to a temp file /tmp/{app}-cs-weekly-{YYYY-W##}.md (ISO week of the Sunday end date). Do NOT save into the repo or commit to git — reports live in Notion only.
 - Push to Notion as a new sub-page under the app's parent page:
   python3 skills/cs-weekly/scripts/push_notion.py --parent {PARENT} --title "{App} CS Weekly — W## ({DD–DD/MM/YYYY})" --md /tmp/{app}-cs-weekly-{YYYY-W##}.md

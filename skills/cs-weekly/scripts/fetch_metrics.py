@@ -81,11 +81,28 @@ def chat_count(segments, start, end):
     return list(client.query(sql, job_config=job).result())[0].n
 
 
+def metrics_for(cfg, start, end, key):
+    tickets, dfy = ticket_counts(cfg["ticket_app"], start, end, key)
+    chats = chat_count(cfg["segments"], start, end)
+    return {"start": start, "end": end,
+            "tickets_created": tickets, "dfy_created": dfy, "chats": chats}
+
+
+def prev_week(start, end):
+    """The Mon→Sun window immediately before [start, end]."""
+    d = datetime.timedelta(days=7)
+    s = (datetime.datetime.strptime(start, "%Y-%m-%d").date() - d).isoformat()
+    e = (datetime.datetime.strptime(end, "%Y-%m-%d").date() - d).isoformat()
+    return s, e
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--app", required=True, choices=["chatty", "joy"])
     ap.add_argument("--start", required=True, help="YYYY-MM-DD inclusive")
     ap.add_argument("--end", required=True, help="YYYY-MM-DD inclusive")
+    ap.add_argument("--compare", action="store_true",
+                    help="also pull the prior Mon→Sun week for ▲▼ comparison")
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
 
@@ -93,21 +110,23 @@ def main():
     cfg = APP_CFG[a.app]
     key = os.environ["AVD_TICKET_API_KEY"]
 
-    tickets, dfy = ticket_counts(cfg["ticket_app"], a.start, a.end, key)
-    chats = chat_count(cfg["segments"], a.start, a.end)
+    this = metrics_for(cfg, a.start, a.end, key)
+    out = {"app": a.app, "this_week": this}
 
-    out = {
-        "app": a.app,
-        "start": a.start,
-        "end": a.end,
-        "tickets_created": tickets,
-        "dfy_created": dfy,
-        "chats": chats,
-    }
+    if a.compare:
+        ps, pe = prev_week(a.start, a.end)
+        out["prev_week"] = metrics_for(cfg, ps, pe, key)
+
     if a.json:
         print(json.dumps(out, ensure_ascii=False, indent=2))
     else:
-        print(f"{a.app} {a.start}–{a.end}: tickets={tickets} dfy={dfy} chats={chats}")
+        t = this
+        print(f"{a.app} {t['start']}–{t['end']}: "
+              f"tickets={t['tickets_created']} dfy={t['dfy_created']} chats={t['chats']}")
+        if a.compare:
+            p = out["prev_week"]
+            print(f"  prev {p['start']}–{p['end']}: "
+                  f"tickets={p['tickets_created']} dfy={p['dfy_created']} chats={p['chats']}")
 
 
 if __name__ == "__main__":
