@@ -17,22 +17,26 @@
 | Tickets created (API) | {N} | {N-1} | {▲▼ %} |
 | Chats (BigQuery) | {N} | {N-1} | {▲▼ %} |
 | DFY created | {N} | {N-1} | {▲▼ %} |
-| Reviews (App Store) | {N} ({avg}★) | {N-1} | {▲▼} |
+| Reviews (App Store) | {N} ({avg}★) | {N-1} ({avg}★) | {▲▼} |
 
-_Nguồn: Ticket API · `avada_cs.crisp_chats` · DFY ticket tags · Shopify App Store reviews. Period {START}–{END}._
+_Nguồn: Ticket API · `avada_cs.crisp_chats` · DFY ticket tags · Shopify App Store reviews (sort_by=newest). Period {START}–{END}._
+{Nếu có review ≤3★ trong tuần → thêm dòng: ⚠️ **Review cần lưu ý:** {ngày} {rating}★ — nên đọc xem merchant góp ý gì.}
+{Chatty chưa có DFY program → DFY created = 0 là bình thường, không phải sụt.}
 
 ---
 
 ## 🔥 Top issues tuần này
 
-_Chủ đề merchant hỏi/than nhiều nhất — đọc để trả lời nhanh & đúng._
+_Chủ đề merchant hỏi/than nhiều nhất (cluster từ chat) — đọc để trả lời nhanh & đúng. Sắp theo độ phổ biến._
 
-1. **{Issue}** — ~{N} chats
+1. **{Issue}** — {nhiều nhất / phổ biến / lác đác}
    → _Cách xử lý:_ {1 dòng / link KB}
-2. **{Issue}** — ~{N} chats
+2. **{Issue}** — {…}
    → _Cách xử lý:_ {1 dòng / link KB}
-3. **{Issue}** — ~{N} chats
+3. **{Issue}** — {…}
    → _Cách xử lý:_ {1 dòng / link KB}
+
+_(Chat không gán nhãn sẵn → xếp theo mức độ phổ biến, không phải con số tuyệt đối.)_
 
 ---
 
