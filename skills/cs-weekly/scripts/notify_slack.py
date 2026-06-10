@@ -18,7 +18,14 @@ Usage:
 Auth: SLACK_BOT_TOKEN_AVADA from CSL/.env (bot = avada_bot, team Avada Group).
 The bot must be a member of the target channel (invite it once if posting 404s
 with not_in_channel).
+
+By default the message is posted with Liz's name + avatar (--as-user, default ON)
+so it reads as coming from Liz — the bot looks up her profile live and passes
+username/icon_url. Slack still shows a small "APP" tag (unavoidable with a bot token;
+only a Liz user token would remove it). Pass --no-as-user to post as the plain bot.
 """
+
+LIZ_USER_ID = "U02GT4PC6RH"  # Hoàng Thị Ly / Ly (Liz)
 import os, sys, json, argparse
 import requests
 from dotenv import load_dotenv
@@ -45,6 +52,19 @@ def build_blocks(title, tldr, notion_url):
     ]
 
 
+def liz_identity(tok):
+    """Live-fetch Liz's display name + avatar so the post reads as from her."""
+    r = requests.get("https://slack.com/api/users.info",
+                     headers={"Authorization": f"Bearer {tok}"},
+                     params={"user": LIZ_USER_ID}).json()
+    if not r.get("ok"):
+        return None, None
+    p = r["user"]["profile"]
+    name = p.get("display_name") or p.get("real_name")
+    avatar = p.get("image_192") or p.get("image_512")
+    return name, avatar
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--channel", required=True, help="Slack channel ID")
@@ -52,6 +72,9 @@ def main():
     ap.add_argument("--notion-url", required=True, help="Full Notion page URL")
     ap.add_argument("--tldr", help="TL;DR text inline")
     ap.add_argument("--tldr-file", help="Path to a file containing the TL;DR text")
+    ap.add_argument("--no-as-user", dest="as_user", action="store_false",
+                    help="post as the plain avada_bot instead of as Liz")
+    ap.set_defaults(as_user=True)
     a = ap.parse_args()
 
     if a.tldr_file:
@@ -74,6 +97,13 @@ def main():
         "blocks": blocks,
         "unfurl_links": False,
     }
+    # Post as Liz (name + avatar) by default — reads as coming from her.
+    if a.as_user:
+        name, avatar = liz_identity(tok)
+        if name:
+            payload["username"] = name
+        if avatar:
+            payload["icon_url"] = avatar
     r = requests.post(
         "https://slack.com/api/chat.postMessage",
         headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"},
