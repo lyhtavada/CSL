@@ -93,29 +93,40 @@ Group by the **KPI nickname** from step 4.
 
 | Date | Ticket | Store | Status | Tasks | Tags | Point |
 |------|--------|-------|--------|-------|------|-------|
-| 2026-05-22 | [JOY-...](link) | store.myshopify.com | In progress | 15/16 | DFY-1, DFY-video | 90 |
+| 2026-05-22 | [JOY-...](link) | store.myshopify.com | In progress | 15/16 | DFY-1, DFY-video | 125 |
 | 2026-05-23 | [JOY-...](link) | store2.myshopify.com | In progress | 8/12 | DFY-coupon-images | 5 |
-| **Total** | | | | | | **95** |
+| **Total** | | | | | | **130** |
 ```
 
 - **Status:** `In progress` (only open tickets are fetched; closed tickets are excluded in step 2)
 - **Tasks:** `{completed}/{total}`
 - **Tags:** comma-separated tag names from `tagIds`
-- **Point:** auto-calculated — sum the point value of every scoring tag on the ticket (see **Point rules** below). A ticket can have multiple scoring tags → cộng dồn. Tags không có điểm = 0.
+- **Point:** auto-calculated — Required (`DFY-1` = 75) + Recommended (coupon/banner/icon cộng dồn, **trần 25p**) + Video (`DFY-video` = 50). A ticket can have multiple scoring tags → cộng dồn theo nhóm (xem **Point rules** below). Tags không có điểm = 0.
 
 ### Point rules
 
-| Tag | Point |
-|-----|-------|
-| DFY-1 | 60 |
-| DFY-coupon-images | 5 |
-| DFY-tier-banner | 10 |
-| DFY-tier-icon | 10 |
-| DFY-video | 30 |
+Điểm chia theo 3 nhóm:
+- **Required: 75p** — tag `DFY-1` (level đạt được). Đây là phần bắt buộc.
+- **Recommended: tổng trần 25p** — bonus, cộng dồn các tag dưới đây (tối đa 25p):
+  - `DFY-coupon-images` = 5
+  - `DFY-tier-banner` = 10
+  - `DFY-tier-icon` = 10
+- **Video: 50p** — tag `DFY-video`.
+
+| Tag | Nhóm | Point |
+|-----|------|-------|
+| DFY-1 | Required | 75 |
+| DFY-coupon-images | Recommended | 5 |
+| DFY-tier-banner | Recommended | 10 |
+| DFY-tier-icon | Recommended | 10 |
+| DFY-video | Video | 50 |
 
 All other tags (`DFY-adopted`, `DFY-no-adopt`, `DFY-following-up`, `review-yes`) = 0 point.
 
-Ví dụ: ticket có `DFY-1` + `DFY-video` → Point = 60 + 30 = **90**.
+Recommended cộng dồn nhưng **trần 25p** (nếu có cả 3 tag = 5+10+10 = 25, đúng trần).
+
+Ví dụ: ticket có `DFY-1` + `DFY-video` → Point = 75 + 50 = **125**.
+Ví dụ: ticket có `DFY-1` + `DFY-coupon-images` + `DFY-tier-banner` + `DFY-tier-icon` → 75 + 25 = **100**.
 
 Add a **Total** row per CS summing the Point column.
 
@@ -126,17 +137,19 @@ Add a **Total** row per CS summing the Point column.
 
 ## Tag reference
 
-| Tag | Meaning | Point |
-|-----|---------|-------|
-| DFY-1 | Level đạt được | 60 |
-| DFY-adopted | MC giữ lại widget sau follow-up | 0 |
-| DFY-coupon-images | DFY làm coupon images | 5 |
-| DFY-following-up | Đang chờ follow-up | 0 |
-| DFY-no-adopt | MC không adopt | 0 |
-| DFY-tier-banner | DFY làm tier banner | 10 |
-| DFY-tier-icon | DFY làm tier icon | 10 |
-| DFY-video | Có quay video kết quả | 30 |
-| review-yes | Convert được review từ DFY flow | 0 |
+| Tag | Meaning | Nhóm | Point |
+|-----|---------|------|-------|
+| DFY-1 | Level đạt được | Required | 75 |
+| DFY-adopted | MC giữ lại widget sau follow-up | — | 0 |
+| DFY-coupon-images | DFY làm coupon images | Recommended | 5 |
+| DFY-following-up | Đang chờ follow-up | — | 0 |
+| DFY-no-adopt | MC không adopt | — | 0 |
+| DFY-tier-banner | DFY làm tier banner | Recommended | 10 |
+| DFY-tier-icon | DFY làm tier icon | Recommended | 10 |
+| DFY-video | Có quay video kết quả | Video | 50 |
+| review-yes | Convert được review từ DFY flow | — | 0 |
+
+> Recommended (coupon + banner + icon) cộng dồn nhưng **trần 25p**.
 
 ## Output
 
