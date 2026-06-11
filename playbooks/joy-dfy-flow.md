@@ -2,7 +2,7 @@
 
 **Owner:** Liz (CS Leader)
 **Created:** 2026-05-18
-**Updated:** 2026-05-25
+**Updated:** 2026-06-11
 
 > Xem mục đích & tinh thần DFY: [`joy-dfy-intro.md`](./joy-dfy-intro.md)
 
@@ -62,6 +62,11 @@ CS chủ động offer free white-glove service cho MC, dùng shortcut `!v4-rcm`
 - CS có thể show kết quả sơ bộ với MC trước để tăng khả năng xin review — sau đó hẹn MC gửi kết quả hoàn thiện sau
 - CS được khuyến khích tự do sáng tạo và custom thêm cho phù hợp với store — miễn là Required items đã hoàn thành
 
+**Tips chung (xem chi tiết + ví dụ ở Notion "Joy DFY Best practices"):**
+- **Đọc brand store trước khi setup:** đọc màu, font, phong cách (tối giản/sặc sỡ, cao cấp/gần gũi) rồi mới làm. Mục tiêu là on-brand, không phải tick cho hết checklist.
+- **Content trên store đã launch:** store đã launch (V3, hoặc V4 đã live) → KHÔNG sửa content trực tiếp, viết đề xuất qua email recommendation. Chỉ V4 chưa launch mới chỉnh trực tiếp.
+- **Lấy ảnh từ chính store của KH:** cần ảnh cho widget (header, banner, card, coupon) → ưu tiên ảnh sản phẩm/brand có sẵn trên store, không dùng ảnh stock lạc tông.
+
 ---
 
 ## 5. Default checklist (CS audit)
@@ -72,30 +77,37 @@ Mục tiêu của DFY không phải là tick hết checklist — mà là làm ch
 
 Checklist chia 2 phần: **Required** (bắt buộc mọi store) và **Recommended** (CS tự đánh giá — thêm nếu phù hợp, skip nếu không, ghi note lý do).
 
+> Chi tiết "nên làm gì" cho từng item + ví dụ store thật: xem Notion **"Joy DFY Best practices"**.
+
 ### Required
 
-- [ ] Primary color + button color + text color phù hợp với brand, độ tương phản tốt
-- [ ] Logo ở widget header (nếu thấy phù hợp)
+- [ ] Primary / button / text color phù hợp brand, độ tương phản tốt
+- [ ] Logo ở widget header (nếu logo pro, phù hợp)
+- [ ] Header background image (nếu phù hợp — ưu tiên ảnh từ store)
+- [ ] Loyalty program name (Brand name + Rewards/Club)
 - [ ] Point icon đã custom hợp lý
-- [ ] Loyalty program name
+- [ ] Font inherit từ store font
+- [ ] Card border (có/không tùy store — chỉnh weight + màu phù hợp)
 - [ ] Point label phù hợp brand
-- [ ] Header background image (nếu thấy phù hợp)
-- [ ] Login with Shop đã bật nếu store có Login with shop option
-- [ ] Drawer type
-- [ ] Button shape giống với button shape ở store
-- [ ] Content từng block đã viết lại onbrand (đặc biệt welcome messages)
-- [ ] Referral banner image nếu store có chạy referral program
-- [ ] Membership card images — Guest view
-- [ ] Membership card images — Member view
-- [ ] Ảnh của member profile sau khi login
-- [ ] Các block không cần thiết đã ẩn
-- [ ] Footer menu match với store
-- [ ] Program order đã sort hợp lý
+- [ ] Login with Shop bật nếu store enable (chưa enable → recommend MC)
+- [ ] Drawer type (drawer / floating drawer để fully display program)
+- [ ] Button shape giống button ở store
+- [ ] Content từng block viết lại on-brand (đặc biệt welcome message — có thể dùng AI onbrand)
+- [ ] Referral banner image nếu store chạy referral
+- [ ] Membership card image — Guest view
+- [ ] Membership card image — Member view
+- [ ] Ảnh member profile avatar sau khi login
+- [ ] Footer menu match settings
+- [ ] Recommended products — hover đổi ảnh (match behavior với store)
+- [ ] Ẩn các block không cần thiết
+- [ ] Program order sort hợp lý
+
+> ⚠ **Content/text trên store đã launch:** Point label + Content từng block chỉ đổi TRỰC TIẾP khi store ở V4 và CHƯA launch. Nếu store ở V3 hoặc V4 đã launch → KHÔNG đổi trực tiếp, viết đề xuất trong email recommendation cho KH.
 
 ### Recommended
 
 - [ ] My coupon images
-- [ ] Ways to earn / redeem images
+- [ ] Ways to earn / redeem images (cân nhắc — nhiều ảnh quá gây rối, đẩy program xuống dưới fold)
 - [ ] Tier icon custom theo từng tier
 - [ ] Tier banner custom theo store
 
