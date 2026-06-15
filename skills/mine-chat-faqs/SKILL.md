@@ -1,6 +1,6 @@
 ---
 name: mine-chat-faqs
-description: Mine FAQ from real Crisp chats for a Joy or Chatty app. Use when the user asks to "mine FAQ", "tổng hợp FAQ từ chat", "build FAQ from chats", or wants to analyze recent merchant conversations and produce a standard-answer FAQ file. Fetches chats from BigQuery (avada_cs.crisp_chats) by segment + date window, clusters questions into feature categories, compares against the agent KB, and writes one standard answer per FAQ. Output goes to /Users/avada/claw-weebhook-crisp-chat/Liz/faq_from_chats/{app}/{app}_{start}_{end}.md
+description: Mine FAQ from real Crisp chats for a Joy or Chatty app. Use when the user asks to "mine FAQ", "tổng hợp FAQ từ chat", "build FAQ from chats", or wants to analyze recent merchant conversations and produce a standard-answer FAQ file. Fetches chats from BigQuery (avada_cs.crisp_chats) by segment + date window, clusters questions into feature categories, compares against the agent KB, and writes one standard answer per FAQ. Output goes to /Users/avada/CSL/reports/weekly-faqs/{app}/{app}_{start}_{end}.md
 version: 1.0.0
 ---
 
@@ -17,7 +17,7 @@ User says things like: "mine FAQ cho Joy", "tổng hợp FAQ từ chat 7 ngày",
 - **App / segment** — default to what the user names:
   - **Joy** → segment `app_joy`
   - **Chatty** → segments `app_chatty,app_faqs` (Chatty spans BOTH; always pass both, comma-separated — the script ORs them and dedups by session)
-- **Window** — look-back in days (default 7).
+- **Window** — either a rolling look-back (`--days`, default 7) or an exact calendar window (`--start`/`--end`, inclusive `YYYY-MM-DD`). The weekly cron uses `--start`/`--end` for the previous full Mon→Sun week.
 - **KB dir** — Joy: `agents/joy-loyalty-agent/knowledge/`; Chatty: `agents/chatty-agent/knowledge/`.
 
 Bias toward action — don't over-ask. If the user already named the app and window, run.
@@ -37,7 +37,10 @@ Key columns: `session_id`, `segments`, `timestamp`, `type`, `fromType` (`user` =
 
 ```bash
 cd /Users/avada/CSL/skills/mine-chat-faqs
+# Rolling 7-day window:
 python3 scripts/fetch_chats.py --segment app_joy --days 7 --output /tmp/joy_convs.json
+# Or an exact calendar week (what the weekly cron uses):
+python3 scripts/fetch_chats.py --segment app_joy --start 2026-06-08 --end 2026-06-14 --output /tmp/joy_convs.json
 # Chatty — pass BOTH segments:
 python3 scripts/fetch_chats.py --segment app_chatty,app_faqs --days 7 --output /tmp/chatty_convs.json
 ```
@@ -67,7 +70,7 @@ Each answer must:
 
 ### 4b. Dedup against previous runs
 
-Before writing, check the app's folder (`Liz/faq_from_chats/{app}/`) for earlier dated files. For each FAQ in the new run, decide:
+Before writing, check the app's folder (`reports/weekly-faqs/{app}/`) for earlier dated files. For each FAQ in the new run, decide:
 
 - **Recurring** — same question already covered in a prior run. Keep it, but mark it `🔁 recurring` next to the frequency. A high recurring frequency = the KB/bot still isn't resolving it → worth flagging.
 - **New** — not seen in any prior file. Mark it `🆕 new`.
@@ -78,7 +81,7 @@ If there are no prior runs, skip the markers and the summary.
 
 ### 5. Write the output file
 
-Path: `/Users/avada/claw-weebhook-crisp-chat/Liz/faq_from_chats/{app}/{app}_{YYYY-MM-DD}_{YYYY-MM-DD}.md`
+Path: `/Users/avada/CSL/reports/weekly-faqs/{app}/{app}_{YYYY-MM-DD}_{YYYY-MM-DD}.md`
 (`{app}` = `joy` or `chatty`; dates = window start/end.)
 
 Header block:
@@ -95,23 +98,24 @@ Write in **English** unless the user asks otherwise.
 ## Output layout
 
 ```
-Liz/faq_from_chats/
+reports/weekly-faqs/
 ├── joy/
-│   └── joy_2026-05-27_2026-06-03.md
+│   └── joy_2026-06-08_2026-06-14.md
 └── chatty/
-    └── chatty_2026-05-27_2026-06-03.md
+    └── chatty_2026-06-08_2026-06-14.md
 ```
 
 One file per mining run, dropped into the per-app folder. These are reference/analysis files — they do NOT go into the agent KB or RAG index unless the user explicitly asks to deploy them.
 
 ## Notes
 
-- If the user wants the result indexed into the bot, copy the file into the agent's `knowledge/` dir and run `/deploy-agent {agent}`. By default, keep it under `Liz/` only.
+- If the user wants the result indexed into the bot, copy the file into the agent's `knowledge/` dir and run `/deploy-agent {agent}`. By default, keep it under `CSL/reports/weekly-faqs/` only.
 - No Anthropic API key needed — do the clustering and answer-writing inline with your own analysis. (An earlier approach called the Claude API but the key was revoked; inline is the supported path.)
 
 ## Weekly automation
 
-A launchd job runs this skill for both apps every Monday — see `cron/README.md`.
-Source of truth lives in `cron/` (versioned in CSL); `cron/install.sh` symlinks the
-plist into `~/Library/LaunchAgents`. Output goes to `Liz/` for later review; it does
-not touch the agent KB.
+A launchd job runs this skill for both apps every **Monday 16:00**, mining the
+**previous full Mon→Sun week** — see `cron/README.md`. Source of truth lives in
+`cron/` (versioned in CSL); `cron/install.sh` symlinks the plist into
+`~/Library/LaunchAgents`. Output goes to `CSL/reports/weekly-faqs/{app}/` for later
+review; it does not touch the agent KB.

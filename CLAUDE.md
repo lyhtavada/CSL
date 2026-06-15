@@ -123,7 +123,7 @@ Skills live in `skills/[name]/SKILL.md`. Use the Skill tool to invoke them.
 | `/dfy-tracker` | **Monthly DFY KPI** — pull DFY tickets from Avada Ticket API → group by CS → report with Point scoring (Joy or Chatty) |
 | `/dfy-weekly` | **Weekly DFY monitoring** (Fri→Thu) — Overview (created/open/adopted/no-adopt/adopt rate %) + per-CS breakdown, no points |
 | `/cs-weekly` | **Weekly CS bulletin** cho team CS từng app (Chatty/Joy). Period Mon→Sun tuần trước. Auto pull tickets + chats + DFY + App Store reviews (compare tuần trước) → top issues + release từ #product-release → push Notion subpage (mới nhất lên đầu, title có date range) → gửi Slack digest nhóm CS as Liz + link Notion. KHÔNG lưu repo. Coaching/shoutout để Liz điền. Cron T2 9AM |
-| `/mine-chat-faqs` | Mine FAQ from real Crisp chats (BigQuery `avada_cs.crisp_chats`) by segment + window → cluster questions → write standard answers. Runs weekly via launchd; output to `claw-weebhook-crisp-chat/Liz/faq_from_chats/` |
+| `/mine-chat-faqs` | Mine FAQ from real Crisp chats (BigQuery `avada_cs.crisp_chats`) by segment + window → cluster questions → write standard answers. Runs weekly via launchd (Mon 16:00, previous Mon→Sun week); output to `reports/weekly-faqs/{app}/` |
 
 ## Bots
 

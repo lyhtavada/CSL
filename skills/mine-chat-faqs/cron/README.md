@@ -1,8 +1,8 @@
 # Weekly FAQ mining (launchd)
 
-Runs the `mine-chat-faqs` skill every **Tuesday 10:00 local** for both Joy and
-Chatty over the last 7 days, writing dated files into
-`claw-weebhook-crisp-chat/Liz/faq_from_chats/{app}/`. You review the output
+Runs the `mine-chat-faqs` skill every **Monday 16:00 local** for both Joy and
+Chatty over the **previous full calendar week (Mon→Sun)**, writing dated files into
+`CSL/reports/weekly-faqs/{app}/`. You review the output
 afterward — nothing is pushed to the agent KB or RAG.
 
 ## Files (source of truth, versioned in CSL)
@@ -10,7 +10,7 @@ afterward — nothing is pushed to the agent KB or RAG.
 | File | Role |
 |---|---|
 | `run-weekly.sh` | Headless runner — calls `claude -p` with the mining prompt for both apps |
-| `com.avada.mine-faqs.plist` | launchd schedule (Tue 10:00), symlinked into `~/Library/LaunchAgents` |
+| `com.avada.mine-faqs.plist` | launchd schedule (Mon 16:00), symlinked into `~/Library/LaunchAgents` |
 | `install.sh` | Symlinks + loads the job (or `--remove` to uninstall) |
 
 ## Install

@@ -3,7 +3,10 @@
 Fetch real Crisp chat conversations from BigQuery for FAQ mining.
 
 Usage:
+  # Rolling window (look back N days from now):
   python3 fetch_chats.py --segment app_joy --days 7 --output /tmp/joy_convs.json
+  # Explicit calendar window (inclusive dates, e.g. last full Mon–Sun week):
+  python3 fetch_chats.py --segment app_joy --start 2026-06-08 --end 2026-06-14 --output /tmp/joy_convs.json
   # Chatty spans two segments — pass both (comma-separated), they are OR'd:
   python3 fetch_chats.py --segment app_chatty,app_faqs --days 7 --output /tmp/chatty_convs.json
 
@@ -50,19 +53,33 @@ def get_client():
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--segment", required=True, help="Crisp segment(s), comma-separated. e.g. app_joy OR app_chatty,app_faqs")
-    p.add_argument("--days", type=int, default=7, help="Look-back window in days (default 7)")
+    p.add_argument("--days", type=int, default=7, help="Rolling look-back window in days (default 7). Ignored if --start/--end given.")
+    p.add_argument("--start", help="Window start date YYYY-MM-DD (inclusive). Use with --end for an exact calendar window.")
+    p.add_argument("--end", help="Window end date YYYY-MM-DD (inclusive). Use with --start.")
     p.add_argument("--output", required=True, help="Output JSON path")
     p.add_argument("--min-len", type=int, default=2, help="Drop messages shorter than this many chars")
     args = p.parse_args()
+
+    if bool(args.start) != bool(args.end):
+        p.error("--start and --end must be given together")
 
     client = get_client()
 
     segments = [s.strip() for s in args.segment.split(",") if s.strip()]
     # OR the segments together: a session in ANY of them qualifies.
     seg_clause = " OR ".join(f"segments LIKE @seg{i}" for i in range(len(segments)))
-    params = [bigquery.ScalarQueryParameter("days", "INT64", args.days)]
+    params = []
     for i, seg in enumerate(segments):
         params.append(bigquery.ScalarQueryParameter(f"seg{i}", "STRING", f"%{seg}%"))
+
+    if args.start:
+        # Explicit calendar window: [start 00:00, end+1day 00:00) — end date inclusive.
+        time_clause = "timestamp >= TIMESTAMP(@start) AND timestamp < TIMESTAMP_ADD(TIMESTAMP(@end), INTERVAL 1 DAY)"
+        params.append(bigquery.ScalarQueryParameter("start", "STRING", args.start))
+        params.append(bigquery.ScalarQueryParameter("end", "STRING", args.end))
+    else:
+        time_clause = "timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL @days DAY)"
+        params.append(bigquery.ScalarQueryParameter("days", "INT64", args.days))
 
     sql = f"""
     SELECT
@@ -70,7 +87,7 @@ def main():
       ARRAY_AGG(STRUCT(timestamp, fromType, content) ORDER BY timestamp) AS messages
     FROM `avada-crm.avada_cs.crisp_chats`
     WHERE ({seg_clause})
-      AND timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL @days DAY)
+      AND {time_clause}
       AND type = 'text'
       AND content IS NOT NULL
       AND TRIM(content) != ''
@@ -100,8 +117,9 @@ def main():
     user_msgs = sum(
         1 for c in conversations for m in c["messages"] if m["role"] == "Customer"
     )
+    window_desc = f"{args.start} → {args.end}" if args.start else f"last {args.days} days"
     print(f"Segment(s):     {', '.join(segments)}")
-    print(f"Window:         last {args.days} days")
+    print(f"Window:         {window_desc}")
     print(f"Sessions:       {len(conversations)}")
     print(f"Total messages: {total_msgs}")
     print(f"Customer msgs:  {user_msgs}")
