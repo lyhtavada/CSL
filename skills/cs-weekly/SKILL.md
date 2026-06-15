@@ -147,7 +147,7 @@ python3 skills/cs-weekly/scripts/notify_slack.py \
   --notion-url {the URL printed by push_notion.py in step 7}
 ```
 - **CS channel IDs:**
-  - Chatty: `C0AUQ2TCSE9`   (`chatty-squad`)
+  - Chatty: `C07LZNWEUUD`   (`chatty-cs`)
   - Joy:    `C07MSUX0VPA`   (`joy-faqs`)
 - Auth: `SLACK_BOT_TOKEN_AVADA` (bot = `avada_bot`). The bot must be a member of the
   channel — if posting fails with `not_in_channel`, invite `@avada_bot` there once.
@@ -193,5 +193,5 @@ is no .md file in the repo.
   parent pages (re-share if push 404s). Notion API, not MCP — survives headless cron.
 - **Slack digest (step 8)** runs AFTER the Notion push and links to it — Notion is the
   source of truth, Slack is just the ping. Posts AS LIZ (name + avatar) via the Avada
-  bot to `chatty-squad` (`C0AUQ2TCSE9`) / `joy-faqs` (`C07MSUX0VPA`). If the Notion
+  bot to `chatty-cs` (`C07LZNWEUUD`) / `joy-faqs` (`C07MSUX0VPA`). If the Notion
   push fails, skip the Slack post for that app (don't ping a broken link).
