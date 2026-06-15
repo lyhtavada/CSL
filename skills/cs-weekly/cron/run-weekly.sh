@@ -2,7 +2,8 @@
 #
 # Weekly CS bulletin run — invoked by launchd (com.avada.cs-weekly).
 # Runs Claude Code headless to generate the team-facing CS weekly reports
-# for Chatty + Joy (period = Mon→Sun of last week) into reports/weekly-cs/.
+# for Chatty + Joy (period = Mon→Sun of last week). Output = Notion sub-pages
+# only (one per app) + a Slack digest to each CS channel — nothing written to the repo.
 #
 # Manual run:  bash run-weekly.sh
 #

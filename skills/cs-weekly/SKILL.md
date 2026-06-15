@@ -171,7 +171,9 @@ is no .md file in the repo.
 
 ## Report sections (TEMPLATE.md)
 
-1. **TL;DR** — 2-3 sentences from the data.
+1. **TL;DR** — 2-3 sentences from the data: lead with the §2 numbers + the hottest
+   ticket-based theme/bug of the week. Do NOT phrase it as "merchant vào hỏi…" (that's
+   the old chat framing) — chat is only a count metric now.
 2. **📊 Tình hình support** — table: tickets / chats / DFY / reviews, vs last week (▲▼).
    Get "tuần trước" from the `--compare` flag's `prev_week` block (re-pulled live from
    source) — there is no .md file in the repo to read. Show ▲▼ % for tickets/chats,
