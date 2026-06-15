@@ -1,6 +1,6 @@
 ---
 name: cs-weekly
-description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest) — each compared vs the prior week — then clusters top issues from chats, scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
+description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest) — each compared vs the prior week — then clusters top issues from tickets (Ticket API, [dfy] excluded), scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
 version: 1.2.0
 ---
 
@@ -52,16 +52,22 @@ Each block has `count`, `avg`, `distribution`, `low_reviews` (≤3★ — call t
 The script uses `?sort_by=newest&page=N` and takes the FIRST date/rating per block —
 do NOT change this (see the script header for the 3 bugs this avoids).
 
-### 4. Cluster top issues from chats
+### 4. Cluster top issues from tickets
 
-Fetch the period's chats and read the first customer message per session:
+Top issues come from **tickets** (Ticket API), NOT chats. Run for EACH app (chatty + joy):
 ```bash
-python3 skills/mine-chat-faqs/scripts/fetch_chats.py --segment {app_chatty,app_faqs | app_joy} --days {N} --output /tmp/{app}_week.json
+python3 skills/cs-weekly/scripts/fetch_tickets.py --app {chatty|joy} --start {start} --end {end} --json
 ```
-`fetch_chats.py` only takes `--days` (look-back from today), so pass enough days to
-cover the period, then read the JSON. Cluster the asks into 3-5 themes, rank by
-volume, and for each give a 1-line "cách xử lý" + KB pointer. Flag any bug merchants
-report repeatedly (→ Known bugs in §4 of the report).
+Returns each ticket's `subject` + `description` + `priority` + `status` for the period.
+`[dfy]` tickets are **excluded by default** (they have their own row in §2 and aren't
+support issues) — pass `--include-dfy` only if Liz wants them counted.
+
+Read the subjects + descriptions, cluster the asks into 3-5 themes, rank by volume,
+and for each give a 1-line "cách xử lý" + KB pointer. The `[bug]` subject prefix marks
+bug reports — flag any bug reported repeatedly (→ Known bugs in §4 of the report).
+
+(Chat volume is still pulled in §2 as a metric via `fetch_metrics.py` — only the
+top-issue clustering moved from chats to tickets.)
 
 ### 5. Scan #product-release for releases in the period
 
@@ -170,7 +176,7 @@ is no .md file in the repo.
    Get "tuần trước" from the `--compare` flag's `prev_week` block (re-pulled live from
    source) — there is no .md file in the repo to read. Show ▲▼ % for tickets/chats,
    ▲▼ count for reviews.
-3. **🔥 Top issues** — 3-5 themes from chats, each with a fix/KB pointer.
+3. **🔥 Top issues** — 3-5 themes from tickets (Ticket API, `[dfy]` excluded), each with a fix/KB pointer.
 4. **🆕 Cập nhật sản phẩm & policy** — releases from #product-release + known bugs open.
 5. **💡 Coaching & lưu ý** — Liz reviews/fills.
 6. **🌟 Ghi nhận & tinh thần** — win (auto, e.g. review streak) + Liz's shoutout/focus.
