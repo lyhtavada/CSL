@@ -1,0 +1,19 @@
+Run the /kb-sync skill in DIFF-ONLY mode for BOTH apps (chatty, then joy).
+
+For each app:
+1. Run scripts/prep.py <app> to cache the live KB and locate the newest mined-FAQ
+   file in ~/claw-weebhook-crisp-chat/Liz/faq_from_chats/<app>/.
+2. Produce the diff: classify each mined FAQ as COVERED / OUTDATED / GAP / PARTIAL
+   against the cached KB (verify every discrepancy against the real file).
+3. Build the payloads file at
+   reports/analysis/kb-sync-<app>-<window-end-date>-payloads.json for the
+   OUTDATED/GAP/PARTIAL items (full new file content per entry).
+
+DO NOT push to v2 and DO NOT reindex. This is a review-gate run.
+
+When both apps are done, post ONE Slack DM to Liz (use the Slack bot token in
+~/CSL/.env) summarizing per app: # OUTDATED / # GAP / # PARTIAL, the top 5 items by
+frequency, and the payloads file paths — and tell her to run, after review:
+  python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>
+Keep the digest short. Do not commit anything to the repo except the payloads +
+a brief diff report under reports/analysis/.

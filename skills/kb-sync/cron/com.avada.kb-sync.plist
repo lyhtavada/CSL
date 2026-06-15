@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.avada.kb-sync</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/avada/CSL/skills/kb-sync/cron/run-weekly.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/avada/CSL</string>
+
+  <!-- Every Tuesday at 10:00 local — the day after /mine-chat-faqs (Mon) runs,
+       so the newest mined-FAQ file exists. Diff-only; never auto-pushes. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>2</integer>
+    <key>Hour</key>
+    <integer>10</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <!-- launchd runs a missed calendar job once on next wake; it does not wake the Mac. -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/kb-sync-weekly.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/kb-sync-weekly.log</string>
+</dict>
+</plist>

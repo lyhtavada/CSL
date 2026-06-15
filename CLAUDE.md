@@ -124,6 +124,7 @@ Skills live in `skills/[name]/SKILL.md`. Use the Skill tool to invoke them.
 | `/dfy-weekly` | **Weekly DFY monitoring** (Fri→Thu) — Overview (created/open/adopted/no-adopt/adopt rate %) + per-CS breakdown, no points |
 | `/cs-weekly` | **Weekly CS bulletin** cho team CS từng app (Chatty/Joy). Period Mon→Sun tuần trước. Auto pull tickets + chats + DFY + App Store reviews (compare tuần trước) → top issues + release từ #product-release → push Notion subpage (mới nhất lên đầu, title có date range) → gửi Slack digest nhóm CS as Liz + link Notion. KHÔNG lưu repo. Coaching/shoutout để Liz điền. Cron T2 9AM |
 | `/mine-chat-faqs` | Mine FAQ from real Crisp chats (BigQuery `avada_cs.crisp_chats`) by segment + window → cluster questions → write standard answers. Runs weekly via launchd (Mon 16:00, previous Mon→Sun week); output to `reports/weekly-faqs/{app}/` |
+| `/kb-sync` | **Đồng bộ FAQ tuần → KB CS v2** (Chatty/Ivy + Joy). Lấy file mined-FAQ mới nhất → so với KB live trên `cs2.avada.net` → diff (COVERED/OUTDATED/GAP/PARTIAL) → soạn patch file hiện tại → **Liz duyệt** → push (`POST /api/kb/file`, auto git commit) + reindex (`POST /api/kb/reindex`). Cron T3 10:00 chỉ chạy tới bước diff rồi DM Liz duyệt, KHÔNG tự push. Scripts: `skills/kb-sync/scripts/{prep,push_kb,kb_api}.py` |
 
 ## Bots
 
