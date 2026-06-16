@@ -5,7 +5,7 @@
 # CS v2 KB for both apps, build payloads, and DM Liz to review.
 # It does NOT push to v2 and does NOT reindex (review-gate).
 #
-# Scheduled Tuesday 10:00 — the day AFTER /mine-chat-faqs (Mon) writes new files.
+# Scheduled Monday 16:30 — 30 min AFTER /mine-chat-faqs (Mon 16:00) writes new files.
 #
 # Manual run:  bash run-weekly.sh
 #

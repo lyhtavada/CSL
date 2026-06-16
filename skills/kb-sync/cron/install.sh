@@ -31,12 +31,12 @@ launchctl unload "$DEST" 2>/dev/null || true
 ln -sf "$SRC" "$DEST"
 launchctl load "$DEST"
 
-echo "Installed $LABEL → runs Tuesdays 10:00 local (diff only, never auto-pushes)."
+echo "Installed $LABEL → runs Mondays 16:30 local (diff only, never auto-pushes)."
 echo "  plist (source): $SRC"
 echo "  symlink:        $DEST"
 echo "  log:            /tmp/kb-sync-weekly.log"
 echo
-echo "Test now without waiting for Tuesday 10:00:"
+echo "Test now without waiting for Monday 16:30:"
 echo "  launchctl start $LABEL"
 echo "  # or run the script directly:"
 echo "  bash $HERE/run-weekly.sh"

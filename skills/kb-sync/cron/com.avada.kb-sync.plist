@@ -14,16 +14,16 @@
   <key>WorkingDirectory</key>
   <string>/Users/avada/CSL</string>
 
-  <!-- Every Tuesday at 10:00 local — the day after /mine-chat-faqs (Mon) runs,
+  <!-- Every Monday at 16:30 local — 30 min after /mine-chat-faqs (Mon 16:00) runs,
        so the newest mined-FAQ file exists. Diff-only; never auto-pushes. -->
   <key>StartCalendarInterval</key>
   <dict>
     <key>Weekday</key>
-    <integer>2</integer>
+    <integer>1</integer>
     <key>Hour</key>
-    <integer>10</integer>
+    <integer>16</integer>
     <key>Minute</key>
-    <integer>0</integer>
+    <integer>30</integer>
   </dict>
 
   <!-- launchd runs a missed calendar job once on next wake; it does not wake the Mac. -->

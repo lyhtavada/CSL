@@ -5,7 +5,7 @@ Weekly **diff-only** run of `/kb-sync` — never auto-pushes to v2.
 | | |
 |---|---|
 | Label | `com.avada.kb-sync` |
-| Schedule | Tuesday 10:00 local (day after `/mine-chat-faqs` Mon 16:00) |
+| Schedule | Monday 16:30 local (30 min after `/mine-chat-faqs` Mon 16:00) |
 | Script | `run-weekly.sh` → Claude headless, `--dangerously-skip-permissions` |
 | Auth | Claude subscription OAuth (no API bill); reads `CS2_API_TOKEN` from `~/CSL/.env` |
 | Log | `/tmp/kb-sync-weekly.log` |
