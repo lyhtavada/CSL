@@ -2,7 +2,7 @@ Run the /kb-sync skill in DIFF-ONLY mode for BOTH apps (chatty, then joy).
 
 For each app:
 1. Run scripts/prep.py <app> to cache the live KB and locate the newest mined-FAQ
-   file in ~/claw-weebhook-crisp-chat/Liz/faq_from_chats/<app>/.
+   file in ~/CSL/reports/weekly-faqs/<app>/.
 2. Produce the diff: classify each mined FAQ as COVERED / OUTDATED / GAP / PARTIAL
    against the cached KB (verify every discrepancy against the real file).
 3. Build the payloads file at

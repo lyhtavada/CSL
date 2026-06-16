@@ -10,7 +10,7 @@ Usage:
 
   <app>        chatty | joy
   --faq <p>    explicit mined-FAQ file (default: newest in
-               ~/claw-weebhook-crisp-chat/Liz/faq_from_chats/<app>/)
+               ~/CSL/reports/weekly-faqs/<app>/)
 
 Output:
   - downloads every KB file to /tmp/kb-sync/<app>/<flattened-path>
@@ -24,7 +24,7 @@ import sys
 
 import kb_api
 
-FAQ_DIR = os.path.expanduser("~/claw-weebhook-crisp-chat/Liz/faq_from_chats")
+FAQ_DIR = os.path.expanduser("~/CSL/reports/weekly-faqs")
 
 
 def latest_faq(app):

@@ -18,7 +18,7 @@ approves, then push + reindex.
 
 - **app** — `chatty` (agent `chatty-agent` / Ivy) or `joy` (agent `joy-loyalty-agent`).
   Ask if not given. Default: do `chatty` first.
-- **FAQ file** — newest in `~/claw-weebhook-crisp-chat/Liz/faq_from_chats/<app>/`
+- **FAQ file** — newest in `~/CSL/reports/weekly-faqs/<app>/`
   (output of `/mine-chat-faqs`). Liz can override with an explicit path.
 
 ## The v2 KB API (confirmed)
