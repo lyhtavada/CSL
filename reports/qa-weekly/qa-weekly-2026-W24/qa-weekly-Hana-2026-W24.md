@@ -7,7 +7,7 @@
 - Trục yếu nhất: **Xử lý**
 
 ## 📝 Nhận xét chung
-Hana giữ phong độ ổn định, ownership mạnh và kiến thức Joy vững (NCA/duplicate account, grandfathered pricing, Omnisend). Nhưng tuần này có một vấn đề NGHIÊM TRỌNG về bảo mật: bạn xin và nhận mật khẩu admin live store của khách (chat #1) — điều tuyệt đối không được làm, phải dùng Shopify collaborator request như chính bạn đã làm đúng ở chat #28. Ngoài ra còn lỗi gửi tin trùng (KN1, lặp từ W23) và lệch ngôn ngữ với khách Ý (KN3). Ưu tiên số 1 tuần tới: không bao giờ xin mật khẩu/thông tin đăng nhập của khách.
+Hana giữ phong độ ổn định, ownership mạnh và kiến thức Joy vững (NCA/duplicate account, grandfathered pricing, Omnisend). Tuần này còn lỗi gửi tin trùng (KN1, lặp từ W23), lệch ngôn ngữ với khách Ý (KN3) và xin review khi vẫn đang xử lý issue (QT22). Ưu tiên tuần tới: dùng đúng Shopify collaborator request khi cần truy cập store (như bạn đã làm đúng ở chat #28), tránh gửi tin trùng và giữ ngôn ngữ khớp với khách.
 
 ## ✅ Điểm tốt
 - Strong ownership — proactive DFY and full issue resolution
