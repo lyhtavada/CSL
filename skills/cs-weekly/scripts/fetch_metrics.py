@@ -43,6 +43,17 @@ def ticket_counts(app_name, start, end, key):
     return total, dfy
 
 
+# A "conversation" = one CONTACT, not one Crisp session_id. Crisp keeps a single
+# session_id per visitor forever, so a merchant who comes back across the week (or
+# across months) stays ONE session_id — counting DISTINCT session_id under-counts the
+# real support volume (measured ~40% low on Chatty, ~70% on Joy for a sample week).
+# Instead we "sessionize": within a session_id, a silence gap >= GAP_HOURS starts a new
+# conversation. 6h is the sweet spot — long enough not to split a chat still awaiting a
+# reply overnight-ish, short enough to catch a genuine return. (1h over-splits replies
+# after a break; 24h collapses to ~per-day.) Change GAP_HOURS to retune.
+GAP_HOURS = 6
+
+
 def chat_count(segments, start, end):
     from google.oauth2 import service_account
     from google.cloud import bigquery
@@ -69,13 +80,24 @@ def chat_count(segments, start, end):
     # end is inclusive → query strictly before end+1 day at 00:00 +07
     end_excl = (datetime.datetime.strptime(end, "%Y-%m-%d").date()
                 + datetime.timedelta(days=1)).isoformat()
+    # Count message-rows that START a conversation: the first text in a session_id
+    # (gap_h IS NULL) or any text following a silence >= GAP_HOURS.
     sql = f"""
-    SELECT COUNT(DISTINCT session_id) AS n
-    FROM `avada-crm.avada_cs.crisp_chats`
-    WHERE ({seg_clause})
-      AND timestamp >= TIMESTAMP("{start} 00:00:00+07")
-      AND timestamp <  TIMESTAMP("{end_excl} 00:00:00+07")
-      AND type = 'text' AND content IS NOT NULL AND TRIM(content) != ''
+    WITH msgs AS (
+      SELECT
+        TIMESTAMP_DIFF(
+          timestamp,
+          LAG(timestamp) OVER (PARTITION BY session_id ORDER BY timestamp),
+          HOUR
+        ) AS gap_h
+      FROM `avada-crm.avada_cs.crisp_chats`
+      WHERE ({seg_clause})
+        AND timestamp >= TIMESTAMP("{start} 00:00:00+07")
+        AND timestamp <  TIMESTAMP("{end_excl} 00:00:00+07")
+        AND type = 'text' AND content IS NOT NULL AND TRIM(content) != ''
+    )
+    SELECT COUNTIF(gap_h IS NULL OR gap_h >= {GAP_HOURS}) AS n
+    FROM msgs
     """
     job = bigquery.QueryJobConfig(query_parameters=params)
     return list(client.query(sql, job_config=job).result())[0].n

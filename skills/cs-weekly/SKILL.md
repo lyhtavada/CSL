@@ -42,6 +42,14 @@ from an old file** (reports live in Notion only). Each block has `tickets_create
 `dfy_created`, `chats`. Sources: Ticket API (`AVD_TICKET_API_KEY`), BigQuery
 `avada_cs.crisp_chats` (Chatty = segments `app_chatty,app_faqs`; Joy = `app_joy`).
 
+**`chats` = conversations, sessionized — NOT DISTINCT session_id.** Crisp keeps one
+session_id per visitor forever, so a merchant returning across the week stays one
+session_id; counting distinct sessions under-counts real volume (~40% low on Chatty,
+~70% on Joy in a sample week). The script splits a session_id into a new conversation
+whenever there's a silence gap ≥ `GAP_HOURS` (default **6h**, set in `fetch_metrics.py`).
+6h = long enough not to split a chat still awaiting a reply, short enough to catch a
+genuine return. Retune via `GAP_HOURS` if needed.
+
 ### 3. Pull App Store reviews (per app) — with `--compare`
 
 ```bash
