@@ -42,21 +42,40 @@ def _top_line(items):
     return " · ".join(f"{i['name']} ({i['count']})" for i in items)
 
 
+def _delta(cur, prev):
+    """▲▼ so tuần trước cho số %; trả chuỗi ' (▲2.1)' / '' nếu thiếu data."""
+    if not isinstance(cur, (int, float)) or not isinstance(prev, (int, float)):
+        return ""
+    d = round(cur - prev, 1)
+    if d == 0:
+        return " (▬)"
+    return f" ({'▲' if d > 0 else '▼'}{abs(d)})"
+
+
 def botqa_block(qa):
-    """qa = dict output của fetch_bot_qa.py. Trả về 1 section block mrkdwn."""
-    k = qa.get("kpi", {})
-    bot = qa.get("name") or {"chatty": "Ivy", "joy": "Joyce"}.get(qa.get("app"), "Bot")
-    cov = k.get("verifyCoveragePct")
+    """qa = output của fetch_bot_qa.py (có handle + qa, optional prevWeek).
+    Trả 1 section block: Bot performance (Handle) + Bot QA (phần con)."""
+    bot = {"chatty": "Ivy", "joy": "Joyce"}.get(qa.get("app"), "Bot")
+    h, q = qa.get("handle", {}), qa.get("qa", {})
+    prev = qa.get("prevWeek", {})
+    ph, pq = prev.get("handle", {}), prev.get("qa", {})
+
+    cov = q.get("verifyCoveragePct")
     flag = " ⚠️ _verify thấp — team verify thêm nhé_" if isinstance(cov, (int, float)) and cov < VERIFY_FLAG_PCT else ""
-    reply = k.get("botReplies")
-    wc = qa.get("weekCounts", {})
+    reply = q.get("botReplies")
+
     lines = [
-        f"🤖 *Bot QA tuần này ({bot})*",
-        f"• Verify coverage: *{cov}%* ({wc.get('verifiedInWeek')}/{reply} reply){flag}",
-        f"• Correction rate: *{k.get('correctionRatePct')}%* ({wc.get('correctionsInWeek')}/{reply} reply)",
-        f"• Verify đúng: *{k.get('verifyCorrectPct')}%*",
-        f"🏆 Top verify: {_top_line(qa.get('topVerifiers'))}",
-        f"🔧 Top correction: {_top_line(qa.get('topCorrectors'))}",
+        f"🤖 *Bot performance tuần này ({bot})*",
+        f"*Handle*",
+        f"• Bot resolve rate: *{h.get('resolveRatePct')}%*{_delta(h.get('resolveRatePct'), ph.get('resolveRatePct'))} — {h.get('sessions')} session, bot tự xử (human không vào)",
+        f"   _AI coverage {h.get('aiReplyCoveragePct')}% · Human takeover {h.get('humanTakeoverPct')}% · Escalation {h.get('escalationRatePct')}%_",
+        f"• Volume: {h.get('inbound')} tin vào · {h.get('botReplies')} reply bot",
+        f"*QA*",
+        f"• Verify coverage: *{cov}%*{_delta(cov, pq.get('verifyCoveragePct'))} ({q.get('verifiedInWeek')}/{reply} reply){flag}",
+        f"• Correction rate: *{q.get('correctionRatePct')}%*{_delta(q.get('correctionRatePct'), pq.get('correctionRatePct'))} ({q.get('correctionsInWeek')}/{reply} reply)",
+        f"• Verify đúng: *{q.get('verifyCorrectPct')}%*",
+        f"🏆 Top verify: {_top_line(q.get('topVerifiers'))}",
+        f"🔧 Top correction: {_top_line(q.get('topCorrectors'))}",
     ]
     return {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(lines)}}
 

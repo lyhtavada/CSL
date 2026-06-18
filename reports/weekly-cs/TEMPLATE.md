@@ -5,9 +5,22 @@ _(Title của Notion sub-page đã chứa app + tuần + date range → KHÔNG l
 
 ---
 
-## 🤖 Bot QA tuần này ({Ivy nếu Chatty / Joyce nếu Joy})
+## 🤖 Bot performance tuần này ({Ivy nếu Chatty / Joyce nếu Joy})
 
-_Tỉ lệ reply của bot được human CS vào verify / correct. Nguồn: dashboard chỉ số vận hành `cs2.avada.net` (`/api/obs/metrics`), range = tuần report (Mon→Sun)._
+_Nguồn: dashboard chỉ số vận hành `cs2.avada.net` (`/api/obs/metrics`) + reviews/corrections, range = tuần report (Mon→Sun), compare tuần trước._
+
+**Handle (vận hành)**
+
+| Chỉ số | Tuần này | Tuần trước | |
+|---|---|---|---|
+| Bot resolve rate | {RESOLVE}% | {N-1}% | {▲▼} |
+| AI reply coverage | {AICOV}% | {N-1}% | {▲▼} |
+| Human takeover | {TAKEOVER}% | {N-1}% | {▲▼} |
+| Escalation rate | {ESCAL}% | {N-1}% | {▲▼} |
+
+_Resolve rate = % session bot tự xử, human KHÔNG nhảy vào = (total − human_active)/total. Volume: {INBOUND} tin vào · {REPLY} reply bot._
+
+**QA (chất lượng — human CS verify / correct)**
 
 | Chỉ số | Tuần này | Tuần trước | |
 |---|---|---|---|

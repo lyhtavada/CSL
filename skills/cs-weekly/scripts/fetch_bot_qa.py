@@ -124,10 +124,15 @@ def verifier_name(r, e2n):
     return None  # answer-guard / auto / no human
 
 
-def main():
-    if len(sys.argv) != 4:
-        sys.exit("usage: fetch_bot_qa.py <chatty|joy> <from YYYY-MM-DD> <to YYYY-MM-DD>")
-    app, frm, to = sys.argv[1].lower(), sys.argv[2], sys.argv[3]
+def prev_week(frm, to):
+    """Mon→Sun ngay trước [frm,to]: lùi đúng 7 ngày cả 2 mốc (không cần Date.now)."""
+    from datetime import date, timedelta
+    f = date.fromisoformat(frm) - timedelta(days=7)
+    t = date.fromisoformat(to) - timedelta(days=7)
+    return f.isoformat(), t.isoformat()
+
+
+def collect(app, frm, to):
     agent = APP_AGENTS.get(app, app)
     base, tok = env("CS2_API_URL").rstrip("/"), env("CS2_API_TOKEN")
     e2n = email_to_name()
@@ -135,6 +140,12 @@ def main():
     kpi = get(base, tok, f"/api/obs/metrics?agent={agent}&from={frm}&to={to}")
     k = kpi.get("kpi", {})
     sess = kpi.get("sessions", {})
+    msgs = kpi.get("messages", {})
+
+    # Bot resolve rate = session bot tự xử, human KHÔNG nhảy vào (cách A, Liz chốt).
+    total = sess.get("total") or 0
+    human = sess.get("human_active") or 0
+    resolve_pct = round((total - human) / total * 100, 1) if total else None
 
     reviews = fetch_all(base, tok, "reviews", agent)
     corrections = fetch_all(base, tok, "corrections", agent)
@@ -152,20 +163,41 @@ def main():
         "app": app,
         "agent": agent,
         "range": {"from": frm, "to": to},
-        "kpi": {
+        "handle": {
+            "resolveRatePct": resolve_pct,          # session bot tự xử, human không vào
+            "aiReplyCoveragePct": k.get("aiReplyCoveragePct"),
+            "humanTakeoverPct": k.get("humanTakeoverPct"),
+            "escalationRatePct": k.get("escalationRatePct"),
+            "sessions": total,
+            "inbound": msgs.get("inbound"),
+            "botReplies": sess.get("bot_replies"),
+        },
+        "qa": {
             "verifyCoveragePct": k.get("verifyCoveragePct"),
             "correctionRatePct": k.get("correctionRatePct"),
             "verifyCorrectPct": k.get("verifyCorrectPct"),
-            "botReplies": sess.get("bot_replies"),
-            "sessions": k.get("sessions"),
-        },
-        "weekCounts": {
             "verifiedInWeek": len(rv_week),
             "correctionsInWeek": len(cr_week),
+            "botReplies": sess.get("bot_replies"),
+            "topVerifiers": [{"name": n, "count": c} for n, c in top_verify.most_common(3)],
+            "topCorrectors": [{"name": n, "count": c} for n, c in top_correct.most_common(3)],
         },
-        "topVerifiers": [{"name": n, "count": c} for n, c in top_verify.most_common(3)],
-        "topCorrectors": [{"name": n, "count": c} for n, c in top_correct.most_common(3)],
     }
+    return out
+
+
+def main():
+    args = [a for a in sys.argv[1:] if a != "--compare"]
+    compare = "--compare" in sys.argv
+    if len(args) != 3:
+        sys.exit("usage: fetch_bot_qa.py <chatty|joy> <from YYYY-MM-DD> <to YYYY-MM-DD> [--compare]")
+    app, frm, to = args[0].lower(), args[1], args[2]
+
+    out = collect(app, frm, to)
+    if compare:
+        pf, pt = prev_week(frm, to)
+        out["prevWeek"] = collect(app, pf, pt)
+        out["prevWeek"]["range"] = {"from": pf, "to": pt}
     print(json.dumps(out, ensure_ascii=False, indent=2))
 
 
