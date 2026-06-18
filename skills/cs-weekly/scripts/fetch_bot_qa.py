@@ -175,7 +175,6 @@ def collect(app, frm, to):
         "qa": {
             "verifyCoveragePct": k.get("verifyCoveragePct"),
             "correctionRatePct": k.get("correctionRatePct"),
-            "verifyCorrectPct": k.get("verifyCorrectPct"),
             "verifiedInWeek": len(rv_week),
             "correctionsInWeek": len(cr_week),
             "botReplies": sess.get("bot_replies"),

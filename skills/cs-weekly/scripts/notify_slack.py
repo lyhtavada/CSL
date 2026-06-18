@@ -73,7 +73,6 @@ def botqa_block(qa):
         f"*QA*",
         f"• Verify coverage: *{cov}%*{_delta(cov, pq.get('verifyCoveragePct'))} ({q.get('verifiedInWeek')}/{reply} reply){flag}",
         f"• Correction rate: *{q.get('correctionRatePct')}%*{_delta(q.get('correctionRatePct'), pq.get('correctionRatePct'))} ({q.get('correctionsInWeek')}/{reply} reply)",
-        f"• Verify đúng: *{q.get('verifyCorrectPct')}%*",
         f"🏆 Top verify: {_top_line(q.get('topVerifiers'))}",
         f"🔧 Top correction: {_top_line(q.get('topCorrectors'))}",
     ]

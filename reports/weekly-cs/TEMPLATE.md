@@ -26,7 +26,6 @@ _Resolve rate = % session bot tự xử, human KHÔNG nhảy vào = (total − h
 |---|---|---|---|
 | Verify coverage | {COV}% ({V_WEEK}/{REPLY} reply) | {N-1}% | {▲▼} |
 | Correction rate | {CORR}% ({C_WEEK}/{REPLY} reply) | {N-1}% | {▲▼} |
-| Verify đúng | {OK}% | {N-1}% | {▲▼} |
 
 🏆 **Top verify tuần này:** {Tên (n) · Tên (n) · Tên (n)}
 🔧 **Top correction tuần này:** {Tên (n) · Tên (n) · Tên (n)}

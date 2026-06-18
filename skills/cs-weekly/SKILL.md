@@ -92,7 +92,7 @@ Returns `handle`, `qa`, and (with `--compare`) `prevWeek` (same shape, prior Mon
     `(sessions.total − sessions.human_active)/total` (cách A, Liz chốt 2026-06-18). Số chủ đạo.
   - `aiReplyCoveragePct` / `humanTakeoverPct` / `escalationRatePct` — bổ trợ (lấy thẳng từ kpi).
   - `sessions` / `inbound` / `botReplies` — volume.
-- **`qa`** — `verifyCoveragePct` / `correctionRatePct` / `verifyCorrectPct` /
+- **`qa`** — `verifyCoveragePct` / `correctionRatePct` /
   `verifiedInWeek` / `correctionsInWeek` / `botReplies`, plus `topVerifiers` /
   `topCorrectors` = **top 3 of THIS WEEK** (lọc `created_at`): verifiers từ
   `/api/reviews` (parse `note` "Verified by X"), correctors từ `/api/corrections`
@@ -193,7 +193,7 @@ python3 skills/cs-weekly/scripts/notify_slack.py \
 - **`--botqa-file`** (the JSON from step 4b) adds a "🤖 Bot performance tuần này" block
   to the Slack digest — Handle (resolve rate + AI coverage + human takeover +
   escalation + volume, with ▲▼ vs last week) + QA (verify coverage / correction rate /
-  verify đúng + top verify + top correction), ⚠️ flag if verify coverage < 30%.
+  + top verify + top correction), ⚠️ flag if verify coverage < 30%.
 - **CS channel IDs:**
   - Chatty: `C07LZNWEUUD`   (`chatty-cs`)
   - Joy:    `C07MSUX0VPA`   (`joy-faqs`)
@@ -218,7 +218,7 @@ is no .md file in the repo.
    the old chat framing) — chat is only a count metric now.
 1b. **🤖 Bot performance** (right after TL;DR) — **Handle** (resolve rate + AI coverage
    + human takeover + escalation + volume) and **QA** (verify coverage / correction
-   rate / verify đúng + top 3 verify + top 3 correction), each vs last week (▲▼). From
+   rate + top 3 verify + top 3 correction), each vs last week (▲▼). From
    step 4b's JSON (`--compare`). ⚠️ flag if verify coverage < 30%. This whole block also
    goes into the Slack digest.
 2. **📊 Tình hình support** — table: tickets / chats / DFY / reviews, vs last week (▲▼).
