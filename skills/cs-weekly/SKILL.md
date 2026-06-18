@@ -126,9 +126,10 @@ email, map từ `_identity/team-g2.md`), CSL (Liz) loại. Returns:
   1 nhóm "tra cứu Crisp", "check ticket" = 1 nhóm…). Bỏ URL trần khi hiển thị.
 - **`prevWeek`** (`--compare`) — `totalChatsG2` + `activeCount` tuần trước cho ▲▼.
 
-Fill the report's **🛠 TS Elite usage section** (sau Top issues). Top table + ai chưa
-dùng + 3-5 câu/chủ đề hay hỏi. **If `inactive` không rỗng** → liệt kê tên, gợi ý Liz
-nhắc. Nếu `totalChatsG2` = 0 (cả team chưa đụng) → ẩn section, ghi 1 dòng TL;DR.
+Fill the report's **🛠 TS Elite usage section** (gần cuối, ngay trước Coaching). Top
+table + ai chưa dùng + 3-5 câu/chủ đề hay hỏi. **If `inactive` không rỗng** → liệt kê
+tên, gợi ý Liz nhắc. Nếu `totalChatsG2` = 0 (cả team chưa đụng) → ẩn section, ghi 1
+dòng TL;DR. **Notion-only** — KHÔNG đưa vào Slack digest (step 8 không nhận file này).
 
 ### 5. Scan #product-release for releases in the period
 
@@ -251,6 +252,10 @@ is no .md file in the repo.
    ▲▼ count for reviews.
 3. **🔥 Top issues** — 3-5 themes from tickets (Ticket API, `[dfy]` excluded), each with a fix/KB pointer.
 4. **🆕 Cập nhật sản phẩm & policy** — releases from #product-release + known bugs open.
+4b. **🛠 TS Elite usage** (gần cuối, trước Coaching) — team G2 dùng agent investigate:
+   total + active/members vs last week (▲▼), top 5 user, ai chưa dùng (⚠️), 3-5 chủ đề
+   hay hỏi (cluster từ `questions`). From step 4c's JSON (`--compare`). **Notion-only**,
+   KHÔNG vào Slack digest.
 5. **💡 Coaching & lưu ý** — Liz reviews/fills.
 6. **🌟 Ghi nhận & tinh thần** — win (auto, e.g. review streak) + Liz's shoutout/focus.
 
