@@ -106,6 +106,30 @@ QA table, mỗi metric có cột tuần trước (▲▼) từ `prevWeek`. **If 
 < 30%** → add the ⚠️ "verify coverage thấp" line. If a top-list is empty →
 `_(chưa có lượt nào tuần này)_`.
 
+### 4c. Pull TS Elite usage (team G2 dùng agent investigate ntn)
+
+**TS Elite** (`agent.avada-ts.site`) = agent CS dùng để investigate case. Mỗi "chat" =
+1 cuộc CS hỏi agent. Report cho team G2 thấy **ai dùng nhiều / ít, ai chưa dùng, và
+những câu hay được hỏi**. Run for EACH app, **with `--compare`**:
+```bash
+python3 skills/cs-weekly/scripts/fetch_ts_elite.py {chatty|joy} {start} {end} --compare > /tmp/{app}-tselite-{YYYY-W##}.json
+```
+Source: `GET /api/v1/chats?from=&to=&app=&page=` (auth `X-API-Key: TS_ELITE_API_KEY`
+from `.env`). `from`/`to` lọc theo `createdAt` (inclusive), `app` lọc theo slug
+(Joy gộp cả `joy-subscriptions`). Chỉ tính CS thuộc **team G2** (`_user` = local-part
+email, map từ `_identity/team-g2.md`), CSL (Liz) loại. Returns:
+- **`totalChatsG2`** / `activeCount` / `memberCount` — volume + bao nhiêu CS active.
+- **`top`** (5 dùng nhiều nhất) / **`least`** (3 active ít nhất, vẫn >0) /
+  **`inactive`** (CS G2 **chưa dùng lần nào** tuần này — flag để Liz nhắc onboard).
+- **`questions`** — list nguyên văn `title` mọi chat G2 (= câu hỏi mở đầu). **Đọc và
+  cluster thành 3-5 chủ đề hay hỏi nhất** (gộp các "investigate Crisp chat: <url>" =
+  1 nhóm "tra cứu Crisp", "check ticket" = 1 nhóm…). Bỏ URL trần khi hiển thị.
+- **`prevWeek`** (`--compare`) — `totalChatsG2` + `activeCount` tuần trước cho ▲▼.
+
+Fill the report's **🛠 TS Elite usage section** (sau Top issues). Top table + ai chưa
+dùng + 3-5 câu/chủ đề hay hỏi. **If `inactive` không rỗng** → liệt kê tên, gợi ý Liz
+nhắc. Nếu `totalChatsG2` = 0 (cả team chưa đụng) → ẩn section, ghi 1 dòng TL;DR.
+
 ### 5. Scan #product-release for releases in the period
 
 Read Slack channel `C07RNAY9ZC6` for messages within [start, end]. **Use token
