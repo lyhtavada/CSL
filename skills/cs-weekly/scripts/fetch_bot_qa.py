@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
 """
-fetch_bot_qa.py — Bot QA metrics cho CS weekly report (Joyce/Joy + Ivy/Chatty).
+fetch_bot_qa.py — Bot performance metrics cho CS weekly report (Joyce/Joy + Ivy/Chatty).
 
-Lấy 2 nhóm số trên dashboard "chỉ số vận hành" CS v2 (cs2.avada.net):
-  1) KPI tổng (verify coverage %, correction rate %, verify đúng %, reply bot)
-     -> GET /api/obs/metrics?agent=<id>&from=&to=
-  2) Top 3 người verify + top 3 người correction TRONG TUẦN (lọc created_at)
-     -> GET /api/reviews?agent=<id>      (người verify = parse note "Verified by X")
-     -> GET /api/corrections?agent=<id>  (người làm = created_by email -> tên)
+Trả 2 nhóm (output JSON: {handle, qa, [prevWeek]}):
+  HANDLE (vận hành) — từ GET /api/obs/metrics?agent=<id>&from=&to= (dashboard "chỉ số vận hành"):
+    - resolveRatePct = (sessions.total - sessions.human_active)/total
+      = % session bot tự xử, human KHÔNG nhảy vào (cách A)
+    - aiReplyCoveragePct / humanTakeoverPct / escalationRatePct (lấy thẳng kpi)
+    - sessions / inbound / botReplies (volume)
+  QA (chất lượng) — verify/correction do human CS làm:
+    - verifyCoveragePct / correctionRatePct (từ /api/obs/metrics)
+    - verifiedInWeek / correctionsInWeek (đếm row có created_at trong tuần)
+    - topVerifiers (top 3, parse note "Verified by X" từ /api/reviews)
+    - topCorrectors (top 3, created_by email từ /api/corrections)
 
 Creds đọc từ ~/CSL/.env: CS2_API_URL + CS2_API_TOKEN.
 Map email -> tên hiển thị đọc từ ~/CSL/_identity/team-g2.md.
 
 Usage:
-  fetch_bot_qa.py <app> <from> <to>      # app = chatty|joy ; date = YYYY-MM-DD (Mon..Sun)
-  fetch_bot_qa.py chatty 2026-06-09 2026-06-15
+  fetch_bot_qa.py <app> <from> <to> [--compare]   # app = chatty|joy ; date = YYYY-MM-DD (Mon..Sun)
+  fetch_bot_qa.py chatty 2026-06-09 2026-06-15 --compare
+  # --compare: tự pull tuần trước (lùi 7 ngày) vào key "prevWeek" để tính ▲▼.
 Output: JSON ra stdout.
 """
 import json
