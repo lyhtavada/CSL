@@ -5,6 +5,24 @@ _(Title của Notion sub-page đã chứa app + tuần + date range → KHÔNG l
 
 ---
 
+## 🤖 Bot QA tuần này ({Ivy nếu Chatty / Joyce nếu Joy})
+
+_Tỉ lệ reply của bot được human CS vào verify / correct. Nguồn: dashboard chỉ số vận hành `cs2.avada.net` (`/api/obs/metrics`), range = tuần report (Mon→Sun)._
+
+| Chỉ số | Tuần này | Tuần trước | |
+|---|---|---|---|
+| Verify coverage | {COV}% ({V_WEEK}/{REPLY} reply) | {N-1}% | {▲▼} |
+| Correction rate | {CORR}% ({C_WEEK}/{REPLY} reply) | {N-1}% | {▲▼} |
+| Verify đúng | {OK}% | {N-1}% | {▲▼} |
+
+🏆 **Top verify tuần này:** {Tên (n) · Tên (n) · Tên (n)}
+🔧 **Top correction tuần này:** {Tên (n) · Tên (n) · Tên (n)}
+
+{Nếu verify coverage < 15% → thêm dòng: ⚠️ **Verify coverage thấp** — nhắc team vào verify reply bot nhiều hơn để keep track chất lượng.}
+{Nếu tuần không có lượt verify nào → Top verify ghi _(chưa có lượt nào tuần này)_.}
+
+---
+
 ## 📊 Tình hình support tuần qua
 
 | Chỉ số | Tuần này | Tuần trước | |

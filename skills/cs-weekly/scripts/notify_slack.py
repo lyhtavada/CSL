@@ -33,12 +33,45 @@ from dotenv import load_dotenv
 ENV_PATH = "/Users/avada/CSL/.env"
 
 
-def build_blocks(title, tldr, notion_url):
-    return [
+VERIFY_FLAG_PCT = 15  # verify coverage dưới mức này -> ⚠️ nhắc team verify thêm
+
+
+def _top_line(items):
+    if not items:
+        return "_(chưa có lượt nào tuần này)_"
+    return " · ".join(f"{i['name']} ({i['count']})" for i in items)
+
+
+def botqa_block(qa):
+    """qa = dict output của fetch_bot_qa.py. Trả về 1 section block mrkdwn."""
+    k = qa.get("kpi", {})
+    bot = qa.get("name") or {"chatty": "Ivy", "joy": "Joyce"}.get(qa.get("app"), "Bot")
+    cov = k.get("verifyCoveragePct")
+    flag = " ⚠️ _verify thấp — team verify thêm nhé_" if isinstance(cov, (int, float)) and cov < VERIFY_FLAG_PCT else ""
+    reply = k.get("botReplies")
+    wc = qa.get("weekCounts", {})
+    lines = [
+        f"🤖 *Bot QA tuần này ({bot})*",
+        f"• Verify coverage: *{cov}%* ({wc.get('verifiedInWeek')}/{reply} reply){flag}",
+        f"• Correction rate: *{k.get('correctionRatePct')}%* ({wc.get('correctionsInWeek')}/{reply} reply)",
+        f"• Verify đúng: *{k.get('verifyCorrectPct')}%*",
+        f"🏆 Top verify: {_top_line(qa.get('topVerifiers'))}",
+        f"🔧 Top correction: {_top_line(qa.get('topCorrectors'))}",
+    ]
+    return {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(lines)}}
+
+
+def build_blocks(title, tldr, notion_url, qa=None):
+    blocks = [
         {"type": "header",
          "text": {"type": "plain_text", "text": f"📊 {title}", "emoji": True}},
         {"type": "section",
          "text": {"type": "mrkdwn", "text": f"*TL;DR*\n{tldr}"}},
+    ]
+    if qa:
+        blocks.append({"type": "divider"})
+        blocks.append(botqa_block(qa))
+    blocks += [
         {"type": "actions",
          "elements": [
              {"type": "button",
@@ -50,6 +83,7 @@ def build_blocks(title, tldr, notion_url):
          "elements": [{"type": "mrkdwn",
                        "text": "_Bản tin tự động từ `/cs-weekly` · góp ý gửi Liz_"}]},
     ]
+    return blocks
 
 
 def liz_identity(tok):
@@ -72,6 +106,7 @@ def main():
     ap.add_argument("--notion-url", required=True, help="Full Notion page URL")
     ap.add_argument("--tldr", help="TL;DR text inline")
     ap.add_argument("--tldr-file", help="Path to a file containing the TL;DR text")
+    ap.add_argument("--botqa-file", help="Path to JSON output of fetch_bot_qa.py (adds a Bot QA block)")
     ap.add_argument("--no-as-user", dest="as_user", action="store_false",
                     help="post as the plain avada_bot instead of as Liz")
     ap.set_defaults(as_user=True)
@@ -86,10 +121,15 @@ def main():
         print("ERROR: provide --tldr or --tldr-file", file=sys.stderr)
         sys.exit(2)
 
+    qa = None
+    if a.botqa_file:
+        with open(a.botqa_file, encoding="utf-8") as f:
+            qa = json.load(f)
+
     load_dotenv(ENV_PATH)
     tok = os.environ["SLACK_BOT_TOKEN_AVADA"]
 
-    blocks = build_blocks(a.title, tldr, a.notion_url)
+    blocks = build_blocks(a.title, tldr, a.notion_url, qa)
     # `text` is the notification fallback (shown in the channel list / push).
     payload = {
         "channel": a.channel,

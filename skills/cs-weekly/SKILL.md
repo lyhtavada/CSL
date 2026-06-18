@@ -1,7 +1,7 @@
 ---
 name: cs-weekly
 description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest) — each compared vs the prior week — then clusters top issues from tickets (Ticket API, [dfy] excluded), scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
-version: 1.2.0
+version: 1.3.0
 ---
 
 # CS Weekly Skill
@@ -76,6 +76,32 @@ bug reports — flag any bug reported repeatedly (→ Known bugs in §4 of the r
 
 (Chat volume is still pulled in §2 as a metric via `fetch_metrics.py` — only the
 top-issue clustering moved from chats to tickets.)
+
+### 4b. Pull Bot QA metrics (Joyce/Joy + Ivy/Chatty)
+
+Tỉ lệ reply của AI bot được human CS vào **verify** / **correct** trong tuần — từ the
+"chỉ số vận hành" dashboard on `cs2.avada.net`. Run for EACH app:
+```bash
+python3 skills/cs-weekly/scripts/fetch_bot_qa.py {chatty|joy} {start} {end} > /tmp/{app}-botqa-{YYYY-W##}.json
+```
+Returns:
+- `kpi.verifyCoveragePct` / `correctionRatePct` / `verifyCorrectPct` / `botReplies`
+  — pulled live from `GET /api/obs/metrics?agent=<id>&from=&to=` (same numbers as the
+  dashboard cards), range = the report week.
+- `weekCounts.verifiedInWeek` / `correctionsInWeek` — rows whose `created_at` falls in
+  the week.
+- `topVerifiers` / `topCorrectors` — **top 3 of THIS WEEK** (filtered by `created_at`):
+  verifiers from `/api/reviews` (parsed from the `note` "Verified by X"), correctors
+  from `/api/corrections` (`created_by` email). Emails → display names via
+  `_identity/team-g2.md`.
+
+Agent ids: Chatty = `chatty-agent` (bot **Ivy**), Joy = `joy-loyalty-agent` (bot
+**Joyce**). Auth: `CS2_API_URL` + `CS2_API_TOKEN` from `.env`.
+
+Fill the report's **🤖 Bot QA section** (right after TL;DR) from this JSON. For ▲▼ vs
+last week, re-run the script for the prior Mon→Sun window. **If `verifyCoveragePct` <
+15%** → add the ⚠️ "verify coverage thấp" line nudging the team to verify more. If a
+list is empty → `_(chưa có lượt nào tuần này)_`.
 
 ### 5. Scan #product-release for releases in the period
 
@@ -158,8 +184,12 @@ python3 skills/cs-weekly/scripts/notify_slack.py \
   --channel {CHANNEL_ID} \
   --title "{App} CS Weekly — W## ({DD–DD/MM/YYYY})" \
   --tldr "{the §1 TL;DR text from the report}" \
+  --botqa-file /tmp/{app}-botqa-{YYYY-W##}.json \
   --notion-url {the URL printed by push_notion.py in step 7}
 ```
+- **`--botqa-file`** (the JSON from step 4b) adds a "🤖 Bot QA tuần này" block to the
+  Slack digest — verify coverage / correction rate / verify đúng + top verify + top
+  correction, with the ⚠️ flag if coverage < 15%. Omit the flag to skip the block.
 - **CS channel IDs:**
   - Chatty: `C07LZNWEUUD`   (`chatty-cs`)
   - Joy:    `C07MSUX0VPA`   (`joy-faqs`)
@@ -182,6 +212,9 @@ is no .md file in the repo.
 1. **TL;DR** — 2-3 sentences from the data: lead with the §2 numbers + the hottest
    ticket-based theme/bug of the week. Do NOT phrase it as "merchant vào hỏi…" (that's
    the old chat framing) — chat is only a count metric now.
+1b. **🤖 Bot QA** (right after TL;DR) — verify coverage / correction rate / verify đúng
+   vs last week (▲▼) + top 3 verify + top 3 correction of the week. From step 4b's JSON.
+   ⚠️ flag if verify coverage < 15%. This block also goes into the Slack digest.
 2. **📊 Tình hình support** — table: tickets / chats / DFY / reviews, vs last week (▲▼).
    Get "tuần trước" from the `--compare` flag's `prev_week` block (re-pulled live from
    source) — there is no .md file in the repo to read. Show ▲▼ % for tickets/chats,
