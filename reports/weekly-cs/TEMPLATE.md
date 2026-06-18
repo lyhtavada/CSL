@@ -18,7 +18,7 @@ _Tỉ lệ reply của bot được human CS vào verify / correct. Nguồn: das
 🏆 **Top verify tuần này:** {Tên (n) · Tên (n) · Tên (n)}
 🔧 **Top correction tuần này:** {Tên (n) · Tên (n) · Tên (n)}
 
-{Nếu verify coverage < 15% → thêm dòng: ⚠️ **Verify coverage thấp** — nhắc team vào verify reply bot nhiều hơn để keep track chất lượng.}
+{Nếu verify coverage < 30% → thêm dòng: ⚠️ **Verify coverage thấp** — nhắc team vào verify reply bot nhiều hơn để keep track chất lượng.}
 {Nếu tuần không có lượt verify nào → Top verify ghi _(chưa có lượt nào tuần này)_.}
 
 ---

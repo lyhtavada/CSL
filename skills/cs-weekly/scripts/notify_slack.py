@@ -33,7 +33,7 @@ from dotenv import load_dotenv
 ENV_PATH = "/Users/avada/CSL/.env"
 
 
-VERIFY_FLAG_PCT = 15  # verify coverage dưới mức này -> ⚠️ nhắc team verify thêm
+VERIFY_FLAG_PCT = 30  # verify coverage dưới mức này -> ⚠️ nhắc team verify thêm
 
 
 def _top_line(items):

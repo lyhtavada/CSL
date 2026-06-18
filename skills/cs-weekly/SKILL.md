@@ -100,7 +100,7 @@ Agent ids: Chatty = `chatty-agent` (bot **Ivy**), Joy = `joy-loyalty-agent` (bot
 
 Fill the report's **🤖 Bot QA section** (right after TL;DR) from this JSON. For ▲▼ vs
 last week, re-run the script for the prior Mon→Sun window. **If `verifyCoveragePct` <
-15%** → add the ⚠️ "verify coverage thấp" line nudging the team to verify more. If a
+30%** → add the ⚠️ "verify coverage thấp" line nudging the team to verify more. If a
 list is empty → `_(chưa có lượt nào tuần này)_`.
 
 ### 5. Scan #product-release for releases in the period
@@ -189,7 +189,7 @@ python3 skills/cs-weekly/scripts/notify_slack.py \
 ```
 - **`--botqa-file`** (the JSON from step 4b) adds a "🤖 Bot QA tuần này" block to the
   Slack digest — verify coverage / correction rate / verify đúng + top verify + top
-  correction, with the ⚠️ flag if coverage < 15%. Omit the flag to skip the block.
+  correction, with the ⚠️ flag if coverage < 30%. Omit the flag to skip the block.
 - **CS channel IDs:**
   - Chatty: `C07LZNWEUUD`   (`chatty-cs`)
   - Joy:    `C07MSUX0VPA`   (`joy-faqs`)
@@ -214,7 +214,7 @@ is no .md file in the repo.
    the old chat framing) — chat is only a count metric now.
 1b. **🤖 Bot QA** (right after TL;DR) — verify coverage / correction rate / verify đúng
    vs last week (▲▼) + top 3 verify + top 3 correction of the week. From step 4b's JSON.
-   ⚠️ flag if verify coverage < 15%. This block also goes into the Slack digest.
+   ⚠️ flag if verify coverage < 30%. This block also goes into the Slack digest.
 2. **📊 Tình hình support** — table: tickets / chats / DFY / reviews, vs last week (▲▼).
    Get "tuần trước" from the `--compare` flag's `prev_week` block (re-pulled live from
    source) — there is no .md file in the repo to read. Show ▲▼ % for tickets/chats,
