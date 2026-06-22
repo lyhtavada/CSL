@@ -1,0 +1,32 @@
+# QA Tuần 2026-W25 — Audrey (Joy)
+**Tuần 15/06 – 21/06/2026** · coaching, không phải penalty
+
+## 📊 Điểm tuần: 88/100 — Tốt  (▲ +1 so với W24: 87)
+🔍 Đã QA: 30 chat
+
+**Breakdown 3 trục:** 🧠 Mindset 27.4/34 · 📚 Kiến thức 31.0/33 · 🛠️ Xử lý 29.4/33  →  trục yếu nhất: **mindset**
+
+## 📝 Nhận xét chung
+Tuần này Audrey duy trì chất lượng ổn định trên toàn bộ 30 chat — ownership tốt, biết theo dõi case đến khi xong và handoff rõ ràng. Điểm mạnh nổi bật là xử lý các trường hợp phức tạp đa ngôn ngữ (tiếng Việt, Hàn, Pháp, Trung, Anh) và tư vấn kỹ thuật có cơ sở. Điểm cần cải thiện: lỗi typo vẫn lặp lại ở nhiều chat khác nhau (KN1 chưa được khắc phục triệt để so với W24), và có một lần chuyển sang tiếng Anh giữa cuộc hội thoại đang dùng tiếng Hàn. Tiếp tục focus vào kiểm tra kỹ trước khi gửi.
+
+## ✅ Điểm tốt
+- [P1] Ownership xuất sắc trong các case phức tạp — migrate loyalty data đa giai đoạn (export → import với email → import với SĐT → thông báo kết quả từng bước), không đẩy việc, theo đuổi đến cùng. (#3 #9 #10)
+- [P2] Tư vấn kỹ thuật chính xác và có cơ sở: giải thích đúng cơ chế language detection của Joy (Shopify native locale vs T Lab JS injection), giải thích đúng nguyên nhân Shopify guest checkout không trigger webhook, hướng dẫn API scope Klaviyo theo từng bước. (#2 #17 #27)
+- [P3] Proactive và tư vấn có chiều sâu — trong chat #25 tự phân tích toàn bộ yêu cầu chương trình loyalty của merchant và đối chiếu với từng tính năng Joy mà không cần khách hỏi lần lượt từng điểm. (#25 #13)
+
+## 🔧 Cần cải thiện
+- [KN1] (Low) Lỗi typo nhỏ tái diễn ở nhiều chat — không phải 1 lần mà rải rác xuyên suốt tuần, tạo ấn tượng thiếu cẩn thận. (#2 #6 #30)
+   • Dẫn chứng: Chat #2: 'Let me check it further for yo' (thiếu chữ u) và 'Please allow me some time to contineue checking on it' | Chat #6: 'It's my plesure!' | Chat #30: 'My pleausure to help!'
+   → Đọc lại tin nhắn trước khi gửi — đặc biệt là các câu chốt kết thúc và câu chuyển tiếp. Đây là lỗi đã có ở W24 và vẫn còn ở W25, cần ưu tiên sửa.
+- [KN3] (Low) Lệch ngôn ngữ giữa chừng — khách đang dùng tiếng Hàn, Audrey bất ngờ chuyển sang tiếng Anh ở 1 tin nhắn rồi quay lại tiếng Hàn, khiến khách phải đọc ngôn ngữ khác. (#5)
+   • Dẫn chứng: Chat #5: Toàn bộ conversation dùng tiếng Hàn → CS (Audrey): 'Hi again! I've checked and the widget button is showing on your website now. You do not have to unhide it' (tiếng Anh) — ngay giữa chuỗi trao đổi tiếng Hàn.
+   → Duy trì ngôn ngữ nhất quán với khách trong suốt conversation. Nếu gõ tiếng Việt/Anh thì để Crisp live-translate — không tự switch ngôn ngữ giữa chừng. Lỗi này đã có ở W24 (tiếng Pháp), tuần này lặp lại với tiếng Hàn.
+
+## 🌟 Xin review (chỉ ghi nhận, KHÔNG tính điểm)
+- Đã xin 3/7 chat phù hợp. Đã xin 3/7 chat phù hợp. Cả 3 lần đều đúng thời điểm — sau khi vấn đề được giải quyết xong và khách tỏ ra hài lòng (#5, #14, #15). Bỏ lỡ một số chat khách happy rõ ràng: #3 (tiếng Việt, migrate thành công, khách cảm ơn), #7 (tiếng Trung, khách '谢谢'), #27 (tiếng Pháp, khách 'C'est un plaisir'). Đây đều là thời điểm vàng có thể tận dụng thêm.
+
+## 📈 So với tuần trước
+W24: 87 → W25: 88 (▲ +1). QT25 (báo 'all set' sớm) đã không lặp lại — tiến bộ rõ. KN3 (lệch ngôn ngữ) vẫn tái diễn dù đã được coaching ở W24: W24 là tiếng Pháp, W25 là tiếng Hàn — cần tiếp tục focus. KN1 (typo) từ W24 vẫn còn nhưng phân tán nhiều chat hơn thay vì tập trung — chưa khắc phục được.
+
+## 🔗 Chat đã QA
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_89120076-26ae-4479-839e-2dae907caada|#1 Rev Online> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_17990533-9de8-4fe9-81f7-92fea524870d|#2 Harris Tihak> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f23b5795-5d53-4b4f-8703-798dca6e0cda|#3 Khoa Duong> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_73b1b5e1-3806-4447-a9d6-a6145285b892|#4 Direct Wines ECL> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_8f5b0ab6-8911-4e59-8933-22235229d108|#5 IN SU LEE> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_112104fa-786e-4a9d-b072-4f809cf559e9|#6 Emma Standerline-Johnson> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b772f021-6c95-4571-9009-5030df21ae28|#7 Bella C> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b037db25-4325-427f-9104-1a2b8209b517|#8 AlphaInfuse> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a0681865-a1f7-4fc6-b763-88ffe7a10f99|#9 FISHING BASSDASH> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_18d9ca0d-21e6-4d8a-aae8-a5010e83edea|#10 shopify wish> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5483b705-3739-410d-ad18-226942f066c3|#11 SALANIDA> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_fbec4cd8-901a-448a-94df-d0d99c1d4906|#12 Moaconcept Official>
