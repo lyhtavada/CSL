@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 DEPRECATED (2026-06-22) — KHÔNG còn được gọi từ đâu.
-Weekly CSL report giờ tổng hợp từ 2 bản CS Weekly Notion qua gen-team2-weekly.py
-(không scan ticket + fill template rỗng như trước). Giữ lại để tham chiếu logic
-phân loại issue theo keyword nếu cần.
+CEO Weekly report (reports/weekly/ceo-weekly-*.md) giờ tổng hợp từ 2 bản CS Weekly
+Notion qua gen-ceo-weekly.py (không scan ticket + fill template rỗng như trước).
+Giữ lại để tham chiếu logic phân loại issue theo keyword nếu cần.
 
 Fetch tickets từ Avada Ticket API cho tuần vừa rồi và fill vào weekly report.
 
@@ -200,11 +200,11 @@ def main():
     print(joy_md)
 
     if not args.dry_run:
-        reports = sorted(REPORTS_DIR.glob("weekly-CSL-report-*.md"), reverse=True)
+        reports = sorted(REPORTS_DIR.glob("ceo-weekly-*.md"), reverse=True)
         if reports:
             fill_report(reports[0], chatty_md, joy_md)
         else:
-            print("No report file found. Run gen-weekly-report.sh first.", file=sys.stderr)
+            print("No report file found. Run gen-ceo-weekly.sh first.", file=sys.stderr)
     else:
         print("\n[dry-run] Not writing to file.")
 

@@ -4,7 +4,7 @@
 **Gửi trước**: 13:00 cùng ngày (trước meeting 2 tiếng)
 **Nguồn**: tổng hợp 2 bản CS Weekly (Chatty + Joy) trên Notion + dashboard `cs2.avada.net /api/obs/metrics`
 
-> Template này khớp với generator `reports/scripts/gen-team2-weekly.py` (chạy qua `gen-weekly-report.sh`).
+> CEO Weekly = bản gửi anh Sam (gộp từ 2 bản CS Weekly team-facing). Khớp generator `reports/scripts/gen-ceo-weekly.py` (chạy qua `gen-ceo-weekly.sh`).
 > Auto-fill: TL;DR (tickets/chats/reviews/DFY), Bot performance (resolve rate), Top Issues.
 > Liz điền tay: Response time, Crisis (nếu có bad review ≤3★), CEO decision.
 

@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 """
-Gen weekly CS Group 2 (Retention) report bằng cách TỔNG HỢP 2 bản CS Weekly
-(Chatty + Joy) đã push Notion sáng thứ 2 + resolve rate từ dashboard obs metrics.
+Gen CEO Weekly report (CS Group 2 / Retention — gửi anh Sam) bằng cách TỔNG HỢP
+2 bản CS Weekly (Chatty + Joy) đã push Notion sáng thứ 2 + resolve rate obs metrics.
+
+Phân biệt:
+  - CS Weekly  = skill /cs-weekly, 2 bản team-facing push Notion, gửi nhóm CS từng app.
+  - CEO Weekly = bản này, gộp lại 1 bản cho anh Sam. Đây là INPUT, kia là OUTPUT.
 
 KHÔNG tự tính lại từ ticket/chat — nguồn sự thật là 2 bản /cs-weekly trên Notion.
 Lấy subpage MỚI NHẤT của mỗi parent page, parse số từ TL;DR + Top issues,
 ghép resolve rate (tuần này vs tuần trước) từ cs2.avada.net /api/obs/metrics.
 
-Output: reports/weekly/weekly-CSL-report-<DATE>.md  (ghi đè nếu đã có)
+Output: reports/weekly/ceo-weekly-<DATE>.md  (ghi đè nếu đã có)
 
 Usage:
-  python3 gen-team2-weekly.py                 # tuần trước (Mon–Sun), date = hôm nay
-  python3 gen-team2-weekly.py --date 2026-06-22
+  python3 gen-ceo-weekly.py                 # tuần trước (Mon–Sun), date = hôm nay
+  python3 gen-ceo-weekly.py --date 2026-06-22
 """
 import argparse, datetime, json, os, re, sys, urllib.request, urllib.parse
 from pathlib import Path
@@ -127,7 +131,7 @@ def obs(agent, frm, to):
     req = urllib.request.Request(
         f"{base}/api/obs/metrics?agent={agent}&from={frm}&to={to}")
     req.add_header("Authorization", f"Bearer {env('CS2_API_TOKEN')}")
-    req.add_header("User-Agent", "team2-weekly/1.0")
+    req.add_header("User-Agent", "ceo-weekly/1.0")
     return json.load(urllib.request.urlopen(req, timeout=60))
 
 
@@ -262,7 +266,7 @@ Tuần này không có bad review (≤3★) ở cả 2 app.
 """
 
     REPORTS_DIR.mkdir(exist_ok=True)
-    out = REPORTS_DIR / f"weekly-CSL-report-{ref.isoformat()}.md"
+    out = REPORTS_DIR / f"ceo-weekly-{ref.isoformat()}.md"
     out.write_text(md)
     print(f"Generated: {out}")
     print("\n⚠️  Response time + CEO decision: Liz điền tay. Top issues auto-fill, rà lại 1 lượt.")
