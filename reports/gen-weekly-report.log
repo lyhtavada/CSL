@@ -43,3 +43,24 @@ Top Issues — 15/06–21/06/2026
 1. **Feature request / customization** — 1 cases _(Customization / Theme)_
 2. **Widget / display issue** — 1 cases _(Widget / Storefront display)_
 Filled: /Users/avada/CSL/reports/weekly/weekly-CSL-report-2026-06-15.md
+Generated: /Users/avada/CSL/reports/scripts/../weekly/weekly-CSL-report-2026-06-22.md
+Filling Top Issues...
+/Users/avada/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Fetching tickets: 2026-06-22 → 2026-06-28
+  Chatty...
+    4 tickets fetched, 4 after filter
+  JOY Loyalty...
+    3 tickets fetched, 2 after filter
+
+============================================================
+Top Issues — 22/06–28/06/2026
+============================================================
+**Chatty** (4 tickets)
+1. **AI accuracy/quality** — 3 cases _(AI Agent / Knowledge base)_
+2. **Bug / error** — 1 cases _(App core)_
+
+**Joy** (2 tickets)
+1. **Points / rewards / tier** — 1 cases _(Points & Rewards / VIP Tier)_
+2. **Feature request / customization** — 1 cases _(Customization / Theme)_
+Filled: /Users/avada/CSL/reports/weekly/weekly-CSL-report-2026-06-22.md
