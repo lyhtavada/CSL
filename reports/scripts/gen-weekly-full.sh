@@ -1,17 +1,12 @@
 #!/bin/bash
-# Gen full weekly CSL report:
-# 1. Tạo file template (gen-weekly-report.sh)
-# 2. Scan Slack và fill vào Top Issues (scan-weekly-issues.py)
+# Gen weekly CS Group 2 (Retention) report — tổng hợp 2 bản CS Weekly Notion.
+# Giữ tên cũ để tương thích; nay chỉ gọi gen-weekly-report.sh (đã trỏ sang
+# gen-team2-weekly.py). Top Issues auto-fill; Response time + CEO decision Liz điền tay.
 
 SCRIPTS_DIR="$(dirname "$0")"
 REPORTS_DIR="$SCRIPTS_DIR/../weekly"
 
-echo "=== Step 1: Generate report template ==="
-bash "$REPORTS_DIR/gen-weekly-report.sh"
-
-echo ""
-echo "=== Step 2: Fetch Avada Ticket issues ==="
-python3 "$SCRIPTS_DIR/scan-weekly-issues.py"
+bash "$SCRIPTS_DIR/gen-weekly-report.sh" "$@"
 
 echo ""
 echo "Done! Latest report:"
