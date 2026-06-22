@@ -1,113 +1,126 @@
-# Chatty Proactive Care — AM-style Check-in cho KH Pro + Plus
+# Chatty Proactive Care — Churn-Save Flow cho KH Pro + Plus
 
-**Mục đích:** Đưa Chatty CS từ reactive (chờ KH chat) sang proactive (chủ động chạm KH cao cấp như Account Manager), để giữ chân và mở rộng nhóm KH Pro + Plus.
+**Mục đích:** Chatty CS chủ động chạm nhóm KH **có dấu hiệu churn** trước khi họ rời app — audit setting store để tìm lý do thật, chạm đúng vấn đề, giữ chân.
 
 **Owner:** Liz (CSL) — thiết kế & escalation
-**Người chăm:** 4 CS in-house — Andy, Jade, Hazel, Linda
-**Trạng thái:** Spec v1 (2026-06-17) — chờ Liz duyệt trước khi dựng skill/cron
+**Người chăm:** 4 CS in-house Chatty — Jade, Andy, Hazel, Linda
+**Trạng thái:** Spec v2 (2026-06-22) — thu hẹp về **một trigger duy nhất: churn risk** để gỡ nút ca trực
 
 ---
 
-## 1. Bức tranh KH (số liệu thực, pull từ warehouse 2026-06-17)
+## 0. Vì sao chỉ làm churn-save trước (không làm full proactive care)
 
-| Plan | Số shops | MRR | Cách chăm |
-|------|----------|-----|-----------|
-| **Plus** | 39 | ~$4.7k | Assign cố định (mini-AM) |
-| **Pro** | 623 | ~$24.6k | Trigger-based, xoay ca |
-| Tổng care | **662** | ~$29.4k | |
+Khó khăn lớn nhất của proactive care là **CS làm theo ca trực** — không ai theo được một merchant từ đầu đến cuối: hôm nay Andy chạm, mai Andy nghỉ ca, KH reply thì Jade nhận, không ai "sở hữu" mối quan hệ.
+
+Cách gỡ: **không ôm cả 662 KH**, chỉ chạm **số ít có dấu hiệu churn** mỗi tuần.
+
+- List nhỏ (~55 store, xem §1) → chia 4 CS ≈ 14/người, rải ~3-4 store/người/tuần → vừa sức kể cả đang trực ca, **không cần cắt slot riêng**.
+- Có **tool audit setting** → cú chạm có nội dung thật ("store mình thấy phần X chưa bật, đó là lý do Y") thay vì "dạo này sao rồi" → tỉ lệ phản hồi cao hơn.
+- **Ticket gánh trí nhớ thay người:** mỗi store churn-save = 1 ticket sống, có owner danh nghĩa. CS ca sau đọc ticket trước khi reply → không mất context dù đổi ca.
+
+> Các trigger khác (onboarding, low-usage, relationship touch) tạm gác — mở rộng sau khi flow churn-save chạy ổn.
+
+---
+
+## 1. Khối lượng thực tế (pull dash_merchant_360, 2026-06-22)
 
 Nguồn: `avada-crm.avada_product_dash.dash_merchant_360`, `app_id='avadaFaq'`, `is_paying_now=TRUE`.
 
----
+| Plan | Tổng paying | churn_label=1 | + billing issue HOẶC inactive≥21d | MRR |
+|------|-------------|---------------|-----------------------------------|-----|
+| **Plus** | 39 | 10 | **6** | ~$4.6k |
+| **Pro** | 623 | 144 | **49** | ~$24.0k |
+| | | | **55 store** | |
 
-## 2. Mô hình ownership (lai theo tầng)
+**List chạm = churn_label=1 VÀ (billing_issue_count>0 HOẶC inactive≥21 ngày)** → ~55 store.
+Chia 4 CS ≈ 14 store/người, rải trong tháng → ~3-4 store/người/tuần.
 
-### Plus (39 shops) — assign cố định
-- Chia đều 4 CS → **~10 Plus/người**
-- Mỗi CS là mini-AM của nhóm Plus của mình: nhớ tên, biết ngành, chủ động chạm định kỳ
-- Nhịp tối thiểu: **1 chạm/tháng/KH** kể cả khi không có trigger (relationship touch)
-
-### Pro (623 shops) — trigger-based, xoay ca
-- KHÔNG assign cứng (155/người sẽ loãng)
-- Bot lọc ra KH **có lý do để chạm** trong tuần → đẩy vào care queue
-- CS trong ca nhận từ queue, chạm xong tạo ticket
-- Mục tiêu: chất lượng chạm, không chạm đại trà
-
-> Lý do chọn lai: tập trung quan hệ thật vào 39 Plus giá trị cao; 623 Pro để trigger lọc số ít thực sự cần, tránh quá tải 4 người.
-
----
-
-## 3. Triggers (đều có sẵn trong `dash_merchant_360` — không cần dựng thêm)
-
-| Trigger | Điều kiện (cột) | Hành động |
-|---------|-----------------|-----------|
-| **Mới upgrade Pro/Plus** | `days_since_install` thấp / vừa đổi plan | Onboarding check 7 ngày đầu |
-| **Low usage** | `chatty_conversations_30d` thấp, `chatty_last_activity_at` xa, `usage_segment` = low | "Thấy bên mình chưa dùng nhiều X…" |
-| **Nguy cơ churn** | `churn_label`, `days_to_churn` ngắn, `billing_issue_count > 0` | Chạm cứu, nhắc giá trị đã nhận |
-| **Ticket căng** | `has_open_urgent_ticket` / `has_open_billing_ticket` | Follow-up sau khi fix |
-| **AI kém hiệu quả** | `chatty_ai_not_found_answers_30d` cao | Đề xuất train thêm FAQ / DFY |
-| **Relationship touch** (Plus) | đã >30 ngày chưa chạm | Check-in định kỳ, không cần lý do |
-
-> Ngưỡng cụ thể (vd "low usage = <X convo/30d") sẽ chốt ở bước dựng skill, sau khi xem phân phối thực tế.
+### Ghi chú schema (đã verify)
+- `churn_label` (INT64, 0/1) — signal churn chính, **dùng được**.
+- `usage_segment` (STRING): giá trị thực = `high_usage` / `inactive_30d` / `active_usage` / NULL. **KHÔNG có `low`** — dùng `inactive_30d` làm signal low-engagement.
+- `billing_issue_count`, `has_open_billing_ticket` — signal billing.
+- `chatty_last_activity_at` (TIMESTAMP) — tính inactive bằng `TIMESTAMP_DIFF(..., DAY)`.
+- `days_to_churn` **không populate** (toàn NULL) → không dùng.
+- `current_mrr` Pro ~$39 / Plus ~$118, không ai ≥$50 → **không lọc/ưu tiên theo MRR**.
 
 ---
 
-## 4. Full vòng vận hành
+## 2. Ownership — gỡ nút ca trực
+
+| Nhóm | Owner | Cách vận hành |
+|------|-------|---------------|
+| **Plus churn-risk (~6)** | Assign cố định 1 CS/store | Mini-AM: CS đó theo store đến khi thoát churn hoặc churn hẳn |
+| **Pro churn-risk (~49)** | Owner danh nghĩa ghi trên ticket | Ai trong ca cũng chạm được, nhưng **đọc ticket trước**; follow-up sâu đẩy về owner |
+
+**Nguyên tắc chống đứt đoạn ca trực:**
+1. Mỗi store churn-save có **1 ticket sống** (không đóng tới khi resolve) — mọi lần chạm/reply log vào đó.
+2. KH reply → CS ca đó **đọc ticket trước khi trả lời** (thấy ngay lần trước ai chạm về gì, KH hứa gì).
+3. Ticket có field owner → người trong ca chỉ "trực giúp", việc sâu về owner.
+
+---
+
+## 3. Full vòng vận hành
 
 ```
-[1] LIST + TRIGGER (cron, hàng tuần)
-    → query dash_merchant_360 (app=avadaFaq, Pro+Plus)
-    → tính trigger cho từng shop
-    → ra "care queue" tuần: shop | plan | trigger | gợi ý template
+[1] LIST (cron, hàng tuần)
+    → query dash_merchant_360 (app=avadaFaq, Pro+Plus, is_paying_now)
+    → lọc: churn_label=1 AND (billing_issue_count>0 OR inactive>=21d)
+    → loại store đã có ticket churn-save đang mở (tránh chạm trùng)
+    → ra "churn-save queue" tuần: domain | plan | signal (billing/inactive) | owner
 
-[2] NHẮC (Slack, nhóm CS Chatty)
-    → Plus: tag CS được assign
-    → Pro: đẩy vào queue chung, ai trong ca nhận
-    → mỗi dòng: domain, plan, lý do chạm, link template
+[2] AUDIT SETTING (CS, trước khi chạm)   ← tool audit: Liz mô tả sau
+    → CS mở tool audit setting cho store trong list
+    → tìm lý do cụ thể: feature chính chưa bật? config sai? widget ẩn?
+    → đây là nội dung của cú chạm
 
-[3] CHẠM (CS thực hiện)
-    → CS dùng template phù hợp trigger, tone "đồng hành"
+[3] NHẮC (Slack, nhóm CS Chatty)
+    → Plus: tag CS owner cố định
+    → Pro: đẩy queue + owner danh nghĩa
+    → mỗi dòng: domain, plan, signal churn, link tool audit, link template
 
-[4] TRACK = TẠO TICKET trên Avada Ticket
-    → POST /tickets: appName="Chatty", domain, appPlan,
-      members=[CS chạm], tag "proactive-care", subject "[Care] <trigger>"
-    → cập nhật tsStatus theo phản hồi KH (waiting_customer / done)
+[4] CHẠM (CS thực hiện)
+    → template churn-save, tone "đồng hành": nêu cái thấy được từ audit + đề xuất fix
+    → KHÔNG nói "anh/chị sắp bỏ app" — chạm bằng giá trị, không bằng cảnh báo
 
-[5] ĐO (định kỳ)
-    → retention/churn nhóm được chăm vs không
-    → expansion (upgrade) sau chạm
-    → số chạm/tháng, tỉ lệ KH phản hồi
+[5] TRACK = TẠO/UPDATE TICKET trên Avada Ticket
+    → 1 store = 1 ticket sống, tag "churn-save"
+    → cập nhật tsStatus theo phản hồi (waiting_customer / done / churned)
+
+[6] ĐO (định kỳ)
+    → trong nhóm churn-risk được chạm: bao nhiêu thoát churn_label=0 / vẫn paying sau 30-60d
+    → so với nhóm churn-risk KHÔNG kịp chạm (control)
+    → tỉ lệ KH phản hồi, số store cứu được/tháng
 ```
 
 ### Track-by-ticket — chi tiết API
 - `POST https://avada-ts-a9cb0.web.app/api/external/tickets`
 - Header: `X-API-Key: <AVD_TICKET_API_KEY>` (đã có trong `~/CSL/.env`)
-- Field chính: `subject`, `appName="Chatty"`, `appPlan`, `domain` (auto lookup store), `members[]` (memberId Firebase UID + displayName — lấy qua `GET /members`), `tagIds` (tag "proactive-care" để lọc), `priority`, `tsStatus`
-- Mỗi lần chạm = 1 ticket → nối thẳng vào KPI/DFY tracker, có owner + status để theo dõi, không cần sheet/Notion riêng
+- Field: `subject="[Churn-save] <signal>"`, `appName="Chatty"`, `appPlan`, `domain`, `members[]` (memberId Firebase UID + displayName, lấy qua `GET /members`), `tagIds` (tag "churn-save"), `priority`, `tsStatus`
+- Mỗi store 1 ticket sống → nối thẳng KPI/DFY tracker, có owner + status, không cần sheet/Notion riêng.
 
 ---
 
-## 5. Playbook giọng & escalation
+## 4. Playbook giọng & escalation
 
-- Tone theo `_identity/tone-and-voice.md`, nhưng nghiêng **"đồng hành"** hơn là "support": chủ động, gợi mở, không chờ KH hỏi
-- Mỗi trigger có 1 template riêng (onboarding / low-usage / renew / post-incident / relationship touch)
-- **Escalate lên Liz khi:** KH đòi giảm giá, upsell lên Enterprise, KH Plus có dấu hiệu churn nặng, complaint vượt tầm CS
-
----
-
-## 6. Việc cần làm để go-live
-
-| # | Việc | Ai |
-|---|------|-----|
-| 1 | Chốt ngưỡng trigger (xem phân phối usage thực) | Betty + Liz |
-| 2 | Chia 39 Plus cho 4 CS (assign cố định) | Liz |
-| 3 | Lấy memberId 4 CS qua `GET /members` | Betty |
-| 4 | Tạo tag "proactive-care" trong ticket system | Liz/Betty |
-| 5 | Viết bộ template theo trigger | Betty |
-| 6 | Dựng skill `/chatty-care` (query → queue → Slack → tạo ticket) | Betty |
-| 7 | Cài cron hàng tuần (theo pattern cs-weekly) | Liz chạy install |
-| 8 | Dashboard đo retention nhóm chăm vs không | Betty (giai đoạn 2) |
+- Tone theo `_identity/tone-and-voice.md`, nghiêng **"đồng hành"**: nêu cái thấy được từ audit, gợi mở cách dùng tốt hơn — KHÔNG nhắc tới chuyện "sắp rời app".
+- Template churn-save chia theo signal: **billing issue** (giúp xử lý thanh toán) / **inactive** (re-onboard, chỉ feature chưa khai thác).
+- **Escalate lên Liz khi:** KH đòi giảm giá / refund, dấu hiệu churn nặng ở Plus, complaint vượt tầm CS, KH muốn downgrade.
 
 ---
 
-*Spec này chưa dựng code — chờ Liz duyệt mô hình & ngưỡng trước khi build skill.*
+## 5. Việc cần làm để go-live
+
+| # | Việc | Ai | Trạng thái |
+|---|------|-----|-----------|
+| 1 | Mô tả tool audit setting (tên, cách truy cập, có API/link không) | Liz | ⏳ chờ Liz |
+| 2 | Chia ~6 Plus churn-risk cho 4 CS (assign cố định) | Liz | |
+| 3 | Lấy memberId 4 CS (Jade/Andy/Hazel/Linda) qua `GET /members` | Betty | |
+| 4 | Tạo tag "churn-save" trong ticket system | Liz/Betty | |
+| 5 | Viết 2 bộ template churn-save (billing / inactive) | Betty | |
+| 6 | Dựng skill `/chatty-care` (query → lọc churn → queue → Slack → tạo ticket) | Betty | |
+| 7 | Cài cron hàng tuần (theo pattern cs-weekly) | Liz chạy install | |
+| 8 | Dashboard đo cứu-được vs control | Betty | giai đoạn 2 |
+
+---
+
+*Spec v2 — thu hẹp về churn-save để khả thi với mô hình ca trực. Chờ Liz mô tả tool audit (việc #1) trước khi viết template + dựng skill.*
