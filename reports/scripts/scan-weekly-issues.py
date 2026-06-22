@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 """
+DEPRECATED (2026-06-22) — KHÔNG còn được gọi từ đâu.
+Weekly CSL report giờ tổng hợp từ 2 bản CS Weekly Notion qua gen-team2-weekly.py
+(không scan ticket + fill template rỗng như trước). Giữ lại để tham chiếu logic
+phân loại issue theo keyword nếu cần.
+
 Fetch tickets từ Avada Ticket API cho tuần vừa rồi và fill vào weekly report.
 
 Usage: python3 scan-weekly-issues.py [--week YYYY-MM-DD] [--dry-run]
