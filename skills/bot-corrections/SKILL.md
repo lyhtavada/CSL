@@ -59,7 +59,7 @@ Liz đọc report → cập nhật KB/training data cho bot. Có 2 đường:
 
 ## Cron
 
-`com.avada.bot-corrections` — **T2 09:30** hàng tuần (lệch cs-weekly 09:00 để không
+`com.avada.bot-corrections` — **T2 11:00** hàng tuần (lệch cs-weekly 09:00 để không
 chạy chồng). Tự chạy script → ghi file → commit. Source-of-truth: `cron/`.
 Install: `bash skills/bot-corrections/cron/install.sh` (Liz tự chạy trong Terminal).
 Log: `/tmp/bot-corrections.log`.

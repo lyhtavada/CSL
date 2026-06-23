@@ -28,7 +28,7 @@ launchctl unload "$DEST" 2>/dev/null || true
 ln -sf "$SRC" "$DEST"
 launchctl load "$DEST"
 
-echo "Installed $LABEL → runs Mondays 09:30 local."
+echo "Installed $LABEL → runs Mondays 11:00 local."
 echo "  plist (source): $SRC"
 echo "  symlink:        $DEST"
 echo "  log:            /tmp/bot-corrections.log"
