@@ -218,3 +218,40 @@ priority: "low"
 ## After Uninstalling
 
 Yes. After uninstalling, a merchant has **45 days** to leave a review on the Shopify App Store before that option expires.
+
+---
+
+<!-- CHUNK: ref-ask-for-review-g2 -->
+```yaml
+chunk_id: "ref__ask-for-review-g2"
+doc_id: "cs-ref-ask-for-review"
+title: "Asking for a G2 review — when the merchant already has a Shopify review"
+category: "cs-process"
+subcategory: "review-request"
+tags: ["review", "G2", "g2 review", "already reviewed", "incentive", "free month", "pivot to G2", "rv_yes_chatty", "review_yes_chatty"]
+applies_when: "The merchant's conversation already has a Shopify review tag (rv_yes_chatty / review_yes_chatty / review_yes_faq) and the merchant is currently satisfied"
+priority: "high"
+```
+
+## G2 Review Request (Chatty)
+
+If the conversation already has `rv_yes_chatty`, `review_yes_chatty`, or `review_yes_faq` — the merchant already left a Shopify review. **Do not ask for Shopify again.** If the merchant is satisfied and engaged, ask for a G2 review instead.
+
+G2 is a separate review platform. We run a special program with a thank-you gift for merchants who leave a review.
+
+**Template to use:**
+
+> Ah, I'd love to update that we're running a special program where merchants who leave a review on G2 and get approved will receive 1 free month on Basic or Pro plan as a thank-you gift!
+>
+> Would you mind taking a few minutes to share your thoughts here?
+> https://www.g2.com/products/chatty/take_survey
+>
+> Once your review is published, just send us a screenshot and we'll send your discount code right away!
+
+**After the merchant submits their G2 review:**
+Tag the conversation: `rv_yes_g2_chatty`
+
+**Do not ask for G2 if:**
+- Already tagged `rv_yes_g2_chatty` — already done
+- Merchant is frustrated or conversation had complaints at any point
+- Merchant is on a free plan
