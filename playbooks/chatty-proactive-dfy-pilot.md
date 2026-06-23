@@ -5,7 +5,7 @@
 **Người chạy:** Andy (CS đang training sub-lead, 4 ca/tuần)
 **Owner:** Liz (CSL) — escalation & review
 **Trạng thái:** Pilot v1 (2026-06-23) — 3–4 tuần đầu để lấy số thật về sức làm proactive
-**Flow gốc:** mọi bước *làm* DFY (M1/M2/M3, checklist, template) theo `chatty-dfy-flow.md`. SOP này chỉ mô tả phần **mới**: lấy tệp + offer chủ động + follow-up theo ca + tạo ticket.
+**Flow gốc:** mọi bước *làm* DFY (M1/M2/M3, checklist, template) theo `chatty-dfy-flow.md`. SOP này chỉ mô tả phần **mới**: lấy tệp → audit → **viết email hoàn chỉnh gửi KH** → follow-up theo ca → tạo ticket.
 
 ---
 
@@ -47,12 +47,20 @@ Mở store + tool audit setting (Liz cung cấp) → ghi nhanh:
 
 → Đây là nội dung để chạm đúng vấn đề, không chạm chung chung.
 
-### Bước 2 — Chủ động offer DFY
-Dùng template offer trực tiếp (mở đầu bằng cái thấy được từ audit) — template `!chatty-dfy-offer`, xem `chatty-dfy-flow.md §3.2`:
-> Hey, I took a look at your store and noticed your Chatty widget is still on the default setup... We have a **done-for-you setup** (completely free)...
+### Bước 2 — Viết EMAIL hoàn chỉnh gửi KH (không chỉ offer chờ "yes")
+Sau audit, Andy viết **một email cá nhân hoá** cho store đó — nêu cụ thể cái thấy được từ audit + đề xuất setup, rồi gửi luôn. Đây là điểm khác DFY thụ động: chủ động đến tận nơi, không pop-up chờ KH bấm.
 
-### Bước 3 — Tạo ticket NGAY khi KH đồng ý
-**Andy tự tạo DFY ticket cho store đó** (KHÔNG dùng Google Sheet). Mỗi store = 1 ticket.
+Cấu trúc email (theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... from Avada Support Team", không bold, không em dash):
+1. **Chào + giới thiệu** — Avada Support Team, đang hỗ trợ store mới dùng Chatty.
+2. **Cái thấy được từ audit (cá nhân hoá)** — "I had a look at your store and noticed [widget vẫn default / chưa có FAQ / AI chưa train / ...]". Nêu 1–2 điểm cụ thể, đúng store đó.
+3. **Đề xuất giá trị** — done-for-you setup miễn phí: branded widget + FAQ + AI, làm khớp store, không phải template chung.
+4. **CTA rõ một hành động** — reply để Andy bắt đầu, hoặc đề xuất khung giờ.
+5. **Trấn an** — KH không phải tự làm gì, vẫn chỉnh được sau.
+
+> Email phải dựa trên audit thật của store đó, KHÔNG gửi bản chung chung. Lưu draft/nội dung email vào ticket (Bước 3).
+
+### Bước 3 — Tạo ticket NGAY khi gửi email
+**Andy tự tạo DFY ticket cho store đó** (KHÔNG dùng Google Sheet). Mỗi store = 1 ticket. Tạo ngay khi gửi email (để track cả KH chưa reply), ghi nội dung email + kết quả audit vào ticket.
 - `appName` = Chatty, `appPlan`, `domain` (store đang làm)
 - Member = Andy
 - Tag: `DFY-new` **+** `proactive` (tag phụ để pilot này tách riêng khỏi DFY thường khi đo)
