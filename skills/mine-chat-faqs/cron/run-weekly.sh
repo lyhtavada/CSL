@@ -36,10 +36,17 @@ PROMPT="$(cat "$PROMPT_FILE")
 WINDOW (use these EXACT dates): --start $WEEK_START --end $WEEK_END (last full Mon→Sun week).
 Output filename dates = $WEEK_START to $WEEK_END."
 
+rc=0
 "$CLAUDE_BIN" -p "$PROMPT" \
   --model claude-opus-4-8 \
   --fallback-model claude-sonnet-4-6 \
   --dangerously-skip-permissions \
-  >> "$LOG" 2>&1
+  >> "$LOG" 2>&1 || rc=$?
 
 echo "===== done: $(date) =====" >> "$LOG"
+
+# Báo Telegram cho Liz (xong + lỗi). Notify không được làm hỏng job.
+python3 "$REPO/skills/_shared/notify_tele.py" --job "Mine FAQs" \
+  --status "$([ "${rc:-0}" -eq 0 ] && echo ok || echo fail)" --log "$LOG" >> "$LOG" 2>&1 || true
+
+exit "${rc:-0}"

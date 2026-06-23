@@ -26,10 +26,17 @@ cd "$REPO"
 # ANTHROPIC_API_KEY a repo .env might inject so we stay in subscription mode.
 unset ANTHROPIC_API_KEY
 
+rc=0
 "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
   --model claude-opus-4-8 \
   --fallback-model claude-sonnet-4-6 \
   --dangerously-skip-permissions \
-  >> "$LOG" 2>&1
+  >> "$LOG" 2>&1 || rc=$?
 
 echo "===== done: $(date) =====" >> "$LOG"
+
+# Báo Telegram cho Liz (xong + lỗi). Notify không được làm hỏng job.
+python3 "$REPO/skills/_shared/notify_tele.py" --job "QA Weekly" \
+  --status "$([ "${rc:-0}" -eq 0 ] && echo ok || echo fail)" --log "$LOG" >> "$LOG" 2>&1 || true
+
+exit "${rc:-0}"

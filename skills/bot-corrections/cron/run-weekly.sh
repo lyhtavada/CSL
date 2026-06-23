@@ -21,6 +21,8 @@ python3 "$SCRIPT" >> "$LOG" 2>&1
 rc=$?
 if [ $rc -ne 0 ]; then
   echo "fetch_corrections.py exited $rc" >> "$LOG"
+  python3 "$REPO/skills/_shared/notify_tele.py" --job "Bot Corrections" \
+    --status fail --log "$LOG" >> "$LOG" 2>&1 || true
   exit $rc
 fi
 
@@ -34,3 +36,7 @@ else
 fi
 
 echo "===== done: $(date) =====" >> "$LOG"
+
+# Báo Telegram cho Liz (xong + lỗi). Notify không được làm hỏng job.
+python3 "$REPO/skills/_shared/notify_tele.py" --job "Bot Corrections" \
+  --status ok --log "$LOG" >> "$LOG" 2>&1 || true
