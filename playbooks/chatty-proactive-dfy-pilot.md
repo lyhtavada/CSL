@@ -18,22 +18,35 @@ Vì sao nhóm này:
 - Khối lượng vừa sức (~20 store/tuần) cho 4 ca → audit + chạm kỹ từng store, không chạm đại trà.
 - KH mới đang hào hứng → an toàn để tập kỹ năng proactive.
 
-**Nguồn list:** `dash_merchant_360` (app=avadaFaq). List được đẩy vào **channel Slack** hàng tuần (xem §2).
-**Loại bỏ:** store test nội bộ (`ag-ly-chatty-*`, domain có `test`/`prod` của team), store đã có DFY ticket đang mở.
+**Nguồn list = bảng analytics (KHÔNG dùng Slack/Sheet):**
+- Mở `analytics.avada.net` → Views → **"Chatty Proactive DFY — New Pro/Plus (Andy)"** (view id `sytCf8kfby3J5Yknohqa`)
+- Bảng tự refresh mỗi 1h, đã lọc sẵn store test nội bộ.
+- Đã lọc: `app=avadaFaq`, cài ≤14 ngày, plan Pro/Plus, bỏ domain `ag-ly-chatty-*` và `*-test-*`.
 
 ---
 
-## 2. Lấy store từ channel + nhận theo ca
+## 2. Đọc bảng + nhận store theo ca
 
-> Liz tạo 1 channel Slack chứa danh sách store của pilot. Andy vào đầu mỗi ca lấy store.
+Các cột trong bảng và cách dùng:
+
+| Cột | Dùng để |
+|-----|---------|
+| `shop_domain` | Mở store |
+| `days_since_install` | Ưu tiên store cài **lâu nhất** trước (sắp nguội) |
+| `current_mrr` | $0 = chưa charge; >0 = đã trả tiền thật |
+| `on_trial` | `true` = đang trial → **ưu tiên DFY trước khi hết trial** |
+| `usage_segment` | `high_usage` / `inactive_30d` / `active_usage` |
+| `primary_industry` | Ngành — để cá nhân hoá email |
+| `ticket_link` | Có link = **store đã có người làm** → click xem; `-` = **chưa ai đụng, nhận được** |
+| `ticket_status` / `ticket_count` | Tình trạng ticket |
+| `installed_at` | Ngày cài |
 
 **Đầu mỗi ca (4 ca/tuần):**
-1. Mở channel → xem list store tuần này.
-2. Chọn **3–5 store chưa ai nhận** (ưu tiên store cài lâu nhất / chưa có hoạt động — sắp nguội).
-3. **Claim store trong channel** trước khi làm (react ✅ hoặc reply tên store) → tránh trùng với ca/người khác.
-4. Làm xong store nào → đánh dấu done trong channel.
+1. Mở bảng → lọc/nhìn các dòng `ticket_link = -` (chưa ai làm).
+2. Chọn **3–5 store**, ưu tiên: `on_trial=true` + `days_since_install` cao (sắp hết trial mà chưa setup).
+3. Bắt tay vào audit → **tạo ticket ngay** (Bước 3) → vài giờ sau ticket tự hiện link trong bảng = báo cho ca/người khác là store đã có người làm.
 
-> Một store đã có người claim → KHÔNG đụng vào, trừ khi quá 1 ca chưa làm thì nhả lại.
+> **Tránh trùng ca = qua ticket, không cần claim thủ công.** Store nào `ticket_link` đã có link DFY → KHÔNG đụng (trừ khi cần phối hợp, đọc ticket trước). Bảng tự phản ánh ai đang làm gì.
 
 ---
 
