@@ -19,7 +19,8 @@ Vì sao nhóm này:
 - KH mới đang hào hứng → an toàn để tập kỹ năng proactive.
 
 **Nguồn list = bảng analytics (KHÔNG dùng Slack/Sheet):**
-- Mở `analytics.avada.net` → Views → **"Chatty Proactive DFY — New Pro/Plus (Andy)"** (view id `sytCf8kfby3J5Yknohqa`)
+- Link public (mở thẳng, không cần login): **https://analytics.avada.net/public/views/sytCf8kfby3J5Yknohqa**
+- Tên view: "Chatty Proactive DFY — New Pro/Plus (Andy)"
 - Bảng tự refresh mỗi 1h, đã lọc sẵn store test nội bộ.
 - Đã lọc: `app=avadaFaq`, cài ≤14 ngày, plan Pro/Plus, bỏ domain `ag-ly-chatty-*` và `*-test-*`.
 
