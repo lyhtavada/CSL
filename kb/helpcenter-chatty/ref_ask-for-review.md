@@ -12,7 +12,17 @@ applies_when: "CS is deciding whether it's appropriate to ask a merchant for a r
 priority: "high"
 ```
 
-## Decision Tree — Should I Ask for a Review?
+## Step 0 — Shopify or G2?
+
+Check the conversation segments **before** deciding which review to ask for:
+
+- **Already has a Shopify review tag** (`rv_yes_chatty`, `review_yes_chatty`, `review_yes_faq`) → **skip Shopify, go to G2** (see G2 section at the bottom of this file).
+- **Already has a G2 tag** (`rv_yes_g2_chatty`) → **do not ask for any review**.
+- **No review tag** → proceed with Shopify decision tree below.
+
+---
+
+## Decision Tree — Should I Ask for a Shopify Review?
 
 Work through these checks in order. Stop at the first NO.
 

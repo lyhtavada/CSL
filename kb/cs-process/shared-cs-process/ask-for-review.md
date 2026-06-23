@@ -1,6 +1,6 @@
 ---
 category: CS Process
-topic: Asking for Shopify Reviews
+topic: Asking for Reviews (Shopify + G2)
 source: cs-process
 ---
 
@@ -9,7 +9,11 @@ Q: What's the right timing to request a Shopify App Store review?
 Q: How do I know if it's a good time to ask for a review?
 A: Ask for a review when the merchant has clearly experienced value. Use judgment — timing matters more than completing every single request.
 
-**✅ Good times to ask:**
+**First, check if the conversation already has a Shopify review tag:**
+- If the conversation has `rv_yes_joy`, `review_yes_joy`, `rv_yes_chatty`, `review_yes_chatty`, or `review_yes_faq` → the merchant already left a Shopify review. **Do not ask for Shopify again. Ask for G2 instead** (see G2 section below).
+- If no review tag → proceed with the Shopify review flow below.
+
+**✅ Good times to ask (Shopify):**
 - Merchant has used the app and seen value from it
 - Merchant expresses satisfaction, says thank you, or compliments the support
 - After successfully resolving a specific issue or question
@@ -57,7 +61,7 @@ Q: What am I not allowed to do when asking for reviews?
 Q: Can I offer a discount in exchange for a review?
 A: Shopify has strict policies around review requests. Violations can put the app's listing at risk.
 
-**Strictly prohibited:**
+**Strictly prohibited (Shopify):**
 - Offering anything in exchange for a review (discounts, free months, perks)
   - ❌ *"Get one month free by leaving us a review!"*
 - Asking only for positive reviews or 5-star reviews
@@ -85,6 +89,10 @@ Examples:
 - Air Product Reviews → `rv_yes_air`
 - Chatty → `rv_yes_chatty`
 
+After a merchant leaves a **G2 review**, tag with:
+- Joy Loyalty → `rv_yes_g2_joy`
+- Chatty → `rv_yes_g2_chatty`
+
 **Why this matters:**
 - Prevents asking the same merchant for a review again
 - Avoids annoying merchants who already reviewed
@@ -95,3 +103,46 @@ Examples:
 Q: Can a merchant still leave a review after uninstalling the app?
 Q: How long does a merchant have to leave a review after uninstalling?
 A: Yes. After uninstalling, a merchant has **45 days** to leave a review on the Shopify App Store before that option expires.
+
+---
+
+Q: When should I ask for a G2 review instead of Shopify?
+Q: The merchant already left a Shopify review — what do I do now?
+Q: How do I ask for a G2 review?
+A: If the conversation already has a Shopify review tag (`rv_yes_joy`, `review_yes_joy`, `rv_yes_chatty`, `review_yes_chatty`, `review_yes_faq`) **and** the merchant is currently satisfied and engaged — pivot to G2 instead.
+
+G2 is a separate review platform. We run a special program: merchants who leave a G2 review and get approved receive a thank-you gift (free plan month or cash gift depending on their plan).
+
+**Chatty — G2 template:**
+> Ah, I'd love to update that we're running a special program where merchants who leave a review on G2 and get approved will receive 1 free month on Basic or Pro plan as a thank-you gift!
+>
+> Would you mind taking a few minutes to share your thoughts here?
+> https://www.g2.com/products/chatty/take_survey
+>
+> Once your review is published, just send us a screenshot and we'll send your discount code right away!
+
+**Joy — G2 template (Pro/Essential plan):**
+> Ah, I'd love to update that we're running a special program where merchants who leave a review on G2 and get approved will receive 1 month free on their current plan as a thank-you gift!
+>
+> Would you mind taking a few minutes to share your thoughts here?
+> https://www.g2.com/products/joy-loyalty/reviews/start
+>
+> Once your review is published, just send us a screenshot and we'll get your free month sorted right away!
+
+**Joy — G2 template (Advanced plan):**
+> Ah, I'd love to update that we're running a special program where merchants on Advanced plan who leave a review on G2 and get approved will receive a $50 thank-you gift!
+>
+> Would you mind taking a few minutes to share your thoughts here?
+> https://www.g2.com/products/joy-loyalty/reviews/start
+>
+> Once your review is published, just send us a screenshot and we'll get your gift sorted right away!
+
+**How to tell Joy merchant's plan:** Check the visitor data label in Crisp — it shows "Pro", "Advanced", etc.
+
+**After they submit their G2 review:**
+Tag the conversation: `rv_yes_g2_joy` or `rv_yes_g2_chatty`
+
+**Do not ask for G2 if:**
+- Merchant is already tagged `rv_yes_g2_joy` or `rv_yes_g2_chatty` — already done
+- Merchant is frustrated or conversation had complaints
+- Merchant is on a free plan (no plan info visible — use the Chatty/Joy Pro template as safe default)
