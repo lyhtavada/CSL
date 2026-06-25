@@ -115,6 +115,7 @@ Skills live in `skills/[name]/SKILL.md`. Use the Skill tool to invoke them.
 | `/write-process` | Create/update CS support process or SOP |
 | `/prd-review` | Review PRD/spec — CS impact, gaps, what team needs to prepare |
 | `/qa-cs` | Monthly QA review of CS agent conversations |
+| `/qa-weekly` | Weekly coaching QA cho Team G2 — fan-out chấm 3 trục (Mindset/Knowledge/Skill) từ chat BigQuery → DM từng CS sau khi Liz duyệt. **Knowledge check verify KB từ KB LIVE trên `cs2.avada.net`** (qua `skills/qa-weekly/scripts/fetch_kb.py`, cùng nguồn Joyce/Ivy) — KHÔNG đọc repo claw cũ. |
 | `/faq-to-training` | Convert CS FAQ (Notion format) into AI training data |
 | `/chatty-test-grader` | Grade Chatty AI knowledge test from Google Form CSV |
 | `/bot-status` | Check which bots are running, restart if down |
