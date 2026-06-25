@@ -98,8 +98,11 @@ Re-GET the changed files and confirm the new content is present and any stale
 string is gone. Confirm the reindex returned `partial:false`. Report what changed.
 
 ## Notes
-- Do NOT save KB content into the CSL repo — KB lives in v2. Only the payloads +
-  diff report land in `reports/analysis/` as an audit trail.
+- Do NOT save KB content into the CSL repo — KB lives in v2. The audit trail is
+  the git history on the v2 side (push auto-commits there).
+- Payload files (`reports/analysis/kb-sync-*-payloads.json`) are temporary: built
+  → reviewed → pushed. They are gitignored (never committed) and `push_kb.py`
+  deletes each one after a successful push. Pass `--keep` to retain it.
 - `case/` = how-to-handle flows, `faq/` = customer-facing answers, `reference/` =
   internal CS guidance, `persona/` = identity (rarely touch). Put content where it fits.
 - Both apps: run the flow once per app. Reindex is per-agent.

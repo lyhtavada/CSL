@@ -9,10 +9,14 @@ Input: a payloads JSON file = array of {agent, path, content} objects
 Usage:
   python3 push_kb.py <payloads.json>
   python3 push_kb.py <payloads.json> --no-reindex   # write only, reindex later
+  python3 push_kb.py <payloads.json> --keep         # don't delete payload after push
 
 Safe to re-run: writes are idempotent (same path+content overwrites).
+After a fully successful push (+ reindex unless --no-reindex), the payload file
+is deleted — it only exists to be pushed. Pass --keep to retain it.
 """
 import json
+import os
 import sys
 
 import kb_api
@@ -22,7 +26,9 @@ def main():
     if len(sys.argv) < 2:
         sys.exit("usage: push_kb.py <payloads.json> [--no-reindex]")
     payloads_path = sys.argv[1]
-    do_reindex = "--no-reindex" not in sys.argv[2:]
+    flags = sys.argv[2:]
+    do_reindex = "--no-reindex" not in flags
+    do_cleanup = "--keep" not in flags
 
     base, token = kb_api.load_creds()
     ops = json.load(open(payloads_path))
@@ -55,6 +61,12 @@ def main():
                 print("  WARNING: partial reindex — some chunks failed, check the agent.")
     else:
         print("\nSkipped reindex (--no-reindex). Run later: kb_api.py reindex <app>")
+
+    if do_cleanup:
+        os.remove(payloads_path)
+        print(f"\nDeleted payload file: {payloads_path}")
+    else:
+        print(f"\nKept payload file (--keep): {payloads_path}")
 
     print("\nDone.")
 
