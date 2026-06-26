@@ -76,13 +76,21 @@ Important: Shopify allows max 25 automatic discounts across all tiers combined.
 
 ### 5. On-Site Content
 Loyalty touchpoints on storefront:
-- **Loyalty Widget**: Floating widget — points balance, available rewards
+- **Loyalty Widget (Unified Widget)**: Floating widget — points balance, available rewards
 - **Loyalty Landing Page**: Full page — hero, how it works, earn/redeem, VIP benefits, FAQs, referral, activity
 - **Account Page**: Loyalty dashboard, redemption, referral management, wallet pass
 - **Product Page**: Point calculator, product referral
 - **Cart Drawer**: Redeem points in cart
 - **Checkout Page**: Quick redeem, available rewards, all discounts, referral block
 - **Thank You Page**: Sign-up, referral, reward celebration
+
+**Reviews tab in Unified Widget (Judge.me embed)**: With Judge.me connected, the Unified Widget can show a "My Reviews" tab where customers view reviews they've written and write a new review directly inside the widget — no leaving the widget. Writing a review auto-earns points via the "Write a review" earning rule. Reviews render in the shop's branding, with data pulled directly from Judge.me.
+- Setup: Integration > Judge.me (connect first) → Unified Widget → Extensions → Reviews → choose Judge.me.
+
+**Store Credit displayed across storefront**: Store Credit balance + earn rate now shows everywhere on the storefront, not just at checkout — widget Balance card, loyalty page, account pages, point calculator, thank you page, and reward listings (when reward type is Store Credit).
+- No separate toggle to enable — shows automatically when the shop has granted Store Credit permission AND has at least one active Store Credit program.
+- SC is displayed in the shop's currency.
+- In the Unified Widget, editable via the Balance card: choose design style, show/hide store credit, etc.
 
 ### 6. POS Integration (Advanced+ only)
 In-store loyalty via Shopify POS:
@@ -112,6 +120,7 @@ Migrated data: customer name, email, points balance, VIP tier, birthday, status.
 ### 10. Integrations
 - **Email/SMS**: Klaviyo, Omnisend, Mailchimp, Sendlane, Drip, PushOwl
 - **Reviews**: Klaviyo Reviews, Judge.me, Yotpo, Fera, Air Reviews, Review Rocket
+  - Judge.me supports an embedded **"My Reviews" tab** in the Unified Widget (view + write reviews in-widget, auto-earn points). See On-Site Content.
 - **Chat**: Chatty, Gorgias — show loyalty data in support conversations
 - **Subscriptions**: Joy Subscription, Shopify Subscription, Recharge
 - **Shopify Flow**: Custom automations (Loox, Okendo, Stamped, Zigpoll, Growave, etc.)
@@ -123,7 +132,7 @@ Migrated data: customer name, email, points balance, VIP tier, birthday, status.
 | Term | Meaning |
 |---|---|
 | Points | Virtual currency earned through activities, redeemable for rewards |
-| Store Credit | Cash-value credits applied directly at checkout |
+| Store Credit | Cash-value credits applied directly at checkout; balance + earn rate also shown across storefront (widget, loyalty/account pages, etc.) |
 | Earning Program | Rules for how customers accumulate points |
 | Redeeming Program | Rules for how customers convert points to discounts |
 | Referrer | Existing customer who shares a referral link |
@@ -149,3 +158,5 @@ Migrated data: customer name, email, points balance, VIP tier, birthday, status.
 | VIP tier not updating | Check tier assessment schedule, calculation method, and whether customer meets threshold |
 | POS not loading | App installed on POS device? Cart has customer + products? Customer is a loyalty member? |
 | Integration sync issues | API connection active? Triggers enabled in Joy settings? Check API rate limits (Klaviyo with 100k+ customers especially) |
+| Store Credit not showing on storefront | Shop must grant Store Credit permission AND have ≥1 active Store Credit program; no separate toggle |
+| Judge.me Reviews tab not in widget | Connect Judge.me in Integration first, then add Reviews extension (Judge.me) in Unified Widget |
