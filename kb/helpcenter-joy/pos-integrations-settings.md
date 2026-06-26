@@ -15,6 +15,7 @@ In-store loyalty via Shopify POS.
 
 ## Integrations
 - **Product Reviews**: Klaviyo Reviews, Judge.me, Yotpo, Fera, Air Reviews, Review Rocket
+  - **Judge.me — embedded Reviews tab in Unified Widget**: After connecting Judge.me (Integration > Judge.me), enable Unified Widget → Extensions → Reviews → Judge.me. Adds a "My Reviews" tab where customers view their reviews + write a new one inside the widget (no leaving). Writing a review auto-earns points via the "Write a review" rule. Reviews render in the shop's branding, data pulled live from Judge.me.
 - **Chat Apps**: Chatty, Gorgias — show loyalty data in conversations
 - **Email/SMS**: Klaviyo, Omnisend, Mailchimp, Sendlane, Drip, PushOwl
 - **Subscription**: Joy Subscription, Shopify Subscription, Recharge
