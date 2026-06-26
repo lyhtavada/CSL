@@ -25,9 +25,9 @@ CS does **NOT** extend AI Conversations or AI Scenarios — those require PM app
 
 | Feature | Free | Basic ($19.99) | Pro ($68.99) | Plus ($199) |
 | --- | --- | --- | --- | --- |
-| Products for AI training | 100 | 500 | 8,000 | 20,000 |
+| Products for AI training | 200 | 1,500 | 8,000 | Unlimited |
 | Custom Answers | 100 | 1,000 | Unlimited | Unlimited |
-| URL & File | 20 | 50 | 500 | 700 |
+| URL & File | 20 | 50 | 500 | Unlimited |
 
 ---
 
@@ -58,10 +58,10 @@ Extend up to the next plan's limit — **1 tier only, no more**.
 
 | Merchant's plan | Products → extend to | Custom Answers → extend to | URL & File → extend to |
 | --- | --- | --- | --- |
-| Free | 500 (= Basic) | 1,000 (= Basic) | 50 (= Basic) |
+| Free | 1,500 (= Basic) | 1,000 (= Basic) | 50 (= Basic) |
 | Basic | 8,000 (= Pro) | Unlimited (= Pro) | 500 (= Pro) |
-| Pro | 20,000 (= Plus) | Already Unlimited | 700 (= Plus) |
-| Plus | Max reached → escalate PM | Already Unlimited | Max reached → escalate PM |
+| Pro | Unlimited (= Plus) | Already Unlimited | Unlimited (= Plus) |
+| Plus | Already Unlimited | Already Unlimited | Already Unlimited |
 
 ### Step 3 — Apply the extension in DevZone
 
@@ -104,8 +104,8 @@ This is a strong signal the merchant needs to upgrade. Push the upgrade clearly.
 ### Merchant is on Free plan
 Still extend up to Basic limits (same 1-tier rule). Make the extension but highlight the benefits of upgrading — the goal is to help them see Chatty's value and convert, not give unlimited free access.
 
-### Merchant is on Plus and needs more than Plus limit
-CS cannot self-extend beyond Plus limits. Escalate to PM via #sale-cs-success with: store URL, current plan, which limit is hit, and how much the merchant needs.
+### Merchant is on Plus
+On Plus, Products, Custom Answers, and URL & File are all **Unlimited** — no extension is needed for these. If a Plus merchant reports hitting a wall, it's likely a sync/processing issue, not a quota — check case_ai-product-sync. (AI Conversations are still a monthly quota even on Plus — those go through PM via #sale-cs-success.)
 
 ## Notes
 

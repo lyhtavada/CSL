@@ -246,10 +246,10 @@ applies_when: "Merchant asks how many products the AI can train on, or hits the 
 
 | Plan | Product limit |
 |------|--------------|
-| Free | 100 products |
-| Basic | 500 products |
+| Free | 200 products |
+| Basic | 1,500 products |
 | Pro | 8,000 products |
-| Plus | 20,000 products |
+| Plus | Unlimited |
 
 If the store exceeds the plan limit, Chatty trains on the most recently updated products first. For stores with more than 5,000 products, contact support — this requires manual backend configuration.
 
@@ -451,7 +451,7 @@ applies_when: "Merchant's plan limit is too low and AI is not syncing all their 
 
 ## Plan Product Limit Too Low
 
-Each plan has a product sync limit (Free: 100, Basic: 500, Pro: 8,000, Plus: 20,000). If you've hit the limit:
+Each plan has a product sync limit (Free: 200, Basic: 1,500, Pro: 8,000, Plus: Unlimited). If you've hit the limit:
 
 - Contact support and share what you need — the team will review and confirm if a one-time extension is possible (subject to approval)
 - For permanent higher limits, upgrade your plan

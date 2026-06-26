@@ -11,10 +11,10 @@ Khi merchant yêu cầu tăng limit cho Products, Custom Answers, URL & File, AI
 
 | Feature | Free | Basic ($19.99) | Pro ($68.99) | Plus ($199) |
 |---------|------|----------------|--------------|-------------|
-| AI conversations | 50 lifetime | 50/month | 300/month | 700/month |
-| Products for AI training | 100 | 500 | 8,000 | 20,000 |
+| AI conversations | 50/month | 100/month | 500/month | 1,000/month |
+| Products for AI training | 200 | 1,500 | 8,000 | Unlimited |
 | Custom answers for AI training | 100 | 1,000 | Unlimited | Unlimited |
-| URL & File for AI training | 20 | 50 | 500 | 700 |
+| URL & File for AI training | 20 | 50 | 500 | Unlimited |
 | AI scenarios | 5 | 5 | 15 | — |
 
 ## Phân loại: CS tự extend vs. cần escalate
@@ -42,14 +42,14 @@ Khi MC báo chạm limit, xác nhận:
 
 | MC đang ở | Products | Custom Answers | URL & File |
 |-----------|----------|----------------|------------|
-| Free → extend lên | 500 (= Basic) | 1,000 (= Basic) | 50 (= Basic) |
+| Free → extend lên | 1,500 (= Basic) | 1,000 (= Basic) | 50 (= Basic) |
 | Basic → extend lên | 8,000 (= Pro) | Unlimited (= Pro) | 500 (= Pro) |
-| Pro → extend lên | 20,000 (= Plus) | Đã Unlimited | 700 (= Plus) |
-| Plus | Đã max → báo PM | Đã Unlimited | Đã max → báo PM |
+| Pro → extend lên | Unlimited (= Plus) | Đã Unlimited | Unlimited (= Plus) |
+| Plus | Đã Unlimited | Đã Unlimited | Đã Unlimited |
 
 **Lưu ý:**
 - Chỉ extend 1 bậc. MC muốn nhiều hơn → khuyến khích upgrade plan
-- MC đang ở Plus và cần vượt Plus limit → escalate PM, CS không tự quyết
+- Trên Plus, Products / Custom Answers / URL & File đều **Unlimited** → không cần extend. MC Plus báo chạm wall → khả năng là lỗi sync, không phải quota
 
 ### 3. Thực hiện extend trên DevZone
 

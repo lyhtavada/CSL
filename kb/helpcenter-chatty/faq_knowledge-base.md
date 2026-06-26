@@ -10,9 +10,9 @@ Built for Shopify badge. Available on Shopify App Store. 4.9 stars with 1,700+ r
 
 | Feature | Free | Basic ($19.99/mo) | Pro ($68.99/mo) | Plus ($199.99/mo) |
 |---------|------|--------------------|------------------|---------------------|
-| AI conversations | 50 lifetime | 50/month | 300/month | 700/month |
+| AI conversations | 50/month | 100/month | 500/month | 1,000/month |
 | Additional conversations | N/A | $0.40 each | $0.40 each | $0.40 each |
-| Products for AI training | 100 | 500 | 8,000 | 20,000 |
+| Products for AI training | 200 | 1,500 | 8,000 | Unlimited |
 | Team members | 1 | 5 | 10 | Unlimited |
 | Auto-translation languages | 1 | 2 | 9 | Unlimited |
 | Chat history | 90 days | Unlimited | Unlimited | Unlimited |
