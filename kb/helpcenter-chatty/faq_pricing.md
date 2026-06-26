@@ -14,10 +14,10 @@ applies_when: "Merchant asks about Chatty's pricing, plans, or how much it costs
 
 **How much does Chatty cost? What is the price of the Pro plan / Basic plan / Plus plan?**
 
-- **Free** — $0/month: 50 AI conversations (lifetime), 100 products, 1 team member, 1 email channel, 90 days chat history, all channels & integrations.
-- **Basic** — $19.99/month (or $16.99/month annual): 50 AI conversations/month + $0.40/extra, 500 products, 5 team members, unlimited email channels, 12 months history, full chatbox customization.
-- **Pro** — $68.99/month (or $58.99/month annual): 300 AI conversations/month + $0.40/extra, 8,000 products, 10 team members, unlimited history, full AI channels, full analytics.
-- **Plus** — $199/month (or $169.99/month annual): 700 AI conversations/month + $0.40/extra, 20,000 products, unlimited team members, advanced analytics, dedicated AI consultant.
+- **Free** — $0/month: 50 AI conversations/month (resets monthly), 200 products, 1 team member, 1 email channel, 90 days chat history, all channels & integrations.
+- **Basic** — $19.99/month (or $16.99/month annual): 100 AI conversations/month + $0.40/extra, 1,500 products, 5 team members, unlimited email channels, 12 months history, full chatbox customization.
+- **Pro** — $68.99/month (or $58.99/month annual): 500 AI conversations/month + $0.40/extra, 8,000 products, 10 team members, unlimited history, full AI channels, full analytics.
+- **Plus** — $199/month (or $169.99/month annual): 1,000 AI conversations/month + $0.40/extra, unlimited products, unlimited team members, advanced analytics, dedicated AI consultant.
 - **Enterprise** — Custom pricing for larger stores. Contact Chatty to build a custom plan.
 
 ---
@@ -34,13 +34,13 @@ applies_when: "Merchant asks which plan to choose or wants to compare plan featu
 
 ## Plan Feature Comparison
 
-**Free:** AI conversations 50 lifetime, products 100, custom answers 100, URLs & files 20, team members 1, chat history 90 days, email channels 1, chatbox customization default.
+**Free:** AI conversations 50/month (resets monthly), products 200, custom answers 100, URLs & files 20, team members 1, chat history 90 days, email channels 1, chatbox customization default.
 
-**Basic:** AI conversations 50/month + $0.40/extra, products 500, custom answers 1,000, URLs & files 50, team members 5, chat history 12 months, email channels unlimited, chatbox customization full.
+**Basic:** AI conversations 100/month + $0.40/extra, products 1,500, custom answers 1,000, URLs & files 50, team members 5, chat history 12 months, email channels unlimited, chatbox customization full.
 
-**Pro:** AI conversations 300/month + $0.40/extra, products 8,000, custom answers unlimited, URLs & files 500, team members 10, chat history unlimited, AI channels full, analytics full.
+**Pro:** AI conversations 500/month + $0.40/extra, products 8,000, custom answers unlimited, URLs & files 500, team members 10, chat history unlimited, AI channels full, analytics full.
 
-**Plus:** AI conversations 700/month + $0.40/extra, products 20,000, custom answers unlimited, URLs & files 700, team members unlimited, chat history unlimited, dedicated AI consultant included.
+**Plus:** AI conversations 1,000/month + $0.40/extra, products unlimited, custom answers unlimited, URLs & files unlimited, team members unlimited, chat history unlimited, dedicated AI consultant included.
 
 ---
 
@@ -79,12 +79,12 @@ applies_when: "Merchant asks about AI conversation limits, or has reached their 
 
 ## AI Conversation Limits
 
-- **Free:** 50 lifetime — AI deactivated when reached
-- **Basic:** 50/month — extra at $0.40/conversation
-- **Pro:** 300/month — extra at $0.40/conversation
-- **Plus:** 700/month — extra at $0.40/conversation
+- **Free:** 50/month — resets monthly (no extra conversations available)
+- **Basic:** 100/month — extra at $0.40/conversation
+- **Pro:** 500/month — extra at $0.40/conversation
+- **Plus:** 1,000/month — extra at $0.40/conversation
 
-**When Free plan limit is reached:** AI assistant is deactivated. Conversations can still be handled manually in Inbox.
+**When Free plan limit is reached:** AI assistant pauses for the rest of the month and the quota resets to 50 at the start of the next month. Conversations can still be handled manually in Inbox in the meantime.
 
 **When paid plan limit is reached:** Extra conversations are charged at $0.40 each (unless a spending limit is set).
 

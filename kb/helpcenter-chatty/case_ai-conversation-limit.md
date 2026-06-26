@@ -14,7 +14,7 @@ priority: "high"
 
 ## Overview
 
-AI conversation limits are a **monthly quota** (except Free plan: 50 lifetime). When a merchant hits their limit and needs more, CS **cannot self-extend** — escalation to PM is required before making any changes.
+AI conversation limits are a **monthly quota** that resets each month (including the Free plan). When a merchant hits their limit and needs more, CS **cannot self-extend** — escalation to PM is required before making any changes.
 
 CS does **NOT** extend AI Conversations without PM approval — this affects billing and product strategy. Post in **#sale-cs-success** and tag PM.
 
@@ -22,10 +22,10 @@ CS does **NOT** extend AI Conversations without PM approval — this affects bil
 
 | Plan | AI Conversations |
 |------|-----------------|
-| Free | 50 lifetime (AI deactivates when reached) |
-| Basic | 50/month + $0.40/extra |
-| Pro | 300/month + $0.40/extra |
-| Plus | 700/month + $0.40/extra |
+| Free | 50/month (resets monthly; AI pauses when reached, resumes next cycle) |
+| Basic | 100/month + $0.40/extra |
+| Pro | 500/month + $0.40/extra |
+| Plus | 1,000/month + $0.40/extra |
 
 ---
 
