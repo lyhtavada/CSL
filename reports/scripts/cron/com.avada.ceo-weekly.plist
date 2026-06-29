@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.avada.ceo-weekly</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/avada/CSL/reports/scripts/cron/run-weekly.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/avada/CSL</string>
+
+  <!-- Every Monday at 13:00 local time — 4h after cs-weekly (09:00),
+       đủ thời gian cho 2 bản CS Weekly (Chatty + Joy) push xong lên Notion. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>1</integer>
+    <key>Hour</key>
+    <integer>13</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <!-- If the Mac was asleep/off at 13:00 Mon, launchd runs it as soon as it wakes. -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/ceo-weekly.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/ceo-weekly.log</string>
+</dict>
+</plist>
