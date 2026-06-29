@@ -66,7 +66,7 @@ f = rep(
 
 # Products: Free 200 -> 100
 f = rep(f, "200 products, 1 team member", "100 products, 1 team member", 1)  # L98 plan list
-f = rep(f, "products 200, custom answers 100", "products 100, custom answers 100", 1)  # L108
+# (L108 Free products 200->100 already handled in the combined Free comparison-line replace above)
 # Basic products 1,500 -> 500
 f = rep(f, "1,500 products, 5 team members", "500 products, 5 team members", 1)  # L99
 f = rep(f, "products 1,500, custom answers 1,000", "products 500, custom answers 1,000", 1)  # L110
