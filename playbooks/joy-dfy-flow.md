@@ -110,6 +110,40 @@ CS chủ động offer free white-glove service cho MC, dùng shortcut `!v4-rcm`
 
 ---
 
+## 4b. Conversation flow với KH — Áp 3 phase vào chat thật
+
+Checklist 3 phase là **góc nhìn nội bộ của CS để audit/tick**. Khi nói chuyện với KH thì KHÔNG bê 3 bảng đó ra. KH chỉ cần cảm nhận **1 mốc rõ ràng: "store của tôi đã chạy được"** — đó là sau Phase 1. Phase 2 & 3 là CS làm thêm (ngầm / async), KH không phải chờ.
+
+> **Nguyên tắc đóng gói:** Với KH, journey chỉ có 2 nhịp — **"bật chạy được trước"** rồi **"làm đẹp + tối ưu sau"**. Đừng làm KH thấy phải đi qua "3 giai đoạn".
+
+### Nhịp hội thoại chuẩn (trong 1 chat session)
+
+**① Offer** — store eligible → CS offer free setup (`!dfy-offer`).
+> *"Hi [name], mình thấy store mình đang dùng Joy. Bên mình có hỗ trợ setup miễn phí giúp chương trình loyalty chạy mượt + hợp với store, mình làm giúp mình luôn nha?"*
+
+**② Quick audit + đặt kỳ vọng** — CS nói thẳng tình trạng + mục tiêu launch trước:
+> *"Mình vừa xem qua, store đã có widget nhưng chưa có chương trình tích/đổi điểm nào đang chạy, nên khách chưa kiếm được điểm. Mình sẽ bật chương trình để store chạy được trước, rồi chỉnh widget cho khớp brand sau nha."*
+
+**③ Phase 1 — bật cho chạy + báo mốc LIVE** 🎉 — đây là khoảnh khắc "win", cũng là lúc xin review tốt nhất:
+> *"Xong rồi nè! Giờ khách đã có thể tích điểm khi đăng ký + mua hàng, và đổi điểm lấy mã giảm giá. Chương trình của mình đã chạy chính thức 🎉"*
+>
+> - **Starter/Pro:** rule điểm/tiền → đề xuất trong chat, KH gật rồi mới bật. *"Mình đề xuất: đăng ký +100đ, $1 = 1 điểm, 100 điểm = mã $5. Mình bật theo mức này nha?"*
+> - **Advanced+:** CS bật full theo preset / forward TS, báo lại kết quả.
+
+**④ Phase 2 & 3 — offer thêm, làm async** — không bắt KH chờ trong session:
+> *"Mình sẽ chỉnh widget cho khớp màu + brand store mình, làm xong trong hôm nay mình gửi lại video kết quả nha. Mình cũng bật thêm vài điểm chạm như đổi điểm ngay trong giỏ hàng để khách dễ dùng hơn."*
+
+**⑤ Gửi kết quả + Follow-up** — quay video kết quả (`Preview on store`) gửi qua Crisp → follow-up 2–5 ngày như §4.
+
+### Lưu ý khi dẫn KH qua flow
+- **Luôn báo mốc LIVE rõ ràng** sau Phase 1 — đó là giá trị KH cảm nhận được ngay, và là điểm xin review.
+- **Không liệt kê việc CS sẽ làm theo phase** cho KH — chỉ nói kết quả KH nhận được ("chạy được", "hợp brand", "khách dễ đổi điểm").
+- **Earning/redeeming điểm-tiền:** Starter/Pro luôn xin KH gật trước khi bật; Advanced+ CS chủ động bật theo preset. Không tự đổi rule đang chạy (xem §2).
+- **1 session hay nhiều:** cố gắng xong **Phase 1 ngay trong chat** (KH online) để có mốc LIVE. Phase 2/3 làm async trong ngày, gửi video sau. SLA 48H tính theo mốc **Phase 1 hoàn thành + báo KH**.
+- Nếu KH không online đủ lâu để chốt Phase 1 → bật earning/redeeming preset an toàn (nếu eligible), báo qua email, hẹn customize sau.
+
+---
+
 ## 5. Checklist 3 phase (CS audit)
 
 Ticket auto-generate kèm checklist này. CS tick + viết note cho từng item.
