@@ -31,8 +31,8 @@ python3 skills/bot-corrections/scripts/fetch_corrections.py --start 2026-06-16 -
 
 ## Output
 
-File markdown / app trong `reports/bot-corrections/`:
-`{app}-corrections-{YYYY-MM-DD thứ-2-đầu-tuần}.md`
+File markdown / app trong subfolder theo app `reports/bot-corrections/{app}/`:
+`{app}/{app}-corrections-{YYYY-MM-DD thứ-2-đầu-tuần}.md`
 
 Mỗi report có **2 phần** (theo yêu cầu Liz):
 1. **📌 Tóm tắt theo topic** — gom correction theo chủ đề (pricing, points/earning,

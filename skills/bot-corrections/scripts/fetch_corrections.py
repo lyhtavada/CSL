@@ -295,7 +295,9 @@ def main():
         agent, bot_name = APP_AGENTS[app]
         rows = fetch_all_corrections(base, token, agent)
         md, n = build_report(app, agent, bot_name, rows, start_dt, end_dt, email_map)
-        path = out_dir / f"{app}-corrections-{week_tag}.md"
+        app_dir = out_dir / app
+        app_dir.mkdir(parents=True, exist_ok=True)
+        path = app_dir / f"{app}-corrections-{week_tag}.md"
         path.write_text(md, encoding="utf-8")
         written.append(str(path))
         print(f"{app}: {n} correction(s) → {path}")
