@@ -12,7 +12,7 @@
   </array>
 
   <key>WorkingDirectory</key>
-  <string>/Users/avada/claw-weebhook-crisp-chat</string>
+  <string>/Users/avada/CSL</string>
 
   <!-- Every Monday at 16:00 local time. Mines the previous full Mon→Sun week. -->
   <key>StartCalendarInterval</key>

@@ -18,7 +18,7 @@ User says things like: "mine FAQ cho Joy", "tổng hợp FAQ từ chat 7 ngày",
   - **Joy** → segment `app_joy`
   - **Chatty** → segments `app_chatty,app_faqs` (Chatty spans BOTH; always pass both, comma-separated — the script ORs them and dedups by session)
 - **Window** — either a rolling look-back (`--days`, default 7) or an exact calendar window (`--start`/`--end`, inclusive `YYYY-MM-DD`). The weekly cron uses `--start`/`--end` for the previous full Mon→Sun week.
-- **KB dir** — Joy: `agents/joy-loyalty-agent/knowledge/`; Chatty: `agents/chatty-agent/knowledge/`.
+- **KB source** — the **live CS v2 KB** on `cs2.avada.net` (agent `joy-loyalty-agent` for Joy, `chatty-agent` for Chatty), NOT the old claw repo. Pull it the same way `/kb-sync` does: `skills/kb-sync/scripts/prep.py <app>` caches every KB file to `/tmp/kb-sync/<app>/`, then read from there. Cross-checking against the old `claw-weebhook-crisp-chat` repo is wrong — that KB is stale.
 
 Bias toward action — don't over-ask. If the user already named the app and window, run.
 
@@ -52,7 +52,7 @@ Requires `python-dotenv` + `google-cloud-bigquery` (already installed in this en
 ### 2. Read the conversations and the KB
 
 - Read the JSON. For large output, dump dialogs to a temp `.txt` (Customer/Agent interleaved) and read in passes.
-- Read the app's KB files (`kb_*.md`) so standard answers match documented behavior, exact admin paths, and plan availability.
+- Cache the app's **live CS v2 KB** (`cd skills/kb-sync/scripts && python3 prep.py <app>` → files land in `/tmp/kb-sync/<app>/`) and read those so standard answers match documented behavior, exact admin paths, and plan availability. Do not read the old claw repo.
 
 ### 3. Cluster into FAQ categories
 
@@ -63,10 +63,12 @@ For each FAQ capture: the normalized question, approximate **frequency** (how ma
 ### 4. Write one standard answer per FAQ
 
 Each answer must:
-- Be **correct per the KB** — verify admin paths, plan gates, and feature names against `kb_*.md`. Do not invent UI paths.
+- Be **correct per the KB** — verify admin paths, plan gates, and feature names against the KB. Do not invent UI paths.
 - Reflect **how agents actually resolved it** in chat (the practical fix, not just theory).
 - Note limitations / "this is logged as product feedback" where the chats show an unresolved issue.
 - Be customer-facing in tone — no internal tool names, credentials, or growth-hack labels.
+
+> ⚠️ **Never invent plan limits or pricing.** AI-conversation caps, product-sync limits, seat counts, history length, and prices are **facts**, not things to infer from chats. A merchant's chat is NOT a reliable source for the exact number. The source of truth is **chatty.net/pricing** (Chatty) — fetch it if you state any number, and copy the figure exactly. If you can't verify a limit, describe the behavior qualitatively ("limited by plan; check Subscription → View details") rather than writing a number. Past runs fabricated wrong caps (e.g. Free "50 lifetime", Basic "50/mo") that contradicted the live pricing page — do not repeat this.
 
 ### 4b. Dedup against previous runs
 

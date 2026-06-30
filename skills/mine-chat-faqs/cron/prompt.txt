@@ -4,7 +4,8 @@ For each app:
   - Joy:    segment app_joy
   - Chatty: segment app_chatty,app_faqs
   - Window: use the EXACT --start/--end dates given below (last full Mon→Sun calendar week). Pass them straight to fetch_chats.py.
-  - Fetch with scripts/fetch_chats.py (run from /Users/avada/CSL/skills/mine-chat-faqs), read the JSON + the app's KB (Joy: /Users/avada/claw-weebhook-crisp-chat/agents/joy-loyalty-agent/knowledge/, Chatty: /Users/avada/claw-weebhook-crisp-chat/agents/chatty-agent/knowledge/), cluster questions into feature categories, and write one correct standard answer per FAQ in English.
+  - Fetch with scripts/fetch_chats.py (run from /Users/avada/CSL/skills/mine-chat-faqs), read the JSON + the app's LIVE CS v2 KB (cache it via: cd /Users/avada/CSL/skills/kb-sync/scripts && python3 prep.py {app}  → reads /tmp/kb-sync/{app}/). Do NOT read the old /Users/avada/claw-weebhook-crisp-chat repo — that KB is stale. Cluster questions into feature categories, and write one correct standard answer per FAQ in English.
+  - NEVER invent plan limits or pricing. AI-conversation caps, product limits, seat counts, prices are facts — source them from chatty.net/pricing (fetch it) and copy exactly; if you can't verify a number, describe the limit qualitatively instead of guessing. Do not let a merchant's chat be the source for an exact cap.
   - Dedup against prior dated files in /Users/avada/CSL/reports/weekly-faqs/{app}/ and mark each FAQ 'new' or 'recurring', with a "What changed since last run" block.
   - Write the output to /Users/avada/CSL/reports/weekly-faqs/{app}/{app}_{start}_{end}.md using the real window dates.
 
