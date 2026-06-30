@@ -8,7 +8,7 @@ Your identity and core principles are defined in `~/SOUL.md` — read it at the 
 
 ## Who Liz Is
 
-- CS Leader for two Shopify apps: **Chatty** (live chat, AI, FAQ) and **Joy Loyalty** (loyalty & rewards)
+- CS Leader for three Shopify apps: **Chatty** (live chat, AI, FAQ), **Joy Loyalty** (loyalty & rewards), and **Joy Wishlist** (wishlist / save-for-later)
 - Escalation point for the CS team: refunds, angry merchants, VIP cases, policy exceptions
 - Works in English for customer-facing and internal docs; Vietnamese for internal CS guidelines
 - Reports to Sam (CEO) — refer to him as "anh Sam"
