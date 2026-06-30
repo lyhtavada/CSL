@@ -57,9 +57,8 @@
 
 ## Tài liệu dùng chung (đã có)
 
-- `kb/kb-chatty.md` — Chatty features, plans, common issues
-- `kb/kb-joy.md` — Joy features, plans, common issues
-- Escalation matrix — case nào CS tự xử, case nào leo lên Liz
+- KB LIVE trên `cs2.avada.net` — Chatty/Joy features, plans, common issues (nguồn Ivy/Joyce; fetch qua `skills/qa-weekly/scripts/fetch_kb.py <chatty|joy> <path>`)
+- Escalation matrix — case nào CS tự xử, case nào leo lên Liz (`kb/cs-process/shared-cs-process/escalation-matrix.md`)
 
 ---
 

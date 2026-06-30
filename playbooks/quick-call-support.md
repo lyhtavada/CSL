@@ -24,7 +24,7 @@ Call này dành riêng cho nhóm KH tiềm năng, chất lượng — không off
 
 ### Offer khi match ít nhất 1 điều kiện
 
-- KH thuộc ICP (score 7+ theo [icp-chatty.md](../kb/icp-chatty.md)) — bất kể plan nào
+- KH thuộc ICP (score 7+ theo Chatty ICP trên KB LIVE `cs2.avada.net`, fetch qua `skills/qa-weekly/scripts/fetch_kb.py chatty kb/reference/...`) — bất kể plan nào
 - Mới cài app — offer proactive, không cần đợi KH hỏi
 - Đang setup hoặc training AI lần đầu
 - Đang gặp friction rõ ràng (loay hoay, hỏi nhiều, chưa live được)

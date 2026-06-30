@@ -8,7 +8,7 @@ version: 1.0.0
 
 Lưu nhanh một kiến thức Liz tự học được vào nhật ký cá nhân `~/CSL/learnings/`.
 
-Đây là learning log CỦA LIZ — tách riêng khỏi `MEMORY.md` (của Betty) và `kb/` (nghiệp vụ chính thức).
+Đây là learning log CỦA LIZ — tách riêng khỏi `MEMORY.md` (của Betty), `kb/cs-process/` (CS process/SOP), và KB LIVE `cs2.avada.net` (product knowledge cho bot).
 
 ## Cách chạy
 
@@ -45,4 +45,4 @@ tags: [chủ-đề, ...]
 - Mặc định ngắn gọn. Đừng bịa thêm nội dung Liz không nói.
 - KHÔNG commit git tự động trừ khi Liz bảo.
 - Nếu Liz nói "từ nay luôn..." → đó là quy tắc, vào `CLAUDE.md`, KHÔNG phải learning log.
-- Nếu là kiến thức nghiệp vụ sản phẩm/CS → gợi ý đưa vào `kb/` thay vì đây.
+- Nếu là **CS process/SOP** → gợi ý đưa vào `kb/cs-process/` (qua `/write-process`). Nếu là **product knowledge** (feature/plan/FAQ Chatty/Joy) → gợi ý sync lên KB LIVE `cs2.avada.net` qua `/kb-sync`, KHÔNG lưu local.

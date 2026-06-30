@@ -3,7 +3,7 @@
 Đây là chỗ Liz ghi lại kiến thức tự học được — tách riêng khỏi memory của Betty.
 
 - **Khác `MEMORY.md`**: MEMORY.md là thứ *Betty* học để làm việc. Learning log này là kiến thức *Liz* muốn lưu cho bản thân (về CS, leadership, sản phẩm, tool, bất cứ gì).
-- **Khác `kb/`**: kb là tài liệu nghiệp vụ chính thức để bot/Betty tra cứu. Learning log là ghi chú cá nhân, không cần chuẩn hóa.
+- **Khác `kb/cs-process/`**: kb/cs-process là CS process/SOP chính thức của team. Product knowledge (features/plans/FAQ) sống trên KB LIVE `cs2.avada.net`. Learning log này là ghi chú cá nhân, không cần chuẩn hóa.
 
 ## Cách dùng
 

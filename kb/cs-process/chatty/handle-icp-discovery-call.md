@@ -117,4 +117,4 @@ Luôn kết bằng:
 ---
 
 *Cập nhật: 2026-04-23*
-*Liên quan: [handle-icp-qualification.md](handle-icp-qualification.md) · [icp-chatty-cs.md](../icp-chatty-cs.md)*
+*Liên quan: [handle-icp-qualification.md](handle-icp-qualification.md) · Chatty ICP trên KB LIVE `cs2.avada.net`*

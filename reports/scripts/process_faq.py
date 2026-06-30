@@ -2,6 +2,11 @@
 """
 Process Joy Crisp transcripts -> FAQ CSV
 Uses OpenAI API (gpt-4o-mini) to analyze each conversation
+
+⚠️ DEPRECATED (2026-06-30): reads local kb/kb-joy.md + kb/helpcenter-joy/* which
+were removed — product knowledge now lives on KB LIVE (cs2.avada.net). This script
+will break on the read_file() calls below. Use /mine-chat-faqs (in-session, no
+external API key) for FAQ mining instead. Kept for reference only.
 """
 
 import csv

@@ -60,7 +60,7 @@ TLDV tự record
 
 | Bước | File |
 |------|------|
-| Hiểu từng chân dung merchant | [icp-chatty-cs.md](../icp-chatty-cs.md) |
+| Hiểu từng chân dung merchant | Chatty ICP trên KB LIVE `cs2.avada.net` |
 | Qualify trong chat + gắn tag | [handle-icp-qualification.md](handle-icp-qualification.md) |
 | Chạy discovery call | [handle-icp-discovery-call.md](handle-icp-discovery-call.md) |
 | After call — ghi lại và follow up | *(file tracking — coming soon)* |

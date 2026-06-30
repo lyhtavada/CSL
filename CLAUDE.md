@@ -26,14 +26,7 @@ You operate at the **CSL level**: team development, research, analysis, strategy
 ```
 CSL/                               ← Liz's workspace (this repo)
 ├── _identity/                     ← Brand tone, values, team
-├── kb/                            ← Knowledge base (Betty's reference)
-│   ├── INDEX.md                   ← Read this first to find the right KB file
-│   ├── kb-chatty.md               ← Chatty overview: plans, features, common issues
-│   ├── kb-joy.md                  ← Joy overview: plans, features, common issues
-│   ├── icp-chatty.md              ← Chatty ideal customer profile
-│   ├── icp-joy.md                 ← Joy ideal customer profile
-│   ├── helpcenter-chatty/         ← Detailed Chatty docs (live-chat, ai, faq)
-│   ├── helpcenter-joy/            ← Detailed Joy docs (rewards, membership, POS)
+├── kb/                            ← CS process docs only (product KB lives on cs2.avada.net)
 │   └── cs-process/                ← CS support flows
 │       ├── chatty-support-flow.md ← Chatty-specific flow
 │       ├── chatty/                ← Chatty-specific processes
@@ -67,7 +60,8 @@ CSL/                               ← Liz's workspace (this repo)
 Key references:
 - Tone & voice: `_identity/tone-and-voice.md`
 - Liz's responsibilities: `_identity/responsibilities.md`
-- Product KB + CS processes: `kb/INDEX.md` → then specific file as needed
+- **Product knowledge (Chatty/Joy features, plans, FAQ, ICP)** → KB LIVE on `cs2.avada.net` — same source Ivy/Joyce use. Fetch via `skills/kb-sync/scripts/kb_api.py` or `skills/qa-weekly/scripts/fetch_kb.py <chatty|joy> <path>`. Agent ids: `chatty-agent`, `joy-loyalty-agent`. Do NOT keep a local product-KB copy — it drifts.
+- **CS processes** (escalation, refund, billing, support flows) → `kb/cs-process/`
 
 ## Working Style
 

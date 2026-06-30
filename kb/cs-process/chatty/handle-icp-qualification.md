@@ -12,7 +12,7 @@ Chatty có 4 nhóm merchant khác nhau — mỗi nhóm có nỗi đau khác nhau
 
 Mục tiêu không phải on-demand support — mà là **hiểu đúng needs và problem**, từ đó offer đúng mức hỗ trợ và chất lượng.
 
-Xem [icp-chatty-cs.md](../icp-chatty-cs.md) để hiểu chi tiết từng chân dung.
+Xem Chatty ICP trên KB LIVE `cs2.avada.net` để hiểu chi tiết từng chân dung.
 
 ---
 
@@ -149,4 +149,4 @@ Trước khi close ticket, check:
 ---
 
 *Cập nhật: 2026-04-23*
-*Liên quan: [icp-chatty-cs.md](../icp-chatty-cs.md)*
+*Liên quan: Chatty ICP trên KB LIVE `cs2.avada.net`*

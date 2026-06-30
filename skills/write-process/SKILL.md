@@ -105,7 +105,6 @@ If updating an existing file, edit in place — don't create a duplicate.
 ## Step 4 — Cross-reference
 
 After creating the process:
-- Check if `kb/INDEX.md` needs an entry added
 - Check if the app-specific flow file (`chatty-support-flow.md` or `joy-support-flow.md`) should reference the new process
 - If this process involves escalation, verify it aligns with `escalation-matrix.md`
 
