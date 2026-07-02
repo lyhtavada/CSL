@@ -1,8 +1,10 @@
 #!/bin/bash
 #
 # Monthly DFY KPI report run — invoked by launchd (com.avada.dfy-tracker-monthly).
-# Runs Claude Code headless to generate the Joy DFY monthly KPI report for
-# LAST month and save it into reports/dfy/joy/joy-dfy-{YYYY-MM}.md.
+# Runs Claude Code headless to generate the Joy AND Chatty DFY monthly KPI reports
+# for LAST month and save them into:
+#   reports/dfy/joy/joy-dfy-{YYYY-MM}.md      (tag-based scoring)
+#   reports/dfy/chatty/chatty-dfy-{YYYY-MM}.md (task-based scoring)
 #
 # Manual run (e.g. machine was off on the 2nd):  bash run-monthly.sh
 #

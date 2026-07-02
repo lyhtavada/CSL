@@ -1,7 +1,7 @@
 ---
 name: dfy-tracker
-description: Generate a MONTHLY DFY KPI tracker report for Joy (or Chatty). Pulls only open tickets, groups by CS, shows ticket link, created date, status, task completion, tags, and an auto-calculated Point column based on scoring tags. This is the monthly KPI scoring report — for the weekly monitoring report (Overview + adopt rate, no points), use /dfy-weekly. Runs automatically on the 2nd of each month (launchd) for last month's Joy tickets.
-version: 1.3.0
+description: Generate a MONTHLY DFY KPI tracker report for Joy AND Chatty. Pulls only open tickets, groups by CS, shows ticket link, created date, status, task completion, tags, and an auto-calculated Point column. Scoring differs by app — Joy is tag-based, Chatty is task-based (% task per block). This is the monthly KPI scoring report — for the weekly monitoring report (Overview + adopt rate, no points), use /dfy-weekly. Runs automatically on the 2nd of each month (launchd) for last month's Joy + Chatty tickets.
+version: 2.0.0
 ---
 
 # DFY Tracker Skill (Monthly KPI)
@@ -9,6 +9,12 @@ version: 1.3.0
 Generate a **monthly DFY KPI** tracker from Avada Ticket API, grouped by CS, with Point scoring.
 
 > **Weekly vs monthly:** This skill is for **monthly KPI** (Point column for scoring CS performance). For the **weekly monitoring** report (Overview block with adopt rate %, breakdown without points), use `/dfy-weekly` instead.
+
+> **Scoring differs by app — this is the key thing:**
+> - **Joy → tag-based.** Điểm chấm theo các tag scoring gán vào ticket (`DFY-1`, `DFY-video`...). Max 150p.
+> - **Chatty → task-based.** Điểm chấm theo **% task hoàn thành** trong 3 khối của checklist (AI Agent / Chatbox / Video), KHÔNG theo tag. Max 130p. Bộ tag của Chatty (`DFY-new`, `ai agent`, `proactive`...) chỉ để tracking/adopt rate, **không mang điểm**.
+>
+> Source-of-truth cách chấm Chatty: Notion "Chatty DFY — How we do this" §4b (Cách tính point). Nếu lệch, sửa ở đó trước rồi đồng bộ về đây.
 
 ## Trigger
 
@@ -38,6 +44,8 @@ GET https://avada-ts-a9cb0.web.app/api/external/tickets/by-date
 Headers: X-API-Key: {AVD_TICKET_API_KEY}
 Params: startDate, endDate, appName ("JOY Loyalty" or "Chatty")
 ```
+
+> **API shape (đã confirm):** response là `{success, data:{tickets:[...], total}}` — list ticket nằm ở **`data.tickets`**, KHÔNG phải `data` trực tiếp. Mỗi ticket có: `subject`, `ticketStatus`, `tsStatus`, `tagIds`, `tasks` (mảng `{title, completed}`), `members` (`isCreate`), `store` (mảng, lấy `[0].domain`), `ticketId`, `shortUrl`.
 
 Filter:
 - `subject.startsWith("[DFY]")`
@@ -86,7 +94,16 @@ Map via the `trello username` the API returns (or `displayName` as fallback):
 
 ### 6. Group by CS (nickname) and generate markdown table
 
-Group by the **KPI nickname** from step 4.
+Group by the **KPI nickname** from step 4. **Table columns + Point rules differ by app** — see below.
+
+Common to both:
+- **Ticket link:** `shortUrl` is **relative** (`/t/...`) → prepend `https://avada-ts-a9cb0.web.app` to make it clickable.
+- **Store:** `store[0].domain`.
+- Add a **Total** row per CS summing the Point column.
+
+---
+
+#### 6a. Joy — tag-based (max 150p)
 
 ```markdown
 ## {Nickname} ({n} tickets)
@@ -98,19 +115,13 @@ Group by the **KPI nickname** from step 4.
 | **Total** | | | | | | **130** |
 ```
 
-- **Status:** `In progress` (only open tickets are fetched; closed tickets are excluded in step 2)
 - **Tasks:** `{completed}/{total}`
 - **Tags:** comma-separated tag names from `tagIds`
-- **Point:** auto-calculated — Required (`DFY-1` = 75) + Recommended (coupon/banner/icon cộng dồn, **trần 25p**) + Video (`DFY-video` = 50). A ticket can have multiple scoring tags → cộng dồn theo nhóm (xem **Point rules** below). Tags không có điểm = 0.
+- **Point:** Required (`DFY-1` = 75) + Recommended (coupon/banner/icon cộng dồn, **trần 25p**) + Video (`DFY-video` = 50). Cộng dồn theo nhóm.
 
-### Point rules
-
-Điểm chia theo 3 nhóm:
-- **Required: 75p** — tag `DFY-1` (level đạt được). Đây là phần bắt buộc.
-- **Recommended: tổng trần 25p** — bonus, cộng dồn các tag dưới đây (tối đa 25p):
-  - `DFY-coupon-images` = 5
-  - `DFY-tier-banner` = 10
-  - `DFY-tier-icon` = 10
+**Joy Point rules** (3 nhóm):
+- **Required: 75p** — tag `DFY-1` (level đạt được), bắt buộc.
+- **Recommended: tổng trần 25p** — cộng dồn: `DFY-coupon-images`=5, `DFY-tier-banner`=10, `DFY-tier-icon`=10.
 - **Video: 50p** — tag `DFY-video`.
 
 | Tag | Nhóm | Point |
@@ -121,14 +132,42 @@ Group by the **KPI nickname** from step 4.
 | DFY-tier-icon | Recommended | 10 |
 | DFY-video | Video | 50 |
 
-All other tags (`DFY-adopted`, `DFY-no-adopt`, `DFY-following-up`, `review-yes`) = 0 point.
+All other Joy tags (`DFY-adopted`, `DFY-no-adopt`, `DFY-following-up`, `review-yes`) = 0 point.
+Recommended trần 25p (cả 3 tag = 5+10+10 = 25, đúng trần).
+Ví dụ: `DFY-1` + `DFY-video` = **125** · `DFY-1` + coupon + banner + icon = **100**.
 
-Recommended cộng dồn nhưng **trần 25p** (nếu có cả 3 tag = 5+10+10 = 25, đúng trần).
+---
 
-Ví dụ: ticket có `DFY-1` + `DFY-video` → Point = 75 + 50 = **125**.
-Ví dụ: ticket có `DFY-1` + `DFY-coupon-images` + `DFY-tier-banner` + `DFY-tier-icon` → 75 + 25 = **100**.
+#### 6b. Chatty — task-based, % task per block (max 130p)
 
-Add a **Total** row per CS summing the Point column.
+Chatty **KHÔNG chấm theo tag**. Điểm tính từ `tasks[]` của ticket, chia 3 khối theo **prefix của `task.title`**:
+
+- Title bắt đầu `AI Agent:` → khối **AI Agent** (weight 50)
+- Title bắt đầu `Chatbox:` → khối **Chatbox** (weight 30)
+- Title bắt đầu `Bonus` (video walkthrough) → khối **Video** (weight 50)
+- (task khác prefix → bỏ qua, không tính)
+
+Điểm mỗi khối:
+- **AI Agent (50) & Chatbox (30):** `weight × (task ✓ trong khối / tổng task khối)`, làm tròn.
+- **Video (50):** all-or-nothing — task video `completed` = 50, chưa = 0.
+
+```markdown
+## {Nickname} ({n} tickets)
+
+| Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
+|------|--------|-------|---------|--------------|------------|------|-------|
+| 2026-06-25 | [CHAT-...](link) | store.myshopify.com | 8/8 (50) | 5/7 (21) | ✓ (50) | ai agent, DFY-adopted | 121 |
+| 2026-06-24 | [CHAT-...](link) | store2.myshopify.com | 0/8 (0) | 0/7 (0) | ✗ (0) | proactive, DFY-new | 0 |
+| **Total** | | | | | | | **121** |
+```
+
+- **Cột khối:** hiển thị `done/total (điểm)` cho AI & Chatbox; `✓/✗ (điểm)` cho Video.
+- **Tags:** vẫn liệt kê tag để tham chiếu adopt/tracking, nhưng **không cộng điểm**.
+- **Point:** tổng 3 khối.
+
+Ví dụ: Chatbox 7/7 (30) + AI 6/8 (38) + Video ✓ (50) = **118** · Chatbox 5/7 (21) + AI 8/8 (50) + Video ✗ (0) = **71**.
+
+> Adopt/no-adopt (cả Joy & Chatty) KHÔNG tính điểm — theo dõi riêng ở adopt rate.
 
 ### 7. Save file
 
@@ -136,6 +175,8 @@ Add a **Total** row per CS summing the Point column.
 - Chatty: `reports/dfy/chatty/chatty-dfy-{YYYY-MM}.md`
 
 ## Tag reference
+
+### Joy tags (scoring — dùng để chấm điểm)
 
 | Tag | Meaning | Nhóm | Point |
 |-----|---------|------|-------|
@@ -151,12 +192,19 @@ Add a **Total** row per CS summing the Point column.
 
 > Recommended (coupon + banner + icon) cộng dồn nhưng **trần 25p**.
 
+### Chatty tags (tracking only — KHÔNG mang điểm)
+
+Chatty chấm điểm theo task (§6b), tag chỉ để tracking/adopt rate. Tags thường gặp: `DFY-new`, `DFY-adopted`, `DFY-no-adopt`, `DFY-following-up`, `proactive`, `ai agent`, `chatbox`, `review-yes`. Tất cả = **0 point**.
+
 ## Output
 
-Print summary first:
+Print summary first (per app):
 ```
 App: Joy | Period: 2026-05 | Total: 60 tickets (open only) | CS: 12 | Total points: 1240
 Saved: reports/dfy/joy/joy-dfy-2026-05.md
+
+App: Chatty | Period: 2026-05 | Total: 27 tickets (open only) | CS: 4 | Total points: 1028
+Saved: reports/dfy/chatty/chatty-dfy-2026-05.md
 ```
 
 Then show per-CS breakdown by **nickname** (ticket count + total points only, not full table — too long for chat):
@@ -168,9 +216,10 @@ Then show per-CS breakdown by **nickname** (ticket count + total points only, no
 
 ## Automated monthly run (launchd)
 
-This skill runs automatically on the **2nd of each month at 15:00** local time via launchd (`com.avada.dfy-tracker-monthly`), generating the report for **last month's Joy tickets** and committing it.
+This skill runs automatically on the **2nd of each month at 15:00** local time via launchd (`com.avada.dfy-tracker-monthly`), generating reports for **last month's Joy AND Chatty tickets** and committing them.
 
 - Cron source: `skills/dfy-tracker/cron/` (plist + `run-monthly.sh` + `prompt.txt` + `install.sh`)
+- One shared job produces both reports (`joy-dfy-{YYYY-MM}.md` + `chatty-dfy-{YYYY-MM}.md`).
 - Install once (Liz runs in Terminal): `bash ~/CSL/skills/dfy-tracker/cron/install.sh`
 - Log: `/tmp/dfy-tracker-monthly.log`
 - **Machine off on the 2nd?** launchd skips the run (no catch-up). Run it manually the next day: `bash ~/CSL/skills/dfy-tracker/cron/run-monthly.sh`
