@@ -114,15 +114,15 @@ CRITICAL RULES:
 - The weekly score reflects ONLY chat quality with the customer. Never imply this is a full performance review (the DM no longer prints a long disclaimer — just don't over-claim scope in overall/vs_last_week).
 - Be fair and developmental. This report is DM'd to the CS — accurate, specific, encouraging.
 
-KNOWLEDGE CHECK (KT1/KT2) — verify against KB, but be efficient:
-- Do NOT judge knowledge claims from your own memory.
-- PRICING is the most common claim — it is embedded below, so for any price/plan/limit claim, check against THIS table directly. Do NOT open a KB file for pricing.
-
-  JOY (orders/mo free quota): Starter $0 = 250 · Essential $29 = 500 · Advanced $129 = 2,000 · Ultimate $499 = 7,000. (Starter's figure is in transactions.) Free trial 14d Essential/Advanced, 30d Ultimate; Starter free forever; 30-day refund after upgrade.
-  CHATTY (per month unless noted): Free $0 = 50 AI convo lifetime, 100 products, 1 member, 90d history · Basic $19.99 = 50 AI/mo, 500 products, 5 members, 12mo history · Pro $68.99 = 300 AI/mo, 8,000 products, 10 members, unlimited history · Plus $199 = 700 AI/mo, 20,000 products, unlimited members.
-
-- For NON-pricing claims (specific feature behavior, refund/policy edge cases): only THEN consult the KB. The KB is the LIVE KB that Joyce/Ivy actually run, on cs2.avada.net — do NOT read the old claw-webhook repo. Index of available paths: /Users/avada/CSL/skills/qa-weekly/references/kb-index.md. To read a file, run: \`python3 /Users/avada/CSL/skills/qa-weekly/scripts/fetch_kb.py <chatty|joy> <kb/path.md>\` (e.g. \`... chatty kb/case/billing-refund.md\`). Read at most 1-2 files, only when a chat genuinely has a checkable non-price claim.
-  - Claim CONTRADICTS the table/KB → KT1: quote the CS line + the correct value.
+KNOWLEDGE CHECK (KT1/KT2) — verify against the LIVE KB only, and be efficient:
+- Do NOT judge knowledge claims from your own memory, and do NOT use any embedded/remembered price table. The ONLY source of truth is the live KB that Joyce/Ivy actually run, on cs2.avada.net (NOT the old claw-webhook repo).
+- Index of available paths: /Users/avada/CSL/skills/qa-weekly/references/kb-index.md. Read a file with: \`python3 /Users/avada/CSL/skills/qa-weekly/scripts/fetch_kb.py <chatty|joy> <kb/path.md>\`.
+- PRICING is the most common claim. Verify any price/plan/limit/quota claim against the KB pricing file for that app:
+  - Chatty → \`python3 .../fetch_kb.py chatty kb/faq/pricing.md\`
+  - Joy → \`python3 .../fetch_kb.py joy kb/reference/pricing.md\`
+- For NON-pricing claims (feature behavior, refund/policy edge cases): read the matching case/reference file from the index. Read at most 1-2 files, only when a chat genuinely has a checkable claim.
+- IMPORTANT — grandfathered / legacy pricing: the KB lists the CURRENT public price. Merchants on an older plan cohort keep their old (usually lower) price. So a CS quoting a price BELOW the KB figure is NOT automatically wrong — it may be the merchant's legacy price. Do NOT raise KT1 for a lower-than-KB price unless the chat itself shows the CS clearly stated the wrong current price. When a lower price looks plausibly legacy → treat as "cần verify cohort", note it softly at most, do NOT flag as severe. A price ABOVE the KB figure, or a plainly wrong feature/quota, is the case that warrants KT1.
+  - Claim CONTRADICTS the KB (and isn't explainable by legacy pricing) → KT1: quote the CS line + the correct value.
   - KB clearly has the answer but CS went in circles / said "can't be done" when it can → KT2.
 - Most chats have NO claim worth verifying — don't force it. If two KB files disagree (e.g. team-member count), that's a KB bug → severe_flag for Liz, NOT the CS's fault.
 - No claim / not sure → skip, do not speculate, do not open KB.

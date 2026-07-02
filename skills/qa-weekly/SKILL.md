@@ -14,7 +14,7 @@ Scoring follows `playbooks/qa-weekly-rubric.md`.
 
 Each chat is scored on 3 independent axes summing to 100:
 - **🧠 Mindset (0–34):** ownership, empathy, proactive, effort to satisfy the customer
-- **📚 Knowledge (0–33):** correct advice, verified against the agent KB (pricing table is embedded in the workflow prompt; other claims → read KB)
+- **📚 Knowledge (0–33):** correct advice, verified against the LIVE KB on cs2.avada.net — including pricing (Chatty `kb/faq/pricing.md`, Joy `kb/reference/pricing.md`). No embedded price table. A price *below* the KB figure may be a merchant's grandfathered/legacy price → not auto-wrong; only KT1 when the CS clearly states the wrong current price.
 - **🛠️ Skill (0–33):** clarity, right flow, no comms errors
 
 Weekly score = mean of per-chat scores. Labels: 90+ Xuất sắc · 80–89 Tốt · 70–79 Đạt · <70 Cần coaching. A technically-correct-but-cold CS loses ⅓ at Mindset; a caring + accurate CS with minor typos still scores high — by design.
