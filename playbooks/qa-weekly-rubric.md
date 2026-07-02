@@ -118,6 +118,14 @@ Cách trình bày & xử lý — rõ ràng, đúng flow, không lỗi giao tiế
 > **Flag riêng cho Liz** trước khi DM nếu có: KN8 (mất lịch sự), QT11 (bỏ KH),
 > KT1 (sai kiến thức), hoặc thao tác gây hậu quả trên live store.
 
+> **KHÔNG phải lỗi bảo mật — đừng chấm:** xin **storefront password** (mật khẩu
+> bảo vệ store chưa public, để CS xem giao diện store) là **bình thường**, KHÔNG
+> phải lỗi. Chỉ tính lỗi bảo mật khi CS xin **admin credentials / login vào
+> Shopify admin** (email + password tài khoản admin). Cách đúng để vào admin =
+> collaborator request code 4 chữ số (Settings > Users > Security), KHÔNG hỏi mật
+> khẩu admin. Phân biệt rõ 2 loại trước khi flag: storefront pw = OK; admin
+> login = flag.
+
 ---
 
 ## 3. Cách tính điểm
