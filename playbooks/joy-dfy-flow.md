@@ -144,45 +144,6 @@ Checklist 3 phase là **góc nhìn nội bộ của CS để audit/tick**. Khi n
 
 ---
 
-## 4c. DFY trong ca trực — Offer sao cho hợp thực tế
-
-Trong ca trực CS xử nhiều chat song song, không thể dừng 30–40 phút setup full cho 1 KH. Và quan trọng hơn: **không phải KH nào cũng muốn CS làm hộ — nhiều KH muốn tự setup.** Mục tiêu thật của DFY trong ca không phải "làm hộ cho xong" mà là **thúc KH launch nhanh hơn**, dù họ tự làm hay CS làm.
-
-Vì vậy **offer trong ca không còn là "để mình làm hộ toàn bộ"** (như cách widget DFY đang làm) mà mở hơn: **"để mình hỗ trợ mình launch"** — rồi đọc tín hiệu KH để chọn chế độ.
-
-### 3 chế độ CS chọn theo ý muốn của KH
-
-| KH muốn | Chế độ | CS làm gì trong ca | Mục tiêu |
-|---------|--------|--------------------|----------|
-| "Làm hộ tôi luôn" | **DFY full** | Phase 1 cho chạy ngay trong chat → widget/touchpoints async (theo §4b) | Launch hộ |
-| "Tôi tự làm được" | **DFY-guided** | KHÔNG làm hộ — chỉ đúng bước kẹt + đóng khung gần xong + offer làm hộ dự phòng | Thúc KH tự launch nhanh |
-| Chưa rõ / im | **Nudge** | Chỉ ra store thiếu gì nên chưa chạy → hỏi KH muốn tự làm hay để mình hỗ trợ | Đẩy khỏi trạng thái đứng im |
-
-### Nhánh DFY-guided — thúc KH tự launch (hay gặp nhất, nhẹ nhất cho ca trực)
-
-Ba đòn bẩy, dùng cùng lúc:
-
-1. **Chỉ đúng 1 việc đang kẹt** — không bắt KH đọc cả journey, chỉ ra chính xác chỗ store đang thiếu để chạy + đường dẫn thao tác ngắn:
-   > *"Store mình chưa có earning rule nào nên khách chưa tích được điểm. Mình vào **Program → Ways to earn → bật 'Place an order'** là khách bắt đầu tích được liền nha."*
-
-2. **Đóng khung "gần xong"** — tạo động lực bằng progress framing:
-   > *"Store mình chỉ còn thiếu 1 redeem option nữa là launch được rồi 💪 Bật xong cái đó là khách vừa tích vừa đổi điểm được luôn."*
-
-3. **Offer làm hộ như phương án dự phòng** — hạ rủi ro KH bỏ dở, nhưng không phải mặc định:
-   > *"Nếu mình bận thì để mình bật giúp trong 2 phút cũng được nha, mình chỉ cần gật một tiếng thôi."*
-
-### Track — vẫn tạo ticket + follow-up
-
-Kể cả khi KH tự làm, **vẫn tạo ticket** để track adoption:
-- Tạo ticket, gắn label **`DFY-guided`** (phân biệt với DFY full do CS setup)
-- **Follow-up 2–5 ngày:** check store xem KH đã tự launch chưa
-  - Đã launch (earning + redeeming active, widget visible) → `DFY-adopted` → close
-  - Chưa launch / đứng im → nhắc lại (chỉ bước còn kẹt) + offer làm hộ lần nữa → nếu vẫn không → `DFY-no-adopt` → close
-
-> **Điểm quyết định trong ca:** đừng mặc định làm hộ full. Đọc xem KH muốn tự làm hay muốn mình làm → chọn chế độ. Ca trực nặng thì DFY-guided vừa nhẹ cho CS vừa đúng ý KH muốn tự chủ, mà vẫn thúc được launch.
-
----
-
 ## 5. Checklist 3 phase (CS audit)
 
 Ticket auto-generate kèm checklist này. CS tick + viết note cho từng item.
