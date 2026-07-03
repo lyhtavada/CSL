@@ -49,7 +49,7 @@ Earning/redeeming đụng vào **logic điểm & tiền** của KH, nên mức c
 
 | Plan | Earning / Redeeming | Widget & Touchpoints |
 |------|---------------------|----------------------|
-| **Starter / Pro** | CS **review + đề xuất** rule nên bật (chat/email), KH tự enable. CS có thể bật giúp rule preset an toàn (signup, place order) nếu KH đồng ý trong chat. | CS setup trực tiếp (nếu chưa live) |
+| **Starter / Essential** | CS **review + đề xuất** rule nên bật (chat/email), KH tự enable. CS có thể bật giúp rule preset an toàn (signup, place order) nếu KH đồng ý trong chat. | CS setup trực tiếp (nếu chưa live) |
 | **Advanced trở lên** | CS **setup full thay KH** theo preset recommended, hoặc forward TS nếu phức tạp (tiers, custom rules, expiration). CS loop lại verify. | CS setup trực tiếp / forward TS |
 
 > **Luôn luôn:**
@@ -90,7 +90,7 @@ Làm **đúng thứ tự này**, dừng báo KH ngay khi tới GO LIVE:
 
 ```
 ① Program Rules   → earning + redeeming active
-                    (Starter/Pro: đề xuất, KH gật; Advanced+: CS bật/forward TS)
+                    (Starter/Essential: đề xuất, KH gật; Advanced+: CS bật/forward TS)
 ② Widget hiển thị → brand color + setup widget (widget hiện trên store) + loyalty page
 🚀 GO LIVE        → Switch sandbox → live mode
                     ⚠ LUÔN xin KH gật trước khi bật → rồi báo "store LIVE 🎉" + xin review
@@ -266,7 +266,7 @@ Checklist chi tiết là **góc nhìn nội bộ của CS**. Với KH journey ch
 **③ Đẩy tới GO LIVE 🎉** — mốc "win", cũng là lúc xin review tốt nhất. **Xin KH gật trước khi bật live:**
 > *"Your program is all set up. Shall I switch your store to live mode now so customers can start earning and redeeming real points? Once it's on, your loyalty program is officially running 🎉"*
 >
-> - **Starter/Pro:** rule điểm/tiền → đề xuất, KH gật rồi bật. *"Here's what I'd suggest: +100 points for signup, $1 = 1 point, 100 points = a $5 discount. Want me to set it up this way?"*
+> - **Starter/Essential:** rule điểm/tiền → đề xuất, KH gật rồi bật. *"Here's what I'd suggest: +100 points for signup, $1 = 1 point, 100 points = a $5 discount. Want me to set it up this way?"*
 > - **Advanced+:** CS bật full theo preset / forward TS, báo lại kết quả.
 
 **④ Touchpoints + widget on-brand — offer thêm, làm async:**
