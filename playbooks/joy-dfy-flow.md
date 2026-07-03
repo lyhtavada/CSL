@@ -174,22 +174,27 @@ Ba đòn bẩy, dùng cùng lúc:
 
 Checklist chi tiết là **góc nhìn nội bộ của CS**. Với KH journey chỉ có **2 nhịp**: **"bật cho LIVE trước"** → **"làm đẹp + tối ưu sau"**. Đừng làm KH thấy phải đi qua nhiều "giai đoạn".
 
+> Template gửi KH = **tiếng Anh**, theo tone `_identity/tone-and-voice.md` (friendly, concise, teammate-not-robot). Dưới đây là mẫu CS copy thẳng cho merchant.
+
 **① Offer** (`!dfy-offer` / `!v4-rcm`) — mở, cho KH chọn tự làm / làm hộ:
-> *"Hi [name], mình thấy store mình đang dùng Joy. Bên mình hỗ trợ setup miễn phí giúp chương trình loyalty chạy được + hợp với store. Mình hỗ trợ mình launch nha — mình muốn tự làm theo hướng dẫn hay để mình làm giúp luôn?"*
+> *"Hi [name], I noticed you're using Joy on your store. We offer free setup help to get your loyalty program live and looking on-brand. Happy to help you launch — would you like to set it up yourself with a quick guide, or should I do it for you?"*
 
 **② Quick audit + đặt kỳ vọng** — nói thẳng Quickstart còn thiếu gì + còn sandbox chưa:
-> *"Mình vừa xem qua, store đã có widget nhưng chưa có chương trình tích/đổi điểm đang chạy và đang còn ở chế độ thử (sandbox), nên khách chưa tích điểm thật được. Mình sẽ giúp bật chương trình + đưa store lên live trước, rồi chỉnh widget cho khớp brand sau nha."*
+> *"I took a quick look — your widget is set up, but there's no earning/redeeming program running yet and the app is still in sandbox mode, so customers can't earn real points yet. Let's get the program turned on and switch your store to live first, then I'll fine-tune the widget to match your brand."*
 
 **③ Đẩy tới GO LIVE 🎉** — mốc "win", cũng là lúc xin review tốt nhất. **Xin KH gật trước khi bật live:**
-> *"Mình đã set xong chương trình. Giờ mình bật store lên chế độ chính thức (live) để khách bắt đầu tích/đổi điểm thật nha? — Bật xong là store mình chạy chính thức rồi đó 🎉"*
+> *"Your program is all set up. Shall I switch your store to live mode now so customers can start earning and redeeming real points? Once it's on, your loyalty program is officially running 🎉"*
 >
-> - **Starter/Pro:** rule điểm/tiền → đề xuất, KH gật rồi bật. *"Mình đề xuất: đăng ký +100đ, $1 = 1 điểm, 100 điểm = mã $5, mình bật theo mức này nha?"*
+> - **Starter/Pro:** rule điểm/tiền → đề xuất, KH gật rồi bật. *"Here's what I'd suggest: +100 points for signup, $1 = 1 point, 100 points = a $5 discount. Want me to set it up this way?"*
 > - **Advanced+:** CS bật full theo preset / forward TS, báo lại kết quả.
 
 **④ Touchpoints + widget on-brand — offer thêm, làm async:**
-> *"Mình sẽ chỉnh widget cho khớp màu + brand store, xong trong hôm nay gửi lại video nha. Mình cũng bật thêm vài điểm chạm như hiển thị điểm ngay ở trang sản phẩm/giỏ hàng để khách dễ dùng hơn."*
+> *"I'll fine-tune the widget to match your store's colors and brand, and send you a short video once it's done today. I'll also enable a few extra touchpoints — like showing points right on your product and cart pages — to make it easier for customers to use."*
 
-**⑤ Gửi kết quả + Follow-up** — quay video (`Preview on store`) gửi Crisp → follow-up 2–5 ngày như §3.
+**⑤ Follow-up (reminder nếu KH chưa go live)** — email `!dfy-remind`:
+> *"Hi [name], just checking in — your loyalty program is set up and ready. Whenever you're ready, switch it to live mode (Quickstart > Launch > Switch to live mode) and your customers can start earning points. Let me know if you'd like me to turn it on for you."*
+
+**⑥ Gửi kết quả + Follow-up** — quay video (`Preview on store`) gửi Crisp → follow-up 2–5 ngày như §3.
 
 ### Lưu ý khi dẫn KH
 - **Luôn báo mốc LIVE rõ ràng** sau khi bật live mode — đó là giá trị KH cảm nhận ngay + điểm xin review.
