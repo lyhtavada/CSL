@@ -119,6 +119,55 @@ CS check lại store:
 
 ---
 
+## 3b. [Ý tưởng — discuss với dev] Store Readiness Audit tool
+
+> **Status: chưa build — spec để Liz discuss với dev.** Mục tiêu: tự động hóa **Bước 1** (đọc trạng thái store) thay vì CS mở app bấm tay từng store.
+
+**Mục tiêu:** nhập shop domain → tool trả về trạng thái từng item launch-critical + Quickstart % + kết luận *"store còn thiếu X, Y để go-live"*. Giúp CS audit nhanh, nhất là khi làm DFY hàng loạt / proactive.
+
+**Input:** shop domain (hoặc shop id).
+
+**Output (đề xuất):**
+```
+Store: xxx.myshopify.com | Plan: Advanced | Quickstart: 6/8
+─────────────────────────────────────────────
+🚀 LAUNCH STATUS: SANDBOX  ← chưa go-live
+① Program
+   ✅ earning rules active (2)
+   ❌ redeeming: chưa có option nào active
+② Widget
+   ✅ widget đang bật/hiển thị
+   ✅ loyalty page: có
+③ Touchpoints
+   ❌ point calculator: off
+   ⚠️ account page: off
+─────────────────────────────────────────────
+→ Kết luận: còn thiếu (1) redeeming option + (2) bật live mode để go-live.
+```
+
+**Tách rõ 2 loại item:**
+
+| Auto audit được (query data) | Cần mắt người (tool không chấm thay) |
+|------------------------------|--------------------------------------|
+| Sandbox vs live mode | Widget có **on-brand** không (màu/font/wording hợp store) |
+| Earning rule active (count) | Content từng block ổn chưa |
+| Redeeming option active | Ảnh card/banner có lạc tông không |
+| Widget bật/ẩn | |
+| Loyalty page có/không | |
+| VIP tier / referral / notifications on/off | |
+| Touchpoints (point calculator, account/thankyou page) on/off | |
+| Quickstart completion % | |
+
+→ Tool lo phần trái (phần "cho chạy được" — đáng tự động nhất). Phần phải vẫn cần CS nhìn ở bước ③ widget on-brand.
+
+**Câu hỏi cần chốt với dev:**
+1. **Data source:** Joy có API / BigQuery / internal endpoint nào expose per-shop config không? (sandbox status, list active programs, widget enabled, touchpoints toggle…). Đây là điều kiện tiên quyết — không có data thì không build được.
+2. Có thể **tái dùng logic Quickstart** (`checkList.js` + backend completion) để tool đọc thẳng completion state của từng item không, thay vì tự suy luận?
+3. Output đẩy đi đâu: CLI cho CS / paste vào ticket / hiển thị ngay trong Crisp extension?
+4. Có nên gắn với **proactive DFY** (batch audit nhiều store → lọc ra store eligible chưa launch → tạo ticket tự động) không?
+
+---
+
 ## 4. Map DFY ↔ Quickstart app (tham chiếu)
 
 Journey neo theo section của Quickstart trong app (source: `checkList.js`). CS dùng bảng này để biết item mình đang làm nằm ở đâu trong app KH nhìn thấy.
