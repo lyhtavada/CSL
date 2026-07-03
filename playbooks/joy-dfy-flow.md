@@ -2,23 +2,27 @@
 
 **Owner:** Liz (CS Leader)
 **Created:** 2026-05-18
-**Updated:** 2026-06-30
+**Updated:** 2026-07-03
 
 > Xem mục đích & tinh thần DFY: [`joy-dfy-intro.md`](./joy-dfy-intro.md)
 
 ---
 
-## 0. Đổi gì ở bản này (2026-06-30)
+## 0. Đổi gì ở bản này (2026-07-03)
 
-DFY trước đây gần như chỉ xoay quanh **widget customization**. Nhưng widget đẹp mà store **chưa có earning/redeeming program active** thì khách vẫn không kiếm được điểm → program không thực sự launch được. Bản này mở rộng journey ra toàn bộ con đường để KH **go-live thật**, chia 3 giai đoạn theo đúng thứ tự ưu tiên:
+DFY trước đây gần như chỉ xoay quanh **widget customization**. Nhưng widget đẹp mà store **chưa có earning/redeeming active** hoặc **vẫn ở sandbox** thì khách vẫn không tích được điểm → program chưa launch thật. Bản này mở rộng DFY ra **toàn bộ con đường go-live**, và **bám đúng Quickstart checklist có sẵn trong app** (không tự chế phase riêng) để CS và KH nhìn cùng một thứ.
+
+**Điểm neo quan trọng nhất: `launch = bật live mode (thoát sandbox)`.** App Joy chạy sandbox trước; store có thể setup xong hết earning/redeeming/widget mà **vẫn sandbox = khách thật chưa tích được điểm**. Công tắc launch thật là **"Switch from sandbox to live mode"** trong Quickstart → **Launch & Optimize**.
 
 ```
-Phase 1 — LAUNCH      → store đủ điều kiện go-live (earning + redeeming + widget visible)
-Phase 2 — BRAND       → widget on-brand, trông như một phần tự nhiên của store
-Phase 3 — OPTIMIZE    → conversion touchpoints (cart drawer redeem, point calculator…)
+① Program      → earning + redeeming active
+② Widget hiện  → brand color + setup widget (widget hiển thị trên store)
+🚀 GO LIVE     → Switch sandbox → live mode   ← MỐC LAUNCH THẬT (luôn xin KH gật trước)
+③ Touchpoints  → point calculator, visibility, account/thankyou page   (tối ưu sau LIVE)
+④ Engagement   → referral, notifications, integrations   (tối ưu sau LIVE)
 ```
 
-**Nguyên tắc vàng:** mục tiêu là **KH launch được sớm**. Phase 1 là bắt buộc để store LIVE — làm xong Phase 1 là KH đã có thể chạy program. Phase 2 & 3 nâng chất lượng và conversion, làm tiếp khi có thời gian / phù hợp store.
+**Nguyên tắc vàng:** mục tiêu là **KH launch được sớm**. Đẩy tới GO LIVE trước; touchpoints & on-brand làm async sau. Và **không phải lúc nào cũng CS làm hộ** — nhiều KH muốn tự làm, mục tiêu là *thúc KH launch nhanh* dù ai bấm nút (xem §5).
 
 ---
 
@@ -28,13 +32,13 @@ Phase 3 — OPTIMIZE    → conversion touchpoints (cart drawer redeem, point ca
 1. MC đang dùng app và ở Widget V4 (unified widget).
 2. MC thuộc ít nhất một trong các nhóm store sau:
    - **New install** — cài app trong vòng 30 ngày, chưa kịp setup hoàn chỉnh
-   - **Installed but not launched** — cài lâu nhưng loyalty program chưa live (widget ẩn, page chưa accessible, **hoặc không có earning program nào active**)
+   - **Installed but not launched** — cài lâu nhưng loyalty program chưa live (**còn sandbox**, widget ẩn, page chưa accessible, hoặc không có earning program nào active)
    - **Launched but not on-brand** — đã live nhưng widget chưa match theme store (màu, font, wording, icon lạc tông)
-3. Message Crisp inbound có intent liên quan **setup / customize / hiển thị / earning / redeem** widget hoặc loyalty program — hoặc CS chủ động phát hiện store thuộc nhóm trên khi xử lý case khác
+3. Message Crisp inbound có intent liên quan **setup / customize / hiển thị / earning / redeem / go-live** — hoặc CS chủ động phát hiện store thuộc nhóm trên khi xử lý case khác
 
 > CS đánh giá Crisp message → nếu match intent + plan trả phí → tự tạo ticket trong section "Done for You". Keyword list có thể mở rộng dựa trên data thực tế.
 
-**KHÔNG tạo ticket DFY trong các trường hợp:**
+**KHÔNG tạo ticket DFY:**
 - MC đã có ticket DFY active (status ≠ Adopted/No Adoption) → CS update ticket cũ thay vì tạo mới
 
 ---
@@ -43,147 +47,167 @@ Phase 3 — OPTIMIZE    → conversion touchpoints (cart drawer redeem, point ca
 
 Earning/redeeming đụng vào **logic điểm & tiền** của KH, nên mức can thiệp khác nhau theo giá trị KH:
 
-| Plan | Earning / Redeeming program | Widget & Touchpoints |
-|------|------------------------------|----------------------|
-| **Starter / Pro** | CS **review + đề xuất** rule nên bật (qua chat/email recommendation), KH tự enable. CS có thể bật giúp các rule preset an toàn (signup, place order) nếu KH đồng ý trong chat. | CS setup trực tiếp (nếu V4 chưa launch) |
-| **Advanced trở lên** | CS **setup full thay KH** theo preset recommended, hoặc forward TS nếu cấu hình phức tạp (tiers, custom rules, expiration). CS loop lại verify. | CS setup trực tiếp / forward TS |
+| Plan | Earning / Redeeming | Widget & Touchpoints |
+|------|---------------------|----------------------|
+| **Starter / Pro** | CS **review + đề xuất** rule nên bật (chat/email), KH tự enable. CS có thể bật giúp rule preset an toàn (signup, place order) nếu KH đồng ý trong chat. | CS setup trực tiếp (nếu chưa live) |
+| **Advanced trở lên** | CS **setup full thay KH** theo preset recommended, hoặc forward TS nếu phức tạp (tiers, custom rules, expiration). CS loop lại verify. | CS setup trực tiếp / forward TS |
 
-> Với mọi mức: **không bao giờ tự ý đổi giá trị điểm/tiền của rule đang chạy** (vd: store đang để 1$ = 5 points thì không tự đổi thành 1$ = 1 point) — chỉ đề xuất. Chỉ setup mới các rule còn trống.
-
----
-
-## 3. CS audit — Nhìn toàn diện store trước khi vào flow
-
-Trước khi bắt đầu, CS cần có cái nhìn tổng thể về store — không chỉ widget. Audit theo đúng thứ tự 3 phase:
-
-**① Program (Phase 1 — quan trọng nhất):**
-- Có **earning rule** nào active chưa? (signup, place order là tối thiểu để khách bắt đầu kiếm điểm)
-- Có **redeeming option** nào chưa? (khách có điểm mà không có gì để đổi → program vô nghĩa)
-- Program đã **publish / active** chưa, hay đang ở draft?
-
-**② Widget (Phase 2):**
-- Widget có **đang hiển thị trên store** không (visible, không bị ẩn)?
-- Đã on-brand chưa (màu, font, wording, icon)?
-
-**③ Loyalty page:**
-- Chưa có → recommend MC tạo — điểm chạm quan trọng để convert, thiếu page là thiếu một kênh
-- Có rồi nhưng chưa on-brand → offer customize, đặc biệt MC Advanced trở lên → forward TS xử lý, CS loop lại verify
-
-**④ Conversion touchpoints (Phase 3):**
-- Redeem in cart drawer đã bật chưa? Point calculator? Các điểm chạm này có match store không?
-
-**Các element khác** (popup, launcher, account page…) — mention nếu thấy lạc tông hoặc chưa setup, nhưng không cần đi sâu trong DFY flow
+> **Luôn luôn:**
+> - **Không tự đổi giá trị điểm/tiền của rule đang chạy** (vd store để 1$ = 5 points thì không tự đổi thành 1$ = 1 point) — chỉ đề xuất. Chỉ setup mới rule còn trống.
+> - **Bật live mode = LUÔN xin KH gật trước**, mọi plan (xem §3 bước 4). Đây là công tắc launch thật, khách bắt đầu tích điểm thật.
 
 ---
 
-## 4. CS Flow — Cách làm việc với MC
+## 3. Flow thao tác phía CS
 
-CS chủ động offer free white-glove service cho MC, dùng shortcut `!v4-rcm` hoặc `!dfy-offer`.
+Mạch CS cầm để làm — từ nhận chat tới đóng ticket.
 
-**Bước thực hiện:**
+### Bước 0 — Phát hiện & đánh giá eligible
+CS nhận chat / rà store → check 2 điều kiện §1. Match + plan trả phí → vào flow.
 
-1. CS nhận chat của MC đang online → đánh giá store eligible → tạo ticket DFY bằng cách click button **[DFY]** embed trong Crisp chat hoặc prompt TS agent qua extension → ticket tự tạo kèm đầy đủ checklist 3 phase, set label `DFY-new`
-2. CS audit store theo §3 → update label `DFY-in-progress` → làm theo thứ tự phase:
-   - **Phase 1 trước hết** — đảm bảo earning + redeeming + widget visible để store đủ điều kiện LIVE (theo phân mức plan §2)
-   - **Phase 2** — customize widget on-brand
-   - **Phase 3** — bật conversion touchpoints phù hợp
-3. Sau khi có kết quả, CS dùng button **Preview on store** → **quay video ngắn kết quả** (highly recommended — MC dễ follow hơn nhiều so với email dài kèm ảnh) → gửi qua Crisp
-4. Done → nếu convert được review từ flow DFY: gắn thêm `review-yes` → chụp ảnh hoặc quay video post vào phần comment để phục vụ tính point → **không close ticket ngay**, để mở chờ follow-up
-5. **Follow-up sau 2–5 ngày** → CS check lại store xem MC có đang dùng/giữ customization + program còn active không:
-   - **Có adopt** (widget vẫn match, program vẫn chạy, MC hài lòng) → gắn label `DFY-adopted` → close ticket
-   - **Chưa thấy update / MC không phản hồi** → gửi reminder email (template `!dfy-remind`) → gắn label `DFY-no-adopt` → close ticket
+### Bước 1 — Mở Quickstart của store + đọc trạng thái
+CS mở **Quickstart trong app của store** (Basic/Advanced — để CS/KH tự chọn mode phù hợp) → đọc ngay 2 tín hiệu:
+- Quickstart đang **x/8 (Basic)** hay **x/20 (Advanced)** → biết KH đứng đâu, còn thiếu bước nào
+- **⭐ Store còn Sandbox hay đã Live mode?** — đây là công tắc launch. Widget đẹp + program active nhưng **còn sandbox = CHƯA LIVE thật**.
+- Earning / Redeeming đã active chưa? Widget đã hiện chưa? Loyalty page có chưa?
 
-> SLA: Bắt buộc phải có kết quả hoàn thiện (tối thiểu **Phase 1 — store LIVE được**) và báo KH trong vòng **48H** sau khi tạo ticket. Nếu ticket quá 48H không có update → escalate Liz.
+> Đây thay cho "audit store" cũ. **Quickstart % + sandbox status** = 2 thứ CS đọc đầu tiên.
 
-> **Lưu ý tính point:** Follow-up đúng hạn + gắn đủ tag (`DFY-adopted` hoặc `DFY-no-adopt`, `review-yes` nếu có) là điều kiện bắt buộc để ticket được tính vào points.
+### Bước 2 — Đọc tín hiệu KH → chọn chế độ (xem §5)
+| KH muốn | Chế độ |
+|---------|--------|
+| "làm hộ tôi luôn" | **DFY full** — CS thao tác |
+| "tôi tự làm được" | **DFY-guided** — CS chỉ bước kẹt, KH tự bấm |
+| chưa rõ / im | **Nudge** → chỉ store kẹt ở đâu, hỏi lại |
 
-**Lưu ý:**
-- Nếu là MC cũ (đang dùng widget cũ) → **tuyệt đối không ấn Switch to unified widget** nếu chưa được sự đồng ý của MC
-- **Không tự đổi giá trị điểm/tiền** của rule đang chạy (xem §2) — chỉ đề xuất
-- CS có thể show kết quả sơ bộ với MC trước để tăng khả năng xin review — sau đó hẹn MC gửi kết quả hoàn thiện sau
-- CS được khuyến khích tự do sáng tạo và custom thêm cho phù hợp với store — miễn là Required items (Phase 1) đã hoàn thành
+### Bước 3 — Tạo ticket + gắn label
+Click button **[DFY]** trong Crisp (hoặc prompt TS agent qua extension) → ticket auto-gen kèm checklist §7.
+- DFY full → label `DFY-new` → khi bắt tay làm đổi `DFY-in-progress`
+- DFY-guided → label `DFY-guided`
 
-**Tips chung (xem chi tiết + ví dụ ở Notion "Joy DFY Best practices"):**
-- **Đọc brand store trước khi setup:** đọc màu, font, phong cách (tối giản/sặc sỡ, cao cấp/gần gũi) rồi mới làm. Mục tiêu là on-brand, không phải tick cho hết checklist.
-- **Content trên store đã launch:** store đã launch (V3, hoặc V4 đã live) → KHÔNG sửa content trực tiếp, viết đề xuất qua email recommendation. Chỉ V4 chưa launch mới chỉnh trực tiếp.
-- **Lấy ảnh từ chính store của KH:** cần ảnh cho widget (header, banner, card, coupon) → ưu tiên ảnh sản phẩm/brand có sẵn trên store, không dùng ảnh stock lạc tông.
+### Bước 4 — Thực thi theo thứ tự → LIVE trước
+Làm **đúng thứ tự này**, dừng báo KH ngay khi tới GO LIVE:
+
+```
+① Program Rules   → earning + redeeming active
+                    (Starter/Pro: đề xuất, KH gật; Advanced+: CS bật/forward TS)
+② Widget hiển thị → brand color + setup widget (widget hiện trên store) + loyalty page
+🚀 GO LIVE        → Switch sandbox → live mode
+                    ⚠ LUÔN xin KH gật trước khi bật → rồi báo "store LIVE 🎉" + xin review
+─────────── mốc SLA 48H tính ở đây ───────────
+③ Widget on-brand → checklist chi tiết §7 (màu/logo/font/card...) — async
+④ Touchpoints     → point calculator (product/cart), visibility, account/thankyou — async
+⑤ Engagement      → referral, notifications — nếu phù hợp
+```
+
+- Nếu **DFY-guided**: CS KHÔNG thao tác ①②🚀 — chỉ chỉ bước kẹt + đóng khung "còn X bước" để KH tự bấm (xem §5).
+- **Không tự đổi rule điểm/tiền đang chạy** — chỉ setup rule trống.
+- **Content trên store đã launch** (V3 hoặc V4 đã live): KHÔNG sửa content trực tiếp → viết đề xuất qua email recommendation. Chỉ store chưa live mới chỉnh trực tiếp.
+- MC cũ đang dùng widget cũ → **tuyệt đối không ấn Switch to unified widget** nếu chưa được MC đồng ý.
+
+### Bước 5 — Gửi kết quả
+`Preview on store` → **quay video ngắn kết quả** (MC dễ follow hơn nhiều so với email dài kèm ảnh) → gửi Crisp. Convert được review → gắn `review-yes` + post ảnh/video vào comment ticket (để tính point). **Không close ticket ngay** — để mở chờ follow-up.
+
+### Bước 6 — Follow-up sau 2–5 ngày
+CS check lại store:
+- **Đã Live + giữ customization** (DFY-guided: KH đã tự Go live) → `DFY-adopted` → close
+- **Còn sandbox / không phản hồi** → reminder email (`!dfy-remind`) → `DFY-no-adopt` → close
+
+### SLA & escalation
+- SLA **48H** tính tới mốc **GO LIVE + báo KH** (không chờ xong widget on-brand). Quá 48H không update → escalate Liz.
+- **Tính point:** follow-up đúng hạn + gắn đủ tag (`DFY-adopted`/`DFY-no-adopt`, `review-yes` nếu có) là điều kiện bắt buộc để ticket được tính point.
 
 ---
 
-## 4b. Conversation flow với KH — Áp 3 phase vào chat thật
+## 4. Map DFY ↔ Quickstart app (tham chiếu)
 
-Checklist 3 phase là **góc nhìn nội bộ của CS để audit/tick**. Khi nói chuyện với KH thì KHÔNG bê 3 bảng đó ra. KH chỉ cần cảm nhận **1 mốc rõ ràng: "store của tôi đã chạy được"** — đó là sau Phase 1. Phase 2 & 3 là CS làm thêm (ngầm / async), KH không phải chờ.
+Journey neo theo section của Quickstart trong app (source: `checkList.js`). CS dùng bảng này để biết item mình đang làm nằm ở đâu trong app KH nhìn thấy.
 
-> **Nguyên tắc đóng gói:** Với KH, journey chỉ có 2 nhịp — **"bật chạy được trước"** rồi **"làm đẹp + tối ưu sau"**. Đừng làm KH thấy phải đi qua "3 giai đoạn".
+| Bước DFY | Section trong app | Items chính | Cần để LIVE? |
+|----------|-------------------|-------------|--------------|
+| **① Program** | Setup Program Rules | Enable customer accounts · **earning rules** · **redeeming rules** · custom point label · discount prefix · (VIP tier nếu store lớn) | ✅ |
+| **② Widget** | Branding & Touchpoints (core) | brand color & logo · **setup widget** · create loyalty page | ✅ |
+| **🚀 GO LIVE** | Launch & Optimize | **Switch sandbox → live mode** | ✅ **mốc launch** |
+| **③ Touchpoints** | Branding & Touchpoints (nâng cao) | **point calculator (product/cart)** · improve visibility · account page · thankyou page | Sau LIVE |
+| **④ Engagement / Advanced** | Engagement + Advanced | referral · email notifications · integrations · Shopify flow · checkout extensions | Sau LIVE |
 
-### Nhịp hội thoại chuẩn (trong 1 chat session)
+> **Basic vs Advanced** = chỉ là view filter của cùng 1 checklist. Basic hiện các bước cốt lõi gom thành "Set up your program" + "Go live"; Advanced hiện tất cả. CS/KH tự chọn mode theo store.
 
-**① Offer** — store eligible → CS offer free setup (`!dfy-offer`).
-> *"Hi [name], mình thấy store mình đang dùng Joy. Bên mình có hỗ trợ setup miễn phí giúp chương trình loyalty chạy mượt + hợp với store, mình làm giúp mình luôn nha?"*
+---
 
-**② Quick audit + đặt kỳ vọng** — CS nói thẳng tình trạng + mục tiêu launch trước:
-> *"Mình vừa xem qua, store đã có widget nhưng chưa có chương trình tích/đổi điểm nào đang chạy, nên khách chưa kiếm được điểm. Mình sẽ bật chương trình để store chạy được trước, rồi chỉnh widget cho khớp brand sau nha."*
+## 5. DFY trong ca trực — Offer sao cho hợp thực tế
 
-**③ Phase 1 — bật cho chạy + báo mốc LIVE** 🎉 — đây là khoảnh khắc "win", cũng là lúc xin review tốt nhất:
-> *"Xong rồi nè! Giờ khách đã có thể tích điểm khi đăng ký + mua hàng, và đổi điểm lấy mã giảm giá. Chương trình của mình đã chạy chính thức 🎉"*
+Trong ca trực CS xử nhiều chat song song, không thể dừng 30–40 phút setup full cho 1 KH. Quan trọng hơn: **không phải KH nào cũng muốn CS làm hộ — nhiều KH muốn tự setup.** Mục tiêu DFY trong ca không phải "làm hộ cho xong" mà là **thúc KH launch nhanh hơn**, dù họ tự làm hay CS làm.
+
+Vì vậy offer trong ca mở hơn: **"để mình hỗ trợ mình launch"** (cho KH chọn tự làm / làm hộ), thay vì mặc định *"để mình làm hộ toàn bộ"*.
+
+### 3 chế độ CS chọn theo ý muốn của KH
+
+| KH muốn | Chế độ | CS làm trong ca | Track |
+|---------|--------|-----------------|-------|
+| "Làm hộ tôi luôn" | **DFY full** | Đẩy tới GO LIVE ngay trong chat → widget/touchpoint async | `DFY-*` thường |
+| "Tôi tự làm được" | **DFY-guided** | KHÔNG làm hộ — chỉ bước kẹt + đóng khung gần xong + offer làm hộ dự phòng | `DFY-guided` |
+| Chưa rõ / im | **Nudge** | Chỉ store đang kẹt Quickstart ở đâu → hỏi tự làm hay để CS hỗ trợ | — |
+
+### Nhánh DFY-guided — thúc KH tự launch (hay gặp nhất, nhẹ nhất cho ca trực)
+
+Ba đòn bẩy, dùng cùng lúc:
+
+1. **Chỉ đúng bước kẹt trên Quickstart** — không bắt KH đọc cả journey, chỉ chỗ store đang thiếu + đường dẫn thao tác ngắn:
+   > *"Quickstart của mình còn thiếu redeeming rule + chưa bật live mode. Vào **Programs → Redeem** thêm 1 option, rồi **Launch → Switch to live mode** là store chạy chính thức nha."*
+
+2. **Đóng khung "gần xong"** — dùng chính % của Quickstart để tạo động lực:
+   > *"Quickstart mình 6/8 rồi, chỉ còn 2 bước nữa là Go live được 💪"*
+
+3. **Offer làm hộ như phương án dự phòng** — hạ rủi ro KH bỏ dở, không phải mặc định:
+   > *"Nếu mình bận thì để mình bật giúp trong 2 phút cũng được nha, mình chỉ cần gật một tiếng thôi."*
+
+### Track DFY-guided
+- Vẫn tạo ticket, label `DFY-guided`, follow-up 2–5 ngày → KH đã Go live (thoát sandbox) chưa?
+  - Đã → `DFY-adopted` → close
+  - Chưa → nhắc lại bước kẹt + offer làm hộ lần nữa → vẫn không → `DFY-no-adopt` → close
+- **Point cho DFY-guided: chưa chốt — Liz quyết sau.** Tạm thời cứ track adoption, chưa đưa vào cơ chế tính point.
+
+---
+
+## 6. Conversation flow với KH — nói gì trong chat
+
+Checklist chi tiết là **góc nhìn nội bộ của CS**. Với KH journey chỉ có **2 nhịp**: **"bật cho LIVE trước"** → **"làm đẹp + tối ưu sau"**. Đừng làm KH thấy phải đi qua nhiều "giai đoạn".
+
+**① Offer** (`!dfy-offer` / `!v4-rcm`) — mở, cho KH chọn tự làm / làm hộ:
+> *"Hi [name], mình thấy store mình đang dùng Joy. Bên mình hỗ trợ setup miễn phí giúp chương trình loyalty chạy được + hợp với store. Mình hỗ trợ mình launch nha — mình muốn tự làm theo hướng dẫn hay để mình làm giúp luôn?"*
+
+**② Quick audit + đặt kỳ vọng** — nói thẳng Quickstart còn thiếu gì + còn sandbox chưa:
+> *"Mình vừa xem qua, store đã có widget nhưng chưa có chương trình tích/đổi điểm đang chạy và đang còn ở chế độ thử (sandbox), nên khách chưa tích điểm thật được. Mình sẽ giúp bật chương trình + đưa store lên live trước, rồi chỉnh widget cho khớp brand sau nha."*
+
+**③ Đẩy tới GO LIVE 🎉** — mốc "win", cũng là lúc xin review tốt nhất. **Xin KH gật trước khi bật live:**
+> *"Mình đã set xong chương trình. Giờ mình bật store lên chế độ chính thức (live) để khách bắt đầu tích/đổi điểm thật nha? — Bật xong là store mình chạy chính thức rồi đó 🎉"*
 >
-> - **Starter/Pro:** rule điểm/tiền → đề xuất trong chat, KH gật rồi mới bật. *"Mình đề xuất: đăng ký +100đ, $1 = 1 điểm, 100 điểm = mã $5. Mình bật theo mức này nha?"*
+> - **Starter/Pro:** rule điểm/tiền → đề xuất, KH gật rồi bật. *"Mình đề xuất: đăng ký +100đ, $1 = 1 điểm, 100 điểm = mã $5, mình bật theo mức này nha?"*
 > - **Advanced+:** CS bật full theo preset / forward TS, báo lại kết quả.
 
-**④ Phase 2 & 3 — offer thêm, làm async** — không bắt KH chờ trong session:
-> *"Mình sẽ chỉnh widget cho khớp màu + brand store mình, làm xong trong hôm nay mình gửi lại video kết quả nha. Mình cũng bật thêm vài điểm chạm như đổi điểm ngay trong giỏ hàng để khách dễ dùng hơn."*
+**④ Touchpoints + widget on-brand — offer thêm, làm async:**
+> *"Mình sẽ chỉnh widget cho khớp màu + brand store, xong trong hôm nay gửi lại video nha. Mình cũng bật thêm vài điểm chạm như hiển thị điểm ngay ở trang sản phẩm/giỏ hàng để khách dễ dùng hơn."*
 
-**⑤ Gửi kết quả + Follow-up** — quay video kết quả (`Preview on store`) gửi qua Crisp → follow-up 2–5 ngày như §4.
+**⑤ Gửi kết quả + Follow-up** — quay video (`Preview on store`) gửi Crisp → follow-up 2–5 ngày như §3.
 
-### Lưu ý khi dẫn KH qua flow
-- **Luôn báo mốc LIVE rõ ràng** sau Phase 1 — đó là giá trị KH cảm nhận được ngay, và là điểm xin review.
-- **Không liệt kê việc CS sẽ làm theo phase** cho KH — chỉ nói kết quả KH nhận được ("chạy được", "hợp brand", "khách dễ đổi điểm").
-- **Earning/redeeming điểm-tiền:** Starter/Pro luôn xin KH gật trước khi bật; Advanced+ CS chủ động bật theo preset. Không tự đổi rule đang chạy (xem §2).
-- **1 session hay nhiều:** cố gắng xong **Phase 1 ngay trong chat** (KH online) để có mốc LIVE. Phase 2/3 làm async trong ngày, gửi video sau. SLA 48H tính theo mốc **Phase 1 hoàn thành + báo KH**.
-- Nếu KH không online đủ lâu để chốt Phase 1 → bật earning/redeeming preset an toàn (nếu eligible), báo qua email, hẹn customize sau.
-
----
-
-## 5. Checklist 3 phase (CS audit)
-
-Ticket auto-generate kèm checklist này. CS tick + viết note cho từng item.
-
-Mục tiêu của DFY không phải là tick hết checklist — mà là làm cho **program thực sự launch được** và widget **trông như một phần tự nhiên của store đó**. Làm theo thứ tự phase: Phase 1 đủ để go-live, Phase 2 & 3 nâng chất lượng.
-
-> Chi tiết "nên làm gì" cho từng item + ví dụ store thật: xem Notion **"Joy DFY Best practices"**.
+### Lưu ý khi dẫn KH
+- **Luôn báo mốc LIVE rõ ràng** sau khi bật live mode — đó là giá trị KH cảm nhận ngay + điểm xin review.
+- **Không liệt kê việc CS làm theo phase** cho KH — chỉ nói kết quả KH nhận được ("chạy chính thức", "hợp brand", "khách dễ đổi điểm").
+- **Cố gắng đẩy tới GO LIVE ngay trong chat** khi KH online. Widget on-brand + touchpoints làm async trong ngày, gửi video sau.
+- Nếu KH không online đủ lâu để chốt GO LIVE → set sẵn program (nếu eligible) nhưng **để KH tự bật live hoặc hẹn xác nhận** (không tự bật live khi chưa có KH gật), báo qua email, hẹn customize sau.
 
 ---
 
-### 🚀 PHASE 1 — LAUNCH (Required — store phải đủ điều kiện go-live)
+## 7. Checklist widget on-brand (chi tiết — bước ③, treo dưới item "Setup widget")
 
-Đây là phần **bắt buộc để KH launch được**. Thiếu phần này thì widget có đẹp mấy program vẫn không chạy.
+Đây là phần chi tiết của item **"Setup widget"** trong app — CS dùng khi làm bước ③ widget on-brand (sau khi store đã LIVE, hoặc trực tiếp nếu store chưa live). Ticket auto-generate kèm checklist này.
 
-**Earning program**
-- [ ] Có ít nhất 1 earning rule cho **acquisition**: Signup / Create account
-- [ ] Có earning rule cho **core action**: Place an order
-- [ ] (Tùy store) earning rule khuyến khích: Leave a review, Follow social, Birthday
-- [ ] Point value của mỗi rule hợp lý (không để 0 hoặc giá trị mặc định vô nghĩa)
-- [ ] Earning program đã **Active / Published** (không còn ở draft)
+Mục tiêu không phải tick hết — mà làm widget **trông như một phần tự nhiên của store**. Đọc brand store (màu, font, phong cách) trước rồi mới làm.
 
-**Redeeming program**
-- [ ] Có ít nhất 1 redeem option khách thực sự dùng được (vd: $ off / % off coupon)
-- [ ] Tỉ lệ quy đổi điểm → reward hợp lý (khách đạt được trong thời gian hợp lý, không quá xa)
-- [ ] Redeem option đã **Active / Published**
+> Chi tiết "nên làm gì" từng item + ví dụ store thật: xem Notion **"Joy DFY Best practices"**.
 
-**Widget visible**
-- [ ] Widget đang **bật và hiển thị** trên storefront (không bị ẩn / chưa publish)
-- [ ] Loyalty page accessible (nếu store dùng page) hoặc launcher hiển thị đúng
-
-> ✅ **Hoàn thành Phase 1 = store đã LIVE.** Đến đây KH đã có thể chạy program. Báo KH ngay nếu cần go-live gấp.
-
-> ⚠ Với rule điểm/tiền: **Starter/Pro** → đề xuất, KH duyệt rồi mới bật. **Advanced+** → CS setup full theo preset hoặc forward TS (xem §2).
-
----
-
-### 🎨 PHASE 2 — BRAND (Required khi có thời gian — widget on-brand)
-
-Phần customize widget để on-brand. Đây là phần checklist cũ — giữ nguyên giá trị.
-
+### Required (on-brand core)
 - [ ] Primary / button / text color phù hợp brand, độ tương phản tốt
 - [ ] Logo ở widget header (nếu logo pro, phù hợp)
 - [ ] Header background image (nếu phù hợp — ưu tiên ảnh từ store)
@@ -205,30 +229,20 @@ Phần customize widget để on-brand. Đây là phần checklist cũ — giữ
 - [ ] Ẩn các block không cần thiết
 - [ ] Program order sort hợp lý
 
-> ⚠ **Content/text trên store đã launch:** Point label + Content từng block chỉ đổi TRỰC TIẾP khi store ở V4 và CHƯA launch. Nếu store ở V3 hoặc V4 đã launch → KHÔNG đổi trực tiếp, viết đề xuất trong email recommendation cho KH.
+> ⚠ **Content/text trên store đã launch:** Point label + Content từng block chỉ đổi TRỰC TIẾP khi store CHƯA live. Store đã live (V3 hoặc V4 đã live) → KHÔNG đổi trực tiếp, viết đề xuất trong email recommendation.
 
-**Brand — Recommended (CS tự đánh giá)**
+### Recommended (CS tự đánh giá)
 - [ ] My coupon images
 - [ ] Ways to earn / redeem images (cân nhắc — nhiều ảnh quá gây rối, đẩy program xuống dưới fold)
 - [ ] Tier icon custom theo từng tier
 - [ ] Tier banner custom theo store
 
----
+### Touchpoints (bước ④ — Branding & Touchpoints nâng cao, làm sau LIVE)
+- [ ] **Point calculator** — hiển thị "mua đơn này được X điểm" trên product/cart page (`Show point rewards on product and cart pages`)
+- [ ] **Improve loyalty program visibility** — tăng độ hiển thị của program trên store
+- [ ] **My Account page** — hiển thị điểm & rewards trong trang tài khoản khách
+- [ ] **Thankyou page** — nhắc điểm vừa tích sau khi mua
+- [ ] Các touchpoint hiển thị **on-brand**, không phá layout store → không phù hợp store thì skip + ghi note
 
-### ⚡ PHASE 3 — OPTIMIZE (Conversion touchpoints — nâng conversion sau khi đã launch)
-
-Các điểm chạm đưa loyalty vào đúng lúc khách đang mua → nâng conversion. CS tự đánh giá bật theo store, ghi note nếu skip.
-
-- [ ] **Redeem in cart drawer** — cho khách áp điểm/đổi reward ngay trong cart drawer (đúng lúc quyết định mua)
-- [ ] **Point calculator** — hiển thị "mua đơn này được X điểm" trên product/cart để kích thích mua thêm
-- [ ] **Earning points on product page** — nhắc khách số điểm sẽ nhận ngay trên trang sản phẩm
-- [ ] **Post-purchase / thank-you touchpoint** — nhắc điểm vừa tích được sau khi mua
-- [ ] **Account page integration** — hiển thị điểm & rewards trong trang tài khoản khách
-- [ ] Các touchpoint trên hiển thị **on-brand** và không phá layout store
-
-> Touchpoint nào không phù hợp store (vd theme không hỗ trợ cart drawer) → skip + ghi note lý do.
-
----
-
-### 🎁 Bonus
+### Bonus
 - [ ] Video walkthrough / explain gửi KH
