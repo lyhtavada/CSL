@@ -29,11 +29,11 @@ DFY trước đây gần như chỉ xoay quanh **widget customization**. Nhưng 
 ## 1. Scope — Khi nào áp dụng DFY
 
 **Eligibility (đồng thời thỏa cả 2):**
-1. MC đang dùng app và ở Widget V4 (unified widget).
+1. MC thuộc nhóm **Trial hoặc Paying Advanced trở lên**.
 2. MC thuộc ít nhất một trong các nhóm store sau:
    - **New install** — cài app trong vòng 30 ngày, chưa kịp setup hoàn chỉnh
-   - **Installed but not launched** — cài lâu nhưng loyalty program chưa live (**còn sandbox**, widget ẩn, page chưa accessible, hoặc không có earning program nào active)
-   - **Launched but not on-brand** — đã live nhưng widget chưa match theme store (màu, font, wording, icon lạc tông)
+   - **Not launched** — loyalty program chưa live (**còn sandbox**, widget ẩn, page chưa accessible, hoặc không có earning program nào active)
+   - **Launched but missing nhiều thứ** — đã live nhưng còn thiếu nhiều mảnh (chưa có redeeming, thiếu touchpoints, widget lạc tông / chưa on-brand, chưa có loyalty page…)
 3. Message Crisp inbound có intent liên quan **setup / customize / hiển thị / earning / redeem / go-live** — hoặc CS chủ động phát hiện store thuộc nhóm trên khi xử lý case khác
 
 > CS đánh giá Crisp message → nếu match intent + plan trả phí → tự tạo ticket trong section "Done for You". Keyword list có thể mở rộng dựa trên data thực tế.
