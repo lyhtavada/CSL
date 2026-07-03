@@ -217,6 +217,38 @@ Ba đòn bẩy, dùng cùng lúc:
   - Chưa → nhắc lại bước kẹt + offer làm hộ lần nữa → vẫn không → `DFY-no-adopt` → close
 - **Point cho DFY-guided: chưa chốt — Liz quyết sau.** Tạm thời cứ track adoption, chưa đưa vào cơ chế tính point.
 
+### Nếu MC chọn "setup hết giúp em" (DFY full) — cần hỏi gì
+
+Earning/redeeming là **quyết định kinh doanh của KH** (đổi ra tiền, ảnh hưởng margin) — CS không tự quyết hộ. Nhưng hỏi gọn để KH không ngại: **1 tin nhắn hỏi vài điều cốt lõi**, phần còn lại CS áp preset an toàn.
+
+**Cần hỏi (đụng tiền / business decision):**
+1. **Ngân sách reward / tỉ lệ đổi điểm** — bắt buộc. Hỏi đơn giản: *"How much of a reward would you like customers to unlock, and after roughly how much spend? (e.g. a $5 discount for every $50 spent)"*
+2. **Reward muốn cho khách đổi** — % off / $ off / free shipping / free product? (mỗi loại ảnh hưởng margin khác nhau)
+3. **Referral** — có muốn chạy chương trình giới thiệu bạn bè không (thưởng cả người giới thiệu + người được giới thiệu)?
+4. **VIP tier** — muốn chia hạng thành viên (VIP tiers) hay chỉ 1 mức điểm phẳng?
+5. **Chương trình đang chạy ở app cũ** (nếu migrate) — để không phá / trùng.
+
+**KHÔNG cần hỏi — CS tự áp preset / lấy từ store:**
+- Signup bonus, place-order rate (áp preset an toàn: +100đ signup, 1$ = 1 điểm)
+- Màu / logo / brand (lấy từ store, chỉ confirm nếu cần)
+- Cấu trúc block widget, wording mặc định
+
+> Template hỏi gom 1 tin (English, tone Avada):
+> *"Happy to set it all up for you! Just a few quick questions so it fits your store:*
+> *1) What reward would you like customers to redeem — a % off, $ off, free shipping, or a free product? And roughly how much spend should earn it? (e.g. $5 off per $50 spent)*
+> *2) Want a referral program (reward customers for referring friends)?*
+> *3) Do you want VIP tiers (membership levels), or a single flat points program to start?*
+> *I'll handle everything else with sensible defaults and match your store's branding."*
+
+### CS chủ động offer — mức "chủ động + proactive outreach"
+
+DFY **không chờ KH hỏi** — CS chủ động ở 2 kênh:
+
+1. **Inbound (trong chat):** bất kỳ chat nào, CS thấy store eligible (§1) → chủ động offer (`!dfy-offer`), kể cả khi KH đang hỏi việc khác. Xử xong việc KH hỏi trước, rồi mới offer — không chèn ngang.
+2. **Outbound (proactive outreach):** CS / tool §3b quét store eligible **chưa launch** (còn sandbox, thiếu program) → chủ động nhắn KH trước, offer setup giúp. Đây là hướng gắn với tool audit + Proactive Care.
+
+> **Lưu ý outreach:** ưu tiên store **Trial sắp hết hạn** hoặc **Advanced mới cài chưa launch** — đúng nhóm cần đẩy go-live gấp nhất. Không spam store đã launch ổn.
+
 ---
 
 ## 6. Conversation flow với KH — nói gì trong chat
