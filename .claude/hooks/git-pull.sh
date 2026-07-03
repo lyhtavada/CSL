@@ -15,3 +15,13 @@ git pull --rebase --autostash origin main 2>&1 | tail -3 || {
   echo "[csl-sync] Pull gặp conflict — cần xử lý tay (git status)." >&2
   exit 0
 }
+
+# Also refresh the Joy source clone (separate GitLab repo, gitignored).
+# Fully isolated: never blocks the session — offline / expired token / conflict all fail soft.
+(
+  joy_dir="$(git -C "${CLAUDE_PROJECT_DIR:-$PWD}" rev-parse --show-toplevel)/joy-src"
+  [ -d "$joy_dir/.git" ] || exit 0
+  cd "$joy_dir" || exit 0
+  git ls-remote --exit-code origin >/dev/null 2>&1 || { echo "[joy-src] Remote không reachable — bỏ qua." >&2; exit 0; }
+  git pull --depth 1 --rebase --autostash origin master 2>&1 | tail -2 | sed -E 's#oauth2:[^@]+@#oauth2:***@#g' || echo "[joy-src] Pull lỗi — bỏ qua." >&2
+) || true
