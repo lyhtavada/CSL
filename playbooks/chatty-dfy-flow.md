@@ -94,15 +94,28 @@ Khi CS tự phát hiện store eligible trong lúc xử lý chat khác → dùng
 
 ---
 
-## 4. Pre-session checklist — Module AI
+## 4. Bộ câu hỏi thu thập thông tin — Ivy bot tự hỏi trong chat
 
-Gửi KH trước khi setup M3 để tránh bị kẹt giữa session:
+> **Đây là câu hỏi Ivy bot tự động hỏi KH trong live chat** (bot-driven), không phải CS người hỏi thủ công. Wording đã viết theo tone merchant-friendly — bot dùng gần như nguyên văn. CS chỉ vào cuộc khi KH cần người hoặc bot bí input.
+>
+> Hai bộ câu hỏi tách theo module: **Chatbox (M1)** hỏi khi setup widget; **AI Agent (M3)** hỏi khi train AI. Mỗi câu trả lời map thẳng vào checklist kỹ thuật §5 để CS/bot thực thi.
 
-- Brand tone/voice muốn AI dùng (formal, friendly, v.v.)
-- Sản phẩm chính của store (top 3–5 nếu có)
-- URLs cố định muốn AI đọc (helpcenter, policy page, FAQ page…)
-- Kịch bản handover: khi nào AI nên chuyển sang người (ví dụ: order issue, refund, complaint)
-- Giờ làm việc của team (để AI thông báo đúng khi offline)
+### 4.1 — Chatbox setup (M1)
+
+1. What colors or style feel like your brand, so the chat blends in naturally on your storefront?
+2. Besides live chat, would you like customers to see other ways to reach you here — like email or phone?
+3. What do customers usually ask you about? I'll turn those into one-tap starter buttons so they get answers in seconds.
+4. Would it help to gently ask for a name and email before chatting, so you can always follow up and never miss a customer?
+5. I'd suggest showing the chat on every page and on mobile too, so customers can reach you wherever they are — sound good?
+
+### 4.2 — AI Agent setup (M3)
+
+1. What would you like to call your assistant, and how should it greet your customers?
+2. Would you like it to always be there for customers, or only step in when you're away — and what are your usual active hours?
+3. Where would you like to get notified when a new chat comes in — web push, email, or both?
+4. Tell me a bit about your brand and products, and how you'd like your assistant to sound — warm and casual, or more polished? Also, are there any topics or things you'd rather it not say or handle, so I can set the right boundaries?
+5. When a customer needs a real person — whether it's a general question or an after-sales request like a return, refund, or order change — how would you like it routed to you? I can set it up to: (1) transfer the chat straight into your Chatty inbox, (2) collect their details and follow up by email, or (3) simply show your contact info so they can reach you directly.
+6. Would you like the assistant to be able to look up a customer's order status directly, or should that always go to you?
 
 ---
 
@@ -110,16 +123,19 @@ Gửi KH trước khi setup M3 để tránh bị kẹt giữa session:
 
 ### M1 — Chatbox + Proactive Chat
 
-*Chatbox*
-- [ ] Background color match brand primary color
+*Chatbox* (map câu hỏi §4.1)
+- [ ] Background color match brand primary color *(← câu 1: brand color/style)*
 - [ ] Custom launcher icon (nếu brand có icon riêng)
 - [ ] Logo đã upload
 - [ ] Heading text viết lại theo brand tone
 - [ ] Description text viết lại theo brand tone
 - [ ] Order tracking bật/tắt phù hợp (chỉ bật nếu store dùng tracking)
 - [ ] FAQs block — chọn featured questions phù hợp
-- [ ] Contact info đúng
-- [ ] Primary color match brand
+- [ ] Contact info đúng — thêm email/phone nếu KH muốn kênh khác ngoài chat *(← câu 2)*
+- [ ] Primary color match brand *(← câu 1)*
+- [ ] Starter buttons (quick replies) từ câu KH hay hỏi — one-tap để KH có đáp án nhanh *(← câu 3)*
+- [ ] Pre-chat form — bật thu name + email trước khi chat (nếu KH đồng ý) để không miss lead *(← câu 4)*
+- [ ] Display: bật trên **mọi trang** + **mobile** (mặc định recommend, xác nhận với KH) *(← câu 5)*
 
 *Proactive Chat — Product Recommendation*
 - [ ] Message text viết lại theo brand tone
@@ -157,11 +173,11 @@ Gửi KH trước khi setup M3 để tránh bị kẹt giữa session:
 
 > ⚠️ AI nâng cao (Instructions, Scenarios, Custom Q&A, Data Source mở rộng) chỉ có trên **paid plan**. Check plan KH trước khi setup — Free plan AI rất hạn chế.
 
-*Brand voice & Instructions* (AI Assistant → Instructions)
-- [ ] Custom Instructions — brand tone/voice theo input KH (formal/friendly, ngôn ngữ, độ dài câu)
-- [ ] Bot name + welcome message + avatar theo brand (thay default "Chatty AI")
+*Brand voice & Instructions* (AI Assistant → Instructions) — map câu hỏi §4.2
+- [ ] Bot name + welcome/greeting message + avatar theo brand (thay default "Chatty AI") *(← câu 1: tên + cách chào)*
+- [ ] Custom Instructions — brand tone/voice theo input KH (warm & casual / polished, ngôn ngữ, độ dài câu) *(← câu 4: brand + products + tone)*
 - [ ] Instruction "Always respond in the same language as the customer" (nếu store đa ngôn ngữ)
-- [ ] Instruction loại trừ nếu KH yêu cầu (vd không share phone/email)
+- [ ] **Boundaries** — instruction né các topic/việc KH không muốn bot xử lý hoặc nói *(← câu 4: things you'd rather it not say/handle)*
 
 *Data Sources* (AI Assistant → Data Sources)
 - [ ] Sync Products — verify số lượng không vượt giới hạn plan (Free 100 / Basic 500 / Pro 8K / Plus 20K)
@@ -170,11 +186,17 @@ Gửi KH trước khi setup M3 để tránh bị kẹt giữa session:
 - [ ] Upload file KH gửi nếu có (.CSV/.PDF/.TXT/.JSON, max 2MB; CSV ưu tiên cho dữ liệu có cấu trúc)
 - [ ] Custom Q&A pairs cho thông tin chưa có trong product/page
 
-*Handover & Transfer* (AI Assistant → Transfer)
+*Handover & Transfer* (AI Assistant → Transfer) — map câu hỏi §4.2
 - [ ] Contact Support Email đúng (AI lấy email từ đây)
-- [ ] Kịch bản handover theo input KH (vd order issue / refund / complaint → chuyển người)
-- [ ] Online hours đã set đúng (để AI báo đúng khi team offline)
+- [ ] **Routing khi KH cần người** — chốt theo lựa chọn KH ở câu 5 (general Q hoặc after-sales: return/refund/order change): *(← câu 5)*
+  - (1) **Transfer** chat thẳng vào Chatty inbox, hoặc
+  - (2) **Collect details** → follow up qua email, hoặc
+  - (3) **Show contact info** để KH tự liên hệ
+- [ ] **Availability mode** — always-on (bot luôn trả) hay chỉ step-in khi team away; set đúng *(← câu 2)*
+- [ ] Online hours / active hours đã set đúng (để AI báo đúng khi team offline) *(← câu 2)*
+- [ ] **Notification channel** — set nơi KH nhận thông báo khi có chat mới: web push / email / cả hai *(← câu 3)*
 - [ ] Assignment mode — recommend Automatic (round-robin) thay vì Manual
+- [ ] **Order lookup** — bật cho AI tra order status trực tiếp, hoặc route về người (theo lựa chọn KH) *(← câu 6)*
 
 *Scenarios* (Instructions → Assistant Skills → Custom Scenarios)
 - [ ] Tạo scenario cho flow đặc thù store (returns, order lookup, discount, size guide…) theo input KH
