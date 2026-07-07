@@ -12,20 +12,20 @@
 
 ## TAB 1 — Store Info & Setup
 
-### Store info
-| Field | Merchant fills |
-|-------|----------------|
-| Store / domain | |
-| Plan | Advanced |
-| Industry | |
-| AOV (avg order value) | |
-| **Target launch date** | |
-| Used a loyalty app before? | (app name / no) |
-| Migrating? | (yes → old app / no) |
+### Store Info
+| Item | Value | Notes |
+|------|-------|-------|
+| Store / domain | | |
+| Plan | Advanced | |
+| Industry | | |
+| AOV (avg order value) | | |
+| **Target launch date** | | |
+| Used a loyalty app before? | | app name / no |
+| Migrating? | | yes → old app / no |
 
-### Program config
-| Metric | Merchant fills | Suggested / Preset | Notes |
-|--------|----------------|--------------------|-------|
+### Program Config
+| Item | Value | Suggested / Preset | Notes |
+|------|-------|--------------------|-------|
 | Program name | | "[Brand] Club" / "[Brand] Rewards" | |
 | Point currency name | | "[Brand] Points" (e.g. Koko Points) | branded currency = feels owned |
 | Point value | | 1 pt = $0.01 | ~5% rebate rate |
@@ -35,8 +35,8 @@
 | BFCM / event policy | | pause earning during event? | toggle in Joy admin, notify customers first |
 
 ### Migration / Import (migrating only)
-| Field | Merchant fills | CS notes |
-|-------|----------------|----------|
+| Item | Value | Notes |
+|------|-------|-------|
 | Old app | | |
 | Data exported yet? | | point balance / member list / tier |
 | File format | | CSV? |
@@ -47,8 +47,8 @@
 
 ## TAB 2 — Earning (how customers earn points)
 
-| Rule | Action (Joy) | Points earned (merchant fills) | Suggested / Preset | Status |
-|------|-------------|--------------------------------|--------------------|--------|
+| Rule | Action (Joy) | Points Earned | Suggested / Preset | Status |
+|------|-------------|---------------|--------------------|--------|
 | Purchase Reward | Place Order | | 1 pt / $1 | |
 | Welcome Bonus | Sign-Up | | 200 pts | |
 | Newsletter Sign-Up | Newsletter Sign-Up | | 50 pts | |
@@ -64,16 +64,16 @@
 
 ## TAB 3 — Redemption (how customers redeem points)
 
-| Reward | Type | Cost — points (merchant fills) | Suggested / Preset | Status |
-|--------|------|--------------------------------|--------------------|--------|
+| Reward | Type | Cost (Points) | Suggested / Preset | Status |
+|--------|------|---------------|--------------------|--------|
 | Fixed discount | Amount off | | 100 pts = $5 off | |
 | Fixed discount | Amount off | | 500 pts = $30 off | |
 | Percentage discount | % off | | 500 pts = 10% off | |
 | Free shipping | Free ship | | 300 pts | |
 | Free product | Product | | (store dependent) | |
 
-| General rule | Merchant fills | Suggested |
-|--------------|----------------|-----------|
+| General Rule | Value | Suggested |
+|--------------|-------|-----------|
 | Min points to redeem | | 100 pts |
 | Point expiration | | 12 months inactivity |
 
@@ -83,21 +83,21 @@
 
 > Skip if the program is simple. Example (Maison Koko): Sipper → Steeper → Master.
 
-| Tier config | Merchant fills | Suggested |
-|-------------|----------------|-----------|
+| Tier Config | Value | Suggested |
+|-------------|-------|-----------|
 | **Tier calculated by** | | Amount spent OR points earned — pick one |
 | Evaluation window | | over 12 months |
 | **Point earn multiplied by tier?** | | Yes — higher tiers earn faster (e.g. 1x / 1.5x / 2x) |
 | Re-evaluation cycle | | 12 months |
 
-| Tier | Condition to reach (merchant fills) | Earn multiplier (merchant fills) | Perk (merchant fills) | Suggested / Preset |
-|------|-------------------------------------|----------------------------------|-----------------------|--------------------|
+| Tier | Condition to Reach | Earn Multiplier | Perk | Suggested / Preset |
+|------|--------------------|-----------------|------|--------------------|
 | Tier 1 (e.g. Silver / Sipper) | | | | 1x — base earn |
 | Tier 2 (e.g. Gold / Steeper) | | | | 1.5x — +earn, birthday gift |
 | Tier 3 (e.g. Platinum / Master) | | | | 2x — early access, free shipping |
 
-| Member vs Guest | Merchant fills | Suggested |
-|-----------------|----------------|-----------|
+| Member vs Guest | Value | Suggested |
+|-----------------|-------|-----------|
 | Guest sees | | program + ways to earn; login required to earn/redeem |
 | Member sees | | current points, history, tier, rewards |
 
@@ -105,8 +105,8 @@
 
 ## TAB 5 — Referral
 
-| Field | Merchant fills | Suggested / Preset |
-|-------|----------------|--------------------|
+| Item | Value | Suggested / Preset |
+|------|-------|--------------------|
 | Referrer gets | | +200 pts after friend's first order |
 | Referred friend gets | | $10 off first order |
 | Condition | | min order $X |
@@ -119,8 +119,8 @@
 
 > A chain of actions / milestones customers complete for extra rewards. Skip if not used.
 
-| Milestone / Quest | Condition (merchant fills) | Reward (merchant fills) | Suggested / Preset |
-|-------------------|----------------------------|-------------------------|--------------------|
+| Milestone / Quest | Condition | Reward | Suggested / Preset |
+|-------------------|-----------|--------|--------------------|
 | Complete profile | | | +50 pts |
 | First purchase | | | +100 pts |
 | Reach X orders | | | bonus pts / unlock tier |
