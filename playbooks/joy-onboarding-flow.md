@@ -94,18 +94,9 @@ KH mới ở Advanced
 
 ## 4. Checklist Google Sheet (KH điền rule)
 
-> CS tạo **1 Google Sheet checklist** làm template dùng chung → mỗi KH clone/điền → paste link vào ticket chính (field "detail program"). KH điền rule; KH chưa biết → CS gợi ý / dùng AI agent trong app.
+> Template đầy đủ (có preset ví dụ theo AOV/ngành) đã soạn ở **[`joy-onboarding-program-checklist.md`](./joy-onboarding-program-checklist.md)** — CS clone thành 1 Google Sheet cho mỗi KH → KH điền rule → paste link vào field "Detail program" của ticket chính. KH chưa biết điền gì → theo cột **Gợi ý / Preset**, hoặc dùng **AI agent trong app** (đọc AOV/industry sinh gợi ý).
 
-Nội dung sheet (KH điền):
-- **Launch date** dự kiến
-- **Earning rules** — ways to earn + point value (vd signup, place order, review, birthday…)
-- **Redeeming rules** — ways to redeem + đổi điểm ra gì (discount, free ship, product…)
-- **VIP tier** (nếu có) — số tier, ngưỡng, perk mỗi tier
-- **Member vs Guest** — guest thấy/làm được gì, member khác gì
-- **Migration / Import** — app cũ nào, data có sẵn chưa, format
-- **Ghi chú riêng của KH**
-
-*(Liz bổ sung / chốt cột cuối cùng của sheet sau.)*
+Sheet gồm: store info + launch date · program basics (tên, point rate) · earning rules · redeeming rules · VIP tier · referral · member vs guest · migration/import · widget (link ticket con) · go-live check.
 
 ---
 
