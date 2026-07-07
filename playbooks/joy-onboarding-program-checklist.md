@@ -1,16 +1,18 @@
-# Joy Loyalty — Program Setup Checklist (template điền cho từng KH)
+# Joy Loyalty — Program Setup Sheet (template điền cho từng KH)
 
-**Dùng cho:** [Joy Onboarding Flow — Phase 1](./joy-onboarding-flow.md). CS clone bảng này thành 1 Google Sheet cho mỗi KH → KH điền rule (hoặc CS gợi ý / AI agent trong app sinh) → paste link vào field **Detail program** của ticket onboarding chính.
+**Dùng cho:** [Joy Onboarding Flow — Phase 1](./joy-onboarding-flow.md). CS clone thành 1 Google Sheet cho mỗi KH, **mỗi mảng = 1 tab riêng** → KH điền rule → paste link sheet vào field "Detail program" của ticket onboarding chính.
 
-**Cách dùng:**
-- Cột **"KH điền"** = giá trị store này chọn.
-- Cột **"Gợi ý / Preset"** = ví dụ mẫu để KH chưa biết thì theo (dựa AOV + ngành). CS có thể để AI agent trong app đọc AOV/industry sinh gợi ý.
-- KH chưa từng dùng loyalty (nhánh C) → CS điền cột gợi ý trước, KH gật/chỉnh.
+**Tabs:** `Store Info & Setup` · `Earning` · `Redemption` · `VIP Membership` · `Referral` · `Milestones & Quest`
+
+- Cột **KH điền** = giá trị store này chọn.
+- Cột **Gợi ý / Preset** = ví dụ mẫu (dựa AOV + ngành) để KH chưa biết thì theo. CS có thể để AI agent trong app đọc AOV/industry sinh gợi ý.
+- **Status:** Existing / New / Upgraded / Skip — tick khi đã setup trong Joy admin.
 
 ---
 
-## 0. Thông tin store
+## TAB 1 — Store Info & Setup (tiền đề)
 
+### Store info
 | Mục | KH điền |
 |-----|---------|
 | Store / domain | |
@@ -21,120 +23,118 @@
 | Đã dùng loyalty app nào trước đó? | (tên app / chưa) |
 | Migrate sang? | (có → app cũ / không) |
 
----
+### Program config
+| Metric | KH điền | Gợi ý / Preset | Notes |
+|--------|---------|----------------|-------|
+| Tên program | | "[Brand] Club" / "[Brand] Rewards" | |
+| Point currency name | | "[Brand] Points" (vd Koko Points) | tên riêng → khách thấy sở hữu |
+| Point value | | 1 pt = $0.01 | ~5% rebate rate |
+| Base earn rate | | 1 pt / $1 spent | tier multiplier cộng thêm ở tab VIP |
+| Point expiry | | 12 tháng inactivity | win-back email trước khi hết hạn |
+| Coupon expiry | | 45 ngày từ khi phát | cho khách thời gian dùng |
+| BFCM / sự kiện policy | | pause earning trong event? | toggle Joy admin, báo khách trước |
 
-## 1. Program basics
-
-| Mục | KH điền | Gợi ý / Preset |
-|-----|---------|----------------|
-| Tên program | | "[Brand] Rewards" / "[Brand] Club" |
-| Đơn vị điểm (point name) | | Points / Coins / Stars |
-| Tỉ giá điểm ↔ tiền | | 1 point = $0.01 (100 pts = $1) |
-
----
-
-## 2. Earning rules — cách khách kiếm điểm
-
-> Chọn các cách khách earn + giá trị mỗi cách. Ít nhất bật **signup + place order**.
-
-| Way to earn | Bật? | Giá trị KH điền | Gợi ý / Preset |
-|-------------|------|-----------------|----------------|
-| Sign up / tạo account | ☐ | | +100 points |
-| Place an order | ☐ | | $1 spent = 1 point |
-| Product review | ☐ | | +50 points |
-| Photo/video review | ☐ | | +100 points |
-| Birthday | ☐ | | +200 points |
-| Follow / share social | ☐ | | +50 points / kênh |
-| Newsletter subscribe | ☐ | | +50 points |
-| Referral (giới thiệu bạn) | ☐ | | xem §5 |
-
----
-
-## 3. Redeeming rules — cách khách đổi điểm
-
-> Chọn khách đổi điểm ra gì. Ít nhất bật **1 discount tier**.
-
-| Way to redeem | Bật? | Giá trị KH điền | Gợi ý / Preset |
-|---------------|------|-----------------|----------------|
-| Fixed amount discount | ☐ | | 100 pts = $5 off |
-| Percentage discount | ☐ | | 500 pts = 10% off |
-| Free shipping | ☐ | | 300 pts = free ship |
-| Free product | ☐ | | (tùy store) |
-| Point expiration | ☐ | | 12 tháng không hoạt động → hết hạn |
-| Min points để redeem | ☐ | | 100 pts |
-
----
-
-## 4. VIP Tier (nếu có)
-
-> Chỉ dùng nếu KH muốn phân hạng. Bỏ qua nếu program đơn giản.
-
-| Tier | Điều kiện đạt (KH điền) | Perk (KH điền) | Gợi ý / Preset |
-|------|------------------------|----------------|----------------|
-| Tier 1 (vd Silver) | | | 0+ điểm/chi tiêu — earn cơ bản |
-| Tier 2 (vd Gold) | | | $500 chi tiêu/năm — +earn rate, quà sinh nhật |
-| Tier 3 (vd Platinum) | | | $2000 chi tiêu/năm — early access, free ship |
-
-| Mục | KH điền | Gợi ý |
-|-----|---------|-------|
-| Tính tier theo? | | Total spent / points earned trong X tháng |
-| Chu kỳ xét lại tier | | 12 tháng |
-
----
-
-## 5. Referral (nếu bật)
-
-| Mục | KH điền | Gợi ý / Preset |
-|-----|---------|----------------|
-| Người giới thiệu nhận | | +200 points sau khi bạn mua đơn đầu |
-| Người được giới thiệu nhận | | $10 off đơn đầu |
-| Điều kiện | | đơn tối thiểu $X |
-
----
-
-## 6. Member vs Guest — hiển thị & quyền
-
-| Mục | KH điền | Gợi ý / Preset |
-|-----|---------|----------------|
-| Guest (chưa login) thấy gì? | | thấy program + ways to earn, phải login mới tích/đổi |
-| Member (đã login) khác gì? | | thấy điểm hiện có, lịch sử, đổi thưởng |
-| Bắt buộc tạo account để earn? | | Có (Login with Shop nếu store bật) |
-
----
-
-## 7. Migration / Import (nhánh A — nếu migrate)
-
-| Mục | KH điền | Ghi chú CS |
-|-----|---------|-----------|
+### Migration / Import (chỉ nhánh migrate)
+| Mục | KH điền | Notes CS |
+|-----|---------|----------|
 | App cũ | | |
 | Data đã export chưa? | | point balance / member list / tier |
 | Format file | | CSV? |
-| **Point balance migrate tới đâu** | | ⚠️ chốt sớm — set kỳ vọng, phức tạp → forward TS |
+| **Point balance migrate tới đâu** | | ⚠️ chốt sớm, phức tạp → forward TS |
 | Số lượng member | | |
 
 ---
 
-## 8. Widget (ticket con riêng — chỉ ghi link ở đây)
+## TAB 2 — Earning (cách khách kiếm điểm)
 
-| Mục | KH điền |
-|-----|---------|
-| Link ticket con widget customize | |
+> Ít nhất bật **Place Order + Sign-up**.
 
-> Widget on-brand làm theo checklist [`joy-dfy-flow.md §7`](./joy-dfy-flow.md) trong ticket con — không làm trong sheet này.
+| Rule | Action (Joy) | Points earned (KH điền) | $ Equiv | Gợi ý / Preset | Status |
+|------|-------------|-------------------------|---------|----------------|--------|
+| Purchase Reward | Place Order | | | 1 pt / $1 | |
+| Welcome Bonus | Sign-Up | | | 200 pts (= $10) | |
+| Newsletter Sign-Up | Newsletter Sign-Up | | | 50 pts | |
+| Birthday Gift | Birthday Reward | | | 200–300 pts | |
+| Product Review | Write Review | | | 50 pts | |
+| Photo/Video Review | Write Review (media) | | | 150 pts | |
+| Google Review | Google Reviews | | | 150 pts (limit 1/khách) | |
+| Follow Instagram | Social Activity | | | 30 pts | |
+| Follow TikTok | Social Activity | | | 30 pts | |
+| Social Share | Custom (Shopify Flow) | | | 100 pts | |
 
 ---
 
-## 9. Go-live check (CS tick trước khi bật live)
+## TAB 3 — Redemption (cách khách đổi điểm)
+
+> Ít nhất bật **1 discount tier**.
+
+| Reward | Type | Cost (pts) — KH điền | Value | Gợi ý / Preset | Status |
+|--------|------|----------------------|-------|----------------|--------|
+| Fixed discount | Amount off | | | 100 pts = $5 off | |
+| Fixed discount | Amount off | | | 500 pts = $30 off | |
+| Percentage discount | % off | | | 500 pts = 10% off | |
+| Free shipping | Free ship | | | 300 pts | |
+| Free product | Product | | | (tùy store) | |
+
+| Rule chung | KH điền | Gợi ý |
+|-----------|---------|-------|
+| Min points để redeem | | 100 pts |
+| Point expiration | | 12 tháng inactivity |
+
+---
+
+## TAB 4 — VIP Membership (nếu có tier)
+
+> Bỏ qua nếu program đơn giản. Ví dụ Maison Koko: Sipper → Steeper → Master.
+
+| Tier | Điều kiện đạt (KH điền) | Earn multiplier | Perk (KH điền) | Gợi ý / Preset |
+|------|------------------------|-----------------|----------------|----------------|
+| Tier 1 (vd Silver / Sipper) | | 1x | | 0+ — earn cơ bản |
+| Tier 2 (vd Gold / Steeper) | | 1.5x | | $500/năm — +earn, quà sinh nhật |
+| Tier 3 (vd Platinum / Master) | | 2x | | $2000/năm — early access, free ship |
+
+| Cấu hình | KH điền | Gợi ý |
+|----------|---------|-------|
+| Tính tier theo? | | Total spent / points earned trong X tháng |
+| Chu kỳ xét lại tier | | 12 tháng |
+| Guest thấy gì? | | thấy program + ways to earn, login mới tích/đổi |
+| Member thấy gì? | | điểm hiện có, lịch sử, tier, đổi thưởng |
+
+---
+
+## TAB 5 — Referral (giới thiệu bạn)
+
+| Mục | KH điền | Gợi ý / Preset |
+|-----|---------|----------------|
+| Người giới thiệu nhận | | +200 pts sau khi bạn mua đơn đầu |
+| Người được giới thiệu nhận | | $10 off đơn đầu |
+| Điều kiện | | đơn tối thiểu $X |
+| Referral banner (widget) | | on-brand image |
+
+---
+
+## TAB 6 — Milestones & Quest (nếu có)
+
+> Chuỗi hành động / mốc để khách hoàn thành → thưởng thêm. Bỏ qua nếu không dùng.
+
+| Milestone / Quest | Điều kiện (KH điền) | Reward (KH điền) | Gợi ý / Preset |
+|-------------------|---------------------|------------------|----------------|
+| Complete profile | | | +50 pts |
+| First purchase | | | +100 pts |
+| Reach X orders | | | bonus pts / unlock tier |
+| Seasonal quest | | | (tùy campaign) |
+
+---
+
+## Go-live check (CS tick trước khi bật live — ghi trong ticket chính)
 
 - [ ] Earning active
-- [ ] Redeeming active
+- [ ] Redemption active
 - [ ] VIP tier (nếu có) đúng ngưỡng/perk
 - [ ] Member/Guest hiển thị đúng
 - [ ] Migration/import xong & verify (nếu có)
-- [ ] Widget hiện trên store
+- [ ] Widget hiện trên store (ticket con riêng)
 - [ ] **Test 1 vòng** (earn thử → redeem thử) OK
 - [ ] Xin KH gật → **switch sandbox → live mode** 🚀
 
----
-
-*(Liz bổ sung / chỉnh cột hoặc preset sau — nhất là số điểm mẫu theo ngành thực tế của KH Advanced.)*
+*(Liz chỉnh preset số điểm theo AOV/ngành thật của nhóm KH Advanced sau.)*
