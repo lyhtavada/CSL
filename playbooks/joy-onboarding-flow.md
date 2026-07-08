@@ -18,7 +18,7 @@
 - **Phase 1 (bản này):** CS trực tiếp offer trong chat.
 - **Phase 2 (sau):** trigger tự động trong app khi KH lên Advanced / mới install → nudge onboarding.
 
-**Nguyên tắc xuyên suốt:** mỗi KH = **1 ticket onboarding chính**. Mọi issue phát sinh (bug, câu hỏi, report tiến độ) **note thẳng vào ticket đó**, không tách lẻ. Ngoại lệ duy nhất: **widget customize** → ticket con riêng nhưng **insert link vào ticket chính** (§5).
+**Nguyên tắc xuyên suốt:** mỗi KH = **1 ticket onboarding chính**. Mọi issue phát sinh (bug, câu hỏi, report tiến độ) **note thẳng vào ticket đó**, không tách lẻ. Ngoại lệ duy nhất: **widget customize** → ticket con riêng nhưng **insert link vào ticket chính** (§6.2).
 
 ---
 
@@ -64,22 +64,22 @@ KH mới xuất hiện trong chat
 
 ## 3. Mở đầu — CS offer + Discovery (trên chat)
 
-### 2.1 Câu offer
+### 3.1 Câu offer
 > *"Hi [name], I saw you recently installed Joy and are getting your loyalty program set up — I'd love to help you get it set up properly so it's ready to launch. Would you like me to walk through it with you and set things up together?"*
 
-### 2.2 Discovery — 3 câu mở đầu (đừng hỏi dồn 1 lúc)
+### 3.2 Discovery — 3 câu mở đầu (đừng hỏi dồn 1 lúc)
 Mục tiêu: biết **timeline**, **kinh nghiệm loyalty trước đó**, và **có phải migrate không**.
 
 1. **Launch timeline:** *"When are you planning to launch your loyalty program?"*
 2. **Kinh nghiệm trước đó:** *"Have you run a loyalty program before — either on another app or store?"*
 3. **(Nếu có dùng trước đó) Migration:** *"Are you moving over from another loyalty app? If so, do you already have your customer/points data exported?"*
 
-> Từ 3 câu này → CS xác định nhánh ở §3.
+> Từ 3 câu này → CS xác định nhánh ở §4.
 > Intake sâu hơn (points vs amount, Legacy/NCA, integrations bắt buộc) → làm theo **Bước 0** của [playbook](./joy-dfu-onboarding-playbook.md).
 
 ---
 
-## 3. Decision tree — Phân nhánh theo tình huống KH
+## 4. Decision tree — Phân nhánh theo tình huống KH
 
 ```
 KH mới ở Advanced
@@ -101,7 +101,7 @@ KH mới ở Advanced
 ```
 
 - **Nhánh A (migrate):** đây là chỗ dễ vỡ nhất — **không làm ngay theo yêu cầu lẻ "migrate hộ"**. Chạy đủ **3 câu migration** ([playbook §2.1](./joy-dfu-onboarding-playbook.md)) trước. Xác nhận KH đã có customer trên Shopify. Data lớn/phức tạp → forward TS.
-- **Nhánh B/C:** không có plan → gửi **Setup Sheet** cho KH điền (§4) → CS review → setup → test.
+- **Nhánh B/C:** không có plan → gửi **Setup Sheet** cho KH điền (§5) → CS review → setup → test.
 
 > **Khi nào gửi Setup Sheet:**
 > - **A1 / B1 (KH đã có plan chi tiết):** ❌ đừng gửi sheet — **xin plan của KH luôn**, đỡ bắt họ chép lại.
@@ -110,9 +110,9 @@ KH mới ở Advanced
 
 ---
 
-## 3B. Flow chi tiết từng nhánh + template chat (EN)
+## 4B. Flow chi tiết từng nhánh + template chat (EN)
 
-> Template tiếng Anh để CS **copy-paste trong live chat** (tone thân thiện, ngắn gọn). Thay `[name]`, `[old app]`, `[X]`… cho đúng KH. **Ai setup là tùy KH:** hỏi KH muốn CS làm hộ hay tự làm rồi đi theo nhánh tương ứng — template có sẵn cả 2 (xem §3B.6).
+> Template tiếng Anh để CS **copy-paste trong live chat** (tone thân thiện, ngắn gọn). Thay `[name]`, `[old app]`, `[X]`… cho đúng KH. **Ai setup là tùy KH:** hỏi KH muốn CS làm hộ hay tự làm rồi đi theo nhánh tương ứng — template có sẵn cả 2 (xem §4B.6).
 
 ### Câu offer + discovery (dùng chung, mọi nhánh)
 
@@ -136,7 +136,7 @@ KH mới ở Advanced
 
 ---
 
-### 3B.1 — Nhánh A1: Migrate + KH đã có plan chi tiết
+### 4B.1 — Nhánh A1: Migrate + KH đã có plan chi tiết
 
 **Flow:** xin plan KH → chạy 3 câu migration → xác nhận KH có trên Shopify → chốt cách import → CS review + setup → test → launch.
 
@@ -163,7 +163,7 @@ Xin plan  →  3 câu migration  →  confirm customers on Shopify  →  chốt 
 
 ---
 
-### 3B.2 — Nhánh A2: Migrate + KH chưa có plan rõ
+### 4B.2 — Nhánh A2: Migrate + KH chưa có plan rõ
 
 **Flow:** như A1 nhưng **thêm bước gửi Setup Sheet** để KH chốt rule (vì chưa có plan).
 
@@ -181,7 +181,7 @@ Gửi Setup Sheet  →  3 câu migration  →  confirm on Shopify  →  KH đi�
 
 ---
 
-### 3B.3 — Nhánh B1: Đã dùng loyalty trước (không migrate) + có plan sẵn
+### 4B.3 — Nhánh B1: Đã dùng loyalty trước (không migrate) + có plan sẵn
 
 **Flow:** không migrate data → xin plan → CS review + setup → test → launch. Đơn giản nhất.
 
@@ -196,7 +196,7 @@ Xin plan  →  review + setup  →  test full loop  →  KH OK  →  Sandbox →
 
 ---
 
-### 3B.4 — Nhánh B2: Đã dùng loyalty trước + chưa có plan rõ
+### 4B.4 — Nhánh B2: Đã dùng loyalty trước + chưa có plan rõ
 
 **Flow:** gửi Setup Sheet → KH điền → CS review + setup → test → launch.
 
@@ -207,7 +207,7 @@ Xin plan  →  review + setup  →  test full loop  →  KH OK  →  Sandbox →
 
 ---
 
-### 3B.5 — Nhánh C: Chưa từng chạy loyalty bao giờ
+### 4B.5 — Nhánh C: Chưa từng chạy loyalty bao giờ
 
 **Flow:** KH cần **được gợi ý nhiều nhất** — CS đề xuất preset theo ngành/AOV, dùng AI agent, chốt rule cùng KH → setup → test → launch.
 
@@ -227,7 +227,7 @@ Gợi ý preset (industry/AOV) + AI agent  →  gửi Setup Sheet có preset  �
 
 ---
 
-### 3B.6 — Ai setup: CS làm hộ vs KH tự làm (hỏi KH, tùy yêu cầu)
+### 4B.6 — Ai setup: CS làm hộ vs KH tự làm (hỏi KH, tùy yêu cầu)
 
 Sau khi chốt rule ở bất kỳ nhánh nào, **hỏi KH muốn ai thao tác:**
 > *"Would you like me to set this up for you, or would you prefer to do it yourself with me guiding you step by step?"*
@@ -239,11 +239,11 @@ Sau khi chốt rule ở bất kỳ nhánh nào, **hỏi KH muốn ai thao tác:*
 **Nếu KH muốn tự làm** → CS guide từng bước:
 > *"No problem — I'll walk you through it. First, let's turn on Sandbox Mode so we can test safely..."* *(hướng dẫn theo Module 3 / KB LIVE, chỗ nào KH vướng thì tra [playbook FAQ](./joy-dfu-onboarding-playbook.md)).*
 
-> Dù ai bấm nút, **CS vẫn own ticket tới launch** (§7) và **luôn test cho KH xem trước khi Sandbox → Live**.
+> Dù ai bấm nút, **CS vẫn own ticket tới launch** (§8) và **luôn test cho KH xem trước khi Sandbox → Live**.
 
 ---
 
-### 3B.7 — Câu launch (dùng chung, mọi nhánh) 🚀
+### 4B.7 — Câu launch (dùng chung, mọi nhánh) 🚀
 
 Luôn **xin KH gật trước khi bật live** — đây là lúc khách bắt đầu tích điểm thật:
 > *"Everything's tested and working on Sandbox. Ready for me to switch it to live? Once we do, your customers will start earning points for real."*
@@ -253,7 +253,7 @@ Sau launch:
 
 ---
 
-## 4. Setup Sheet (KH điền rule)
+## 5. Setup Sheet (KH điền rule)
 
 **Master template (Google Sheet):** https://docs.google.com/spreadsheets/d/1Dnvg96dqgXmckuj4lVpQ3GM4_Fs4yB-h-xClSWvhdME/edit
 (Nội dung tương ứng ở [`joy-onboarding-program-checklist.md`](./joy-onboarding-program-checklist.md).)
@@ -269,7 +269,7 @@ Sheet gồm các tab: Program Setup (store info + launch date + program config +
 
 ---
 
-## 5. Ticket structure — 1 ticket onboarding chính / KH
+## 6. Ticket structure — 1 ticket onboarding chính / KH
 
 **Quy tắc vàng:** mỗi KH = **1 ticket onboarding sống**. Mọi issue liên quan onboarding (bug, câu hỏi, report tiến độ) → note thẳng vào **cùng thread ticket đó**, không tách lẻ.
 
@@ -289,7 +289,7 @@ Widget customize **tách ticket riêng** (theo checklist widget on-brand ở [`j
 
 ---
 
-## 6. Xử lý issue phát sinh trong lúc onboard
+## 7. Xử lý issue phát sinh trong lúc onboard
 
 Trong lúc onboard, KH hay báo lỗi/hiện tượng (không cộng điểm, coupon invalid, widget không hiện, perk không apply…). Cách CS xử lý:
 
@@ -300,7 +300,7 @@ Trong lúc onboard, KH hay báo lỗi/hiện tượng (không cộng điểm, co
 
 ---
 
-## 7. Ownership & SLA (chat trực theo ca)
+## 8. Ownership & SLA (chat trực theo ca)
 
 - **Nhận là own tới cùng.** Nhận case nào chịu trách nhiệm tới khi xong.
 - **Hẹn rõ:** việc cần thời gian (vd import) → hẹn khách **~1 ngày** và làm tới nơi.
@@ -309,7 +309,7 @@ Trong lúc onboard, KH hay báo lỗi/hiện tượng (không cộng điểm, co
 
 ---
 
-## 8. TODO — Liz chốt sau
+## 9. TODO — Liz chốt sau
 
 - [ ] Chốt **cột cuối** Google Sheet checklist + template dùng chung.
 - [ ] Xác nhận **label/section ticket** (vd `onboarding-new` / `onboarding-in-progress`) đồng bộ DFY labels.
