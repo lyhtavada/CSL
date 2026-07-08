@@ -39,7 +39,7 @@ CS offer onboarding khi **cả 2** đúng:
 ## 2. Mở đầu — CS offer + Discovery (trên chat)
 
 ### 2.1 Câu offer
-> *"Hi [name], I noticed you're on our Advanced plan — I'd love to help you get your loyalty program set up properly so it's ready to launch. Would you like me to walk through it with you and set things up together?"*
+> *"Hi [name], I saw you recently installed Joy and are getting your loyalty program set up — I'd love to help you get it set up properly so it's ready to launch. Would you like me to walk through it with you and set things up together?"*
 
 ### 2.2 Discovery — 3 câu mở đầu (đừng hỏi dồn 1 lúc)
 Mục tiêu: biết **timeline**, **kinh nghiệm loyalty trước đó**, và **có phải migrate không**.
