@@ -1,6 +1,8 @@
 # Joy Loyalty — Program Setup Sheet (template for each merchant)
 
-**Used with:** [Joy Onboarding Flow — Phase 1](./joy-onboarding-flow.md). CS clones this into 1 Google Sheet per merchant, **one tab per section** → merchant fills in rules → paste sheet link into the "Detail program" field of the main onboarding ticket.
+**Used with:** [Joy Onboarding Flow — Phase 1](./joy-onboarding-flow.md).
+
+**Master Google Sheet:** https://docs.google.com/spreadsheets/d/1Dnvg96dqgXmckuj4lVpQ3GM4_Fs4yB-h-xClSWvhdME/edit — CS **Make a copy** → 1 bản/merchant → merchant fills in the Value column → paste copy link into the "Detail program" field of the main onboarding ticket. This markdown is the source-of-truth for the sheet content; keep both in sync if the sheet changes.
 
 **Tabs:** `Store Info & Setup` · `Earning` · `Redemption` · `VIP Membership` · `Referral` · `Milestones & Quest`
 

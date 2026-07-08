@@ -75,15 +75,28 @@ KH mới ở Advanced
 ```
 
 - **Nhánh A (migrate):** đây là chỗ dễ vỡ nhất — **không làm ngay theo yêu cầu lẻ "migrate hộ"**. Chạy đủ **3 câu migration** ([playbook §2.1](./joy-dfu-onboarding-playbook.md)) trước. Xác nhận KH đã có customer trên Shopify. Data lớn/phức tạp → forward TS.
-- **Nhánh B/C:** không có plan → gửi **checklist Google Sheet** ([`joy-onboarding-program-checklist.md`](./joy-onboarding-program-checklist.md)) → KH điền → CS setup → test.
+- **Nhánh B/C:** không có plan → gửi **Setup Sheet** cho KH điền (§4) → CS review → setup → test.
+
+> **Khi nào gửi Setup Sheet:**
+> - **A1 / B1 (KH đã có plan chi tiết):** ❌ đừng gửi sheet — **xin plan của KH luôn**, đỡ bắt họ chép lại.
+> - **A2 / B2 / C (KH chưa có plan rõ):** ✅ gửi sheet để chốt rule.
+> - ⚠️ **Đừng gửi ngay câu đầu** (trước discovery) — sheet 6 tab, quăng sớm KH dễ ngợp & bỏ. Offer + hỏi 3 câu trước, biết nhánh rồi mới gửi.
 
 ---
 
-## 4. Checklist Google Sheet (KH điền rule)
+## 4. Setup Sheet (KH điền rule)
 
-CS clone [`joy-onboarding-program-checklist.md`](./joy-onboarding-program-checklist.md) thành 1 Google Sheet/KH → KH điền rule → paste link vào field "Detail program" của ticket chính. KH chưa biết điền gì → theo cột **Gợi ý / Preset**, hoặc dùng **AI agent trong app** (đọc AOV/industry sinh gợi ý).
+**Master template (Google Sheet):** https://docs.google.com/spreadsheets/d/1Dnvg96dqgXmckuj4lVpQ3GM4_Fs4yB-h-xClSWvhdME/edit
+(Nội dung tương ứng ở [`joy-onboarding-program-checklist.md`](./joy-onboarding-program-checklist.md).)
 
-Sheet gồm: store info + launch date · program basics · earning · redeeming · VIP tier · referral · member vs guest · migration/import · milestones · go-live check.
+**Cách dùng — clone 1 bản / KH:**
+1. Mở master → **File → Make a copy** → đặt tên `[Store] — Joy Setup`.
+2. Gửi bản copy cho KH → KH điền cột **Value** (ô đỏ). Chỗ chưa chắc → theo cột **Suggested / Preset**, hoặc để trống, hoặc dùng **AI agent trong app** (đọc AOV/industry sinh gợi ý).
+3. **Paste link bản copy** vào field "Detail program" của ticket chính.
+
+> ⚠️ **Không cho nhiều KH điền chung 1 sheet** — clone riêng từng bản để data tách bạch, KH không thấy data của nhau.
+
+Sheet gồm các tab: Program Setup (store info + launch date + program config + integrations + migration) · Earning · Redemption · VIP tier · Referral · Milestones · go-live check.
 
 ---
 
