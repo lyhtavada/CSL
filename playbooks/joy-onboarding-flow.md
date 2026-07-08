@@ -81,27 +81,30 @@ Mục tiêu: biết **timeline**, **kinh nghiệm loyalty trước đó**, và *
 
 ## 4. Decision tree — Phân nhánh theo tình huống KH
 
-```
-KH mới ở Advanced
-        │
-        ├── A. MIGRATE từ app loyalty khác sang
-        │        ├── A1. Đã có detailed plan  → xin KH gửi plan → CS review + setup theo → test
-        │        └── A2. Chưa có plan rõ       → gửi checklist Google Sheet → KH điền rule
-        │                                          (KH chưa biết → hướng dẫn dùng AI agent trong app)
-        │        + Migration LUÔN chạy 3 câu ở playbook §2.1 (từ đâu / point-amount / file-sync)
-        │
-        ├── B. ĐÃ dùng loyalty trước (không migrate app / build lại từ đầu)
-        │        ├── B1. Đã có plan/rule sẵn   → gửi CS → CS review + setup giúp → test
-        │        └── B2. Chưa có plan rõ       → gửi checklist Google Sheet → KH điền
-        │
-        └── C. CHƯA từng dùng loyalty bao giờ
-                 → CS gợi ý preset theo ngành/AOV
-                 → hỗ trợ KH dùng AI agent trong app (đọc AOV, industry…) đề xuất rule
-                 → chốt rule → CS setup → test
-```
+**3 nhóm chính** — hỏi discovery (§3.2) để biết KH thuộc nhóm nào:
 
-- **Nhánh A (migrate):** đây là chỗ dễ vỡ nhất — **không làm ngay theo yêu cầu lẻ "migrate hộ"**. Chạy đủ **3 câu migration** ([playbook §2.1](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c)) trước. Xác nhận KH đã có customer trên Shopify. Data lớn/phức tạp → forward TS.
-- **Nhánh B/C:** không có plan → gửi **Setup Sheet** cho KH điền (§5) → CS review → setup → test.
+| Nhóm | KH thế nào |
+|------|-----------|
+| **A. MIGRATE** | Đang chuyển từ app loyalty khác sang |
+| **B. REBUILD** | Đã dùng loyalty trước, không migrate app — build lại từ đầu |
+| **C. FIRST-TIME** | Chưa từng chạy loyalty bao giờ |
+
+**Trong mỗi nhóm, rẽ tiếp theo "KH đã có plan chưa":**
+
+| Nhánh | Tình huống | CS làm gì (tóm tắt) |
+|:-----:|-----------|---------------------|
+| **A1** | Migrate + đã có plan chi tiết | Xin plan KH → review → setup theo → test |
+| **A2** | Migrate + chưa có plan rõ | Gửi Setup Sheet → KH điền → setup → test |
+| **B1** | Rebuild + đã có plan/rule sẵn | Xin plan KH → review → setup giúp → test |
+| **B2** | Rebuild + chưa có plan rõ | Gửi Setup Sheet → KH điền → setup → test |
+| **C** | First-time (luôn cần gợi ý) | Gợi ý preset theo ngành/AOV + AI agent → chốt rule → setup → test |
+
+> Template chat EN + flow chi tiết từng nhánh → **§4B**.
+
+**Lưu ý theo nhóm:**
+- **Nhóm A (migrate)** — chỗ dễ vỡ nhất: **đừng làm ngay yêu cầu lẻ "migrate hộ"**. Luôn chạy đủ **3 câu migration** ([playbook §2.1](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c): từ đâu / point-amount / file-sync) trước. Xác nhận KH đã có customer trên Shopify. Data lớn/phức tạp → forward TS.
+- **Nhóm B/C** — không có plan → gửi **Setup Sheet** (§5) cho KH điền → CS review → setup → test.
+- **KH chưa biết điền gì** (A2/B2/C) → hướng dẫn dùng **AI agent trong app** (đọc AOV/industry đề xuất rule).
 
 > **Khi nào gửi Setup Sheet:**
 > - **A1 / B1 (KH đã có plan chi tiết):** ❌ đừng gửi sheet — **xin plan của KH luôn**, đỡ bắt họ chép lại.
