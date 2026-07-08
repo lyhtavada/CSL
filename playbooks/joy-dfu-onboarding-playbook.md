@@ -1,5 +1,7 @@
 # Module 6: DFU Onboarding Playbook & FAQ
 
+> **📄 Bản Notion (live):** https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c
+
 > **Mục đích.** Đây KHÔNG phải module dạy lại product (kiến thức product ở Module 0–3). Đây là **sổ tay vận hành + tra cứu** để một bạn support/DFU tự xử được **hết các case cơ bản** khi onboard một merchant Joy Loyalty — từ lúc nhận khách đến lúc launch, và tra nhanh khi khách báo lỗi.
 
 **Cách dùng.**
