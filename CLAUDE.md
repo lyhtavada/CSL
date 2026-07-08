@@ -32,11 +32,12 @@ CSL/                               ← Liz's workspace (this repo)
 │       ├── chatty/                ← Chatty-specific processes
 │       │   ├── handle-feedback-followup.md ← Follow-up merchant feedback từ #chatty-notice
 │       │   └── handle-extend-limit.md ← Extend AI training limits (products, URLs, files, convos, scenarios)
-│       ├── joy-support-flow.md    ← Joy FAQ tra cứu 8 domain (A-H) + lăng kính triage 🟢🔵🟠🔴 (51% escalate ≠ bug Joy)
+│       ├── joy-support-flow.md    ← Joy support flow — trỏ sang playbook (FAQ tra cứu + onboarding)
 │       └── shared-cs-process/     ← Shared processes (escalation, billing, etc.)
 ├── bots/                          ← Slack bots & automations
 ├── playbooks/                     ← Specs, SOPs, PRDs
-│   ├── joy-onboarding-flow.md     ← Joy onboarding Advanced (7 bước có exit-criteria + decision guides migration/VIP/guest/widget-V4). CS làm nhiều hơn, own tới cùng
+│   ├── joy-dfu-onboarding-playbook.md ← Module 6 — sổ tay ĐẦY ĐỦ: 7 bước có exit-criteria + decision guides (migration/VIP/guest/Widget-V4) + FAQ 50 case (Phần 3). Nguồn tra cứu chính
+│   ├── joy-onboarding-flow.md     ← CS thao tác trên chat: offer → discovery → tạo 1 ticket → phân nhánh A/B/C → xử lý issue. Chi tiết trỏ sang playbook
 │   ├── joy-onboarding-program-checklist.md ← Google Sheet template KH điền rule (1 sheet/KH)
 │   ├── joy-dfy-flow.md            ← Joy DFY CS flow + checklist (Required/Recommended)
 │   ├── joy-dfy-intro.md           ← Joy DFY tinh thần & mục đích
