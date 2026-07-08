@@ -36,7 +36,33 @@ CS offer onboarding khi **cả 2** đúng:
 
 ---
 
-## 2. Mở đầu — CS offer + Discovery (trên chat)
+## 2. Flow tổng thể (tóm tắt end-to-end)
+
+```
+KH mới xuất hiện trong chat
+        │
+   [1] CS OFFER (§3.1)
+        │
+   [2] DISCOVERY 3 câu (§3.2) → xác định nhánh A/B/C
+        │
+   [3] TẠO 1 TICKET ONBOARDING CHÍNH  (checklist §6.1)
+        │
+   [4] PHÂN NHÁNH A / B / C (§4) + template chat từng nhánh (§4B)
+        │   ├─ có plan  → KH gửi plan → CS review + setup → test
+        │   └─ chưa có  → gửi Setup Sheet → KH điền (or AI agent) → CS setup → test
+        │
+   [5] Ai setup: CS làm hộ vs KH tự làm (hỏi KH — §4B.6)
+        │
+   [6] SETUP → TEST cho KH xem & xác nhận (đừng bỏ) → get OK → SANDBOX → LIVE 🚀 (§4B.7)
+        │
+   [7] Widget customize → ticket con → link vào ticket chính (§6.2)
+        │
+   [8] Issue phát sinh → note vào CÙNG ticket + tự triage (playbook FAQ) trước khi đẩy dev (§7)
+```
+
+---
+
+## 3. Mở đầu — CS offer + Discovery (trên chat)
 
 ### 2.1 Câu offer
 > *"Hi [name], I saw you recently installed Joy and are getting your loyalty program set up — I'd love to help you get it set up properly so it's ready to launch. Would you like me to walk through it with you and set things up together?"*
@@ -283,31 +309,7 @@ Trong lúc onboard, KH hay báo lỗi/hiện tượng (không cộng điểm, co
 
 ---
 
-## 8. Flow trên chat (tóm tắt end-to-end)
-
-```
-KH mới (Advanced) xuất hiện trong chat
-        │
-   [1] CS OFFER (§2.1)
-        │
-   [2] DISCOVERY 3 câu (§2.2) → xác định nhánh
-        │
-   [3] TẠO 1 TICKET ONBOARDING CHÍNH  (checklist §5.1)
-        │
-   [4] PHÂN NHÁNH A / B / C (§3)
-        │   ├─ có plan  → KH gửi plan → CS review + setup → test
-        │   └─ chưa có  → gửi checklist Sheet → KH điền (or AI agent) → CS setup → test
-        │
-   [5] SETUP → TEST cho KH xem & xác nhận (đừng bỏ) → get OK → SANDBOX → LIVE 🚀
-        │
-   [6] Widget customize → ticket con → link vào ticket chính
-        │
-   [7] Issue phát sinh → note vào CÙNG ticket + tự triage (playbook FAQ) trước khi đẩy dev
-```
-
----
-
-## 9. TODO — Liz chốt sau
+## 8. TODO — Liz chốt sau
 
 - [ ] Chốt **cột cuối** Google Sheet checklist + template dùng chung.
 - [ ] Xác nhận **label/section ticket** (vd `onboarding-new` / `onboarding-in-progress`) đồng bộ DFY labels.
