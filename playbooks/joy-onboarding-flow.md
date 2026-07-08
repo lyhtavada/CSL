@@ -84,6 +84,149 @@ KH mới ở Advanced
 
 ---
 
+## 3B. Flow chi tiết từng nhánh + template chat (EN)
+
+> Template tiếng Anh để CS **copy-paste trong live chat** (tone thân thiện, ngắn gọn). Thay `[name]`, `[old app]`, `[X]`… cho đúng KH. **Ai setup là tùy KH:** hỏi KH muốn CS làm hộ hay tự làm rồi đi theo nhánh tương ứng — template có sẵn cả 2 (xem §3B.6).
+
+### Câu offer + discovery (dùng chung, mọi nhánh)
+
+**Offer:**
+> *"Hi [name], I saw you recently installed Joy and are getting your loyalty program set up — I'd love to help you get it set up properly so it's ready to launch. Want me to walk through it with you and set things up together?"*
+
+**Discovery (hỏi rải, đừng dồn 1 lúc):**
+> *"When are you hoping to launch your loyalty program?"*
+> *"Have you run a loyalty program before — on another app or store?"*
+> *"Are you moving over from another loyalty app? If so, do you already have your points/customer data exported?"*
+
+→ Từ 3 câu trả lời, map vào nhánh:
+
+| Trả lời của KH | Nhánh |
+|----------------|-------|
+| Đang chuyển từ app loyalty khác + đã có plan chi tiết | **A1** |
+| Đang chuyển từ app khác + chưa có plan rõ | **A2** |
+| Từng chạy loyalty (không migrate app) + có plan sẵn | **B1** |
+| Từng chạy loyalty + chưa có plan rõ | **B2** |
+| Chưa từng chạy loyalty bao giờ | **C** |
+
+---
+
+### 3B.1 — Nhánh A1: Migrate + KH đã có plan chi tiết
+
+**Flow:** xin plan KH → chạy 3 câu migration → xác nhận KH có trên Shopify → chốt cách import → CS review + setup → test → launch.
+
+```
+Xin plan  →  3 câu migration  →  confirm customers on Shopify  →  chốt import (file vs sync)
+   →  review + setup  →  test full loop  →  KH OK  →  Sandbox → Live
+```
+
+**Template:**
+> *(Xin plan)* *"Perfect — since you've already mapped out your program, could you share your plan/doc with me? I'll review it and set everything up to match."*
+>
+> *(3 câu migration — playbook §2.1)* *"A few quick things about the move so we get it right the first time:"*
+> *"1. Which app are you coming from — [old app]?"*
+> *"2. Is your program based on points earned, or amount spent?"*
+> *"3. Do you have your data as a file to import, or should we sync from your existing Shopify orders?"*
+>
+> *(Confirm)* *"One important thing: the customers you're migrating need to already exist in your Shopify — points and tiers attach to Shopify customers. Are they all in there?"*
+>
+> *(Set expectation)* *"Heads up — from most apps we can bring over the points balance; full activity history usually doesn't carry over. I'll confirm exactly how far your balance migrates before we import, so there are no surprises."*
+>
+> *(Sau setup)* *"All set up on Sandbox — I've matched your plan. Want to take a look before we go live?"*
+
+⚠️ **Không import ngay.** Migrate là chỗ dễ vỡ nhất — data lớn/phức tạp → forward TS. Import **một lần**, verify 10–20 account trước khi launch.
+
+---
+
+### 3B.2 — Nhánh A2: Migrate + KH chưa có plan rõ
+
+**Flow:** như A1 nhưng **thêm bước gửi Setup Sheet** để KH chốt rule (vì chưa có plan).
+
+```
+Gửi Setup Sheet  →  3 câu migration  →  confirm on Shopify  →  KH điền sheet
+   →  review + setup  →  test  →  launch
+```
+
+**Template:**
+> *(Gửi sheet)* *"No worries — I'll send you a quick setup sheet so we can shape your program together. Just fill in the Value column; if you're unsure on anything, follow the Suggested column or leave it blank and we'll figure it out. Here you go: [link bản copy]"*
+>
+> *(Nếu KH bí)* *"If you're not sure what values to pick, our in-app AI can look at your store's AOV and industry and suggest earn/redeem rates — want me to run that for you?"*
+>
+> *(3 câu migration + confirm on Shopify)* → giống A1.
+
+---
+
+### 3B.3 — Nhánh B1: Đã dùng loyalty trước (không migrate) + có plan sẵn
+
+**Flow:** không migrate data → xin plan → CS review + setup → test → launch. Đơn giản nhất.
+
+```
+Xin plan  →  review + setup  →  test full loop  →  KH OK  →  Sandbox → Live
+```
+
+**Template:**
+> *(Xin plan)* *"Great — since you've run one before and know what you want, could you share your rules/plan? I'll review it and get it set up for you."*
+>
+> *(Sau setup)* *"Done on Sandbox. I ran a quick test — earning and redeeming both work. Want to review before we launch?"*
+
+---
+
+### 3B.4 — Nhánh B2: Đã dùng loyalty trước + chưa có plan rõ
+
+**Flow:** gửi Setup Sheet → KH điền → CS review + setup → test → launch.
+
+**Template:**
+> *(Gửi sheet)* *"Since you've run a program before, this'll be quick — I'll send a setup sheet, just fill in the Value column with your rules. Suggested values are there if you want a starting point: [link bản copy]"*
+>
+> *(Sau khi KH điền)* *"Thanks! I'll review these and set it all up on Sandbox, then loop you in to check before we go live."*
+
+---
+
+### 3B.5 — Nhánh C: Chưa từng chạy loyalty bao giờ
+
+**Flow:** KH cần **được gợi ý nhiều nhất** — CS đề xuất preset theo ngành/AOV, dùng AI agent, chốt rule cùng KH → setup → test → launch.
+
+```
+Gợi ý preset (industry/AOV) + AI agent  →  gửi Setup Sheet có preset  →  chốt rule cùng KH
+   →  setup  →  test  →  launch
+```
+
+**Template:**
+> *(Trấn an + offer gợi ý)* *"Totally fine — a lot of stores start their first program with us, I'll guide you the whole way. I'll suggest a simple setup based on your industry and average order value so you don't have to start from scratch."*
+>
+> *(AI agent)* *"Our in-app AI can read your store's AOV and industry and propose earn/redeem rates and tiers — want me to generate a starting plan you can tweak?"*
+>
+> *(Gửi sheet có preset)* *"Here's a setup sheet with suggested values already filled in as a starting point — adjust anything you like, and I'll set it up: [link bản copy]"*
+>
+> *(Chốt cùng KH)* *"Here's what I'd recommend to start: earn 1 point per $1, 100 points = $5 off, plus a welcome bonus. Simple and proven — happy to adjust. Sound good?"*
+
+---
+
+### 3B.6 — Ai setup: CS làm hộ vs KH tự làm (hỏi KH, tùy yêu cầu)
+
+Sau khi chốt rule ở bất kỳ nhánh nào, **hỏi KH muốn ai thao tác:**
+> *"Would you like me to set this up for you, or would you prefer to do it yourself with me guiding you step by step?"*
+
+**Nếu KH muốn CS làm hộ** → xin quyền truy cập:
+> *"Happy to set it up for you. I'll work on a test theme + Sandbox so nothing affects your live store or real customer data. I'll let you know as soon as it's ready to review."*
+> *(Nếu cần collaborator access)* *"To set this up on your end, could you send a staff/collaborator invite? That lets me configure everything directly — I'll only touch the loyalty setup."*
+
+**Nếu KH muốn tự làm** → CS guide từng bước:
+> *"No problem — I'll walk you through it. First, let's turn on Sandbox Mode so we can test safely..."* *(hướng dẫn theo Module 3 / KB LIVE, chỗ nào KH vướng thì tra [playbook FAQ](./joy-dfu-onboarding-playbook.md)).*
+
+> Dù ai bấm nút, **CS vẫn own ticket tới launch** (§7) và **luôn test cho KH xem trước khi Sandbox → Live**.
+
+---
+
+### 3B.7 — Câu launch (dùng chung, mọi nhánh) 🚀
+
+Luôn **xin KH gật trước khi bật live** — đây là lúc khách bắt đầu tích điểm thật:
+> *"Everything's tested and working on Sandbox. Ready for me to switch it to live? Once we do, your customers will start earning points for real."*
+
+Sau launch:
+> *"You're live! 🎉 Your program is now earning points for every order. Here's where you can track results — [assisted revenue + redemption rate]. I'll check in to see how it's going."*
+
+---
+
 ## 4. Setup Sheet (KH điền rule)
 
 **Master template (Google Sheet):** https://docs.google.com/spreadsheets/d/1Dnvg96dqgXmckuj4lVpQ3GM4_Fs4yB-h-xClSWvhdME/edit
