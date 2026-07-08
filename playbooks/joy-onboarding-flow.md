@@ -5,7 +5,7 @@
 **Status:** v2 — Phase 1 (CS chủ động offer trong chat). Phase 2 (trigger tự động trong app) để sau.
 
 > **File này chỉ nói: CS làm gì trên chat, tạo ticket ra sao, issue phát sinh xử lý thế nào.**
-> Kiến thức "làm thế nào / hiểu tại sao" (7 bước có exit-criteria, migration, VIP tier, guest/member, Widget V4, FAQ 50 case) → nằm ở **[`joy-dfu-onboarding-playbook.md`](./joy-dfu-onboarding-playbook.md)**. File này chỉ trỏ sang, KHÔNG lặp lại.
+> Kiến thức "làm thế nào / hiểu tại sao" (7 bước có exit-criteria, migration, VIP tier, guest/member, Widget V4, FAQ 50 case) → nằm ở **[`joy-dfu-onboarding-playbook.md`](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c)**. File này chỉ trỏ sang, KHÔNG lặp lại.
 >
 > Khác gì với [`joy-dfy-flow.md`](./joy-dfy-flow.md)? DFY thiên về **làm hộ widget + đẩy go-live** cho store gần xong. **Onboarding flow này** dành cho KH **Advanced+** cần **build cả loyalty program từ đầu** — có discovery đầu vào, 1 ticket sống/KH xuyên suốt.
 
@@ -75,7 +75,7 @@ Mục tiêu: biết **timeline**, **kinh nghiệm loyalty trước đó**, và *
 3. **(Nếu có dùng trước đó) Migration:** *"Are you moving over from another loyalty app? If so, do you already have your customer/points data exported?"*
 
 > Từ 3 câu này → CS xác định nhánh ở §4.
-> Intake sâu hơn (points vs amount, Legacy/NCA, integrations bắt buộc) → làm theo **Bước 0** của [playbook](./joy-dfu-onboarding-playbook.md).
+> Intake sâu hơn (points vs amount, Legacy/NCA, integrations bắt buộc) → làm theo **Bước 0** của [playbook](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c).
 
 ---
 
@@ -100,7 +100,7 @@ KH mới ở Advanced
                  → chốt rule → CS setup → test
 ```
 
-- **Nhánh A (migrate):** đây là chỗ dễ vỡ nhất — **không làm ngay theo yêu cầu lẻ "migrate hộ"**. Chạy đủ **3 câu migration** ([playbook §2.1](./joy-dfu-onboarding-playbook.md)) trước. Xác nhận KH đã có customer trên Shopify. Data lớn/phức tạp → forward TS.
+- **Nhánh A (migrate):** đây là chỗ dễ vỡ nhất — **không làm ngay theo yêu cầu lẻ "migrate hộ"**. Chạy đủ **3 câu migration** ([playbook §2.1](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c)) trước. Xác nhận KH đã có customer trên Shopify. Data lớn/phức tạp → forward TS.
 - **Nhánh B/C:** không có plan → gửi **Setup Sheet** cho KH điền (§5) → CS review → setup → test.
 
 > **Khi nào gửi Setup Sheet:**
@@ -237,7 +237,7 @@ Sau khi chốt rule ở bất kỳ nhánh nào, **hỏi KH muốn ai thao tác:*
 > *(Nếu cần collaborator access)* *"To set this up on your end, could you send a staff/collaborator invite? That lets me configure everything directly — I'll only touch the loyalty setup."*
 
 **Nếu KH muốn tự làm** → CS guide từng bước:
-> *"No problem — I'll walk you through it. First, let's turn on Sandbox Mode so we can test safely..."* *(hướng dẫn theo Module 3 / KB LIVE, chỗ nào KH vướng thì tra [playbook FAQ](./joy-dfu-onboarding-playbook.md)).*
+> *"No problem — I'll walk you through it. First, let's turn on Sandbox Mode so we can test safely..."* *(hướng dẫn theo Module 3 / KB LIVE, chỗ nào KH vướng thì tra [playbook FAQ](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c)).*
 
 > Dù ai bấm nút, **CS vẫn own ticket tới launch** (§8) và **luôn test cho KH xem trước khi Sandbox → Live**.
 
@@ -285,7 +285,7 @@ Sheet gồm các tab: Program Setup (store info + launch date + program config +
 - [ ] Get merchant OK → **switch sandbox → live** 🚀
 
 ### 5.2 Widget = ticket con, link về ticket chính
-Widget customize **tách ticket riêng** (theo checklist widget on-brand ở [`joy-dfy-flow.md §7`](./joy-dfy-flow.md), chi tiết convert V4 ở [playbook §2.5](./joy-dfu-onboarding-playbook.md)) → **insert link ticket con vào ticket chính**. Mọi thứ khác giữ trong ticket chính.
+Widget customize **tách ticket riêng** (theo checklist widget on-brand ở [`joy-dfy-flow.md §7`](./joy-dfy-flow.md), chi tiết convert V4 ở [playbook §2.5](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c)) → **insert link ticket con vào ticket chính**. Mọi thứ khác giữ trong ticket chính.
 
 ---
 
@@ -294,7 +294,7 @@ Widget customize **tách ticket riêng** (theo checklist widget on-brand ở [`j
 Trong lúc onboard, KH hay báo lỗi/hiện tượng (không cộng điểm, coupon invalid, widget không hiện, perk không apply…). Cách CS xử lý:
 
 1. **KHÔNG tách ticket mới** — note issue vào **cùng ticket onboarding chính** (trừ widget = ticket con).
-2. **Tự chẩn đoán trước, đừng đẩy dev vội** — tra **FAQ theo domain** ở [playbook Phần 3](./joy-dfu-onboarding-playbook.md) (A Points · B Coupon · C Metafield · D Widget · E VIP · F Migration · G Integration · H Config). Nhớ: **51% ticket escalate hóa ra không phải bug Joy**.
+2. **Tự chẩn đoán trước, đừng đẩy dev vội** — tra **FAQ theo domain** ở [playbook Phần 3](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c) (A Points · B Coupon · C Metafield · D Widget · E VIP · F Migration · G Integration · H Config). Nhớ: **51% ticket escalate hóa ra không phải bug Joy**.
 3. **Chạy lăng kính triage** 🟢 config · 🔵 đúng-thiết-kế · 🟠 3rd-party · 🔴 bug Joy thật. Chỉ escalate 🔴, **kèm bằng chứng** (state đã check).
 4. **Hỏi Joy AI agent trước** cho câu hỏi chẩn đoán (guest hay member? order này vì sao không earn? coupon điều kiện thật?) — nhanh hơn mò tay.
 
@@ -314,4 +314,4 @@ Trong lúc onboard, KH hay báo lỗi/hiện tượng (không cộng điểm, co
 - [ ] Chốt **cột cuối** Google Sheet checklist + template dùng chung.
 - [ ] Xác nhận **label/section ticket** (vd `onboarding-new` / `onboarding-in-progress`) đồng bộ DFY labels.
 - [ ] Ngưỡng import data lớn: **CS tự làm** vs **forward TS**.
-- [ ] Phase 2: trigger tự động trong app (điều kiện trigger, nội dung nudge) + skill `joy-onboarding-plan` (xem [playbook — canvas](./joy-dfu-onboarding-playbook.md)).
+- [ ] Phase 2: trigger tự động trong app (điều kiện trigger, nội dung nudge) + skill `joy-onboarding-plan` (xem [playbook — canvas](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c)).

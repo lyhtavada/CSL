@@ -6,7 +6,7 @@
 
 Khách **báo một lỗi/hiện tượng cụ thể** (không cộng điểm, coupon invalid, widget không hiện, perk không apply, sai tier, migrate lỗi…) → tra **FAQ tổng hợp theo domain** ở:
 
-**→ [`playbooks/joy-dfu-onboarding-playbook.md` — Phần 3](../../playbooks/joy-dfu-onboarding-playbook.md)**
+**→ [`playbooks/joy-dfu-onboarding-playbook.md` — Phần 3](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c)**
 
 50 case theo 8 domain: **A** Points/Earning · **B** Coupon/Redeem · **C** Metafield/Perk · **D** Widget/V4 · **E** VIP tier · **F** Migration/Import · **G** Integration · **H** Config/plan.
 
@@ -15,4 +15,4 @@ Mỗi case: **Dấu hiệu → Tự chẩn đoán → Xử lý → Khi nào esca
 ## Onboarding một khách mới
 
 Từ intake → launch (offer trên chat, tạo ticket, phân nhánh, xử lý issue) → **[`playbooks/joy-onboarding-flow.md`](../../playbooks/joy-onboarding-flow.md)**.
-Kiến thức "làm thế nào / hiểu tại sao" (7 bước, migration, VIP, guest/member, Widget V4) → **[`playbooks/joy-dfu-onboarding-playbook.md`](../../playbooks/joy-dfu-onboarding-playbook.md)**.
+Kiến thức "làm thế nào / hiểu tại sao" (7 bước, migration, VIP, guest/member, Widget V4) → **[`playbooks/joy-dfu-onboarding-playbook.md`](https://app.notion.com/p/avadagroup/Module-6-DFU-Onboarding-Playbook-FAQ-396b0da449f18167a149f4fa6474a92c)**.
