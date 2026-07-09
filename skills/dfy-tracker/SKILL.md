@@ -142,10 +142,12 @@ Ví dụ: `DFY-1` + `DFY-video` = **125** · `DFY-1` + coupon + banner + icon = 
 
 Chatty **KHÔNG chấm theo tag**. Điểm tính từ `tasks[]` của ticket, chia 3 khối theo **prefix của `task.title`**:
 
-- Title bắt đầu `AI Agent:` → khối **AI Agent** (weight 50)
-- Title bắt đầu `Chatbox:` → khối **Chatbox** (weight 30)
-- Title bắt đầu `Bonus` (video walkthrough) → khối **Video** (weight 50)
+- Title bắt đầu `AI Agent:` → khối **AI Agent** (weight 50) — checklist hiện tại **9 task**
+- Title bắt đầu `Chatbox:` → khối **Chatbox** (weight 30) — checklist hiện tại **4 task**
+- Title bắt đầu `Bonus` (video walkthrough) → khối **Video** (weight 50) — 1 task, all-or-nothing
 - (task khác prefix → bỏ qua, không tính)
+
+> Số lượng task/khối lấy trực tiếp từ `tasks[]` của từng ticket (không hardcode) — công thức `%done` tự co giãn nếu checklist đổi. Số 9/4 ở trên là checklist hiện hành tại thời điểm cập nhật (2026-07); nếu thấy tổng task khác đi, checklist đã đổi tiếp — cập nhật lại con số này.
 
 Điểm mỗi khối:
 - **AI Agent (50) & Chatbox (30):** `weight × (task ✓ trong khối / tổng task khối)`, làm tròn.
@@ -156,16 +158,16 @@ Chatty **KHÔNG chấm theo tag**. Điểm tính từ `tasks[]` của ticket, ch
 
 | Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
 |------|--------|-------|---------|--------------|------------|------|-------|
-| 2026-06-25 | [CHAT-...](link) | store.myshopify.com | 8/8 (50) | 5/7 (21) | ✓ (50) | ai agent, DFY-adopted | 121 |
-| 2026-06-24 | [CHAT-...](link) | store2.myshopify.com | 0/8 (0) | 0/7 (0) | ✗ (0) | proactive, DFY-new | 0 |
-| **Total** | | | | | | | **121** |
+| 2026-07-09 | [CHAT-...](link) | store.myshopify.com | 9/9 (50) | 0/4 (0) | ✗ (0) | ai agent, DFY-new | 50 |
+| 2026-06-24 | [CHAT-...](link) | store2.myshopify.com | 0/9 (0) | 0/4 (0) | ✗ (0) | proactive, DFY-new | 0 |
+| **Total** | | | | | | | **50** |
 ```
 
 - **Cột khối:** hiển thị `done/total (điểm)` cho AI & Chatbox; `✓/✗ (điểm)` cho Video.
 - **Tags:** vẫn liệt kê tag để tham chiếu adopt/tracking, nhưng **không cộng điểm**.
 - **Point:** tổng 3 khối.
 
-Ví dụ: Chatbox 7/7 (30) + AI 6/8 (38) + Video ✓ (50) = **118** · Chatbox 5/7 (21) + AI 8/8 (50) + Video ✗ (0) = **71**.
+Ví dụ (checklist 9 AI / 4 Chatbox): Chatbox 4/4 (30) + AI 6/9 (33) + Video ✓ (50) = **113** · Chatbox 2/4 (15) + AI 9/9 (50) + Video ✗ (0) = **65**.
 
 > Adopt/no-adopt (cả Joy & Chatty) KHÔNG tính điểm — theo dõi riêng ở adopt rate.
 
