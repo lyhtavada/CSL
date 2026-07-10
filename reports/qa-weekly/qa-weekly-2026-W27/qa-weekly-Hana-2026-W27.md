@@ -1,0 +1,39 @@
+# QA Tuần 2026-W27 — Hana (Joy)
+**Tuần 29/06 – 05/07/2026** · coaching, không phải penalty
+
+## 📊 Điểm tuần: 88/100 — Tốt  (▲ +3 so với W26: 85)
+🔍 Đã QA: 30 chat
+
+**Breakdown 3 trục:** 🧠 Mindset 28.6/34 · 📚 Kiến thức 29.2/33 · 🛠️ Xử lý 28.9/33  →  trục yếu nhất: **mindset**
+
+## 📝 Nhận xét chung
+Bạn duy trì phong độ ổn định tuần này — DFY ownership rõ nét, nhiều chat chủ động xử lý widget/page/CSS mà không cần khách nhắc. Đáng chú ý là khả năng xử lý case kỹ thuật phức tạp như Opt-in enrollment logic, Klaviyo integration, Trusted Shops webhook đều chuẩn xác. Tuy nhiên lỗi KT1 'PRO plan' tái diễn lần thứ hai liên tiếp (W26 → W27), đây không còn là lỗi đơn lẻ mà là pattern cần coaching dứt điểm — sai tên plan ảnh hưởng trực tiếp đến expectation của khách khi họ đi upgrade. Ưu tiên tuần tới: ghi nhớ bảng plan Joy (Starter/Essential/Advanced/Ultimate), không dùng 'PRO' hay 'Pro' trong bất kỳ chat nào.
+
+## ✅ Điểm tốt
+- [P1] DFY ownership xuất sắc — chủ động triển khai widget, loyalty page, CSS fix, ẩn element mà không cần khách nhắc lại; gửi preview/capture để xác nhận. (#1 #3 #5 #9 #29)
+- [P5] Xử lý case kỹ thuật phức tạp với nỗ lực cao và giải thích cụ thể: Opt-in enrollment logic + tier entry reward edge cases (#26), Trusted Shops webhook reward flow (#13), POS sign-up vs loyalty trigger (#30). (#13 #26 #30)
+- [P3] Proactive upsell và DFY offer đúng thời điểm — sau khi resolve issue chính, đề nghị tự nhiên không ép buộc. (#2 #10 #21)
+- [P4] Giải thích giới hạn kỹ thuật rõ ràng và không hứa hẹn sai: POS sign-up không trigger loyalty reward, Judge.me Awesome plan requirement, phone-only customers không được track. (#26 #27 #30)
+
+## 🔧 Cần cải thiện
+- [KT1] (Critical) Dùng sai tên plan Joy — 'PRO plan' không tồn tại. Lặp lại từ W26, đây là pattern lỗi, không phải lỗi đơn lẻ.  (#19)
+   • Dẫn chứng: [05:56:21] CS (Hana): If you do not prefer to upgrade, you can consider to add Loyalty dashboard or Reward redemption blocks which are available on your PRO plan
+   → Trước khi mention tên plan trong chat, dừng lại kiểm tra: Joy có 4 plan là Starter, Essential ($29), Advanced ($129), Ultimate ($499). Không có 'Pro' hay 'PRO'. Đặc biệt chú ý khi upsell hoặc giải thích feature availability — sai plan name = khách expect sai tier và complain sau khi upgrade.
+- [KN1] (Low) Gửi tin nhắn trùng lặp (duplicate send) làm chat trông thiếu chuyên nghiệp.  (#27)
+   • Dẫn chứng: [05:53:16] CS (Hana): 以下是目前使用我们忠诚度应用的几家商店，您可以预览 (gửi sau danh sách links đã gửi trước đó ở 05:52:49)
+   → Soạn tin nhắn hoàn chỉnh trước khi gửi. Nếu quên attach link thì edit/recall, không gửi thêm tin trùng nội dung.
+
+## 🌟 Xin review (chỉ ghi nhận, KHÔNG tính điểm)
+- Đã xin 6/10 chat phù hợp (5 well-timed).
+  Bạn xin review đều đặn trên các chat phù hợp. Có 1 lần hỏi khi khách chưa thực sự hài lòng hoàn toàn (chat #25 — vấn đề chưa resolve hoàn toàn trước khi xin). 7 chat đã có review trước nên được loại khỏi eligible pool.
+
+## 📈 So với tuần trước
+W26: 85/100 (Tốt). W27: 88/100 (Tốt) — tăng 3 điểm. Lỗi KT1 tên plan vẫn tái diễn lần 2 liên tiếp (W26: 'PRO plan' → W27: 'PRO plan') — đây là pattern cần coaching có chủ đích. Trục Knowledge cải thiện nhẹ (29.2 vs 29.7 tuần trước), Mindset và Skill ổn định tăng nhẹ.
+
+## 🚨 Severe flags
+- KT1 tại #19: dùng 'PRO plan' — Joy không có plan nào tên Pro (Starter/Essential/Advanced/Ultimate). Lỗi lặp lại từ W26, cần coaching có chủ đích.
+
+## 🔗 Chat đã QA
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_8b1b4463-922c-464b-8aad-c297be144ab6|#1 Cheri Arellano> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_54f9bb4f-2f54-4a43-8f74-45a831d36771|#2 QYNDA Activewear> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_de5d3cc9-2b25-4573-9536-0a321957c6ce|#3 Books and You> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_2cad3a20-33fe-4b93-a76a-2718d54c6b4c|#4 tsz fung stephen tong> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f2518788-4d6c-4301-86f7-4186fa4b80f9|#5 Allen Schrock Young> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3ac3f2be-e312-478e-b3a2-4e0e3af540ce|#6 My Store Admin> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_14bc8e63-e2d1-4f6b-8b6d-9f3dc823faa1|#7 ZHANHAO MAI> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_789b9a1a-72af-4a3f-9171-8a60840f179d|#8 Jeremy Masson> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f3082fbb-f5a3-4486-9326-10c255d25bf1|#9 #DraktNorge> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_27e5b3be-7c96-4c00-a61e-ed6f14ad4052|#10 Lewis Thomas> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4e9e9af2-89e5-4058-bda0-9629c3ec86f3|#11 Jian He> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a85228ba-47c0-4ff6-bb48-a3cd806f673e|#12 Sophy Ren> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9dfb3393-3b9f-4492-bd06-cf078a2abea9|#13 nicholas fitzwilliams> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_41cb7c81-88af-4803-a1ff-e4eaf7f41c16|#14 Starwishprivate> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_560ca11f-1cd7-4988-b4ec-a37d5496f732|#15 Nancy Laudon> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a549da17-954e-417b-ba6d-eb7e5e8d123c|#16 Mark van den Bogaart> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_2dbf616d-cd20-4478-a73a-f05006d02157|#17 Eerie Essence Emporium> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_919419ae-6749-4545-8038-c0da796cd749|#18 Samuel Chan> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a8759728-5f32-4dc7-af92-10d5b118b5c0|#19 DTC SIRUI> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d10f8c4c-8e17-4f0c-9167-20991c166f43|#20 Ross Taylor> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_dbae5e38-21d0-44e3-859a-19bdf1dffe25|#21 TEDDY BERTHOMIEU> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b401eaec-0e89-4606-aa12-e7c14c155201|#22 shi tao wang> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_251700b3-d034-4758-a70e-743fcd78a55e|#23 CIA Store> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_7cda3cb8-69e1-489b-a0e2-7eb99cf76439|#24 Nabila CHEMILLIER> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_ddba79ac-3441-4eb2-ad35-ac1e2d4c6a02|#25 Yacoub Jafari> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_53fb9763-581d-4d77-a8e2-d5e9bf51c8a8|#26 Pigeon Singapore> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_bf4dca27-5033-4ae9-9f9d-b2e6ff553d77|#27 Chan Henry Ling Yan> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e660a144-d9cf-43f7-b129-3cafc5c3dd6e|#28 Luck Khng Tan> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e5ab723f-ad1c-4f60-b014-72c9c015d556|#29 Hans Chan> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_098492f8-5b48-48ff-9f60-ad954cdc0f2e|#30 Gabriel Kim>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
