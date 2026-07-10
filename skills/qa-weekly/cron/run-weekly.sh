@@ -26,6 +26,12 @@ cd "$REPO"
 # ANTHROPIC_API_KEY a repo .env might inject so we stay in subscription mode.
 unset ANTHROPIC_API_KEY
 
+# The prompt fans grading into background Workflow batches. Headless claude
+# kills still-running background tasks after 600s by default — not enough for
+# 9 CS x 30 chats, so it exits before any report is written.
+# 0 = wait indefinitely for our own background workflows to finish.
+export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
+
 rc=0
 "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
   --model claude-opus-4-8 \
