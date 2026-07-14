@@ -196,8 +196,25 @@ Sai — Joy làm được natively. CS sửa: cấu hình qua **Place Order prog
 
 **Chẩn đoán:** `earning-programs.md` mô tả rate cơ bản (1 pt/$1) nhưng **không nói** cách
 đặt rate KHÁC NHAU theo VIP tier. `rule-engine.md` có nhắc "Customer segment | Bonus for
-VIP tier" trong bảng use-case nhưng quá mờ, không có path, không nói phải upgrade.
-→ Joyce không nối được 2 mảnh, nên bịa ra Shopify Flow.
+VIP tier" trong bảng use-case nhưng quá mờ, không có path.
+→ Joyce không nối được, nên bịa ra Shopify Flow.
+
+> 🔍 **ĐÃ VERIFY TỪ SOURCE JOY (GitLab `avada/starlink-team/joy`, master) — 14/07.**
+> Correction của Jade đúng ở chỗ "Joy làm được natively, không cần Shopify Flow", nhưng
+> **2 chi tiết bị lệch**, và mình viết KB theo source:
+>
+> 1. **KHÔNG cần Rule Engine.** VIP-tier rate là một option trong nhóm radio
+>    *"Who to reward"* của chính program Place order. Nó render ở **cả** bản cũ
+>    (`PlaceOrderProgram.js:910`) lẫn bản Rule Engine (`PlaceOrderV2Program.js:1281`).
+>    Gate duy nhất: **VIP Tier program phải đang bật** — chưa bật thì radio xám kèm
+>    helptext *"You haven't setup VIP Tier yet"*. VIP Tier chỉ cần **plan trả phí bất kỳ**
+>    (`isPremium(shop)` = PLAN_TIER_0, tức Pro/Essential là đủ). Rule Engine gate ở
+>    Advanced+ nhưng **không liên quan** tới tính năng này.
+> 2. **KHÔNG có field "VIP tier" trong panel "Check if".** Condition builder của Place
+>    order chỉ có 7 field customer (`const/option.js` → `conditionCustomerOptionsI18n`):
+>    City, Location, Email, Phone, Customer status, Customer tag, Tax exempt.
+>    Chọn tier xong, form **tự đẻ ra một ô nhập rate cho từng tier**
+>    (`earnPointsTiers[tierId]`, `PlaceOrderV2Program.js:1348-1400`).
 
 **Sửa:** chèn mục mới ngay sau khối `## Reward methods`.
 
@@ -209,31 +226,25 @@ VIP tier" trong bảng use-case nhưng quá mờ, không có path, không nói p
 ## Different earning rates per VIP tier (points multiplier)
 
 A merchant can give each VIP tier its own earning rate — e.g. **1.5 points per $1 for a
-mid tier and 2 points per $1 for the top tier**. This is native to Joy; it does **not**
-need Shopify Flow.
+mid tier and 2 points per $1 for the top tier**. This is built into the **Place an order**
+program. It does **not** need Shopify Flow, and it does **not** need the Rule Engine.
 
-**Requirement:** this needs the **Rule Engine** (available on **Advanced** and
-**Ultimate**). If the shop is not on it yet, they upgrade from **Reward programs →
-Earning programs** — the **Upgrade to Rule engine** button sits at the top right of the
-page.
+**Requirement:** the shop must already have a **VIP Tier program set up and enabled**
+(VIP Tiers is available on any paid plan). If VIP Tiers isn't set up, the tier option on
+the Place-order program is greyed out with the note *"You haven't setup VIP Tier yet"* —
+set up the tiers first.
 
 **How to set it up:**
 
-1. Go to **Reward programs → Earning programs**
-2. Create a **Place order** rule per tier (one rule for each tier that needs its own rate)
-3. In each rule, set the reward method to **per amount spent** and enter that tier's rate
-   (e.g. 1.5 points per $1)
-4. In that rule's **Check if** panel, add a **Customer** condition matching the VIP tier
-   the rule applies to
-5. Save each rule. Joy evaluates all active programs on each order and applies the one
-   whose tier condition matches.
+1. Go to **Joy Admin → Reward programs → Earning programs → Place an order**
+2. Find the **"Who to reward"** options and select
+   **"Only customers in a VIP tier can earn points"**
+3. The form then shows **one earning-rate field per tier** — enter each tier's own rate
+   (e.g. 1.5 points per $1 for the mid tier, 2 points per $1 for the top tier)
+4. **Save**
 
-Because every rule is its own program, tiers do not interfere with each other — a
-customer only earns at the rate of the tier they're in.
-
-> If the merchant is on a plan below Advanced, the tiered-rate setup is not available —
-> tell them it requires the Rule Engine on Advanced/Ultimate and let them decide on the
-> upgrade. Do not suggest a Shopify Flow workaround for this.
+Each tier now earns at its own rate, and a customer earns at the rate of whichever tier
+they are currently in.
 ```
 
 **Tags cần thêm:**
