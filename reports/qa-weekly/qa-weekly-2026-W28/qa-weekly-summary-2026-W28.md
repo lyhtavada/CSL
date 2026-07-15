@@ -1,7 +1,7 @@
 # QA Weekly Summary — 2026-W28 (06/07 – 12/07/2026)
 **Team in-house (9 CS) · rubric 3 trục · coaching, không phải penalty**
 
-> ⏳ CHỜ LIZ DUYỆT — chưa gửi DM cho CS. Liz review xong, ra lệnh thì mới gửi.
+> ✅ ĐÃ GỬI — 15/07/2026, 9 DM báo cáo cho toàn team + 1 DM coaching riêng cho Hana (lỗi KT1 tên plan/giá lặp 3 tuần). Gửi dưới tên Ly (Liz).
 
 | CS | Điểm | Δ W27 | 🧠 Mind | 📚 Know | 🛠️ Skill | Chat | Xin review | Trục yếu | Flag |
 |---|---|---|---|---|---|---|---|---|---|
