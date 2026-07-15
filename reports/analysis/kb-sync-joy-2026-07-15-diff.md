@@ -163,15 +163,7 @@
 
 --- a/kb/case/points-earning.md
 +++ b/kb/case/points-earning.md
-@@ -114,6 +114,7 @@
- - The customer **created the account before the Sign up program was turned on** — by default only accounts created on/after the program start date earn it.
- - The program was in **Sandbox**, not live, when they signed up.
- - Shop uses **manual member assignment**, or the customer is in an **excluded segment**.
-+- The customer **logged in through the Shop app** (not a customer account on the storefront web). The storefront widget can't detect that session, so the signup/widget path doesn't fire. Tell-tale sign: the customer got the place-order points but not the signup bonus. Confirm how they logged in; if it was the Shop app, that's the cause — add the points manually via **Customers → adjust points**.
- 
- **Resolution Steps:**
- - **Step 1:** Ask the merchant for the **email of the customer** who didn't receive the signup points, so we can check that specific account.
-@@ -131,7 +132,23 @@
+@@ -131,7 +131,23 @@
  ## Escalation
  - Confirm logic and impact with merchant before triggering. Adjust legacy customer points on request.
  
