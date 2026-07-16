@@ -44,6 +44,7 @@ CSL/                               ← Liz's workspace (this repo)
 │   ├── chatty-dfy-flow.md         ← Chatty DFY flow (coming)
 │   └── cs-transformation/         ← CS transformation plan + training materials
 ├── skills/                        ← Claude skills
+├── gapi/                          ← Google Calendar + Sheets access (OAuth as lyht@avada.io)
 ├── cs-test/                       ← QA test data
 ├── templates/                     ← Email templates
 └── reports/
@@ -65,6 +66,7 @@ Key references:
 - Liz's responsibilities: `_identity/responsibilities.md`
 - **Product knowledge (Chatty/Joy features, plans, FAQ, ICP)** → KB LIVE on `cs2.avada.net` — same source Ivy/Joyce use. Fetch via `skills/kb-sync/scripts/kb_api.py` or `skills/qa-weekly/scripts/fetch_kb.py <chatty|joy> <path>`. Agent ids: `chatty-agent`, `joy-loyalty-agent`. Do NOT keep a local product-KB copy — it drifts.
 - **CS processes** (escalation, refund, billing, support flows) → `kb/cs-process/`
+- **Google Calendar / Sheets** → `from gapi.client import calendar, sheets` (run with `.venv-crisp/bin/python`). Authed as **`lyht@avada.io`** via OAuth, read+write, works in cron. **No Drive scope** — can't search sheets by name, so Liz must give a sheet link/ID. Re-auth if revoked: `.venv-crisp/bin/python gapi/auth_setup.py`.
 
 ## Working Style
 
