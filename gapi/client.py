@@ -1,6 +1,6 @@
 """Authed Google API clients for the account authorized via auth_setup.py.
 
-    from gapi.client import calendar, sheets, drive
+    from gapi.client import calendar, sheets
 
 Smoke test — prints the authed account and its calendars:
     .venv-crisp/bin/python gapi/client.py
@@ -15,10 +15,12 @@ HERE = Path(__file__).parent
 TOKEN = HERE / "token.json"
 
 # Single source of truth — auth_setup.py imports this list.
+# Read + write on Calendar and Sheets; no Drive scope on purpose, so a buggy
+# script can't touch anything outside the sheets/calendars it is handed.
+# Changing this list requires rerunning auth_setup.py to re-consent.
 SCOPES = [
     "https://www.googleapis.com/auth/calendar",
     "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive",
 ]
 
 
@@ -46,13 +48,12 @@ def sheets():
     return build("sheets", "v4", credentials=_creds(), cache_discovery=False)
 
 
-def drive():
-    return build("drive", "v3", credentials=_creds(), cache_discovery=False)
-
-
 if __name__ == "__main__":
-    who = drive().about().get(fields="user").execute()["user"]
-    print(f"Authed as: {who.get('emailAddress')}")
+    cals = calendar().calendarList().list(maxResults=50).execute().get("items", [])
 
-    for c in calendar().calendarList().list(maxResults=20).execute().get("items", []):
+    # The primary calendar's id is the account's own email address.
+    primary = next((c for c in cals if c.get("primary")), None)
+    print(f"Authed as: {primary['id'] if primary else 'unknown'}")
+
+    for c in cals:
         print(f"  calendar: {c['summary']}  [{c['id']}]")

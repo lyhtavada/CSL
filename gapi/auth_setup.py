@@ -3,7 +3,7 @@
 
 Run:  .venv-crisp/bin/python gapi/auth_setup.py
 
-Opens a browser. Log in with the account whose Calendar/Sheets/Drive should be
+Opens a browser. Log in with the account whose Calendar/Sheets should be
 accessible — this is NOT necessarily the account that owns the Cloud project.
 Writes gapi/token.json; after that, scripts import gapi/client.py instead.
 """
