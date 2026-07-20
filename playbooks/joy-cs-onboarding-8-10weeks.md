@@ -26,12 +26,12 @@
 
 **Checklist theo dõi:**
 
-| Hạng mục | Hoàn thành | Ghi chú | Mentor ký |
-|---|---|---|---|
-| Dev store Shopify sẵn sàng | | | |
-| Đọc xong _identity/* | | | |
-| Đọc xong quy trình CS team | | | |
-| Test cuối tuần pass | | | |
+| Hạng mục | Hoàn thành | Ghi chú |
+|---|---|---|
+| Dev store Shopify sẵn sàng | | |
+| Đọc xong _identity/* | | |
+| Đọc xong quy trình CS team | | |
+| Test cuối tuần pass | | |
 
 ---
 
@@ -45,19 +45,19 @@
 
 **Checklist theo dõi:**
 
-| Ngày | Chủ đề | Checklist thoát ngày pass | Mentor ký |
-|---|---|---|---|
-| 1 | Tổng quan + Pricing | | |
-| 2 | Earning | | |
-| 3 | Redeeming | | |
-| 4 | Loyalty page + Widget | | |
-| 5 | VIP + Milestone + Referral | | |
-| — | **Mini test tuần 2** | | |
-| 6 | Customers + Migration | | |
-| 7 | Notifications + Email | | |
-| 8 | Integrations + POS + AI | | |
-| 9 | Settings + Analytics | | |
-| 10 | **Final test** | | |
+| Ngày | Chủ đề | Checklist thoát ngày pass |
+|---|---|---|
+| 1 | Tổng quan + Pricing | |
+| 2 | Earning | |
+| 3 | Redeeming | |
+| 4 | Loyalty page + Widget | |
+| 5 | VIP + Milestone + Referral | |
+| — | **Mini test tuần 2** | |
+| 6 | Customers + Migration | |
+| 7 | Notifications + Email | |
+| 8 | Integrations + POS + AI | |
+| 9 | Settings + Analytics | |
+| 10 | **Final test** | |
 
 > Nếu trainee đã có kinh nghiệm CS app loyalty khác → có thể rút xuống 8-9 ngày, gộp ngày 6+9.
 
@@ -65,17 +65,17 @@
 
 Đây là nhóm ticket nhiều nhất merchant hỏi ("widget không hiện", "sao trang loyalty của em trống") — CS phải tự setup được, không chỉ giải thích được.
 
-| Hạng mục setup | Hoàn thành | Link/screenshot dev store | Mentor ký |
-|---|---|---|---|
-| Loyalty page — build qua Theme Editor → Add section → Joy Loyalty | | | |
-| Widget — bật qua App embeds, chỉnh vị trí/màu/trigger | | | |
-| Widget — tắt app embed rồi tự bật lại (test hiểu nguyên nhân "widget mất") | | | |
-| Onsite content — product page (hiển thị điểm/reward trên trang sản phẩm) | | | |
-| Onsite content — cart drawer | | | |
-| Onsite content — thank-you page | | | |
-| Account page — hiển thị điểm/tier/lịch sử cho khách | | | |
-| Custom point label (Settings → General) — đổi và xem đổi đúng chỗ trên storefront | | | |
-| Phân biệt được: theme cũ (Asset/Additional scripts) vs theme OS 2.0 (App embeds) — setup có khác nhau | | | |
+| Hạng mục setup | Hoàn thành | Link/screenshot dev store |
+|---|---|---|
+| Loyalty page — build qua Theme Editor → Add section → Joy Loyalty | | |
+| Widget — bật qua App embeds, chỉnh vị trí/màu/trigger | | |
+| Widget — tắt app embed rồi tự bật lại (test hiểu nguyên nhân "widget mất") | | |
+| Onsite content — product page (hiển thị điểm/reward trên trang sản phẩm) | | |
+| Onsite content — cart drawer | | |
+| Onsite content — thank-you page | | |
+| Account page — hiển thị điểm/tier/lịch sử cho khách | | |
+| Custom point label (Settings → General) — đổi và xem đổi đúng chỗ trên storefront | | |
+| Phân biệt được: theme cũ (Asset/Additional scripts) vs theme OS 2.0 (App embeds) — setup có khác nhau | | |
 
 **Test riêng cho phần setup (gộp vào final test ngày 10):** trainee dựng lại toàn bộ loyalty page + widget + 4 loại onsite content trên dev store **mới, từ đầu, tính giờ** — không xem lại hướng dẫn cũ.
 
@@ -100,12 +100,12 @@
 
 **Checklist theo dõi:**
 
-| Hạng mục | Hoàn thành | Ghi chú | Mentor ký |
-|---|---|---|---|
-| Đọc xong toàn bộ process docs | | | |
-| Phân loại 10 case mẫu (điểm/10) | | | |
-| Escalation note đạt chuẩn | | | |
-| Test cuối tuần pass | | | |
+| Hạng mục | Hoàn thành | Ghi chú |
+|---|---|---|
+| Đọc xong toàn bộ process docs | | |
+| Phân loại 10 case mẫu (điểm/10) | | |
+| Escalation note đạt chuẩn | | |
+| Test cuối tuần pass | | |
 
 ---
 
@@ -124,11 +124,11 @@
 
 **Checklist theo dõi:**
 
-| Hạng mục | Hoàn thành | Ghi chú | Mentor ký |
-|---|---|---|---|
-| 10 case thật đã đọc + tóm tắt | | | |
-| Tra đúng domain/lăng kính (điểm/10) | | | |
-| Test cuối tuần (điểm/5) | | | |
+| Hạng mục | Hoàn thành | Ghi chú |
+|---|---|---|
+| 10 case thật đã đọc + tóm tắt | | |
+| Tra đúng domain/lăng kính (điểm/10) | | |
+| Test cuối tuần (điểm/5) | | |
 
 ---
 
@@ -148,13 +148,13 @@
 
 **Checklist theo dõi:**
 
-| Hạng mục | Hoàn thành | Ghi chú | Mentor ký |
-|---|---|---|---|
-| 8-10 ca mock đã chạy | | | |
-| Ca troubleshoot khó (3 ca) | | | |
-| Ca complaint/sensitive | | | |
-| Ca escalate đúng lúc | | | |
-| Test cuối tuần pass | | | |
+| Hạng mục | Hoàn thành | Ghi chú |
+|---|---|---|
+| 8-10 ca mock đã chạy | | |
+| Ca troubleshoot khó (3 ca) | | |
+| Ca complaint/sensitive | | |
+| Ca escalate đúng lúc | | |
+| Test cuối tuần pass | | |
 
 ---
 
@@ -171,12 +171,12 @@
 
 **Checklist theo dõi:**
 
-| Ngày | Số chat xử lý | Số chat cần sửa trước gửi | Vấn đề lặp lại | Mentor ký |
-|---|---|---|---|---|
-| 1-2 (shadow) | | | | |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| Ngày | Số chat xử lý | Số chat cần sửa trước gửi | Vấn đề lặp lại |
+|---|---|---|---|
+| 1-2 (shadow) | | | |
+| 3 | | | |
+| 4 | | | |
+| 5 | | | |
 
 ---
 
@@ -194,11 +194,11 @@
 
 **Checklist theo dõi:**
 
-| Hạng mục | Hoàn thành | Điểm QA trung bình | Ghi chú | Mentor ký |
-|---|---|---|---|---|
-| Số chat/ticket xử lý trong tuần | | | | |
-| Lỗi lặp lại cần train thêm | | | | |
-| Đạt chuẩn QA rubric | | | | |
+| Hạng mục | Hoàn thành | Điểm QA trung bình | Ghi chú |
+|---|---|---|---|
+| Số chat/ticket xử lý trong tuần | | | |
+| Lỗi lặp lại cần train thêm | | | |
+| Đạt chuẩn QA rubric | | | |
 
 ---
 
