@@ -101,9 +101,10 @@ Per-CS cao nhất hiện tại (Linda ~12 Chatty ticket) → ~500p/tháng — d�
 ## 7. Vận hành
 
 - Skill/service mới `/ai-ticket-reward` — tái dùng code fetch + bảng nickname của /dfy-tracker.
-- Luồng: fetch ticket đóng → gate cứng (§2) → **Review Agent chấm** (§3) → auto-chốt L1/L2 hoặc đẩy Liz duyệt (L3/flag) → gom per-CS → report tuần/tháng.
-- Cron tuần (monitor + gom ca chờ duyệt) + tháng (chốt point) → Notion + DM Liz.
+- Luồng: fetch ticket đóng → gate cứng (§2) → **Review Agent chấm** (§3) → auto-chốt Basic/Dev Confirm hoặc đẩy CSL phụ trách duyệt (flag) → gom per-CS theo app → report tuần/tháng.
+- Cron tuần (monitor + gom ca chờ duyệt) + tháng (chốt point) → Notion + DM CSL phụ trách từng app (Chatty/Joy).
 - **Team xây Review Agent** (LLM-judge): input = ticket + Crisp session + investigation trace; output = JSON §3.4. Prompt/rubric chấm theo §3.3 + §4.
+- Áp dụng chung cho cả team CS (nhiều app) — mỗi app dùng cùng 1 cơ chế, chỉ khác người CSL duyệt exception theo app mình phụ trách.
 
 ## 8. Ví dụ chấm trên ticket thật
 
