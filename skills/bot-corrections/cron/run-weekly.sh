@@ -32,11 +32,12 @@ if [ $rc -ne 0 ]; then
   exit $rc
 fi
 
-# Commit report mới (nếu có thay đổi)
+# Commit report mới + prune report cũ (fetch_corrections.py chỉ giữ 2 tuần gần nhất
+# /app -> git add -A để bắt cả file bị xoá, không phải chỉ file mới/sửa)
 if [ -n "$(git status --porcelain reports/bot-corrections/ 2>/dev/null)" ]; then
-  git add reports/bot-corrections/ >> "$LOG" 2>&1
+  git add -A reports/bot-corrections/ >> "$LOG" 2>&1
   git commit -m "bot-corrections: weekly report $(date +%Y-%m-%d)" >> "$LOG" 2>&1
-  echo "committed report" >> "$LOG"
+  echo "committed report (+ prune)" >> "$LOG"
 else
   echo "no report changes to commit" >> "$LOG"
 fi

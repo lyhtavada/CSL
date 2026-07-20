@@ -40,6 +40,11 @@ Mỗi report có **2 phần** (theo yêu cầu Liz):
 2. **📋 Chi tiết từng correction** — full `question` / bot trả / CS sửa thành /
    context / session id → đủ để copy thẳng vào KB.
 
+**Retention:** chỉ giữ **2 report gần nhất / app** trong repo — sau khi ghi report
+mới, script tự xoá report cũ hơn (`--keep-weeks`, mặc định `2`, `0` = giữ hết).
+Không lưu report qua nhiều tuần; lịch sử vẫn tra được qua `git log -- reports/bot-corrections/`
+nếu cần.
+
 Sau khi tạo, **commit** vào repo.
 
 ## Lưu ý xử lý data

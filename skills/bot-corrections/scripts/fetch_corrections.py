@@ -266,12 +266,23 @@ def build_report(app, agent, bot_name, rows, start_dt, end_dt, email_map):
     return "\n".join(L), len(win)
 
 
+def prune_old_reports(app_dir, app, keep):
+    """Chỉ giữ `keep` report gần nhất/app, xoá report cũ hơn (không lưu qua nhiều tuần)."""
+    if keep <= 0:
+        return
+    files = sorted(app_dir.glob(f"{app}-corrections-*.md"))  # tên embed date -> sort lexical = theo thời gian
+    for f in files[:-keep]:
+        f.unlink()
+        print(f"  pruned old report: {f}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--apps", nargs="+", default=["joy", "chatty"], help="joy chatty (mặc định cả 2)")
     ap.add_argument("--start", help="YYYY-MM-DD (mặc định = thứ 2 tuần trước)")
     ap.add_argument("--end", help="YYYY-MM-DD (mặc định = chủ nhật tuần trước)")
     ap.add_argument("--out", default=os.path.join(REPO, "reports", "bot-corrections"))
+    ap.add_argument("--keep-weeks", type=int, default=2, help="số report gần nhất giữ lại / app (mặc định 2, 0 = giữ hết)")
     args = ap.parse_args()
 
     if args.start and args.end:
@@ -301,6 +312,7 @@ def main():
         path.write_text(md, encoding="utf-8")
         written.append(str(path))
         print(f"{app}: {n} correction(s) → {path}")
+        prune_old_reports(app_dir, app, args.keep_weeks)
 
     return written
 
