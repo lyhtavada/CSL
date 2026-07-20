@@ -73,7 +73,7 @@ Agent quyết level dựa trên **nội dung thật**; `tsStatus` là **1 tín h
 | Basic | Issue xử lý được, khách OK | agent thấy issue hợp lệ, thường kèm `done` / `waiting_customer` | 20 |
 | Dev Confirm | Bug thật, dev tiếp nhận (kể cả high-impact) | agent xác nhận là bug, thường kèm `dev_fixing` / `dev_done` | 35 |
 
-**Cross-check chống farm bằng `tsStatus`:** nếu agent đòi Dev Confirm nhưng ticket mới `done`, chưa từng qua `dev_fixing`/`dev_done` → agent hạ confidence + flag `mismatch_tsStatus` → đẩy Liz duyệt. CS không tự set `dev_done` được (phải qua pipeline dev) nên đây là lớp chống farm rẻ mà chắc.
+**Cross-check chống farm bằng `tsStatus`:** nếu agent đòi Dev Confirm nhưng ticket mới `done`, chưa từng qua `dev_fixing`/`dev_done` → agent hạ confidence + flag `mismatch_tsStatus` → đẩy CSL phụ trách duyệt. CS không tự set `dev_done` được (phải qua pipeline dev) nên đây là lớp chống farm rẻ mà chắc.
 
 > Ý nghĩa `tsStatus` (giá trị thật đang chạy): `done` = xong khách OK · `dev_fixing`/`dev_done` = đẩy dev / dev đã fix · `feature_request` = ra FR (không thuộc 2 level ở trên, không tính point chương trình này) · `done_for_you` = DFY (không thuộc chương trình này) · `waiting_customer`/`pending`/`doing` = đang xử lý · `sale_request`/`billing`/`onb` = ngoài phạm vi.
 
@@ -81,8 +81,8 @@ Agent quyết level dựa trên **nội dung thật**; `tsStatus` là **1 tín h
 
 - **Agent tự gác** ở §3.3 trục 1 (nội dung mỏng/farm → `valid=false`, 0p).
 - `ticketStatus` = invalid / duplicate, hoặc dedup trùng domain + nội dung trong 7 ngày → **0p** (auto, không cần agent).
-- Tỷ lệ (invalid + dup + `valid=false`)/CS **> 30%/tuần** → tuần đó chỉ tính **Basic** (không cho Dev Confirm), flag Liz.
-- **Trần 1.000p/CS/tháng** — chạm trần thì dừng cộng, Liz duyệt nếu vượt.
+- Tỷ lệ (invalid + dup + `valid=false`)/CS **> 30%/tuần** → tuần đó chỉ tính **Basic** (không cho Dev Confirm), flag CSL phụ trách app của CS đó.
+- **Trần 1.000p/CS/tháng** — chạm trần thì dừng cộng, CSL phụ trách duyệt nếu vượt.
 
 **Không đạt = 0p** (không phạt).
 
