@@ -3,6 +3,7 @@
 > **Phạm vi:** Training toàn diện CS mới cho Joy Loyalty — Shopify nền tảng, company/CS team, học app Joy, CS process, đọc chat thật, mock chat, đến go-live độc lập.
 > **Thời lượng:** 9 tuần (chuẩn) — co giãn 8-10 tuần tùy tốc độ trainee. Gợi ý co/giãn ghi ở cuối mỗi tuần liên quan.
 > **Cách dùng:** Mỗi tuần có To-do (task cụ thể) → Test cuối tuần → Checklist follow-up (Liz/mentor tick trực tiếp vào bảng).
+> **Bắt buộc:** ngay dưới mỗi phần **Thực hành**/**To-do**, CS phải điền **kết quả** — link/screenshot/video demo hoặc câu trả lời trực tiếp — không để trống. Mentor dựa vào đây để duyệt, không chỉ dựa vào tick checkbox.
 
 ---
 
@@ -19,6 +20,8 @@
 - [ ] Đọc quy trình CS team (doc Liz đính kèm)
 - [ ] (Optional, đọc thêm nếu có thời gian) Notion **Module 0 — Basic eCommerce**: lịch sử thương mại, Shopify App Store vận hành ra sao, dropshipping — giúp hiểu bối cảnh business trước khi vào sản phẩm
 - [ ] 1-1 giới thiệu với mentor/Liz — hỏi bất kỳ câu gì về công ty, sản phẩm, kỳ vọng vai trò
+
+📎 **Kết quả/Proof:**
 
 **Test cuối tuần (30 phút, mentor hỏi miệng):**
 - Giải thích được Shopify Admin có gì, App hoạt động trong store merchant ra sao (không cần sâu, chỉ cần đúng khái niệm)
@@ -74,6 +77,8 @@
 - Đổi custom point label, xem nó đổi ở đâu trên storefront
 - Vẽ sơ đồ cây menu Joy Admin ra giấy — không nhìn màn hình
 
+📎 **Kết quả/Proof:**
+
 **Case thật (TS Elite):** tra 2-3 case về billing/plan gần đây qua `agent-activity`
 
 **Checklist hoàn thành:**
@@ -93,6 +98,8 @@
 - Đặt 1 order thật → xem điểm vào đúng chưa
 - Test points multiplier/rate khác nhau theo tier
 
+📎 **Kết quả/Proof:**
+
 **Case thật (TS Elite):** tra case earning/birthday qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -108,6 +115,8 @@
 - Tạo đủ: discount amount, discount %, BXGY, free gift, free shipping
 - Đặt total + per-customer redemption limit → test khi chạm limit
 - Redeem bằng customer test → soi coupon code sinh ra (one-time-use)
+
+📎 **Kết quả/Proof:**
 
 **Case thật (TS Elite):** tra case redeem/coupon qua `crisp-chat`/`agent-activity`
 
@@ -133,6 +142,8 @@
 | Manual opt-in (nếu KH launch club mới, cần commitment) — hiểu khi nào nên dùng | | |
 | Sandbox mode — bật thử earn/redeem không ảnh hưởng data thật, hiểu khi nào dùng (setup mới, demo, thử rule mới) | | |
 
+📎 **Kết quả/Proof:** (link/screenshot dev store đã điền ngay trong cột bảng trên)
+
 **Case thật (TS Elite):** tra case widget/loyalty page qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -151,6 +162,8 @@
 - Đẩy customer test lên tier 2 → check tag + metafield `avada_joy.vipTier` trên Shopify customer, không chỉ nhìn trong app
 - Set 1 milestone
 - Chạy full referral: lấy link → mở incognito → đăng ký → mua → check reward 2 đầu; đọc qua các anti-cheat (self-referral, cùng IP/email)
+
+📎 **Kết quả/Proof:**
 
 **Case thật (TS Elite):** tra case VIP tier/referral qua `crisp-chat`/`agent-activity` — ưu tiên tìm case "tier đúng nhưng không nhận perk" để đối chiếu với checklist bên dưới
 
@@ -176,6 +189,8 @@
 - Tự chạy thử 1 lần migrate: import balance điểm (cột Points balance) + migrate VIP tier theo tên + **thêm cột Tier points vào file rồi map ở bước Match** (không bị giới hạn theo file mẫu)
 - Import điểm bằng CSV, export customer list
 
+📎 **Kết quả/Proof:**
+
 **Case thật (TS Elite):** tra case customers/migration/points qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -195,6 +210,8 @@
 - Set sender email + domain authentication
 - Dịch widget + loyalty page sang 1 ngôn ngữ thứ 2, test đổi ngôn ngữ trên storefront
 
+📎 **Kết quả/Proof:**
+
 **Case thật (TS Elite):** tra case notification/email/translation qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -211,6 +228,8 @@
 - Đọc kỹ POS: điều kiện, giới hạn, plan nào có; biết auto-discount tier **không chạy ở POS**
 - Đọc checkout extensions (chỉ Plus, 1 ngôn ngữ) — quick redeem, point calculator, coupon list, sign-up block
 - Thử Joy AI, hiểu nó làm được gì
+
+📎 **Kết quả/Proof:**
 
 **Case thật (TS Elite):** tra case integrations/POS qua `crisp-chat`/`agent-activity`
 
@@ -230,6 +249,8 @@
 - Thực hành **Launch from sandbox → live mode** — hiểu đây là bước quan trọng cuối cùng để điểm bắt đầu ghi nhận thật
 - Tạo wallet pass, thử xin collaborator access vào 1 store test
 
+📎 **Kết quả/Proof:**
+
 **Case thật (TS Elite):** tra case order/refund/analytics qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -248,6 +269,8 @@
 5. Notification bật + branding + dịch 1 ngôn ngữ 2
 6. Import 10 customer kèm điểm bằng CSV/migration wizard
 7. Launch từ sandbox sang live, test end-to-end bằng customer thật: đăng ký → mua → lên tier → redeem → dùng coupon
+
+📎 **Kết quả/Proof:** link dev store hoàn chỉnh + screenshot/video từng bước 1-7
 
 **Final test (1h) — mentor chấm:**
 - 10 câu hỏi merchant thật (mentor lấy từ chat Crisp tuần gần nhất) — CS trả lời + chỉ đúng path
@@ -291,6 +314,8 @@
 - [ ] Tự phân loại thử 10 case mẫu (mentor đưa) theo đúng case-classification + escalation matrix
 - [ ] Viết thử 1 escalation note mẫu theo đúng format
 
+📎 **Kết quả/Proof:**
+
 **Test cuối tuần:**
 - 10 case mẫu (tình huống mô tả, không phải chat thật) → trainee phân loại đúng mức độ + chỉ đúng bước xử lý/escalate theo matrix
 - 1 case viết escalation note — mentor chấm đủ thông tin theo `escalation-note.md`
@@ -316,6 +341,8 @@
 - [ ] Với mỗi case, tự tra ngược trong 50 case (Phần 3 playbook) xem case đó rơi vào domain nào, đúng lăng kính 🟢🔵🟠🔴 nào
 - [ ] Ghi lại 5 case mình thấy khó nhất → hỏi mentor
 
+📎 **Kết quả/Proof:** (tóm tắt 10 case đã đọc)
+
 **Test cuối tuần:**
 - Mentor đưa 5 link Crisp mới (trainee chưa từng xem) → trainee đọc, tóm tắt đúng vấn đề, xác định đúng domain + lăng kính, đề xuất hướng xử lý — chấm bằng lời với mentor
 
@@ -339,6 +366,8 @@
 - [ ] Bắt buộc có 1 ca khách hàng gắt/complaint để luyện tone xử lý sensitive situation
 - [ ] Bắt buộc có 1 ca cần escalate — trainee phải nhận ra và viết escalation note đúng lúc
 - [ ] Sau mỗi ca, mentor feedback ngay (đúng/sai, thiếu gì, tone ổn không)
+
+📎 **Kết quả/Proof:** (transcript/ghi âm các ca mock + feedback mentor)
 
 **Test cuối tuần:**
 - 2 ca mock chat hoàn toàn mới (trainee không biết trước kịch bản), mentor chấm theo rubric: đúng vấn đề / đúng xử lý / đúng tone / đúng quyết định escalate hay không — **Pass = cả 2 ca đạt ≥ mức "đạt yêu cầu" trên rubric**
@@ -364,6 +393,8 @@
 - [ ] 3 ngày sau: tự trả lời chat thật, nhưng **mentor duyệt nội dung trước khi gửi** cho khách
 - [ ] Cuối mỗi ngày, mentor review nhanh 15 phút: hôm nay có gì làm tốt, có gì cần sửa
 
+📎 **Kết quả/Proof:** (link ticket/chat đã xử lý mỗi ngày)
+
 **Test cuối tuần:** không có bài test riêng — đánh giá bằng số lượng chat xử lý đúng/tổng số chat trong tuần (mentor track)
 
 **Checklist theo dõi:**
@@ -386,6 +417,8 @@
 - [ ] Mentor review lại toàn bộ chat trong ngày (sau giờ), chấm theo `playbooks/qa-weekly-rubric.md` (Mindset/Knowledge/Skill)
 - [ ] Feedback 1-1 mỗi cuối ngày hoặc cách ngày, tùy khối lượng lỗi phát sinh
 
+📎 **Kết quả/Proof:** (link chat/ticket + điểm QA từng ngày)
+
 **Test cuối tuần:**
 - Tổng hợp điểm QA rubric cả tuần — **Pass = điểm QA trung bình đạt mức chuẩn CS chính thức** (theo `qa-policy.md`)
 
@@ -406,6 +439,8 @@
 **To-do:**
 - [ ] Ôn lại các điểm yếu đã note từ tuần 1-8
 - [ ] Review lại 50 case FAQ (Phần 3) lần cuối — tập trung domain còn yếu
+
+📎 **Kết quả/Proof:**
 
 **Test cuối tuần (final, mentor + Liz cùng chấm):**
 - Bài test tổng hợp: 10 câu hỏi product (như final test Learn Joy) + 5 case phân loại/escalate + 3 ca mock chat troubleshoot mới
