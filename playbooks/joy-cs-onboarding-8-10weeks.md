@@ -79,20 +79,18 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời (viết trực tiếp bên dưới mỗi câu):**
-1. Joy giải quyết 3 bài toán business nào cho merchant? → Trả lời:
-2. Merchant hỏi "Pro là gì, khác Essential không?" — trả lời sao? → Trả lời:
-3. Trial mỗi plan bao nhiêu ngày, áp dụng mấy lần/store, reinstall có được cấp lại không? → Trả lời:
-4. Order khác Transaction ở điểm nào? → Trả lời:
-
 **Case thật (TS Elite):** tra 2-3 case về billing/plan gần đây qua `agent-activity`
 
-**Checklist hoàn thành:**
-- [ ] Giải thích được bằng lời (không đọc slide) Joy giải quyết 3 bài toán gì: tối ưu chi phí bán hàng/margin, xây thương hiệu bền vững, mở rộng khách qua referral — không chỉ nói "app tích điểm"
-- [ ] Kể được 1-2 điểm khác biệt Joy vs đối thủ chính trên thị trường
-- [ ] Kể được 4 plan + base fee + free order quota + overage của từng plan
-- [ ] Giải thích được **order ≠ transaction**
-- [ ] Biết trial: 14 ngày Essential/Advanced, 30 ngày Ultimate, 1 lần/store, reinstall không cấp lại. "Pro" = tên cũ Essential
+**Câu hỏi (điền câu trả lời vào bảng):**
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Joy giải quyết 3 bài toán business nào cho merchant (không chỉ nói "app tích điểm")? | |
+| Kể 1-2 điểm khác biệt Joy vs đối thủ chính trên thị trường? | |
+| 4 plan của Joy là gì? Base fee, free order quota, overage mỗi plan? | |
+| Order khác Transaction ở điểm nào? | |
+| Trial mỗi plan bao nhiêu ngày, áp dụng mấy lần/store, reinstall có được cấp lại không? "Pro" là tên cũ của plan nào? | |
+| Merchant hỏi "Pro là gì, khác Essential không?" — trả lời sao? | |
 
 ## Earning programs
 
@@ -106,17 +104,16 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời:**
-1. Merchant hỏi "1$ = 10 points setup ở đâu?" — chỉ đúng path admin? → Trả lời:
-2. 3 rate option của Place order (per amount spent / per item / per order) khác nhau thế nào? → Trả lời:
-3. Program earning nào bị giới hạn theo plan? → Trả lời:
-
 **Case thật (TS Elite):** tra case earning/birthday qua `crisp-chat`/`agent-activity`
 
-**Checklist hoàn thành:**
-- [ ] Đọc thuộc path: Reward programs → Earning programs → Add rule
-- [ ] "1$ = 10 points setup ở đâu?" → trả lời ngay: Place order → per amount spent
-- [ ] Biết program nào giới hạn theo plan
+**Câu hỏi (điền câu trả lời vào bảng):**
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Path admin để tạo 1 earning rule là gì (Reward programs → ...)? | |
+| Merchant hỏi "1$ = 10 points setup ở đâu?" — chỉ đúng path admin? | |
+| 3 rate option của Place order (per amount spent / per item / per order) khác nhau thế nào? | |
+| Earning program nào bị giới hạn theo plan? | |
 
 ## Redeeming programs
 
@@ -129,16 +126,16 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời:**
-1. Kể 3 hình thức redeem (coupon/free shipping/free gift) + ưu nhược điểm mỗi loại? → Trả lời:
-2. "Redeem at checkout page" yêu cầu plan/điều kiện gì? → Trả lời:
-3. Coupon sinh ra từ redeem có dùng lại được không, vì sao? → Trả lời:
-
 **Case thật (TS Elite):** tra case redeem/coupon qua `crisp-chat`/`agent-activity`
 
-**Checklist hoàn thành:**
-- [ ] Bảng plan availability: cái nào All, cái nào Essential+, cái nào Ultimate + Plus + Checkout Extensibility
-- [ ] Test được vòng đời 1 coupon từ redeem → apply → hết hạn
+**Câu hỏi (điền câu trả lời vào bảng):**
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Kể 3 hình thức redeem (coupon/free shipping/free gift) + ưu nhược điểm mỗi loại? | |
+| Redeeming program nào chỉ All plan, cái nào Essential+, cái nào cần Ultimate + Plus + Checkout Extensibility? | |
+| "Redeem at checkout page" yêu cầu plan/điều kiện gì? | |
+| Coupon sinh ra từ redeem có dùng lại được không, vì sao? | |
 
 ## Loyalty page + Widget V4 + Onsite content + Account page
 
@@ -160,18 +157,16 @@
 
 📎 **Kết quả/Proof:** (link/screenshot dev store đã điền ngay trong cột bảng trên)
 
-**Câu hỏi tự trả lời:**
-1. Merchant báo "widget không hiện" — liệt kê ≥4 nguyên nhân theo đúng thứ tự check? → Trả lời:
-2. Loyalty page và widget khác nhau ở đâu (section vs app embed)? → Trả lời:
-3. New Customer Accounts khác Legacy thế nào, ảnh hưởng gì tới account page? → Trả lời:
-
 **Case thật (TS Elite):** tra case widget/loyalty page qua `crisp-chat`/`agent-activity`
 
-**Checklist hoàn thành:**
-- [ ] "Widget không hiện" → liệt kê ≥4 nguyên nhân theo thứ tự check
-- [ ] Phân biệt loyalty page (section) vs widget (app embed)
-- [ ] Phân biệt New vs Legacy Customer Accounts, biết Shopify đang force chuyển hết sang New
-- [ ] Giải thích được vì sao nên setup trên test theme + sandbox mode trước khi launch thật
+**Câu hỏi (điền câu trả lời vào bảng):**
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Merchant báo "widget không hiện" — liệt kê ≥4 nguyên nhân theo đúng thứ tự check? | |
+| Loyalty page và widget khác nhau ở đâu (section vs app embed)? | |
+| New Customer Accounts khác Legacy thế nào, ảnh hưởng gì tới account page? | |
+| Vì sao nên setup trên test theme + sandbox mode trước khi launch thật? | |
 
 ## VIP tiers + Milestone + Referral (troubleshoot sâu)
 
@@ -186,21 +181,18 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời:**
-1. Vì sao "tier đúng trong app" chưa chắc "perk chạy"? → Trả lời:
-2. Liệt kê đúng thứ tự 6 bước troubleshoot khi merchant báo tier/perk sai? → Trả lời:
-3. Referral "không chạy" thường do những nguyên nhân gì? → Trả lời:
-4. Milestone khác VIP tier ở điểm nào? → Trả lời:
+**Case thật (TS Elite):** tra case VIP tier/referral qua `crisp-chat`/`agent-activity` — ưu tiên tìm case "tier đúng nhưng không nhận perk" để đối chiếu
 
-**Case thật (TS Elite):** tra case VIP tier/referral qua `crisp-chat`/`agent-activity` — ưu tiên tìm case "tier đúng nhưng không nhận perk" để đối chiếu với checklist bên dưới
+**Câu hỏi (đây là nhóm ticket #1 CS hay gặp — điền câu trả lời vào bảng):**
 
-**Checklist hoàn thành (đây là nhóm ticket #1 CS hay gặp — thuộc lòng thứ tự check này):**
-- [ ] Giải thích được: **"tier đúng trong app" ≠ "perk chạy"** — perk chỉ chạy khi tier đã sync tag/metafield sang Shopify VÀ discount function đọc được
-- [ ] Thuộc checklist troubleshoot theo đúng thứ tự khi merchant báo "tier/perk sai": (1) tier đúng trong app chưa? (2) đã sync tag+metafield sang Shopify chưa? (3) perk cấu hình đúng chưa? (4) có discount khác non-combinable đang thắng không? (5) ai save setting/bấm recalc giữa chừng gây downgrade âm thầm không? (6) hiển thị đúng ở widget/POS chưa?
-- [ ] Biết: nhiều triệu chứng ("tier sai", "không nhận perk", "earn sai") sau 1 lần launch/migrate lỗi thường là **CÙNG MỘT gốc** → gộp 1 ticket, không tách 2-3 ticket rời báo dev
-- [ ] Chỉ escalate dev khi đã qua hết 5/6 bước tự check ở trên mà vẫn sai, kèm bằng chứng (customer, tier, ảnh tag/metafield, coupon)
-- [ ] Biết vì sao referral "không chạy" (self-referral, cùng IP/email, chưa đủ điều kiện order…)
-- [ ] Phân biệt milestone vs VIP tier
+| Câu hỏi | Trả lời |
+|---|---|
+| Vì sao "tier đúng trong app" chưa chắc "perk chạy"? | |
+| Liệt kê đúng thứ tự 6 bước troubleshoot khi merchant báo "tier/perk sai"? | |
+| Vì sao nhiều triệu chứng ("tier sai", "không nhận perk", "earn sai") sau 1 lần launch/migrate lỗi nên gộp thành 1 ticket thay vì tách 2-3 ticket rời? | |
+| Khi nào mới nên escalate dev về vấn đề tier/perk, cần kèm bằng chứng gì? | |
+| Referral "không chạy" thường do những nguyên nhân gì? | |
+| Milestone khác VIP tier ở điểm nào? | |
 
 **Test giữa chặng (30 phút, sau khi xong nhóm Pricing → VIP tiers):** mentor đưa 5 câu hỏi merchant thật → CS trả lời bằng lời + chỉ đúng path trong admin. Bắt buộc có 1 câu về troubleshoot VIP tier.
 
@@ -218,20 +210,18 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời:**
-1. Phân biệt Migration wizard (dev zone) vs Import → Update tier (trang Customers)? → Trả lời:
-2. Tier theo POINTS nên migrate thế nào, tier theo AMOUNT SPENT có orders trên Shopify nên dùng cách nào? → Trả lời:
-3. Sau import, khách hàng thường ở trạng thái gì, cần confirm gì với merchant trước khi launch? → Trả lời:
-
 **Case thật (TS Elite):** tra case customers/migration/points qua `crisp-chat`/`agent-activity`
 
-**Checklist hoàn thành:**
-- [ ] Phân biệt được **Migration wizard** (dev zone, mang balance/tier/tier points) vs **Import → Update tier** (trang Customers, file `tier_*_sample.csv`) — hai tính năng khác nhau, đừng nhầm
-- [ ] Biết: tier theo **POINTS** → migrate tier point bằng file là nên làm; tier theo **AMOUNT SPENT có orders trên Shopify** → ưu tiên **Recalculate**, không nhập tay (Recalc sẽ ghi đè số nhập tay)
-- [ ] Biết sau import khách thường ở trạng thái **guest** — phải confirm guest/member với KH trước khi launch
-- [ ] Biết data lệch/gõ sai tên hạng → khách bị dồn về Bronze; biết 2 chỗ Joy KHÔNG tự sửa số tier point lệch ngưỡng
-- [ ] Biết "unlimited transactions" không phải chuyện pricing → lấy store URL rồi escalate team
-- [ ] Tránh import/migrate nhiều lần (dễ cộng đôi điểm)
+**Câu hỏi (điền câu trả lời vào bảng):**
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Phân biệt Migration wizard (dev zone) vs Import → Update tier (trang Customers)? | |
+| Tier theo POINTS nên migrate thế nào? Tier theo AMOUNT SPENT có orders trên Shopify nên dùng cách nào? | |
+| Sau import, khách hàng thường ở trạng thái gì? Cần confirm gì với merchant trước khi launch? | |
+| Data lệch/gõ sai tên hạng thì khách bị dồn về đâu? Joy KHÔNG tự sửa số tier point lệch ngưỡng ở 2 trường hợp nào? | |
+| "Unlimited transactions" có phải chuyện pricing không? Xử lý thế nào? | |
+| Vì sao nên tránh import/migrate nhiều lần cho cùng 1 khách? | |
 
 ## Notifications + Email + Translations
 
@@ -244,17 +234,15 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời:**
-1. Kể đủ các loại notification Joy gửi + trigger từng loại? → Trả lời:
-2. Merchant báo "khách không nhận được email" — check theo thứ tự nào? → Trả lời:
-3. Cái gì dịch được, cái gì không dịch được trên widget/loyalty page? → Trả lời:
-
 **Case thật (TS Elite):** tra case notification/email/translation qua `crisp-chat`/`agent-activity`
 
-**Checklist hoàn thành:**
-- [ ] Liệt kê đủ loại notification Joy gửi + trigger từng loại (open rate ~40% — touch point quan trọng, không phải phụ)
-- [ ] "Khách không nhận được email" → biết thứ tự check
-- [ ] Biết cái gì dịch được, cái gì không
+**Câu hỏi (điền câu trả lời vào bảng):**
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Kể đủ các loại notification Joy gửi + trigger từng loại? | |
+| Merchant báo "khách không nhận được email" — check theo thứ tự nào? | |
+| Cái gì dịch được, cái gì không dịch được trên widget/loyalty page? | |
 
 ## Integrations + POS + Checkout extensions + Joy AI
 
@@ -268,17 +256,16 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời:**
-1. Kể danh sách integration phổ biến (Klaviyo, Omnisend, review apps, Shopify Flow, Gorgias, Chatty...) + plan yêu cầu? → Trả lời:
-2. Giới hạn POS liên quan tới VIP tier auto-discount là gì? → Trả lời:
-3. Checkout extensions chỉ dành cho đối tượng nào? → Trả lời:
-
 **Case thật (TS Elite):** tra case integrations/POS qua `crisp-chat`/`agent-activity`
 
-**Checklist hoàn thành:**
-- [ ] Kể được danh sách integration phổ biến (Klaviyo top-of-mind dù rating thấp, Omnisend, Judge.me/Loox/Yotpo, Shopify Flow, Gorgias, Chatty) + plan yêu cầu
-- [ ] Nắm giới hạn POS (câu hỏi hay gặp) + checkout extensions chỉ dành Plus
-- [ ] Biết integration nào cần Shopify Plus
+**Câu hỏi (điền câu trả lời vào bảng):**
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Kể danh sách integration phổ biến (Klaviyo, Omnisend, review apps, Shopify Flow, Gorgias, Chatty...) + plan yêu cầu? | |
+| Giới hạn POS liên quan tới VIP tier auto-discount là gì? | |
+| Checkout extensions chỉ dành cho đối tượng nào? | |
+| Integration nào bắt buộc cần Shopify Plus? | |
 
 ## Settings nâng cao + Point calculator + Analytics + Launch live
 
@@ -293,18 +280,16 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời:**
-1. Điểm được xử lý thế nào khi order bị refund/cancel? → Trả lời:
-2. Assisted revenue và redemption rate nghĩa là gì, merchant nên nhìn số nào? → Trả lời:
-3. Point calculator không tự hiện ở cart drawer thì xử lý thế nào? → Trả lời:
-
 **Case thật (TS Elite):** tra case order/refund/analytics qua `crisp-chat`/`agent-activity`
 
-**Checklist hoàn thành:**
-- [ ] Biết điểm xử lý sao khi order bị refund/cancel
-- [ ] Đọc được Analytics, giải thích được assisted revenue + redemption rate cho merchant
-- [ ] Biết chỗ thêm point calculator vào cart drawer khi theme không tự nhận (snippet + hàm rerender)
-- [ ] Thuộc flow chuyển từ sandbox mode sang live mode
+**Câu hỏi (điền câu trả lời vào bảng):**
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Điểm được xử lý thế nào khi order bị refund/cancel? | |
+| Assisted revenue và redemption rate nghĩa là gì, merchant nên nhìn số nào? | |
+| Point calculator không tự hiện ở cart drawer thì xử lý thế nào (snippet + hàm rerender)? | |
+| Flow chuyển từ sandbox mode sang live mode gồm những gì? | |
 
 ## Tổng ôn + Final test
 
