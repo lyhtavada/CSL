@@ -40,7 +40,9 @@
 
 **Mục tiêu 2 tuần:** kết thúc tuần 3, CS phải **tự cài + vận hành được Joy Loyalty từ số 0 trên 1 store bất kỳ**, và trả lời được câu hỏi merchant thật mà không cần tra cứu lại — không chỉ hiểu lý thuyết tính năng.
 
-**To-do tổng quan (bức tranh toàn 2 tuần — xem chi tiết từng ngày ở bảng bên dưới):**
+> **Format:** mỗi mục bên dưới là 1 **Heading 2 dạng toggle** (khi đưa vào Notion, set từng heading này thành toggle heading 2 để gập/mở) — không chia theo ngày cụ thể, trainee tự sắp xếp tốc độ học trong 2 tuần.
+
+**To-do tổng quan (bức tranh toàn 2 tuần — xem chi tiết từng mục ở các toggle bên dưới):**
 - [ ] **Setup được toàn bộ launch path:** cài app → bật customer accounts → chọn program type → cấu hình earning/redeeming → dựng loyalty page/widget → bật onsite content
 - [ ] **Setup được các block hiển thị trên website** (không chỉ đọc lý thuyết): loyalty page, widget, onsite content (product page/cart drawer/thank-you page), account page — xem checklist setup riêng bên dưới
 - [ ] **Cấu hình được mọi chương trình earning:** place order (3 rate option), sign-up, social, review, birthday, custom
@@ -57,13 +59,13 @@
 
 **Case thật:** tra qua **TS Elite** (`agent.avada-ts.site`, docs `/api/docs`) — mentor/trainee pull case thật theo chủ đề mỗi ngày qua endpoint `crisp-chat` (đọc 1 chat cụ thể) hoặc `agent-activity`/`app-digest` (quét case gần đây theo domain), thay vì đọc file case tĩnh.
 
-**Khung 4h/ngày:** 1h đọc help.joy.so/Module + xem video → 2h thực hành tự setup trên dev store → 0.5h tra case thật qua TS Elite → 0.5h self-check checklist cuối ngày, ghi câu chưa chắc hỏi mentor sáng hôm sau.
+**Khung mỗi buổi học (~4h):** 1h đọc help.joy.so/Module + xem video → 2h thực hành tự setup trên dev store → 0.5h tra case thật qua TS Elite → 0.5h self-check checklist, ghi câu chưa chắc hỏi mentor buổi sau.
 
-**Bắt buộc trước Ngày 1:** dev store riêng đã cài Joy (plan Advanced), bật Customer accounts, có sẵn 3 customer test + 5 product test + 1 collection.
+**Bắt buộc trước khi bắt đầu:** dev store riêng đã cài Joy (plan Advanced), bật Customer accounts, có sẵn 3 customer test + 5 product test + 1 collection.
 
 **Quy tắc vàng:** không tick "xong" nếu chưa tự tay setup + tự test bằng mắt khách hàng trên storefront. Đọc hiểu ≠ biết làm.
 
-### Ngày 1 — Bài toán Joy giải quyết + Tổng quan + Pricing
+## Bài toán Joy giải quyết + Tổng quan + Pricing
 
 **Đọc:** Module 1 (Retention — Joy giải quyết bài toán gì: tối ưu chi phí phân phối/D2C, xây thương hiệu bền vững, mở rộng qua referral; case study Vinamilk), Module 2 (Joy vs đối thủ 2025)
 
@@ -74,14 +76,14 @@
 
 **Case thật (TS Elite):** tra 2-3 case về billing/plan gần đây qua `agent-activity`
 
-**Checklist thoát ngày:**
+**Checklist hoàn thành:**
 - [ ] Giải thích được bằng lời (không đọc slide) Joy giải quyết 3 bài toán gì: tối ưu chi phí bán hàng/margin, xây thương hiệu bền vững, mở rộng khách qua referral — không chỉ nói "app tích điểm"
 - [ ] Kể được 1-2 điểm khác biệt Joy vs đối thủ chính trên thị trường
 - [ ] Kể được 4 plan + base fee + free order quota + overage của từng plan
 - [ ] Giải thích được **order ≠ transaction**
 - [ ] Biết trial: 14 ngày Essential/Advanced, 30 ngày Ultimate, 1 lần/store, reinstall không cấp lại. "Pro" = tên cũ Essential
 
-### Ngày 2 — Earning programs
+## Earning programs
 
 **Đọc:** [help.joy.so/reward-programs](https://help.joy.so/reward-programs/) — mục Earning programs (orders, sign-ups, birthdays, reviews, surveys, social, custom)
 
@@ -93,12 +95,12 @@
 
 **Case thật (TS Elite):** tra case earning/birthday qua `crisp-chat`/`agent-activity`
 
-**Checklist thoát ngày:**
+**Checklist hoàn thành:**
 - [ ] Đọc thuộc path: Reward programs → Earning programs → Add rule
 - [ ] "1$ = 10 points setup ở đâu?" → trả lời ngay: Place order → per amount spent
 - [ ] Biết program nào giới hạn theo plan
 
-### Ngày 3 — Redeeming programs
+## Redeeming programs
 
 **Đọc:** [help.joy.so/reward-programs](https://help.joy.so/reward-programs/) — mục Redeeming programs (discounts, free gifts, shipping, checkout redemption, limits)
 
@@ -109,11 +111,11 @@
 
 **Case thật (TS Elite):** tra case redeem/coupon qua `crisp-chat`/`agent-activity`
 
-**Checklist thoát ngày:**
+**Checklist hoàn thành:**
 - [ ] Bảng plan availability: cái nào All, cái nào Essential+, cái nào Ultimate + Plus + Checkout Extensibility
 - [ ] Test được vòng đời 1 coupon từ redeem → apply → hết hạn
 
-### Ngày 4 — Loyalty page + Widget V4 + Onsite content + Account page
+## Loyalty page + Widget V4 + Onsite content + Account page
 
 **Đọc:** Module 3 phần *Setup on test theme / Setup branding widget / Setup loyalty page / Setup my account page* + [help.joy.so/on-site-content](https://help.joy.so/on-site-content/) — Branding (unified widget, loyalty design), Loyalty Landing Page, Account Page, Product Page, Cart Drawer, Thank You page
 
@@ -133,13 +135,13 @@
 
 **Case thật (TS Elite):** tra case widget/loyalty page qua `crisp-chat`/`agent-activity`
 
-**Checklist thoát ngày:**
+**Checklist hoàn thành:**
 - [ ] "Widget không hiện" → liệt kê ≥4 nguyên nhân theo thứ tự check
 - [ ] Phân biệt loyalty page (section) vs widget (app embed)
 - [ ] Phân biệt New vs Legacy Customer Accounts, biết Shopify đang force chuyển hết sang New
 - [ ] Giải thích được vì sao nên setup trên test theme + sandbox mode trước khi launch thật
 
-### Ngày 5 — VIP tiers + Milestone + Referral (troubleshoot sâu)
+## VIP tiers + Milestone + Referral (troubleshoot sâu)
 
 **Đọc:** Module 3 phần *VIP tiers* (đặc biệt "VIP tier hoạt động end-to-end" + "Troubleshooting VIP tier") + [help.joy.so/membership](https://help.joy.so/membership/) (VIP tiers), [help.joy.so/reward-programs/milestone](https://help.joy.so/reward-programs/milestone/), [help.joy.so/reward-programs/referrals](https://help.joy.so/reward-programs/referrals/)
 
@@ -152,7 +154,7 @@
 
 **Case thật (TS Elite):** tra case VIP tier/referral qua `crisp-chat`/`agent-activity` — ưu tiên tìm case "tier đúng nhưng không nhận perk" để đối chiếu với checklist bên dưới
 
-**Checklist thoát ngày (đây là nhóm ticket #1 CS hay gặp — thuộc lòng thứ tự check này):**
+**Checklist hoàn thành (đây là nhóm ticket #1 CS hay gặp — thuộc lòng thứ tự check này):**
 - [ ] Giải thích được: **"tier đúng trong app" ≠ "perk chạy"** — perk chỉ chạy khi tier đã sync tag/metafield sang Shopify VÀ discount function đọc được
 - [ ] Thuộc checklist troubleshoot theo đúng thứ tự khi merchant báo "tier/perk sai": (1) tier đúng trong app chưa? (2) đã sync tag+metafield sang Shopify chưa? (3) perk cấu hình đúng chưa? (4) có discount khác non-combinable đang thắng không? (5) ai save setting/bấm recalc giữa chừng gây downgrade âm thầm không? (6) hiển thị đúng ở widget/POS chưa?
 - [ ] Biết: nhiều triệu chứng ("tier sai", "không nhận perk", "earn sai") sau 1 lần launch/migrate lỗi thường là **CÙNG MỘT gốc** → gộp 1 ticket, không tách 2-3 ticket rời báo dev
@@ -160,11 +162,11 @@
 - [ ] Biết vì sao referral "không chạy" (self-referral, cùng IP/email, chưa đủ điều kiện order…)
 - [ ] Phân biệt milestone vs VIP tier
 
-**Mini test cuối tuần 2 (30 phút, tách khỏi 4h):** mentor đưa 5 câu hỏi merchant thật → CS trả lời bằng lời + chỉ đúng path trong admin. Bắt buộc có 1 câu về troubleshoot VIP tier.
+**Test giữa chặng (30 phút, sau khi xong nhóm Pricing → VIP tiers):** mentor đưa 5 câu hỏi merchant thật → CS trả lời bằng lời + chỉ đúng path trong admin. Bắt buộc có 1 câu về troubleshoot VIP tier.
 
 ---
 
-### Ngày 6 — Customers + Points management + Migration (dev zone)
+## Customers + Points management + Migration (dev zone)
 
 **Đọc:** Module 3 phần *Migration and import* (đọc kỹ — nhiều cạm bẫy) + [help.joy.so/customers](https://help.joy.so/customers/), [help.joy.so](https://help.joy.so/) mục Support → Migration (từ Stamped, Smile, Rivo, Yotpo, others)
 
@@ -176,7 +178,7 @@
 
 **Case thật (TS Elite):** tra case customers/migration/points qua `crisp-chat`/`agent-activity`
 
-**Checklist thoát ngày:**
+**Checklist hoàn thành:**
 - [ ] Phân biệt được **Migration wizard** (dev zone, mang balance/tier/tier points) vs **Import → Update tier** (trang Customers, file `tier_*_sample.csv`) — hai tính năng khác nhau, đừng nhầm
 - [ ] Biết: tier theo **POINTS** → migrate tier point bằng file là nên làm; tier theo **AMOUNT SPENT có orders trên Shopify** → ưu tiên **Recalculate**, không nhập tay (Recalc sẽ ghi đè số nhập tay)
 - [ ] Biết sau import khách thường ở trạng thái **guest** — phải confirm guest/member với KH trước khi launch
@@ -184,7 +186,7 @@
 - [ ] Biết "unlimited transactions" không phải chuyện pricing → lấy store URL rồi escalate team
 - [ ] Tránh import/migrate nhiều lần (dễ cộng đôi điểm)
 
-### Ngày 7 — Notifications + Email + Translations
+## Notifications + Email + Translations
 
 **Đọc:** [help.joy.so](https://help.joy.so/) mục Operations → Notifications, Settings (email), [help.joy.so/translations](https://help.joy.so/translations/)
 
@@ -195,12 +197,12 @@
 
 **Case thật (TS Elite):** tra case notification/email/translation qua `crisp-chat`/`agent-activity`
 
-**Checklist thoát ngày:**
+**Checklist hoàn thành:**
 - [ ] Liệt kê đủ loại notification Joy gửi + trigger từng loại (open rate ~40% — touch point quan trọng, không phải phụ)
 - [ ] "Khách không nhận được email" → biết thứ tự check
 - [ ] Biết cái gì dịch được, cái gì không
 
-### Ngày 8 — Integrations + POS + Checkout extensions + Joy AI
+## Integrations + POS + Checkout extensions + Joy AI
 
 **Đọc:** Module 3 phần *Integrations* + *Setup checkout, thank you page extensions* + *Setup POS* + [help.joy.so](https://help.joy.so/) mục Operations → Integrations, [help.joy.so/pos](https://help.joy.so/pos/), [help.joy.so/joy-ai](https://help.joy.so/joy-ai/)
 
@@ -212,12 +214,12 @@
 
 **Case thật (TS Elite):** tra case integrations/POS qua `crisp-chat`/`agent-activity`
 
-**Checklist thoát ngày:**
+**Checklist hoàn thành:**
 - [ ] Kể được danh sách integration phổ biến (Klaviyo top-of-mind dù rating thấp, Omnisend, Judge.me/Loox/Yotpo, Shopify Flow, Gorgias, Chatty) + plan yêu cầu
 - [ ] Nắm giới hạn POS (câu hỏi hay gặp) + checkout extensions chỉ dành Plus
 - [ ] Biết integration nào cần Shopify Plus
 
-### Ngày 9 — Settings nâng cao + Point calculator + Analytics + Launch live
+## Settings nâng cao + Point calculator + Analytics + Launch live
 
 **Đọc:** Module 3 phần *Point calculators* + *Launch from sandbox mode to live mode* + *Xem số liệu report* + [help.joy.so/analytics](https://help.joy.so/analytics/), [help.joy.so](https://help.joy.so/) mục Operations → Settings, mục Customers (wallet pass)
 
@@ -230,13 +232,13 @@
 
 **Case thật (TS Elite):** tra case order/refund/analytics qua `crisp-chat`/`agent-activity`
 
-**Checklist thoát ngày:**
+**Checklist hoàn thành:**
 - [ ] Biết điểm xử lý sao khi order bị refund/cancel
 - [ ] Đọc được Analytics, giải thích được assisted revenue + redemption rate cho merchant
 - [ ] Biết chỗ thêm point calculator vào cart drawer khi theme không tự nhận (snippet + hàm rerender)
 - [ ] Thuộc flow chuyển từ sandbox mode sang live mode
 
-### Ngày 10 — Tổng ôn + Final test
+## Tổng ôn + Final test
 
 **Thực hành (3h) — build store hoàn chỉnh trên dev store mới, tính giờ:**
 1. Cài Joy từ đầu, bật customer accounts, chọn Legacy hoặc New có chủ đích
@@ -249,26 +251,26 @@
 
 **Final test (1h) — mentor chấm:**
 - 10 câu hỏi merchant thật (mentor lấy từ chat Crisp tuần gần nhất) — CS trả lời + chỉ đúng path
-- 3 ca troubleshoot: widget không hiện / điểm không cộng / **VIP tier đúng trong app nhưng perk không apply** (bắt buộc dùng đúng checklist 6 bước ngày 5)
+- 3 ca troubleshoot: widget không hiện / điểm không cộng / **VIP tier đúng trong app nhưng perk không apply** (bắt buộc dùng đúng checklist 6 bước ở mục VIP tiers)
 - **Pass = ≥8/10 câu đúng và cả 3 ca troubleshoot chỉ đúng thứ tự check**
 
 **Checklist theo dõi (mentor điền):**
 
-| Ngày | Chủ đề | Checklist thoát ngày pass |
-|---|---|---|
-| 1 | Bài toán Joy giải quyết + Tổng quan + Pricing | |
-| 2 | Earning | |
-| 3 | Redeeming | |
-| 4 | Loyalty page + Widget V4 + Account page | |
-| 5 | VIP tier end-to-end + Milestone + Referral | |
-| — | **Mini test tuần 2** | |
-| 6 | Customers + Migration (dev zone) | |
-| 7 | Notifications + Email | |
-| 8 | Integrations + POS + Checkout ext + AI | |
-| 9 | Settings + Point calculator + Analytics + Launch live | |
-| 10 | **Final test** | |
+| Chủ đề | Checklist hoàn thành |
+|---|---|
+| Bài toán Joy giải quyết + Tổng quan + Pricing | |
+| Earning | |
+| Redeeming | |
+| Loyalty page + Widget V4 + Account page | |
+| VIP tier end-to-end + Milestone + Referral | |
+| **Test giữa chặng** | |
+| Customers + Migration (dev zone) | |
+| Notifications + Email | |
+| Integrations + POS + Checkout ext + AI | |
+| Settings + Point calculator + Analytics + Launch live | |
+| **Final test** | |
 
-> Nếu trainee đã có kinh nghiệm CS app loyalty khác → có thể rút xuống 8-9 ngày, gộp ngày 6+9.
+> Trainee đã có kinh nghiệm CS app loyalty khác → có thể đi nhanh hơn, gộp mục Customers+Migration với Settings+Analytics trong cùng 1 buổi.
 
 **Tài nguyên tham khảo thêm (xem bất kỳ lúc nào trong 2 tuần, không bắt buộc theo ngày):**
 - Notion **Module 4 — Guides videos**: kênh Screenpal video hướng dẫn setup từng phần
