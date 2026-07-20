@@ -61,6 +61,24 @@
 
 > Nếu trainee đã có kinh nghiệm CS app loyalty khác → có thể rút xuống 8-9 ngày, gộp ngày 6+9.
 
+**Checklist setup thực hành bắt buộc (Ngày 4 — không chỉ đọc lý thuyết, phải tự tay dựng trên dev store):**
+
+Đây là nhóm ticket nhiều nhất merchant hỏi ("widget không hiện", "sao trang loyalty của em trống") — CS phải tự setup được, không chỉ giải thích được.
+
+| Hạng mục setup | Hoàn thành | Link/screenshot dev store | Mentor ký |
+|---|---|---|---|
+| Loyalty page — build qua Theme Editor → Add section → Joy Loyalty | | | |
+| Widget — bật qua App embeds, chỉnh vị trí/màu/trigger | | | |
+| Widget — tắt app embed rồi tự bật lại (test hiểu nguyên nhân "widget mất") | | | |
+| Onsite content — product page (hiển thị điểm/reward trên trang sản phẩm) | | | |
+| Onsite content — cart drawer | | | |
+| Onsite content — thank-you page | | | |
+| Account page — hiển thị điểm/tier/lịch sử cho khách | | | |
+| Custom point label (Settings → General) — đổi và xem đổi đúng chỗ trên storefront | | | |
+| Phân biệt được: theme cũ (Asset/Additional scripts) vs theme OS 2.0 (App embeds) — setup có khác nhau | | | |
+
+**Test riêng cho phần setup (gộp vào final test ngày 10):** trainee dựng lại toàn bộ loyalty page + widget + 4 loại onsite content trên dev store **mới, từ đầu, tính giờ** — không xem lại hướng dẫn cũ.
+
 ---
 
 ## TUẦN 4 — Joy CS process riêng
