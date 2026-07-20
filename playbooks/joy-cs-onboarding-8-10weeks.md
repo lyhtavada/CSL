@@ -17,6 +17,7 @@
 - [ ] Đọc `_identity/who-we-are.md`, `values.md`, `tone-and-voice.md`
 - [ ] Đọc `_identity/responsibilities.md`, `_identity/team-g2.md` — biết ai làm gì trong team
 - [ ] Đọc quy trình CS team (doc Liz đính kèm)
+- [ ] (Optional, đọc thêm nếu có thời gian) Notion **Module 0 — Basic eCommerce**: lịch sử thương mại, Shopify App Store vận hành ra sao, dropshipping — giúp hiểu bối cảnh business trước khi vào sản phẩm
 - [ ] 1-1 giới thiệu với mentor/Liz — hỏi bất kỳ câu gì về công ty, sản phẩm, kỳ vọng vai trò
 
 **Test cuối tuần (30 phút, mentor hỏi miệng):**
@@ -52,47 +53,224 @@
 - [ ] **Thuộc bảng plan (Essential/Advanced/Ultimate):** feature nào thuộc plan nào, trial rules, "Pro" = tên cũ Essential
 - [ ] Đọc hết case thật (`kb/case/*`) tương ứng mỗi chủ đề — đây là lỗi merchant hay gặp nhất, không phải lý thuyết suông
 
-**Dùng nguyên plan chi tiết đã có:** [`playbooks/joy-new-cs-app-training-2weeks.md`](joy-new-cs-app-training-2weeks.md) — 10 ngày × 4h, mỗi ngày có To-do (Đọc/Thực hành/Case) + Checklist thoát ngày sẵn. Không lặp lại nội dung ở đây, chỉ theo dõi tiến độ bằng bảng dưới.
+**Nguồn học:** KB live `cs2.avada.net` (agent `joy-loyalty-agent`, qua `skills/qa-weekly/scripts/fetch_kb.py joy <path>`) + Notion **"Joy Loyalty program - Training courses"** Module 0-6 (course chính thức, có video + case study Vinamilk, so sánh đối thủ, hướng dẫn setup chi tiết). Case thật đọc ở `kb/case/*`.
 
-**Test:**
-- Mini test cuối ngày 5 (tuần 2): 5 câu hỏi merchant thật, trả lời bằng lời + chỉ đúng path trong admin
-- Final test ngày 10 (tuần 3): build store hoàn chỉnh từ đầu (3h) + 10 câu hỏi + 3 ca troubleshoot — **Pass = ≥8/10 câu đúng + cả 3 ca troubleshoot đúng thứ tự check**
+**Khung 4h/ngày:** 1h đọc KB/Module + xem video → 2h thực hành tự setup trên dev store → 0.5h đọc case thật (`kb/case/*`) → 0.5h self-check checklist cuối ngày, ghi câu chưa chắc hỏi mentor sáng hôm sau.
 
-**Checklist theo dõi:**
+**Bắt buộc trước Ngày 1:** dev store riêng đã cài Joy (plan Advanced), bật Customer accounts, có sẵn 3 customer test + 5 product test + 1 collection.
+
+**Quy tắc vàng:** không tick "xong" nếu chưa tự tay setup + tự test bằng mắt khách hàng trên storefront. Đọc hiểu ≠ biết làm.
+
+### Ngày 1 — Bài toán Joy giải quyết + Tổng quan + Pricing
+
+**Đọc:** Module 1 (Retention — Joy giải quyết bài toán gì: tối ưu chi phí phân phối/D2C, xây thương hiệu bền vững, mở rộng qua referral; case study Vinamilk), Module 2 (Joy vs đối thủ 2025)
+
+**Thực hành:**
+- Đi hết 5-step launch path: goal → chọn program type → cấu hình earning/redeeming → loyalty page → bật widget
+- Đổi custom point label, xem nó đổi ở đâu trên storefront
+- Vẽ sơ đồ cây menu Joy Admin ra giấy — không nhìn màn hình
+
+**Case:** `kb/case/billing.md`
+
+**Checklist thoát ngày:**
+- [ ] Giải thích được bằng lời (không đọc slide) Joy giải quyết 3 bài toán gì: tối ưu chi phí bán hàng/margin, xây thương hiệu bền vững, mở rộng khách qua referral — không chỉ nói "app tích điểm"
+- [ ] Kể được 1-2 điểm khác biệt Joy vs đối thủ chính trên thị trường
+- [ ] Kể được 4 plan + base fee + free order quota + overage của từng plan
+- [ ] Giải thích được **order ≠ transaction**
+- [ ] Biết trial: 14 ngày Essential/Advanced, 30 ngày Ultimate, 1 lần/store, reinstall không cấp lại. "Pro" = tên cũ Essential
+
+### Ngày 2 — Earning programs
+
+**Đọc:** KB `earning-programs.md`, `points-advanced.md`, `birthday.md`
+
+**Thực hành:**
+- Set up Place order với cả 3 rate option: per amount spent / per item / per order
+- Thêm: sign-up, social, review, birthday, custom program
+- Đặt 1 order thật → xem điểm vào đúng chưa
+- Test points multiplier/rate khác nhau theo tier
+
+**Case:** `kb/case/points-earning.md`, `kb/case/birthday-reward.md`
+
+**Checklist thoát ngày:**
+- [ ] Đọc thuộc path: Reward programs → Earning programs → Add rule
+- [ ] "1$ = 10 points setup ở đâu?" → trả lời ngay: Place order → per amount spent
+- [ ] Biết program nào giới hạn theo plan
+
+### Ngày 3 — Redeeming programs
+
+**Đọc:** KB `redeeming-programs.md`, `checkout.md`
+
+**Thực hành:**
+- Tạo đủ: discount amount, discount %, BXGY, free gift, free shipping
+- Đặt total + per-customer redemption limit → test khi chạm limit
+- Redeem bằng customer test → soi coupon code sinh ra (one-time-use)
+
+**Case:** `kb/case/points-redeeming.md`
+
+**Checklist thoát ngày:**
+- [ ] Bảng plan availability: cái nào All, cái nào Essential+, cái nào Ultimate + Plus + Checkout Extensibility
+- [ ] Test được vòng đời 1 coupon từ redeem → apply → hết hạn
+
+### Ngày 4 — Loyalty page + Widget V4 + Onsite content + Account page
+
+**Đọc:** Module 3 phần *Setup on test theme / Setup branding widget / Setup loyalty page / Setup my account page* + KB `widget.md`, `onsite-content.md`
+
+**Thực hành — setup bắt buộc trên dev store (nhóm ticket nhiều nhất merchant hỏi):**
+
+| Hạng mục setup | Hoàn thành | Link/screenshot dev store |
+|---|---|---|
+| Duplicate theme ra 1 bản riêng để setup thử (test theme), dùng preview mode | | |
+| Loyalty page — build qua Theme Editor → Add section → Joy Loyalty (hero, how it works, ways to earn/redeem, VIP tiers, FAQ) | | |
+| Widget V4 — chỉnh branding trong in-app editor: màu preset match store, layout drawer, ảnh guest/member card, currency icon, logo header | | |
+| Widget — bật qua App embeds; tắt app embed rồi tự bật lại (hiểu nguyên nhân "widget mất") | | |
+| Onsite content — product page, cart drawer, thank-you page | | |
+| Account page — hiểu phân biệt **Legacy vs New Customer Accounts** (New: SSO link, không chạy JS, chỉ add app block; Legacy: dễ custom liquid hơn) | | |
+| Custom point label + prefix coupon code | | |
+| Manual opt-in (nếu KH launch club mới, cần commitment) — hiểu khi nào nên dùng | | |
+| Sandbox mode — bật thử earn/redeem không ảnh hưởng data thật, hiểu khi nào dùng (setup mới, demo, thử rule mới) | | |
+
+**Case:** `kb/case/widget.md`, `kb/case/loyalty-page.md`, `kb/case/loyalty-page-buttons.md`, `kb/case/onsite-content.md`
+
+**Checklist thoát ngày:**
+- [ ] "Widget không hiện" → liệt kê ≥4 nguyên nhân theo thứ tự check
+- [ ] Phân biệt loyalty page (section) vs widget (app embed)
+- [ ] Phân biệt New vs Legacy Customer Accounts, biết Shopify đang force chuyển hết sang New
+- [ ] Giải thích được vì sao nên setup trên test theme + sandbox mode trước khi launch thật
+
+### Ngày 5 — VIP tiers + Milestone + Referral (troubleshoot sâu)
+
+**Đọc:** Module 3 phần *VIP tiers* (đặc biệt "VIP tier hoạt động end-to-end" + "Troubleshooting VIP tier") + KB `vip-tiers.md`, `milestone.md`, `referral.md`
+
+**Thực hành:**
+- Tạo 3 tier + entry condition + reward mỗi tier + earning rate khác nhau theo tier
+- Nhấn Launch, quan sát banner "Calculating Customer Tiers" — hiểu 3 bước hệ thống chạy ngầm: (1) recalc tier trên Joy, (2) sync metafield sang Shopify, (3) sync tag sang Shopify
+- Đẩy customer test lên tier 2 → check tag + metafield `avada_joy.vipTier` trên Shopify customer, không chỉ nhìn trong app
+- Set 1 milestone
+- Chạy full referral: lấy link → mở incognito → đăng ký → mua → check reward 2 đầu; đọc qua các anti-cheat (self-referral, cùng IP/email)
+
+**Case:** `kb/case/vip-tiers.md`, `kb/case/referral.md`
+
+**Checklist thoát ngày (đây là nhóm ticket #1 CS hay gặp — thuộc lòng thứ tự check này):**
+- [ ] Giải thích được: **"tier đúng trong app" ≠ "perk chạy"** — perk chỉ chạy khi tier đã sync tag/metafield sang Shopify VÀ discount function đọc được
+- [ ] Thuộc checklist troubleshoot theo đúng thứ tự khi merchant báo "tier/perk sai": (1) tier đúng trong app chưa? (2) đã sync tag+metafield sang Shopify chưa? (3) perk cấu hình đúng chưa? (4) có discount khác non-combinable đang thắng không? (5) ai save setting/bấm recalc giữa chừng gây downgrade âm thầm không? (6) hiển thị đúng ở widget/POS chưa?
+- [ ] Biết: nhiều triệu chứng ("tier sai", "không nhận perk", "earn sai") sau 1 lần launch/migrate lỗi thường là **CÙNG MỘT gốc** → gộp 1 ticket, không tách 2-3 ticket rời báo dev
+- [ ] Chỉ escalate dev khi đã qua hết 5/6 bước tự check ở trên mà vẫn sai, kèm bằng chứng (customer, tier, ảnh tag/metafield, coupon)
+- [ ] Biết vì sao referral "không chạy" (self-referral, cùng IP/email, chưa đủ điều kiện order…)
+- [ ] Phân biệt milestone vs VIP tier
+
+**Mini test cuối tuần 2 (30 phút, tách khỏi 4h):** mentor đưa 5 câu hỏi merchant thật → CS trả lời bằng lời + chỉ đúng path trong admin. Bắt buộc có 1 câu về troubleshoot VIP tier.
+
+---
+
+### Ngày 6 — Customers + Points management + Migration (dev zone)
+
+**Đọc:** Module 3 phần *Migration and import* (đọc kỹ — nhiều cạm bẫy) + KB `customers.md`, `migration.md`, `rule-engine.md`
+
+**Thực hành:**
+- Adjust điểm thủ công 1 customer (cộng/trừ) → xem transaction history
+- Vào **dev zone → Enable feature migration** — hiểu từng control: "shop đang migrate" (tránh side-effect bắn nhầm email/webhook), nút **Recalculate** (quét lại order Shopify tính amount-spent — dùng khi KH CÓ orders trên Shopify), **Has migrate tier points** (bật mới migrate được cột Tier points)
+- Tự chạy thử 1 lần migrate: import balance điểm (cột Points balance) + migrate VIP tier theo tên + **thêm cột Tier points vào file rồi map ở bước Match** (không bị giới hạn theo file mẫu)
+- Import điểm bằng CSV, export customer list
+
+**Case:** `kb/case/customers.md`, `kb/case/unlimited-transactions.md`
+
+**Checklist thoát ngày:**
+- [ ] Phân biệt được **Migration wizard** (dev zone, mang balance/tier/tier points) vs **Import → Update tier** (trang Customers, file `tier_*_sample.csv`) — hai tính năng khác nhau, đừng nhầm
+- [ ] Biết: tier theo **POINTS** → migrate tier point bằng file là nên làm; tier theo **AMOUNT SPENT có orders trên Shopify** → ưu tiên **Recalculate**, không nhập tay (Recalc sẽ ghi đè số nhập tay)
+- [ ] Biết sau import khách thường ở trạng thái **guest** — phải confirm guest/member với KH trước khi launch
+- [ ] Biết data lệch/gõ sai tên hạng → khách bị dồn về Bronze; biết 2 chỗ Joy KHÔNG tự sửa số tier point lệch ngưỡng
+- [ ] Biết "unlimited transactions" không phải chuyện pricing → lấy store URL rồi escalate team
+- [ ] Tránh import/migrate nhiều lần (dễ cộng đôi điểm)
+
+### Ngày 7 — Notifications + Email + Translations
+
+**Đọc:** KB `notifications.md`, `settings-email.md`, `translations.md`, `ask-for-review.md`
+
+**Thực hành:**
+- Bật + sửa nội dung 3 email notification, gửi test về mail mình
+- Set sender email + domain authentication
+- Dịch widget + loyalty page sang 1 ngôn ngữ thứ 2, test đổi ngôn ngữ trên storefront
+
+**Case:** `kb/case/notifications.md`, `kb/case/translations.md`, `kb/case/review-points.md`
+
+**Checklist thoát ngày:**
+- [ ] Liệt kê đủ loại notification Joy gửi + trigger từng loại (open rate ~40% — touch point quan trọng, không phải phụ)
+- [ ] "Khách không nhận được email" → biết thứ tự check
+- [ ] Biết cái gì dịch được, cái gì không
+
+### Ngày 8 — Integrations + POS + Checkout extensions + Joy AI
+
+**Đọc:** Module 3 phần *Integrations* + *Setup checkout, thank you page extensions* + *Setup POS* + KB `integrations-*.md`, `pos.md`, `joy-ai.md`
+
+**Thực hành:**
+- Nối 1 integration thật (Klaviyo hoặc review app) → xem data chảy qua
+- Đọc kỹ POS: điều kiện, giới hạn, plan nào có; biết auto-discount tier **không chạy ở POS**
+- Đọc checkout extensions (chỉ Plus, 1 ngôn ngữ) — quick redeem, point calculator, coupon list, sign-up block
+- Thử Joy AI, hiểu nó làm được gì
+
+**Case:** `kb/case/integrations.md`, `kb/case/pos.md`
+
+**Checklist thoát ngày:**
+- [ ] Kể được danh sách integration phổ biến (Klaviyo top-of-mind dù rating thấp, Omnisend, Judge.me/Loox/Yotpo, Shopify Flow, Gorgias, Chatty) + plan yêu cầu
+- [ ] Nắm giới hạn POS (câu hỏi hay gặp) + checkout extensions chỉ dành Plus
+- [ ] Biết integration nào cần Shopify Plus
+
+### Ngày 9 — Settings nâng cao + Point calculator + Analytics + Launch live
+
+**Đọc:** Module 3 phần *Point calculators* + *Launch from sandbox mode to live mode* + *Xem số liệu report* + KB `settings-order.md`, `settings-developers.md`, `analytics.md`, `wallet-pass.md`, `billing-refund.md`
+
+**Thực hành:**
+- Set order settings (điểm khi refund/cancel — hay gây tranh cãi)
+- Bật point calculator ở product page + cart drawer (bật app embed calculator, thêm snippet `<div class="joy-points-calculator__block"></div>` vào liquid nếu theme tự render lại cart bằng innerHTML thì gọi `avadaJoyRerenderAllCalculators()`)
+- Đọc Analytics dashboard — hiểu **assisted revenue** và **redemption rate** nghĩa là gì, nói được merchant nên nhìn số nào
+- Thực hành **Launch from sandbox → live mode** — hiểu đây là bước quan trọng cuối cùng để điểm bắt đầu ghi nhận thật
+- Tạo wallet pass, thử xin collaborator access vào 1 store test
+
+**Case:** `kb/case/errors.md`
+
+**Checklist thoát ngày:**
+- [ ] Biết điểm xử lý sao khi order bị refund/cancel
+- [ ] Đọc được Analytics, giải thích được assisted revenue + redemption rate cho merchant
+- [ ] Biết chỗ thêm point calculator vào cart drawer khi theme không tự nhận (snippet + hàm rerender)
+- [ ] Thuộc flow chuyển từ sandbox mode sang live mode
+
+### Ngày 10 — Tổng ôn + Final test
+
+**Thực hành (3h) — build store hoàn chỉnh trên dev store mới, tính giờ:**
+1. Cài Joy từ đầu, bật customer accounts, chọn Legacy hoặc New có chủ đích
+2. Chương trình: earning (place order + sign-up + birthday + referral) + redeeming (discount + free shipping + free gift)
+3. 3 VIP tier với earning rate khác nhau, launch và verify tag/metafield đã sync sang Shopify
+4. Loyalty page + widget V4 (branding cơ bản) + onsite content ở product page & cart + point calculator ở cart drawer
+5. Notification bật + branding + dịch 1 ngôn ngữ 2
+6. Import 10 customer kèm điểm bằng CSV/migration wizard
+7. Launch từ sandbox sang live, test end-to-end bằng customer thật: đăng ký → mua → lên tier → redeem → dùng coupon
+
+**Final test (1h) — mentor chấm:**
+- 10 câu hỏi merchant thật (mentor lấy từ chat Crisp tuần gần nhất) — CS trả lời + chỉ đúng path
+- 3 ca troubleshoot: widget không hiện / điểm không cộng / **VIP tier đúng trong app nhưng perk không apply** (bắt buộc dùng đúng checklist 6 bước ngày 5)
+- **Pass = ≥8/10 câu đúng và cả 3 ca troubleshoot chỉ đúng thứ tự check**
+
+**Checklist theo dõi (mentor điền):**
 
 | Ngày | Chủ đề | Checklist thoát ngày pass |
 |---|---|---|
-| 1 | Tổng quan + Pricing | |
+| 1 | Bài toán Joy giải quyết + Tổng quan + Pricing | |
 | 2 | Earning | |
 | 3 | Redeeming | |
-| 4 | Loyalty page + Widget | |
-| 5 | VIP + Milestone + Referral | |
+| 4 | Loyalty page + Widget V4 + Account page | |
+| 5 | VIP tier end-to-end + Milestone + Referral | |
 | — | **Mini test tuần 2** | |
-| 6 | Customers + Migration | |
+| 6 | Customers + Migration (dev zone) | |
 | 7 | Notifications + Email | |
-| 8 | Integrations + POS + AI | |
-| 9 | Settings + Analytics | |
+| 8 | Integrations + POS + Checkout ext + AI | |
+| 9 | Settings + Point calculator + Analytics + Launch live | |
 | 10 | **Final test** | |
 
 > Nếu trainee đã có kinh nghiệm CS app loyalty khác → có thể rút xuống 8-9 ngày, gộp ngày 6+9.
 
-**Checklist setup thực hành bắt buộc (Ngày 4 — không chỉ đọc lý thuyết, phải tự tay dựng trên dev store):**
-
-Đây là nhóm ticket nhiều nhất merchant hỏi ("widget không hiện", "sao trang loyalty của em trống") — CS phải tự setup được, không chỉ giải thích được.
-
-| Hạng mục setup | Hoàn thành | Link/screenshot dev store |
-|---|---|---|
-| Loyalty page — build qua Theme Editor → Add section → Joy Loyalty | | |
-| Widget — bật qua App embeds, chỉnh vị trí/màu/trigger | | |
-| Widget — tắt app embed rồi tự bật lại (test hiểu nguyên nhân "widget mất") | | |
-| Onsite content — product page (hiển thị điểm/reward trên trang sản phẩm) | | |
-| Onsite content — cart drawer | | |
-| Onsite content — thank-you page | | |
-| Account page — hiển thị điểm/tier/lịch sử cho khách | | |
-| Custom point label (Settings → General) — đổi và xem đổi đúng chỗ trên storefront | | |
-| Phân biệt được: theme cũ (Asset/Additional scripts) vs theme OS 2.0 (App embeds) — setup có khác nhau | | |
-
-**Test riêng cho phần setup (gộp vào final test ngày 10):** trainee dựng lại toàn bộ loyalty page + widget + 4 loại onsite content trên dev store **mới, từ đầu, tính giờ** — không xem lại hướng dẫn cũ.
+**Tài nguyên tham khảo thêm (xem bất kỳ lúc nào trong 2 tuần, không bắt buộc theo ngày):**
+- Notion **Module 4 — Guides videos**: kênh Screenpal video hướng dẫn setup từng phần
+- Notion **Module 5 — Demo stores**: danh sách store demo để xem cách configure app tốt nhất, tính năng nào làm được gì
 
 ---
 
