@@ -159,4 +159,24 @@ This document describes Liz's responsibilities as **Customer Success Leader** fo
 
 ---
 
+## 8. Continuous Training of CS AI Agents and Performance Assurance
+
+**Scope**
+- Continuously train and improve the CS AI agents (Joyce for Joy, Ivy for Chatty).
+- Ensure the AI agents' performance stays on target over time (accuracy, coverage, escalation correctness).
+
+**Examples of tasks**
+- Review AI agent conversations, corrections, and escalations to find gaps.
+- Update KB/training data based on real cases, corrections, and reindex.
+- Track AI agent performance metrics (verify coverage, correction rate, resolve rate, escalation rate) and act on drops.
+- Decide which topics the AI agent should/shouldn't handle as it evolves.
+
+**How Betty can help**
+- Pull AI agent performance data (`/api/obs/metrics`, corrections, weekly reports) and flag regressions.
+- Turn corrections and escalated cases into KB patches, then push after Liz approves.
+- Summarise recurring gaps into training/KB update proposals.
+- Support via `/qa-weekly`, `/bot-corrections`, `/kb-sync`, `/ai-perf` skills.
+
+---
+
 *This file is a living document. As Liz discovers more "small tasks" that belong to the CSL role, they can be added here so Betty always has an up-to-date picture of what matters.*

@@ -15,8 +15,9 @@
 | 56 | Bùi Tuyết Minh | Remote | Chatty | Partime | MinhBT | U08GX75N5CZ | mirra_avada | Mirra | minhbt.ctv@avadagroup.com | 2001 | | | remote |
 | 65 | Bùi Đức Anh | CS | Chatty | Partime | AnhBD | U09DC212XN0 | andy_avada | Andy | anhbd@avadagroup.com | 1995 | | công ty | in-house |
 | 66 | Phạm Thu Hiền | CS | Chatty | Fulltime | HienPT | U09FYACFH2T | hazel_avada | Hazel | hienpt@avadagroup.com | 2003 | | công ty | in-house |
-| 68 | Nguyễn Thị Huyền Trang | Remote | Chatty | Partime | TrangNTH | U09FJ7F2G1Z | megan_avada | Megan | trangnth.ctv@avadagroup.com | 2000 | | | remote |
 | 69 | Lê Thị Thu Thảo | Remote | Joy | Partime | ThaoLTT | U09M3EHCGE6 | rosie_avada | Rosie | thaoltt.ctv@avadagroup.com | 2001 | | | remote |
 | 80 | Hoàng Minh Châu | CS | Chatty | Partime | ChauHM | U08TZM2LL74 | cody_avada | Cody | chauhm@avadagroup.com | 1998 | | cá nhân | remote |
 | 87 | Trần Thị Mai Phương | CTV | Chatty | Training | PhuongTTM | U0A84BE00FK | phoebe_avada | Phoebe | phuongttm.ctv@avadagroup.com | 1998 | | | in-house |
 | 90 | Trương Lê Khánh Linh | CS | — | Training | LinhTLK | U0AHSHQU59T | linda1_avada | Linda | linhtlk@avadagroup.com | 2002 | 0942795456 | | in-house |
+
+**Offboarded:** Nguyễn Thị Huyền Trang (#68, Megan) — offboarded 2026-07-20.
