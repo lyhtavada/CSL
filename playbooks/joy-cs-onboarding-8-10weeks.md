@@ -37,6 +37,21 @@
 
 ## TUẦN 2-3 — Learn Joy (product, có test)
 
+**Mục tiêu 2 tuần:** kết thúc tuần 3, CS phải **tự cài + vận hành được Joy Loyalty từ số 0 trên 1 store bất kỳ**, và trả lời được câu hỏi merchant thật mà không cần tra cứu lại — không chỉ hiểu lý thuyết tính năng.
+
+**To-do tổng quan (bức tranh toàn 2 tuần — xem chi tiết từng ngày ở bảng bên dưới):**
+- [ ] **Setup được toàn bộ launch path:** cài app → bật customer accounts → chọn program type → cấu hình earning/redeeming → dựng loyalty page/widget → bật onsite content
+- [ ] **Setup được các block hiển thị trên website** (không chỉ đọc lý thuyết): loyalty page, widget, onsite content (product page/cart drawer/thank-you page), account page — xem checklist setup riêng bên dưới
+- [ ] **Cấu hình được mọi chương trình earning:** place order (3 rate option), sign-up, social, review, birthday, custom
+- [ ] **Cấu hình được mọi chương trình redeeming:** discount amount/%, BXGY, free gift, free shipping — hiểu giới hạn theo plan
+- [ ] **Dựng được VIP tier, milestone, referral** — test end-to-end bằng customer thật (đăng ký → mua → lên tier → redeem)
+- [ ] **Xử lý được dữ liệu khách/điểm:** adjust điểm thủ công, import/export CSV, hiểu flow migration từ app loyalty khác
+- [ ] **Bật + tùy chỉnh được thông báo:** email notification, sender domain, dịch đa ngôn ngữ
+- [ ] **Biết giới hạn tích hợp:** integrations (Klaviyo/review apps...), POS, Joy AI — cái nào cần Shopify Plus
+- [ ] **Đọc hiểu Analytics dashboard** + biết xử lý điểm khi order refund/cancel
+- [ ] **Thuộc bảng plan (Essential/Advanced/Ultimate):** feature nào thuộc plan nào, trial rules, "Pro" = tên cũ Essential
+- [ ] Đọc hết case thật (`kb/case/*`) tương ứng mỗi chủ đề — đây là lỗi merchant hay gặp nhất, không phải lý thuyết suông
+
 **Dùng nguyên plan chi tiết đã có:** [`playbooks/joy-new-cs-app-training-2weeks.md`](joy-new-cs-app-training-2weeks.md) — 10 ngày × 4h, mỗi ngày có To-do (Đọc/Thực hành/Case) + Checklist thoát ngày sẵn. Không lặp lại nội dung ở đây, chỉ theo dõi tiến độ bằng bảng dưới.
 
 **Test:**
