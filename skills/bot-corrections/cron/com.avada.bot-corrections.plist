@@ -14,7 +14,9 @@
   <key>WorkingDirectory</key>
   <string>/Users/avada/CSL</string>
 
-  <!-- Every Monday at 11:00 local time. -->
+  <!-- Every Monday at 11:00 local time.
+       Fetches corrections -> commits report -> Claude headless diffs vs KB v2
+       -> drafts patch payloads -> DMs Liz on Telegram to review (no auto-push). -->
   <key>StartCalendarInterval</key>
   <dict>
     <key>Weekday</key>

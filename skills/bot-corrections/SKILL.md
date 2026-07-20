@@ -50,16 +50,49 @@ Sau khi tạo, **commit** vào repo.
   TS Elite), người sửa thật nằm trong `context` (`...by <email>`) → script tự parse +
   map email → tên hiển thị qua `_identity/team-g2.md`.
 
-## Sau khi có report
+## Diff vs KB v2 → patch payload (review-gate)
 
-Liz đọc report → cập nhật KB/training data cho bot. Có 2 đường:
-- Sửa trực tiếp KB v2 qua `/kb-sync` (push `POST /api/kb/file` + reindex) — xem [[kb_sync_v2]]
-- ⚠️ Khi viết KB từ correction: viết cái ĐÚNG, KHÔNG viết negative example kèm "đừng
-  nói X" (bot copy ra cho khách) — xem [[feedback_kb_no_negative_examples]]
+Sau report, tự động so lại từng correction với **KB live trên `cs2.avada.net`** (2
+app) rồi soạn sẵn patch để Liz duyệt — KHÔNG tự push.
+
+```
+cd ~/CSL/skills/bot-corrections/scripts
+python3 prep_kb.py <app>            # cache KB + tìm report mới nhất của app
+```
+Đọc report → với mỗi correction, tìm file KB liên quan trong cache rồi phân loại:
+- **COVERED** — KB đã đúng rồi → KHÔNG cần patch, coi là dấu hiệu **reindex stale**
+  (correction không đồng nghĩa KB sai) — xem [[joy_reindex_stale_root_cause]].
+- **OUTDATED** — KB có nội dung cũ/sai, mâu thuẫn với `corrected_response` → patch.
+- **GAP** — KB chưa có nội dung này → thêm section mới.
+- **PARTIAL** — KB có một phần, thiếu đúng điểm CS sửa → bổ sung.
+
+Với mỗi OUTDATED/GAP/PARTIAL, soạn full nội dung file mới (giữ voice/frontmatter
+hiện có, viết ĐÚNG 1 ví dụ — KHÔNG viết negative example "đừng nói X" vì bot có thể
+copy ra cho khách, xem [[feedback_kb_no_negative_examples]]). Gộp nhiều correction
+cùng 1 file KB thành 1 entry. Ghi payloads:
+```
+reports/analysis/bot-corrections-<app>-<YYYY-MM-DD thứ-2>-payloads.json   # {agent,path,content}[]
+```
+(gitignored, tạm thời — giống payload của `/kb-sync`).
+
+**Review gate:** dừng lại đây, không tự POST `/api/kb/file` hay reindex. Cron báo
+Liz qua Telegram: số COVERED/OUTDATED/GAP/PARTIAL mỗi app + top items + đường dẫn
+payload.
+
+Sau khi Liz duyệt, push (dùng lại script của `/kb-sync`, cùng format payload):
+```
+python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>
+```
+Tự POST từng file (auto git commit bên v2) + reindex agent liên quan.
 
 ## Cron
 
 `com.avada.bot-corrections` — **T2 11:00** hàng tuần (lệch cs-weekly 09:00 để không
-chạy chồng). Tự chạy script → ghi file → commit. Source-of-truth: `cron/`.
+chạy chồng). Chạy 2 bước:
+1. Script thuần: fetch → ghi report → git commit (repo CSL).
+2. Claude headless (`--dangerously-skip-permissions`, subscription OAuth): diff cả
+   2 app vs KB v2 → soạn payload patch → DM Telegram Liz để duyệt. KHÔNG tự push.
+
+Source-of-truth: `cron/` (`run-weekly.sh` + `prompt-diff.txt`).
 Install: `bash skills/bot-corrections/cron/install.sh` (Liz tự chạy trong Terminal).
 Log: `/tmp/bot-corrections.log`.

@@ -14,4 +14,6 @@ gapi/token.json
 # kb-sync payloads — temporary: built → Liz reviews → push_kb.py đẩy lên CS v2.
 # Không phải audit artifact (KB lưu ở v2), nên không commit vào repo.
 reports/analysis/kb-sync-*-payloads.json
+# bot-corrections KB-diff payloads — same lifecycle as kb-sync payloads above.
+reports/analysis/bot-corrections-*-payloads.json
 joy-src/
