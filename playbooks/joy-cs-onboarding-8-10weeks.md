@@ -81,16 +81,17 @@
 
 **Case thật (TS Elite):** tra 2-3 case về billing/plan gần đây qua `agent-activity`
 
-**Câu hỏi (điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức "CS Training: Joy Test"):**
 
 | Câu hỏi | Trả lời |
 |---|---|
-| Joy giải quyết 3 bài toán business nào cho merchant (không chỉ nói "app tích điểm")? | |
-| Kể 1-2 điểm khác biệt Joy vs đối thủ chính trên thị trường? | |
-| 4 plan của Joy là gì? Base fee, free order quota, overage mỗi plan? | |
+| Joy Loyalty mang lại lợi ích chính nào cho merchant (What are the main benefits of Joy Loyalty app?)? | |
+| Các plan hiện tại của Joy là gì, giá mỗi plan bao nhiêu? | |
+| Customer account trong Shopify là gì? Có mấy loại customer account? | |
+| Cách bật Customer Accounts trong Shopify? | |
 | Order khác Transaction ở điểm nào? | |
-| Trial mỗi plan bao nhiêu ngày, áp dụng mấy lần/store, reinstall có được cấp lại không? "Pro" là tên cũ của plan nào? | |
-| Merchant hỏi "Pro là gì, khác Essential không?" — trả lời sao? | |
+| Kể 1-2 điểm khác biệt Joy vs đối thủ chính trên thị trường? | |
+| "Pro" là tên cũ của plan nào? Trial mỗi plan bao nhiêu ngày, áp dụng mấy lần/store? | |
 
 ## Earning programs
 
@@ -106,14 +107,48 @@
 
 **Case thật (TS Elite):** tra case earning/birthday qua `crisp-chat`/`agent-activity`
 
-**Câu hỏi (điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức):**
+
+*Place Order:*
 
 | Câu hỏi | Trả lời |
 |---|---|
-| Path admin để tạo 1 earning rule là gì (Reward programs → ...)? | |
-| Merchant hỏi "1$ = 10 points setup ở đâu?" — chỉ đúng path admin? | |
-| 3 rate option của Place order (per amount spent / per item / per order) khác nhau thế nào? | |
-| Earning program nào bị giới hạn theo plan? | |
+| Tên program earning có dịch/đổi được không? | |
+| Điểm cho Place order program được cộng lúc nào? Bị trừ (deduct) lúc nào? | |
+| Free plan có bao nhiêu free order/tháng? | |
+| Có giới hạn được số lần 1 khách earn điểm bằng cách đặt order không? | |
+| "Earn points by amount spent" và "Earn points by order placed" khác nhau thế nào? | |
+| Có thể giới hạn earn theo điều kiện sản phẩm cụ thể (certain conditions) không? | |
+
+*Sign Up:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Phân biệt "sign up" và "sign up for newsletter"? | |
+| Làm sao cộng điểm tự động cho khách đã sign up **trước khi** program launch? | |
+
+*Write Review:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Write review program hỗ trợ bao nhiêu review app? | |
+| Điều kiện để khách nhận điểm khi để lại review là gì? | |
+| 📹 Quay màn hình 1 lượt write review thành công bằng Air Reviews | |
+
+*Birthday Program:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Ngày sinh nhật khách được thu thập (collected) bằng cách nào? | |
+| 📸 Chụp màn hình birthday reward hiển thị trên widget | |
+| Khách nhận birthday reward khi nào và bằng cách nào? | |
+
+*Social Programs:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Khách nhận điểm cho social program khi nào? | |
+| 1 khách có thể earn điểm bằng cách follow TikTok bao nhiêu lần? | |
 
 ## Redeeming programs
 
@@ -128,14 +163,39 @@
 
 **Case thật (TS Elite):** tra case redeem/coupon qua `crisp-chat`/`agent-activity`
 
-**Câu hỏi (điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức):**
+
+*Discount program:*
 
 | Câu hỏi | Trả lời |
 |---|---|
-| Kể 3 hình thức redeem (coupon/free shipping/free gift) + ưu nhược điểm mỗi loại? | |
+| Dynamic discount amount khác Fixed discount amount thế nào? | |
+| Có set được thời gian hết hạn (expiration time) cho discount không? | |
+| Chuyện gì xảy ra khi khách redeem 1 reward? | |
+| Có tạo được nhiều redeem program cùng loại (vd nhiều % discount) không? | |
 | Redeeming program nào chỉ All plan, cái nào Essential+, cái nào cần Ultimate + Plus + Checkout Extensibility? | |
-| "Redeem at checkout page" yêu cầu plan/điều kiện gì? | |
 | Coupon sinh ra từ redeem có dùng lại được không, vì sao? | |
+| 📹 Quay màn hình 1 lượt redeem thành công | |
+
+*Free shipping / Free product / Discount combination:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| "Exclude shipping rates over a certain amount" trong free shipping program nghĩa là gì? | |
+| 1 Free product program thêm được tối đa bao nhiêu sản phẩm? | |
+| Discount có thể combine theo bao nhiêu cách? Liệt kê hết | |
+| Muốn dùng order discount code kết hợp shipping discount code cần điều kiện gì? | |
+| Joy discount có combine được với discount khác của Shopify không? | |
+| Discount có combine được cho mua tại cửa hàng (in-store) không? | |
+
+*Point Expiration:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Mục đích của việc set point expiration period là gì? | |
+| Thời gian hết hạn của điểm được tính thế nào? | |
+| Nếu khách không earn/redeem trong khoảng custom period thì điều gì xảy ra? | |
+| Prefix của discount code có tùy chỉnh được không? | |
 
 ## Loyalty page + Widget V4 + Onsite content + Account page
 
@@ -159,14 +219,39 @@
 
 **Case thật (TS Elite):** tra case widget/loyalty page qua `crisp-chat`/`agent-activity`
 
-**Câu hỏi (điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức):**
+
+*Widget Design (Branding):*
 
 | Câu hỏi | Trả lời |
 |---|---|
+| Có đổi được vị trí các content block trong widget không? | |
+| "Instant popup for widget" dùng để làm gì? | |
+| Custom login link dùng trong trường hợp nào? | |
+| Nếu tắt "Display widget after login" thì widget hiển thị (visibility) ra sao? | |
 | Merchant báo "widget không hiện" — liệt kê ≥4 nguyên nhân theo đúng thứ tự check? | |
-| Loyalty page và widget khác nhau ở đâu (section vs app embed)? | |
 | New Customer Accounts khác Legacy thế nào, ảnh hưởng gì tới account page? | |
-| Vì sao nên setup trên test theme + sandbox mode trước khi launch thật? | |
+
+*Point Calculator / Signup Block / Visit website pop-up:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Point calculator hỗ trợ ở plan nào? Có hiện được ở trang checkout không? | |
+| 📸 Thêm point calculator vào store và chụp màn hình | |
+| Sign up block là gì? 📸 Chụp màn hình minh họa | |
+| Visit website pop-up dùng để làm gì, hiện thông điệp gì cho khách? 📸 Chụp màn hình | |
+
+*Embedded Content / Loyalty page:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Embedded content (onsite content) dùng để làm gì? | |
+| Khách có earn/redeem được điểm ngay trên loyalty page không? | |
+| Loyalty page hỗ trợ những loyalty block nào? | |
+| Merchant có chèn được link riêng vào từng loyalty block không? Làm sao? | |
+| Nếu theme không phải chuẩn OS 2.0 thì có tạo được loyalty page kèm loyalty block không? | |
+| Loyalty page và widget khác nhau ở đâu (section vs app embed)? | |
+| 📹 Quay màn hình tạo và add loyalty page vào store | |
 
 ## VIP tiers + Milestone + Referral (troubleshoot sâu)
 
@@ -183,7 +268,47 @@
 
 **Case thật (TS Elite):** tra case VIP tier/referral qua `crisp-chat`/`agent-activity` — ưu tiên tìm case "tier đúng nhưng không nhận perk" để đối chiếu
 
-**Câu hỏi (đây là nhóm ticket #1 CS hay gặp — điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức + Module 3):**
+
+*VIP Tiers & Membership:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Mục đích của việc setup VIP Tier trong loyalty program là gì? | |
+| Tier được tính (calculated) như thế nào? | |
+| Entry reward là gì? Khách nhận Entry reward khi nào, achieved reward nhận được bao nhiêu lần? | |
+| Có tùy chỉnh được prefix của VIP discount code không? Làm sao? | |
+| VIP tier có bao nhiêu cách tự động reset? | |
+| Có thể cho số điểm khác nhau ở các tier khác nhau cho cùng 1 mức chi tiêu không? | |
+| Privileges là gì? Hoạt động ra sao? Có ở plan nào? | |
+| Hiện có những loại privilege nào? | |
+| Entry reward discount code có combine được với Privilege discount code không? | |
+| Nếu khách không mua hàng trong 1 khoảng thời gian thì tier của họ xử lý thế nào? | |
+| Member exclusive deal (MED) là gì? Setup MED xong nhưng không thấy hiện trên store thì check gì? | |
+
+*Milestone:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Milestone reward trong Joy Rewards & Loyalty Program là gì? | |
+| Setup milestone reward cho khách như thế nào? | |
+| Có setup được nhiều milestone reward cho các achievement khác nhau không? | |
+| Reward của mỗi milestone có tùy chỉnh được không? | |
+| Nếu khách đạt milestone rồi return sản phẩm từng đóng góp vào milestone đó thì sao? | |
+| Milestone khác VIP tier ở điểm nào? | |
+
+*Referral:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Referral được coi là thành công khi nào? | |
+| 📹 Quay màn hình 1 lượt referral thành công | |
+| Free plan có bao nhiêu referral link? | |
+| Shopify order tagging trong referral dùng để làm gì? | |
+| Nếu discount text của referral popup không khớp referral reward settings thì sửa ở đâu? | |
+| Referral "không chạy" thường do những nguyên nhân gì? | |
+
+*Troubleshoot VIP tier (đây là nhóm ticket #1 CS hay gặp — thuộc lòng thứ tự này):*
 
 | Câu hỏi | Trả lời |
 |---|---|
@@ -191,8 +316,6 @@
 | Liệt kê đúng thứ tự 6 bước troubleshoot khi merchant báo "tier/perk sai"? | |
 | Vì sao nhiều triệu chứng ("tier sai", "không nhận perk", "earn sai") sau 1 lần launch/migrate lỗi nên gộp thành 1 ticket thay vì tách 2-3 ticket rời? | |
 | Khi nào mới nên escalate dev về vấn đề tier/perk, cần kèm bằng chứng gì? | |
-| Referral "không chạy" thường do những nguyên nhân gì? | |
-| Milestone khác VIP tier ở điểm nào? | |
 
 **Test giữa chặng (30 phút, sau khi xong nhóm Pricing → VIP tiers):** mentor đưa 5 câu hỏi merchant thật → CS trả lời bằng lời + chỉ đúng path trong admin. Bắt buộc có 1 câu về troubleshoot VIP tier.
 
@@ -212,16 +335,41 @@
 
 **Case thật (TS Elite):** tra case customers/migration/points qua `crisp-chat`/`agent-activity`
 
-**Câu hỏi (điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức):**
+
+*Customers:*
 
 | Câu hỏi | Trả lời |
 |---|---|
+| Customer được import vào app bằng cách nào? | |
+| Trong Joy có những loại customer nào? | |
+| Có những cách nào để cộng/trừ điểm thủ công? | |
+| Có bao nhiêu loại import action? Khác nhau thế nào? | |
+| Cách tìm 1 customer trong app? | |
+| Cách loại 1 member khỏi program từ phía merchant (MC's end)? | |
+
+*Migration:*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Migration mang được những loại dữ liệu customer nào khi chuyển từ app loyalty khác? | |
+| Joy đảm bảo point balance và VIP tier status không bị mất khi migrate bằng cách nào? | |
+| Những app loyalty nào có hướng dẫn migration từng bước sang Joy? | |
 | Phân biệt Migration wizard (dev zone) vs Import → Update tier (trang Customers)? | |
 | Tier theo POINTS nên migrate thế nào? Tier theo AMOUNT SPENT có orders trên Shopify nên dùng cách nào? | |
 | Sau import, khách hàng thường ở trạng thái gì? Cần confirm gì với merchant trước khi launch? | |
-| Data lệch/gõ sai tên hạng thì khách bị dồn về đâu? Joy KHÔNG tự sửa số tier point lệch ngưỡng ở 2 trường hợp nào? | |
+| Data lệch/gõ sai tên hạng thì khách bị dồn về đâu? | |
+
+*Rule engine (Advanced plan trở lên):*
+
+| Câu hỏi | Trả lời |
+|---|---|
+| Mục đích chính của Advanced rule engine là gì? | |
+| "Stop Further Rule Processing" ảnh hưởng thế nào tới cách rule được áp dụng? Khi nào nên bật/tắt? | |
+| Ví dụ: 1 rule cho 10 điểm/$50 chi tiêu, 1 rule khác cho 20 điểm dịp sale — set priority/criteria thế nào để cả 2 chạy đúng ý? | |
+| Muốn target khách theo VIP tier cụ thể + sống ở thành phố cụ thể thì cấu hình criteria Rule Engine thế nào? Cho ví dụ. | |
+| Anti-Cheat giúp bảo vệ tính toàn vẹn chương trình loyalty thế nào? Set limit earn + xử lý order bị cancel/refund ra sao? | |
 | "Unlimited transactions" có phải chuyện pricing không? Xử lý thế nào? | |
-| Vì sao nên tránh import/migrate nhiều lần cho cùng 1 khách? | |
 
 ## Notifications + Email + Translations
 
@@ -236,13 +384,17 @@
 
 **Case thật (TS Elite):** tra case notification/email/translation qua `crisp-chat`/`agent-activity`
 
-**Câu hỏi (điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức):**
 
 | Câu hỏi | Trả lời |
 |---|---|
 | Kể đủ các loại notification Joy gửi + trigger từng loại? | |
+| Đổi email sender của Joy notification ở đâu (Settings)? | |
 | Merchant báo "khách không nhận được email" — check theo thứ tự nào? | |
-| Cái gì dịch được, cái gì không dịch được trên widget/loyalty page? | |
+| Có dịch được toàn bộ nội dung widget, kể cả button và error message không? | |
+| Đổi default language cho nội dung widget ở đâu? | |
+| Nếu không dịch hết 1 số phần trong widget thì hiển thị ra sao? | |
+| Nội dung widget đã dịch có tự cập nhật khi đổi default language text không? | |
 
 ## Integrations + POS + Checkout extensions + Joy AI
 
@@ -258,11 +410,17 @@
 
 **Case thật (TS Elite):** tra case integrations/POS qua `crisp-chat`/`agent-activity`
 
-**Câu hỏi (điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức):**
 
 | Câu hỏi | Trả lời |
 |---|---|
-| Kể danh sách integration phổ biến (Klaviyo, Omnisend, review apps, Shopify Flow, Gorgias, Chatty...) + plan yêu cầu? | |
+| Judge.me cần plan nào để tích hợp với Joy? | |
+| Mục đích của việc tích hợp Joy với Klaviyo là gì? | |
+| Chức năng chính của Joy Shopify Flow Integration là gì? | |
+| Vì sao Shopify Flow đôi khi không hoạt động với review app? | |
+| Cách hiện điểm khách trên "My account page"? | |
+| Nếu 1 customer được thêm ở POS mà không có program nào để redeem thì check gì? | |
+| 📹 Quay màn hình 1 lượt redeem thành công trên POS | |
 | Giới hạn POS liên quan tới VIP tier auto-discount là gì? | |
 | Checkout extensions chỉ dành cho đối tượng nào? | |
 | Integration nào bắt buộc cần Shopify Plus? | |
@@ -282,10 +440,11 @@
 
 **Case thật (TS Elite):** tra case order/refund/analytics qua `crisp-chat`/`agent-activity`
 
-**Câu hỏi (điền câu trả lời vào bảng):**
+**Câu hỏi (điền câu trả lời vào bảng — nguồn: bộ test chính thức):**
 
 | Câu hỏi | Trả lời |
 |---|---|
+| "Show metafields on Shopify admin" trong Joy dùng để làm gì? | |
 | Điểm được xử lý thế nào khi order bị refund/cancel? | |
 | Assisted revenue và redemption rate nghĩa là gì, merchant nên nhìn số nào? | |
 | Point calculator không tự hiện ở cart drawer thì xử lý thế nào (snippet + hàm rerender)? | |
