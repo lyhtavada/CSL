@@ -39,7 +39,7 @@ Ticket đóng lại (`ticketStatus = "closed"`) **hoặc** `tsStatus` vào nhóm
 ### 3.3. Agent chấm 3 trục → verdict
 
 1. **Valid?** — issue có thật + AI agent được dùng thật để investigate. Nếu ticket format đúng nhưng nội dung mỏng / không thực sự cần AI / farm → `valid=false`, **0p** kèm lý do. *(Đây là chỗ agent bịt lỗ hổng mà auto-theo-field không lọc được.)*
-2. **Level** — L1 / L2 / L3 / Feature request, chấm theo **nội dung Crisp + investigation**, có tham chiếu `tsStatus` (xem §4).
+2. **Level** — **Basic** / **Dev Confirm**, chấm theo **nội dung Crisp + investigation**, có tham chiếu `tsStatus` (xem §4).
 3. **Investigation quality** — độ sâu CS dùng agent (chỉ mở → điểm thấp; đào ra root cause, tái hiện, xác định scope → điểm cao). Ảnh hưởng confidence và tie-break level.
 
 ### 3.4. Output
