@@ -79,12 +79,6 @@
 
 📎 **Kết quả/Proof:**
 
-**Câu hỏi tự trả lời (viết trực tiếp bên dưới mỗi câu):**
-1. Joy giải quyết 3 bài toán business nào cho merchant? → Trả lời:
-2. Merchant hỏi "Pro là gì, khác Essential không?" — trả lời sao? → Trả lời:
-3. Trial mỗi plan bao nhiêu ngày, áp dụng mấy lần/store, reinstall có được cấp lại không? → Trả lời:
-4. Order khác Transaction ở điểm nào? → Trả lời:
-
 **Case thật (TS Elite):** tra 2-3 case về billing/plan gần đây qua `agent-activity`
 
 **Checklist hoàn thành:**
@@ -104,13 +98,6 @@
 - Đặt 1 order thật → xem điểm vào đúng chưa
 - Test points multiplier/rate khác nhau theo tier
 
-📎 **Kết quả/Proof:**
-
-**Câu hỏi tự trả lời:**
-1. Merchant hỏi "1$ = 10 points setup ở đâu?" — chỉ đúng path admin? → Trả lời:
-2. 3 rate option của Place order (per amount spent / per item / per order) khác nhau thế nào? → Trả lời:
-3. Program earning nào bị giới hạn theo plan? → Trả lời:
-
 **Case thật (TS Elite):** tra case earning/birthday qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -126,13 +113,6 @@
 - Tạo đủ: discount amount, discount %, BXGY, free gift, free shipping
 - Đặt total + per-customer redemption limit → test khi chạm limit
 - Redeem bằng customer test → soi coupon code sinh ra (one-time-use)
-
-📎 **Kết quả/Proof:**
-
-**Câu hỏi tự trả lời:**
-1. Kể 3 hình thức redeem (coupon/free shipping/free gift) + ưu nhược điểm mỗi loại? → Trả lời:
-2. "Redeem at checkout page" yêu cầu plan/điều kiện gì? → Trả lời:
-3. Coupon sinh ra từ redeem có dùng lại được không, vì sao? → Trả lời:
 
 **Case thật (TS Elite):** tra case redeem/coupon qua `crisp-chat`/`agent-activity`
 
@@ -158,13 +138,6 @@
 | Manual opt-in (nếu KH launch club mới, cần commitment) — hiểu khi nào nên dùng | | |
 | Sandbox mode — bật thử earn/redeem không ảnh hưởng data thật, hiểu khi nào dùng (setup mới, demo, thử rule mới) | | |
 
-📎 **Kết quả/Proof:** (link/screenshot dev store đã điền ngay trong cột bảng trên)
-
-**Câu hỏi tự trả lời:**
-1. Merchant báo "widget không hiện" — liệt kê ≥4 nguyên nhân theo đúng thứ tự check? → Trả lời:
-2. Loyalty page và widget khác nhau ở đâu (section vs app embed)? → Trả lời:
-3. New Customer Accounts khác Legacy thế nào, ảnh hưởng gì tới account page? → Trả lời:
-
 **Case thật (TS Elite):** tra case widget/loyalty page qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -183,14 +156,6 @@
 - Đẩy customer test lên tier 2 → check tag + metafield `avada_joy.vipTier` trên Shopify customer, không chỉ nhìn trong app
 - Set 1 milestone
 - Chạy full referral: lấy link → mở incognito → đăng ký → mua → check reward 2 đầu; đọc qua các anti-cheat (self-referral, cùng IP/email)
-
-📎 **Kết quả/Proof:**
-
-**Câu hỏi tự trả lời:**
-1. Vì sao "tier đúng trong app" chưa chắc "perk chạy"? → Trả lời:
-2. Liệt kê đúng thứ tự 6 bước troubleshoot khi merchant báo tier/perk sai? → Trả lời:
-3. Referral "không chạy" thường do những nguyên nhân gì? → Trả lời:
-4. Milestone khác VIP tier ở điểm nào? → Trả lời:
 
 **Case thật (TS Elite):** tra case VIP tier/referral qua `crisp-chat`/`agent-activity` — ưu tiên tìm case "tier đúng nhưng không nhận perk" để đối chiếu với checklist bên dưới
 
@@ -216,13 +181,6 @@
 - Tự chạy thử 1 lần migrate: import balance điểm (cột Points balance) + migrate VIP tier theo tên + **thêm cột Tier points vào file rồi map ở bước Match** (không bị giới hạn theo file mẫu)
 - Import điểm bằng CSV, export customer list
 
-📎 **Kết quả/Proof:**
-
-**Câu hỏi tự trả lời:**
-1. Phân biệt Migration wizard (dev zone) vs Import → Update tier (trang Customers)? → Trả lời:
-2. Tier theo POINTS nên migrate thế nào, tier theo AMOUNT SPENT có orders trên Shopify nên dùng cách nào? → Trả lời:
-3. Sau import, khách hàng thường ở trạng thái gì, cần confirm gì với merchant trước khi launch? → Trả lời:
-
 **Case thật (TS Elite):** tra case customers/migration/points qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -242,13 +200,6 @@
 - Set sender email + domain authentication
 - Dịch widget + loyalty page sang 1 ngôn ngữ thứ 2, test đổi ngôn ngữ trên storefront
 
-📎 **Kết quả/Proof:**
-
-**Câu hỏi tự trả lời:**
-1. Kể đủ các loại notification Joy gửi + trigger từng loại? → Trả lời:
-2. Merchant báo "khách không nhận được email" — check theo thứ tự nào? → Trả lời:
-3. Cái gì dịch được, cái gì không dịch được trên widget/loyalty page? → Trả lời:
-
 **Case thật (TS Elite):** tra case notification/email/translation qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -265,13 +216,6 @@
 - Đọc kỹ POS: điều kiện, giới hạn, plan nào có; biết auto-discount tier **không chạy ở POS**
 - Đọc checkout extensions (chỉ Plus, 1 ngôn ngữ) — quick redeem, point calculator, coupon list, sign-up block
 - Thử Joy AI, hiểu nó làm được gì
-
-📎 **Kết quả/Proof:**
-
-**Câu hỏi tự trả lời:**
-1. Kể danh sách integration phổ biến (Klaviyo, Omnisend, review apps, Shopify Flow, Gorgias, Chatty...) + plan yêu cầu? → Trả lời:
-2. Giới hạn POS liên quan tới VIP tier auto-discount là gì? → Trả lời:
-3. Checkout extensions chỉ dành cho đối tượng nào? → Trả lời:
 
 **Case thật (TS Elite):** tra case integrations/POS qua `crisp-chat`/`agent-activity`
 
@@ -291,13 +235,6 @@
 - Thực hành **Launch from sandbox → live mode** — hiểu đây là bước quan trọng cuối cùng để điểm bắt đầu ghi nhận thật
 - Tạo wallet pass, thử xin collaborator access vào 1 store test
 
-📎 **Kết quả/Proof:**
-
-**Câu hỏi tự trả lời:**
-1. Điểm được xử lý thế nào khi order bị refund/cancel? → Trả lời:
-2. Assisted revenue và redemption rate nghĩa là gì, merchant nên nhìn số nào? → Trả lời:
-3. Point calculator không tự hiện ở cart drawer thì xử lý thế nào? → Trả lời:
-
 **Case thật (TS Elite):** tra case order/refund/analytics qua `crisp-chat`/`agent-activity`
 
 **Checklist hoàn thành:**
@@ -316,8 +253,6 @@
 5. Notification bật + branding + dịch 1 ngôn ngữ 2
 6. Import 10 customer kèm điểm bằng CSV/migration wizard
 7. Launch từ sandbox sang live, test end-to-end bằng customer thật: đăng ký → mua → lên tier → redeem → dùng coupon
-
-📎 **Kết quả/Proof:** link dev store hoàn chỉnh + screenshot/video từng bước 1-7
 
 **Final test (1h) — mentor chấm:**
 - 10 câu hỏi merchant thật (mentor lấy từ chat Crisp tuần gần nhất) — CS trả lời + chỉ đúng path
@@ -361,8 +296,6 @@
 - [ ] Tự phân loại thử 10 case mẫu (mentor đưa) theo đúng case-classification + escalation matrix
 - [ ] Viết thử 1 escalation note mẫu theo đúng format
 
-📎 **Kết quả/Proof:**
-
 **Test cuối tuần:**
 - 10 case mẫu (tình huống mô tả, không phải chat thật) → trainee phân loại đúng mức độ + chỉ đúng bước xử lý/escalate theo matrix
 - 1 case viết escalation note — mentor chấm đủ thông tin theo `escalation-note.md`
@@ -388,8 +321,6 @@
 - [ ] Với mỗi case, tự tra ngược trong 50 case (Phần 3 playbook) xem case đó rơi vào domain nào, đúng lăng kính 🟢🔵🟠🔴 nào
 - [ ] Ghi lại 5 case mình thấy khó nhất → hỏi mentor
 
-📎 **Kết quả/Proof:** (tóm tắt 10 case đã đọc)
-
 **Test cuối tuần:**
 - Mentor đưa 5 link Crisp mới (trainee chưa từng xem) → trainee đọc, tóm tắt đúng vấn đề, xác định đúng domain + lăng kính, đề xuất hướng xử lý — chấm bằng lời với mentor
 
@@ -413,8 +344,6 @@
 - [ ] Bắt buộc có 1 ca khách hàng gắt/complaint để luyện tone xử lý sensitive situation
 - [ ] Bắt buộc có 1 ca cần escalate — trainee phải nhận ra và viết escalation note đúng lúc
 - [ ] Sau mỗi ca, mentor feedback ngay (đúng/sai, thiếu gì, tone ổn không)
-
-📎 **Kết quả/Proof:** (transcript/ghi âm các ca mock + feedback mentor)
 
 **Test cuối tuần:**
 - 2 ca mock chat hoàn toàn mới (trainee không biết trước kịch bản), mentor chấm theo rubric: đúng vấn đề / đúng xử lý / đúng tone / đúng quyết định escalate hay không — **Pass = cả 2 ca đạt ≥ mức "đạt yêu cầu" trên rubric**
@@ -440,8 +369,6 @@
 - [ ] 3 ngày sau: tự trả lời chat thật, nhưng **mentor duyệt nội dung trước khi gửi** cho khách
 - [ ] Cuối mỗi ngày, mentor review nhanh 15 phút: hôm nay có gì làm tốt, có gì cần sửa
 
-📎 **Kết quả/Proof:** (link ticket/chat đã xử lý mỗi ngày)
-
 **Test cuối tuần:** không có bài test riêng — đánh giá bằng số lượng chat xử lý đúng/tổng số chat trong tuần (mentor track)
 
 **Checklist theo dõi:**
@@ -464,8 +391,6 @@
 - [ ] Mentor review lại toàn bộ chat trong ngày (sau giờ), chấm theo `playbooks/qa-weekly-rubric.md` (Mindset/Knowledge/Skill)
 - [ ] Feedback 1-1 mỗi cuối ngày hoặc cách ngày, tùy khối lượng lỗi phát sinh
 
-📎 **Kết quả/Proof:** (link chat/ticket + điểm QA từng ngày)
-
 **Test cuối tuần:**
 - Tổng hợp điểm QA rubric cả tuần — **Pass = điểm QA trung bình đạt mức chuẩn CS chính thức** (theo `qa-policy.md`)
 
@@ -486,8 +411,6 @@
 **To-do:**
 - [ ] Ôn lại các điểm yếu đã note từ tuần 1-8
 - [ ] Review lại 50 case FAQ (Phần 3) lần cuối — tập trung domain còn yếu
-
-📎 **Kết quả/Proof:**
 
 **Test cuối tuần (final, mentor + Liz cùng chấm):**
 - Bài test tổng hợp: 10 câu hỏi product (như final test Learn Joy) + 5 case phân loại/escalate + 3 ca mock chat troubleshoot mới
