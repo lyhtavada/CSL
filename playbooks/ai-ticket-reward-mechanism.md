@@ -2,7 +2,9 @@
 
 > CS dùng AI agent để investigate issue và tạo ticket → được reward point. Point gắn với **giá trị/độ khó issue**, không thưởng cho việc chỉ tạo ticket. 1 point = 1.000đ.
 >
-> **Khâu review = Review Agent** (LLM-judge do team xây): mỗi ticket sau khi đóng, agent vào đọc + chấm điểm. Agent tự chốt ca rõ ràng; Liz chỉ duyệt exception (L3 + low-confidence/flagged).
+> **Áp dụng cho toàn team CS** (không riêng 1 app) — mỗi app có CSL phụ trách duyệt exception cho team mình.
+>
+> **Khâu review = Review Agent** (LLM-judge do team xây): mỗi ticket sau khi đóng, agent vào đọc + chấm điểm. Agent tự chốt ca rõ ràng; CSL phụ trách app chỉ duyệt exception (low-confidence/flagged).
 
 ## 1. Mục tiêu
 
@@ -47,20 +49,20 @@ Ticket đóng lại (`ticketStatus = "closed"`) **hoặc** `tsStatus` vào nhóm
 JSON ghi vào ticket note + Notion row:
 
 ```json
-{ "ticketId": "...", "cs": "Linda", "valid": true, "level": "L2", "point": 35,
+{ "ticketId": "...", "cs": "Linda", "valid": true, "level": "Dev Confirm", "point": 35,
   "confidence": 0.86, "reason": "CS dùng agent đào ra bug expire point sai, đẩy dev_done...",
   "flags": [] }
 ```
 
-`flags` ví dụ: `low_confidence`, `possible_farm`, `l3_candidate`, `dedup_suspect`, `mismatch_tsStatus`.
+`flags` ví dụ: `low_confidence`, `possible_farm`, `dedup_suspect`, `mismatch_tsStatus`.
 
 ### 3.5. Human-in-loop (rút gọn)
 
-- **Agent auto-chốt** ca `valid` + level ∈ {L1, L2} + `confidence ≥ ngưỡng` (khởi điểm 0.8) + không flag.
-- **Liz duyệt** khi: level = **L3**, hoặc có bất kỳ flag (`low_confidence` / `possible_farm` / `mismatch_tsStatus` …). Point các ca này chỉ cộng sau khi Liz OK.
-- Cuối tháng: batch các ca chờ duyệt gom vào 1 Notion view + DM Liz.
+- **Agent auto-chốt** ca `valid` + `confidence ≥ ngưỡng` (khởi điểm 0.8) + không flag — cả 2 level (Basic, Dev Confirm) auto-chốt như nhau.
+- **CSL phụ trách app duyệt** khi: có bất kỳ flag (`low_confidence` / `possible_farm` / `mismatch_tsStatus` …). Point các ca này chỉ cộng sau khi CSL OK.
+- Cuối tháng: batch các ca chờ duyệt gom vào 1 Notion view + DM CSL phụ trách (theo app: Chatty/Joy).
 
-> Liz **không** duyệt từng ticket — chỉ chạm vào exception. Đúng tinh thần auto, nhưng review được nội dung thật.
+> CSL **không** duyệt từng ticket — chỉ chạm vào exception của team/app mình phụ trách. Đúng tinh thần auto, nhưng review được nội dung thật.
 
 ## 4. Bảng LEVEL & point (khung agent chấm)
 
@@ -68,20 +70,18 @@ Agent quyết level dựa trên **nội dung thật**; `tsStatus` là **1 tín h
 
 | Level | Ý nghĩa | Tín hiệu (nội dung + tsStatus) | Point |
 |-------|---------|-------------------------------|-------|
-| L1 — Basic | Issue xử lý được, khách OK | agent thấy issue hợp lệ, thường kèm `done` / `waiting_customer` | 20 |
-| L2 — Dev-confirmed | Bug thật, dev tiếp nhận | agent xác nhận là bug, thường kèm `dev_fixing` / `dev_done` | 35 |
-| L3 — High-impact | Bug ảnh hưởng nhiều shop / feed cải thiện AI-KB | agent đánh giá high-impact → gắn `l3_candidate`, **Liz duyệt** | 50 |
-| Feature request | Ra feature request hợp lệ | `feature_request` + nội dung agent xác nhận | 15 |
+| Basic | Issue xử lý được, khách OK | agent thấy issue hợp lệ, thường kèm `done` / `waiting_customer` | 20 |
+| Dev Confirm | Bug thật, dev tiếp nhận (kể cả high-impact) | agent xác nhận là bug, thường kèm `dev_fixing` / `dev_done` | 35 |
 
-**Cross-check chống farm bằng `tsStatus`:** nếu agent đòi L2/L3 nhưng ticket mới `done`, chưa từng qua `dev_fixing`/`dev_done` → agent hạ confidence + flag `mismatch_tsStatus` → đẩy Liz duyệt. CS không tự set `dev_done` được (phải qua pipeline dev) nên đây là lớp chống farm rẻ mà chắc.
+**Cross-check chống farm bằng `tsStatus`:** nếu agent đòi Dev Confirm nhưng ticket mới `done`, chưa từng qua `dev_fixing`/`dev_done` → agent hạ confidence + flag `mismatch_tsStatus` → đẩy Liz duyệt. CS không tự set `dev_done` được (phải qua pipeline dev) nên đây là lớp chống farm rẻ mà chắc.
 
-> Ý nghĩa `tsStatus` (giá trị thật đang chạy): `done` = xong khách OK · `dev_fixing`/`dev_done` = đẩy dev / dev đã fix · `feature_request` = ra FR · `done_for_you` = DFY (không thuộc chương trình này) · `waiting_customer`/`pending`/`doing` = đang xử lý · `sale_request`/`billing`/`onb` = ngoài phạm vi.
+> Ý nghĩa `tsStatus` (giá trị thật đang chạy): `done` = xong khách OK · `dev_fixing`/`dev_done` = đẩy dev / dev đã fix · `feature_request` = ra FR (không thuộc 2 level ở trên, không tính point chương trình này) · `done_for_you` = DFY (không thuộc chương trình này) · `waiting_customer`/`pending`/`doing` = đang xử lý · `sale_request`/`billing`/`onb` = ngoài phạm vi.
 
 ## 5. Chống farm
 
 - **Agent tự gác** ở §3.3 trục 1 (nội dung mỏng/farm → `valid=false`, 0p).
 - `ticketStatus` = invalid / duplicate, hoặc dedup trùng domain + nội dung trong 7 ngày → **0p** (auto, không cần agent).
-- Tỷ lệ (invalid + dup + `valid=false`)/CS **> 30%/tuần** → tuần đó chỉ tính L1 (không cho L2/L3), flag Liz.
+- Tỷ lệ (invalid + dup + `valid=false`)/CS **> 30%/tuần** → tuần đó chỉ tính **Basic** (không cho Dev Confirm), flag Liz.
 - **Trần 1.000p/CS/tháng** — chạm trần thì dừng cộng, Liz duyệt nếu vượt.
 
 **Không đạt = 0p** (không phạt).
@@ -107,5 +107,5 @@ Per-CS cao nhất hiện tại (Linda ~12 Chatty ticket) → ~500p/tháng — d�
 
 ## 8. Ví dụ chấm trên ticket thật
 
-- **JOY-260715-M6azs5** (Alyssa tạo, có ai-agent-2, tsStatus: pending): qua gate cứng → Review Agent đọc Crisp + trace → nếu là bug thật đã đào root cause → L2 (35p), auto-chốt nếu confidence cao; nếu agent thấy high-impact → gắn `l3_candidate`, Liz duyệt.
+- **JOY-260715-M6azs5** (Alyssa tạo, có ai-agent-2, tsStatus: pending): qua gate cứng → Review Agent đọc Crisp + trace → nếu là bug thật đã đào root cause → **Dev Confirm** (35p), auto-chốt nếu confidence cao và không flag.
 - **JOY-260715-6ucCLC** (ai-agent-2 tự tạo, không có CS creator): loại ngay ở gate cứng, không đưa vào Review Agent.
