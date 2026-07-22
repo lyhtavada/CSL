@@ -17,3 +17,6 @@ reports/analysis/kb-sync-*-payloads.json
 # bot-corrections KB-diff payloads — same lifecycle as kb-sync payloads above.
 reports/analysis/bot-corrections-*-payloads.json
 joy-src/
+
+# ticket-watch dedup state — runtime, regenerated each run
+skills/ticket-watch/state/
