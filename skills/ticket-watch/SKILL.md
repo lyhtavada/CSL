@@ -12,12 +12,10 @@ re-listed every day).
 
 ## Flags
 
-| Flag | Meaning | Threshold |
+| Flag | Applies to | Rule |
 |---|---|---|
-| `stale_no_update` | Ticket open, no update since last activity | ≥2 days (excludes `[DFY]`/`[ONB]` project tickets — tracked separately by `/dfy-tracker`) |
-| `pending_unclaimed` | `tsStatus=pending`, nobody has claimed it | ≥24h since created |
-| `dfy_stuck` | DFY/ONB checklist (`tasks[]`) has an incomplete item and no update | ≥2 days |
-| `sla_breach` | P0 (`urgent`)/P1 (`high`) priority still open past resolution target from `kb/cs-process/shared-cs-process/priority-matrix.md` | urgent: 24h, high: 5 days |
+| `stale_no_update` | Regular tickets (excludes `[DFY]`/`[ONB]` — tracked separately by `/dfy-tracker`) | Open, age ≥1 day, AND (no update since created OR still `tsStatus=pending`/unclaimed) |
+| `dfy_stuck` | `[DFY]`/`[ONB]` project tickets | Open, age ≥2 days, AND has an incomplete `tasks[]` item with no update since |
 
 ## How it runs
 

@@ -28,12 +28,12 @@ launchctl unload "$DEST" 2>/dev/null || true
 ln -sf "$SRC" "$DEST"
 launchctl load "$DEST"
 
-echo "Installed $LABEL → runs daily 08:30 local."
+echo "Installed $LABEL → runs daily 10:00 local."
 echo "  plist (source): $SRC"
 echo "  symlink:        $DEST"
 echo "  log:            /tmp/ticket-watch.log"
 echo
-echo "Test now without waiting for 08:30:"
+echo "Test now without waiting for 10:00:"
 echo "  launchctl start $LABEL"
 echo "  # or run the script directly:"
 echo "  bash $HERE/run-ticket-watch.sh"

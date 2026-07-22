@@ -117,7 +117,8 @@ def slim(t, app_key, flags, now):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--stale-days", type=float, default=2)
+    ap.add_argument("--stale-days", type=float, default=1)
+    ap.add_argument("--dfy-stale-days", type=float, default=2)
     ap.add_argument("--window-days", type=int, default=60)
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
@@ -137,7 +138,7 @@ def main():
         for t in tickets:
             if t.get("ticketStatus") == "open":
                 counts[app_key]["open"] += 1
-            flags = flag_ticket(t, now, a.stale_days)
+            flags = flag_ticket(t, now, a.stale_days, a.dfy_stale_days)
             if flags:
                 counts[app_key]["flagged"] += 1
                 flagged.append(slim(t, app_key, flags, now))
@@ -177,6 +178,7 @@ def main():
     out = {
         "generatedAt": now.isoformat(),
         "staleDays": a.stale_days,
+        "dfyStaleDays": a.dfy_stale_days,
         "windowDays": a.window_days,
         "counts": counts,
         "flaggedCount": len(flagged),
