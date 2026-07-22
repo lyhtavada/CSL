@@ -1,20 +1,20 @@
 #!/bin/bash
 #
-# Daily ticket-watch run — invoked by launchd (com.avada.ticket-watch).
-# Runs Claude Code headless: scans open Chatty/Joy/Wishlist tickets for
-# neglected ones (see SKILL.md) and DMs Liz on Slack.
+# Daily CS brief run — invoked by launchd (com.avada.cs-daily-brief).
+# Runs Claude Code headless: conversation volume + checkin/checkout for the
+# previous full day, plus the neglected-ticket watch (see SKILL.md), DMs Liz.
 #
-# Manual run:  bash run-ticket-watch.sh
+# Manual run:  bash run-cs-daily-brief.sh
 #
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_BIN="/opt/homebrew/bin/claude"
 REPO="/Users/avada/CSL"
-LOG="/tmp/ticket-watch.log"
+LOG="/tmp/cs-daily-brief.log"
 PROMPT_FILE="$HERE/prompt.txt"
 
-echo "===== ticket-watch run: $(date) =====" >> "$LOG"
+echo "===== cs-daily-brief run: $(date) =====" >> "$LOG"
 
 cd "$REPO"
 
@@ -34,7 +34,7 @@ rc=0
 echo "===== done: $(date) =====" >> "$LOG"
 
 # Báo Telegram cho Liz (xong + lỗi). Notify không được làm hỏng job.
-python3 "$REPO/skills/_shared/notify_tele.py" --job "Ticket Watch" \
+python3 "$REPO/skills/_shared/notify_tele.py" --job "CS Daily Brief" \
   --status "$([ "${rc:-0}" -eq 0 ] && echo ok || echo fail)" --log "$LOG" >> "$LOG" 2>&1 || true
 
 exit "${rc:-0}"

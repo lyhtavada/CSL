@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.avada.ticket-watch</string>
+  <string>com.avada.cs-daily-brief</string>
 
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/avada/CSL/skills/ticket-watch/cron/run-ticket-watch.sh</string>
+    <string>/Users/avada/CSL/skills/cs-daily-brief/cron/run-cs-daily-brief.sh</string>
   </array>
 
   <key>WorkingDirectory</key>
   <string>/Users/avada/CSL</string>
 
-  <!-- Every day at 10:00 local time. -->
+  <!-- Every day at 10:00 local time — reports on the previous full calendar day. -->
   <key>StartCalendarInterval</key>
   <dict>
     <key>Hour</key>
@@ -28,8 +28,8 @@
   <false/>
 
   <key>StandardOutPath</key>
-  <string>/tmp/ticket-watch.log</string>
+  <string>/tmp/cs-daily-brief.log</string>
   <key>StandardErrorPath</key>
-  <string>/tmp/ticket-watch.log</string>
+  <string>/tmp/cs-daily-brief.log</string>
 </dict>
 </plist>

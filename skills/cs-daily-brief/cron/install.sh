@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Install / reinstall the daily ticket-watch launchd job.
+# Install / reinstall the daily cs-daily-brief launchd job.
 # Symlinks the versioned plist (kept in CSL) into ~/Library/LaunchAgents,
 # so the source of truth stays in the repo.
 #
@@ -10,7 +10,7 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LABEL="com.avada.ticket-watch"
+LABEL="com.avada.cs-daily-brief"
 SRC="$HERE/$LABEL.plist"
 DEST="$HOME/Library/LaunchAgents/$LABEL.plist"
 
@@ -21,19 +21,19 @@ if [[ "${1:-}" == "--remove" ]]; then
   exit 0
 fi
 
-chmod +x "$HERE/run-ticket-watch.sh"
+chmod +x "$HERE/run-cs-daily-brief.sh"
 
 # Reload cleanly if already installed.
 launchctl unload "$DEST" 2>/dev/null || true
 ln -sf "$SRC" "$DEST"
 launchctl load "$DEST"
 
-echo "Installed $LABEL → runs daily 10:00 local."
+echo "Installed $LABEL → runs daily 10:00 local (reports on the previous full day)."
 echo "  plist (source): $SRC"
 echo "  symlink:        $DEST"
-echo "  log:            /tmp/ticket-watch.log"
+echo "  log:            /tmp/cs-daily-brief.log"
 echo
 echo "Test now without waiting for 10:00:"
 echo "  launchctl start $LABEL"
 echo "  # or run the script directly:"
-echo "  bash $HERE/run-ticket-watch.sh"
+echo "  bash $HERE/run-cs-daily-brief.sh"
