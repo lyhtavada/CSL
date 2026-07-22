@@ -52,16 +52,19 @@ _Nguồn: Ticket API · `avada_cs.crisp_chats` · DFY ticket tags · Shopify App
 
 ## 🔥 Top issues tuần này
 
-_Chủ đề ticket nhiều nhất tuần qua (cluster từ **ticket** — Ticket API, đã loại [dfy]). Đọc để nắm bug nóng & trả lời nhanh. Sắp theo độ phổ biến._
+_Chủ đề ticket nhiều nhất tuần qua (cluster từ **ticket** — Ticket API, đã loại [dfy]). Mỗi theme đã ĐẾM thật số ticket khớp (không ước lượng) — xem số + link ticket để tự proof/review lại. Sắp theo độ phổ biến._
 
-1. **{Issue}** — {nhiều nhất / phổ biến / lác đác}
+1. **{Issue}** — {n}/{tổng non-dfy} ticket ({%})
    → _Cách xử lý:_ {1 dòng / link KB}
-2. **{Issue}** — {…}
+   → _Ticket:_ [{#ticketNumber1}]({shortUrl1}) · [{#ticketNumber2}]({shortUrl2}) · [{#ticketNumber3}]({shortUrl3}){… (+n khác)}
+2. **{Issue}** — {n}/{tổng non-dfy} ticket ({%})
    → _Cách xử lý:_ {1 dòng / link KB}
-3. **{Issue}** — {…}
+   → _Ticket:_ [{#ticketNumber1}]({shortUrl1}) · [{#ticketNumber2}]({shortUrl2})
+3. **{Issue}** — {n}/{tổng non-dfy} ticket ({%})
    → _Cách xử lý:_ {1 dòng / link KB}
+   → _Ticket:_ [{#ticketNumber1}]({shortUrl1})
 
-_(Cluster theo độ phổ biến của ticket, đã loại [dfy] — không phải con số tuyệt đối. Prefix [bug] trong subject = bug report → flag nếu lặp lại.)_
+_(Cluster theo độ phổ biến của ticket, đã loại [dfy]. Mỗi theme liệt kê TOÀN BỘ số ticket đếm được — nếu >3 ticket chỉ link 3 ví dụ + ghi "(+n khác)", không được bỏ số đếm. Prefix [bug] trong subject = bug report → flag nếu lặp lại.)_
 
 ---
 

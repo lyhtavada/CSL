@@ -1,11 +1,15 @@
-"""Shared helpers for /cs-daily report: BigQuery + Admin API + roster."""
-import os, json, datetime as dt, urllib.request, urllib.parse, warnings
+"""Shared helpers for /cs-daily-brief: env loading, BigQuery client, Admin API,
+Team G2 roster, and shift check-in/checkout status. Self-contained (not
+imported from skills/cs-daily/lib — that skill was removed 2026-07-22; this
+was copied out of it before deletion so /cs-daily-brief keeps working)."""
+import os, json, datetime as dt, urllib.request, warnings
+from collections import defaultdict
 warnings.filterwarnings("ignore")
 
 ROOT = os.path.expanduser("~/CSL")
 
+
 def load_env():
-    """Minimal .env loader (no external deps)."""
     env = {}
     with open(os.path.join(ROOT, ".env")) as f:
         for line in f:
@@ -19,7 +23,8 @@ def load_env():
             env[k.strip()] = v
     return env
 
-# ---- CS Team G2 roster: email -> nickname, nickname -> display name ----
+
+# ---- CS Team G2 roster: email -> nickname ----
 EMAIL2NICK = {
     "hanghm@avadagroup.com": "HangHM", "vanct@avadagroup.com": "VanCT",
     "lypk@avadagroup.com": "LyPK", "phuongnt01@avadagroup.com": "PhuongNT",
@@ -38,25 +43,17 @@ NICK2NAME = {
 }
 TEAM = set(NICK2NAME.keys())
 
-# ---- time window: 9:00 (yesterday) -> 9:00 (today) VN time ----
 VN = dt.timezone(dt.timedelta(hours=7))
 
-def window(now=None):
-    """Return (start_vn, end_vn) = yesterday 9:00 -> today 9:00 VN.
-    Pass now (a tz-aware datetime) explicitly; defaults to current time."""
-    if now is None:
-        now = dt.datetime.now(VN)
-    end = now.replace(hour=9, minute=0, second=0, microsecond=0)
-    start = end - dt.timedelta(days=1)
-    return start, end
 
 def to_utc_str(d):
     return d.astimezone(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
+
 def parse_iso(t):
     return dt.datetime.fromisoformat(t.replace("Z", "+00:00"))
 
-# ---- Admin API ----
+
 def api_get(env, path, retries=3):
     base = env["AVD_API_BASE"]; tok = env["AVD_TOKEN"]
     req = urllib.request.Request(f"{base}{path}", headers={"Authorization": f"Bearer {tok}"})
@@ -70,7 +67,7 @@ def api_get(env, path, retries=3):
             time.sleep(1.5 * (attempt + 1))
     raise last
 
-# ---- BigQuery client ----
+
 def bq_client(env):
     from google.cloud import bigquery
     from google.oauth2 import service_account
@@ -83,12 +80,33 @@ def bq_client(env):
                       "https://www.googleapis.com/auth/cloud-platform"])
     return bigquery.Client(credentials=creds, project="avada-crm")
 
-def short_plan(p):
-    if not p or p == "?":
-        return "free"
-    p = str(p).lower()
-    for k, v in [("enterprise", "Enterprise"), ("advanced", "Advanced"),
-                 ("plus", "Plus"), ("pro", "Pro"), ("basic", "Basic"), ("free", "free")]:
-        if k in p:
-            return v
-    return p
+
+def shift_status(env, win_start, win_end, start_date, end_date):
+    """Late (>5min) checkins, missed checkins, missed checkouts for Team G2
+    shifts overlapping [win_start, win_end]."""
+    late, miss_in, miss_out = [], [], []
+    shifts = api_get(env, f"/shifts?start={start_date}&end={end_date}").get("data", [])
+    for sh in shifts:
+        st, en = parse_iso(sh["start"]), parse_iso(sh["end"])
+        if en < win_start or st > win_end:
+            continue
+        g2 = [c for c in sh.get("cs", []) if "G2" in (c.get("groupLabel") or "")]
+        if not g2:
+            continue
+        checks = api_get(env, f"/shifts/{sh['id']}/checks").get("data", [])
+        bye = defaultdict(dict)
+        for ch in checks:
+            bye[ch["email"]][ch["type"]] = ch
+        for c in g2:
+            em = c["email"]; nick = EMAIL2NICK.get(em, c.get("name", "?"))
+            ci = bye[em].get("checkin"); co = bye[em].get("checkout")
+            t = sh["title"]
+            if not ci:
+                miss_in.append((nick, t))
+            else:
+                m = int((parse_iso(ci["createdAt"]) - st).total_seconds() / 60)
+                if m > 5:
+                    late.append((nick, t, m))
+                if not co:
+                    miss_out.append((nick, t))
+    return late, miss_in, miss_out

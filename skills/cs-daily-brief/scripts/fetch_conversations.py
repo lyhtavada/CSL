@@ -12,8 +12,8 @@ Usage:
 """
 import os, sys, json, argparse, datetime as dt
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "cs-daily", "lib"))
-from common import load_env, bq_client, to_utc_str, VN  # noqa: E402
+sys.path.insert(0, os.path.dirname(__file__))
+from _common import load_env, bq_client, to_utc_str, VN  # noqa: E402
 
 
 def main():

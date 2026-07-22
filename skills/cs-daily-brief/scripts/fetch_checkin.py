@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Check-in/checkout status for Team G2 over one full calendar day (00:00–24:00
-VN time), for the daily CS report. Reuses shift_status() from cs-daily/lib
-(same Admin API /shifts + /shifts/:id/checks source) rather than duplicating it.
+VN time), for the daily CS report. Uses the Admin API /shifts +
+/shifts/:id/checks (via _common.shift_status).
 
 Default target day = yesterday (VN).
 
@@ -12,9 +12,8 @@ Usage:
 """
 import os, sys, json, argparse, datetime as dt
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "cs-daily", "lib"))
-from common import load_env, VN  # noqa: E402
-from render import shift_status  # noqa: E402
+sys.path.insert(0, os.path.dirname(__file__))
+from _common import load_env, VN, shift_status  # noqa: E402
 
 
 def main():
