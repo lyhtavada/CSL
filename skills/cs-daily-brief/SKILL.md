@@ -1,6 +1,6 @@
 ---
 name: cs-daily-brief
-description: Daily CS report posted to #cs-2-daily — conversation volume per app (Joy/Chatty/Wishlist) for the previous full day, Team G2 check-in/checkout (late/miss), and neglected-ticket watch (stale/DFY-stuck, VIP, per-CS breakdown).
+description: Daily CS report posted to #cs-2-daily — conversation volume per app (Joy/Chatty/Wishlist) for the previous full day, Team G2 check-in/checkout (late/miss), neglected-ticket watch (stale/DFY-stuck, VIP, per-CS breakdown), and tickets created for Liz that day.
 ---
 
 # /cs-daily-brief
@@ -9,10 +9,10 @@ Runs each morning, reports on the **previous full calendar day** (00:00–24:00
 VN) — e.g. running on the 22nd reports on the 21st. Posts one Slack message
 to the **#cs-2-daily channel** (`C0B8042TXQ9`), sent with Liz's name/avatar
 (live-fetched, matches the `/cs-weekly`+`/dfy-monthly` convention for
-team-channel posts) — not a private DM. 3 sections. Evolved from the
+team-channel posts) — not a private DM. 4 sections. Evolved from the
 original `/ticket-watch` (now section ③) after Liz asked to fold in
 conversation volume + attendance, then to post to the team channel instead
-of DM'ing her.
+of DM'ing her, then to add tickets created for her.
 
 ## Sections
 
@@ -44,7 +44,13 @@ the original `/ticket-watch` design. `scripts/fetch_stale.py`:
   (bot members excluded).
 
 This section is a live snapshot ("tickets currently neglected as of now"),
-not bound to the target day like ① and ② are.
+not bound to the target day like ①, ② and ④ are.
+
+**④ Ticket tạo cho Liz trong ngày** — tickets created on the target day where
+Liz is a member (`scripts/fetch_liz_tickets.py`, matches any member whose
+`displayName` contains "liz" case-insensitive — covers both "Liz" and
+"liz_avada" seen live). Separate from ③: this is "what landed on her that
+day", not a staleness check.
 
 ## How it runs
 
@@ -52,6 +58,7 @@ not bound to the target day like ① and ② are.
 python3 skills/cs-daily-brief/scripts/fetch_conversations.py --date <target> --json
 python3 skills/cs-daily-brief/scripts/fetch_checkin.py --date <target> --json
 python3 skills/cs-daily-brief/scripts/fetch_stale.py --json
+python3 skills/cs-daily-brief/scripts/fetch_liz_tickets.py --date <target> --json
 ```
 Compose one Vietnamese Slack message (see `cron/prompt.txt` for exact shape),
 live-fetch Liz's name/avatar via `users.info`, then send via

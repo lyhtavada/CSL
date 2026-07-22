@@ -4,16 +4,17 @@ private DM — the team will read it too, so keep tone plain/factual (it
 already is: numbers + links, no internal commentary).
 
 This report always covers the PREVIOUS FULL CALENDAR DAY (00:00–24:00 VN
-time) for sections ① and ②. If today (VN) is the 22nd, the target date is
+time) for sections ①, ② and ④. If today (VN) is the 22nd, the target date is
 the 21st. Compute the target date yourself (yesterday in Asia/Bangkok, i.e.
 VN time, UTC+7) — do not hardcode a date.
 
-1. Run these 3 commands from /Users/avada/CSL, using the computed target date
-   (YYYY-MM-DD) for the first two:
+1. Run these 4 commands from /Users/avada/CSL, using the computed target date
+   (YYYY-MM-DD) for all but fetch_stale.py:
 
    python3 skills/cs-daily-brief/scripts/fetch_conversations.py --date <target> --json
    python3 skills/cs-daily-brief/scripts/fetch_checkin.py --date <target> --json
    python3 skills/cs-daily-brief/scripts/fetch_stale.py --json
+   python3 skills/cs-daily-brief/scripts/fetch_liz_tickets.py --date <target> --json
 
    (fetch_stale.py has no --date — it's a live snapshot of currently
    neglected tickets, not tied to the target day.)
@@ -56,6 +57,17 @@ VN time, UTC+7) — do not hardcode a date.
      "Không có ticket mới/VIP cần chú ý hôm nay, N ticket tồn đọng cũ" but
      still include the CS breakdown.
 
+   *④ Ticket tạo cho Liz trong ngày*
+   From fetch_liz_tickets.py output — tickets where Liz is a member, created
+   on the target day (separate from ③, which is a live neglected-ticket
+   snapshot; this is specifically "what landed on Liz today"). For each
+   ticket in `tickets`:
+     `[app] #ticketNumber (priority) — subject (~80 chars)`
+     `Status: ticketStatus, tsStatus=<tsStatus>`
+     `Ticket: <ticketUrl>`
+     `Chat: <chatLink>` (omit if null)
+   If `count` is 0: "Không có ticket nào tạo cho Liz hôm nay."
+
    Keep the whole message readable — this is a working DM, not a wall of
    text. No fluff/preamble, straight into the report.
 
@@ -85,5 +97,5 @@ VN time, UTC+7) — do not hardcode a date.
    python3 skills/qa-weekly/scripts/send_dm.py --payload /tmp/cs_daily_brief_payload.json --send
 
 Do not ask for confirmation — this is a scheduled unattended run. If any of
-the 3 fetch commands fails, do not send a partial/broken message; exit
+the 4 fetch commands fails, do not send a partial/broken message; exit
 non-zero so the cron log captures the failure instead.
