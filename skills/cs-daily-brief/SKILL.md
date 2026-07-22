@@ -1,58 +1,61 @@
 ---
-name: ticket-watch
-description: Daily scan of open tickets (Chatty, Joy Loyalty, Joy Wishlist) for ones that look neglected — no update in 1+ day (2+ for DFY/ONB) — with CS-owner breakdown and VIP highlighting, DM'd to Liz.
+name: cs-daily-brief
+description: Daily CS report DM'd to Liz — conversation volume per app (Joy/Chatty/Wishlist) for the previous full day, Team G2 check-in/checkout (late/miss), and neglected-ticket watch (stale/DFY-stuck, VIP, per-CS breakdown).
 ---
 
-# /ticket-watch
+# /cs-daily-brief
 
-Daily hygiene check across all 3 apps Liz owns. Pulls open tickets from the
-Avada Ticket API, flags ones that look neglected, and DMs Liz a short report
-via Slack — new issues in detail, older backlog as a summary count (not
-re-listed every day), plus a per-CS ownership breakdown and always-shown VIP
-tickets.
+Runs each morning, reports on the **previous full calendar day** (00:00–24:00
+VN) — e.g. running on the 22nd reports on the 21st. Sends one Slack DM to
+Liz with 3 sections. Evolved from the original `/ticket-watch` (now section
+③) after Liz asked to fold in conversation volume + attendance.
 
-## Flags
+## Sections
 
-| Flag | Applies to | Rule |
-|---|---|---|
-| `stale_no_update` | Regular tickets (excludes `[DFY]`/`[ONB]` — tracked separately by `/dfy-tracker`) | Open, age ≥1 day, AND (no update since created OR still `tsStatus=pending`/unclaimed) |
-| `dfy_stuck` | `[DFY]`/`[ONB]` project tickets | Open, age ≥2 days, AND has an incomplete `tasks[]` item with no update since |
+**① Tổng quan conversation** — count of Crisp conversations per app for the
+target day: Joy, Chatty, Wishlist + total. `scripts/fetch_conversations.py`,
+BigQuery `avada-crm.avada_cs.crisp_chats`, app split by `segments` LIKE
+`%app_joy%` / `%app_chatty%`|`%app_faqs%` / `%app_wishlist%`.
 
-## Breakdowns (always included, not just new/carryover)
+**② Checkin/checkout (Team G2)** — late (>5 min) checkins, missed checkins,
+missed checkouts for the target day. `scripts/fetch_checkin.py`, reuses
+`shift_status()` from `../cs-daily/lib/render.py` (Admin API `/shifts` +
+`/shifts/:id/checks`, `$AVD_TOKEN`/`$AVD_API_BASE`, roster in
+`../cs-daily/lib/common.py`) — not duplicated.
 
-- **VIP tier** (`isVip` in output) — a ticket is VIP if `appPlan` isn't a
-  free/basic plan (`NON_VIP_PLANS` in `fetch_stale.py`; plan naming drifts
-  across years per app, so this is a coarse heuristic — adjust that set if it
-  misclassifies). VIP tickets are always listed in full in the DM (never just
-  summarized as a count), separate from the new/carryover split.
-- **CS breakdown** (`assigneeBreakdown` in output) — count of currently
-  flagged tickets per assignee (`members[].displayName`), across new +
-  carryover, bot members (`AI Agent`/`Bot` in name) excluded. Snapshot of who
-  currently owns the most neglected tickets.
+**③ Ticket watch** — neglected open tickets across all 3 apps, unchanged from
+the original `/ticket-watch` design. `scripts/fetch_stale.py`:
+- `stale_no_update`: regular ticket (excludes `[DFY]`/`[ONB]`), open ≥1 day,
+  no update since created OR still `tsStatus=pending`/unclaimed.
+- `dfy_stuck`: `[DFY]`/`[ONB]` ticket, open ≥2 days, incomplete `tasks[]`
+  item with no update since.
+- Day-over-day dedup via `state/seen.json` — new tickets shown in full,
+  carryover backlog just counted.
+- VIP tickets (`isVip` — `appPlan` not free/basic) always listed in full.
+- `assigneeBreakdown` — top 8 CS by count of currently flagged tickets
+  (bot members excluded).
+
+This section is a live snapshot ("tickets currently neglected as of now"),
+not bound to the target day like ① and ② are.
 
 ## How it runs
 
-1. `scripts/fetch_stale.py --json` (stale-days=1, dfy-stale-days=2 by default)
-   — pulls tickets (window: last 60 days by `createdAt`), applies flags, and
-   diffs against `state/seen.json` from the previous run to split **new**
-   (just crossed a threshold — full detail) vs **carryover** (already
-   reported, still open — summarized count only). Updates `state/seen.json`
-   for the next run.
-2. Compose a Vietnamese Slack message in 3 sections: ① new tickets (grouped
-   by app, link/chat/progress per ticket) + carryover count, ② all VIP
-   tickets in full, ③ CS ownership breakdown (top 8).
-3. Send via `../qa-weekly/scripts/send_dm.py` (reused, not duplicated) to
-   Liz's Slack id `U02GT4PC6RH` — payload has one message, no `sender`
-   override needed since it's a bot DM straight to her, not impersonation.
+```
+python3 skills/cs-daily-brief/scripts/fetch_conversations.py --date <target> --json
+python3 skills/cs-daily-brief/scripts/fetch_checkin.py --date <target> --json
+python3 skills/cs-daily-brief/scripts/fetch_stale.py --json
+```
+Compose one Vietnamese Slack message (see `cron/prompt.txt` for exact shape),
+send via `../qa-weekly/scripts/send_dm.py` to Liz's Slack id `U02GT4PC6RH`.
 
 ## Manual run
 
 ```
-python3 skills/ticket-watch/scripts/fetch_stale.py --json > /tmp/ticket_watch.json
+bash skills/cs-daily-brief/cron/run-cs-daily-brief.sh
 ```
-Then read the JSON, compose the DM text, write a payload file, and run
-`send_dm.py --payload ... --send`.
+or run the 3 fetch scripts individually and compose by hand.
 
 ## Cron
 
-Daily 10:00 local — `cron/run-ticket-watch.sh`, installed via `cron/install.sh`.
+Daily 10:00 local (reports on the previous full day) —
+`cron/run-cs-daily-brief.sh`, installed via `cron/install.sh`.
