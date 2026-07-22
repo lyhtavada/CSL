@@ -48,7 +48,7 @@ rc=0
 echo "===== done: $(date) =====" >> "$LOG"
 
 # Báo Telegram cho Liz (xong + lỗi). Notify không được làm hỏng job.
-python3 "$REPO/skills/_shared/notify_tele.py" --job "Mine FAQs" \
+python3 "$REPO/skills/_shared/notify_tele.py" --job "Mine FAQs + KB Diff" \
   --status "$([ "${rc:-0}" -eq 0 ] && echo ok || echo fail)" --log "$LOG" >> "$LOG" 2>&1 || true
 
 exit "${rc:-0}"
