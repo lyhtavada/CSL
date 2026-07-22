@@ -262,14 +262,16 @@ is no .md file in the repo.
    Get "tuần trước" from the `--compare` flag's `prev_week` block (re-pulled live from
    source) — there is no .md file in the repo to read. Show ▲▼ % for tickets/chats,
    ▲▼ count for reviews.
-3. **🔥 Top issues** — 3-5 themes from tickets (Ticket API, `[dfy]` excluded), each with a fix/KB pointer.
+3. **🔥 Top issues** — 3-5 themes from tickets (Ticket API, `[dfy]` excluded), each with
+   a real counted `{n}/{total}` (not a guessed fraction), a fix/KB pointer, and 2-3
+   proof ticket links (`https://avada-ts-a9cb0.web.app` + `shortUrl`).
 4. **🆕 Cập nhật sản phẩm & policy** — releases from #product-release + known bugs open.
-4b. **🛠 TS Elite usage** (gần cuối, trước Coaching) — team G2 dùng agent investigate:
-   total + active/members vs last week (▲▼), top 5 user, ai chưa dùng (⚠️), 3-5 chủ đề
-   hay hỏi (cluster từ `questions`). From step 4c's JSON (`--compare`). **Notion-only**,
-   KHÔNG vào Slack digest.
-5. **💡 Coaching & lưu ý** — Liz reviews/fills.
-6. **🌟 Ghi nhận & tinh thần** — win (auto, e.g. review streak) + Liz's shoutout/focus.
+4b. **🛠 TS Elite usage** (gần cuối, trước "Lưu ý tuần này") — team G2 dùng agent
+   investigate: total + active/members vs last week (▲▼), top 5 user, ai chưa dùng
+   (⚠️), 3-5 chủ đề hay hỏi (cluster từ `questions`). From step 4c's JSON
+   (`--compare`). **Notion-only**, KHÔNG vào Slack digest.
+5. **💡 Lưu ý tuần này** — last section. Liz reviews/fills; you may pre-fill a process
+   reminder if a repeated bug/issue warrants it.
 
 ## Notes / gotchas
 
