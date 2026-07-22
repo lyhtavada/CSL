@@ -15,11 +15,18 @@ Window: pulls tickets created in the last --window-days (default 60) — a ticke
 open longer than that without being closed is assumed rare enough to not need
 covering here; widen --window-days if needed.
 
+VIP tier: a ticket is VIP if its `appPlan` is anything other than a free/basic
+plan — plan naming has drifted across years per app (e.g. "pro_3_2026",
+"advanced_2025", "shopify_plus", "enterprise"...) so this is a coarse "paid
+tier at Pro-and-above" heuristic, not an exact plan lookup. Adjust
+NON_VIP_PLANS below if it misclassifies something.
+
 Usage:
   python3 fetch_stale.py --json
   python3 fetch_stale.py --stale-days 1 --dfy-stale-days 2 --json
 """
 import os, json, argparse
+from collections import Counter
 from datetime import datetime, timedelta, timezone
 import requests
 from dotenv import load_dotenv
@@ -33,6 +40,8 @@ APPS = {
     "joy": "JOY Loyalty",
     "wishlist": "Wishlist",
 }
+
+NON_VIP_PLANS = {None, "free", "basic", "affiliate"}
 
 
 def fetch_tickets(app_name, start, end, key):
@@ -94,6 +103,8 @@ def flag_ticket(t, now, stale_days, dfy_stale_days):
 def slim(t, app_key, flags, now):
     created = parse_dt(t.get("createdAt"))
     updated = parse_dt(t.get("updatedAt")) or created
+    plan = t.get("appPlan")
+    assignees = [m.get("displayName") for m in (t.get("members") or []) if m.get("displayName")]
     return {
         "app": app_key,
         "ticketNumber": t.get("ticketNumber"),
@@ -106,8 +117,10 @@ def slim(t, app_key, flags, now):
         "updatedAt": t.get("updatedAt"),
         "ageDays": round((now - created).total_seconds() / 86400, 1) if created else None,
         "sinceUpdateDays": round((now - updated).total_seconds() / 86400, 1) if updated else None,
-        "assignees": [m.get("displayName") for m in (t.get("members") or [])],
+        "assignees": assignees or ["(chưa gán)"],
         "store": (t.get("store") or [{}])[0].get("domain"),
+        "appPlan": plan,
+        "isVip": plan not in NON_VIP_PLANS,
         "ticketUrl": "https://avada-ts-a9cb0.web.app" + t["shortUrl"] if t.get("shortUrl") else None,
         "chatLink": t.get("chatLink"),
         "tasks": t.get("tasks") or [],
@@ -144,6 +157,20 @@ def main():
                 flagged.append(slim(t, app_key, flags, now))
 
     flagged.sort(key=lambda x: x["sinceUpdateDays"] or 0, reverse=True)
+
+    # Breakdown by CS phụ trách — accountability view (who currently owns the
+    # most neglected tickets), computed over ALL currently flagged tickets
+    # (new + carryover), not just today's new ones.
+    assignee_counter = Counter()
+    for t in flagged:
+        for name in t["assignees"]:
+            assignee_counter[name] += 1
+    assignee_breakdown = [{"name": n, "count": c}
+                           for n, c in assignee_counter.most_common()]
+
+    # VIP (Pro+/Plus/Enterprise) tickets always get surfaced in full, not
+    # summarized — a stale VIP ticket matters more than a stale Free one.
+    vip_tickets = [t for t in flagged if t["isVip"]]
 
     # Day-over-day dedup: a ticket already reported yesterday and still open
     # today is "carryover" (summarized, not re-listed in full) — only tickets
@@ -186,6 +213,9 @@ def main():
         "carryoverCount": len(carryover_items),
         "newTickets": new_items,
         "carryoverTickets": carryover_items,
+        "assigneeBreakdown": assignee_breakdown,
+        "vipCount": len(vip_tickets),
+        "vipTickets": vip_tickets,
     }
 
     if a.json:
