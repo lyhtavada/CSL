@@ -8,22 +8,37 @@ Run the daily ticket-watch check for Liz (CS Leader, Avada — Chatty, Joy Loyal
 
    *Ticket Watch — <today's date>*
 
+   *① Ticket mới cần chú ý*
    For each ticket in `newTickets` (cap at 20, oldest-first by sinceUpdateDays;
    if more than 20, say "+N ticket khác cùng loại" at the end):
      - one block per ticket:
-       `[app] #ticketNumber (priority) — subject (truncate ~80 chars)`
+       `[app] #ticketNumber (priority, plan) — subject (truncate ~80 chars)`
        `Flag: <flags joined>, đã Nngày không update`
+       `Assignee: <assignees joined>` — `⭐ VIP` suffix if `isVip` is true
        `Ticket: <ticketUrl>`
        `Chat: <chatLink>` (omit line if null)
        `Progress: tsStatus=<tsStatus>` + nếu có tasks[] thì show "X/Y task done"
    Group by app (Chatty / Joy Loyalty / Wishlist) with a short header per group.
+   Then one line: "Tồn đọng cũ (đã báo trước đó, vẫn chưa xử lý): N ticket" using
+   `carryoverCount`.
 
-   Then a one-line summary: "Tồn đọng cũ (đã báo trước đó, vẫn chưa xử lý): N ticket"
-   using `carryoverCount`.
+   *② VIP (Pro+/Plus/Enterprise) đang tồn đọng*
+   List every ticket in `vipTickets` (both new and carryover — VIP always shown
+   in full, not summarized), sorted as given (oldest since-update first). Same
+   one-line-per-ticket format as above but compact: `[app] #ticketNumber (plan)
+   — subject, Nngày không update, assignee: X — <ticketUrl>`. If `vipCount` is 0,
+   write "Không có VIP ticket tồn đọng." Cap at 15 with "+N khác" if longer —
+   but never drop these silently, always state the true `vipCount`.
 
-   If `newCount` is 0, send a short "Không có ticket mới cần chú ý hôm nay,
-   N ticket tồn đọng cũ (theo dõi ở /ticket-watch)" message instead of an
-   empty report — do NOT skip sending.
+   *③ Breakdown theo CS phụ trách*
+   From `assigneeBreakdown` (already sorted desc), list top 8 as
+   "Tên: N ticket tồn đọng" — this is a snapshot of current total flagged
+   tickets (new + carryover) per owner, not just today's new ones. Skip this
+   section only if the list is empty.
+
+   If `newCount` is 0 and `vipCount` is 0, you may compress ① and ② into one
+   short line: "Không có ticket mới/VIP cần chú ý hôm nay, N ticket tồn đọng cũ
+   (theo dõi ở /ticket-watch)" — but still send it, and still include ③.
 
    Keep the whole message readable — this is a working DM, not a wall of text.
    No fluff/preamble, straight into the report.

@@ -164,6 +164,8 @@ def main():
     assignee_counter = Counter()
     for t in flagged:
         for name in t["assignees"]:
+            if "AI Agent" in name or "Bot" in name:
+                continue  # bot members aren't accountable CS owners
             assignee_counter[name] += 1
     assignee_breakdown = [{"name": n, "count": c}
                            for n, c in assignee_counter.most_common()]
