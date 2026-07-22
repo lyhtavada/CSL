@@ -172,6 +172,6 @@ and DMing Liz a review digest — see `cron/README.md`. Source of truth lives in
 `~/Library/LaunchAgents`. The cron never pushes to v2 or reindexes — that stays a
 manual step after Liz reviews (`kb-sync/scripts/push_kb.py`).
 
-Note: the separate `/kb-sync` cron (Monday 16:30, diff-only) still runs on its own
-original schedule and is unaffected by this change — it re-diffs whatever mined
-file is newest at that time.
+The separate `/kb-sync` cron (previously Monday 16:30, diff-only) is now
+**disabled** — this weekly run replaced it. `/kb-sync` itself remains available
+as a manual, on-demand skill (see `kb-sync/cron/README.md`).

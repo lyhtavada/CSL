@@ -7,8 +7,9 @@ diff+patch flow (classify each mined FAQ vs the live KB, draft full-file patches
 and DMs Liz a review digest on Slack. **Nothing is pushed to v2 or reindexed** —
 that stays a manual step after Liz reviews (`kb-sync/scripts/push_kb.py`).
 
-The separate `/kb-sync` cron (Monday 16:30, diff-only) keeps running on its own
-unchanged schedule — it re-diffs whatever mined file is newest at that time.
+The separate `/kb-sync` cron (previously Monday 16:30, diff-only) is now
+**disabled** since this job replaced it — see `kb-sync/cron/README.md`.
+`/kb-sync` remains a manual, on-demand skill.
 
 ## Files (source of truth, versioned in CSL)
 
