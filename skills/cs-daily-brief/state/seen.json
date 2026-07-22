@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T10:13:12.654785+00:00",
+  "generatedAt": "2026-07-22T10:31:09.418275+00:00",
   "tickets": {
     "chatty:avadaFaq261019": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
@@ -199,16 +199,16 @@
         "stale_no_update"
       ]
     },
-    "chatty:avadaFaq261230": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
     "chatty:avadaFaq261247": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "stale_no_update"
+      ]
+    },
+    "chatty:avadaFaq261230": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "dfy_stuck"
       ]
     },
     "chatty:avadaFaq261217": {
@@ -295,18 +295,6 @@
         "dfy_stuck"
       ]
     },
-    "chatty:avadaFaq261186": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
-    "chatty:avadaFaq261183": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
     "chatty:avadaFaq261141": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -314,6 +302,18 @@
       ]
     },
     "chatty:avadaFaq261138": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "dfy_stuck"
+      ]
+    },
+    "chatty:avadaFaq261186": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "dfy_stuck"
+      ]
+    },
+    "chatty:avadaFaq261183": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
@@ -373,6 +373,12 @@
         "dfy_stuck"
       ]
     },
+    "joy:joy261213": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
     "chatty:avadaFaq261209": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -389,12 +395,6 @@
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
-      ]
-    },
-    "joy:joy261213": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
       ]
     },
     "chatty:avadaFaq261206": {
@@ -499,6 +499,12 @@
         "stale_no_update"
       ]
     },
+    "joy:joy261502": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
     "chatty:avadaFaq261339": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -509,12 +515,6 @@
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
-      ]
-    },
-    "joy:joy261502": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
       ]
     },
     "joy:joy261321": {
@@ -643,12 +643,6 @@
         "stale_no_update"
       ]
     },
-    "chatty:avadaFaq261094": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "chatty:avadaFaq261468": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -659,6 +653,12 @@
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
+      ]
+    },
+    "chatty:avadaFaq261094": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
       ]
     },
     "joy:joy261496": {
@@ -751,6 +751,12 @@
         "stale_no_update"
       ]
     },
+    "chatty:avadaFaq261426": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
     "chatty:avadaFaq261237": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -775,16 +781,16 @@
         "stale_no_update"
       ]
     },
-    "chatty:avadaFaq261164": {
+    "chatty:avadaFaq261193": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
       ]
     },
-    "chatty:avadaFaq261426": {
+    "chatty:avadaFaq261164": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
-        "stale_no_update"
+        "dfy_stuck"
       ]
     },
     "chatty:avadaFaq261346": {
@@ -854,12 +860,6 @@
       ]
     },
     "chatty:avadaFaq261194": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
-    "chatty:avadaFaq261193": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
@@ -937,25 +937,25 @@
         "stale_no_update"
       ]
     },
-    "chatty:avadaFaq261514": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
-    "chatty:avadaFaq261535": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "chatty:avadaFaq261533": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
       ]
     },
+    "chatty:avadaFaq261514": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "dfy_stuck"
+      ]
+    },
     "chatty:avadaFaq261470": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "chatty:avadaFaq261535": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "stale_no_update"
@@ -1057,6 +1057,12 @@
         "stale_no_update"
       ]
     },
+    "joy:joy261648": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
     "wishlist:wishlist2695": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -1070,12 +1076,6 @@
       ]
     },
     "joy:joy261649": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "joy:joy261648": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "stale_no_update"
@@ -1135,28 +1135,28 @@
         "stale_no_update"
       ]
     },
-    "wishlist:wishlist2696": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "joy:joy261663": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "joy:joy261576": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
       ]
     },
+    "wishlist:wishlist2696": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
     "chatty:avadaFaq261446": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
+      ]
+    },
+    "joy:joy261663": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
       ]
     },
     "joy:joy261629": {
@@ -1231,6 +1231,12 @@
         "dfy_stuck"
       ]
     },
+    "chatty:avadaFaq261072": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "dfy_stuck"
+      ]
+    },
     "chatty:avadaFaq261604": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -1238,12 +1244,6 @@
       ]
     },
     "chatty:avadaFaq261603": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
-    "chatty:avadaFaq261072": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
@@ -1357,12 +1357,6 @@
         "stale_no_update"
       ]
     },
-    "chatty:avadaFaq261620": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
     "chatty:avadaFaq261594": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -1376,6 +1370,12 @@
       ]
     },
     "chatty:avadaFaq261562": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "dfy_stuck"
+      ]
+    },
+    "chatty:avadaFaq261620": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "dfy_stuck"
@@ -1501,6 +1501,18 @@
         "stale_no_update"
       ]
     },
+    "chatty:avadaFaq261646": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "joy:joy261710": {
+      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
     "joy:joy261708": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
@@ -1514,18 +1526,6 @@
       ]
     },
     "wishlist:wishlist2693": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "chatty:avadaFaq261646": {
-      "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "joy:joy261710": {
       "firstFlaggedAt": "2026-07-22T09:46:59.946803+00:00",
       "flags": [
         "stale_no_update"
