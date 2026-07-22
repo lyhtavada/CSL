@@ -4,21 +4,20 @@ Pull open tickets across all 3 apps Liz owns (Chatty, JOY Loyalty, Wishlist)
 and flag ones that look neglected, so /ticket-watch can DM her a daily report.
 
 Flags (a ticket can carry more than one):
-  stale_no_update   ticketStatus=open AND no update (updatedAt) in >= --stale-days
-  pending_unclaimed tsStatus=pending AND created >= 24h ago (nobody has claimed it)
-  dfy_stuck         has a tasks[] checklist with an incomplete item AND
-                     no update in >= --stale-days (DFY progress stalled)
-  sla_breach        priority in {urgent,high} AND still open past the
-                     resolution-target window from kb/cs-process/shared-cs-process/
-                     priority-matrix.md (urgent=P0: 24h, high=P1: 5 days)
+  stale_no_update   regular (non-DFY/ONB) ticket, ticketStatus=open, age >=
+                     --stale-days (default 1) AND (no update since created OR
+                     still tsStatus=pending / unclaimed)
+  dfy_stuck         [DFY]/[ONB] project ticket, ticketStatus=open, age >=
+                     --dfy-stale-days (default 2) AND has an incomplete
+                     tasks[] item with no update since (checklist stalled)
 
 Window: pulls tickets created in the last --window-days (default 60) — a ticket
 open longer than that without being closed is assumed rare enough to not need
 covering here; widen --window-days if needed.
 
 Usage:
-  python3 fetch_stale.py --stale-days 2 --json
-  python3 fetch_stale.py --stale-days 2 --window-days 90 --json
+  python3 fetch_stale.py --json
+  python3 fetch_stale.py --stale-days 1 --dfy-stale-days 2 --json
 """
 import os, json, argparse
 from datetime import datetime, timedelta, timezone
@@ -33,11 +32,6 @@ APPS = {
     "chatty": "Chatty",
     "joy": "JOY Loyalty",
     "wishlist": "Wishlist",
-}
-
-SLA_RESOLUTION_HOURS = {
-    "urgent": 24,       # P0
-    "high": 24 * 5,     # P1
 }
 
 
@@ -67,7 +61,7 @@ def is_project_ticket(subject):
     return s.startswith("[dfy]") or s.startswith("[onb]")
 
 
-def flag_ticket(t, now, stale_days):
+def flag_ticket(t, now, stale_days, dfy_stale_days):
     flags = []
     status = t.get("ticketStatus")
     if status != "open":
@@ -82,21 +76,17 @@ def flag_ticket(t, now, stale_days):
     age_hours = (now - created).total_seconds() / 3600
     project = is_project_ticket(t.get("subject"))
 
-    if not project and since_update is not None and since_update >= stale_days * 24:
-        flags.append("stale_no_update")
+    if not project and age_hours >= stale_days * 24:
+        no_update = since_update is not None and since_update >= stale_days * 24
+        unclaimed = t.get("tsStatus") == "pending"
+        if no_update or unclaimed:
+            flags.append("stale_no_update")
 
-    if t.get("tsStatus") == "pending" and age_hours >= 24:
-        flags.append("pending_unclaimed")
-
-    tasks = t.get("tasks") or []
-    if tasks and any(not task.get("completed") for task in tasks) \
-            and since_update is not None and since_update >= stale_days * 24:
-        flags.append("dfy_stuck")
-
-    priority = t.get("priority")
-    sla_h = SLA_RESOLUTION_HOURS.get(priority)
-    if sla_h and age_hours >= sla_h:
-        flags.append("sla_breach")
+    if project and age_hours >= dfy_stale_days * 24:
+        tasks = t.get("tasks") or []
+        stalled = since_update is not None and since_update >= dfy_stale_days * 24
+        if tasks and any(not task.get("completed") for task in tasks) and stalled:
+            flags.append("dfy_stuck")
 
     return flags
 
