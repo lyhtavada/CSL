@@ -97,27 +97,81 @@ Then numbered sections by category, each FAQ as `### Q{n}: ...` with `**Frequenc
 
 Write in **English** unless the user asks otherwise.
 
+### 6. Diff the fresh mined file against the live KB
+
+Immediately continue into the **`/kb-sync` diff flow** (`skills/kb-sync/SKILL.md`,
+steps 1–2) for the file just written — don't stop at step 5:
+
+```
+cd ~/CSL/skills/kb-sync/scripts
+python3 prep.py <app>            # caches live KB, auto-picks the file just written
+```
+
+Classify every mined FAQ as **COVERED / OUTDATED / GAP / PARTIAL** against the
+cached KB (verify each discrepancy against the real cached file — never assume).
+For a large batch, fan out with the Agent tool per `kb-sync/references/diff-prompt.md`.
+
+Save the diff summary as its own file:
+`reports/weekly-faqs/{app}/{app}_{start}_{end}-kb-diff.md`
+(table: mined Q# | topic | KB file | verdict, + OUTDATED detail + GAP/PARTIAL detail
++ a priority list by frequency — same shape as an interactive kb-sync diff).
+
+### 7. Draft the patch (kb-sync steps 3)
+
+For every OUTDATED/GAP/PARTIAL item, build the full new file content (start from
+the cached KB file, edit/insert at a real anchor) per `kb-sync/SKILL.md` step 3.
+Skip anything that has no verifiable official answer yet (e.g. an open legal/security
+request with nothing published) — flag it in the diff report instead of inventing
+content for it.
+
+Write the payloads file at the path `/kb-sync` already expects, so its push script
+needs no changes:
+`reports/analysis/kb-sync-{app}-{YYYY-MM-DD}-payloads.json`
+
+**Review gate — do not push.** Pushing to v2 (`push_kb.py`) and reindexing stay a
+separate, explicit step that only happens after Liz reviews the diff + payloads
+and says go — same as `/kb-sync` step 4–5. This holds whether the run is
+interactive or the weekly cron.
+
 ## Output layout
 
 ```
 reports/weekly-faqs/
 ├── joy/
-│   └── joy_2026-06-08_2026-06-14.md
+│   ├── joy_2026-06-08_2026-06-14.md
+│   └── joy_2026-06-08_2026-06-14-kb-diff.md
 └── chatty/
-    └── chatty_2026-06-08_2026-06-14.md
+    ├── chatty_2026-06-08_2026-06-14.md
+    └── chatty_2026-06-08_2026-06-14-kb-diff.md
+
+reports/analysis/
+└── kb-sync-{app}-{date}-payloads.json     # built in step 7, consumed by push_kb.py
 ```
 
-One file per mining run, dropped into the per-app folder. These are reference/analysis files — they do NOT go into the agent KB or RAG index unless the user explicitly asks to deploy them.
+One mined-FAQ file + one diff report per run per app, plus a shared payloads file
+per app if there's anything to patch. The mined-FAQ file and diff report are
+reference/analysis files — nothing touches the agent KB or RAG index until the
+payloads file is explicitly pushed (`kb-sync/scripts/push_kb.py`) after review.
 
 ## Notes
 
-- If the user wants the result indexed into the bot, copy the file into the agent's `knowledge/` dir and run `/deploy-agent {agent}`. By default, keep it under `CSL/reports/weekly-faqs/` only.
+- If the user wants the mined-FAQ content indexed into the bot some other way (not
+  via kb-sync), copy the file into the agent's `knowledge/` dir and run
+  `/deploy-agent {agent}`. By default, everything stays under `CSL/reports/` until
+  pushed through the kb-sync payloads flow above.
+- `/kb-sync` remains a standalone skill — use it directly for an ad-hoc re-diff
+  (e.g. the KB changed mid-week) without re-running the mining step.
 - No Anthropic API key needed — do the clustering and answer-writing inline with your own analysis. (An earlier approach called the Claude API but the key was revoked; inline is the supported path.)
 
 ## Weekly automation
 
-A launchd job runs this skill for both apps every **Monday 16:00**, mining the
-**previous full Mon→Sun week** — see `cron/README.md`. Source of truth lives in
+A launchd job runs this skill for both apps every **Tuesday 11:00**, mining the
+**previous full Mon→Sun week**, then chaining into steps 6–7 (diff + draft patch)
+and DMing Liz a review digest — see `cron/README.md`. Source of truth lives in
 `cron/` (versioned in CSL); `cron/install.sh` symlinks the plist into
-`~/Library/LaunchAgents`. Output goes to `CSL/reports/weekly-faqs/{app}/` for later
-review; it does not touch the agent KB.
+`~/Library/LaunchAgents`. The cron never pushes to v2 or reindexes — that stays a
+manual step after Liz reviews (`kb-sync/scripts/push_kb.py`).
+
+Note: the separate `/kb-sync` cron (Monday 16:30, diff-only) still runs on its own
+original schedule and is unaffected by this change — it re-diffs whatever mined
+file is newest at that time.

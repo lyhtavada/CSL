@@ -1,9 +1,10 @@
 #!/bin/bash
 #
-# Weekly FAQ mining run — invoked by launchd (com.avada.mine-faqs).
+# Weekly FAQ mining + KB diff/patch run — invoked by launchd (com.avada.mine-faqs).
 # Runs Claude Code headless to mine FAQs for both Joy and Chatty over the
 # LAST FULL CALENDAR WEEK (Mon→Sun), writing dated files into
-# CSL/reports/weekly-faqs/{app}/.
+# CSL/reports/weekly-faqs/{app}/, then chains into the kb-sync diff+patch flow
+# and DMs Liz a review digest. Never pushes to v2 / reindexes.
 #
 # Manual run:  bash run-weekly.sh
 #
@@ -15,10 +16,11 @@ REPO="/Users/avada/CSL"
 LOG="/tmp/mine-faqs-weekly.log"
 PROMPT_FILE="$HERE/prompt.txt"
 
-# Last full calendar week: Monday → Sunday of the week BEFORE today.
-# (Job runs Monday; we want the previous Mon..Sun, not the current week.)
-WEEK_START="$(date -v-mon -v-7d +%Y-%m-%d)"   # most recent past Monday, then back 7 days
-WEEK_END="$(date -v-sun +%Y-%m-%d)"           # most recent past Sunday (yesterday when run on Mon)
+# Last full completed calendar week: Monday → Sunday, ending on the most recent
+# past Sunday. Computed from WEEK_END backward so it's correct regardless of
+# which weekday the job actually runs on (currently Tuesday 11:00).
+WEEK_END="$(date -v-sun +%Y-%m-%d)"                                  # most recent past Sunday
+WEEK_START="$(date -j -v-6d -f %Y-%m-%d "$WEEK_END" +%Y-%m-%d)"      # Monday of that same week
 
 echo "===== mine-chat-faqs weekly run: $(date) =====" >> "$LOG"
 echo "window: $WEEK_START → $WEEK_END" >> "$LOG"
