@@ -11,7 +11,7 @@ Routes (confirmed from the v2 API catalog):
 Auth: Authorization: Bearer <CS2_API_TOKEN>  (super_admin token).
 Creds read from ~/CSL/.env keys CS2_API_URL + CS2_API_TOKEN.
 
-Agent ids: chatty-agent (Chatty/Ivy), joy-loyalty-agent (Joy).
+Agent ids: chatty-agent (Chatty/Ivy), joy-loyalty-agent (Joy), wishlist-agent (Joy Wishlist/Wendy).
 """
 import json
 import os
@@ -23,6 +23,7 @@ ENV_PATH = os.path.expanduser("~/CSL/.env")
 APP_AGENTS = {
     "chatty": "chatty-agent",
     "joy": "joy-loyalty-agent",
+    "wishlist": "wishlist-agent",
 }
 
 

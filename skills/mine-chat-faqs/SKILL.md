@@ -1,6 +1,6 @@
 ---
 name: mine-chat-faqs
-description: Mine FAQ from real Crisp chats for a Joy or Chatty app. Use when the user asks to "mine FAQ", "tổng hợp FAQ từ chat", "build FAQ from chats", or wants to analyze recent merchant conversations and produce a standard-answer FAQ file. Fetches chats from BigQuery (avada_cs.crisp_chats) by segment + date window, clusters questions into feature categories, compares against the agent KB, and writes one standard answer per FAQ. Output goes to /Users/avada/CSL/reports/weekly-faqs/{app}/{app}_{start}_{end}.md
+description: Mine FAQ from real Crisp chats for a Joy, Chatty, or Wishlist app. Use when the user asks to "mine FAQ", "tổng hợp FAQ từ chat", "build FAQ from chats", or wants to analyze recent merchant conversations and produce a standard-answer FAQ file. Fetches chats from BigQuery (avada_cs.crisp_chats) by segment + date window, clusters questions into feature categories, compares against the agent KB, and writes one standard answer per FAQ. Output goes to /Users/avada/CSL/reports/weekly-faqs/{app}/{app}_{start}_{end}.md
 version: 1.0.0
 ---
 

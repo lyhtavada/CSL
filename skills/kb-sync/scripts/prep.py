@@ -8,7 +8,7 @@ Claude reading these files per SKILL.md.
 Usage:
   python3 prep.py <app> [--faq <path>]
 
-  <app>        chatty | joy
+  <app>        chatty | joy | wishlist
   --faq <p>    explicit mined-FAQ file (default: newest in
                ~/CSL/reports/weekly-faqs/<app>/)
 
