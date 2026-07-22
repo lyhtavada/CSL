@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Weekly FAQ mining + KB diff/patch run — invoked by launchd (com.avada.mine-faqs).
-# Runs Claude Code headless to mine FAQs for both Joy and Chatty over the
+# Runs Claude Code headless to mine FAQs for Joy, Chatty, and Wishlist over the
 # LAST FULL CALENDAR WEEK (Mon→Sun), writing dated files into
 # CSL/reports/weekly-faqs/{app}/, then chains into the kb-sync diff+patch flow
 # and DMs Liz a review digest. Never pushes to v2 / reindexes.

@@ -17,8 +17,9 @@ User says things like: "mine FAQ cho Joy", "tổng hợp FAQ từ chat 7 ngày",
 - **App / segment** — default to what the user names:
   - **Joy** → segment `app_joy`
   - **Chatty** → segments `app_chatty,app_faqs` (Chatty spans BOTH; always pass both, comma-separated — the script ORs them and dedups by session)
+  - **Wishlist** → segment `app_wishlist` (agent `wishlist-agent` / bot **Wendy**; still `enabled:false` on cs2 as of 2026-07-22, pre-launch QA — mining/diffing still applies so the KB is ready before it goes live)
 - **Window** — either a rolling look-back (`--days`, default 7) or an exact calendar window (`--start`/`--end`, inclusive `YYYY-MM-DD`). The weekly cron uses `--start`/`--end` for the previous full Mon→Sun week.
-- **KB source** — the **live CS v2 KB** on `cs2.avada.net` (agent `joy-loyalty-agent` for Joy, `chatty-agent` for Chatty), NOT the old claw repo. Pull it the same way `/kb-sync` does: `skills/kb-sync/scripts/prep.py <app>` caches every KB file to `/tmp/kb-sync/<app>/`, then read from there. Cross-checking against the old `claw-weebhook-crisp-chat` repo is wrong — that KB is stale.
+- **KB source** — the **live CS v2 KB** on `cs2.avada.net` (agent `joy-loyalty-agent` for Joy, `chatty-agent` for Chatty, `wishlist-agent` for Wishlist), NOT the old claw repo. Pull it the same way `/kb-sync` does: `skills/kb-sync/scripts/prep.py <app>` caches every KB file to `/tmp/kb-sync/<app>/`, then read from there. Cross-checking against the old `claw-weebhook-crisp-chat` repo is wrong — that KB is stale.
 
 Bias toward action — don't over-ask. If the user already named the app and window, run.
 
@@ -43,6 +44,8 @@ python3 scripts/fetch_chats.py --segment app_joy --days 7 --output /tmp/joy_conv
 python3 scripts/fetch_chats.py --segment app_joy --start 2026-06-08 --end 2026-06-14 --output /tmp/joy_convs.json
 # Chatty — pass BOTH segments:
 python3 scripts/fetch_chats.py --segment app_chatty,app_faqs --days 7 --output /tmp/chatty_convs.json
+# Wishlist:
+python3 scripts/fetch_chats.py --segment app_wishlist --days 7 --output /tmp/wishlist_convs.json
 ```
 
 Output is a JSON list of `{session_id, messages:[{role: Customer|Agent, text}]}`, newest first. The script prints session/message counts — note the session count for the file header.
@@ -68,7 +71,7 @@ Each answer must:
 - Note limitations / "this is logged as product feedback" where the chats show an unresolved issue.
 - Be customer-facing in tone — no internal tool names, credentials, or growth-hack labels.
 
-> ⚠️ **Never invent plan limits or pricing.** AI-conversation caps, product-sync limits, seat counts, history length, and prices are **facts**, not things to infer from chats. A merchant's chat is NOT a reliable source for the exact number. The source of truth is **chatty.net/pricing** (Chatty) — fetch it if you state any number, and copy the figure exactly. If you can't verify a limit, describe the behavior qualitatively ("limited by plan; check Subscription → View details") rather than writing a number. Past runs fabricated wrong caps (e.g. Free "50 lifetime", Basic "50/mo") that contradicted the live pricing page — do not repeat this.
+> ⚠️ **Never invent plan limits or pricing.** AI-conversation caps, product-sync limits, seat counts, history length, and prices are **facts**, not things to infer from chats. A merchant's chat is NOT a reliable source for the exact number. The source of truth is **chatty.net/pricing** for Chatty — fetch it if you state any number, and copy the figure exactly. Past runs fabricated wrong caps (e.g. Free "50 lifetime", Basic "50/mo") that contradicted the live pricing page — do not repeat this. **For Joy and Wishlist, no pricing URL is confirmed yet** — don't assume one; if a chat surfaces a plan-limit question you can't verify against the live KB, describe it qualitatively ("limited by plan; check Subscription → View details") or ask Liz for the source rather than guessing a number.
 
 ### 4b. Dedup against previous runs
 
@@ -84,7 +87,7 @@ If there are no prior runs, skip the markers and the summary.
 ### 5. Write the output file
 
 Path: `/Users/avada/CSL/reports/weekly-faqs/{app}/{app}_{YYYY-MM-DD}_{YYYY-MM-DD}.md`
-(`{app}` = `joy` or `chatty`; dates = window start/end.)
+(`{app}` = `joy`, `chatty`, or `wishlist`; dates = window start/end.)
 
 Header block:
 ```markdown
@@ -140,9 +143,12 @@ reports/weekly-faqs/
 ├── joy/
 │   ├── joy_2026-06-08_2026-06-14.md
 │   └── joy_2026-06-08_2026-06-14-kb-diff.md
-└── chatty/
-    ├── chatty_2026-06-08_2026-06-14.md
-    └── chatty_2026-06-08_2026-06-14-kb-diff.md
+├── chatty/
+│   ├── chatty_2026-06-08_2026-06-14.md
+│   └── chatty_2026-06-08_2026-06-14-kb-diff.md
+└── wishlist/
+    ├── wishlist_2026-06-08_2026-06-14.md
+    └── wishlist_2026-06-08_2026-06-14-kb-diff.md
 
 reports/analysis/
 └── kb-sync-{app}-{date}-payloads.json     # built in step 7, consumed by push_kb.py

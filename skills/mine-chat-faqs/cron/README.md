@@ -1,7 +1,7 @@
 # Weekly FAQ mining + KB diff/patch (launchd)
 
-Runs the `mine-chat-faqs` skill every **Tuesday 11:00 local** for both Joy and
-Chatty over the **previous full calendar week (Mon→Sun)**, writing dated files into
+Runs the `mine-chat-faqs` skill every **Tuesday 11:00 local** for Joy, Chatty, and
+Wishlist over the **previous full calendar week (Mon→Sun)**, writing dated files into
 `CSL/reports/weekly-faqs/{app}/`. It then chains straight into the kb-sync
 diff+patch flow (classify each mined FAQ vs the live KB, draft full-file patches)
 and DMs Liz a review digest on Telegram. **Nothing is pushed to v2 or reindexed** —
@@ -15,7 +15,7 @@ The separate `/kb-sync` cron (previously Monday 16:30, diff-only) is now
 
 | File | Role |
 |---|---|
-| `run-weekly.sh` | Headless runner — calls `claude -p` with the mining+diff+patch prompt for both apps |
+| `run-weekly.sh` | Headless runner — calls `claude -p` with the mining+diff+patch prompt for all three apps |
 | `com.avada.mine-faqs.plist` | launchd schedule (Tue 11:00), symlinked into `~/Library/LaunchAgents` |
 | `install.sh` | Symlinks + loads the job (or `--remove` to uninstall) |
 
