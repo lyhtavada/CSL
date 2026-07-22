@@ -1,0 +1,41 @@
+Run the daily ticket-watch check for Liz (CS Leader, Avada — Chatty, Joy Loyalty, Joy Wishlist).
+
+1. Run: python3 skills/ticket-watch/scripts/fetch_stale.py --stale-days 2 --json
+   (run from /Users/avada/CSL). Parse the JSON output.
+
+2. Compose ONE Slack DM message in Vietnamese, in this shape:
+
+   *Ticket Watch — <today's date>*
+
+   For each ticket in `newTickets` (cap at 20, oldest-first by sinceUpdateDays;
+   if more than 20, say "+N ticket khác cùng loại" at the end) AND every ticket
+   in `carryoverTickets` that has `sla_breach` in its flags (always show these,
+   they're the most urgent — don't just count them):
+     - one block per ticket:
+       `[app] #ticketNumber (priority) — subject (truncate ~80 chars)`
+       `Flag: <flags joined>, đã Nngày không update`
+       `Ticket: <ticketUrl>`
+       `Chat: <chatLink>` (omit line if null)
+       `Progress: tsStatus=<tsStatus>` + nếu có tasks[] thì show "X/Y task done"
+   Group by app (Chatty / Joy Loyalty / Wishlist) with a short header per group.
+
+   Then a one-line summary: "Tồn đọng cũ (đã báo trước đó, vẫn chưa xử lý): N ticket"
+   using `carryoverCount` minus however many sla_breach ones you already listed
+   in detail above — don't double count.
+
+   If `newCount` is 0 and there are no sla_breach carryover tickets, send a
+   short "Không có ticket mới cần chú ý hôm nay, N ticket tồn đọng cũ (theo dõi ở /ticket-watch)"
+   message instead of an empty report — do NOT skip sending.
+
+   Keep the whole message readable — this is a working DM, not a wall of text.
+   No fluff/preamble, straight into the report.
+
+3. Write the message to a payload JSON file (e.g. /tmp/ticket_watch_payload.json):
+   {"week": "<today's date>", "messages": [{"cs": "Liz", "slack_id": "U02GT4PC6RH", "text": "<the message>"}]}
+
+4. Send it for real:
+   python3 skills/qa-weekly/scripts/send_dm.py --payload /tmp/ticket_watch_payload.json --send
+
+Do not ask for confirmation — this is a scheduled unattended run. If the
+ticket API call fails, do not send a broken message; just exit non-zero so
+the cron log captures the failure.

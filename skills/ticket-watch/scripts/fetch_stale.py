@@ -58,6 +58,15 @@ def parse_dt(s):
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
 
 
+def is_project_ticket(subject):
+    """[DFY] / [ONB] tickets are ongoing multi-week projects tracked separately
+    by /dfy-tracker, /dfy-weekly, /dfy-monthly — staying 'open' for a while is
+    normal for them, so they're excluded from the generic staleness flag and
+    only checked via dfy_stuck (checklist literally stalled)."""
+    s = (subject or "").strip().lower()
+    return s.startswith("[dfy]") or s.startswith("[onb]")
+
+
 def flag_ticket(t, now, stale_days):
     flags = []
     status = t.get("ticketStatus")
@@ -71,8 +80,9 @@ def flag_ticket(t, now, stale_days):
 
     since_update = (now - updated).total_seconds() / 3600 if updated else None
     age_hours = (now - created).total_seconds() / 3600
+    project = is_project_ticket(t.get("subject"))
 
-    if since_update is not None and since_update >= stale_days * 24:
+    if not project and since_update is not None and since_update >= stale_days * 24:
         flags.append("stale_no_update")
 
     if t.get("tsStatus") == "pending" and age_hours >= 24:
@@ -144,21 +154,55 @@ def main():
 
     flagged.sort(key=lambda x: x["sinceUpdateDays"] or 0, reverse=True)
 
+    # Day-over-day dedup: a ticket already reported yesterday and still open
+    # today is "carryover" (summarized, not re-listed in full) — only tickets
+    # that just crossed a threshold since the last run are "new" and get
+    # listed in detail. Keeps the daily DM short instead of repeating the
+    # same backlog every day.
+    state_path = os.path.abspath(STATE_PATH)
+    os.makedirs(os.path.dirname(state_path), exist_ok=True)
+    prev_seen = {}
+    if os.path.exists(state_path):
+        try:
+            prev_seen = json.load(open(state_path)).get("tickets", {})
+        except (json.JSONDecodeError, OSError):
+            prev_seen = {}
+
+    new_items, carryover_items = [], []
+    next_seen = {}
+    for t in flagged:
+        key = f"{t['app']}:{t['ticketNumber']}"
+        prior = prev_seen.get(key)
+        first_flagged = prior.get("firstFlaggedAt") if prior else now.isoformat()
+        next_seen[key] = {"firstFlaggedAt": first_flagged, "flags": t["flags"]}
+        t["firstFlaggedAt"] = first_flagged
+        if prior:
+            carryover_items.append(t)
+        else:
+            new_items.append(t)
+
+    json.dump({"generatedAt": now.isoformat(), "tickets": next_seen},
+               open(state_path, "w"), ensure_ascii=False, indent=2)
+
     out = {
         "generatedAt": now.isoformat(),
         "staleDays": a.stale_days,
         "windowDays": a.window_days,
         "counts": counts,
         "flaggedCount": len(flagged),
-        "tickets": flagged,
+        "newCount": len(new_items),
+        "carryoverCount": len(carryover_items),
+        "newTickets": new_items,
+        "carryoverTickets": carryover_items,
     }
 
     if a.json:
         print(json.dumps(out, ensure_ascii=False, indent=2))
     else:
-        print(f"Flagged {len(flagged)} tickets across {list(APPS.keys())}")
-        for t in flagged:
-            print(f"  [{t['app']}] #{t['ticketNumber']} {t['flags']} "
+        print(f"Flagged {len(flagged)} tickets ({len(new_items)} new, "
+              f"{len(carryover_items)} carryover) across {list(APPS.keys())}")
+        for t in new_items:
+            print(f"  NEW [{t['app']}] #{t['ticketNumber']} {t['flags']} "
                   f"({t['sinceUpdateDays']}d since update) — {t['subject'][:60]}")
 
 
