@@ -90,6 +90,13 @@ def reindex(base, token, agent):
     return _req("POST", f"{base}/api/kb/reindex", token, {"agent": agent}, timeout=300)
 
 
+def chat(base, token, agent, message):
+    """POST /api/chat — test the live bot as a merchant would. Returns the full
+    response dict: {agent, reply, model, duration_ms, sources_count}."""
+    return _req("POST", f"{base}/api/chat", token,
+                {"agent": agent, "message": message}, timeout=90)
+
+
 if __name__ == "__main__":
     # quick CLI: kb_api.py list <app> | get <app> <path> | reindex <app>
     base, token = load_creds()
