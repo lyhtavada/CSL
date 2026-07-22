@@ -1,12 +1,22 @@
-Run the mine-chat-faqs skill for BOTH apps, fully autonomously — do not ask me any questions, use the defaults below.
+Run the mine-chat-faqs skill for BOTH apps, fully autonomously — do not ask me any questions, use the defaults below. Then continue into the kb-sync diff+patch flow for each app's freshly mined file. Do all of Joy first end-to-end, then Chatty (or interleave — either is fine), but do NOT push/reindex either app until both are done and Liz has reviewed.
 
-For each app:
-  - Joy:    segment app_joy
-  - Chatty: segment app_chatty,app_faqs
+For each app (Joy: segment app_joy; Chatty: segment app_chatty,app_faqs):
+
+MINING (mine-chat-faqs steps 1-5):
   - Window: use the EXACT --start/--end dates given below (last full Mon→Sun calendar week). Pass them straight to fetch_chats.py.
   - Fetch with scripts/fetch_chats.py (run from /Users/avada/CSL/skills/mine-chat-faqs), read the JSON + the app's LIVE CS v2 KB (cache it via: cd /Users/avada/CSL/skills/kb-sync/scripts && python3 prep.py {app}  → reads /tmp/kb-sync/{app}/). Do NOT read the old /Users/avada/claw-weebhook-crisp-chat repo — that KB is stale. Cluster questions into feature categories, and write one correct standard answer per FAQ in English.
   - NEVER invent plan limits or pricing. AI-conversation caps, product limits, seat counts, prices are facts — source them from chatty.net/pricing (fetch it) and copy exactly; if you can't verify a number, describe the limit qualitatively instead of guessing. Do not let a merchant's chat be the source for an exact cap.
   - Dedup against prior dated files in /Users/avada/CSL/reports/weekly-faqs/{app}/ and mark each FAQ 'new' or 'recurring', with a "What changed since last run" block.
   - Write the output to /Users/avada/CSL/reports/weekly-faqs/{app}/{app}_{start}_{end}.md using the real window dates.
 
-Do NOT copy anything into the agent KB or run /deploy-agent. Output stays under CSL/reports/weekly-faqs/ only. When done, print a one-line summary per app (file path + new/recurring counts).
+DIFF + PATCH (mine-chat-faqs steps 6-7, same mechanics as /kb-sync steps 1-3):
+  - Using the KB already cached above, classify every mined FAQ as COVERED / OUTDATED / GAP / PARTIAL — verify every discrepancy against the real cached file, never assume. Fan out with the Agent tool for the compare if the batch is large (see kb-sync/references/diff-prompt.md).
+  - Save the diff report to /Users/avada/CSL/reports/weekly-faqs/{app}/{app}_{start}_{end}-kb-diff.md (summary table + OUTDATED detail + GAP/PARTIAL detail + priority list by frequency).
+  - For every OUTDATED/GAP/PARTIAL item, draft the full new file content (anchor-based edit/insert into the cached KB file). Skip anything with no verifiable official answer yet (e.g. an open legal/security request with nothing published) — note it in the diff report instead of inventing content.
+  - Write the payloads file to /Users/avada/CSL/reports/analysis/kb-sync-{app}-{end date}-payloads.json (the exact format push_kb.py already reads).
+
+DO NOT push to v2 and DO NOT reindex — this is a review-gate run, same as the separate /kb-sync cron. Do NOT copy anything into the agent KB or run /deploy-agent directly either.
+
+When both apps are done, post ONE Slack DM to Liz (use the Slack bot token in ~/CSL/.env) summarizing, per app: mined FAQ count (new/recurring), # OUTDATED / # GAP / # PARTIAL from the diff, the top 5 diff items by frequency, and the file paths (mined FAQ, diff report, payloads). Tell her that after reviewing, she can push the approved set with:
+  python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>
+Keep the digest short. Also print a one-line summary per app to stdout (file paths + new/recurring counts + OUTDATED/GAP/PARTIAL counts).

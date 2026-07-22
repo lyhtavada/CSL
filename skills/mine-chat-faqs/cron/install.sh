@@ -28,12 +28,12 @@ launchctl unload "$DEST" 2>/dev/null || true
 ln -sf "$SRC" "$DEST"
 launchctl load "$DEST"
 
-echo "Installed $LABEL → runs Mondays 16:00 local (mines previous Mon→Sun week)."
+echo "Installed $LABEL → runs Tuesdays 11:00 local (mines previous Mon→Sun week, then diffs+drafts a patch vs the live KB, DMs Liz to review)."
 echo "  plist (source): $SRC"
 echo "  symlink:        $DEST"
 echo "  log:            /tmp/mine-faqs-weekly.log"
 echo
-echo "Test now without waiting for Monday 16:00:"
+echo "Test now without waiting for Tuesday 11:00:"
 echo "  launchctl start $LABEL"
 echo "  # or run the script directly:"
 echo "  bash $HERE/run-weekly.sh"
