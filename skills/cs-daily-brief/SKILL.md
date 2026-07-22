@@ -1,14 +1,18 @@
 ---
 name: cs-daily-brief
-description: Daily CS report DM'd to Liz — conversation volume per app (Joy/Chatty/Wishlist) for the previous full day, Team G2 check-in/checkout (late/miss), and neglected-ticket watch (stale/DFY-stuck, VIP, per-CS breakdown).
+description: Daily CS report posted to #cs-2-daily — conversation volume per app (Joy/Chatty/Wishlist) for the previous full day, Team G2 check-in/checkout (late/miss), and neglected-ticket watch (stale/DFY-stuck, VIP, per-CS breakdown).
 ---
 
 # /cs-daily-brief
 
 Runs each morning, reports on the **previous full calendar day** (00:00–24:00
-VN) — e.g. running on the 22nd reports on the 21st. Sends one Slack DM to
-Liz with 3 sections. Evolved from the original `/ticket-watch` (now section
-③) after Liz asked to fold in conversation volume + attendance.
+VN) — e.g. running on the 22nd reports on the 21st. Posts one Slack message
+to the **#cs-2-daily channel** (`C0B8042TXQ9`), sent with Liz's name/avatar
+(live-fetched, matches the `/cs-weekly`+`/dfy-monthly` convention for
+team-channel posts) — not a private DM. 3 sections. Evolved from the
+original `/ticket-watch` (now section ③) after Liz asked to fold in
+conversation volume + attendance, then to post to the team channel instead
+of DM'ing her.
 
 ## Sections
 
@@ -18,10 +22,10 @@ BigQuery `avada-crm.avada_cs.crisp_chats`, app split by `segments` LIKE
 `%app_joy%` / `%app_chatty%`|`%app_faqs%` / `%app_wishlist%`.
 
 **② Checkin/checkout (Team G2)** — late (>5 min) checkins, missed checkins,
-missed checkouts for the target day. `scripts/fetch_checkin.py`, reuses
-`shift_status()` from `../cs-daily/lib/render.py` (Admin API `/shifts` +
-`/shifts/:id/checks`, `$AVD_TOKEN`/`$AVD_API_BASE`, roster in
-`../cs-daily/lib/common.py`) — not duplicated.
+missed checkouts for the target day. `scripts/fetch_checkin.py`, via
+`shift_status()` in `scripts/_common.py` (Admin API `/shifts` +
+`/shifts/:id/checks`, `$AVD_TOKEN`/`$AVD_API_BASE`, roster included in the
+same file).
 
 **③ Ticket watch** — neglected open tickets across all 3 apps, unchanged from
 the original `/ticket-watch` design. `scripts/fetch_stale.py`:
@@ -46,7 +50,10 @@ python3 skills/cs-daily-brief/scripts/fetch_checkin.py --date <target> --json
 python3 skills/cs-daily-brief/scripts/fetch_stale.py --json
 ```
 Compose one Vietnamese Slack message (see `cron/prompt.txt` for exact shape),
-send via `../qa-weekly/scripts/send_dm.py` to Liz's Slack id `U02GT4PC6RH`.
+live-fetch Liz's name/avatar via `users.info`, then send via
+`../qa-weekly/scripts/send_dm.py` targeting channel `C0B8042TXQ9`
+(`chat.postMessage`'s `channel` field takes a channel ID the same way it
+takes a user ID — same script, no code change) with the `sender` override.
 
 ## Manual run
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Send QA weekly reports as Slack DMs via the Avada bot.
+Send Slack messages (DM or channel) via the Avada bot. Originally built for
+QA weekly DMs; also reused by /cs-daily-brief to post to a channel.
 
 SAFETY: only sends what's in the approved payload file. Run ONLY after Liz
 has reviewed. Supports --dry-run (default) — must pass --send to actually DM.
@@ -8,13 +9,15 @@ has reviewed. Supports --dry-run (default) — must pass --send to actually DM.
 Payload file (JSON):
   {
     "week": "2026-W22",
-    "sender": {                              // optional — DM appears as Liz
+    "sender": {                              // optional — post appears as Liz
       "username": "Ly (Liz)",
       "icon_url": "https://avatars.slack-edge.com/.../512.png"
     },
     "messages": [
-      {"cs": "Hazel", "slack_id": "U09FYACFH2T",
+      {"cs": "Hazel", "slack_id": "U09FYACFH2T",              // DM: user id (U...)
        "text": "*QA Tuần W22 — Hazel* ...markdown..."},
+      {"cs": "cs-2-daily", "slack_id": "C0B8042TXQ9",         // or a channel id (C...)
+       "text": "..."},
       ...
     ]
   }
@@ -148,7 +151,7 @@ def main():
         if only and cs not in only:
             skipped += 1
             continue
-        if not sid or not sid.startswith("U"):
+        if not sid or not sid.startswith(("U", "C")):
             print(f"  ✗ {cs}: invalid slack_id ({sid}) — SKIP")
             failed += 1
             continue

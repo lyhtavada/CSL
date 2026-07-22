@@ -70,9 +70,22 @@ Returns each ticket's `subject` + `description` + `priority` + `status` for the 
 `[dfy]` tickets are **excluded by default** (they have their own row in §2 and aren't
 support issues) — pass `--include-dfy` only if Liz wants them counted.
 
-Read the subjects + descriptions, cluster the asks into 3-5 themes, rank by volume,
-and for each give a 1-line "cách xử lý" + KB pointer. The `[bug]` subject prefix marks
-bug reports — flag any bug reported repeatedly (→ Known bugs in §4 of the report).
+Read the subjects + descriptions, cluster the asks into 3-5 themes. For EACH theme,
+**actually count** how many of the pulled tickets belong to it — do not eyeball or
+estimate ("~1/3", "phần lớn") from a skim. A theme's ticket must genuinely be about
+that issue (e.g. "AI trả lời sai/bịa thông tin" = the ticket reports a wrong/invented
+answer — NOT any ticket that merely mentions "AI", like a pricing question or a
+"train AI" request). State the real count as `{n}/{total non-dfy}` in the report, not
+a fraction guess. Rank themes by this count.
+
+For each theme, list ticket links as proof: `https://avada-ts-a9cb0.web.app` +
+`shortUrl` (e.g. `https://avada-ts-a9cb0.web.app/t/CHAT-260718-tp3nJq`), using
+`ticketNumber` as the link text. If a theme has ≤3 tickets, link all of them; if more,
+link 3 representative ones and note `(+n khác)` — never drop the true count to fit.
+
+For each theme, also give a 1-line "cách xử lý" + KB pointer. The `[bug]` subject
+prefix marks bug reports — flag any bug reported repeatedly (→ Known bugs in §4 of
+the report).
 
 (Chat volume is still pulled in §2 as a metric via `fetch_metrics.py` — only the
 top-issue clustering moved from chats to tickets.)
@@ -126,10 +139,10 @@ email, map từ `_identity/team-g2.md`), CSL (Liz) loại. Returns:
   1 nhóm "tra cứu Crisp", "check ticket" = 1 nhóm…). Bỏ URL trần khi hiển thị.
 - **`prevWeek`** (`--compare`) — `totalChatsG2` + `activeCount` tuần trước cho ▲▼.
 
-Fill the report's **🛠 TS Elite usage section** (gần cuối, ngay trước Coaching). Top
-table + ai chưa dùng + 3-5 câu/chủ đề hay hỏi. **If `inactive` không rỗng** → liệt kê
-tên, gợi ý Liz nhắc. Nếu `totalChatsG2` = 0 (cả team chưa đụng) → ẩn section, ghi 1
-dòng TL;DR. **Notion-only** — KHÔNG đưa vào Slack digest (step 8 không nhận file này).
+Fill the report's **🛠 TS Elite usage section** (gần cuối, ngay trước "Lưu ý tuần
+này"). Top table + ai chưa dùng + 3-5 câu/chủ đề hay hỏi. **If `inactive` không rỗng**
+→ liệt kê tên, gợi ý Liz nhắc. Nếu `totalChatsG2` = 0 (cả team chưa đụng) → ẩn section,
+ghi 1 dòng TL;DR. **Notion-only** — KHÔNG đưa vào Slack digest (step 8 không nhận file này).
 
 ### 5. Scan #product-release for releases in the period
 

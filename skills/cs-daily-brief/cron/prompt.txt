@@ -1,4 +1,7 @@
 Run the daily CS brief for Liz (CS Leader, Avada — Chatty, Joy Loyalty, Joy Wishlist, Team G2).
+This is posted to the team's #cs-2-daily Slack channel (C0B8042TXQ9), not a
+private DM — the team will read it too, so keep tone plain/factual (it
+already is: numbers + links, no internal commentary).
 
 This report always covers the PREVIOUS FULL CALENDAR DAY (00:00–24:00 VN
 time) for sections ① and ②. If today (VN) is the 22nd, the target date is
@@ -56,10 +59,29 @@ VN time, UTC+7) — do not hardcode a date.
    Keep the whole message readable — this is a working DM, not a wall of
    text. No fluff/preamble, straight into the report.
 
-3. Write the message to a payload JSON file (e.g. /tmp/cs_daily_brief_payload.json):
-   {"week": "<target date>", "messages": [{"cs": "Liz", "slack_id": "U02GT4PC6RH", "text": "<the message>"}]}
+3. Live-fetch Liz's Slack display name + avatar so the post reads as coming
+   from her (matches the convention used by /cs-weekly and /dfy-monthly for
+   team-channel posts):
 
-4. Send it for real:
+   curl -s https://slack.com/api/users.info \
+     -H "Authorization: Bearer $SLACK_BOT_TOKEN_AVADA" \
+     --data-urlencode "user=U02GT4PC6RH"
+
+   (load SLACK_BOT_TOKEN_AVADA from /Users/avada/CSL/.env first). From the
+   response, take `user.profile.display_name` (or `real_name` if empty) and
+   `user.profile.image_192` (or `image_512`). If the call fails, proceed
+   without a sender override rather than blocking the whole report.
+
+4. Write the message to a payload JSON file (e.g. /tmp/cs_daily_brief_payload.json):
+   {"week": "<target date>", "messages": [{"cs": "Liz", "slack_id": "C0B8042TXQ9",
+   "text": "<the message>"}], "sender": {"username": "<display name>", "icon_url": "<avatar url>"}}
+
+   (send_dm.py's `chat.postMessage` accepts a channel ID in the same
+   `channel` field it uses for a user ID, so "slack_id": "C0B8042TXQ9" posts
+   to the channel — no code change needed. `sender` is optional; omit it if
+   step 3 failed.)
+
+5. Send it for real:
    python3 skills/qa-weekly/scripts/send_dm.py --payload /tmp/cs_daily_brief_payload.json --send
 
 Do not ask for confirmation — this is a scheduled unattended run. If any of
