@@ -3,6 +3,10 @@
 Pull open tickets across all 3 apps Liz owns (Chatty, JOY Loyalty, Wishlist)
 and flag ones that look neglected, so /ticket-watch can DM her a daily report.
 
+A ticket is skipped entirely (no flags) if `dueDateDone` is true or
+`tsStatus == "done"` — that's the "Done" checkmark on the ticket header,
+which can stay true while `ticketStatus` itself is still "open" (API lag).
+
 Flags (a ticket can carry more than one):
   stale_no_update   regular (non-DFY/ONB) ticket, ticketStatus=open, age >=
                      --stale-days (default 1) AND (no update since created OR
@@ -74,6 +78,15 @@ def flag_ticket(t, now, stale_days, dfy_stale_days):
     flags = []
     status = t.get("ticketStatus")
     if status != "open":
+        return flags
+
+    # `dueDateDone` is the "Done" quick-action checkmark shown on the ticket
+    # header — merchant-facing work is finished even though `ticketStatus`
+    # can lag behind and still say "open" (confirmed live: JOY-260612-PTUnBC
+    # has dueDateDone=true, tsStatus=done_for_you, ticketStatus=open — Liz
+    # flagged this as a false positive). tsStatus=="done" is the same signal
+    # from the other status dropdown.
+    if t.get("dueDateDone") is True or t.get("tsStatus") == "done":
         return flags
 
     created = parse_dt(t.get("createdAt"))

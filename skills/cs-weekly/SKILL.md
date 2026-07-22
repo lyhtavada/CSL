@@ -176,10 +176,9 @@ do NOT fabricate a link. 4★ and above do NOT trigger this scan.
 
 ### 6. Write the report
 
-Use `reports/weekly-cs/TEMPLATE.md`. Fill the report's §1–4 + the §6-win from data.
-Leave the report's §5 (Coaching) and the Shoutout/Focus lines for Liz to review —
-these need her judgment; write `_(Liz điền)_` placeholders, but you MAY pre-fill a
-process reminder if a repeated bug/issue warrants it.
+Use `reports/weekly-cs/TEMPLATE.md`. Fill the report's §1–4b from data. Leave the
+final "💡 Lưu ý tuần này" section for Liz to review — write `_(Liz điền)_` placeholders,
+but you MAY pre-fill a process reminder if a repeated bug/issue warrants it.
 
 **Do NOT add an H1 title / Period line / intro quote at the top** — the Notion
 sub-page title already carries app + week + date range. The body starts straight at

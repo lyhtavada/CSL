@@ -29,6 +29,10 @@ same file).
 
 **③ Ticket watch** — neglected open tickets across all 3 apps, unchanged from
 the original `/ticket-watch` design. `scripts/fetch_stale.py`:
+- Skipped entirely if `dueDateDone` is true or `tsStatus=="done"` — the
+  "Done" checkmark on the ticket header, which can be true while
+  `ticketStatus` itself still says "open" (API lag; confirmed on a real
+  ticket Liz flagged as a false positive).
 - `stale_no_update`: regular ticket (excludes `[DFY]`/`[ONB]`), open ≥1 day,
   no update since created OR still `tsStatus=pending`/unclaimed.
 - `dfy_stuck`: `[DFY]`/`[ONB]` ticket, open ≥2 days, incomplete `tasks[]`
