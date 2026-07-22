@@ -16,7 +16,7 @@ approves, then push + reindex.
 
 ## Inputs
 
-- **app** — `chatty` (agent `chatty-agent` / Ivy) or `joy` (agent `joy-loyalty-agent`).
+- **app** — `chatty` (agent `chatty-agent` / Ivy), `joy` (agent `joy-loyalty-agent`), or `wishlist` (agent `wishlist-agent` / Wendy — still `enabled:false`, pre-launch as of 2026-07-22; KB uses the `reference`/`case` schema, not the old flat `faq` Q:/A: format — match that when patching).
   Ask if not given. Default: do `chatty` first.
 - **FAQ file** — newest in `~/CSL/reports/weekly-faqs/<app>/`
   (output of `/mine-chat-faqs`). Liz can override with an explicit path.
