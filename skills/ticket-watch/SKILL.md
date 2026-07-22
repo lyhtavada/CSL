@@ -19,12 +19,12 @@ re-listed every day).
 
 ## How it runs
 
-1. `scripts/fetch_stale.py --stale-days 2 --json` — pulls tickets (window:
-   last 60 days by `createdAt`), applies flags, and diffs against
-   `state/seen.json` from the previous run to split **new** (just crossed a
-   threshold — full detail) vs **carryover** (already reported, still open —
-   summarized count only, except `sla_breach` which always gets listed since
-   it's the most urgent). Updates `state/seen.json` for the next run.
+1. `scripts/fetch_stale.py --json` (stale-days=1, dfy-stale-days=2 by default)
+   — pulls tickets (window: last 60 days by `createdAt`), applies flags, and
+   diffs against `state/seen.json` from the previous run to split **new**
+   (just crossed a threshold — full detail) vs **carryover** (already
+   reported, still open — summarized count only). Updates `state/seen.json`
+   for the next run.
 2. Compose a Vietnamese Slack message: per new/urgent ticket show subject,
    ticket link (`ticketUrl`), chat link (`chatLink`), and current status
    (`tsStatus`/progress) — then a one-line summary of carryover counts by
@@ -36,11 +36,19 @@ re-listed every day).
 ## Manual run
 
 ```
-python3 skills/ticket-watch/scripts/fetch_stale.py --stale-days 2 --json > /tmp/ticket_watch.json
+python3 skills/ticket-watch/scripts/fetch_stale.py --json > /tmp/ticket_watch.json
 ```
 Then read the JSON, compose the DM text, write a payload file, and run
 `send_dm.py --payload ... --send`.
 
 ## Cron
 
-Daily 08:30 local — `cron/run-ticket-watch.sh`, installed via `cron/install.sh`.
+Daily 10:00 local — `cron/run-ticket-watch.sh`, installed via `cron/install.sh`.
+
+## Suggested, not built (Liz can request)
+
+- **Breakdown by CS phụ trách** — ticket API has `members[]`, could group
+  stale tickets by who owns them → accountability view instead of a flat list.
+- **VIP/Pro+Plus tier weighting** — surface stale tickets from Pro/Plus
+  merchants above Free-tier ones, tying into the Chatty Proactive Care segment
+  data.

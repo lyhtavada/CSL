@@ -1,16 +1,15 @@
 Run the daily ticket-watch check for Liz (CS Leader, Avada — Chatty, Joy Loyalty, Joy Wishlist).
 
-1. Run: python3 skills/ticket-watch/scripts/fetch_stale.py --stale-days 2 --json
-   (run from /Users/avada/CSL). Parse the JSON output.
+1. Run: python3 skills/ticket-watch/scripts/fetch_stale.py --json
+   (run from /Users/avada/CSL, defaults: stale-days=1 for regular tickets,
+   dfy-stale-days=2 for [DFY]/[ONB] tickets). Parse the JSON output.
 
 2. Compose ONE Slack DM message in Vietnamese, in this shape:
 
    *Ticket Watch — <today's date>*
 
    For each ticket in `newTickets` (cap at 20, oldest-first by sinceUpdateDays;
-   if more than 20, say "+N ticket khác cùng loại" at the end) AND every ticket
-   in `carryoverTickets` that has `sla_breach` in its flags (always show these,
-   they're the most urgent — don't just count them):
+   if more than 20, say "+N ticket khác cùng loại" at the end):
      - one block per ticket:
        `[app] #ticketNumber (priority) — subject (truncate ~80 chars)`
        `Flag: <flags joined>, đã Nngày không update`
@@ -20,12 +19,11 @@ Run the daily ticket-watch check for Liz (CS Leader, Avada — Chatty, Joy Loyal
    Group by app (Chatty / Joy Loyalty / Wishlist) with a short header per group.
 
    Then a one-line summary: "Tồn đọng cũ (đã báo trước đó, vẫn chưa xử lý): N ticket"
-   using `carryoverCount` minus however many sla_breach ones you already listed
-   in detail above — don't double count.
+   using `carryoverCount`.
 
-   If `newCount` is 0 and there are no sla_breach carryover tickets, send a
-   short "Không có ticket mới cần chú ý hôm nay, N ticket tồn đọng cũ (theo dõi ở /ticket-watch)"
-   message instead of an empty report — do NOT skip sending.
+   If `newCount` is 0, send a short "Không có ticket mới cần chú ý hôm nay,
+   N ticket tồn đọng cũ (theo dõi ở /ticket-watch)" message instead of an
+   empty report — do NOT skip sending.
 
    Keep the whole message readable — this is a working DM, not a wall of text.
    No fluff/preamble, straight into the report.
