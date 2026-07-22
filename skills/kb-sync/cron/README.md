@@ -47,7 +47,7 @@ bash ~/CSL/skills/kb-sync/cron/install.sh --remove
 ```
 
 ## After the diff arrives
-Review the Slack DM + payloads, then push the approved set:
+Review the Telegram digest + payloads, then push the approved set:
 ```
 python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>
 ```

@@ -15,8 +15,10 @@ DIFF + PATCH (mine-chat-faqs steps 6-7, same mechanics as /kb-sync steps 1-3):
   - For every OUTDATED/GAP/PARTIAL item, draft the full new file content (anchor-based edit/insert into the cached KB file). Skip anything with no verifiable official answer yet (e.g. an open legal/security request with nothing published) — note it in the diff report instead of inventing content.
   - Write the payloads file to /Users/avada/CSL/reports/analysis/kb-sync-{app}-{end date}-payloads.json (the exact format push_kb.py already reads).
 
-DO NOT push to v2 and DO NOT reindex — this is a review-gate run, same as the separate /kb-sync cron. Do NOT copy anything into the agent KB or run /deploy-agent directly either.
+DO NOT push to v2 and DO NOT reindex — this is a review-gate run. Do NOT copy anything into the agent KB or run /deploy-agent directly either.
 
-When both apps are done, post ONE Slack DM to Liz (use the Slack bot token in ~/CSL/.env) summarizing, per app: mined FAQ count (new/recurring), # OUTDATED / # GAP / # PARTIAL from the diff, the top 5 diff items by frequency, and the file paths (mined FAQ, diff report, payloads). Tell her that after reviewing, she can push the approved set with:
+When both apps are done, send Liz a Telegram digest via the shared notifier — one message per app:
+  python3 ~/CSL/skills/_shared/notify_tele.py --job "KB Diff — {App}" --status ok --summary "<digest text>"
+Build <digest text> per app as a short plain-text block: mined FAQ count (new/recurring), # OUTDATED / # GAP / # PARTIAL from the diff, the top 5 diff items by frequency, and the file paths (mined FAQ, diff report, payloads). End it with the push command for her to run after reviewing:
   python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>
-Keep the digest short. Also print a one-line summary per app to stdout (file paths + new/recurring counts + OUTDATED/GAP/PARTIAL counts).
+Keep each digest under ~1200 characters (notify_tele truncates past 1500) — trim the priority list if needed rather than the file paths or counts. Also print a one-line summary per app to stdout (file paths + new/recurring counts + OUTDATED/GAP/PARTIAL counts).

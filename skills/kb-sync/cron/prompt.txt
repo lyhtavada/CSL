@@ -11,9 +11,10 @@ For each app:
 
 DO NOT push to v2 and DO NOT reindex. This is a review-gate run.
 
-When both apps are done, post ONE Slack DM to Liz (use the Slack bot token in
-~/CSL/.env) summarizing per app: # OUTDATED / # GAP / # PARTIAL, the top 5 items by
-frequency, and the payloads file paths — and tell her to run, after review:
+When both apps are done, send Liz a Telegram digest per app via the shared notifier:
+  python3 ~/CSL/skills/_shared/notify_tele.py --job "KB Diff — {App}" --status ok --summary "<digest text>"
+<digest text> = # OUTDATED / # GAP / # PARTIAL, the top 5 items by frequency, and
+the payloads file path — end with the push command for her to run after review:
   python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>
-Keep the digest short. Do not commit anything to the repo except the payloads +
-a brief diff report under reports/analysis/.
+Keep each digest under ~1200 characters. Do not commit anything to the repo except
+the payloads + a brief diff report under reports/analysis/.
