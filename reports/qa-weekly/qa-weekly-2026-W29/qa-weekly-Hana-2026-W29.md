@@ -49,8 +49,3 @@ Tuần này bạn thể hiện sự kiên nhẫn và chăm chỉ rõ rệt — x
 - Điểm 85 → 78 (▼ -7)
 - Lỗi lặp lại từ 2026-W28: KN1 — cần ưu tiên sửa
 - Lỗi tuần trước đã hết: KN3, KT1 👏
-
-## 🚨 Flag cho Liz
-
-- #15 - thao tác (bật Instant popup) gây hậu quả rộng trên live store, ảnh hưởng mọi khách ghé site, phải nhờ CS khác revert
-- #8 - dùng hết quota auto-translate giới hạn/không hoàn tác của khách mà chưa xin phép trước
