@@ -1,54 +1,67 @@
-Run the daily ticket-watch check for Liz (CS Leader, Avada — Chatty, Joy Loyalty, Joy Wishlist).
+Run the daily CS brief for Liz (CS Leader, Avada — Chatty, Joy Loyalty, Joy Wishlist, Team G2).
 
-1. Run: python3 skills/ticket-watch/scripts/fetch_stale.py --json
-   (run from /Users/avada/CSL, defaults: stale-days=1 for regular tickets,
-   dfy-stale-days=2 for [DFY]/[ONB] tickets). Parse the JSON output.
+This report always covers the PREVIOUS FULL CALENDAR DAY (00:00–24:00 VN
+time) for sections ① and ②. If today (VN) is the 22nd, the target date is
+the 21st. Compute the target date yourself (yesterday in Asia/Bangkok, i.e.
+VN time, UTC+7) — do not hardcode a date.
+
+1. Run these 3 commands from /Users/avada/CSL, using the computed target date
+   (YYYY-MM-DD) for the first two:
+
+   python3 skills/cs-daily-brief/scripts/fetch_conversations.py --date <target> --json
+   python3 skills/cs-daily-brief/scripts/fetch_checkin.py --date <target> --json
+   python3 skills/cs-daily-brief/scripts/fetch_stale.py --json
+
+   (fetch_stale.py has no --date — it's a live snapshot of currently
+   neglected tickets, not tied to the target day.)
 
 2. Compose ONE Slack DM message in Vietnamese, in this shape:
 
-   *Ticket Watch — <today's date>*
+   *📊 BÁO CÁO CS HÀNG NGÀY — <target date dd/mm/yyyy>*
 
-   *① Ticket mới cần chú ý*
-   For each ticket in `newTickets` (cap at 20, oldest-first by sinceUpdateDays;
-   if more than 20, say "+N ticket khác cùng loại" at the end):
-     - one block per ticket:
-       `[app] #ticketNumber (priority, plan) — subject (truncate ~80 chars)`
-       `Flag: <flags joined>, đã Nngày không update`
-       `Assignee: <assignees joined>` — `⭐ VIP` suffix if `isVip` is true
-       `Ticket: <ticketUrl>`
-       `Chat: <chatLink>` (omit line if null)
-       `Progress: tsStatus=<tsStatus>` + nếu có tasks[] thì show "X/Y task done"
-   Group by app (Chatty / Joy Loyalty / Wishlist) with a short header per group.
-   Then one line: "Tồn đọng cũ (đã báo trước đó, vẫn chưa xử lý): N ticket" using
-   `carryoverCount`.
+   *① Tổng quan conversation*
+   From fetch_conversations.py output: "Total: N conversations" then
+   "Joy: X | Chatty: Y | Wishlist: Z" on the next line.
 
-   *② VIP (Pro+/Plus/Enterprise) đang tồn đọng*
-   List every ticket in `vipTickets` (both new and carryover — VIP always shown
-   in full, not summarized), sorted as given (oldest since-update first). Same
-   one-line-per-ticket format as above but compact: `[app] #ticketNumber (plan)
-   — subject, Nngày không update, assignee: X — <ticketUrl>`. If `vipCount` is 0,
-   write "Không có VIP ticket tồn đọng." Cap at 15 with "+N khác" if longer —
-   but never drop these silently, always state the true `vipCount`.
+   *② Checkin/Checkout (Team G2)*
+   From fetch_checkin.py output:
+   - If `allOk` true: "✅ Tất cả OK — không có late/miss."
+   - Else, for each non-empty list:
+     "🔴 Checkin muộn:" then one line per entry "  • <nick> — <shift> (muộn <minutes>p)"
+     "⛔ Miss checkin:" then one line per entry "  • <nick> — <shift>"
+     "🚪 Miss checkout:" then one line per entry "  • <nick> — <shift>"
 
-   *③ Breakdown theo CS phụ trách*
-   From `assigneeBreakdown` (already sorted desc), list top 8 as
-   "Tên: N ticket tồn đọng" — this is a snapshot of current total flagged
-   tickets (new + carryover) per owner, not just today's new ones. Skip this
-   section only if the list is empty.
+   *③ Ticket watch (tồn đọng hiện tại)*
+   Same structure as the original /ticket-watch report:
+   - For each ticket in `newTickets` (cap 20, oldest-first by sinceUpdateDays;
+     "+N ticket khác cùng loại" if more), grouped by app:
+     `[app] #ticketNumber (priority, plan) — subject (~80 chars)`
+     `Flag: <flags>, đã Nngày không update`
+     `Assignee: <assignees>` (add "⭐ VIP" if isVip)
+     `Ticket: <ticketUrl>`
+     `Chat: <chatLink>` (omit if null)
+     `Progress: tsStatus=<tsStatus>` + "X/Y task done" if tasks[] present
+   - Then: "Tồn đọng cũ (đã báo trước đó, vẫn chưa xử lý): N ticket" (carryoverCount)
+   - Then *VIP tồn đọng*: every ticket in `vipTickets` (new + carryover, always
+     shown in full — never just a count), compact one-liner each:
+     `[app] #ticketNumber (plan) — subject, Nngày không update, assignee: X — <ticketUrl>`.
+     Cap 15 with "+N khác" if longer, but state the true vipCount.
+     If vipCount is 0: "Không có VIP ticket tồn đọng."
+   - Then *Breakdown theo CS phụ trách*: top 8 from `assigneeBreakdown` as
+     "Tên: N ticket tồn đọng". Skip if empty.
+   - If newCount is 0 and vipCount is 0, compress the ticket list into:
+     "Không có ticket mới/VIP cần chú ý hôm nay, N ticket tồn đọng cũ" but
+     still include the CS breakdown.
 
-   If `newCount` is 0 and `vipCount` is 0, you may compress ① and ② into one
-   short line: "Không có ticket mới/VIP cần chú ý hôm nay, N ticket tồn đọng cũ
-   (theo dõi ở /ticket-watch)" — but still send it, and still include ③.
+   Keep the whole message readable — this is a working DM, not a wall of
+   text. No fluff/preamble, straight into the report.
 
-   Keep the whole message readable — this is a working DM, not a wall of text.
-   No fluff/preamble, straight into the report.
-
-3. Write the message to a payload JSON file (e.g. /tmp/ticket_watch_payload.json):
-   {"week": "<today's date>", "messages": [{"cs": "Liz", "slack_id": "U02GT4PC6RH", "text": "<the message>"}]}
+3. Write the message to a payload JSON file (e.g. /tmp/cs_daily_brief_payload.json):
+   {"week": "<target date>", "messages": [{"cs": "Liz", "slack_id": "U02GT4PC6RH", "text": "<the message>"}]}
 
 4. Send it for real:
-   python3 skills/qa-weekly/scripts/send_dm.py --payload /tmp/ticket_watch_payload.json --send
+   python3 skills/qa-weekly/scripts/send_dm.py --payload /tmp/cs_daily_brief_payload.json --send
 
-Do not ask for confirmation — this is a scheduled unattended run. If the
-ticket API call fails, do not send a broken message; just exit non-zero so
-the cron log captures the failure.
+Do not ask for confirmation — this is a scheduled unattended run. If any of
+the 3 fetch commands fails, do not send a partial/broken message; exit
+non-zero so the cron log captures the failure instead.

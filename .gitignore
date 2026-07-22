@@ -18,5 +18,5 @@ reports/analysis/kb-sync-*-payloads.json
 reports/analysis/bot-corrections-*-payloads.json
 joy-src/
 
-# ticket-watch dedup state — runtime, regenerated each run
-skills/ticket-watch/state/
+# cs-daily-brief dedup state — runtime, regenerated each run
+skills/cs-daily-brief/state/
