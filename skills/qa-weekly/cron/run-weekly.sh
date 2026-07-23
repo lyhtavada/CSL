@@ -6,7 +6,7 @@
 # the full result to Liz for review. It does NOT send anything to CS — Liz
 # reviews and gives the go-ahead manually.
 #
-# Schedule: Friday 14:00 local (see com.avada.qa-weekly.plist).
+# Schedule: Wednesday 14:00 local (see com.avada.qa-weekly.plist).
 # Manual run:  bash run-weekly.sh
 #
 set -euo pipefail
