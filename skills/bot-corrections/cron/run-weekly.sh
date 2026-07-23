@@ -3,7 +3,8 @@
 # Weekly bot-corrections run — invoked by launchd (com.avada.bot-corrections).
 #
 # Step 1 (pure script): pull correction (câu bot bị CS sửa) của Joyce + Ivy trong
-# tuần trước (Mon→Sun), ghi report markdown vào reports/bot-corrections/, commit.
+# tuần vừa qua (Thứ 5 tuần trước → Thứ 4 tuần này), ghi report markdown vào
+# reports/bot-corrections/, commit.
 #
 # Step 2 (Claude headless): diff report tuần này với KB live trên CS v2 cho cả
 # 2 app, classify COVERED/OUTDATED/GAP/PARTIAL, soạn payload patch, DM Telegram

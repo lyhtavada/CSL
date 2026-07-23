@@ -1,11 +1,11 @@
-Chạy QA weekly cho team CS 2 (in-house) cho TUẦN VỪA KẾT THÚC (Thứ 2 → Chủ Nhật gần nhất). Hôm nay là Thứ 2, nên tuần cần chấm là tuần trước đó.
+Chạy QA weekly cho team CS 2 (in-house) cho TUẦN VỪA KẾT THÚC (Thứ 6 → Thứ 5 gần nhất). Hôm nay là Thứ 6, nên tuần cần chấm là Thứ 6 tuần trước → Thứ 5 tuần này.
 
 Làm đúng theo skill `skills/qa-weekly/SKILL.md` và rubric `playbooks/qa-weekly-rubric.md`. Các bước:
 
-1. Tính khoảng ngày tuần trước (Mon–Sun) và ISO week (vd 2026-W22).
+1. Tính khoảng ngày tuần trước (Fri–Thu) và ISO week (vd 2026-W22).
 
 2. Fetch sessions in-house:
-   python3 skills/qa-weekly/scripts/fetch_sessions.py --start <MON> --end <SUN> --out /tmp/qa_weekly_sessions.json --sample 30 --only-type in-house
+   python3 skills/qa-weekly/scripts/fetch_sessions.py --start <FRI> --end <THU> --out /tmp/qa_weekly_sessions.json --sample 30 --only-type in-house
 
 3. Với mỗi CS trong file đó, fetch transcript:
    python3 skills/qa-weekly/scripts/fetch_transcripts.py --sessions-file /tmp/qa_weekly_sessions.json --cs <Name> --out /tmp/qa_tx_<Name>.txt

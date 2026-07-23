@@ -158,8 +158,8 @@ def fetch_by_cs(client, emails, start, end):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--start", required=True, help="YYYY-MM-DD (Monday)")
-    ap.add_argument("--end", required=True, help="YYYY-MM-DD (Sunday)")
+    ap.add_argument("--start", required=True, help="YYYY-MM-DD (Friday)")
+    ap.add_argument("--end", required=True, help="YYYY-MM-DD (Thursday)")
     ap.add_argument("--out", required=True)
     ap.add_argument("--sample", type=int, default=30)
     ap.add_argument("--exclude", default="")

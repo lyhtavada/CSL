@@ -11,8 +11,9 @@ Nguồn: GET /api/corrections?agent=<id>&page=N  (cs2.avada.net)
 Auth: Authorization: Bearer <CS2_API_TOKEN>  (super_admin) + User-Agent header.
 Creds đọc từ ~/CSL/.env (CS2_API_URL, CS2_API_TOKEN).
 
-Cửa sổ mặc định = tuần TRƯỚC trọn vẹn (Mon 00:00 → Sun 23:59:59 local).
-Lọc theo created_at (lúc correction được tạo).
+Cửa sổ mặc định = rolling 7 ngày kết thúc HÔM QUA (Thứ 5 00:00 tuần trước →
+Thứ 4 23:59:59 tuần này, khi chạy đúng lịch Thứ 5). Lọc theo created_at (lúc
+correction được tạo).
 
 Usage:
   python3 fetch_corrections.py                       # cả Joy + Chatty, tuần trước
@@ -141,11 +142,11 @@ def parse_iso(s):
 
 
 def last_week_window():
-    """Mon 00:00 → Sun 23:59:59 của tuần trước (local)."""
+    """Rolling 7 ngày kết thúc hôm qua (local) — vd chạy Thứ 5 thì window là
+    Thứ 5 tuần trước 00:00 → Thứ 4 tuần này 23:59:59."""
     today = dt.date.today()
-    monday_this = today - dt.timedelta(days=today.weekday())
-    start = monday_this - dt.timedelta(days=7)
-    end = start + dt.timedelta(days=6)
+    end = today - dt.timedelta(days=1)
+    start = end - dt.timedelta(days=6)
     start_dt = dt.datetime.combine(start, dt.time.min)
     end_dt = dt.datetime.combine(end, dt.time.max)
     return start_dt, end_dt

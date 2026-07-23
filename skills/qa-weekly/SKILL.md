@@ -29,7 +29,7 @@ Liz says `/qa-weekly`, "QA tuần này / tuần trước", "chấm QA tuần cho
 
 ## Lịch tự chạy
 
-Tự chạy **Thứ 2, 14:00** qua launchd (`com.avada.qa-weekly`, plist ở
+Tự chạy **Thứ 6, 14:00** qua launchd (`com.avada.qa-weekly`, plist ở
 `~/Library/LaunchAgents/`, runner `cron/run-weekly.sh` + `cron/prompt.txt`).
 Cron chấm tuần vừa kết thúc + tạo report, rồi **gửi toàn bộ kết quả cho Liz duyệt
 qua Slack DM** — KHÔNG tự DM cho CS. Liz review xong, ra lệnh thì mới gửi CS
@@ -37,9 +37,9 @@ qua Slack DM** — KHÔNG tự DM cho CS. Liz review xong, ra lệnh thì mới 
 
 ## Parameters
 
-- **Period** (default: **last completed week**, Mon–Sun):
+- **Period** (default: **last completed week**, Fri–Thu):
   - no arg → last completed week
-  - "tuần này" → current week Mon → today
+  - "tuần này" → current week Fri → today
   - "2026-W22" or a date → that ISO week
 - **App:** both Joy + Chatty (default). Roster is Team G2 only (`_identity/team-g2.md`).
 - **Sample:** 30 chats/CS (`--sample`).
@@ -52,14 +52,14 @@ only fetches data, kicks off the workflow, and assembles the result.
 
 ### Step 1 — Resolve the week
 
-Compute Mon–Sun for the target week. Default = last completed week.
+Compute Fri–Thu for the target week. Default = last completed week.
 Derive `iso_week` (e.g. `2026-W22`) and the previous week tag for comparison.
 
 ### Step 2 — Fetch sessions (main thread)
 
 ```bash
 python3 skills/qa-weekly/scripts/fetch_sessions.py \
-  --start <MON> --end <SUN> \
+  --start <FRI> --end <THU> \
   --out /tmp/qa_weekly_sessions.json --sample 30 \
   --only-type in-house
 ```

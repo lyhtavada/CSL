@@ -14,20 +14,20 @@
   <key>WorkingDirectory</key>
   <string>/Users/avada/CSL</string>
 
-  <!-- Every Monday at 11:00 local time.
+  <!-- Every Thursday at 10:00 local time.
        Fetches corrections -> commits report -> Claude headless diffs vs KB v2
        -> drafts patch payloads -> DMs Liz on Telegram to review (no auto-push). -->
   <key>StartCalendarInterval</key>
   <dict>
     <key>Weekday</key>
-    <integer>1</integer>
+    <integer>4</integer>
     <key>Hour</key>
-    <integer>11</integer>
+    <integer>10</integer>
     <key>Minute</key>
     <integer>0</integer>
   </dict>
 
-  <!-- Nếu Mac ngủ/tắt lúc 11:00 T2, launchd chạy ngay khi máy thức. -->
+  <!-- Nếu Mac ngủ/tắt lúc 10:00 T5, launchd chạy ngay khi máy thức. -->
   <key>RunAtLoad</key>
   <false/>
 

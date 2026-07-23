@@ -1,12 +1,12 @@
 ---
 name: bot-corrections
-description: Weekly report các câu bot CS (Joyce/Ivy) bị human sửa (correction) để Liz update KB/training data cho bot. Period = Mon→Sun tuần trước.
+description: Weekly report các câu bot CS (Joyce/Ivy) bị human sửa (correction) để Liz update KB/training data cho bot. Period = Thứ 5 tuần trước → Thứ 4 tuần này.
 ---
 
 # /bot-corrections — Weekly Bot Correction Report
 
 Pull các **correction** (câu bot trả bị CS sửa) của Joyce (Joy) + Ivy (Chatty) trong
-tuần trước (Mon→Sun), gom theo topic, ghi report markdown vào repo để Liz dùng
+tuần vừa qua (Thứ 5 tuần trước → Thứ 4 tuần này), gom theo topic, ghi report markdown vào repo để Liz dùng
 **update data cho bot**.
 
 ## Nguồn data
@@ -19,7 +19,7 @@ tuần trước (Mon→Sun), gom theo topic, ghi report markdown vào repo để
 ## Chạy
 
 ```bash
-# Mặc định: cả Joy + Chatty, tuần TRƯỚC trọn vẹn (Mon→Sun)
+# Mặc định: cả Joy + Chatty, rolling 7 ngày kết thúc hôm qua (Thứ 5 → Thứ 4)
 python3 skills/bot-corrections/scripts/fetch_corrections.py
 
 # Chỉ 1 app
