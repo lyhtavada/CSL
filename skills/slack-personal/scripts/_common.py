@@ -7,6 +7,7 @@ import urllib.parse
 import urllib.request
 
 ENV_PATH = "/Users/avada/CSL/.env"
+SELF_USER_ID = "U02GT4PC6RH"  # Liz's own Slack user id (from auth.test)
 
 
 def load_token():
@@ -40,6 +41,44 @@ def slack_call(method, params, http_method="GET"):
     if not data.get("ok"):
         raise SystemExit(f"Slack API error ({method}): {data.get('error')}")
     return data
+
+
+SELF_DM_CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".self_dm_cache")
+
+
+def find_self_dm_channel():
+    """Find Liz's own "Saved Messages" DM channel id, caching it locally since
+    it requires paginating through every im channel (~280+) to find.
+    """
+    if os.path.exists(SELF_DM_CACHE):
+        with open(SELF_DM_CACHE) as f:
+            cached = f.read().strip()
+            if cached:
+                return cached
+
+    cursor = None
+    found = None
+    while True:
+        params = {"types": "im", "limit": 200}
+        if cursor:
+            params["cursor"] = cursor
+        data = slack_call("conversations.list", params)
+        for c in data["channels"]:
+            if c.get("user") == SELF_USER_ID:
+                found = c["id"]
+                break
+        if found:
+            break
+        cursor = data.get("response_metadata", {}).get("next_cursor")
+        if not cursor:
+            break
+
+    if not found:
+        raise SystemExit("Could not find self-DM channel for Liz's account")
+
+    with open(SELF_DM_CACHE, "w") as f:
+        f.write(found)
+    return found
 
 
 def parse_slack_link(url):
