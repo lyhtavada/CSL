@@ -74,17 +74,39 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Hi there,
 >
-> This is [Tên CS] from Avada Support Team. I keep an eye on how Chatty is performing for merchants on [Pro/Plus], and I pulled up your numbers for the last 30 days.
+> This is [Tên CS] from Avada Support Team. I keep an eye on how Chatty is performing for merchants on [Pro/Plus], so I pulled up your numbers for the last 30 days before reaching out.
 >
-> [Store name] has had [X] conversations through Chatty, with [Y] of those leading to a sale, about [Z]% of chats turning into revenue. That said, when I checked your setup I noticed [điền từ audit: cụ thể 1-2 điểm đang thiếu, VD: your AI has not been trained on your product pages yet / notifications are off so you may be missing chats]. Fixing that could get you even more out of the [X] conversations you are already getting.
+> Here is what Chatty has done for [Store name] so far:
 >
-> I would like to walk you through it live, free of charge, no obligation. Pick a time that works for you here: [Link đặt lịch] — 15 minutes, I will show you exactly what I would change and why.
+> - Total conversations: [X]
+> - Conversations that led to a sale: [Y] ([Z]% chat-to-sales rate)
+> - Assisted revenue: [amount]
 >
-> Prefer email instead? Just reply and I will get started the same way.
+> That is already working in your favor, and it is running on a setup that is not fully finished yet. When I checked, here is what stood out:
+>
+> - [điền từ audit: finding 1, cụ thể, VD "Your AI has not been trained on your product pages yet, so it cannot answer specific product questions"]
+> - [điền từ audit: finding 2, cụ thể, VD "Notifications are off, so new chats may sit unanswered"]
+> - [điền từ audit: finding 3 nếu có, để trống nếu chỉ có 2]
+>
+> Closing these gaps usually means more of your existing conversations turn into sales, without you needing to drive any extra traffic.
+>
+> Here is what I would do for you, free of charge, as part of our done-for-you service:
+>
+> 1. Fix the items above directly in your account
+> 2. Test the AI agent end to end (guest and signed-in view) to confirm it responds correctly
+> 3. Send you a short before/after summary so you can see exactly what changed
+>
+> I would like to walk you through this live so you can ask questions and see it in real time. Pick a time that works for you here: [Link đặt lịch] — 15 minutes, no obligation.
+>
+> Prefer email instead? Just reply and I will get started the same way, then show you the result for your review.
+>
+> Looking forward to helping [Store name] get more out of Chatty.
 >
 > Best,
 > [Tên CS]
 > Avada Support Team
+
+**Ghi chú khi điền:** nếu không đủ 3 finding rõ ràng, chỉ ghi 2 — không thêm cho đủ vì sẽ mất tính cụ thể. Số liệu conversations/revenue/rate lấy từ audit dashboard (theo SOP `playbooks/chatty-proactive-dfy-pilot.md`); nếu store quá mới không có đủ 30 ngày data, dùng Template A/B thay vì D.
 
 ---
 
