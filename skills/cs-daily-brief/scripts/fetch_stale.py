@@ -11,9 +11,19 @@ Flags (a ticket can carry more than one):
   stale_no_update   regular (non-DFY/ONB) ticket, ticketStatus=open, age >=
                      --stale-days (default 1) AND (no update since created OR
                      still tsStatus=pending / unclaimed)
-  dfy_stuck         [DFY]/[ONB] project ticket, ticketStatus=open, age >=
-                     --dfy-stale-days (default 2) AND has an incomplete
-                     tasks[] item with no update since (checklist stalled)
+  dfy_stuck         [DFY]/[ONB] project ticket, ticketStatus=open, has an
+                     incomplete tasks[] item, AND the checklist's completed
+                     count hasn't grown in >= --dfy-stale-days (checklist
+                     progress itself is tracked per-ticket in state/seen.json
+                     under "taskProgress", NOT the ticket's `updatedAt` —
+                     `updatedAt` lags/changes for reasons unrelated to the
+                     checklist, e.g. viewer read receipt, so an actively
+                     worked ticket (3/5 tasks done) was getting flagged the
+                     same as a truly untouched one (0/5) whenever
+                     `updatedAt` happened to sit still (Liz-reported false
+                     positive, 2026-07-23). Every task checked off resets
+                     that ticket's stall clock to `now`; first sighting of a
+                     ticket seeds the clock at its `createdAt`.
 
 Window: pulls tickets created in the last --window-days (default 60) — a ticket
 open longer than that without being closed is assumed rare enough to not need
@@ -74,7 +84,7 @@ def is_project_ticket(subject):
     return s.startswith("[dfy]") or s.startswith("[onb]")
 
 
-def flag_ticket(t, now, stale_days, dfy_stale_days):
+def flag_ticket(t, now, stale_days, dfy_stale_days, task_key, prev_task_progress, next_task_progress):
     flags = []
     status = t.get("ticketStatus")
     if status != "open":
@@ -104,10 +114,20 @@ def flag_ticket(t, now, stale_days, dfy_stale_days):
         if no_update or unclaimed:
             flags.append("stale_no_update")
 
-    if project and age_hours >= dfy_stale_days * 24:
+    if project:
         tasks = t.get("tasks") or []
-        stalled = since_update is not None and since_update >= dfy_stale_days * 24
-        if tasks and any(not task.get("completed") for task in tasks) and stalled:
+        tasks_done = sum(1 for task in tasks if task.get("completed"))
+        prior = prev_task_progress.get(task_key) or {}
+        prior_done = prior.get("tasksDone", 0)
+        prior_progress_at = parse_dt(prior.get("progressAt")) or created
+
+        # Any checklist item ticked off since we last looked resets the
+        # stall clock — that's real forward progress, not a stuck ticket.
+        progress_at = now if tasks_done > prior_done else prior_progress_at
+        next_task_progress[task_key] = {"tasksDone": tasks_done, "progressAt": progress_at.isoformat()}
+
+        stalled_hours = (now - progress_at).total_seconds() / 3600
+        if tasks and tasks_done < len(tasks) and stalled_hours >= dfy_stale_days * 24:
             flags.append("dfy_stuck")
 
     return flags
@@ -156,6 +176,21 @@ def main():
     start = (now - timedelta(days=a.window_days)).strftime("%Y-%m-%d")
     end = now.strftime("%Y-%m-%d")
 
+    # Load state up front (not just the carryover dedup below) — dfy_stuck
+    # needs yesterday's per-ticket checklist progress to tell "still stuck"
+    # apart from "just made progress".
+    state_path = os.path.abspath(STATE_PATH)
+    os.makedirs(os.path.dirname(state_path), exist_ok=True)
+    prev_state = {}
+    if os.path.exists(state_path):
+        try:
+            prev_state = json.load(open(state_path))
+        except (json.JSONDecodeError, OSError):
+            prev_state = {}
+    prev_seen = prev_state.get("tickets", {})
+    prev_task_progress = prev_state.get("taskProgress", {})
+    next_task_progress = {}
+
     flagged = []
     counts = {}
     for app_key, app_name in APPS.items():
@@ -164,7 +199,9 @@ def main():
         for t in tickets:
             if t.get("ticketStatus") == "open":
                 counts[app_key]["open"] += 1
-            flags = flag_ticket(t, now, a.stale_days, a.dfy_stale_days)
+            task_key = f"{app_key}:{t.get('ticketNumber')}"
+            flags = flag_ticket(t, now, a.stale_days, a.dfy_stale_days,
+                                 task_key, prev_task_progress, next_task_progress)
             if flags:
                 counts[app_key]["flagged"] += 1
                 flagged.append(slim(t, app_key, flags, now))
@@ -192,15 +229,6 @@ def main():
     # that just crossed a threshold since the last run are "new" and get
     # listed in detail. Keeps the daily DM short instead of repeating the
     # same backlog every day.
-    state_path = os.path.abspath(STATE_PATH)
-    os.makedirs(os.path.dirname(state_path), exist_ok=True)
-    prev_seen = {}
-    if os.path.exists(state_path):
-        try:
-            prev_seen = json.load(open(state_path)).get("tickets", {})
-        except (json.JSONDecodeError, OSError):
-            prev_seen = {}
-
     new_items, carryover_items = [], []
     next_seen = {}
     for t in flagged:
@@ -214,7 +242,8 @@ def main():
         else:
             new_items.append(t)
 
-    json.dump({"generatedAt": now.isoformat(), "tickets": next_seen},
+    json.dump({"generatedAt": now.isoformat(), "tickets": next_seen,
+               "taskProgress": next_task_progress},
                open(state_path, "w"), ensure_ascii=False, indent=2)
 
     out = {
