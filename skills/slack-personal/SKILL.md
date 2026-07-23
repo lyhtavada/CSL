@@ -37,16 +37,30 @@ All load `SLACK_USER_TOKEN` from `/Users/avada/CSL/.env` via `_common.py`.
 - `search.py "query"` — search messages workspace-wide (Slack search modifiers like `from:@x` work)
 - `send_message.py` — post as Liz; **dry-run by default**, requires `--send` to actually post
 - `react.py` — add an emoji reaction to a message
+- `request_approval.py` / `check_approval.py` — approval flow for sends (see below)
 
-## Safety
+## Approval flow before sending as Liz
 
-`send_message.py` always previews first — never pass `--send` without Liz having reviewed the exact text and destination. This is Liz's real account, not a bot: a bad send is visible to whoever is in that channel/DM and cannot be unsent cleanly.
+Before any real send, post the draft to Liz's own Slack self-DM ("Saved Messages" / "Just for me", channel `D02GQ4DCFBP`) for her to review from her phone or desktop — not just as a terminal preview in this chat.
+
+1. `request_approval.py --channel <real target> [--thread-ts ...] --text "..."` — posts the draft into Liz's self-DM with a ✅-to-approve prompt, prints `approval_ts`
+2. Liz reacts `:white_check_mark:` on that message in Slack when she approves (edit and re-run step 1 if she wants changes instead)
+3. `check_approval.py --ts <approval_ts>` — exits 0 and prints `APPROVED` once the reaction is there, exits 1 / `NOT YET APPROVED` otherwise
+4. Only after approval, run `send_message.py --channel <real target> [--thread-ts ...] --text "..." --send`
+
+Never skip straight to `send_message.py --send` for anything other than trivial, Liz-requested-verbatim, low-stakes sends — this account posts as Liz herself and a bad send is visible and hard to unsend.
+
+`find_self_dm_channel()` in `_common.py` caches the self-DM id in `scripts/.self_dm_cache` after the first lookup (finding it requires paginating ~280 im channels).
 
 ## Example
 
 ```
 python3 scripts/read_thread.py --link "https://avadaio.slack.com/archives/D0XXXXX/p1690000000000000"
 python3 scripts/search.py "refund policy"
-python3 scripts/send_message.py --channel D0XXXXX --text "..." # preview
+
+# approval flow
+python3 scripts/request_approval.py --channel D0XXXXX --text "..."
+# ... Liz reacts ✅ in Slack ...
+python3 scripts/check_approval.py --ts <approval_ts>
 python3 scripts/send_message.py --channel D0XXXXX --text "..." --send
 ```
