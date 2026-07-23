@@ -35,7 +35,7 @@ export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
 rc=0
 "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
   --model claude-opus-4-8 \
-  --fallback-model claude-sonnet-4-6 \
+  --fallback-model claude-sonnet-5 \
   --dangerously-skip-permissions \
   >> "$LOG" 2>&1 || rc=$?
 

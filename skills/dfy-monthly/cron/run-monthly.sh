@@ -26,7 +26,7 @@ unset ANTHROPIC_API_KEY
 rc=0
 "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
   --model claude-opus-4-8 \
-  --fallback-model claude-sonnet-4-6 \
+  --fallback-model claude-sonnet-5 \
   --dangerously-skip-permissions \
   >> "$LOG" 2>&1 || rc=$?
 

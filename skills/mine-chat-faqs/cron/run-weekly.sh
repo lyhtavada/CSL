@@ -41,7 +41,7 @@ Output filename dates = $WEEK_START to $WEEK_END."
 rc=0
 "$CLAUDE_BIN" -p "$PROMPT" \
   --model claude-opus-4-8 \
-  --fallback-model claude-sonnet-4-6 \
+  --fallback-model claude-sonnet-5 \
   --dangerously-skip-permissions \
   >> "$LOG" 2>&1 || rc=$?
 
