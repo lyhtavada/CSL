@@ -12,7 +12,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Hi there,
 >
-> This is [Tên CS] from Chatty Support Team. I help merchants who are just getting started, and yours was one of the stores I checked in on this week.
+> This is [Tên CS] from Chatty Support Team. I noticed you set up your Chatty widget on [Store name] recently, so I took a quick look to see how the setup is going.
 >
 > I noticed [điền từ audit: your chat widget is still on the default look / you have not added any FAQs yet / your AI assistant has not been trained on your products yet]. That is completely normal at this stage, and it is exactly the kind of thing I can take care of for you.
 >
@@ -40,7 +40,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > I can set all of this up for you for free as part of our done-for-you service: branded chat widget, FAQs, and AI trained on your store. It usually takes me a short time and you just review the result.
 >
-> Want me to start? Just reply and I will take it from there.
+> If you want me to start, just reply and I will take it from there.
 >
 > Best,
 > [Tên CS]
@@ -98,7 +98,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > I would like to walk you through this live so you can ask questions and see it in real time. Pick a time that works for you here: [Link đặt lịch] — 15 minutes, no obligation.
 >
-> Prefer email instead? Just reply and I will get started the same way, then show you the result for your review.
+> If you prefer email instead, just reply and I will get started the same way, then show you the result for your review.
 >
 > Looking forward to helping [Store name] get more out of Chatty.
 >
