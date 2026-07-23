@@ -2,7 +2,7 @@
 
 Email CS/TS gửi KH mới cài Pro/Plus sau khi audit store. KHÔNG gửi bản chung chung — phải điền phần `[...]` bằng đúng cái thấy được từ audit của store đó. Thay `[Tên CS]` bằng tên người gửi.
 
-Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... from Avada Support Team", KHÔNG bold, KHÔNG em dash (—). Friendly, đồng hành, một CTA rõ.
+Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... from Chatty Support Team", KHÔNG bold, KHÔNG em dash (—). Friendly, đồng hành, một CTA rõ.
 
 ---
 
@@ -12,7 +12,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Hi there,
 >
-> This is [Tên CS] from Avada Support Team. I look after merchants who just started with Chatty, and I had a look at your store to see how things are going.
+> This is [Tên CS] from Chatty Support Team. I help merchants who are just getting started, and yours was one of the stores I checked in on this week.
 >
 > I noticed [điền từ audit: your chat widget is still on the default look / you have not added any FAQs yet / your AI assistant has not been trained on your products yet]. That is completely normal at this stage, and it is exactly the kind of thing I can take care of for you.
 >
@@ -24,7 +24,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Best,
 > [Tên CS]
-> Avada Support Team
+> Chatty Support Team
 
 ---
 
@@ -34,7 +34,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Hi there,
 >
-> This is [Tên CS] from Avada Support Team. I saw you are trying out Chatty on the [Pro/Plus] plan, and I wanted to make sure you get to see what it can really do before your trial wraps up.
+> This is [Tên CS] from Chatty Support Team. I saw you are trying out Chatty on the [Pro/Plus] plan, and I wanted to make sure you get to see what it can really do before your trial wraps up.
 >
 > Looking at your store, I noticed [điền từ audit: the widget could match your brand colors / your product pages are not yet covered by the AI / there are no FAQs set up yet]. A few quick changes here would make a real difference for your customers.
 >
@@ -44,7 +44,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Best,
 > [Tên CS]
-> Avada Support Team
+> Chatty Support Team
 
 ---
 
@@ -54,7 +54,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Hi there,
 >
-> This is [Tên CS] from Avada Support Team. I help merchants get set up with Chatty, and I noticed your store has been a bit quiet on it lately.
+> This is [Tên CS] from Chatty Support Team. I help merchants get set up with Chatty, and I noticed your store has been a bit quiet on it lately.
 >
 > When I checked, I saw [điền từ audit: the AI is missing answers to common questions / the widget is not showing your branding / FAQs have not been added]. These are usually the reasons Chatty does not get used as much as it could, and they are quick for me to fix.
 >
@@ -64,7 +64,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Best,
 > [Tên CS]
-> Avada Support Team
+> Chatty Support Team
 
 ---
 
@@ -74,7 +74,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Hi there,
 >
-> This is [Tên CS] from Avada Support Team. I keep an eye on how Chatty is performing for merchants on [Pro/Plus], so I pulled up your numbers for the last 30 days before reaching out.
+> This is [Tên CS] from Chatty Support Team. I keep an eye on how Chatty is performing for merchants on [Pro/Plus], so I pulled up your numbers for the last 30 days before reaching out.
 >
 > Here is what Chatty has done for [Store name] so far:
 >
@@ -104,7 +104,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Best,
 > [Tên CS]
-> Avada Support Team
+> Chatty Support Team
 
 **Ghi chú khi điền:** nếu không đủ 3 finding rõ ràng, chỉ ghi 2 — không thêm cho đủ vì sẽ mất tính cụ thể. Số liệu conversations/revenue/rate lấy từ audit dashboard (theo SOP `playbooks/chatty-proactive-dfy-pilot.md`); nếu store quá mới không có đủ 30 ngày data, dùng Template A/B thay vì D.
 
