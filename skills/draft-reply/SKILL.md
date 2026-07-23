@@ -75,6 +75,8 @@ When Liz is stepping in on a difficult case:
 
 **How-to question:** Lead directly with the answer + navigation path.
 
+**Billing/usage dispute (multi-round back-and-forth):** If earlier replies in the thread contained an error or the merchant had to go back and forth multiple times, open with a genuine apology for the confusion/wait before re-explaining. Explain the mechanism plainly (what's counted, why), but pivot quickly to what the team will do about it, don't dwell on why the system works that way. Always confirm with the merchant before applying a custom fix (e.g. "would you like us to exclude X going forward?").
+
 ## Output Format
 
 Produce the reply as clean text, ready to copy-paste.
