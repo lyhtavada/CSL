@@ -68,11 +68,33 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 
 ---
 
+## Template D — Có số liệu usage thật (khuyến nghị dùng khi có data)
+
+> **Subject:** Quick look at what Chatty has done for [Store name] so far
+>
+> Hi there,
+>
+> This is [Tên CS] from Avada Support Team. I keep an eye on how Chatty is performing for merchants on [Pro/Plus], and I pulled up your numbers for the last 30 days.
+>
+> [Store name] has had [X] conversations through Chatty, with [Y] of those leading to a sale, about [Z]% of chats turning into revenue. That said, when I checked your setup I noticed [điền từ audit: cụ thể 1-2 điểm đang thiếu, VD: your AI has not been trained on your product pages yet / notifications are off so you may be missing chats]. Fixing that could get you even more out of the [X] conversations you are already getting.
+>
+> I would like to walk you through it live, free of charge, no obligation. Pick a time that works for you here: [Link đặt lịch] — 15 minutes, I will show you exactly what I would change and why.
+>
+> Prefer email instead? Just reply and I will get started the same way.
+>
+> Best,
+> [Tên CS]
+> Avada Support Team
+
+---
+
 ## Cách dùng
 1. Audit store trước (theo SOP `playbooks/chatty-proactive-dfy-pilot.md` Bước 1 + tool audit).
-2. Chọn template theo tình huống: A (mới cài chưa setup) / B (đang trial sắp hết) / C (đã trả tiền, usage thấp).
-3. Điền các `[...]` bằng đúng cái thấy được từ audit — cụ thể, không chung chung.
+2. Chọn template theo tình huống: A (mới cài chưa setup) / B (đang trial sắp hết) / C (đã trả tiền, usage thấp) / **D (có số liệu conversations/revenue — ưu tiên dùng D nếu có data, số liệu cụ thể thu hút attention tốt hơn liệt kê lỗi)**.
+3. Điền các `[...]` bằng đúng cái thấy được từ audit — cụ thể, không chung chung. **Không copy nguyên văn câu mở/kết giữa các store khác nhau** — đổi cách diễn đạt, chỉ giữ cấu trúc.
 4. Thay `[Store name]` / `[Pro/Plus]` cho đúng.
-5. Gửi + tạo DFY ticket ngay (tag `DFY-new` + `proactive`), lưu nội dung email vào ticket.
+5. Với Template D: cần `[Link đặt lịch]` (Calendly/Google Calendar booking link của CS phụ trách) — luôn kèm cả lựa chọn "reply email" cho KH ngại book call.
+6. Gửi + tạo DFY ticket ngay (tag `DFY-new` + `proactive`), lưu nội dung email vào ticket.
+7. Kiểm tra ngôn ngữ gửi trước khi gửi (đã có case gửi nhầm tiếng Estonia cho KH không đọc được — nếu không chắc locale của merchant, mặc định gửi tiếng Anh).
 
-> Nếu KH reply "yes" → vào flow làm DFY theo `playbooks/chatty-dfy-flow.md` (M1 → M2 → M3).
+> Nếu KH reply "yes" hoặc book call → vào flow làm DFY theo `playbooks/chatty-dfy-flow.md` (M1 → M2 → M3).
