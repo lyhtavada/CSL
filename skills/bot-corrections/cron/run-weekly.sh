@@ -49,8 +49,7 @@ unset ANTHROPIC_API_KEY
 
 diff_rc=0
 "$CLAUDE_BIN" -p "$(cat "$DIFF_PROMPT")" \
-  --model claude-opus-4-8 \
-  --fallback-model claude-sonnet-5 \
+  --model claude-sonnet-5 \
   --dangerously-skip-permissions \
   >> "$LOG" 2>&1 || diff_rc=$?
 
