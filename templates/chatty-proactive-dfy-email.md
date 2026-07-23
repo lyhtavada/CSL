@@ -12,7 +12,7 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 >
 > Hi there,
 >
-> This is [Tên CS] from Chatty Support Team. I noticed you set up your Chatty widget on [Store name] recently, so I took a quick look to see how the setup is going.
+> This is [Tên CS] from Chatty Support Team. I saw you set up your Chatty widget on [Store name] recently, so I took a quick look to see how things are going.
 >
 > I noticed [điền từ audit: your chat widget is still on the default look / you have not added any FAQs yet / your AI assistant has not been trained on your products yet]. That is completely normal at this stage, and it is exactly the kind of thing I can take care of for you.
 >
