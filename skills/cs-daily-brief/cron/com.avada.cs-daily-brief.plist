@@ -14,16 +14,16 @@
   <key>WorkingDirectory</key>
   <string>/Users/avada/CSL</string>
 
-  <!-- Every day at 10:00 local time — reports on the previous full calendar day. -->
+  <!-- Every day at 9:30 local time — reports on the previous full calendar day. -->
   <key>StartCalendarInterval</key>
   <dict>
     <key>Hour</key>
-    <integer>10</integer>
+    <integer>9</integer>
     <key>Minute</key>
-    <integer>0</integer>
+    <integer>30</integer>
   </dict>
 
-  <!-- If the Mac was asleep/off at 10:00, launchd runs it as soon as it wakes. -->
+  <!-- If the Mac was asleep/off at 9:30, launchd runs it as soon as it wakes. -->
   <key>RunAtLoad</key>
   <false/>
 

@@ -5,7 +5,7 @@ description: Daily CS report posted to #cs-2-daily — conversation volume per a
 
 # /cs-daily-brief
 
-Runs each morning, reports on the **previous full calendar day** (00:00–24:00
+Runs each morning at **9:30**, reports on the **previous full calendar day** (00:00–24:00
 VN) — e.g. running on the 22nd reports on the 21st. Posts one Slack message
 to the **#cs-2-daily channel** (`C0B8042TXQ9`), sent with Liz's name/avatar
 (live-fetched, matches the `/cs-weekly`+`/dfy-monthly` convention for
@@ -75,5 +75,5 @@ or run the 3 fetch scripts individually and compose by hand.
 
 ## Cron
 
-Daily 10:00 local (reports on the previous full day) —
+Daily 9:30 local (reports on the previous full day) —
 `cron/run-cs-daily-brief.sh`, installed via `cron/install.sh`.
