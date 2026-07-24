@@ -502,23 +502,79 @@
 - [ ] Đọc `playbooks/joy-dfu-onboarding-playbook.md` Phần 3 — lướt qua 50 case theo 8 domain (chưa cần thuộc, chỉ cần biết cấu trúc: Dấu hiệu → Tự chẩn đoán → Xử lý → Khi nào escalate)
 - [ ] Đọc `shared-cs-process/escalation-matrix.md`, `case-classification.md`, `first-response.md`, `follow-up.md`
 - [ ] Đọc `shared-cs-process/handle-billing-refund.md`, `handle-complaints.md`, `handle-sensitive-situations.md`
+- [ ] Đọc toàn bộ process docs trong Notion **[Joy Process](https://www.notion.so/avadagroup/Joy-Process-280b0da449f1800098c4f194260f387f)** (nguồn chính thức, cập nhật liên tục — không copy vào repo vì dễ lỗi thời):
+  - [Tạo ghi chú trong CRM của Joy](https://www.notion.so/20eb0da449f180879f45c9f76e322b8e)
+  - [1 số lưu ý về escalation ở Joy Loyalty](https://www.notion.so/280b0da449f1802b81a9e4427967d507)
+  - [Joy live chat flow - Demo store](https://www.notion.so/294b0da449f18057b0b0df5d5efdfac6)
+  - [Joy - CS Onboarding Flow](https://www.notion.so/397b0da449f18085b2aaf0b4c0e71e79)
+  - [Joy DFY — Why We Do This](https://www.notion.so/366b0da449f1807fa17cd92df95b8d6f)
+  - [Joy DFY — How We Do This](https://www.notion.so/366b0da449f180878b99d78c19ab9143)
+  - [Joy DFY - Best practices](https://www.notion.so/37bb0da449f18074b03df9a48832e6d7)
 - [ ] Tự phân loại thử 10 case mẫu (mentor đưa) theo đúng case-classification + escalation matrix
 - [ ] Viết thử 1 escalation note mẫu theo đúng format
 
 📎 **Kết quả/Proof:**
 
+**Câu hỏi (điền câu trả lời vào bảng — verify CS đã nắm process, không chỉ đọc lướt):**
+
+*CRM Notes (khách Pro/Advanced/Enterprise):*
+
+| Question | Answer |
+|---|---|
+| Flow ghi chú CRM này áp dụng bắt buộc cho những gói khách hàng nào? | |
+| Liệt kê ít nhất 4 trường hợp CS BẮT BUỘC phải để lại note trong CRM. | |
+| Template note gồm những phần nào (theo đúng thứ tự)? | |
+| Sau khi tạo note trên CRM, CS cần làm gì tiếp trên Crisp? | |
+| Khi update note, nội dung mới được thêm vào đâu — có được xóa note cũ không? | |
+| Vì sao CS nên ghi chú chung trong 1 record duy nhất/cửa hàng thay vì tạo nhiều bản note rời rạc? | |
+
+*Escalation:*
+
+| Question | Answer |
+|---|---|
+| Issue liên quan App Functionality escalate lên nhóm Slack nào, tag PIC chính là ai? | |
+| Nếu merchant là khách Advanced plan, CS cần tag thêm ai để đảm bảo follow-up sát sao? | |
+| Request về giá cả/demo call/discount/trial extend escalate lên nhóm nào, tag ai? | |
+| CS có được tự tư vấn giá/plan/discount cho khách không? Vì sao? | |
+| Khi nhắn lên Product team, CS cần mô tả kèm theo những gì? | |
+
+*Joy live chat flow — Demo store:*
+
+| Question | Answer |
+|---|---|
+| Chat từ demo website tự động gắn tag gì? | |
+| Liệt kê 4 nhóm khách CS cần phân loại nhanh khi chat ở demo store. | |
+| Với nhóm Potential Lead, CS cần verify điều gì trước khi mời demo call/gửi link install? | |
+| Với nhóm Existing User vào demo test, mục tiêu hỗ trợ là gì, và bước cuối cần làm gì nếu phát hiện issue? | |
+| Liệt kê ít nhất 3 dấu hiệu nhận diện một visitor là Competitor. | |
+| Khi nghi ngờ đang chat với Competitor, CS tuyệt đối KHÔNG được tiết lộ gì? | |
+
+*Joy - CS Onboarding Flow (chat thao tác, không phải playbook lý thuyết):*
+
+| Question | Answer |
+|---|---|
+| CS offer onboarding khi nào (2 điều kiện eligibility)? | |
+| Nguyên tắc "1 ticket onboarding chính/KH" nghĩa là gì — ngoại lệ duy nhất là gì? | |
+| Phân biệt nhanh 3 nhóm nhánh A (Migrate)/B (Rebuild)/C (First-time) dựa vào 3 câu discovery nào? | |
+| Nhóm A (migrate) là "chỗ dễ vỡ nhất" — CS cần xác nhận điều gì trước khi import? | |
+| Khi issue phát sinh lúc onboard (không cộng điểm, coupon invalid...), CS xử lý theo thứ tự nào — có tách ticket mới không? | |
+| Nêu nguyên tắc ownership khi bàn giao ca (hết ca nhưng case chưa xong)? | |
+
+*Joy DFY (Why/How/Best practices — white-glove widget service):*
+
+| Question | Answer |
+|---|---|
+| DFY giải quyết vấn đề gì cho merchant (time-to-value)? | |
+| Điều kiện eligibility để tạo ticket DFY (2 điều kiện đồng thời)? | |
+| SLA bắt buộc từ lúc tạo ticket DFY đến khi có kết quả báo khách là bao lâu? | |
+| Kể tên 3 level checklist DFY (Required/Recommended/Bonus) — ý nghĩa "level cao hơn bao gồm level dưới" là gì? | |
+| Sau khi gửi kết quả, CS cần follow-up lại sau bao lâu, và gắn label gì tùy kết quả (adopt/no-adopt)? | |
+| Nguyên tắc quan trọng nhất khi customize content: khi nào được sửa TRỰC TIẾP trên store KH, khi nào chỉ được đề xuất qua email? | |
+
 **Test cuối tuần:**
 - 10 case mẫu (tình huống mô tả, không phải chat thật) → trainee phân loại đúng mức độ + chỉ đúng bước xử lý/escalate theo matrix
 - 1 case viết escalation note — mentor chấm đủ thông tin theo `escalation-note.md`
-
-**Checklist theo dõi:**
-
-| Hạng mục | Hoàn thành | Ghi chú |
-|---|---|---|
-| Đọc xong toàn bộ process docs | | |
-| Phân loại 10 case mẫu (điểm/10) | | |
-| Escalation note đạt chuẩn | | |
-| Test cuối tuần pass | | |
+- Mentor hỏi ngẫu nhiên 5-6 câu trong các bảng câu hỏi ở trên (miệng) — trainee trả lời đúng ý, không cần thuộc lòng nguyên văn
 
 ---
 
