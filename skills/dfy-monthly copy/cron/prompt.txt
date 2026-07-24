@@ -1,0 +1,17 @@
+Run the /dfy-monthly skill for Chatty for LAST month, in SEND mode (post to the channel).
+
+Steps (all scripted — run them in order from /Users/avada/CSL):
+
+1. Compute last month as YYYY-MM (the month before the current one).
+2. python3 skills/dfy-monthly/scripts/fetch_dfy.py --app chatty --month {YYYY-MM} --out /tmp/dfy.json
+3. python3 skills/dfy-monthly/scripts/build_report.py --in /tmp/dfy.json --out /tmp/dfy.md
+4. Push to Notion (newest on top) and capture the URL:
+   python3 skills/dfy-monthly/scripts/push_notion.py \
+     --parent 37ab0da449f180b5bd78e3253071269c \
+     --title "Chatty DFY - Tháng {M}/{YYYY}" \
+     --md /tmp/dfy.md
+5. Post the Slack digest to the Chatty CS channel AS Liz (NOT --dm):
+   python3 skills/dfy-monthly/scripts/notify_slack.py --in /tmp/dfy.json --notion-url {URL}
+
+Do NOT tag anyone. If any step fails, stop and report the error — do not post a partial
+report. Print the final Notion URL and confirm the Slack post.
