@@ -7,9 +7,11 @@ Phân biệt:
   - CS Weekly  = skill /cs-weekly, 2 bản team-facing push Notion, gửi nhóm CS từng app.
   - CEO Weekly = bản này, gộp lại 1 bản cho anh Sam. Đây là INPUT, kia là OUTPUT.
 
-KHÔNG tự tính lại từ ticket/chat — nguồn sự thật là 2 bản /cs-weekly trên Notion.
-Lấy subpage MỚI NHẤT của mỗi parent page, parse số từ TL;DR + Top issues,
+Volume/reviews/top-issues KHÔNG tự tính lại — nguồn sự thật là 2 bản /cs-weekly trên
+Notion. Lấy subpage MỚI NHẤT của mỗi parent page, parse số từ TL;DR + Top issues,
 ghép resolve rate (tuần này vs tuần trước) từ cs2.avada.net /api/obs/metrics.
+DFY (ticket/adopt%/review%/install%) là ngoại lệ — fetch LIVE cùng tuần Mon-Sun
+qua fetch_dfy_week.py (Ticket API + BigQuery), không lấy từ Notion.
 
 Output: reports/weekly/ceo-weekly-<DATE>.md  (ghi đè nếu đã có)
 
@@ -17,7 +19,7 @@ Usage:
   python3 gen-ceo-weekly.py                 # tuần trước (Mon–Sun), date = hôm nay
   python3 gen-ceo-weekly.py --date 2026-06-22
 """
-import argparse, datetime, json, os, re, sys, urllib.request, urllib.parse
+import argparse, datetime, json, os, re, subprocess, sys, urllib.request, urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent.parent          # ~/CSL
@@ -160,6 +162,21 @@ def fmt_rate(r):
     return f"{r}%" if r is not None else "—"
 
 
+def fetch_dfy_week(mon, sun):
+    """Gọi fetch_dfy_week.py — số DFY (ticket/adopt/review/install) tuần Mon-Sun.
+    Trả {} nếu fail (network/BQ lỗi) để report vẫn generate được, chỉ thiếu phần này."""
+    script = Path(__file__).parent / "fetch_dfy_week.py"
+    try:
+        out = subprocess.run(
+            [sys.executable, str(script), "--start", mon.isoformat(), "--end", sun.isoformat()],
+            capture_output=True, text=True, timeout=180, check=True,
+        )
+        return json.loads(out.stdout)
+    except Exception as e:
+        print(f"  fetch_dfy_week fail: {e}", file=sys.stderr)
+        return {}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", help="ngày chạy report (YYYY-MM-DD), mặc định hôm nay")
@@ -188,7 +205,10 @@ def main():
         prev, _ = resolve_rate(agent, prev_mon.isoformat(), prev_sun.isoformat())
         rates[app] = {"cur": cur, "prev": prev, "sessions": tot}
 
-    def tldr_line(app):
+    print("  fetching DFY week (ticket/adopt/review/install)...")
+    dfy_week = fetch_dfy_week(mon, sun)
+
+    def stat_line(app):
         p = data[app]["parse"]
         bits = []
         if p.get("tickets"):
@@ -207,11 +227,34 @@ def main():
         return (f"- **{b} ({app.capitalize()})**: resolve rate **{cur}** "
                 f"(tuần trước {prev}). AI take-only ~{cur} session bot tự đóng, human không vào.")
 
-    joy_dfy = data["joy"]["parse"]
-    dfy_note = ""
-    if joy_dfy.get("dfy"):
-        d = f" ({joy_dfy['dfy_delta']})" if joy_dfy.get("dfy_delta") else ""
-        dfy_note = f"\n- Joy DFY tạo {joy_dfy['dfy']}{d}."
+    def dfy_line(app):
+        d = dfy_week.get(app)
+        if not d:
+            return f"- **{app.capitalize()}**: _(fetch_dfy_week.py lỗi — điền tay)_"
+        return (f"- **{app.capitalize()}**: {d['total']} ticket, adopt "
+                f"**{d['adopt_pct']}%** ({d['adopted']}/{d['total']}), "
+                f"review **{d['review']['pct']}%**, DFY/install **{d['install']['pct']}%** "
+                f"({d['total']}/{d['install']['count']} install tuần này).")
+
+    def tldr():
+        """Tóm tắt tất cả section bên dưới: volume, bot, DFY, top issue, crisis."""
+        lines = ["Tóm tắt tuần:"]
+        for app in ("chatty", "joy"):
+            p = data[app]["parse"]
+            vol_bits = []
+            if p.get("tickets"):
+                d = f" ({p['tickets_delta']})" if p.get("tickets_delta") else ""
+                vol_bits.append(f"{p['tickets']} tickets{d}")
+            if p.get("chats"):
+                vol_bits.append(f"{p['chats']} chats")
+            vol = ", ".join(vol_bits) if vol_bits else "_(chưa có số)_"
+            r = rates[app]
+            bot_bit = f"bot resolve {fmt_rate(r['cur'])}"
+            d = dfy_week.get(app)
+            dfy_bit = f"DFY adopt {d['adopt_pct']}%" if d else "DFY _(chưa fetch)_"
+            lines.append(f"- **{app.capitalize()}**: {vol}, {bot_bit}, {dfy_bit}.")
+        lines.append("- Crisis: không có bad review (≤3★) tuần này ở cả 2 app.")
+        return "\n".join(lines)
 
     title = f"📊 CS Group 2 (Retention) — Weekly W{iso_week} ({period.replace(' – ', '–')})"
 
@@ -224,15 +267,25 @@ def main():
 ---
 
 ## ⚡ TL;DR
-Volume ticket giảm nhẹ ở cả 2 app.
-{tldr_line("chatty")}
-{tldr_line("joy")}{dfy_note}
+{tldr()}
+
+---
+
+## 📦 Volume
+{stat_line("chatty")}
+{stat_line("joy")}
 
 ---
 
 ## 🤖 Bot performance
 {bot_line("chatty")}
 {bot_line("joy")}
+
+---
+
+## 🛠️ DFY (tuần {period})
+{dfy_line("chatty")}
+{dfy_line("joy")}
 
 ---
 

@@ -5,22 +5,34 @@
 **Nguồn**: tổng hợp 2 bản CS Weekly (Chatty + Joy) trên Notion + dashboard `cs2.avada.net /api/obs/metrics`
 
 > CEO Weekly = bản gửi anh Sam (gộp từ 2 bản CS Weekly team-facing). Khớp generator `reports/scripts/gen-ceo-weekly.py` (chạy qua `gen-ceo-weekly.sh`).
-> Auto-fill: TL;DR (tickets/chats/reviews/DFY), Bot performance (resolve rate), Top Issues.
+> Auto-fill: TL;DR (tóm tắt toàn bộ report bên dưới), Volume (tickets/chats/reviews), Bot performance (resolve rate), DFY (ticket/adopt%/review%/install% — fetch live qua `fetch_dfy_week.py`, cùng tuần Mon-Sun với report), Top Issues.
 > Liz điền tay: Response time, Crisis (nếu có bad review ≤3★), CEO decision.
 
 ---
 
 ## ⚡ TL;DR
-Volume ticket [tăng/giảm] ở cả 2 app.
+Tóm tắt tuần:
+- **Chatty**: X tickets (▲/▼Y%), Z chats, bot resolve X%, DFY adopt X%.
+- **Joy**: X tickets (▲/▼Y%), Z chats, bot resolve X%, DFY adopt X%.
+- Crisis: không có bad review (≤3★) tuần này ở cả 2 app.
+
+---
+
+## 📦 Volume
 - **Chatty**: X tickets (▲/▼Y%), Z chats, N reviews (0 review xấu). Response time (avg): _(điền)_
 - **Joy**: X tickets (▲/▼Y%), Z chats, N reviews (0 review xấu). Response time (avg): _(điền)_
-- Joy DFY tạo X (▲/▼Y%).
 
 ---
 
 ## 🤖 Bot performance
 - **Ivy (Chatty)**: resolve rate **X%** (tuần trước Y%). AI take-only ~X% session bot tự đóng, human không vào.
 - **Joyce (Joy)**: resolve rate **X%** (tuần trước Y%). AI take-only ~X% session bot tự đóng, human không vào.
+
+---
+
+## 🛠️ DFY (tuần dd/mm–dd/mm/yyyy)
+- **Chatty**: N ticket, adopt **X%** (a/N), review **Y%**, DFY/install **Z%** (N/install tuần này).
+- **Joy**: N ticket, adopt **X%** (a/N), review **Y%**, DFY/install **Z%** (N/install tuần này).
 
 ---
 

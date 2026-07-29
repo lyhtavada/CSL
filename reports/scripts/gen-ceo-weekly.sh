@@ -1,7 +1,8 @@
 #!/bin/bash
 # Gen CEO Weekly report (CS Group 2 / Retention — gửi anh Sam).
 # Report = TỔNG HỢP 2 bản CS Weekly (Chatty + Joy) trên Notion
-# + resolve rate từ cs2.avada.net /api/obs/metrics. Không scan ticket.
+# + resolve rate từ cs2.avada.net /api/obs/metrics
+# + DFY tuần (ticket/adopt%/review%/install%) fetch live qua fetch_dfy_week.py.
 #
 # CS Weekly (skill /cs-weekly) = team-facing, gửi nhóm CS. CEO Weekly = bản này, gửi Sam.
 # Logic trong gen-ceo-weekly.py. Top Issues auto-fill; Response time + CEO decision Liz điền tay.
