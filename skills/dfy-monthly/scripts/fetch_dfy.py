@@ -111,6 +111,20 @@ def api_get(path, key, params=None):
         return json.load(r)
 
 
+def fetch_comments(ticket_internal_id, key):
+    """CS comments on a ticket (`/actions`, filtered to type=commentTicket),
+    oldest first. Requires the ticket's internal `id` (NOT the human `ticketId`
+    like CHAT-260629-PZ2k8J) — the API returns an empty action list otherwise."""
+    data = api_get(f"/api/external/tickets/{ticket_internal_id}/actions", key)
+    actions = data.get("data", {}).get("actions", [])
+    comments = [a for a in actions if a.get("type") == "commentTicket"]
+    comments.sort(key=lambda a: a.get("createdAt", ""))
+    return [{"author": a.get("author", {}).get("displayName", "?"),
+             "at": a.get("createdAt", ""),
+             "content": a.get("metadata", {}).get("content", "")}
+            for a in comments]
+
+
 def bq_client(env):
     from google.oauth2 import service_account
     from google.cloud import bigquery
@@ -349,6 +363,20 @@ def main():
     installs = fetch_installs(bq, INSTALL_APP_ID.get(a.app, ""), start, end) if a.app in INSTALL_APP_ID else 0
     dfy_per_install_pct = round(100 * len(op) / installs, 2) if installs else 0
 
+    # ---- no-adopt reasons (raw comments — Betty reads these and derives the
+    # reason buckets herself each run; no keyword/tag classification here) ----
+    no_adopt = [t for t in op if "DFY-adopted" not in names(t, id2name)]
+    no_adopt_raw = []
+    for t in no_adopt:
+        comments = fetch_comments(t.get("id"), key)
+        if comments:
+            no_adopt_raw.append({
+                "ticket_id": t.get("ticketId"),
+                "store": (t.get("store") or [{}])[0].get("domain", ""),
+                "cs": DISPLAY.get(creator(t), creator(t)),
+                "comments": comments,
+            })
+
     result = {
         "app": a.app, "month": a.month,
         "period": {"start": start, "end": end},
@@ -372,6 +400,7 @@ def main():
             "dfy_per_install": {"dfy_tickets": len(op), "installs": installs,
                                 "pct": dfy_per_install_pct},
         },
+        "no_adopt_raw": no_adopt_raw,
     }
 
     blob = json.dumps(result, ensure_ascii=False, indent=2)

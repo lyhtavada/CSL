@@ -63,7 +63,22 @@ def insight_section(d):
     return "\n".join(L)
 
 
-def build(d):
+def no_adopt_section(d, reasons):
+    total = len(d.get("no_adopt_raw", []))
+    L = [f"## ❌ Lý do không adopt ({total} ticket có comment, đọc từ CS log)\n"]
+    if not reasons or not reasons.get("buckets"):
+        L.append("_(Chưa phân loại — đọc `no_adopt_raw` trong JSON và điền --reasons)_")
+        return "\n".join(L)
+    L.append("| Nhóm lý do | Số ticket |")
+    L.append("|------------|-----------|")
+    for b in reasons["buckets"]:
+        L.append(f"| {b['label']} | {b['count']} |")
+    L.append(f"\n_Một ticket có thể thuộc nhiều nhóm — tổng % không nhất thiết bằng 100. "
+             f"Phân loại từ {total} ticket có comment CS._")
+    return "\n".join(L)
+
+
+def build(d, reasons=None):
     mm = d["month"].split("-")[1]
     inb = d["inbound"]
     pro = d["proactive"]
@@ -95,6 +110,8 @@ def build(d):
              f"{pro['adopted']} adopted / {pro['adopt_pct']}%)\n")
     L.append(ticket_table(pro["tickets"]))
     L.append("")
+    L.append(no_adopt_section(d, reasons))
+    L.append("")
     L.append("---\n")
     L.append("## Note\n")
     L.append("_(Liz điền — feedback / coaching khi review với team)_")
@@ -105,9 +122,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--in", dest="inp", required=True, help="fetch_dfy.py JSON")
     ap.add_argument("--out", required=True, help="Output markdown path")
+    ap.add_argument("--reasons",
+                     help="JSON {buckets:[{label,count}]} — Betty writes this after "
+                          "reading no_adopt_raw comments and categorizing reasons by hand")
     a = ap.parse_args()
     d = json.load(open(a.inp))
-    open(a.out, "w").write(build(d))
+    reasons = json.load(open(a.reasons)) if a.reasons else None
+    open(a.out, "w").write(build(d, reasons))
     print(f"Wrote {a.out}")
 
 

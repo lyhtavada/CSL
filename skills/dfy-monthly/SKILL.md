@@ -1,7 +1,7 @@
 ---
 name: dfy-monthly
-description: Generate a MONTHLY DFY report for Chatty for leadership (PM + anh Sam) — pulls open DFY tickets for a month, splits them into Inbound (no `proactive` tag) vs Proactive (has `proactive` tag) with adopt rate per group, auto-computes insights (video→adopt, AI-completion→adopt, Chatbox coverage, timing, review-yes, per-CS quality), publishes a Notion sub-page (newest on top) under "Chatty DFY Reports", and posts a Block Kit Slack digest to the Chatty CS channel AS Liz with a "Xem full trên Notion" button. NO Point column — this is the leadership monitoring report, not KPI scoring (use /dfy-tracker for points). Chatty only. Runs automatically on the 2nd of each month at 10:00.
-version: 1.0.0
+description: Generate a MONTHLY DFY report for Chatty for leadership (PM + anh Sam) — pulls open DFY tickets for a month, splits them into Inbound (no `proactive` tag) vs Proactive (has `proactive` tag) with adopt rate per group, auto-computes insights (video→adopt, AI-completion→adopt, Chatbox coverage, timing, automatic review rate via BigQuery, DFY tickets/app installs ratio, per-CS quality), reads CS comments on non-adopted tickets so Betty can categorize no-adopt reasons by hand, publishes a Notion sub-page (newest on top) under "Chatty DFY Reports", and posts a Block Kit Slack digest to the Chatty CS channel AS Liz with a "Xem full trên Notion" button. NO Point column — this is the leadership monitoring report, not KPI scoring (use /dfy-tracker for points). Chatty only. Runs automatically on the 2nd of each month at 10:00 (the cron prompt does the reason-categorization reading step too, since it runs headless Claude Code, not a bare script).
+version: 1.1.0
 ---
 
 # DFY Monthly Skill (Chatty — leadership report)
@@ -41,7 +41,8 @@ Chatty tháng X".
 
 ## Steps
 
-Everything is scripted — the skill just runs the 3 scripts in order.
+Mostly scripted, with one manual reading step (1.5) where Betty categorizes no-adopt
+reasons from free-text CS comments.
 
 ### 1. Fetch + analyze
 
@@ -58,16 +59,47 @@ python3 skills/dfy-monthly/scripts/fetch_dfy.py --app chatty --month {YYYY-MM} -
 - Maps CS → KPI nickname (`_identity/team-g2.md`). The Ticket API returns `username=None`
   and the handle in `displayName` with mixed casing — the script matches case-insensitively.
 - Computes insights: video→adopt, AI-Agent-completion→adopt, Chatbox coverage, timing
-  (which week of the month tickets cluster in), review-yes count, per-CS adopt/video rate.
+  (which week of the month tickets cluster in), per-CS adopt/video rate.
+- **Review rate (automatic, no manual tag):** matches each ticket's `chatLink` session_id
+  (fallback: store domain + time) against `avada_cs.crisp_chats` for a
+  `review_yes_chatty`/`rv_yes_chatty`/`review_yes_faq` segment. `insights.review` =
+  `{count, total, pct}`.
+- **DFY tickets / app installs this month:** `insights.dfy_per_install` compares this
+  month's DFY ticket count against Chatty's new installs
+  (`avada_product_dash.dash_daily_installs`, `app_id=avadaFaq`).
+- **`no_adopt_raw`:** for every non-adopted ticket, pulls CS comments via
+  `/api/external/tickets/{internal id}/actions` (filtered to `type=commentTicket` — must
+  use the ticket's internal `id`, NOT the human `ticketId` like `CHAT-260629-...`, or the
+  API returns an empty action list). This is raw text, not yet categorized.
+
+### 1.5. Read no-adopt comments and categorize reasons (Betty, by hand)
+
+Read `no_adopt_raw` from the JSON (each entry: ticket_id, store, cs, comments[]) and
+group into reason buckets by hand — this is free-text Vietnamese CS notes, not
+keyword-matched. Write the buckets to a small JSON, e.g.:
+
+```json
+{"buckets": [
+  {"label": "Khách không phản hồi follow-up", "count": 7},
+  {"label": "Setup phía khách chưa xong (chưa embed widget / enable AI Agent)", "count": 5}
+]}
+```
+
+Save as `/tmp/reasons.json`. A ticket can land in more than one bucket — don't force
+mutual exclusivity. Re-derive buckets fresh each month; don't reuse last month's labels
+verbatim, patterns can shift.
 
 ### 2. Build the Notion body
 
 ```
-python3 skills/dfy-monthly/scripts/build_report.py --in /tmp/dfy.json --out /tmp/dfy.md
+python3 skills/dfy-monthly/scripts/build_report.py --in /tmp/dfy.json \
+  --reasons /tmp/reasons.json --out /tmp/dfy.md
 ```
 
-Body starts at `## Overview` (no H1). Order: Overview → 💡 Insight & đề xuất →
-🔵 Inbound table → 🟢 Proactive table → Note (Liz fills in).
+Body starts at `## Overview` (no H1). Order: Overview (now includes ⭐ review rate and
+📈 DFY/install) → 💡 Insight & đề xuất → 🔵 Inbound table → 🟢 Proactive table →
+❌ Lý do không adopt → Note (Liz fills in). `--reasons` is optional — omit it and the
+section just shows a placeholder telling the reader it wasn't categorized yet.
 
 ### 3. Push to Notion (newest on top)
 
