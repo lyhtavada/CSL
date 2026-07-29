@@ -11,10 +11,13 @@ Usage:
 
 Auth: AVD_TICKET_API_KEY + BQ_SA_* from CSL/.env.
 
-Review tracking is automatic (not a manual `review-yes` tag): each ticket's
-`chatLink` gives a Crisp session_id, matched against `avada_cs.crisp_chats`
-for a `review_yes_chatty`/`rv_yes_chatty`/`review_yes_faq` segment, with a
-store-domain fallback for reviews that landed on a different chat.
+Review tracking is automatic (not a manual `review-yes` tag), three layers:
+1. session_id from the ticket's chatLink, matched against `avada_cs.crisp_chats`
+   for a `review_yes_chatty`/`rv_yes_chatty`/`review_yes_faq` segment.
+2. store-domain fallback, for reviews that landed on a different chat.
+3. store-name fallback: the ticket's own Crisp `customerNickname` (= visitor
+   data "name") matched against this month's Chatty App Store review names
+   (scraped, see fetch_reviews.py) — catches reviews nobody tagged at all.
 `dfy_per_install` compares this month's DFY ticket count against Chatty's
 new installs that month (`avada_product_dash.dash_daily_installs`).
 
@@ -41,11 +44,22 @@ Output shape (JSON):
 A ticket row: {date, ticket_id, url, store, cs_nick, cs_display, tasks_done,
                tasks_total, tags}
 """
-import os, re, sys, json, argparse, calendar
+import os, re, sys, json, argparse, calendar, importlib.util
 import urllib.request, urllib.parse
 from collections import defaultdict, Counter
 
 BASE = "https://avada-ts-a9cb0.web.app"
+
+# App Store review "name" = the store's display name, same string Crisp stores
+# as `customerNickname` for that store's chats. Lets us match a review back to
+# a DFY ticket even when nobody tagged the chat with review_yes_chatty — see
+# memory dfy_monthly_review_name_match.md. Loaded by path since cs-weekly/
+# isn't a package.
+_FR_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "cs-weekly", "scripts", "fetch_reviews.py")
+_spec = importlib.util.spec_from_file_location("fetch_reviews", _FR_PATH)
+fetch_reviews = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(fetch_reviews)
+REVIEW_APP_SLUG = {"chatty": "chatty"}
 
 # Segments on a Crisp session that mean "this store already left a review" —
 # see memory bq_crisp_segments.md. Chatty carries variants because the app was
@@ -201,6 +215,49 @@ def fetch_reviewed(client, session_ids, domains, since):
     return rev_sessions, rev_domains
 
 
+def fetch_customer_names(client, session_ids, domains):
+    """customerNickname (= visitor-data "name") per session_id and per store
+    domain, for matching a ticket's store against the App Store review names
+    fetch_review_names() returns — independent of any review_yes tag."""
+    if not session_ids and not domains:
+        return {}, {}
+    from google.cloud import bigquery as bq
+    q = """
+    SELECT session_id,
+           REGEXP_REPLACE(REGEXP_REPLACE(LOWER(shopifyDomain), r'^https?://', ''), r'/$', '') AS domain,
+           customerNickname
+    FROM `avada-crm.avada_cs.crisp_chats`
+    WHERE customerNickname IS NOT NULL
+      AND (session_id IN UNNEST(@session_ids)
+           OR REGEXP_REPLACE(REGEXP_REPLACE(LOWER(shopifyDomain), r'^https?://', ''), r'/$', '') IN UNNEST(@domains))
+    """
+    job = client.query(q, job_config=bq.QueryJobConfig(query_parameters=[
+        bq.ArrayQueryParameter("session_ids", "STRING", list(session_ids) or [""]),
+        bq.ArrayQueryParameter("domains", "STRING", [d.lower() for d in domains] or [""]),
+    ]))
+    by_session, by_domain = {}, {}
+    for row in job.result():
+        if row.session_id and row.session_id not in by_session:
+            by_session[row.session_id] = row.customerNickname
+        if row.domain and row.domain not in by_domain:
+            by_domain[row.domain] = row.customerNickname
+    return by_session, by_domain
+
+
+def fetch_review_names(app, start, end):
+    """Store names on Chatty's App Store reviews this month (scraped page —
+    see fetch_reviews.py). Returns a set of normalized (lowered, stripped)
+    names. Empty set if the app has no review scraping wired up."""
+    slug = REVIEW_APP_SLUG.get(app)
+    if not slug:
+        return set()
+    import datetime
+    s = datetime.datetime.strptime(start, "%Y-%m-%d").date()
+    e = datetime.datetime.strptime(end, "%Y-%m-%d").date()
+    rows = fetch_reviews.fetch(slug, s, e)
+    return {nm.strip().lower() for d, _, nm in rows if s <= d <= e and nm}
+
+
 def fetch_installs(client, app_id, start, end):
     q = """
     SELECT SUM(unique_shops) AS installs
@@ -279,6 +336,16 @@ def ticket_reviewed(t, rev_sessions, rev_domains):
     sess = session_id_from_chatlink(t.get("chatLink"))
     domain = (t.get("store") or [{}])[0].get("domain", "").lower()
     return (sess and sess in rev_sessions) or (domain and domain in rev_domains)
+
+
+def ticket_reviewed_by_name(t, by_session, by_domain, review_names):
+    """Third, independent match layer: the ticket's own store name (Crisp
+    customerNickname) against this month's App Store review names — catches
+    reviews nobody tagged review_yes_chatty on at all."""
+    sess = session_id_from_chatlink(t.get("chatLink"))
+    domain = (t.get("store") or [{}])[0].get("domain", "").lower()
+    name = (sess and by_session.get(sess)) or (domain and by_domain.get(domain))
+    return bool(name and name.strip().lower() in review_names)
 
 
 def adopt(group, id2name):
@@ -373,7 +440,18 @@ def main():
     domains = {(t.get("store") or [{}])[0].get("domain", "") for t in op}
     domains.discard("")
     rev_sessions, rev_domains = fetch_reviewed(bq, session_ids, domains, f"{start} 00:00:00")
-    review_yes = sum(1 for t in op if ticket_reviewed(t, rev_sessions, rev_domains))
+
+    # Third layer: match the ticket's own store name (Crisp customerNickname)
+    # against this month's App Store review names — catches reviews nobody
+    # tagged at all. Independent of the tag-based match above.
+    by_session, by_domain = fetch_customer_names(bq, session_ids, domains)
+    review_names = fetch_review_names(a.app, start, end)
+    review_by_name = sum(1 for t in op
+                          if not ticket_reviewed(t, rev_sessions, rev_domains)
+                          and ticket_reviewed_by_name(t, by_session, by_domain, review_names))
+
+    review_yes = sum(1 for t in op if ticket_reviewed(t, rev_sessions, rev_domains)
+                      or ticket_reviewed_by_name(t, by_session, by_domain, review_names))
     review_pct = round(100 * review_yes / len(op)) if op else 0
 
     # ---- DFY tickets / app installs this month ----
@@ -413,7 +491,8 @@ def main():
             "timing": {"by_week": dict(sorted(by_week.items())),
                        "peak_week": int(peak_week), "peak_n": peak_n},
             "review_yes": review_yes,
-            "review": {"count": review_yes, "total": len(op), "pct": review_pct},
+            "review": {"count": review_yes, "total": len(op), "pct": review_pct,
+                       "matched_by_name": review_by_name},
             "dfy_per_install": {"dfy_tickets": len(op), "installs": installs,
                                 "pct": dfy_per_install_pct},
         },

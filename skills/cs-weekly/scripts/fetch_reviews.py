@@ -29,10 +29,15 @@ UA = {
 }
 DATE_RE = re.compile(r"([A-Z][a-z]{2,8} \d{1,2}, 20\d\d)")
 STAR_RE = re.compile(r"(\d) out of 5 stars")
+# The store's display name, shown next to the review (e.g. "LeanLight") — same
+# name Crisp stores as `customerNickname`/visitor-data "name" for that store's
+# chats. Lets dfy-monthly match a review back to a DFY ticket even when nobody
+# tagged the chat (see memory dfy_monthly_review_name_match.md).
+NAME_RE = re.compile(r'tw-overflow-hidden tw-text-ellipsis tw-whitespace-nowrap" title="([^"]*)"')
 
 
 def fetch(slug, start, end, max_pages=40):
-    rows = []  # (date, rating)
+    rows = []  # (date, rating, name)
     for page in range(1, max_pages + 1):
         url = f"https://apps.shopify.com/{slug}/reviews?sort_by=newest&page={page}"
         req = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30)
@@ -47,12 +52,14 @@ def fetch(slug, start, end, max_pages=40):
         for b in blocks:
             ds = DATE_RE.findall(b)
             rs = STAR_RE.findall(b)
+            ns = NAME_RE.findall(b)
             if not ds:
                 continue
             d = datetime.datetime.strptime(ds[0], "%B %d, %Y").date()  # FIRST = review date
             r = int(rs[0]) if rs else None                            # FIRST = review rating
+            name = ns[0].strip() if ns else None                       # FIRST = store name
             page_min = d if page_min is None else min(page_min, d)
-            rows.append((d, r))
+            rows.append((d, r, name))
         # newest-first → once the whole page predates the window, we're done.
         if page_min and page_min < start:
             break
@@ -61,13 +68,13 @@ def fetch(slug, start, end, max_pages=40):
 
 def summarize(slug, start, end):
     rows = fetch(slug, start, end)
-    inwin = [(d, r) for d, r in rows if start <= d <= end]
+    inwin = [(d, r, n) for d, r, n in rows if start <= d <= end]
     n = len(inwin)
-    avg = round(sum(r for _, r in inwin if r) / n, 2) if n else 0.0
+    avg = round(sum(r for _, r, _ in inwin if r) / n, 2) if n else 0.0
     dist = {}
-    for _, r in inwin:
+    for _, r, _ in inwin:
         dist[r] = dist.get(r, 0) + 1
-    low = [{"date": str(d), "rating": r} for d, r in inwin if r and r <= 3]
+    low = [{"date": str(d), "rating": r, "name": nm} for d, r, nm in inwin if r and r <= 3]
     return {
         "start": str(start),
         "end": str(end),
@@ -75,7 +82,7 @@ def summarize(slug, start, end):
         "avg": avg,
         "distribution": {str(k): v for k, v in sorted(dist.items(), reverse=True)},
         "low_reviews": low,
-        "reviews": [{"date": str(d), "rating": r} for d, r in sorted(inwin, reverse=True)],
+        "reviews": [{"date": str(d), "rating": r, "name": nm} for d, r, nm in sorted(inwin, reverse=True)],
     }
 
 

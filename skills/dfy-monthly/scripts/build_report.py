@@ -134,8 +134,10 @@ def build(d, reasons=None):
              f"{inb['adopted']} (**{inb['adopt_pct']}%**)")
     L.append(f"- 🟢 **Proactive** (DFY chủ động reach out): {pro['count']} ticket · adopted "
              f"{pro['adopted']} (**{pro['adopt_pct']}%**)")
+    by_name_note = f" (trong đó {rv['matched_by_name']} nhận ra nhờ khớp tên store, không có tag)" \
+        if rv.get("matched_by_name") else ""
     L.append(f"- ⭐ **Review xin được / ticket DFY:** {rv['count']}/{rv['total']} "
-             f"(**{rv['pct']}%**)")
+             f"(**{rv['pct']}%**){by_name_note}")
     L.append(f"- 📈 **Case DFY / install app trong tháng:** {dpi['dfy_tickets']}/{dpi['installs']} "
              f"(**{dpi['pct']}%**)")
     L.append(f"- **Note:** Số liệu tháng {MONTH_VI.get(mm, mm)}/{d['month'].split('-')[0]} "
