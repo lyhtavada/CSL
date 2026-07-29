@@ -68,6 +68,9 @@ def build(d):
     inb = d["inbound"]
     pro = d["proactive"]
 
+    rv = d["insights"]["review"]
+    dpi = d["insights"]["dfy_per_install"]
+
     L = []
     L.append("## Overview\n")
     L.append(f"- **Tổng ticket DFY:** {d['total']} · **Adopted:** {d['adopted']} ({d['adopt_pct']}%)")
@@ -75,6 +78,10 @@ def build(d):
              f"{inb['adopted']} (**{inb['adopt_pct']}%**)")
     L.append(f"- 🟢 **Proactive** (DFY chủ động reach out): {pro['count']} ticket · adopted "
              f"{pro['adopted']} (**{pro['adopt_pct']}%**)")
+    L.append(f"- ⭐ **Review xin được / ticket DFY:** {rv['count']}/{rv['total']} "
+             f"(**{rv['pct']}%**)")
+    L.append(f"- 📈 **Case DFY / install app trong tháng:** {dpi['dfy_tickets']}/{dpi['installs']} "
+             f"(**{dpi['pct']}%**)")
     L.append(f"- **Note:** Số liệu tháng {MONTH_VI.get(mm, mm)}/{d['month'].split('-')[0]} "
              f"(open tickets).\n")
 

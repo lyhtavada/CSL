@@ -66,6 +66,8 @@ def build_blocks(d, notion_url):
     yy = d["month"].split("-")[0]
     inb, pro, ins = d["inbound"], d["proactive"], d["insights"]
     v = ins["video"]
+    rv = ins["review"]
+    dpi = ins["dfy_per_install"]
 
     title = f"📊 DFY Chatty — Tháng {MONTH_VI.get(mm, mm)}/{yy}"
 
@@ -85,7 +87,9 @@ def build_blocks(d, notion_url):
         {"type": "header", "text": {"type": "plain_text", "text": title, "emoji": True}},
         {"type": "section", "text": {"type": "mrkdwn",
          "text": f"Gửi cả nhà số liệu DFY Chatty tháng {MONTH_VI.get(mm, mm)} 🎉\n\n"
-                 f"*Tổng quan:* {d['total']} ticket · adopted *{d['adopted']} ({d['adopt_pct']}%)*"}},
+                 f"*Tổng quan:* {d['total']} ticket · adopted *{d['adopted']} ({d['adopt_pct']}%)*\n"
+                 f"⭐ Review xin được: *{rv['count']}/{rv['total']} ({rv['pct']}%)* · "
+                 f"📈 DFY/install tháng: *{dpi['dfy_tickets']}/{dpi['installs']} ({dpi['pct']}%)*"}},
         {"type": "section", "text": {"type": "mrkdwn",
          "text": "*Tách theo kênh*\n"
                  f"🔵 *Inbound* (DFY theo yêu cầu KH): *{inb['count']} ticket · adopt "

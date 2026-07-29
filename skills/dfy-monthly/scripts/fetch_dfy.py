@@ -9,7 +9,14 @@ each CS to their KPI nickname, and emits a single JSON blob to stdout (or --out)
 Usage:
   python3 fetch_dfy.py --app chatty --month 2026-06 [--out /tmp/dfy.json]
 
-Auth: AVD_TICKET_API_KEY from CSL/.env.
+Auth: AVD_TICKET_API_KEY + BQ_SA_* from CSL/.env.
+
+Review tracking is automatic (not a manual `review-yes` tag): each ticket's
+`chatLink` gives a Crisp session_id, matched against `avada_cs.crisp_chats`
+for a `review_yes_chatty`/`rv_yes_chatty`/`review_yes_faq` segment, with a
+store-domain fallback for reviews that landed on a different chat.
+`dfy_per_install` compares this month's DFY ticket count against Chatty's
+new installs that month (`avada_product_dash.dash_daily_installs`).
 
 Output shape (JSON):
   {
@@ -25,21 +32,34 @@ Output shape (JSON):
         "ai":      {"full_adopt_pct": 83, "zero_adopt_pct": 0},
         "chatbox": {"task_pct": 16, "zero_ticket": 19, "total_ticket": 27},
         "timing":  {"by_week": {"1":1,"4":20,"5":6}, "peak_week": 4, "peak_n": 20},
-        "review_yes": 4
+        "review_yes": 4,
+        "review": {"count": 4, "total": 27, "pct": 15},
+        "dfy_per_install": {"dfy_tickets": 27, "installs": 1689, "pct": 1.6}
     }
   }
 
 A ticket row: {date, ticket_id, url, store, cs_nick, cs_display, tasks_done,
                tasks_total, tags}
 """
-import os, sys, json, argparse, calendar
+import os, re, sys, json, argparse, calendar
 import urllib.request, urllib.parse
 from collections import defaultdict, Counter
 
 BASE = "https://avada-ts-a9cb0.web.app"
 
+# Segments on a Crisp session that mean "this store already left a review" —
+# see memory bq_crisp_segments.md. Chatty carries variants because the app was
+# formerly named FAQ.
+REVIEW_SEGMENTS = ["review_yes_chatty", "rv_yes_chatty", "review_yes_faq"]
+
+SESSION_RE = re.compile(r"session_([a-f0-9-]+)")
+
 # App name as the Ticket API expects it.
 APP_NAME = {"chatty": "Chatty", "joy": "JOY Loyalty"}
+
+# app_id as used in the analytics warehouse (dash_daily_installs). Chatty was
+# formerly named "FAQ" internally, hence "avadaFaq".
+INSTALL_APP_ID = {"chatty": "avadaFaq"}
 
 # Tags that mark a ticket as DFY (scoring + tracking). A ticket is DFY if it has
 # ANY of these. Kept in sync with /dfy-tracker + /dfy-weekly.
@@ -89,6 +109,82 @@ def api_get(path, key, params=None):
     req = urllib.request.Request(url, headers={"X-API-Key": key})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
+
+
+def bq_client(env):
+    from google.oauth2 import service_account
+    from google.cloud import bigquery
+
+    creds = service_account.Credentials.from_service_account_info(
+        {
+            "type": "service_account",
+            "client_email": env["BQ_SA_CLIENT_EMAIL"],
+            "private_key": env["BQ_SA_PRIVATE_KEY"].replace("\\n", "\n"),
+            "token_uri": "https://oauth2.googleapis.com/token",
+        },
+        scopes=["https://www.googleapis.com/auth/bigquery"],
+    )
+    return bigquery.Client(project="avada-crm", credentials=creds)
+
+
+def session_id_from_chatlink(chat_link):
+    if not chat_link:
+        return None
+    m = SESSION_RE.search(chat_link)
+    return m.group(1) if m else None
+
+
+def fetch_reviewed(client, session_ids, domains, since):
+    """Return (set of session_ids, set of shopifyDomains) that already carry a
+    review_yes segment. Two-tier match: exact session_id from the ticket's
+    chatLink (precise), plus a domain+time fallback for tickets whose review
+    landed in a different chat than the one linked on the ticket."""
+    if not session_ids and not domains:
+        return set(), set()
+    from google.cloud import bigquery as bq
+
+    # shopifyDomain is stored as e.g. "https://store.myshopify.com" — strip the
+    # scheme (and any trailing slash) before comparing against the ticket's
+    # bare store.domain.
+    seg_clause = " OR ".join(f"LOWER(segments) LIKE '%{s}%'" for s in REVIEW_SEGMENTS)
+    q = f"""
+    SELECT DISTINCT session_id,
+           REGEXP_REPLACE(REGEXP_REPLACE(LOWER(shopifyDomain), r'^https?://', ''), r'/$', '') AS domain
+    FROM `avada-crm.avada_cs.crisp_chats`
+    WHERE ({seg_clause})
+      AND timestamp >= @since
+      AND (session_id IN UNNEST(@session_ids)
+           OR REGEXP_REPLACE(REGEXP_REPLACE(LOWER(shopifyDomain), r'^https?://', ''), r'/$', '') IN UNNEST(@domains))
+    """
+    job = client.query(q, job_config=bq.QueryJobConfig(query_parameters=[
+        bq.ScalarQueryParameter("since", "TIMESTAMP", since),
+        bq.ArrayQueryParameter("session_ids", "STRING", list(session_ids) or [""]),
+        bq.ArrayQueryParameter("domains", "STRING", [d.lower() for d in domains] or [""]),
+    ]))
+    rev_sessions, rev_domains = set(), set()
+    for row in job.result():
+        if row.session_id:
+            rev_sessions.add(row.session_id)
+        if row.domain:
+            rev_domains.add(row.domain)
+    return rev_sessions, rev_domains
+
+
+def fetch_installs(client, app_id, start, end):
+    q = """
+    SELECT SUM(unique_shops) AS installs
+    FROM `avada-crm.avada_product_dash.dash_daily_installs`
+    WHERE app_id = @app_id AND day BETWEEN @start AND @end
+    """
+    from google.cloud import bigquery as bq
+    job = client.query(q, job_config=bq.QueryJobConfig(query_parameters=[
+        bq.ScalarQueryParameter("app_id", "STRING", app_id),
+        bq.ScalarQueryParameter("start", "DATE", start),
+        bq.ScalarQueryParameter("end", "DATE", end),
+    ]))
+    for row in job.result():
+        return row.installs or 0
+    return 0
 
 
 def tag_map(key):
@@ -146,6 +242,12 @@ def row(t, id2name):
         "tasks_total": len(tks),
         "tags": names(t, id2name),
     }
+
+
+def ticket_reviewed(t, rev_sessions, rev_domains):
+    sess = session_id_from_chatlink(t.get("chatLink"))
+    domain = (t.get("store") or [{}])[0].get("domain", "").lower()
+    return (sess and sess in rev_sessions) or (domain and domain in rev_domains)
 
 
 def adopt(group, id2name):
@@ -231,7 +333,21 @@ def main():
             pass
     peak_week, peak_n = (max(by_week.items(), key=lambda x: x[1]) if by_week else ("0", 0))
 
-    review_yes = sum(1 for t in op if "review-yes" in names(t, id2name))
+    # ---- review tracking (automatic, via BigQuery crisp_chats segments) ----
+    # Two-tier match: exact session_id parsed from the ticket's chatLink, plus
+    # a store-domain fallback (in case the review landed on a different chat
+    # session than the one linked on the ticket). See memory bq_crisp_segments.md.
+    bq = bq_client(env)
+    session_ids = {s for s in (session_id_from_chatlink(t.get("chatLink")) for t in op) if s}
+    domains = {(t.get("store") or [{}])[0].get("domain", "") for t in op}
+    domains.discard("")
+    rev_sessions, rev_domains = fetch_reviewed(bq, session_ids, domains, f"{start} 00:00:00")
+    review_yes = sum(1 for t in op if ticket_reviewed(t, rev_sessions, rev_domains))
+    review_pct = round(100 * review_yes / len(op)) if op else 0
+
+    # ---- DFY tickets / app installs this month ----
+    installs = fetch_installs(bq, INSTALL_APP_ID.get(a.app, ""), start, end) if a.app in INSTALL_APP_ID else 0
+    dfy_per_install_pct = round(100 * len(op) / installs, 2) if installs else 0
 
     result = {
         "app": a.app, "month": a.month,
@@ -252,6 +368,9 @@ def main():
             "timing": {"by_week": dict(sorted(by_week.items())),
                        "peak_week": int(peak_week), "peak_n": peak_n},
             "review_yes": review_yes,
+            "review": {"count": review_yes, "total": len(op), "pct": review_pct},
+            "dfy_per_install": {"dfy_tickets": len(op), "installs": installs,
+                                "pct": dfy_per_install_pct},
         },
     }
 
