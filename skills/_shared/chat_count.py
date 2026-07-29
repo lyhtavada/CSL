@@ -32,15 +32,34 @@ GAP_HOURS) gets wrongly counted as a brand-new conversation — verified on
 real data: 5/311 sessions in a sample week were this kind of boundary
 spillover.
 
+`chat_count()` counts conversations that *started* inside [start, end) — right for
+weekly/monthly reporting, where periods are meant to sum without double-counting a
+conversation that spans a period boundary. It only looks BACKWARD (lookback) to get
+the gap math right at the start edge; it does not look forward past `end`, so at
+report granularities where boundaries are frequent (daily) this systematically
+undercounts: a conversation starting late in the day (e.g. 23:00) that continues past
+midnight only has 1 message inside the day's window, and gets dropped by the
+`min_user_msgs` filter even though it's a real 2+ message conversation.
+
+`chat_count_active()` is for that case (used by /cs-daily-brief): it counts
+conversations *active* (>=1 merchant message) inside [start, end), computing
+msg_count over the conversation's FULL span using both a lookback AND a lookahead
+buffer — so a conversation crossing midnight is correctly kept, and is (by design)
+counted on every calendar day it touches, same as the daily brief's original
+"sessions touched today" semantics. Do not use this for weekly/monthly volume — it
+double-counts conversations spanning a period boundary on purpose.
+
 Usage:
-    from chat_count import chat_count, APP_SEGMENTS
+    from chat_count import chat_count, chat_count_active, APP_SEGMENTS
     n = chat_count(bq_client, APP_SEGMENTS["chatty"], "2026-07-20", "2026-07-27")
+    n_today = chat_count_active(bq_client, APP_SEGMENTS["chatty"], "2026-07-26", "2026-07-26")
 """
 import datetime
 
 GAP_HOURS = 6
 MIN_USER_MSGS = 2
 LOOKBACK_DAYS = 2  # >= GAP_HOURS/24 rounded up, with margin
+LOOKAROUND_DAYS = 2  # lookback/lookahead margin for chat_count_active
 
 APP_SEGMENTS = {
     "chatty": ["app_chatty", "app_faqs"],
@@ -113,6 +132,80 @@ def chat_count(client, segments, start, end, gap_hours=GAP_HOURS,
     WHERE msg_count >= {min_user_msgs}
       AND conv_start >= TIMESTAMP("{start} 00:00:00+07")
       AND conv_start <  TIMESTAMP("{end_excl} 00:00:00+07")
+    """
+    job = bigquery.QueryJobConfig(query_parameters=params)
+    return list(client.query(sql, job_config=job).result())[0].n
+
+
+def chat_count_active(client, segments, start, end, gap_hours=GAP_HOURS,
+                       min_user_msgs=MIN_USER_MSGS, exclude_internal=True,
+                       lookaround_days=LOOKAROUND_DAYS):
+    """Count real merchant conversations ACTIVE (>=1 merchant message) in
+    [start, end] (YYYY-MM-DD, inclusive, Asia/Bangkok +07) — see module docstring
+    for why this differs from chat_count(). `segments` is a list like
+    APP_SEGMENTS["chatty"]."""
+    from google.cloud import bigquery
+
+    seg_clause = " OR ".join(f"segments LIKE @s{i}" for i in range(len(segments)))
+    params = [
+        bigquery.ScalarQueryParameter(f"s{i}", "STRING", f"%{s}%")
+        for i, s in enumerate(segments)
+    ]
+
+    win_start = f"{start} 00:00:00+07"
+    win_end_excl = (datetime.datetime.strptime(end, "%Y-%m-%d").date()
+                     + datetime.timedelta(days=1)).isoformat() + " 00:00:00+07"
+    fetch_start = (datetime.datetime.strptime(start, "%Y-%m-%d").date()
+                    - datetime.timedelta(days=lookaround_days)).isoformat() + " 00:00:00+07"
+    fetch_end = (datetime.datetime.strptime(end, "%Y-%m-%d").date()
+                 + datetime.timedelta(days=1 + lookaround_days)).isoformat() + " 00:00:00+07"
+
+    internal_clause = ""
+    if exclude_internal:
+        internal_clause = "AND NOT (" + " OR ".join(
+            f"LOWER(customerEmail) LIKE '{p}'" for p in INTERNAL_EMAIL_PATTERNS
+        ) + ")"
+
+    sql = f"""
+    WITH msgs AS (
+      SELECT session_id, timestamp
+      FROM `avada-crm.avada_cs.crisp_chats`
+      WHERE ({seg_clause})
+        AND type = 'text' AND fromType = 'user'
+        AND content IS NOT NULL AND TRIM(content) != ''
+        AND timestamp >= TIMESTAMP("{fetch_start}")
+        AND timestamp <  TIMESTAMP("{fetch_end}")
+        {internal_clause}
+    ),
+    flagged AS (
+      SELECT session_id, timestamp,
+        IF(
+          LAG(timestamp) OVER (PARTITION BY session_id ORDER BY timestamp) IS NULL
+          OR TIMESTAMP_DIFF(
+               timestamp,
+               LAG(timestamp) OVER (PARTITION BY session_id ORDER BY timestamp),
+               HOUR
+             ) >= {gap_hours},
+          1, 0
+        ) AS is_start
+      FROM msgs
+    ),
+    grouped AS (
+      SELECT session_id, timestamp,
+        SUM(is_start) OVER (PARTITION BY session_id ORDER BY timestamp) AS grp
+      FROM flagged
+    ),
+    conv AS (
+      SELECT session_id, grp,
+        COUNT(*) AS msg_count,
+        LOGICAL_OR(timestamp >= TIMESTAMP("{win_start}")
+                   AND timestamp < TIMESTAMP("{win_end_excl}")) AS touches_window
+      FROM grouped
+      GROUP BY session_id, grp
+    )
+    SELECT COUNT(*) AS n
+    FROM conv
+    WHERE msg_count >= {min_user_msgs} AND touches_window
     """
     job = bigquery.QueryJobConfig(query_parameters=params)
     return list(client.query(sql, job_config=job).result())[0].n
