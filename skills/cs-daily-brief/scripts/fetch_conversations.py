@@ -13,7 +13,10 @@ Usage:
 import os, sys, json, argparse, datetime as dt
 
 sys.path.insert(0, os.path.dirname(__file__))
-from _common import load_env, bq_client, to_utc_str, VN  # noqa: E402
+from _common import load_env, bq_client, VN  # noqa: E402
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "_shared"))
+from chat_count import chat_count_active, APP_SEGMENTS  # noqa: E402
 
 
 def main():
@@ -30,25 +33,20 @@ def main():
 
     start = day.replace(hour=0, minute=0, second=0, microsecond=0)
     end = start + dt.timedelta(days=1)
-    us, ue = to_utc_str(start), to_utc_str(end)
+    day_str = start.strftime("%Y-%m-%d")
 
     env = load_env()
     client = bq_client(env)
-    # Joy = app_joy ; Chatty = app_chatty OR app_faqs (legacy) ; Wishlist = app_wishlist
-    q = f"""
-    SELECT
-      CASE WHEN ANY_VALUE(segments) LIKE '%app_joy%' THEN 'joy'
-           WHEN ANY_VALUE(segments) LIKE '%app_chatty%' OR ANY_VALUE(segments) LIKE '%app_faqs%' THEN 'chatty'
-           WHEN ANY_VALUE(segments) LIKE '%app_wishlist%' THEN 'wishlist' END AS app,
-      session_id
-    FROM `avada-crm.avada_cs.crisp_chats`
-    WHERE timestamp >= TIMESTAMP('{us}') AND timestamp < TIMESTAMP('{ue}')
-    GROUP BY session_id
-    HAVING app IS NOT NULL
-    """
-    counts = {"joy": 0, "chatty": 0, "wishlist": 0}
-    for r in client.query(q):
-        counts[r.app] += 1
+    # Same "real conversation" filters as /cs-weekly + /count-chats (merchant-
+    # anchored, >=2 msgs, internal traffic excluded) but using chat_count_active()
+    # — counts conversations ACTIVE this day (not just ones that started today),
+    # matching this report's original "sessions touched today" intent. See
+    # skills/_shared/chat_count.py docstring for why chat_count() (start-anchored)
+    # would systematically undercount at daily granularity.
+    counts = {
+        app: chat_count_active(client, segs, day_str, day_str)
+        for app, segs in APP_SEGMENTS.items()
+    }
 
     out = {
         "date": start.strftime("%Y-%m-%d"),

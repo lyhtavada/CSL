@@ -16,10 +16,17 @@ of DM'ing her, then to add tickets created for her.
 
 ## Sections
 
-**① Tổng quan conversation** — count of Crisp conversations per app for the
-target day: Joy, Chatty, Wishlist + total. `scripts/fetch_conversations.py`,
-BigQuery `avada-crm.avada_cs.crisp_chats`, app split by `segments` LIKE
-`%app_joy%` / `%app_chatty%`|`%app_faqs%` / `%app_wishlist%`.
+**① Tổng quan conversation** — count of **real merchant conversations** per app
+active on the target day: Joy, Chatty, Wishlist + total. `scripts/fetch_conversations.py`,
+BigQuery `avada-crm.avada_cs.crisp_chats`, app split via `APP_SEGMENTS` in
+`skills/_shared/chat_count.py`. Uses `chat_count_active()` (not `chat_count()`) —
+same merchant-anchored / ≥2-msgs / internal-traffic-excluded filters as
+`/cs-weekly` + `/count-chats`, but counts conversations **active** that day
+(≥1 merchant message that day, full conversation may span into adjacent days)
+rather than ones that *started* that day — the right semantic for a daily
+activity pulse, and it avoids undercounting chats that cross midnight. This
+means a single ongoing conversation can legitimately be counted on 2
+consecutive days — expected, not a bug.
 
 **② Checkin/checkout (Team G2)** — late (>5 min) checkins, missed checkins,
 missed checkouts for the target day. `scripts/fetch_checkin.py`, via
