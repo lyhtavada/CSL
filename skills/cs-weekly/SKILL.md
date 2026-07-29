@@ -1,7 +1,7 @@
 ---
 name: cs-weekly
 description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest) — each compared vs the prior week — then clusters top issues from tickets (Ticket API, [dfy] excluded), scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
-version: 1.5.0
+version: 1.6.0
 ---
 
 # CS Weekly Skill
@@ -42,13 +42,15 @@ from an old file** (reports live in Notion only). Each block has `tickets_create
 `dfy_created`, `chats`. Sources: Ticket API (`AVD_TICKET_API_KEY`), BigQuery
 `avada_cs.crisp_chats` (Chatty = segments `app_chatty,app_faqs`; Joy = `app_joy`).
 
-**`chats` = conversations, sessionized — NOT DISTINCT session_id.** Crisp keeps one
-session_id per visitor forever, so a merchant returning across the week stays one
-session_id; counting distinct sessions under-counts real volume (~40% low on Chatty,
-~70% on Joy in a sample week). The script splits a session_id into a new conversation
-whenever there's a silence gap ≥ `GAP_HOURS` (default **6h**, set in `fetch_metrics.py`).
-6h = long enough not to split a chat still awaiting a reply, short enough to catch a
-genuine return. Retune via `GAP_HOURS` if needed.
+**`chats` = real merchant conversations — NOT DISTINCT session_id.** Logic lives in
+`skills/_shared/chat_count.py` (shared with `/count-chats`, full rationale + validation
+numbers in its docstring): sessionize on merchant (`fromType='user'`) text messages only
+— a silence gap ≥ 6h starts a new conversation, operator messages never start/reset one
+— then only count conversations with ≥2 merchant messages (excludes CS-initiated chats
+and "click-a-CTA-then-go-silent" chats), excluding Avada-internal test traffic
+(`@avada*` emails), with a lookback window so a conversation spanning a report-period
+boundary isn't double-counted. Retune via `chat_count()`'s `gap_hours`/`min_user_msgs`
+args if needed.
 
 ### 3. Pull App Store reviews (per app) — with `--compare`
 
