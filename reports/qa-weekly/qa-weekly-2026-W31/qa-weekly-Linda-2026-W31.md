@@ -1,0 +1,41 @@
+# 📋 QA TUẦN — BÁO CÁO CỦA Linda
+🗓️ Tuần 2026-W31 · 22/07 – 28/07/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 **Điểm tuần:** 85/100 — Tốt  (▲ +4 so với tuần trước)
+🔍 Đã QA: 30 chat
+🧠 Mindset: 29.0/34 · 📚 Kiến thức: 28.2/33 · 🛠️ Xử lý: 28.2/33
+
+📝 **Nhận xét chung**
+Tuần này bạn xử lý rất chắc tay và có tâm — phần lớn trong 30 chat được QA đều thấy bạn chủ động đi xa hơn câu hỏi ban đầu của khách (chat #1 tự phát hiện lỗi copy 'act fast', tự sửa payment methods; chat #4, #8, #11, #17, #23 tự debug ra root cause kỹ thuật — SPF record, script ghi đè File API, Chat Focus Mode — thay vì chỉ chuyển ticket suông cho dev). Đây là điểm mạnh rõ rệt và hiếm gặp. Hướng cần tập trung: (1) với case liên quan tới billing/ngân sách phức tạp (chat #4), bạn set nhầm 'tổng ngân sách' thành 'ngân sách phát sinh thêm', phải để đồng nghiệp Technical vào sửa lại — cần xác nhận number rõ ràng trước khi thao tác; (2) chat #10 kết thúc lửng bằng câu hỏi 'Are you still here with me?' mà không có bước tiếp theo hay thời hạn cụ thể — với 2 vấn đề khách báo (order tracking bug, chỉnh size icon) vẫn chưa xong, cần chốt rõ hẹn khi nào update thay vì để im.
+
+✅ **Điểm tốt tuần này**
+- [P1] Ownership vượt kỳ vọng — không chỉ trả lời đúng câu hỏi mà chủ động rà soát toàn bộ setup, sửa cả những lỗi khách chưa kịp hỏi (payment methods sai, copy 'act fast' không đúng tone thương hiệu), khiến khách nói 'you've been a blessing for my business'. (#1)
+- [P2] Kiến thức kỹ thuật sâu — tự debug ra root cause chính xác thay vì chỉ leo thang: SPF record chặn Amazon SES (chat #8), script ghi đè window.File API (chat #17), giới hạn file 18MB (chat #23), Chat Focus Mode gây lỗi hiển thị widget (chat #11). (#8, #11, #17, #23)
+- [P3] Giữ bình tĩnh và tiếp tục điều tra có hệ thống khi khách rất bực và liên tục dồn dập ('人工，你们数据库全乱了吗？') thay vì phản ứng phòng thủ hay đóng lửng. (#17)
+- [P4] Xin review đúng thời điểm khách vừa hài lòng, không gượng ép — 10/11 chat phù hợp đều được xin đúng lúc. (#2, #8, #12, #25, #26)
+
+🔧 **Cần cải thiện**
+- **[KN2] Moderate** — Xác nhận số liệu billing chưa chuẩn ngay từ đầu, khiến đồng nghiệp phải vào sửa lại (#4)
+  - Dẫn chứng: Khách nói rõ muốn 'tổng ngân sách hàng tháng $125 (bao gồm cả $68.99 Pro plan)', nhưng Linda ban đầu set $125 là ngân sách AI phát sinh thêm (cộng thêm ngoài phí Pro), Technical phải vào hỏi lại: 'この$125は、Pro プランに含まれる月間制限に達した後のAI会話のために別途確保したい予算ということでよろしいでしょうか？'
+  - → Khi khách nói về ngân sách/billing dạng tổng số, luôn nhắc lại rõ ràng bằng số cụ thể ('tổng $125 = $68.99 Pro + $56.01 extra AI') và để khách xác nhận TRƯỚC khi set, tránh phải sửa lại 2 lần.
+- **[QT18] Low** — Kết thúc chat không có bước tiếp theo hay hẹn thời gian rõ ràng khi khách chưa xong việc (#10)
+  - Dẫn chứng: Case còn 2 vấn đề chưa xử lý xong (order không tìm thấy trên hệ thống, chỉnh size icon), Linda chỉ nhắn 'Are you still here with me? 😊' rồi transcript kết thúc, không có câu chốt kiểu 'nếu không thấy phản hồi trong X giờ mình sẽ...'
+  - → Khi case còn dở dang và khách im lặng, luôn chốt 1 câu có deadline cụ thể trước khi để chat treo, để khách biết khi nào được cập nhật.
+- **[KN1] Low** — Vài lỗi chính tả nhỏ trong lúc gõ nhanh (#1, #6)
+  - Dẫn chứng: 'Could you helo me double-check it?' (thay vì help); 'I think that's all doen for the AI' (thay vì done)
+  - → Đọc lại 1 lượt trước khi gửi những tin nhắn dài, đặc biệt khi đang trả lời nhanh liên tục nhiều câu.
+
+🌟 **Xin review (chỉ ghi nhận, không tính điểm)**
+- Đã xin review ở **10/11** chat phù hợp (đúng lúc: 10, sai lúc: 0)
+- Xin review 10/11 chat phù hợp, hầu như đúng lúc — ngay sau khi khách vừa cảm ơn/khen. Bỏ lỡ 1 chat vàng (chat #19, khách nói 'Sounds good, its done' rất hài lòng) mà chưa chủ động xin.
+
+📈 **So với tuần trước**
+- Điểm 81 → 85 (▲ +4)
+- Trục: Mindset 28→29.0, Kiến thức 27.1→28.2, Kỹ năng 26.1→28.2
+- Lỗi tuần trước đã hết: KN3, KN6, KT1 👏
+
+🔗 **Chat đã QA (30):**
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_dc4ae619-d78a-41c6-b473-8db90f83976d|#1 Banglez Bazar > · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_6715d399-cca3-48fe-b131-dccfb0cb6af4|#2 Katex915> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_224197ab-c751-4596-8bf1-dcb32a4bb5a3|#3 Canvas Art Barn> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_bfc84b36-8e58-4733-b1dd-79ff2fde7c1a|#4 ogawa coffee> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3085c7a9-99b5-46c4-84b1-b5bcfab1f9d1|#5 Gafasgo> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_07c0a7fd-cbed-4146-a73a-9eba5dddd515|#6 ELITE DIAM> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_97f7b906-472c-43a8-899e-2a1a8f10bb86|#7 PURE Sports Nutrition Australia> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b7cbab74-f54d-4aa9-aa28-0524769e3f6a|#8 Lumiere Hair> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_765129d2-eb6d-4039-917c-0dacec58c4ed|#9 Endnutrition.com> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a2f754c3-c880-4b94-bbc7-7694edee9547|#10 Montana West World> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a6cf11b3-9a14-4614-84cc-e41c199d2976|#11 The Switchover> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d7db3f52-11df-4d89-aae7-2a8043456f6e|#12 Healthy7 Meals Inc.> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_610010de-711b-47fb-a265-5821d1804e26|#13 Megsu Solid Wood Furniture US> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3df91356-57d7-475c-90f3-fa15ede46b68|#14 Oasmobility DE> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_204d1719-6383-47bf-8f85-998baf454ec3|#15 KTC> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_be92535e-d715-4d4c-ab0d-40f17b7ad6cb|#16 Tymo Beauty> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_8ded1ddc-e6f2-4e6b-be73-b51fe8bff833|#17 LIVALL RIDING> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_387ab569-3f8e-45c8-a0e3-6db7ed4c2411|#18 Senno> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_20b199bf-b385-4a80-be42-ba8909e9cf4b|#19 ARVÉRO > · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f23c1358-5382-4b03-9fe9-cb7c39fb072b|#20 VARON-FR> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c33a6b81-1a51-4bef-a1fc-920f5e5d189c|#21 PeriodShop> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_add0b220-7cce-40e0-a168-5a85e02179d8|#22 Beberso> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_88cb1925-f81c-4e93-8b5f-6e1578be7e21|#23 Lacros E-Bike> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_7fb76e09-818d-42f7-ad56-43c81d520a3b|#24 Epic Golf> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_ddf273b5-106d-4b72-81b8-5384a9afab6b|#25 Mkonixray> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_287e4477-2e55-40e4-957f-a92c1dc44d9e|#26 Fåglasång > · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9924e85c-536e-4bf9-8f03-490c75eca5a0|#27 Bexly> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4131d23e-711b-4e61-9755-a251b7e8fe76|#28 DHIntra> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_abde44a4-d88b-47c3-a39a-a9fd1e9e344b|#29 Cuura Malaysia Sdn Bhd> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_173f536e-4f8a-4364-a8bf-8eb53376a2ea|#30 Orveda Ltd>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_

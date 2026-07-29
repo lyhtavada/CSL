@@ -1,0 +1,41 @@
+# 📋 QA TUẦN — BÁO CÁO CỦA Alyssa
+🗓️ Tuần 2026-W31 · 22/07 – 28/07/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 **Điểm tuần:** 85/100 — Tốt  (▲ +1 so với tuần trước)
+🔍 Đã QA: 30 chat
+🧠 Mindset: 28.0/34 · 📚 Kiến thức: 28.5/33 · 🛠️ Xử lý: 27.5/33
+
+📝 **Nhận xét chung**
+Tuần này bạn xử lý rất chắc tay về mặt kỹ thuật — đặc biệt với các case phức tạp (VIP tier reset, milestone logic, đồng bộ điểm cũ, custom rule engine), bạn luôn giải thích có cơ sở, tự test trước khi trả lời thay vì đoán, và theo tới cùng qua nhiều ngày kèm email cập nhật rõ ràng (chat #9, #12, #23, #27, #29). Đây là điểm mạnh rõ rệt nhất. Điểm cần thẳng thắn nhìn nhận: ở chat #28 khách viết tiếng Tây Ban Nha và yêu cầu "en español" nhưng bạn trả lời bằng tiếng Pháp trước — khách phải nhắc lại mới được trả lời đúng ngôn ngữ, đây là lỗi giao tiếp thực sự chứ không phải tiểu tiết, cần chú ý đọc lại ngôn ngữ khách trước khi gửi. Ngoài ra một vài trường hợp gửi giải pháp (CSS, thời điểm xin review) chưa được double-check kỹ trước khi gửi khách, khiến phải sửa lại lần hai. Hướng tập trung tuần tới: giữ vững chất lượng kỹ thuật đang có, nhưng chậm lại 1 nhịp để rà soát ngôn ngữ/độ chính xác trước khi bấm gửi.
+
+✅ **Điểm tốt tuần này**
+- [P1] Ownership rất tốt — theo case qua nhiều ngày/nhiều ca làm, chủ động gửi email cập nhật chi tiết thay vì im lặng chờ dev (chat #12 VIP tier reset, #23 điểm không cộng, #27 discount per-item, #29 tier assessment) (#12, #23, #27, #29)
+- [P2] Kiến thức kỹ thuật vững, verify trước khi trả lời thay vì đoán — tự test tài khoản thật (chat #8 birthday tag, #24 test VPN Czech) trước khi kết luận, giải thích đúng cơ chế Shopify discount stacking (#14, #22, #27) (#8, #24, #14, #22, #27)
+- [P3] Chủ động đề xuất giải pháp vượt ngoài câu hỏi ban đầu — soạn hẳn bản đề xuất earn/redeem rate cho merchant mới (chat #4), gợi ý đổi wording UI để tránh hiểu lầm điểm (chat #21) (#4, #21)
+- [P4] Kiên nhẫn tốt với khách khó/áp lực cao (khách đòi hurry liên tục ở #17, khách dọa gỡ app ở #27) mà vẫn giữ giọng chuyên nghiệp, không phòng thủ (#17, #27)
+
+🔧 **Cần cải thiện**
+- **[KN3] Moderate** — Trả lời sai ngôn ngữ so với khách yêu cầu, khiến khách phải nhắc lại mới được đáp ứng đúng (#28)
+  - Dẫn chứng: [15:43:06] CS (Alyssa): Donc, après vérification, le paramètre d'expiration des points... (tiếng Pháp) → [15:43:32] Customer: En español por favor
+  - → Đọc lại tin nhắn khách trước khi gửi để chắc chắn trả lời đúng ngôn ngữ khách đang dùng, tránh để công cụ dịch tự động chọn sai ngôn ngữ
+- **[KN1] Low** — Gửi CSS code chỉnh kích thước icon nhưng không hoạt động ngay lần đầu, phải chuyển ca cho Hazel xử lý tiếp (#10)
+  - Dẫn chứng: [13:04:07] CS (Alyssa): .Joy-Wishlist-WishlistButton__Icon img { width: 18px !important; } ... → [13:08:47] Customer: icon size css not work
+  - → Test nhanh code trên sandbox/preview trước khi gửi khách, nhất là với CSS selector cụ thể theo theme
+- **[P-review-timing] Low** — Xin review hơi sớm khi khách mới cài app 30 phút, chưa thật sự trải nghiệm xong (#4)
+  - Dẫn chứng: [10:03:23] CS (Alyssa): would you mind spending a few moments sharing your feedback... → [10:04:06] Customer: I only downloaded it about 30 min ago and still trying to figure it out
+  - → Chờ khách thật sự dùng xong/hài lòng rõ ràng rồi mới xin review, tránh xin quá sớm với khách mới onboard
+
+🌟 **Xin review (chỉ ghi nhận, không tính điểm)**
+- Đã xin review ở **5/9** chat phù hợp (đúng lúc: 4, sai lúc: 1)
+- Đã xin review đúng lúc ở phần lớn chat khách vừa hài lòng (chat #9, #12, #16, #18 — timing tự nhiên, không gượng ép). Có 1 lần xin hơi sớm khi khách mới cài app (#4). Một số chat vàng khác (khách cảm ơn rối rít) do đồng nghiệp khác trong ca xin thay nên không tính vào đây.
+
+📈 **So với tuần trước**
+- Điểm 84 → 85 (▲ +1)
+- Trục: Mindset 28.2→28.0, Kiến thức 28.2→28.5, Kỹ năng 27.7→27.5
+- Lỗi tuần trước đã hết: KN5, QT18 👏
+
+🔗 **Chat đã QA (30):**
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_631fd237-1c43-456b-960e-db3279b6fdac|#1 Healez Beauty> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cd81ac62-b4ee-4256-bc43-62aa3059b5e1|#2 Nissoplus> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9c7210ba-2852-43fd-9bd9-ae851349ef24|#3 Manon del Bubba> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_894f5998-cde6-47bf-b4d6-840bc8bd1deb|#4 Orsolya Lele> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d3627ec4-a3e5-4a9f-ada9-f4b9d654b68c|#5 Jonathan Tang> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3ac3f2be-e312-478e-b3a2-4e0e3af540ce|#6 My Store Admin> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_2e758c4c-f7e3-4be8-9612-d3e32e26a1b8|#7 Tian Zhao> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_7e4e0022-4882-46b9-9976-23ace9f6433c|#8 Maria Josefa Gonzalez Garzon> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e5ab723f-ad1c-4f60-b014-72c9c015d556|#9 Hans Chan> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_dba0f932-cd7f-4bc3-910e-2521afa4b59d|#10 Suthri Chhori> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e8ae8dea-0614-4c83-9f80-444c3b5c446e|#11 Dominik Schörm> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a549da17-954e-417b-ba6d-eb7e5e8d123c|#12 Mark van den Bogaart> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_1e684a18-e8f8-409b-b243-dfb8b83914d8|#13 Rafik Ali Ahmad> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_71646fd2-0227-4f19-bade-8009396961f0|#14 Custo Just For Games> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f585a4e6-9321-4378-ac12-f93fb8d6bc18|#15 RAYAN BAHABRI> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c3167910-59ed-41c6-9c44-8b51f52502f9|#16 Jovilyn Arciaga> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_03ac002a-cd59-4c72-9259-de2d7c2fed50|#17 奕群 黄> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a0340c2d-d15c-4cd5-a0e8-2383ad3c8b8a|#18 Barbara Vassallo> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_bb140945-7f94-4132-9698-1de2c37b7edd|#19 My Store Admin> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e2d81d28-71db-4a65-bc72-9ae9cdab791c|#20 Carl Lim> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_14458c79-42a7-4a21-b8be-b36394574656|#21 Christopher AURIAU> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_57f4fe24-9f12-4922-ac02-41c6e3652218|#22 Alberto Nicolo’> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_75c38a8a-c354-477b-94b7-15b83eaf81af|#23 Max Clasener> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_17ec6051-e3ec-469d-b695-32afb556c9d5|#24 SwitchBot Global> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5f93b3e8-afbe-4b3c-beeb-71588924fdaf|#25 Kian Yazdani> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d47f3bc9-2655-418d-b808-e6eee8bd0fb8|#26 pierre millet> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_741a3c8b-fbe5-4e5a-9cb6-27b2149becda|#27 Amie Havens> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5539f20f-792d-4e8a-a4d2-ea7ff04eaa57|#28 Ruben Villanueva> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_852e24d1-05c6-4aef-94fb-c4ef4692d4bf|#29 Mark Yaocheng Tan> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c8e655d4-338c-4b2f-ac4a-7419f3240eb4|#30 William Godbold>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
