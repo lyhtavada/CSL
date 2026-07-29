@@ -82,24 +82,33 @@ def rich_text(text):
 
 
 def table_block(rows):
+    """Notion caps a block's own `children` array at 100 elements too — not just
+    the top-level page children list. A table with >100 rows (e.g. a month with
+    >100 DFY tickets in one Inbound/Proactive table) must ship its first ~100
+    rows inline and the rest via a separate append to the table block's own id
+    once it exists. Returns (block_with_first_100_rows, overflow_row_blocks)."""
     width = max(len(r) for r in rows)
-    children = []
-    for r in rows:
+
+    def mkrow(r):
         cells = [rich_text(c.strip()) for c in r] + [[]] * (width - len(r))
-        children.append({"type": "table_row", "table_row": {"cells": cells}})
-    return {
+        return {"type": "table_row", "table_row": {"cells": cells}}
+
+    row_blocks = [mkrow(r) for r in rows]
+    block = {
         "type": "table",
         "table": {
             "table_width": width,
             "has_column_header": True,
             "has_row_header": False,
-            "children": children,
+            "children": row_blocks[:100],
         },
     }
+    return block, row_blocks[100:]
 
 
 def md_to_blocks(md):
     blocks = []
+    overflow = {}  # index into `blocks` -> extra table_row blocks past the first 100
     lines = md.split("\n")
     i = 0
     while i < len(lines):
@@ -114,7 +123,10 @@ def md_to_blocks(md):
                     rows.append(cells)
                 i += 1
             if rows:
-                blocks.append(table_block(rows))
+                blk, extra = table_block(rows)
+                blocks.append(blk)
+                if extra:
+                    overflow[len(blocks) - 1] = extra
             continue
         i += 1
         if not s:
@@ -137,17 +149,23 @@ def md_to_blocks(md):
                            "bulleted_list_item": {"rich_text": rich_text(s[2:])}})
         else:
             blocks.append({"type": "paragraph", "paragraph": {"rich_text": rich_text(s)}})
-    return blocks
+    return blocks, overflow
 
 
-def create_page(parent_id, title, blocks):
-    # Notion caps children at 100 per request → create with first 100, append the rest.
-    # position page_start → new sub-page lands at the TOP of the parent (newest first,
-    # so the report list doesn't grow downward over time).
+def create_page(parent_id, title, blocks, overflow=None):
+    """Create an empty page, then append all top-level blocks in chunks of 100
+    (Notion's per-request children cap). Every append response echoes back the
+    created block objects (with ids) in order, which we need to back-fill any
+    table's overflow rows (>100 rows in one table — see table_block) into that
+    specific table block's own children, itself chunked by 100.
+
+    position page_start → new sub-page lands at the TOP of the parent (newest
+    first, so the report list doesn't grow downward over time).
+    """
+    overflow = overflow or {}
     payload = {
         "parent": {"type": "page_id", "page_id": parent_id},
         "properties": {"title": [{"type": "text", "text": {"content": title}}]},
-        "children": blocks[:100],
         "position": {"type": "page_start"},
     }
     r = requests.post(f"{API}/pages", headers=H(), data=json.dumps(payload))
@@ -156,11 +174,27 @@ def create_page(parent_id, title, blocks):
         sys.exit(1)
     page = r.json()
     pid = page["id"]
-    for j in range(100, len(blocks), 100):
+
+    for j in range(0, len(blocks), 100):
+        chunk = blocks[j:j + 100]
         a = requests.patch(f"{API}/blocks/{pid}/children", headers=H(),
-                           data=json.dumps({"children": blocks[j:j + 100]}))
+                           data=json.dumps({"children": chunk}))
         if a.status_code != 200:
             print("WARN append:", a.status_code, a.text[:300], file=sys.stderr)
+            continue
+        created = a.json().get("results", [])
+        for local_idx, created_block in enumerate(created):
+            global_idx = j + local_idx
+            extra_rows = overflow.get(global_idx)
+            if not extra_rows:
+                continue
+            table_id = created_block["id"]
+            for k in range(0, len(extra_rows), 100):
+                ap = requests.patch(f"{API}/blocks/{table_id}/children", headers=H(),
+                                    data=json.dumps({"children": extra_rows[k:k + 100]}))
+                if ap.status_code != 200:
+                    print("WARN table overflow append:", ap.status_code, ap.text[:300],
+                          file=sys.stderr)
     return page.get("url", pid)
 
 
@@ -174,8 +208,8 @@ def main():
     load_dotenv("/Users/avada/CSL/.env")
     with open(a.md, encoding="utf-8") as f:
         md = f.read()
-    blocks = md_to_blocks(md)
-    url = create_page(a.parent, a.title, blocks)
+    blocks, overflow = md_to_blocks(md)
+    url = create_page(a.parent, a.title, blocks, overflow)
     print(f"Created Notion sub-page: {url}")
 
 

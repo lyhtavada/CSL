@@ -91,9 +91,6 @@ def build_blocks(d, notion_url):
     if ins["review_yes"]:
         hi.append(f"• *DFY sinh {ins['review_yes']} review 5★* — giá trị phụ ngoài giữ widget.")
 
-    cs_line = " · ".join(f"{c['nick'].split()[0] if ' ' in c['nick'] else c['nick']} "
-                         f"{c['count']}" for c in d["per_cs"])
-    # prefer English short name in the CS line for readability
     cs_line = " · ".join(f"{_short(c['display'])} {c['count']}" for c in d["per_cs"])
 
     blocks = [

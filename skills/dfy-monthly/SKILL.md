@@ -114,6 +114,13 @@ python3 skills/dfy-monthly/scripts/push_notion.py \
   the TOP of "Chatty DFY Reports". Don't change this — Liz wants the latest report first.
 - Title format: `Chatty DFY - Tháng {M}/{YYYY}` (e.g. `Chatty DFY - Tháng 6/2026`).
 - Capture the returned URL for the Slack button.
+- **Tables >100 rows (busy months):** Notion caps a block's own nested `children` at
+  100, not just the page's top-level children — a 130-row Inbound table (as seen in
+  2026-07) needs its first 100 rows created inline and the rest appended separately to
+  that table block's own id. `push_notion.py` handles this automatically
+  (`table_block()` returns the overflow rows, `create_page()` back-fills them after
+  the table block is created) — don't need to do anything manually, just know it's
+  there if a push ever errors on a large month.
 
 ### 4. Post the Slack digest as Liz
 
@@ -166,4 +173,3 @@ channel** as Liz (not a draft).
   `bash ~/CSL/skills/dfy-monthly/cron/run-monthly.sh`
 - Note: `/dfy-tracker` also runs on the 2nd (15:00, KPI file). Different time + different
   output, so they don't collide.
-```

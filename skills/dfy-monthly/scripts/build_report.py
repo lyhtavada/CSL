@@ -47,6 +47,34 @@ def video_insight_line(v):
             f"Chênh lệch nhỏ — theo dõi thêm trước khi kết luận video có tác dụng hay không.\n")
 
 
+def ai_insight_line(ai):
+    """Same defensive pattern as video_insight_line — bullet 2 used to always
+    claim 'thorough AI Agent setup → higher adopt' regardless of the actual
+    numbers, which breaks the moment full-completion adopt isn't clearly ahead
+    of zero-completion adopt."""
+    delta = ai["full_adopt_pct"] - ai["zero_adopt_pct"]
+    base = (f"AI Agent hoàn thành 100% adopt **{ai['full_adopt_pct']}%**; "
+            f"hoàn thành 0% adopt **{ai['zero_adopt_pct']}%**.")
+    if delta >= 15:
+        return f"**2. Làm kỹ AI Agent → adopt cao.** {base} Xác nhận DFY làm đến nơi thì giữ được widget.\n"
+    if delta <= -15:
+        return (f"**2. AI Agent completion không tương quan với adopt tháng này — ngược lại.** "
+                f"{base} Cần xem lại.\n")
+    return f"**2. AI Agent completion chưa cho tín hiệu rõ ràng tháng này.** {base} Theo dõi thêm.\n"
+
+
+def timing_insight_line(tm, total):
+    """Same pattern: only claim 'DFY dồn cuối tháng' when the peak week is
+    actually a meaningful share of the month's tickets — otherwise a fairly
+    even week-by-week spread would get mislabeled as bunching."""
+    share = tm["peak_n"] / total if total else 0
+    base = f"{tm['peak_n']}/{total} ticket tạo trong tuần {tm['peak_week']} của tháng."
+    if share >= 0.4:
+        return (f"**4. DFY dồn cuối tháng.** {base} Đầu tháng gần như trống. → Ticket cuối tháng "
+                f"chưa đủ thời gian follow-up adopt; nên rải đều hơn để theo dõi kết quả sát.\n")
+    return f"**4. DFY tạo tương đối đều trong tháng.** {base} Không thấy dồn cục bộ rõ rệt.\n"
+
+
 def insight_section(d):
     ins = d["insights"]
     v = ins["video"]
@@ -60,16 +88,12 @@ def insight_section(d):
 
     L = ["## 💡 Insight & đề xuất\n"]
     L.append(video_insight_line(v))
-    L.append(f"**2. Làm kỹ AI Agent → adopt cao.** AI Agent hoàn thành 100% adopt "
-             f"**{ai['full_adopt_pct']}%**; hoàn thành 0% adopt **{ai['zero_adopt_pct']}%**. "
-             f"Xác nhận DFY làm đến nơi thì giữ được widget.\n")
+    L.append(ai_insight_line(ai))
     L.append(f"**3. Khối Chatbox gần như bị bỏ trống.** Chỉ **{cb['task_pct']}%** task Chatbox "
              f"hoàn thành, **{cb['zero_ticket']}/{cb['total_ticket']} ticket không làm task "
              f"Chatbox nào**. DFY hiện gần như chỉ setup AI Agent. → **Cần xác định:** Chatbox "
              f"có nằm trong scope DFY Chatty không.\n")
-    L.append(f"**4. DFY dồn cuối tháng.** {tm['peak_n']}/{d['total']} ticket tạo trong tuần "
-             f"{tm['peak_week']} của tháng; đầu tháng gần như trống. → Ticket cuối tháng chưa "
-             f"đủ thời gian follow-up adopt; nên rải đều hơn để theo dõi kết quả sát.\n")
+    L.append(timing_insight_line(tm, d["total"]))
     if ins["review_yes"]:
         L.append(f"**5. DFY sinh review 5★.** {ins['review_yes']} ticket convert được review "
                  f"từ flow DFY — giá trị phụ ngoài việc giữ widget.\n")

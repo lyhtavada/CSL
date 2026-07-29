@@ -110,13 +110,22 @@ def load_env():
     return env
 
 
-def api_get(path, key, params=None):
+def api_get(path, key, params=None, retries=2):
+    """no_adopt_raw fetches one comments-endpoint call per non-adopted ticket
+    (50+ in a busy month) — a single transient timeout shouldn't kill the
+    whole report, so retry a couple of times before giving up."""
     url = BASE + path
     if params:
         url += "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"X-API-Key": key})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)
+    last_err = None
+    for attempt in range(retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.load(r)
+        except (urllib.error.URLError, TimeoutError) as e:
+            last_err = e
+    raise last_err
 
 
 def fetch_comments(ticket_internal_id, key):
