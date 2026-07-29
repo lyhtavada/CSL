@@ -81,6 +81,14 @@ NICK = {
     "cody_avada": "ChauHM", "phoebe_avada": "PhuongTTM", "linda1_avada": "LinhTLK",
     # displayName aliases seen in the Ticket API
     "alicia_cs": "AnhLN", "rosiele": "ThaoLTT",
+    # 2026-07: the API started also emitting bare first names (no "_avada"
+    # suffix) as displayName for some tickets — same person, different
+    # string. Without these, per-CS grouping silently splits one CS into two
+    # rows (e.g. "Andy 30" + "Andy 9" instead of one "AnhBD (Andy) 39").
+    "liz": "LyHT", "hana": "HangHM", "audrey": "VanCT", "alyssa": "LyPK",
+    "sonny": "HuyTC", "alicia": "AnhLN", "rosie": "ThaoLTT", "jade": "PhuongNT",
+    "mirra": "MinhBT", "andy": "AnhBD", "hazel": "HienPT", "cody": "ChauHM",
+    "phoebe": "PhuongTTM", "linda1": "LinhTLK", "linda": "LinhTLK",
 }
 # Nickname -> friendly display used in tables (nickname + English name).
 DISPLAY = {

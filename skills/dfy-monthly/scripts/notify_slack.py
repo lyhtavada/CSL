@@ -61,6 +61,20 @@ def liz_identity(token):
     return name, img
 
 
+def video_highlight(v):
+    """Mirrors build_report.py's video_insight_line — wording adapts to the
+    actual delta instead of always claiming video is the strongest lever."""
+    delta = v["delta"]
+    if delta >= 15:
+        return (f"• *Video là đòn bẩy adopt mạnh nhất:* ticket có video adopt *{v['yes_adopt_pct']}%* "
+                f"vs không video *{v['no_adopt_pct']}%* → nên đưa quay video thành bước bắt buộc.")
+    if delta <= -15:
+        return (f"• *Video không cho lợi thế rõ tháng này — ngược lại:* video *{v['yes_adopt_pct']}%* "
+                f"vs không video *{v['no_adopt_pct']}%*, cần xem lại.")
+    return (f"• *Video chưa cho tín hiệu rõ tháng này:* video *{v['yes_adopt_pct']}%* vs "
+            f"không video *{v['no_adopt_pct']}%* — chênh lệch nhỏ, theo dõi thêm.")
+
+
 def build_blocks(d, notion_url):
     mm = d["month"].split("-")[1]
     yy = d["month"].split("-")[0]
@@ -73,8 +87,7 @@ def build_blocks(d, notion_url):
 
     # 💡 highlights: video is always shown; review-yes if any. (Chatbox intentionally
     # kept OUT of the Slack digest per Liz — it lives in the Notion Insight section.)
-    hi = [f"• *Video là đòn bẩy adopt mạnh nhất:* ticket có video adopt *{v['yes_adopt_pct']}%* "
-          f"vs không video *{v['no_adopt_pct']}%* → nên đưa quay video thành bước bắt buộc."]
+    hi = [video_highlight(v)]
     if ins["review_yes"]:
         hi.append(f"• *DFY sinh {ins['review_yes']} review 5★* — giá trị phụ ngoài giữ widget.")
 

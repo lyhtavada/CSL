@@ -27,6 +27,26 @@ def ticket_table(tickets):
     return "\n".join(out)
 
 
+def video_insight_line(v):
+    """Bullet 1 wording adapts to the actual delta instead of always claiming
+    video is the strongest lever — with a small/negative sample that claim is
+    false and the +{delta} formatting broke on negative numbers anyway."""
+    delta = v["delta"]
+    sign = "+" if delta >= 0 else "−"
+    base = (f"Ticket có quay video kết quả adopt **{v['yes_adopt_pct']}%** "
+            f"({v['yes_n']} ticket) vs không video **{v['no_adopt_pct']}%** "
+            f"({v['no_n']} ticket) — chênh {sign}{abs(delta)} điểm.")
+    if delta >= 15:
+        return (f"**1. Video là đòn bẩy adopt mạnh nhất.** {base} "
+                f"→ **Đề xuất:** đưa quay video kết quả thành bước bắt buộc trong DFY flow.\n")
+    if delta <= -15:
+        return (f"**1. Video không cho thấy lợi thế tháng này — ngược lại.** {base} "
+                f"Cần xem lại: có phải ticket khó adopt mới cần quay video minh chứng, "
+                f"nên tương quan bị đảo?\n")
+    return (f"**1. Video chưa cho thấy tín hiệu rõ ràng tháng này.** {base} "
+            f"Chênh lệch nhỏ — theo dõi thêm trước khi kết luận video có tác dụng hay không.\n")
+
+
 def insight_section(d):
     ins = d["insights"]
     v = ins["video"]
@@ -39,10 +59,7 @@ def insight_section(d):
     best = max((c for c in per if c["count"] >= 3), key=lambda c: c["adopt_pct"], default=None)
 
     L = ["## 💡 Insight & đề xuất\n"]
-    L.append(f"**1. Video là đòn bẩy adopt mạnh nhất.** Ticket có quay video kết quả "
-             f"adopt **{v['yes_adopt_pct']}%** ({v['yes_n']} ticket) vs không video chỉ "
-             f"**{v['no_adopt_pct']}%** ({v['no_n']} ticket) — chênh +{v['delta']} điểm. "
-             f"→ **Đề xuất:** đưa quay video kết quả thành bước bắt buộc trong DFY flow.\n")
+    L.append(video_insight_line(v))
     L.append(f"**2. Làm kỹ AI Agent → adopt cao.** AI Agent hoàn thành 100% adopt "
              f"**{ai['full_adopt_pct']}%**; hoàn thành 0% adopt **{ai['zero_adopt_pct']}%**. "
              f"Xác nhận DFY làm đến nơi thì giữ được widget.\n")
