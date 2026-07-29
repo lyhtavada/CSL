@@ -5,7 +5,7 @@
 **Nguồn**: tổng hợp 2 bản CS Weekly (Chatty + Joy) trên Notion + dashboard `cs2.avada.net /api/obs/metrics`
 
 > CEO Weekly = bản gửi anh Sam (gộp từ 2 bản CS Weekly team-facing). Khớp generator `reports/scripts/gen-ceo-weekly.py` (chạy qua `gen-ceo-weekly.sh`).
-> Auto-fill: TL;DR (tóm tắt toàn bộ report bên dưới), Volume (tickets/chats/reviews), Bot performance (resolve rate), DFY (ticket/adopt%/review%/install% — fetch live qua `fetch_dfy_week.py`, cùng tuần Mon-Sun với report), Top Issues.
+> Auto-fill: TL;DR (tóm tắt toàn bộ report bên dưới), Volume (tickets từ Notion, chats fetch live qua `fetch_chats_week.py` — CÙNG cách đếm `chat_count()` mà `/cs-weekly` dùng, không parse text Notion nữa), Bot performance (resolve rate), DFY (ticket/adopt%/review%/install% — fetch live qua `fetch_dfy_week.py`, cùng tuần Mon-Sun với report), Top Issues.
 > Liz điền tay: Response time, Crisis (nếu có bad review ≤3★), CEO decision.
 
 ---

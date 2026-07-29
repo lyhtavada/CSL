@@ -177,6 +177,23 @@ def fetch_dfy_week(mon, sun):
         return {}
 
 
+def fetch_chats_week(mon, sun):
+    """Gọi fetch_chats_week.py — số 'real conversation' tuần Mon-Sun, CÙNG cách
+    đếm chat_count() mà /cs-weekly dùng (skills/_shared/chat_count.py), thay vì
+    regex-parse số 'chats' ra từ text bản Notion (dễ dính nhầm số khác).
+    Trả {} nếu fail để report vẫn generate được, chỉ thiếu phần này."""
+    script = Path(__file__).parent / "fetch_chats_week.py"
+    try:
+        out = subprocess.run(
+            [sys.executable, str(script), "--start", mon.isoformat(), "--end", sun.isoformat()],
+            capture_output=True, text=True, timeout=180, check=True,
+        )
+        return json.loads(out.stdout)
+    except Exception as e:
+        print(f"  fetch_chats_week fail: {e}", file=sys.stderr)
+        return {}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", help="ngày chạy report (YYYY-MM-DD), mặc định hôm nay")
@@ -208,14 +225,26 @@ def main():
     print("  fetching DFY week (ticket/adopt/review/install)...")
     dfy_week = fetch_dfy_week(mon, sun)
 
+    print("  fetching chat count week (same method as /cs-weekly)...")
+    chats_week = fetch_chats_week(mon, sun)
+
+    def chat_bit(app):
+        """Số chat: ưu tiên fetch live (chat_count(), khớp /cs-weekly); fallback
+        về số parse từ Notion nếu script live lỗi."""
+        if app in chats_week:
+            return f"{chats_week[app]} chats"
+        p = data[app]["parse"]
+        return f"{p['chats']} chats" if p.get("chats") else None
+
     def stat_line(app):
         p = data[app]["parse"]
         bits = []
         if p.get("tickets"):
             d = f" ({p['tickets_delta']})" if p.get("tickets_delta") else ""
             bits.append(f"{p['tickets']} tickets{d}")
-        if p.get("chats"):
-            bits.append(f"{p['chats']} chats")
+        cb = chat_bit(app)
+        if cb:
+            bits.append(cb)
         if p.get("reviews"):
             bits.append(f"{p['reviews']} reviews (0 review xấu)")
         line = ", ".join(bits) if bits else "_(không parse được từ Notion)_"
@@ -245,8 +274,9 @@ def main():
             if p.get("tickets"):
                 d = f" ({p['tickets_delta']})" if p.get("tickets_delta") else ""
                 vol_bits.append(f"{p['tickets']} tickets{d}")
-            if p.get("chats"):
-                vol_bits.append(f"{p['chats']} chats")
+            cb = chat_bit(app)
+            if cb:
+                vol_bits.append(cb)
             vol = ", ".join(vol_bits) if vol_bits else "_(chưa có số)_"
             r = rates[app]
             bot_bit = f"bot resolve {fmt_rate(r['cur'])}"
