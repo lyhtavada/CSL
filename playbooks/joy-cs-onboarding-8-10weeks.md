@@ -197,6 +197,16 @@
 | What happens if customers don't earn or redeem points within the specified custom period? | |
 | Is discount code's prefix customizable in Joy? | |
 
+*Store Credit reward:*
+
+| Question | Answer |
+|---|---|
+| How does a customer actually receive a Store Credit reward — do they get a discount code to enter at checkout? | |
+| Which programs can trigger a Store Credit reward for a customer? | |
+| What is the key difference between redeeming Store Credit and redeeming Points for a coupon? | |
+| A merchant says a customer was told they received store credit, but nothing shows up in their Shopify account — what should you check first? | |
+| A merchant needs to bulk-credit ~300 customers due to a system error — what's the fastest way to do this in Joy? | |
+
 ## Loyalty page + Widget V4 + Onsite content + Account page
 
 **Đọc:** Module 3 phần *Setup on test theme / Setup branding widget / Setup loyalty page / Setup my account page* + [help.joy.so/on-site-content](https://help.joy.so/on-site-content/) — Branding (unified widget, loyalty design), Loyalty Landing Page, Account Page, Product Page, Cart Drawer, Thank You page
