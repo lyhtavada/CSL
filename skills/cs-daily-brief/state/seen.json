@@ -1,24 +1,6 @@
 {
-  "generatedAt": "2026-07-29T02:30:47.871046+00:00",
+  "generatedAt": "2026-07-30T02:30:49.631534+00:00",
   "tickets": {
-    "chatty:avadaFaq261108": {
-      "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "chatty:avadaFaq261112": {
-      "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "wishlist:wishlist2662": {
-      "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "chatty:avadaFaq261125": {
       "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
       "flags": [
@@ -49,12 +31,6 @@
         "stale_no_update"
       ]
     },
-    "joy:joy261249": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
     "joy:joy261316": {
       "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
       "flags": [
@@ -83,12 +59,6 @@
       "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
       "flags": [
         "stale_no_update"
-      ]
-    },
-    "joy:joy261246": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "dfy_stuck"
       ]
     },
     "joy:joy261365": {
@@ -229,12 +199,6 @@
         "stale_no_update"
       ]
     },
-    "wishlist:wishlist2655": {
-      "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "chatty:avadaFaq261428": {
       "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
       "flags": [
@@ -283,12 +247,6 @@
         "dfy_stuck"
       ]
     },
-    "joy:joy261498": {
-      "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
-      "flags": [
-        "dfy_stuck"
-      ]
-    },
     "joy:joy261583": {
       "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
       "flags": [
@@ -299,12 +257,6 @@
       "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
       "flags": [
         "stale_no_update"
-      ]
-    },
-    "joy:joy261592": {
-      "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
-      "flags": [
-        "dfy_stuck"
       ]
     },
     "chatty:avadaFaq261227": {
@@ -661,12 +613,6 @@
         "dfy_stuck"
       ]
     },
-    "joy:joy261744": {
-      "firstFlaggedAt": "2026-07-24T02:30:15.160321+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "joy:joy261743": {
       "firstFlaggedAt": "2026-07-24T02:30:15.160321+00:00",
       "flags": [
@@ -674,12 +620,6 @@
       ]
     },
     "joy:joy261741": {
-      "firstFlaggedAt": "2026-07-24T02:30:15.160321+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "joy:joy261739": {
       "firstFlaggedAt": "2026-07-24T02:30:15.160321+00:00",
       "flags": [
         "stale_no_update"
@@ -781,18 +721,6 @@
         "stale_no_update"
       ]
     },
-    "joy:joy261766": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "joy:joy261765": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "joy:joy261684": {
       "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
       "flags": [
@@ -865,19 +793,7 @@
         "stale_no_update"
       ]
     },
-    "chatty:avadaFaq261730": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "chatty:avadaFaq261738": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "chatty:avadaFaq261745": {
       "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
       "flags": [
         "stale_no_update"
@@ -919,19 +835,7 @@
         "stale_no_update"
       ]
     },
-    "joy:joy261773": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "joy:joy261609": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
-    "joy:joy261794": {
       "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
       "flags": [
         "stale_no_update"
@@ -947,6 +851,12 @@
       "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
       "flags": [
         "stale_no_update"
+      ]
+    },
+    "joy:joy261799": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "dfy_stuck"
       ]
     },
     "joy:joy261791": {
@@ -997,22 +907,52 @@
         "stale_no_update"
       ]
     },
-    "chatty:avadaFaq261787": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
-      "flags": [
-        "stale_no_update"
-      ]
-    },
     "chatty:avadaFaq261691": {
       "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
       "flags": [
         "dfy_stuck"
       ]
     },
+    "chatty:avadaFaq261706": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "joy:joy261813": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "joy:joy261742": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "chatty:avadaFaq261794": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
     "chatty:avadaFaq261732": {
       "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
       "flags": [
         "dfy_stuck"
+      ]
+    },
+    "chatty:avadaFaq261690": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "chatty:avadaFaq261802": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
       ]
     },
     "chatty:avadaFaq261648": {
@@ -1027,21 +967,73 @@
         "dfy_stuck"
       ]
     },
-    "chatty:avadaFaq261733": {
-      "firstFlaggedAt": "2026-07-29T02:30:17.984264+00:00",
+    "joy:joy261820": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "joy:joy261792": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "chatty:avadaFaq261809": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "chatty:avadaFaq261813": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "chatty:avadaFaq261812": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "chatty:avadaFaq261807": {
+      "firstFlaggedAt": "2026-07-30T02:30:21.868961+00:00",
+      "flags": [
+        "stale_no_update"
+      ]
+    },
+    "joy:joy261498": {
+      "firstFlaggedAt": "2026-07-22T10:38:24.251088+00:00",
       "flags": [
         "dfy_stuck"
       ]
     }
   },
   "taskProgress": {
-    "chatty:avadaFaq261806": {
+    "chatty:avadaFaq261848": {
       "tasksDone": 0,
-      "progressAt": "2026-07-28T18:49:16.629000+00:00"
+      "progressAt": "2026-07-29T21:27:11.818000+00:00"
     },
-    "chatty:avadaFaq261805": {
+    "chatty:avadaFaq261846": {
       "tasksDone": 0,
-      "progressAt": "2026-07-28T18:46:37.828000+00:00"
+      "progressAt": "2026-07-29T18:10:23.794000+00:00"
+    },
+    "chatty:avadaFaq261844": {
+      "tasksDone": 0,
+      "progressAt": "2026-07-29T17:04:28.720000+00:00"
+    },
+    "chatty:avadaFaq261836": {
+      "tasksDone": 3,
+      "progressAt": "2026-07-30T02:30:21.868961+00:00"
+    },
+    "chatty:avadaFaq261834": {
+      "tasksDone": 10,
+      "progressAt": "2026-07-30T02:30:21.868961+00:00"
+    },
+    "chatty:avadaFaq261820": {
+      "tasksDone": 0,
+      "progressAt": "2026-07-29T05:29:04.158000+00:00"
     },
     "chatty:avadaFaq261801": {
       "tasksDone": 10,
@@ -1095,17 +1087,9 @@
       "tasksDone": 8,
       "progressAt": "2026-07-29T02:30:17.984264+00:00"
     },
-    "chatty:avadaFaq261733": {
-      "tasksDone": 0,
-      "progressAt": "2026-07-24T23:13:52.332000+00:00"
-    },
     "chatty:avadaFaq261732": {
       "tasksDone": 0,
       "progressAt": "2026-07-24T20:45:35.002000+00:00"
-    },
-    "chatty:avadaFaq261714": {
-      "tasksDone": 8,
-      "progressAt": "2026-07-29T02:30:17.984264+00:00"
     },
     "chatty:avadaFaq261708": {
       "tasksDone": 0,
@@ -1271,10 +1255,6 @@
       "tasksDone": 0,
       "progressAt": "2026-06-24T07:02:05.863000+00:00"
     },
-    "joy:joy261823": {
-      "tasksDone": 0,
-      "progressAt": "2026-07-28T16:48:48.522000+00:00"
-    },
     "joy:joy261818": {
       "tasksDone": 0,
       "progressAt": "2026-07-28T10:19:39.992000+00:00"
@@ -1300,8 +1280,8 @@
       "progressAt": "2026-07-23T10:12:21.155599+00:00"
     },
     "joy:joy261592": {
-      "tasksDone": 0,
-      "progressAt": "2026-07-14T03:44:46.666000+00:00"
+      "tasksDone": 8,
+      "progressAt": "2026-07-30T02:30:21.868961+00:00"
     },
     "joy:joy261576": {
       "tasksDone": 5,
@@ -1341,14 +1321,6 @@
     },
     "joy:joy261365": {
       "tasksDone": 18,
-      "progressAt": "2026-07-23T10:12:21.155599+00:00"
-    },
-    "joy:joy261249": {
-      "tasksDone": 19,
-      "progressAt": "2026-07-23T10:12:21.155599+00:00"
-    },
-    "joy:joy261246": {
-      "tasksDone": 20,
       "progressAt": "2026-07-23T10:12:21.155599+00:00"
     }
   }
