@@ -1,7 +1,7 @@
 ---
 name: cs-weekly
-description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, and App Store reviews (Shopify, sort_by=newest) — each compared vs the prior week — then clusters top issues from tickets (Ticket API, [dfy] excluded), scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
-version: 1.6.0
+description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, App Store reviews (Shopify, sort_by=newest), and (Joy only) onboarding tickets ([ONB] prefix, 10-step checklist) — each compared vs the prior week — then clusters top issues from tickets (Ticket API, [dfy] excluded), scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
+version: 1.7.0
 ---
 
 # CS Weekly Skill
@@ -146,6 +146,24 @@ này"). Top table + ai chưa dùng + 3-5 câu/chủ đề hay hỏi. **If `inact
 → liệt kê tên, gợi ý Liz nhắc. Nếu `totalChatsG2` = 0 (cả team chưa đụng) → ẩn section,
 ghi 1 dòng TL;DR. **Notion-only** — KHÔNG đưa vào Slack digest (step 8 không nhận file này).
 
+### 4d. Pull Onboarding tickets (Joy only)
+
+Joy has a dedicated onboarding flow tracked as tickets with subject prefix
+`[ONB]` and a 10-step checklist (`tasks`). Run **only for Joy**, with `--compare`:
+```bash
+python3 skills/cs-weekly/scripts/fetch_onboarding.py --start {start} --end {end} --compare --json > /tmp/joy-onboarding-{YYYY-W##}.json
+```
+Returns `new_count` (created in period), `open_count` / `golive_count` (current
+snapshot of a 90-day lookback — `open_count` = still open regardless of when
+created, `golive_count` = closed within the period), `avg_checklist_pct` (avg
+% done across open tickets), `open_tickets` (full list: store, CS, done/total,
+daysOpen), `delayed` (open tickets >14 days old — flag these), and
+`prevWeek.new_count` (for ▲▼).
+
+Fill the report's **🚀 Onboarding tickets tuần này** section (Joy only, after
+§2). If both `new_count` and `open_count` are 0 → hide the section. Chatty has
+no onboarding-ticket flow — skip this step entirely for Chatty.
+
 ### 5. Scan #product-release for releases in the period
 
 Read Slack channel `C07RNAY9ZC6` for messages within [start, end]. **Use token
@@ -227,15 +245,20 @@ python3 skills/cs-weekly/scripts/notify_slack.py \
   --title "{App} CS Weekly — W## ({DD–DD/MM/YYYY})" \
   --tldr "{the §1 TL;DR text from the report}" \
   --botqa-file /tmp/{app}-botqa-{YYYY-W##}.json \
+  --onboarding-file /tmp/joy-onboarding-{YYYY-W##}.json \
   --notion-url {the URL printed by push_notion.py in step 7}
 ```
 - **`--botqa-file`** (the JSON from step 4b) adds a "🤖 Bot performance tuần này" block
   to the Slack digest — Handle (resolve rate + AI coverage + human takeover +
   escalation + volume, with ▲▼ vs last week) + QA (verify coverage / correction rate /
   + top verify + top correction), ⚠️ flag if verify coverage < 30%.
+- **`--onboarding-file`** (the JSON from step 4d, **Joy only** — omit this flag
+  for Chatty) adds a "🚀 Onboarding tickets tuần này" block: new/open/go-live
+  counts + avg checklist % + up to 5 delayed (>14d) tickets. Hidden automatically
+  if the week has no onboarding tickets (new or backlog).
 - **CS channel IDs:**
   - Chatty: `C07LZNWEUUD`   (`chatty-cs`)
-  - Joy:    `C07MSUX0VPA`   (`joy-faqs`)
+  - Joy:    `C0BFFET5V9V`
 - Auth: `SLACK_BOT_TOKEN_AVADA` (bot = `avada_bot`). The bot must be a member of the
   channel — if posting fails with `not_in_channel`, invite `@avada_bot` there once.
   (Both channels already have the bot.)
@@ -264,6 +287,10 @@ is no .md file in the repo.
    Get "tuần trước" from the `--compare` flag's `prev_week` block (re-pulled live from
    source) — there is no .md file in the repo to read. Show ▲▼ % for tickets/chats,
    ▲▼ count for reviews.
+2b. **🚀 Onboarding tickets** (Joy only, right after §2) — new/open/go-live counts vs
+   last week (▲▼ on new), avg checklist %, table of open tickets, delayed (>14d) flag.
+   From step 4d's JSON (`--compare`). Hidden if the week has no onboarding tickets
+   (new or backlog). This block also goes into the Slack digest (Joy only).
 3. **🔥 Top issues** — 3-5 themes from tickets (Ticket API, `[dfy]` excluded), each with
    a real counted `{n}/{total}` (not a guessed fraction), a fix/KB pointer, and 2-3
    proof ticket links (`https://avada-ts-a9cb0.web.app` + `shortUrl`).
@@ -285,6 +312,8 @@ is no .md file in the repo.
 - **Bad-review scan triggers only for ≤3★** (Liz's rule). The feed is sparse
   (not every review) — no match ≠ error; just note it and skip the link.
 - Chatty has no DFY program yet → `dfy_created` is 0; keep the row but it's expected.
+- Chatty has no onboarding-ticket flow (`[ONB]`) → skip step 4d and the §2b section
+  entirely for Chatty (don't show a 0 row).
 - This is team-facing: tone clear and encouraging, language Vietnamese (per workspace
   default for internal team content), short.
 - **Output is Notion-only** — one sub-page per week under the app's parent page
@@ -293,5 +322,7 @@ is no .md file in the repo.
   parent pages (re-share if push 404s). Notion API, not MCP — survives headless cron.
 - **Slack digest (step 8)** runs AFTER the Notion push and links to it — Notion is the
   source of truth, Slack is just the ping. Posts AS LIZ (name + avatar) via the Avada
-  bot to `chatty-cs` (`C07LZNWEUUD`) / `joy-faqs` (`C07MSUX0VPA`). If the Notion
-  push fails, skip the Slack post for that app (don't ping a broken link).
+  bot to `chatty-cs` (`C07LZNWEUUD`) / `C0BFFET5V9V` (Joy). If the Notion
+  push fails, skip the Slack post for that app (don't ping a broken link). Bot must
+  be a member of `C0BFFET5V9V` — invite `@avada_bot` if posting fails with
+  `not_in_channel`.

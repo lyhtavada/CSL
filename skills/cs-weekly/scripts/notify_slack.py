@@ -79,7 +79,29 @@ def botqa_block(qa):
     return {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(lines)}}
 
 
-def build_blocks(title, tldr, notion_url, qa=None):
+def onboarding_block(ob):
+    """ob = output of fetch_onboarding.py (Joy only). Trả 1 section block, hoặc
+    None nếu tuần không có onboarding ticket nào (mới lẫn backlog)."""
+    if not ob.get("new_count") and not ob.get("open_count"):
+        return None
+    prev_new = (ob.get("prevWeek") or {}).get("new_count")
+    delta = _delta(ob.get("new_count"), prev_new)
+
+    lines = [
+        "🚀 *Onboarding tickets tuần này*",
+        f"• Mới: *{ob.get('new_count')}*{delta} · Đang mở: *{ob.get('open_count')}* · "
+        f"Go-live tuần này: *{ob.get('golive_count')}*",
+        f"• Checklist trung bình (open): *{ob.get('avg_checklist_pct')}%* hoàn thành",
+    ]
+    delayed = ob.get("delayed") or []
+    if delayed:
+        items = " · ".join(f"{d['store']} ({d['done']}/{d['total']})" for d in delayed[:5])
+        more = f" (+{len(delayed) - 5} khác)" if len(delayed) > 5 else ""
+        lines.append(f"⚠️ Trễ (>14 ngày chưa live): {items}{more}")
+    return {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(lines)}}
+
+
+def build_blocks(title, tldr, notion_url, qa=None, onboarding=None):
     blocks = [
         {"type": "header",
          "text": {"type": "plain_text", "text": f"📊 {title}", "emoji": True}},
@@ -89,6 +111,11 @@ def build_blocks(title, tldr, notion_url, qa=None):
     if qa:
         blocks.append({"type": "divider"})
         blocks.append(botqa_block(qa))
+    if onboarding:
+        ob_block = onboarding_block(onboarding)
+        if ob_block:
+            blocks.append({"type": "divider"})
+            blocks.append(ob_block)
     blocks += [
         {"type": "actions",
          "elements": [
@@ -125,6 +152,7 @@ def main():
     ap.add_argument("--tldr", help="TL;DR text inline")
     ap.add_argument("--tldr-file", help="Path to a file containing the TL;DR text")
     ap.add_argument("--botqa-file", help="Path to JSON output of fetch_bot_qa.py (adds a Bot QA block)")
+    ap.add_argument("--onboarding-file", help="Path to JSON output of fetch_onboarding.py (adds an Onboarding block, Joy only)")
     ap.add_argument("--no-as-user", dest="as_user", action="store_false",
                     help="post as the plain avada_bot instead of as Liz")
     ap.set_defaults(as_user=True)
@@ -144,10 +172,15 @@ def main():
         with open(a.botqa_file, encoding="utf-8") as f:
             qa = json.load(f)
 
+    onboarding = None
+    if a.onboarding_file:
+        with open(a.onboarding_file, encoding="utf-8") as f:
+            onboarding = json.load(f)
+
     load_dotenv(ENV_PATH)
     tok = os.environ["SLACK_BOT_TOKEN_AVADA"]
 
-    blocks = build_blocks(a.title, tldr, a.notion_url, qa)
+    blocks = build_blocks(a.title, tldr, a.notion_url, qa, onboarding)
     # `text` is the notification fallback (shown in the channel list / push).
     payload = {
         "channel": a.channel,

@@ -50,6 +50,28 @@ _Nguồn: Ticket API · `avada_cs.crisp_chats` · DFY ticket tags · Shopify App
 
 ---
 
+## 🚀 Onboarding tickets tuần này _(Joy only)_
+
+_Nguồn: Ticket API, subject prefix `[ONB]`. Checklist = 10 bước chuẩn (Launch date → Detail program → Earning/Redeeming rule → VIP tier → Referral → Guest→Member → Migration/Import → Test full loop → Widget customize → Switch live)._
+
+| Chỉ số | Tuần này | Tuần trước | |
+|---|---|---|---|
+| Onboarding mới | {N} | {N-1} | {▲▼} |
+| Đang xử lý (open, mọi thời điểm tạo) | {N} | | |
+| Go-live tuần này (closed) | {N} | | |
+| Checklist trung bình (open) | {%} | | |
+
+**Đang mở (theo dõi để không bị stuck):**
+| Store | CS phụ trách | Checklist | Ngày mở |
+|---|---|---|---|
+| {domain} | {CS} | {done}/{total} | {N} ngày |
+
+{Nếu có ticket open >14 ngày → ⚠️ **Trễ:** {store} — {done}/{total}, mở {N} ngày, nhắc CS phụ trách follow-up.}
+
+_(Không có onboarding ticket nào (mới lẫn backlog) trong tuần → ẩn mục này. Section chỉ áp dụng cho Joy — Chatty không có luồng onboarding.)_
+
+---
+
 ## 🔥 Top issues tuần này
 
 _Chủ đề ticket nhiều nhất tuần qua (cluster từ **ticket** — Ticket API, đã loại [dfy]). Mỗi theme đã ĐẾM thật số ticket khớp (không ước lượng) — xem số + link ticket để tự proof/review lại. Sắp theo độ phổ biến._
