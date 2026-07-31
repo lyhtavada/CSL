@@ -28,12 +28,12 @@ launchctl unload "$DEST" 2>/dev/null || true
 ln -sf "$SRC" "$DEST"
 launchctl load "$DEST"
 
-echo "Installed $LABEL → runs daily 9:30 local (reports on the previous full day)."
+echo "Installed $LABEL → runs daily 8:45 local (reports on the previous full day)."
 echo "  plist (source): $SRC"
 echo "  symlink:        $DEST"
 echo "  log:            /tmp/cs-daily-brief.log"
 echo
-echo "Test now without waiting for 9:30:"
+echo "Test now without waiting for 8:45:"
 echo "  launchctl start $LABEL"
 echo "  # or run the script directly:"
 echo "  bash $HERE/run-cs-daily-brief.sh"

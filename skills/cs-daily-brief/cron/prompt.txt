@@ -4,20 +4,17 @@ private DM — the team will read it too, so keep tone plain/factual (it
 already is: numbers + links, no internal commentary).
 
 This report always covers the PREVIOUS FULL CALENDAR DAY (00:00–24:00 VN
-time) for sections ①, ② and ④. If today (VN) is the 22nd, the target date is
+time) for all 4 sections. If today (VN) is the 22nd, the target date is
 the 21st. Compute the target date yourself (yesterday in Asia/Bangkok, i.e.
 VN time, UTC+7) — do not hardcode a date.
 
 1. Run these 4 commands from /Users/avada/CSL, using the computed target date
-   (YYYY-MM-DD) for all but fetch_stale.py:
+   (YYYY-MM-DD) for all of them:
 
    python3 skills/cs-daily-brief/scripts/fetch_conversations.py --date <target> --json
    python3 skills/cs-daily-brief/scripts/fetch_checkin.py --date <target> --json
-   python3 skills/cs-daily-brief/scripts/fetch_stale.py --json
+   python3 skills/cs-daily-brief/scripts/fetch_ai_tickets.py --date <target> --json
    python3 skills/cs-daily-brief/scripts/fetch_liz_tickets.py --date <target> --json
-
-   (fetch_stale.py has no --date — it's a live snapshot of currently
-   neglected tickets, not tied to the target day.)
 
 2. Compose ONE Slack DM message in Vietnamese, in this shape:
 
@@ -35,33 +32,23 @@ VN time, UTC+7) — do not hardcode a date.
      "⛔ Miss checkin:" then one line per entry "  • <nick> — <shift>"
      "🚪 Miss checkout:" then one line per entry "  • <nick> — <shift>"
 
-   *③ Ticket watch (tồn đọng hiện tại)*
-   Same structure as the original /ticket-watch report:
-   - For each ticket in `newTickets` (cap 20, oldest-first by sinceUpdateDays;
-     "+N ticket khác cùng loại" if more), grouped by app:
-     `[app] #ticketNumber (priority, plan) — subject (~80 chars)`
-     `Flag: <flags>, đã Nngày không update`
-     `Assignee: <assignees>` (add "⭐ VIP" if isVip)
-     `Ticket: <ticketUrl>`
-     `Chat: <chatLink>` (omit if null)
-     `Progress: tsStatus=<tsStatus>` + "X/Y task done" if tasks[] present
-   - Then: "Tồn đọng cũ (đã báo trước đó, vẫn chưa xử lý): N ticket" (carryoverCount)
-   - Then *VIP tồn đọng*: every ticket in `vipTickets` (new + carryover, always
-     shown in full — never just a count), compact one-liner each:
-     `[app] #ticketNumber (plan) — subject, Nngày không update, assignee: X — <ticketUrl>`.
-     Cap 15 with "+N khác" if longer, but state the true vipCount.
-     If vipCount is 0: "Không có VIP ticket tồn đọng."
-   - Then *Breakdown theo CS phụ trách*: top 8 from `assigneeBreakdown` as
-     "Tên: N ticket tồn đọng". Skip if empty.
-   - If newCount is 0 and vipCount is 0, compress the ticket list into:
-     "Không có ticket mới/VIP cần chú ý hôm nay, N ticket tồn đọng cũ" but
-     still include the CS breakdown.
+   *③ Chat AI đã tạo ticket*
+   From fetch_ai_tickets.py output — `apps.joy` / `apps.chatty` / `apps.wishlist`,
+   in that order (Joyce / Ivy / Wendy). For each app, one block:
+     `<bot> (<App label — Joy/Chatty/Wishlist>) — xử lý <handledCount> chat, tạo ticket cho <ticketCount> chat:`
+     then one bullet per entry in `tickets`, using Slack's hyperlink syntax
+     (NOT markdown — this posts via chat.postMessage):
+     `• <<chatLink>|<customer>> — <ticketUrl>`
+   If `ticketCount` is 0 for an app, keep the "xử lý N chat" line but replace
+   the bullet list with "  Không có ticket AI tạo hôm nay." Skip the bullet
+   list's chatLink entirely (just show ticketUrl on its own) for any ticket
+   where `chatLink` is null.
 
    *④ Ticket tạo cho Liz trong ngày*
    From fetch_liz_tickets.py output — tickets where Liz is a member, created
-   on the target day (separate from ③, which is a live neglected-ticket
-   snapshot; this is specifically "what landed on Liz today"). For each
-   ticket in `tickets`:
+   on the target day (separate from ③, which is scoped to AI-created tickets
+   specifically; this is "what landed on Liz today" across all creators). For
+   each ticket in `tickets`:
      `[app] #ticketNumber (priority) — subject (~80 chars)`
      `Status: ticketStatus, tsStatus=<tsStatus>`
      `Ticket: <ticketUrl>`
