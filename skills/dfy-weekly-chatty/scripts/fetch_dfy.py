@@ -367,11 +367,19 @@ def main():
     key = env["AVD_TICKET_API_KEY"]
 
     start, end = a.start, a.end
+    # The ticket API's `endDate` is exclusive (silently drops tickets created
+    # on the end date itself) — bump by one day so the whole last day of the
+    # week is included. Confirmed 2026-07-31: querying 24/07-30/07 as-is
+    # returned 27 op tickets; with endDate+1 it correctly returned 40 (Liz's
+    # own ticket-system filter, same date range, showed 46 — the rest of that
+    # gap is the ticket-system UI using "Team: Chatty" instead of appName).
+    api_end = (datetime.date.fromisoformat(end) + datetime.timedelta(days=1)).isoformat()
 
     id2name = tag_map(key)
     resp = api_get("/api/external/tickets/by-date", key,
-                   {"startDate": start, "endDate": end, "appName": APP_NAME[a.app]})
+                   {"startDate": start, "endDate": api_end, "appName": APP_NAME[a.app]})
     tickets = resp.get("data", {}).get("tickets", [])
+    tickets = [t for t in tickets if start <= (t.get("createdAt") or "")[:10] <= end]
 
     # DFY = has any DFY-set tag; open only; drop sale_request + Liz test tickets.
     dfy = [t for t in tickets if set(names(t, id2name)) & DFY_SET]
