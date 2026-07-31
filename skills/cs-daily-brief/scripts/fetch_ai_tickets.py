@@ -126,10 +126,12 @@ def main():
     load_dotenv(ENV_PATH)
     key = os.environ["AVD_TICKET_API_KEY"]
 
+    end_str = end.strftime("%Y-%m-%d")  # by-date's endDate is exclusive — see fetch_liz_tickets.py
+
     apps_out = {}
     for app_key, (app_name, nick) in APPS.items():
         tickets = []
-        for t in fetch_tickets(app_name, day_str, day_str, key):
+        for t in fetch_tickets(app_name, day_str, end_str, key):
             created = t.get("createdAt")
             if not created:
                 continue
