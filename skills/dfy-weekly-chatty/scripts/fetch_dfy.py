@@ -76,14 +76,6 @@ APP_NAME = {"chatty": "Chatty", "joy": "JOY Loyalty"}
 # formerly named "FAQ" internally, hence "avadaFaq".
 INSTALL_APP_ID = {"chatty": "avadaFaq"}
 
-# Tags that mark a ticket as DFY (scoring + tracking). A ticket is DFY if it has
-# ANY of these. Kept in sync with /dfy-tracker + /dfy-weekly.
-DFY_SET = {
-    "DFY-1", "DFY-adopted", "DFY-coupon-images", "DFY-following-up", "DFY-new",
-    "DFY-no-adopt", "DFY-tier-banner", "DFY-tier-icon", "DFY-video",
-    "ai agent", "chatbox", "proactive",
-}
-
 # trello username / displayName (lowercased) -> KPI nickname.
 # Source of truth: _identity/team-g2.md. The Ticket API returns username=None and
 # puts the handle in displayName with inconsistent casing (Andy_Avada, Alicia_CS,
@@ -367,26 +359,42 @@ def main():
     key = env["AVD_TICKET_API_KEY"]
 
     start, end = a.start, a.end
-    # The ticket API's `endDate` is exclusive (silently drops tickets created
-    # on the end date itself) — bump by one day so the whole last day of the
-    # week is included. Confirmed 2026-07-31: querying 24/07-30/07 as-is
-    # returned 27 op tickets; with endDate+1 it correctly returned 40 (Liz's
-    # own ticket-system filter, same date range, showed 46 — the rest of that
-    # gap is the ticket-system UI using "Team: Chatty" instead of appName).
-    api_end = (datetime.date.fromisoformat(end) + datetime.timedelta(days=1)).isoformat()
+    # Two bugs confirmed 2026-07-31 against Liz's own ticket-system count
+    # (46 tickets, 24/07-30/07) vs. this script's old output (27):
+    #
+    # 1. `createdAt` is UTC; --start/--end are Vietnam-local calendar dates
+    #    (UTC+7). Comparing date *strings* silently shifts the week boundary
+    #    by 7h, dropping/misplacing tickets near midnight VN time.
+    # 2. "DFY ticket" is NOT "has a DFY_SET tag" — the ticket system's own
+    #    "Done For You" desk (and Liz's filter) is `tsStatus ==
+    #    "done_for_you"`. Many done_for_you tickets carry no tag yet (tags
+    #    like DFY-adopted/video/no-adopt/feedback get added later), so the
+    #    tag-based filter undercounted every week's tickets.
+    #
+    # Fixing both reproduces Liz's 46 exactly (46 total, 16 DFY-adopted,
+    # 12 DFY-video, 5 DFY-no-adopt, 3 DFY-feedback).
+    VN_OFFSET = datetime.timedelta(hours=7)
+    start_utc = datetime.datetime.fromisoformat(start) - VN_OFFSET
+    end_utc = datetime.datetime.fromisoformat(end) + datetime.timedelta(days=1) - VN_OFFSET
+
+    def created_in_window(t):
+        ts = t.get("createdAt")
+        if not ts:
+            return False
+        dt = datetime.datetime.fromisoformat(ts.replace("Z", ""))
+        return start_utc <= dt < end_utc
 
     id2name = tag_map(key)
     resp = api_get("/api/external/tickets/by-date", key,
-                   {"startDate": start, "endDate": api_end, "appName": APP_NAME[a.app]})
+                   {"startDate": (start_utc.date() - datetime.timedelta(days=1)).isoformat(),
+                    "endDate": (end_utc.date() + datetime.timedelta(days=1)).isoformat(),
+                    "appName": APP_NAME[a.app]})
     tickets = resp.get("data", {}).get("tickets", [])
-    tickets = [t for t in tickets if start <= (t.get("createdAt") or "")[:10] <= end]
+    tickets = [t for t in tickets if created_in_window(t)]
 
-    # DFY = has any DFY-set tag; open only; drop sale_request + Liz test tickets.
-    dfy = [t for t in tickets if set(names(t, id2name)) & DFY_SET]
-    op = [t for t in dfy
-          if t.get("ticketStatus") != "closed"
-          and t.get("tsStatus") != "sale_request"
-          and not (creator(t) == "LyHT" and not names(t, id2name))]
+    # DFY population = the ticket system's own "Done For You" desk; open only.
+    dfy = [t for t in tickets if t.get("tsStatus") == "done_for_you"]
+    op = [t for t in dfy if t.get("ticketStatus") != "closed"]
 
     proactive = [t for t in op if "proactive" in names(t, id2name)]
     inbound = [t for t in op if "proactive" not in names(t, id2name)]
