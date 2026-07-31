@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Post a monthly DFY digest to the Chatty CS Slack channel via the Avada bot,
+Post a weekly DFY digest to the Chatty CS Slack channel via the Avada bot,
 posing as Liz (username + icon overridden to Liz's Slack identity).
 
 Reads fetch_dfy.py JSON for the numbers, builds a Block Kit message with a
@@ -13,13 +13,15 @@ Usage:
 Auth: SLACK_BOT_TOKEN_AVADA from CSL/.env. The Avada bot must be a member of the
 target channel (invite once if posting returns not_in_channel).
 """
-import os, json, argparse
+import os, json, argparse, datetime
 import urllib.request, urllib.parse
 
 LIZ_USER_ID = "U02GT4PC6RH"          # Hoàng Thị Ly (Liz)
 CHATTY_CS_CHANNEL = "C0B62UJRGSJ"     # default channel for Chatty CS
-MONTH_VI = {"01": "1", "02": "2", "03": "3", "04": "4", "05": "5", "06": "6",
-            "07": "7", "08": "8", "09": "9", "10": "10", "11": "11", "12": "12"}
+
+
+def dmy(iso):
+    return datetime.date.fromisoformat(iso).strftime("%d/%m")
 
 
 def load_env():
@@ -69,21 +71,21 @@ def video_highlight(v):
         return (f"• *Video là đòn bẩy adopt mạnh nhất:* ticket có video adopt *{v['yes_adopt_pct']}%* "
                 f"vs không video *{v['no_adopt_pct']}%* → nên đưa quay video thành bước bắt buộc.")
     if delta <= -15:
-        return (f"• *Video không cho lợi thế rõ tháng này — ngược lại:* video *{v['yes_adopt_pct']}%* "
+        return (f"• *Video không cho lợi thế rõ tuần này — ngược lại:* video *{v['yes_adopt_pct']}%* "
                 f"vs không video *{v['no_adopt_pct']}%*, cần xem lại.")
-    return (f"• *Video chưa cho tín hiệu rõ tháng này:* video *{v['yes_adopt_pct']}%* vs "
+    return (f"• *Video chưa cho tín hiệu rõ tuần này:* video *{v['yes_adopt_pct']}%* vs "
             f"không video *{v['no_adopt_pct']}%* — chênh lệch nhỏ, theo dõi thêm.")
 
 
 def build_blocks(d, notion_url):
-    mm = d["month"].split("-")[1]
-    yy = d["month"].split("-")[0]
+    period = d["period"]
+    period_label = f"{dmy(period['start'])} → {dmy(period['end'])}"
     inb, pro, ins = d["inbound"], d["proactive"], d["insights"]
     v = ins["video"]
     rv = ins["review"]
     dpi = ins["dfy_per_install"]
 
-    title = f"📊 DFY Chatty — Tháng {MONTH_VI.get(mm, mm)}/{yy}"
+    title = f"📊 DFY Chatty — Tuần {period_label}"
 
     # 💡 highlights: video is always shown; review-yes if any. (Chatbox intentionally
     # kept OUT of the Slack digest per Liz — it lives in the Notion Insight section.)
@@ -96,10 +98,10 @@ def build_blocks(d, notion_url):
     blocks = [
         {"type": "header", "text": {"type": "plain_text", "text": title, "emoji": True}},
         {"type": "section", "text": {"type": "mrkdwn",
-         "text": f"Gửi cả nhà số liệu DFY Chatty tháng {MONTH_VI.get(mm, mm)} 🎉\n\n"
+         "text": f"Gửi cả nhà số liệu DFY Chatty tuần {period_label} 🎉\n\n"
                  f"*Tổng quan:* {d['total']} ticket · adopted *{d['adopted']} ({d['adopt_pct']}%)*\n"
                  f"⭐ Review xin được: *{rv['count']}/{rv['total']} ({rv['pct']}%)* · "
-                 f"📈 DFY/install tháng: *{dpi['dfy_tickets']}/{dpi['installs']} ({dpi['pct']}%)*"}},
+                 f"📈 DFY/install tuần: *{dpi['dfy_tickets']}/{dpi['installs']} ({dpi['pct']}%)*"}},
         {"type": "section", "text": {"type": "mrkdwn",
          "text": "*Tách theo kênh*\n"
                  f"🔵 *Inbound* (DFY theo yêu cầu KH): *{inb['count']} ticket · adopt "
@@ -112,12 +114,12 @@ def build_blocks(d, notion_url):
          "text": "*💡 Điểm đáng chú ý*\n" + "\n".join(hi)}},
         {"type": "section", "text": {"type": "mrkdwn", "text": f"*Theo CS:*  {cs_line}"}},
         {"type": "context", "elements": [{"type": "mrkdwn",
-         "text": "📌 Số liệu tháng — từ tháng sau sẽ có số so sánh tháng-qua-tháng."}]},
+         "text": "📌 Số liệu tuần Fri→Thu."}]},
         {"type": "actions", "elements": [{"type": "button",
          "text": {"type": "plain_text", "text": "📗 Xem full trên Notion", "emoji": True},
          "url": notion_url, "style": "primary"}]},
         {"type": "context", "elements": [{"type": "mrkdwn",
-         "text": "Báo cáo DFY tháng · góp ý gửi Liz"}]},
+         "text": "Báo cáo DFY tuần · góp ý gửi Liz"}]},
     ]
     return title, blocks
 

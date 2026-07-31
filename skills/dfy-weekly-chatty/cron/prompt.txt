@@ -1,0 +1,33 @@
+Run the /dfy-weekly-chatty skill for Chatty for the just-finished week, in SEND mode
+(post to the channel).
+
+Steps (run them in order from /Users/avada/CSL):
+
+1. Compute the period — the Fri→Thu week that JUST ENDED, not tied to today's weekday
+   (so a catch-up run on Sat/Sun still resolves the right week):
+   - endDate = the most recent Thursday strictly BEFORE today
+   - startDate = endDate − 6 days (a Friday)
+   Example: running Friday 2026-08-07 → period 2026-07-31 → 2026-08-06.
+2. python3 skills/dfy-weekly-chatty/scripts/fetch_dfy.py --app chatty \
+     --start {startDate} --end {endDate} --out /tmp/dfy.json
+3. Read the `no_adopt_raw` field in /tmp/dfy.json (each entry: ticket_id, store, cs,
+   comments[] — free-text Vietnamese CS notes on why a DFY ticket did not adopt). Read
+   through them yourself and group into reason buckets (a ticket can land in more than
+   one bucket; don't force mutual exclusivity; derive fresh labels each week instead of
+   reusing last week's verbatim). Write the buckets to /tmp/reasons.json:
+   {"buckets": [{"label": "...", "count": N}, ...]}
+   If no_adopt_raw is empty, skip this step (build_report.py handles a missing/absent
+   --reasons file with a placeholder).
+4. python3 skills/dfy-weekly-chatty/scripts/build_report.py --in /tmp/dfy.json \
+     --reasons /tmp/reasons.json --out /tmp/dfy.md
+5. Push to Notion (newest on top) and capture the URL:
+   python3 skills/dfy-weekly-chatty/scripts/push_notion.py \
+     --parent 37ab0da449f180b5bd78e3253071269c \
+     --title "Chatty DFY Weekly - {DD/MM} → {DD/MM}" \
+     --md /tmp/dfy.md
+   (title dates = startDate → endDate, e.g. "Chatty DFY Weekly - 31/07 → 06/08")
+6. Post the Slack digest to the Chatty CS channel AS Liz (NOT --dm):
+   python3 skills/dfy-weekly-chatty/scripts/notify_slack.py --in /tmp/dfy.json --notion-url {URL}
+
+Do NOT tag anyone. If any step fails, stop and report the error — do not post a partial
+report. Print the final Notion URL and confirm the Slack post.

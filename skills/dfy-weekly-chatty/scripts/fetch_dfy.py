@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Fetch + analyze monthly DFY tickets for an app (Chatty) from the Avada Ticket API.
+Fetch + analyze weekly DFY tickets for an app (Chatty) from the Avada Ticket API.
 
-Pulls DFY tickets for a month, splits them into Inbound (no `proactive` tag) vs
-Proactive (has `proactive` tag), computes adopt rate per group + insights, maps
-each CS to their KPI nickname, and emits a single JSON blob to stdout (or --out).
+Pulls DFY tickets for a Fri→Thu week, splits them into Inbound (no `proactive`
+tag) vs Proactive (has `proactive` tag), computes adopt rate per group +
+insights, maps each CS to their KPI nickname, and emits a single JSON blob to
+stdout (or --out).
 
 Usage:
-  python3 fetch_dfy.py --app chatty --month 2026-06 [--out /tmp/dfy.json]
+  python3 fetch_dfy.py --app chatty --start 2026-07-31 --end 2026-08-06 [--out /tmp/dfy.json]
 
 Auth: AVD_TICKET_API_KEY + BQ_SA_* from CSL/.env.
 
@@ -16,15 +17,15 @@ Review tracking is automatic (not a manual `review-yes` tag), three layers:
    for a `review_yes_chatty`/`rv_yes_chatty`/`review_yes_faq` segment.
 2. store-domain fallback, for reviews that landed on a different chat.
 3. store-name fallback: the ticket's own Crisp `customerNickname` (= visitor
-   data "name") matched against this month's Chatty App Store review names
+   data "name") matched against this week's Chatty App Store review names
    (scraped, see fetch_reviews.py) — catches reviews nobody tagged at all.
-`dfy_per_install` compares this month's DFY ticket count against Chatty's
-new installs that month (`avada_product_dash.dash_daily_installs`).
+`dfy_per_install` compares this week's DFY ticket count against Chatty's
+new installs that week (`avada_product_dash.dash_daily_installs`).
 
 Output shape (JSON):
   {
-    "app": "chatty", "month": "2026-06",
-    "period": {"start": "2026-06-01", "end": "2026-06-30"},
+    "app": "chatty",
+    "period": {"start": "2026-07-31", "end": "2026-08-06"},
     "total": 27, "adopted": 14, "adopt_pct": 52,
     "inbound":   {"count": 22, "adopted": 14, "adopt_pct": 64, "tickets": [...]},
     "proactive": {"count": 5,  "adopted": 0,  "adopt_pct": 0,  "tickets": [...]},
@@ -34,7 +35,7 @@ Output shape (JSON):
         "video":   {"yes_adopt_pct": 69, "no_adopt_pct": 27, "yes_n": 16, "no_n": 11, "delta": 42},
         "ai":      {"full_adopt_pct": 83, "zero_adopt_pct": 0},
         "chatbox": {"task_pct": 16, "zero_ticket": 19, "total_ticket": 27},
-        "timing":  {"by_week": {"1":1,"4":20,"5":6}, "peak_week": 4, "peak_n": 20},
+        "timing":  {"by_day": {"Fri":1,"Mon":4,"Tue":20}, "peak_day": "Tue", "peak_n": 20},
         "review_yes": 4,
         "review": {"count": 4, "total": 27, "pct": 15},
         "dfy_per_install": {"dfy_tickets": 27, "installs": 1689, "pct": 1.6}
@@ -44,7 +45,7 @@ Output shape (JSON):
 A ticket row: {date, ticket_id, url, store, cs_nick, cs_display, tasks_done,
                tasks_total, tags}
 """
-import os, re, sys, json, argparse, calendar, importlib.util
+import os, re, sys, json, argparse, datetime, importlib.util
 import urllib.request, urllib.parse
 from collections import defaultdict, Counter
 
@@ -126,7 +127,7 @@ def load_env():
 
 def api_get(path, key, params=None, retries=2):
     """no_adopt_raw fetches one comments-endpoint call per non-adopted ticket
-    (50+ in a busy month) — a single transient timeout shouldn't kill the
+    (50+ in a busy week) — a single transient timeout shouldn't kill the
     whole report, so retry a couple of times before giving up."""
     url = BASE + path
     if params:
@@ -245,7 +246,7 @@ def fetch_customer_names(client, session_ids, domains):
 
 
 def fetch_review_names(app, start, end):
-    """Store names on Chatty's App Store reviews this month (scraped page —
+    """Store names on Chatty's App Store reviews this week (scraped page —
     see fetch_reviews.py). Returns a set of normalized (lowered, stripped)
     names. Empty set if the app has no review scraping wired up."""
     slug = REVIEW_APP_SLUG.get(app)
@@ -340,7 +341,7 @@ def ticket_reviewed(t, rev_sessions, rev_domains):
 
 def ticket_reviewed_by_name(t, by_session, by_domain, review_names):
     """Third, independent match layer: the ticket's own store name (Crisp
-    customerNickname) against this month's App Store review names — catches
+    customerNickname) against this week's App Store review names — catches
     reviews nobody tagged review_yes_chatty on at all."""
     sess = session_id_from_chatlink(t.get("chatLink"))
     domain = (t.get("store") or [{}])[0].get("domain", "").lower()
@@ -357,16 +358,15 @@ def adopt(group, id2name):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--app", default="chatty", choices=["chatty", "joy"])
-    ap.add_argument("--month", required=True, help="YYYY-MM, e.g. 2026-06")
+    ap.add_argument("--start", required=True, help="YYYY-MM-DD, period start (a Friday)")
+    ap.add_argument("--end", required=True, help="YYYY-MM-DD, period end (a Thursday)")
     ap.add_argument("--out", help="Write JSON here instead of stdout")
     a = ap.parse_args()
 
     env = load_env()
     key = env["AVD_TICKET_API_KEY"]
 
-    y, m = map(int, a.month.split("-"))
-    start = f"{y:04d}-{m:02d}-01"
-    end = f"{y:04d}-{m:02d}-{calendar.monthrange(y, m)[1]:02d}"
+    start, end = a.start, a.end
 
     id2name = tag_map(key)
     resp = api_get("/api/external/tickets/by-date", key,
@@ -421,15 +421,16 @@ def main():
         if d == 0:
             cb_zero += 1
 
-    by_week = Counter()
+    DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    by_day = Counter()
     for t in op:
         d = (t.get("createdAt") or "")[:10]
         try:
-            day = int(d[8:10])
-            by_week[str((day - 1) // 7 + 1)] += 1
+            dow = datetime.date.fromisoformat(d).weekday()
+            by_day[DOW[dow]] += 1
         except ValueError:
             pass
-    peak_week, peak_n = (max(by_week.items(), key=lambda x: x[1]) if by_week else ("0", 0))
+    peak_day, peak_n = (max(by_day.items(), key=lambda x: x[1]) if by_day else ("-", 0))
 
     # ---- review tracking (automatic, via BigQuery crisp_chats segments) ----
     # Two-tier match: exact session_id parsed from the ticket's chatLink, plus
@@ -442,7 +443,7 @@ def main():
     rev_sessions, rev_domains = fetch_reviewed(bq, session_ids, domains, f"{start} 00:00:00")
 
     # Third layer: match the ticket's own store name (Crisp customerNickname)
-    # against this month's App Store review names — catches reviews nobody
+    # against this week's App Store review names — catches reviews nobody
     # tagged at all. Independent of the tag-based match above.
     by_session, by_domain = fetch_customer_names(bq, session_ids, domains)
     review_names = fetch_review_names(a.app, start, end)
@@ -454,7 +455,7 @@ def main():
                       or ticket_reviewed_by_name(t, by_session, by_domain, review_names))
     review_pct = round(100 * review_yes / len(op)) if op else 0
 
-    # ---- DFY tickets / app installs this month ----
+    # ---- DFY tickets / app installs this week ----
     installs = fetch_installs(bq, INSTALL_APP_ID.get(a.app, ""), start, end) if a.app in INSTALL_APP_ID else 0
     dfy_per_install_pct = round(100 * len(op) / installs, 2) if installs else 0
 
@@ -473,7 +474,7 @@ def main():
             })
 
     result = {
-        "app": a.app, "month": a.month,
+        "app": a.app,
         "period": {"start": start, "end": end},
         "total": len(op), "adopted": atot, "adopt_pct": ptot,
         "inbound": {"count": len(inbound), "adopted": ainb, "adopt_pct": pinb,
@@ -488,8 +489,8 @@ def main():
                    "full_n": len(ai_full), "zero_n": len(ai_zero)},
             "chatbox": {"task_pct": round(100 * cb_done / cb_tot) if cb_tot else 0,
                         "zero_ticket": cb_zero, "total_ticket": len(op)},
-            "timing": {"by_week": dict(sorted(by_week.items())),
-                       "peak_week": int(peak_week), "peak_n": peak_n},
+            "timing": {"by_day": {d: by_day.get(d, 0) for d in DOW if by_day.get(d)},
+                       "peak_day": peak_day, "peak_n": peak_n},
             "review_yes": review_yes,
             "review": {"count": review_yes, "total": len(op), "pct": review_pct,
                        "matched_by_name": review_by_name},

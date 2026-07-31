@@ -13,7 +13,7 @@ report is sent — minimal lag, vs. a midnight-aligned calendar day where
 activity between 00:00-08:45 wouldn't surface until the *following* day's
 report (changed 2026-07-31 per Liz's request). Posts one Slack message to the
 **#cs-2-daily channel** (`C0B8042TXQ9`), sent with Liz's name/avatar
-(live-fetched, matches the `/cs-weekly`+`/dfy-monthly` convention for
+(live-fetched, matches the `/cs-weekly`+`/dfy-weekly-chatty` convention for
 team-channel posts) — not a private DM. 4 sections. Evolved from the
 original `/ticket-watch` (folded in conversation volume + attendance, then
 moved from DM to team channel, then added tickets created for Liz); section

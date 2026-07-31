@@ -1,20 +1,21 @@
 #!/bin/bash
 #
-# Monthly DFY report run — invoked by launchd (com.avada.dfy-monthly).
-# Runs Claude Code headless to generate LAST month's Chatty DFY report and post it
-# to the Chatty CS Slack channel as Liz, plus a Notion sub-page (newest on top).
+# Weekly DFY report run — invoked by launchd (com.avada.dfy-weekly-chatty).
+# Runs Claude Code headless to generate the just-finished week's (Fri→Thu) Chatty
+# DFY report and post it to the Chatty CS Slack channel as Liz, plus a Notion
+# sub-page (newest on top).
 #
-# Manual run (e.g. machine was off on the 2nd):  bash run-monthly.sh
+# Manual run (e.g. machine was off on Friday):  bash run-weekly.sh
 #
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_BIN="/opt/homebrew/bin/claude"
 REPO="/Users/avada/CSL"
-LOG="/tmp/dfy-monthly.log"
+LOG="/tmp/dfy-weekly-chatty.log"
 PROMPT_FILE="$HERE/prompt.txt"
 
-echo "===== dfy-monthly run: $(date) =====" >> "$LOG"
+echo "===== dfy-weekly-chatty run: $(date) =====" >> "$LOG"
 
 cd "$REPO"
 
@@ -32,7 +33,7 @@ rc=0
 echo "===== done: $(date) =====" >> "$LOG"
 
 # Telegram báo Liz (xong + lỗi). Notify không được làm hỏng job.
-python3 "$REPO/skills/_shared/notify_tele.py" --job "DFY Monthly (Chatty)" \
+python3 "$REPO/skills/_shared/notify_tele.py" --job "DFY Weekly (Chatty)" \
   --status "$([ "${rc:-0}" -eq 0 ] && echo ok || echo fail)" --log "$LOG" >> "$LOG" 2>&1 || true
 
 exit "${rc:-0}"

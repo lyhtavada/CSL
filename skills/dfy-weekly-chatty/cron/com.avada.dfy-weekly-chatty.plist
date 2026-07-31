@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.avada.dfy-weekly-chatty</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/avada/CSL/skills/dfy-weekly-chatty/cron/run-weekly.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/avada/CSL</string>
+
+  <!-- Every Friday at 16:30 local time. launchd Weekday: Sun=0 ... Fri=5, Sat=6. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>5</integer>
+    <key>Hour</key>
+    <integer>16</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+
+  <!-- Machine off/asleep at 16:30 on Friday → launchd skips this run.
+       Run manually: bash run-weekly.sh -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/dfy-weekly-chatty.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/dfy-weekly-chatty.log</string>
+</dict>
+</plist>

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build the Notion markdown body for a monthly DFY report from fetch_dfy.py JSON.
+Build the Notion markdown body for a weekly DFY report from fetch_dfy.py JSON.
 
 Usage:
   python3 build_report.py --in /tmp/dfy.json --out /tmp/dfy.md
@@ -9,12 +9,11 @@ The body starts at `## Overview` (NO H1) — push_notion.py uses the --title as 
 page title, so an H1 would duplicate it. Section order:
   Overview → 💡 Insight & đề xuất → 🔵 Inbound table → 🟢 Proactive table → Note
 """
-import json, argparse
+import json, argparse, datetime
 
-MONTH_VI = {
-    "01": "1", "02": "2", "03": "3", "04": "4", "05": "5", "06": "6",
-    "07": "7", "08": "8", "09": "9", "10": "10", "11": "11", "12": "12",
-}
+
+def dmy(iso):
+    return datetime.date.fromisoformat(iso).strftime("%d/%m")
 
 
 def ticket_table(tickets):
@@ -40,10 +39,10 @@ def video_insight_line(v):
         return (f"**1. Video là đòn bẩy adopt mạnh nhất.** {base} "
                 f"→ **Đề xuất:** đưa quay video kết quả thành bước bắt buộc trong DFY flow.\n")
     if delta <= -15:
-        return (f"**1. Video không cho thấy lợi thế tháng này — ngược lại.** {base} "
+        return (f"**1. Video không cho thấy lợi thế tuần này — ngược lại.** {base} "
                 f"Cần xem lại: có phải ticket khó adopt mới cần quay video minh chứng, "
                 f"nên tương quan bị đảo?\n")
-    return (f"**1. Video chưa cho thấy tín hiệu rõ ràng tháng này.** {base} "
+    return (f"**1. Video chưa cho thấy tín hiệu rõ ràng tuần này.** {base} "
             f"Chênh lệch nhỏ — theo dõi thêm trước khi kết luận video có tác dụng hay không.\n")
 
 
@@ -58,21 +57,24 @@ def ai_insight_line(ai):
     if delta >= 15:
         return f"**2. Làm kỹ AI Agent → adopt cao.** {base} Xác nhận DFY làm đến nơi thì giữ được widget.\n"
     if delta <= -15:
-        return (f"**2. AI Agent completion không tương quan với adopt tháng này — ngược lại.** "
+        return (f"**2. AI Agent completion không tương quan với adopt tuần này — ngược lại.** "
                 f"{base} Cần xem lại.\n")
-    return f"**2. AI Agent completion chưa cho tín hiệu rõ ràng tháng này.** {base} Theo dõi thêm.\n"
+    return f"**2. AI Agent completion chưa cho tín hiệu rõ ràng tuần này.** {base} Theo dõi thêm.\n"
 
 
 def timing_insight_line(tm, total):
-    """Same pattern: only claim 'DFY dồn cuối tháng' when the peak week is
-    actually a meaningful share of the month's tickets — otherwise a fairly
-    even week-by-week spread would get mislabeled as bunching."""
+    """Same pattern: only claim 'DFY dồn vào 1 ngày' when the peak day is
+    actually a meaningful share of the week's tickets — otherwise a fairly
+    even day-by-day spread would get mislabeled as bunching."""
+    if not tm.get("peak_n"):
+        return "**4. Không đủ dữ liệu để xem xu hướng theo ngày tuần này.**\n"
     share = tm["peak_n"] / total if total else 0
-    base = f"{tm['peak_n']}/{total} ticket tạo trong tuần {tm['peak_week']} của tháng."
+    base = f"{tm['peak_n']}/{total} ticket tạo vào {tm['peak_day']}."
     if share >= 0.4:
-        return (f"**4. DFY dồn cuối tháng.** {base} Đầu tháng gần như trống. → Ticket cuối tháng "
-                f"chưa đủ thời gian follow-up adopt; nên rải đều hơn để theo dõi kết quả sát.\n")
-    return f"**4. DFY tạo tương đối đều trong tháng.** {base} Không thấy dồn cục bộ rõ rệt.\n"
+        return (f"**4. DFY dồn vào 1 ngày trong tuần.** {base} Các ngày khác gần như trống. → "
+                f"Ticket cuối tuần chưa đủ thời gian follow-up adopt; nên rải đều hơn để theo "
+                f"dõi kết quả sát.\n")
+    return f"**4. DFY tạo tương đối đều trong tuần.** {base} Không thấy dồn cục bộ rõ rệt.\n"
 
 
 def insight_section(d):
@@ -120,7 +122,8 @@ def no_adopt_section(d, reasons):
 
 
 def build(d, reasons=None):
-    mm = d["month"].split("-")[1]
+    period = d["period"]
+    period_label = f"{dmy(period['start'])} → {dmy(period['end'])}"
     inb = d["inbound"]
     pro = d["proactive"]
 
@@ -138,10 +141,9 @@ def build(d, reasons=None):
         if rv.get("matched_by_name") else ""
     L.append(f"- ⭐ **Review xin được / ticket DFY:** {rv['count']}/{rv['total']} "
              f"(**{rv['pct']}%**){by_name_note}")
-    L.append(f"- 📈 **Case DFY / install app trong tháng:** {dpi['dfy_tickets']}/{dpi['installs']} "
+    L.append(f"- 📈 **Case DFY / install app trong tuần:** {dpi['dfy_tickets']}/{dpi['installs']} "
              f"(**{dpi['pct']}%**)")
-    L.append(f"- **Note:** Số liệu tháng {MONTH_VI.get(mm, mm)}/{d['month'].split('-')[0]} "
-             f"(open tickets).\n")
+    L.append(f"- **Note:** Số liệu tuần {period_label} (open tickets).\n")
 
     L.append(insight_section(d))
     L.append("")
