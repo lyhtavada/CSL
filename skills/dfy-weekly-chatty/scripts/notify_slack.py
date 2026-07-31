@@ -98,7 +98,7 @@ def build_blocks(d, notion_url):
     blocks = [
         {"type": "header", "text": {"type": "plain_text", "text": title, "emoji": True}},
         {"type": "section", "text": {"type": "mrkdwn",
-         "text": f"Gửi cả nhà số liệu DFY Chatty tuần {period_label} 🎉\n\n"
+         "text": f"Gửi cả nhà số liệu DFY Chatty tuần {period_label}\n\n"
                  f"*Tổng quan:* {d['total']} ticket · adopted *{d['adopted']} ({d['adopt_pct']}%)*\n"
                  f"⭐ Review xin được: *{rv['count']}/{rv['total']} ({rv['pct']}%)* · "
                  f"📈 DFY/install tuần: *{dpi['dfy_tickets']}/{dpi['installs']} ({dpi['pct']}%)*"}},
