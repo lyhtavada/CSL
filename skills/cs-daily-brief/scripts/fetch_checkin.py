@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Check-in/checkout status for Team G2 over one full calendar day (00:00–24:00
-VN time), for the daily CS report. Uses the Admin API /shifts +
-/shifts/:id/checks (via _common.shift_status).
+Check-in/checkout status for Team G2 over a rolling 24h window, 08:30 VN to
+08:30 VN the next day (aligned to the 08:45 cron run), for the daily CS
+report. Uses the Admin API /shifts + /shifts/:id/checks (via
+_common.shift_status).
 
 Default target day = yesterday (VN).
 
 Usage:
-  python3 fetch_checkin.py --json                # yesterday (VN)
+  python3 fetch_checkin.py --json                # yesterday 08:30 -> today 08:30 (VN)
   python3 fetch_checkin.py --date 2026-07-21 --json
 """
 import os, sys, json, argparse, datetime as dt
@@ -28,7 +29,7 @@ def main():
         day = (dt.datetime.now(VN) - dt.timedelta(days=1)).replace(
             hour=0, minute=0, second=0, microsecond=0)
 
-    win_start = day.replace(hour=0, minute=0, second=0, microsecond=0)
+    win_start = day.replace(hour=8, minute=30, second=0, microsecond=0)
     win_end = win_start + dt.timedelta(days=1)
     start_date = win_start.strftime("%Y-%m-%d")
     end_date = win_end.strftime("%Y-%m-%d")

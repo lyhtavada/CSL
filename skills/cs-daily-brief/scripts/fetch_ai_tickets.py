@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
 """
-Chats handled by the app AI bot (Ivy/Joyce/Wendy) on one full calendar day
-(00:00-24:00 VN time), and which of those chats got a ticket created by the
-bot itself — for the daily CS report (section replacing the old ticket-watch).
+Chats handled by the app AI bot (Ivy/Joyce/Wendy) in a rolling 24h window,
+08:30 VN to 08:30 VN the next day (aligned to the 08:45 cron run), and which
+of those chats got a ticket created by the bot itself — for the daily CS
+report (section replacing the old ticket-watch).
 
 Two data sources, joined by app:
   - BigQuery `avada_cs.crisp_chats`: distinct sessions with an operator
-    message from the bot that day (agentEmail IS NULL identifies a bot
+    message from the bot in the window (agentEmail IS NULL identifies a bot
     message; userNickname is the bot's own Crisp display name — confirmed
     live 2026-07-31: Ivy only appears under segments containing "app_chatty",
     Joyce under "app_joy", Wendy under "app_wishlist" — so nickname alone is
     an unambiguous per-app bot filter, no segments join needed).
-  - Ticket API `/tickets/by-date`: tickets created that day whose creating
-    member (`isCreate: true`) is the AI agent (`memberId == "ai-agent-2"`,
-    displayName "TS AI Agent 2 (Team 2)" — confirmed live, same agent id
-    shared across all 3 apps; the ticket's own `appName` is what maps it back
-    to Ivy/Joyce/Wendy for display, not the member identity).
+  - Ticket API `/tickets/by-date`: tickets created in the window whose
+    creating member (`isCreate: true`) is the AI agent
+    (`memberId == "ai-agent-2"`, displayName "TS AI Agent 2 (Team 2)" —
+    confirmed live, same agent id shared across all 3 apps; the ticket's own
+    `appName` is what maps it back to Ivy/Joyce/Wendy for display, not the
+    member identity). `by-date`'s endDate is exclusive (confirmed live
+    2026-07-31 — a same-day start/end query returned zero rows for a ticket
+    that did exist), and precise window filtering happens client-side on
+    `createdAt` regardless, so the API call itself just needs to be a safe
+    superset of the target window (widened by a day on each side).
 
 Customer display name comes from the ticket's `store[0].shopName` (fallback
 to domain, then "Khách") — the Ticket API has no Crisp nickname field, and
@@ -23,7 +29,7 @@ chatLink already carries the session_id straight from Crisp so no BigQuery
 join is needed to get the chat link itself.
 
 Usage:
-  python3 fetch_ai_tickets.py --json                # yesterday (VN)
+  python3 fetch_ai_tickets.py --json                # yesterday 08:30 -> today 08:30 (VN)
   python3 fetch_ai_tickets.py --date 2026-07-30 --json
 """
 import os, sys, json, argparse, datetime as dt
@@ -46,8 +52,9 @@ APPS = {
 AI_MEMBER_ID = "ai-agent-2"
 
 
-def fetch_handled_counts(client, day_str):
-    """Distinct sessions with >=1 bot operator message that day, per bot nickname."""
+def fetch_handled_counts(client, win_start, win_end_excl):
+    """Distinct sessions with >=1 bot operator message in [win_start, win_end_excl),
+    per bot nickname. win_start/win_end_excl are 'YYYY-MM-DD HH:MM:SS+07' strings."""
     nick_list = [nick for _, nick in APPS.values()]
     q = """
     SELECT userNickname, COUNT(DISTINCT session_id) AS n
@@ -59,13 +66,10 @@ def fetch_handled_counts(client, day_str):
     GROUP BY userNickname
     """
     from google.cloud import bigquery
-    start = f"{day_str} 00:00:00+07"
-    end_excl = (dt.datetime.strptime(day_str, "%Y-%m-%d").date()
-                + dt.timedelta(days=1)).isoformat() + " 00:00:00+07"
     job = bigquery.QueryJobConfig(query_parameters=[
         bigquery.ArrayQueryParameter("nicks", "STRING", nick_list),
-        bigquery.ScalarQueryParameter("start", "STRING", start),
-        bigquery.ScalarQueryParameter("end", "STRING", end_excl),
+        bigquery.ScalarQueryParameter("start", "STRING", win_start),
+        bigquery.ScalarQueryParameter("end", "STRING", win_end_excl),
     ])
     counts = {nick: 0 for nick in nick_list}
     for r in client.query(q, job_config=job).result():
@@ -115,23 +119,28 @@ def main():
     else:
         day = (dt.datetime.now(VN) - dt.timedelta(days=1)).replace(
             hour=0, minute=0, second=0, microsecond=0)
-    start = day.replace(hour=0, minute=0, second=0, microsecond=0)
+    start = day.replace(hour=8, minute=30, second=0, microsecond=0)
     end = start + dt.timedelta(days=1)
     day_str = start.strftime("%Y-%m-%d")
 
     env = load_env()
     bq = bq_client(env)
-    handled = fetch_handled_counts(bq, day_str)
+    win_start = start.strftime("%Y-%m-%d %H:%M:%S+07")
+    win_end_excl = end.strftime("%Y-%m-%d %H:%M:%S+07")
+    handled = fetch_handled_counts(bq, win_start, win_end_excl)
 
     load_dotenv(ENV_PATH)
     key = os.environ["AVD_TICKET_API_KEY"]
 
-    end_str = end.strftime("%Y-%m-%d")  # by-date's endDate is exclusive — see fetch_liz_tickets.py
+    # by-date's date-string params are just a coarse fetch — widen a day on
+    # each side of the actual window, then filter precisely on createdAt below.
+    api_start_str = (start - dt.timedelta(days=1)).strftime("%Y-%m-%d")
+    api_end_str = (end + dt.timedelta(days=1)).strftime("%Y-%m-%d")
 
     apps_out = {}
     for app_key, (app_name, nick) in APPS.items():
         tickets = []
-        for t in fetch_tickets(app_name, day_str, end_str, key):
+        for t in fetch_tickets(app_name, api_start_str, api_end_str, key):
             created = t.get("createdAt")
             if not created:
                 continue

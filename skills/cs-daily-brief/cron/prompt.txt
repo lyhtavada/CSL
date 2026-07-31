@@ -3,10 +3,15 @@ This is posted to the team's #cs-2-daily Slack channel (C0B8042TXQ9), not a
 private DM — the team will read it too, so keep tone plain/factual (it
 already is: numbers + links, no internal commentary).
 
-This report always covers the PREVIOUS FULL CALENDAR DAY (00:00–24:00 VN
-time) for all 4 sections. If today (VN) is the 22nd, the target date is
-the 21st. Compute the target date yourself (yesterday in Asia/Bangkok, i.e.
-VN time, UTC+7) — do not hardcode a date.
+This report always covers a rolling 24h window, **08:30 VN the previous day
+to 08:30 VN today** (aligned to this job's 08:45 run time, so the window ends
+just minutes before the report is sent), for all 4 sections. If today (VN)
+is the 22nd, the target date is the 21st (window: 21st 08:30 -> 22nd 08:30).
+Compute the target date yourself (yesterday in Asia/Bangkok, i.e. VN time,
+UTC+7) — do not hardcode a date. All 4 fetch scripts already implement this
+window internally (via `--date <target>`, which sets the window START date —
+they compute the 08:30-08:30 bounds themselves), so just pass the date, not
+explicit times.
 
 1. Run these 4 commands from /Users/avada/CSL, using the computed target date
    (YYYY-MM-DD) for all of them:
@@ -18,7 +23,7 @@ VN time, UTC+7) — do not hardcode a date.
 
 2. Compose ONE Slack DM message in Vietnamese, in this shape:
 
-   *📊 BÁO CÁO CS HÀNG NGÀY — <target date dd/mm/yyyy>*
+   *📊 BÁO CÁO CS HÀNG NGÀY — <target date dd/mm/yyyy> 08:30 → <target date + 1 dd/mm/yyyy> 08:30*
 
    *① Tổng quan conversation*
    From fetch_conversations.py output: "Total: N conversations" then

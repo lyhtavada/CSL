@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Tickets created for Liz (she's in members[]) on one full calendar day
-(00:00–24:00 VN time), across all 3 apps — for the daily CS report.
+Tickets created for Liz (she's in members[]) in a rolling 24h window, 08:30
+VN to 08:30 VN the next day (aligned to the 08:45 cron run), across all 3
+apps — for the daily CS report.
 
 Matches any member whose displayName contains "liz" (case-insensitive) —
 covers both "Liz" and "liz_avada" name variants seen live in the API.
@@ -9,7 +10,7 @@ covers both "Liz" and "liz_avada" name variants seen live in the API.
 Default target day = yesterday (VN).
 
 Usage:
-  python3 fetch_liz_tickets.py --json                # yesterday (VN)
+  python3 fetch_liz_tickets.py --json                # yesterday 08:30 -> today 08:30 (VN)
   python3 fetch_liz_tickets.py --date 2026-07-21 --json
 """
 import os, json, argparse, datetime as dt
@@ -68,7 +69,7 @@ def main():
     else:
         day = (dt.datetime.now(VN) - dt.timedelta(days=1)).replace(
             hour=0, minute=0, second=0, microsecond=0)
-    start = day.replace(hour=0, minute=0, second=0, microsecond=0)
+    start = day.replace(hour=8, minute=30, second=0, microsecond=0)
     end = start + dt.timedelta(days=1)
 
     load_dotenv(ENV_PATH)

@@ -144,14 +144,6 @@ def chat_count_active(client, segments, start, end, gap_hours=GAP_HOURS,
     [start, end] (YYYY-MM-DD, inclusive, Asia/Bangkok +07) — see module docstring
     for why this differs from chat_count(). `segments` is a list like
     APP_SEGMENTS["chatty"]."""
-    from google.cloud import bigquery
-
-    seg_clause = " OR ".join(f"segments LIKE @s{i}" for i in range(len(segments)))
-    params = [
-        bigquery.ScalarQueryParameter(f"s{i}", "STRING", f"%{s}%")
-        for i, s in enumerate(segments)
-    ]
-
     win_start = f"{start} 00:00:00+07"
     win_end_excl = (datetime.datetime.strptime(end, "%Y-%m-%d").date()
                      + datetime.timedelta(days=1)).isoformat() + " 00:00:00+07"
@@ -159,6 +151,29 @@ def chat_count_active(client, segments, start, end, gap_hours=GAP_HOURS,
                     - datetime.timedelta(days=lookaround_days)).isoformat() + " 00:00:00+07"
     fetch_end = (datetime.datetime.strptime(end, "%Y-%m-%d").date()
                  + datetime.timedelta(days=1 + lookaround_days)).isoformat() + " 00:00:00+07"
+    return chat_count_window(client, segments, win_start, win_end_excl, fetch_start, fetch_end,
+                              gap_hours=gap_hours, min_user_msgs=min_user_msgs,
+                              exclude_internal=exclude_internal)
+
+
+def chat_count_window(client, segments, win_start, win_end_excl, fetch_start, fetch_end,
+                       gap_hours=GAP_HOURS, min_user_msgs=MIN_USER_MSGS,
+                       exclude_internal=True):
+    """Count real merchant conversations ACTIVE (>=1 merchant message) in the
+    exact [win_start, win_end_excl) timestamp window (each a full
+    'YYYY-MM-DD HH:MM:SS+07' string, not just a calendar date) — the
+    time-of-day-aware sibling of `chat_count_active`, for callers whose
+    reporting window doesn't align to midnight (e.g. /cs-daily-brief's
+    08:30-to-08:30 rolling window). `fetch_start`/`fetch_end` are the
+    lookaround-widened bounds used for the gap-sessionization CTE, same role
+    as in `chat_count_active`. `segments` is a list like APP_SEGMENTS["chatty"]."""
+    from google.cloud import bigquery
+
+    seg_clause = " OR ".join(f"segments LIKE @s{i}" for i in range(len(segments)))
+    params = [
+        bigquery.ScalarQueryParameter(f"s{i}", "STRING", f"%{s}%")
+        for i, s in enumerate(segments)
+    ]
 
     internal_clause = ""
     if exclude_internal:
