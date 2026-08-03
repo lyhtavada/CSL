@@ -1,70 +1,112 @@
 # Chatty DFY Monthly KPI — 2026-07
 
-Total: 117 tickets across 10 CS (only dueDateDone=true counted)
+Total: 143 tickets across 10 CS (only dueDateDone=true counted)
 
-## LinhTLK (33 tickets)
+## LinhTLK (40 tickets)
 
 | Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
 |---|---|---|---|---|---|---|---|
 | 2026-07-03 | [CHAT-260703-vQHUY5](https://avada-ts-a9cb0.web.app/t/CHAT-260703-vQHUY5) | quch5r-sz.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, DFY-video, DFY-no-adopt | 100 |
 | 2026-07-06 | [CHAT-260706-7k3Mhq](https://avada-ts-a9cb0.web.app/t/CHAT-260706-7k3Mhq) | y4pcxb-x1.myshopify.com | 50 (8/8) | 0 (0/7) | 0 | ai agent, DFY-adopted | 50 |
 | 2026-07-06 | [CHAT-260706-NYce9A](https://avada-ts-a9cb0.web.app/t/CHAT-260706-NYce9A) | xf01b0-uq.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, DFY-adopted, DFY-video | 100 |
-| 2026-07-08 | [CHAT-260708-BTzDAs](https://avada-ts-a9cb0.web.app/t/CHAT-260708-BTzDAs) | 0wjvcn-bn.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt | 50 |
+| 2026-07-08 | [CHAT-260708-BTzDAs](https://avada-ts-a9cb0.web.app/t/CHAT-260708-BTzDAs) | 0wjvcn-bn.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt, DFY-following-up | 50 |
 | 2026-07-08 | [CHAT-260708-tbUvsf](https://avada-ts-a9cb0.web.app/t/CHAT-260708-tbUvsf) | incerun.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 50 |
-| 2026-07-08 | [CHAT-260708-aScaZr](https://avada-ts-a9cb0.web.app/t/CHAT-260708-aScaZr) | 1wcy1p-ux.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt | 50 |
+| 2026-07-08 | [CHAT-260708-aScaZr](https://avada-ts-a9cb0.web.app/t/CHAT-260708-aScaZr) | 1wcy1p-ux.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt, DFY-following-up | 50 |
 | 2026-07-09 | [CHAT-260709-LLd2w6](https://avada-ts-a9cb0.web.app/t/CHAT-260709-LLd2w6) | nihalfashionlk.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 50 |
-| 2026-07-10 | [CHAT-260710-9ssuHw](https://avada-ts-a9cb0.web.app/t/CHAT-260710-9ssuHw) | i19pzh-pe.myshopify.com | 39 (7/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt | 89 |
+| 2026-07-10 | [CHAT-260710-9ssuHw](https://avada-ts-a9cb0.web.app/t/CHAT-260710-9ssuHw) | i19pzh-pe.myshopify.com | 39 (7/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt, DFY-following-up | 89 |
 | 2026-07-10 | [CHAT-260710-4bPxFp](https://avada-ts-a9cb0.web.app/t/CHAT-260710-4bPxFp) | pmr07p-wt.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 50 |
 | 2026-07-10 | [CHAT-260710-U4EPP3](https://avada-ts-a9cb0.web.app/t/CHAT-260710-U4EPP3) | 1udfx1-ez.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-adopted, review-yes | 50 |
 | 2026-07-12 | [CHAT-260712-f3EVRT](https://avada-ts-a9cb0.web.app/t/CHAT-260712-f3EVRT) | luismiguelvilassar.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-adopted, review-yes | 50 |
-| 2026-07-12 | [CHAT-260712-aECYBB](https://avada-ts-a9cb0.web.app/t/CHAT-260712-aECYBB) | 2wmp2r-dk.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt | 100 |
+| 2026-07-12 | [CHAT-260712-aECYBB](https://avada-ts-a9cb0.web.app/t/CHAT-260712-aECYBB) | 2wmp2r-dk.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt, DFY-following-up | 100 |
 | 2026-07-13 | [CHAT-260713-qmUYLu](https://avada-ts-a9cb0.web.app/t/CHAT-260713-qmUYLu) | freddiemetlillie.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-adopted | 100 |
 | 2026-07-13 | [CHAT-260713-fcYkEa](https://avada-ts-a9cb0.web.app/t/CHAT-260713-fcYkEa) | ex8qbr-4s.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 50 |
 | 2026-07-14 | [CHAT-260714-7H9qgG](https://avada-ts-a9cb0.web.app/t/CHAT-260714-7H9qgG) | fhshub-x6.myshopify.com | 28 (5/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 28 |
 | 2026-07-14 | [CHAT-260714-JPnM3a](https://avada-ts-a9cb0.web.app/t/CHAT-260714-JPnM3a) | km0zam-jd.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-adopted | 100 |
 | 2026-07-14 | [CHAT-260714-mWh5wD](https://avada-ts-a9cb0.web.app/t/CHAT-260714-mWh5wD) | w9kfxy-an.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-adopted, DFY-video | 100 |
-| 2026-07-15 | [CHAT-260715-yHBvWV](https://avada-ts-a9cb0.web.app/t/CHAT-260715-yHBvWV) | ifqygs-et.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt | 50 |
+| 2026-07-15 | [CHAT-260715-yHBvWV](https://avada-ts-a9cb0.web.app/t/CHAT-260715-yHBvWV) | ifqygs-et.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt, DFY-following-up | 50 |
 | 2026-07-16 | [CHAT-260716-2ftdDW](https://avada-ts-a9cb0.web.app/t/CHAT-260716-2ftdDW) | ycz3a9-t1.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-adopted | 100 |
 | 2026-07-17 | [CHAT-260717-CkF6SH](https://avada-ts-a9cb0.web.app/t/CHAT-260717-CkF6SH) | kerwellness.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | DFY-video, ai agent, DFY-adopted | 100 |
-| 2026-07-17 | [CHAT-260717-RZUFfq](https://avada-ts-a9cb0.web.app/t/CHAT-260717-RZUFfq) | dt4j11-xb.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | DFY-video, ai agent, DFY-no-adopt | 100 |
-| 2026-07-19 | [CHAT-260719-7XGe97](https://avada-ts-a9cb0.web.app/t/CHAT-260719-7XGe97) | bjxb0x-qx.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt | 100 |
+| 2026-07-17 | [CHAT-260717-RZUFfq](https://avada-ts-a9cb0.web.app/t/CHAT-260717-RZUFfq) | dt4j11-xb.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | DFY-video, ai agent, DFY-no-adopt, DFY-following-up | 100 |
+| 2026-07-19 | [CHAT-260719-7XGe97](https://avada-ts-a9cb0.web.app/t/CHAT-260719-7XGe97) | bjxb0x-qx.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt, DFY-following-up | 100 |
 | 2026-07-19 | [CHAT-260719-4Zf6VG](https://avada-ts-a9cb0.web.app/t/CHAT-260719-4Zf6VG) | s9vswz-71.myshopify.com | 17 (3/9) | 0 (0/4) | 0 | ai agent, DFY-adopted, review-yes | 17 |
 | 2026-07-19 | [CHAT-260719-gfV3KK](https://avada-ts-a9cb0.web.app/t/CHAT-260719-gfV3KK) | arch0q-qt.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-adopted | 100 |
-| 2026-07-20 | [CHAT-260720-JZsjHr](https://avada-ts-a9cb0.web.app/t/CHAT-260720-JZsjHr) | j1m1sx-pg.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt | 39 |
-| 2026-07-20 | [CHAT-260720-EY9zXu](https://avada-ts-a9cb0.web.app/t/CHAT-260720-EY9zXu) | vxncnh-hi.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt | 100 |
+| 2026-07-20 | [CHAT-260720-JZsjHr](https://avada-ts-a9cb0.web.app/t/CHAT-260720-JZsjHr) | j1m1sx-pg.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt, DFY-following-up | 39 |
+| 2026-07-20 | [CHAT-260720-EY9zXu](https://avada-ts-a9cb0.web.app/t/CHAT-260720-EY9zXu) | vxncnh-hi.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt, DFY-following-up | 100 |
 | 2026-07-21 | [CHAT-260721-vpzWCF](https://avada-ts-a9cb0.web.app/t/CHAT-260721-vpzWCF) | 93273f-16.myshopify.com | 50 (9/9) | 30 (4/4) | 50 | chatbox, ai agent, DFY-video, DFY-adopted | 130 |
 | 2026-07-21 | [CHAT-260721-UBqWtN](https://avada-ts-a9cb0.web.app/t/CHAT-260721-UBqWtN) | ch06mw-0w.myshopify.com | 0 (0/9) | 30 (4/4) | 50 | chatbox, DFY-video, DFY-adopted | 80 |
-| 2026-07-21 | [CHAT-260721-wLTtTg](https://avada-ts-a9cb0.web.app/t/CHAT-260721-wLTtTg) | qdgeai-g0.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt | 100 |
+| 2026-07-21 | [CHAT-260721-wLTtTg](https://avada-ts-a9cb0.web.app/t/CHAT-260721-wLTtTg) | qdgeai-g0.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt, DFY-following-up | 100 |
 | 2026-07-21 | [CHAT-260721-3TjXAw](https://avada-ts-a9cb0.web.app/t/CHAT-260721-3TjXAw) | topoxygen-shop.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-adopted, DFY-video | 100 |
 | 2026-07-22 | [CHAT-260722-rWhJyq](https://avada-ts-a9cb0.web.app/t/CHAT-260722-rWhJyq) | banglez-bazar-inc.myshopify.com | 33 (6/9) | 0 (0/4) | 0 | DFY-adopted, ai agent, review-yes | 33 |
-| 2026-07-22 | [CHAT-260722-S7h2c6](https://avada-ts-a9cb0.web.app/t/CHAT-260722-S7h2c6) | ukb27p-7s.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, Upsell, DFY-no-adopt | 100 |
+| 2026-07-22 | [CHAT-260722-S7h2c6](https://avada-ts-a9cb0.web.app/t/CHAT-260722-S7h2c6) | ukb27p-7s.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, Upsell, DFY-no-adopt, DFY-following-up | 100 |
 | 2026-07-22 | [CHAT-260722-4sMkC9](https://avada-ts-a9cb0.web.app/t/CHAT-260722-4sMkC9) | 4wa6xh-ys.myshopify.com | 22 (4/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 22 |
-| **Total** | | | | | | | **2438** |
+| 2026-07-26 | [CHAT-260726-LuphmB](https://avada-ts-a9cb0.web.app/t/CHAT-260726-LuphmB) | eswkme-f1.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | DFY-video, ai agent, DFY-no-adopt, DFY-following-up | 100 |
+| 2026-07-26 | [CHAT-260726-L8kC7P](https://avada-ts-a9cb0.web.app/t/CHAT-260726-L8kC7P) | 8e34v0-6f.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-adopted | 100 |
+| 2026-07-26 | [CHAT-260726-z927vy](https://avada-ts-a9cb0.web.app/t/CHAT-260726-z927vy) | 08uvr1-yu.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt, DFY-following-up | 100 |
+| 2026-07-26 | [CHAT-260726-28mZ2m](https://avada-ts-a9cb0.web.app/t/CHAT-260726-28mZ2m) | 4hvz12-k8.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | DFY-video, ai agent, DFY-no-adopt, DFY-following-up | 100 |
+| 2026-07-27 | [CHAT-260727-9nL7GG](https://avada-ts-a9cb0.web.app/t/CHAT-260727-9nL7GG) | tixfpm-ny.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt, DFY-following-up | 100 |
+| 2026-07-27 | [CHAT-260727-EYpsfq](https://avada-ts-a9cb0.web.app/t/CHAT-260727-EYpsfq) | yq071c-tx.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-no-adopt | 100 |
+| 2026-07-28 | [CHAT-260728-LCcmE8](https://avada-ts-a9cb0.web.app/t/CHAT-260728-LCcmE8) | ogawa-coffee-store.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, review-yes, DFY-adopted | 100 |
+| **Total** | | | | | | | **3138** |
+
+## AnhBD (29 tickets)
+
+| Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
+|---|---|---|---|---|---|---|---|
+| 2026-07-01 | [CHAT-260701-Gavw2c](https://avada-ts-a9cb0.web.app/t/CHAT-260701-Gavw2c) | phvhc1-01.myshopify.com | 0 (0/8) | 17 (4/7) | 0 | DFY-adopted, chatbox | 17 |
+| 2026-07-01 | [CHAT-260701-uyAxRR](https://avada-ts-a9cb0.web.app/t/CHAT-260701-uyAxRR) | burleigh-pottery.myshopify.com | 44 (7/8) | 0 (0/7) | 50 | ai agent, DFY-adopted | 94 |
+| 2026-07-02 | [CHAT-260702-4EK922](https://avada-ts-a9cb0.web.app/t/CHAT-260702-4EK922) | cfhdg1-0m.myshopify.com | 0 (0/8) | 0 (0/7) | 0 | proactive, DFY-new, DFY-no-adopt | 0 |
+| 2026-07-02 | [CHAT-260702-zHtcum](https://avada-ts-a9cb0.web.app/t/CHAT-260702-zHtcum) | bxkpp1-re.myshopify.com | 0 (0/8) | 0 (0/7) | 0 | proactive, DFY-new, DFY-no-adopt | 0 |
+| 2026-07-02 | [CHAT-260702-jmQfC6](https://avada-ts-a9cb0.web.app/t/CHAT-260702-jmQfC6) | 1uw88c-wm.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, DFY-adopted | 100 |
+| 2026-07-02 | [CHAT-260702-RHgpBA](https://avada-ts-a9cb0.web.app/t/CHAT-260702-RHgpBA) | mfbyb8-x0.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, faqs, DFY-adopted | 100 |
+| 2026-07-03 | [CHAT-260703-tHVqbz](https://avada-ts-a9cb0.web.app/t/CHAT-260703-tHVqbz) | sn41fq-yh.myshopify.com | 0 (0/8) | 0 (0/7) | 0 | DFY-new, proactive, DFY-no-adopt | 0 |
+| 2026-07-03 | [CHAT-260703-nxAKhF](https://avada-ts-a9cb0.web.app/t/CHAT-260703-nxAKhF) | scent-haus-fragrance.myshopify.com | 0 (0/8) | 0 (0/7) | 0 | DFY-new, proactive, DFY-adopted | 0 |
+| 2026-07-03 | [CHAT-260703-CpjQ4L](https://avada-ts-a9cb0.web.app/t/CHAT-260703-CpjQ4L) | r98u0f-2q.myshopify.com | 0 (0/8) | 0 (0/7) | 0 | DFY-new, proactive, DFY-no-adopt | 0 |
+| 2026-07-06 | [CHAT-260706-cdauBs](https://avada-ts-a9cb0.web.app/t/CHAT-260706-cdauBs) | qprnvi-ha.myshopify.com | 44 (7/8) | 0 (0/7) | 50 | ai agent, DFY-no-adopt | 94 |
+| 2026-07-06 | [CHAT-260706-cujsPA](https://avada-ts-a9cb0.web.app/t/CHAT-260706-cujsPA) | f54a89-6c.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, DFY-adopted, review-yes, DFY-feedback | 100 |
+| 2026-07-08 | [CHAT-260708-XddhZq](https://avada-ts-a9cb0.web.app/t/CHAT-260708-XddhZq) | t7eizq-rm.myshopify.com | 0 (0/9) | 0 (0/4) | 0 | DFY-new, proactive, DFY-no-adopt | 0 |
+| 2026-07-08 | [CHAT-260708-7bVdjf](https://avada-ts-a9cb0.web.app/t/CHAT-260708-7bVdjf) | j7qnkh-mk.myshopify.com | 0 (0/9) | 0 (0/4) | 0 | proactive, DFY-new, DFY-no-adopt | 0 |
+| 2026-07-09 | [CHAT-260709-vVENR2](https://avada-ts-a9cb0.web.app/t/CHAT-260709-vVENR2) | tfr95a-ew.myshopify.com | 0 (0/9) | 0 (0/4) | 0 | - | 0 |
+| 2026-07-09 | [CHAT-260709-naE4Uc](https://avada-ts-a9cb0.web.app/t/CHAT-260709-naE4Uc) | r10vyc-qd.myshopify.com | 11 (2/9) | 0 (0/4) | 50 | ai agent, DFY-adopted | 61 |
+| 2026-07-09 | [CHAT-260709-QKtkJw](https://avada-ts-a9cb0.web.app/t/CHAT-260709-QKtkJw) | 09rq5p-sb.myshopify.com | 44 (8/9) | 30 (4/4) | 50 | ai agent, chatbox, DFY-adopted | 124 |
+| 2026-07-10 | [CHAT-260710-4kWYBN](https://avada-ts-a9cb0.web.app/t/CHAT-260710-4kWYBN) | shopcluizel.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | ai agent | 94 |
+| 2026-07-10 | [CHAT-260710-W6UZmM](https://avada-ts-a9cb0.web.app/t/CHAT-260710-W6UZmM) | yai0pk-ii.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | ai agent, chatbox, DFY-adopted, DFY-feedback | 94 |
+| 2026-07-11 | [CHAT-260711-p96MVP](https://avada-ts-a9cb0.web.app/t/CHAT-260711-p96MVP) | 3hmyxi-g4.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | ai agent, DFY-adopted | 94 |
+| 2026-07-13 | [CHAT-260713-ALBX2t](https://avada-ts-a9cb0.web.app/t/CHAT-260713-ALBX2t) | vfigus-0m.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | ai agent, DFY-adopted, DFY-feedback | 94 |
+| 2026-07-13 | [CHAT-260713-5YHvYz](https://avada-ts-a9cb0.web.app/t/CHAT-260713-5YHvYz) | s0ydkn-ez.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 44 |
+| 2026-07-13 | [CHAT-260713-9Fw5Ld](https://avada-ts-a9cb0.web.app/t/CHAT-260713-9Fw5Ld) | qgffyt-i5.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-adopted | 100 |
+| 2026-07-14 | [CHAT-260714-K9vXTt](https://avada-ts-a9cb0.web.app/t/CHAT-260714-K9vXTt) | bys-store-3303420-976461.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-no-adopt | 100 |
+| 2026-07-16 | [CHAT-260716-3a2tX3](https://avada-ts-a9cb0.web.app/t/CHAT-260716-3a2tX3) | bkytsi-ca.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 39 |
+| 2026-07-16 | [CHAT-260716-5NeFW8](https://avada-ts-a9cb0.web.app/t/CHAT-260716-5NeFW8) | ut5tb6-7b.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, faqs, DFY-adopted, DFY-feedback | 100 |
+| 2026-07-16 | [CHAT-260716-JwmB6y](https://avada-ts-a9cb0.web.app/t/CHAT-260716-JwmB6y) | abd4da.myshopify.com | 50 (9/9) | 8 (1/4) | 0 | ai agent, DFY-adopted, chatbox, review-yes, DFY-feedback | 58 |
+| 2026-07-18 | [CHAT-260718-Pb3Kj4](https://avada-ts-a9cb0.web.app/t/CHAT-260718-Pb3Kj4) | jercri-0g.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt | 44 |
+| 2026-07-18 | [CHAT-260718-yfGVJ5](https://avada-ts-a9cb0.web.app/t/CHAT-260718-yfGVJ5) | gue001-t2.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | DFY-adopted, ai agent, review-yes, DFY-feedback | 44 |
+| 2026-07-20 | [CHAT-260720-8DK8pS](https://avada-ts-a9cb0.web.app/t/CHAT-260720-8DK8pS) | atyxex-z7.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 44 |
+| **Total** | | | | | | | **1639** |
 
 ## PhuongTTM (20 tickets)
 
 | Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
 |---|---|---|---|---|---|---|---|
-| 2026-07-02 | [CHAT-260702-F9w9Yk](https://avada-ts-a9cb0.web.app/t/CHAT-260702-F9w9Yk) | ykdbm0-9x.myshopify.com | 38 (6/8) | 9 (2/7) | 50 | DFY-adopted, DFY-video | 97 |
-| 2026-07-04 | [CHAT-260704-h2aaZC](https://avada-ts-a9cb0.web.app/t/CHAT-260704-h2aaZC) | uij9tf-ir.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | DFY-adopted, DFY-video | 100 |
-| 2026-07-05 | [CHAT-260705-hbYRxT](https://avada-ts-a9cb0.web.app/t/CHAT-260705-hbYRxT) | motor-psycho-sport.myshopify.com | 50 (8/8) | 30 (1/1) | 50 | DFY-adopted, DFY-video | 130 |
-| 2026-07-08 | [CHAT-260708-G7KwDM](https://avada-ts-a9cb0.web.app/t/CHAT-260708-G7KwDM) | vivio-lighting.myshopify.com | 0 (0/9) | 15 (2/4) | 50 | DFY-video, DFY-no-adopt | 65 |
-| 2026-07-09 | [CHAT-260709-cxfqRc](https://avada-ts-a9cb0.web.app/t/CHAT-260709-cxfqRc) | 3myi0t-kj.myshopify.com | 50 (9/9) | 8 (1/4) | 50 | DFY-video, DFY-no-adopt | 108 |
-| 2026-07-09 | [CHAT-260709-TZQdHM](https://avada-ts-a9cb0.web.app/t/CHAT-260709-TZQdHM) | fa6967-2.myshopify.com | 33 (6/9) | 0 (0/4) | 50 | DFY-video, DFY-no-adopt | 83 |
-| 2026-07-11 | [CHAT-260711-audGN5](https://avada-ts-a9cb0.web.app/t/CHAT-260711-audGN5) | 8g1grj-bv.myshopify.com | 28 (5/9) | 0 (0/4) | 50 | DFY-adopted, DFY-video | 78 |
-| 2026-07-11 | [CHAT-260711-en6XvN](https://avada-ts-a9cb0.web.app/t/CHAT-260711-en6XvN) | 00gr0h-bm.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | DFY-video, DFY-no-adopt | 100 |
-| 2026-07-12 | [CHAT-260712-kRWEZp](https://avada-ts-a9cb0.web.app/t/CHAT-260712-kRWEZp) | t0cwab-uz.myshopify.com | 22 (4/9) | 0 (0/4) | 50 | DFY-adopted, DFY-video | 72 |
-| 2026-07-14 | [CHAT-260714-cKxgcf](https://avada-ts-a9cb0.web.app/t/CHAT-260714-cKxgcf) | chasse-peche-prestige.myshopify.com | 50 (9/9) | 8 (1/4) | 50 | DFY-video, DFY-adopted | 108 |
-| 2026-07-16 | [CHAT-260716-xzv4mw](https://avada-ts-a9cb0.web.app/t/CHAT-260716-xzv4mw) | msyipm-1g.myshopify.com | 44 (8/9) | 8 (1/4) | 50 | DFY-video, DFY-adopted | 102 |
-| 2026-07-17 | [CHAT-260717-MjGmwk](https://avada-ts-a9cb0.web.app/t/CHAT-260717-MjGmwk) | arganour-es.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | DFY-video, DFY-adopted | 94 |
-| 2026-07-19 | [CHAT-260719-LM8vj3](https://avada-ts-a9cb0.web.app/t/CHAT-260719-LM8vj3) | the-meander-shop.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | DFY-video, DFY-adopted | 94 |
-| 2026-07-19 | [CHAT-260719-CHcUPZ](https://avada-ts-a9cb0.web.app/t/CHAT-260719-CHcUPZ) | 1mjg1k-c8.myshopify.com | 17 (3/9) | 0 (0/4) | 0 | DFY-adopted | 17 |
-| 2026-07-23 | [CHAT-260723-SbJFZB](https://avada-ts-a9cb0.web.app/t/CHAT-260723-SbJFZB) | jaiz4x-xx.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | DFY-no-adopt | 39 |
-| 2026-07-24 | [CHAT-260724-RPGaNb](https://avada-ts-a9cb0.web.app/t/CHAT-260724-RPGaNb) | sk2x1p-q1.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | DFY-adopted | 39 |
-| 2026-07-25 | [CHAT-260725-WMnwXp](https://avada-ts-a9cb0.web.app/t/CHAT-260725-WMnwXp) | 7qqi1a-t9.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | DFY-adopted | 50 |
-| 2026-07-26 | [CHAT-260726-VbdPKj](https://avada-ts-a9cb0.web.app/t/CHAT-260726-VbdPKj) | 1ubm86-ds.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | DFY-adopted | 39 |
-| 2026-07-28 | [CHAT-260728-LCvvPy](https://avada-ts-a9cb0.web.app/t/CHAT-260728-LCvvPy) | j2ti8m-si.myshopify.com | 33 (6/9) | 0 (0/4) | 0 | DFY-adopted | 33 |
-| 2026-07-29 | [CHAT-260729-U9GKed](https://avada-ts-a9cb0.web.app/t/CHAT-260729-U9GKed) | cti21w-g0.myshopify.com | 28 (5/9) | 0 (0/4) | 0 | DFY-adopted | 28 |
+| 2026-07-02 | [CHAT-260702-F9w9Yk](https://avada-ts-a9cb0.web.app/t/CHAT-260702-F9w9Yk) | ykdbm0-9x.myshopify.com | 38 (6/8) | 9 (2/7) | 50 | ai agent, chatbox, DFY-video, DFY-following-up, DFY-adopted | 97 |
+| 2026-07-04 | [CHAT-260704-h2aaZC](https://avada-ts-a9cb0.web.app/t/CHAT-260704-h2aaZC) | uij9tf-ir.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, DFY-video, DFY-following-up, DFY-adopted | 100 |
+| 2026-07-05 | [CHAT-260705-hbYRxT](https://avada-ts-a9cb0.web.app/t/CHAT-260705-hbYRxT) | motor-psycho-sport.myshopify.com | 50 (8/8) | 30 (1/1) | 50 | ai agent, DFY-video, DFY-following-up, DFY-adopted | 130 |
+| 2026-07-08 | [CHAT-260708-G7KwDM](https://avada-ts-a9cb0.web.app/t/CHAT-260708-G7KwDM) | vivio-lighting.myshopify.com | 0 (0/9) | 15 (2/4) | 50 | chatbox, DFY-video, DFY-following-up, DFY-no-adopt | 65 |
+| 2026-07-09 | [CHAT-260709-cxfqRc](https://avada-ts-a9cb0.web.app/t/CHAT-260709-cxfqRc) | 3myi0t-kj.myshopify.com | 50 (9/9) | 8 (1/4) | 50 | ai agent, chatbox, DFY-video, DFY-following-up, DFY-no-adopt | 108 |
+| 2026-07-09 | [CHAT-260709-TZQdHM](https://avada-ts-a9cb0.web.app/t/CHAT-260709-TZQdHM) | fa6967-2.myshopify.com | 33 (6/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-no-adopt | 83 |
+| 2026-07-11 | [CHAT-260711-audGN5](https://avada-ts-a9cb0.web.app/t/CHAT-260711-audGN5) | 8g1grj-bv.myshopify.com | 28 (5/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-adopted | 78 |
+| 2026-07-11 | [CHAT-260711-en6XvN](https://avada-ts-a9cb0.web.app/t/CHAT-260711-en6XvN) | 00gr0h-bm.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-no-adopt | 100 |
+| 2026-07-12 | [CHAT-260712-kRWEZp](https://avada-ts-a9cb0.web.app/t/CHAT-260712-kRWEZp) | t0cwab-uz.myshopify.com | 22 (4/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-adopted | 72 |
+| 2026-07-14 | [CHAT-260714-cKxgcf](https://avada-ts-a9cb0.web.app/t/CHAT-260714-cKxgcf) | chasse-peche-prestige.myshopify.com | 50 (9/9) | 8 (1/4) | 50 | ai agent, chatbox, DFY-video, DFY-following-up, DFY-adopted | 108 |
+| 2026-07-16 | [CHAT-260716-xzv4mw](https://avada-ts-a9cb0.web.app/t/CHAT-260716-xzv4mw) | msyipm-1g.myshopify.com | 44 (8/9) | 8 (1/4) | 50 | ai agent, chatbox, DFY-video, DFY-following-up, DFY-adopted | 102 |
+| 2026-07-17 | [CHAT-260717-MjGmwk](https://avada-ts-a9cb0.web.app/t/CHAT-260717-MjGmwk) | arganour-es.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-adopted | 94 |
+| 2026-07-19 | [CHAT-260719-LM8vj3](https://avada-ts-a9cb0.web.app/t/CHAT-260719-LM8vj3) | the-meander-shop.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-adopted, DFY-feedback | 94 |
+| 2026-07-19 | [CHAT-260719-CHcUPZ](https://avada-ts-a9cb0.web.app/t/CHAT-260719-CHcUPZ) | 1mjg1k-c8.myshopify.com | 17 (3/9) | 0 (0/4) | 0 | ai agent, DFY-following-up, DFY-adopted | 17 |
+| 2026-07-23 | [CHAT-260723-SbJFZB](https://avada-ts-a9cb0.web.app/t/CHAT-260723-SbJFZB) | jaiz4x-xx.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | ai agent, DFY-following-up, DFY-no-adopt | 39 |
+| 2026-07-24 | [CHAT-260724-RPGaNb](https://avada-ts-a9cb0.web.app/t/CHAT-260724-RPGaNb) | sk2x1p-q1.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | ai agent, DFY-following-up, DFY-adopted | 39 |
+| 2026-07-25 | [CHAT-260725-WMnwXp](https://avada-ts-a9cb0.web.app/t/CHAT-260725-WMnwXp) | 7qqi1a-t9.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, DFY-following-up, DFY-adopted | 50 |
+| 2026-07-26 | [CHAT-260726-VbdPKj](https://avada-ts-a9cb0.web.app/t/CHAT-260726-VbdPKj) | 1ubm86-ds.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | ai agent, DFY-following-up, DFY-adopted | 39 |
+| 2026-07-28 | [CHAT-260728-LCvvPy](https://avada-ts-a9cb0.web.app/t/CHAT-260728-LCvvPy) | j2ti8m-si.myshopify.com | 33 (6/9) | 0 (0/4) | 0 | ai agent, DFY-following-up, DFY-adopted | 33 |
+| 2026-07-29 | [CHAT-260729-U9GKed](https://avada-ts-a9cb0.web.app/t/CHAT-260729-U9GKed) | cti21w-g0.myshopify.com | 28 (5/9) | 0 (0/4) | 0 | ai agent, DFY-following-up, DFY-adopted | 28 |
 | **Total** | | | | | | | **1476** |
 
 ## PhuongNT (25 tickets)
@@ -98,32 +140,16 @@ Total: 117 tickets across 10 CS (only dueDateDone=true counted)
 | 2026-07-30 | [CHAT-260730-kScNHj](https://avada-ts-a9cb0.web.app/t/CHAT-260730-kScNHj) | vp4e0w-uy.myshopify.com | 39 (7/9) | 8 (1/4) | 0 | ai agent, DFY-adopted, chatbox | 47 |
 | **Total** | | | | | | | **1297** |
 
-## AnhBD (14 tickets)
-
-| Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
-|---|---|---|---|---|---|---|---|
-| 2026-07-01 | [CHAT-260701-Gavw2c](https://avada-ts-a9cb0.web.app/t/CHAT-260701-Gavw2c) | phvhc1-01.myshopify.com | 0 (0/8) | 17 (4/7) | 0 | DFY-adopted, chatbox | 17 |
-| 2026-07-01 | [CHAT-260701-uyAxRR](https://avada-ts-a9cb0.web.app/t/CHAT-260701-uyAxRR) | burleigh-pottery.myshopify.com | 44 (7/8) | 0 (0/7) | 50 | ai agent, DFY-adopted | 94 |
-| 2026-07-02 | [CHAT-260702-jmQfC6](https://avada-ts-a9cb0.web.app/t/CHAT-260702-jmQfC6) | 1uw88c-wm.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, DFY-adopted | 100 |
-| 2026-07-02 | [CHAT-260702-RHgpBA](https://avada-ts-a9cb0.web.app/t/CHAT-260702-RHgpBA) | mfbyb8-x0.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, faqs, DFY-adopted | 100 |
-| 2026-07-06 | [CHAT-260706-cujsPA](https://avada-ts-a9cb0.web.app/t/CHAT-260706-cujsPA) | f54a89-6c.myshopify.com | 50 (8/8) | 0 (0/7) | 50 | ai agent, DFY-adopted, review-yes, DFY-feedback | 100 |
-| 2026-07-09 | [CHAT-260709-naE4Uc](https://avada-ts-a9cb0.web.app/t/CHAT-260709-naE4Uc) | r10vyc-qd.myshopify.com | 11 (2/9) | 0 (0/4) | 50 | ai agent, DFY-adopted | 61 |
-| 2026-07-09 | [CHAT-260709-QKtkJw](https://avada-ts-a9cb0.web.app/t/CHAT-260709-QKtkJw) | 09rq5p-sb.myshopify.com | 44 (8/9) | 30 (4/4) | 50 | ai agent, chatbox, DFY-adopted | 124 |
-| 2026-07-10 | [CHAT-260710-W6UZmM](https://avada-ts-a9cb0.web.app/t/CHAT-260710-W6UZmM) | yai0pk-ii.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | ai agent, chatbox, DFY-adopted, DFY-feedback | 94 |
-| 2026-07-11 | [CHAT-260711-p96MVP](https://avada-ts-a9cb0.web.app/t/CHAT-260711-p96MVP) | 3hmyxi-g4.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | ai agent, DFY-adopted | 94 |
-| 2026-07-13 | [CHAT-260713-5YHvYz](https://avada-ts-a9cb0.web.app/t/CHAT-260713-5YHvYz) | s0ydkn-ez.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 44 |
-| 2026-07-13 | [CHAT-260713-9Fw5Ld](https://avada-ts-a9cb0.web.app/t/CHAT-260713-9Fw5Ld) | qgffyt-i5.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-adopted | 100 |
-| 2026-07-16 | [CHAT-260716-5NeFW8](https://avada-ts-a9cb0.web.app/t/CHAT-260716-5NeFW8) | ut5tb6-7b.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, faqs, DFY-adopted, DFY-feedback | 100 |
-| 2026-07-16 | [CHAT-260716-JwmB6y](https://avada-ts-a9cb0.web.app/t/CHAT-260716-JwmB6y) | abd4da.myshopify.com | 50 (9/9) | 8 (1/4) | 50 | ai agent, DFY-adopted, chatbox, review-yes, DFY-feedback | 108 |
-| 2026-07-18 | [CHAT-260718-yfGVJ5](https://avada-ts-a9cb0.web.app/t/CHAT-260718-yfGVJ5) | gue001-t2.myshopify.com | 44 (8/9) | 0 (0/4) | 50 | DFY-adopted, ai agent, review-yes, DFY-feedback | 94 |
-| **Total** | | | | | | | **1230** |
-
-## HienPT (17 tickets)
+## HienPT (21 tickets)
 
 | Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
 |---|---|---|---|---|---|---|---|
 | 2026-07-03 | [CHAT-260703-5wr7Jj](https://avada-ts-a9cb0.web.app/t/CHAT-260703-5wr7Jj) | 6c7b7c.myshopify.com | 44 (7/8) | 26 (6/7) | 0 | ai agent, chatbox, DFY-new, review-yes, DFY-adopted | 70 |
+| 2026-07-06 | [CHAT-260706-amSJN3](https://avada-ts-a9cb0.web.app/t/CHAT-260706-amSJN3) | rollup-gyar.myshopify.com | 31 (5/8) | 0 (0/7) | 0 | ai agent, DFY-following-up, DFY-no-adopt | 31 |
 | 2026-07-06 | [CHAT-260706-J8XeJ6](https://avada-ts-a9cb0.web.app/t/CHAT-260706-J8XeJ6) | s0ydkn-ez.myshopify.com | 44 (7/8) | 0 (0/7) | 0 | ai agent, DFY-adopted, DFY-following-up | 44 |
+| 2026-07-06 | [CHAT-260706-6UGc8k](https://avada-ts-a9cb0.web.app/t/CHAT-260706-6UGc8k) | varon-mx.myshopify.com | 25 (4/8) | 0 (0/7) | 0 | ai agent, DFY-adopted | 25 |
+| 2026-07-11 | [CHAT-260711-sb4t6y](https://avada-ts-a9cb0.web.app/t/CHAT-260711-sb4t6y) | 9tkn2n-vk.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | DFY-video, ai agent | 39 |
+| 2026-07-12 | [CHAT-260712-7RXkPu](https://avada-ts-a9cb0.web.app/t/CHAT-260712-7RXkPu) | ka2rcu-7m.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | DFY-adopted, review-yes, ai agent, chatbox | 44 |
 | 2026-07-13 | [CHAT-260713-cakqgX](https://avada-ts-a9cb0.web.app/t/CHAT-260713-cakqgX) | 6iajhe-yz.myshopify.com | 44 (8/9) | 22 (3/4) | 0 | chatbox, ai agent, DFY-adopted | 66 |
 | 2026-07-14 | [CHAT-260714-uu6WaD](https://avada-ts-a9cb0.web.app/t/CHAT-260714-uu6WaD) | goldygr.myshopify.com | 50 (9/9) | 8 (1/4) | 0 | ai agent, DFY-adopted, DFY-feedback | 58 |
 | 2026-07-14 | [CHAT-260714-WcVZV5](https://avada-ts-a9cb0.web.app/t/CHAT-260714-WcVZV5) | ktgk0k-0e.myshopify.com | 33 (6/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 33 |
@@ -139,7 +165,7 @@ Total: 117 tickets across 10 CS (only dueDateDone=true counted)
 | 2026-07-25 | [CHAT-260725-TNvRTk](https://avada-ts-a9cb0.web.app/t/CHAT-260725-TNvRTk) | bys-user-store-53326.myshopify.com | 0 (0/9) | 0 (0/4) | 0 | DFY-video, ai agent, DFY-adopted | 0 |
 | 2026-07-28 | [CHAT-260728-EDwZZ9](https://avada-ts-a9cb0.web.app/t/CHAT-260728-EDwZZ9) | 2bejj4-bd.myshopify.com | 0 (0/9) | 30 (4/4) | 0 | chatbox, DFY-adopted | 30 |
 | 2026-07-30 | [CHAT-260730-dz5uDd](https://avada-ts-a9cb0.web.app/t/CHAT-260730-dz5uDd) | rcb6zs-sd.myshopify.com | 33 (6/9) | 0 (0/4) | 50 | ai agent, DFY-adopted, review-yes | 83 |
-| **Total** | | | | | | | **1066** |
+| **Total** | | | | | | | **1205** |
 
 ## Mark (3 tickets)
 
@@ -179,4 +205,4 @@ Total: 117 tickets across 10 CS (only dueDateDone=true counted)
 | 2026-07-30 | [CHAT-260730-Rju9vX](https://avada-ts-a9cb0.web.app/t/CHAT-260730-Rju9vX) | fhkiyg-q1.myshopify.com | 0 (0/9) | 0 (0/4) | 0 | ai agent | 0 |
 | **Total** | | | | | | | **0** |
 
-**Grand Total: 7779p**
+**Grand Total: 9027p**
