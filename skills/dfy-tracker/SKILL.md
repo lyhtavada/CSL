@@ -91,6 +91,7 @@ Map via the `trello username` the API returns (or `displayName` as fallback):
 
 - Exclude Liz's tickets (`liz_avada`) that have no tags (test tickets)
 - Exclude tickets with `tsStatus = "sale_request"`
+- **Only count tickets with `dueDateDone === true`** (completed on/before their due date — the green check icon next to the ticket title in the UI). Tickets still open past due date or closed without ever hitting the due date are excluded from scoring entirely.
 
 ### 6. Group by CS (nickname) and generate markdown table
 

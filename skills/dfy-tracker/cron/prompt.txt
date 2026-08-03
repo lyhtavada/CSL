@@ -9,7 +9,8 @@ Shared:
 - Fetch tags from https://avada-ts-a9cb0.web.app/api/external/tags
 - Tickets live at data.tickets in the API response
 - Identify DFY tickets (subject starts with [DFY]), open only (ticketStatus !== "closed"), exclude tsStatus="sale_request"
-- Determine CS creator (members[].isCreate), MAP each CS to their KPI nickname using the mapping table in the skill. Group and label by nickname, NOT the raw displayName. Exclude liz_avada tickets with no tags.
+- Only count tickets with dueDateDone === true (completed on/before due date) — exclude everything else, even if tasks are mostly done
+- Determine CS creator (members[].isCreate; if no isCreate flag and only one member, that member is the creator; else fall back to memberUpdate.displayName), MAP each CS to their KPI nickname using the mapping table in the skill. Group and label by nickname, NOT the raw displayName. Exclude liz_avada tickets with no tags.
 - Ticket link: shortUrl is relative, prepend https://avada-ts-a9cb0.web.app
 
 === JOY (appName="JOY Loyalty") — TAG-BASED scoring (§6a) ===
