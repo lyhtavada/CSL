@@ -110,12 +110,15 @@ Khi CS tự phát hiện store eligible trong lúc xử lý chat khác → dùng
 
 ### 4.2 — AI Agent setup (M3)
 
-1. What would you like to call your assistant, and how should it greet your customers?
-2. Would you like it to always be there for customers, or only step in when you're away — and what are your usual active hours?
-3. Where would you like to get notified when a new chat comes in — web push, email, or both?
-4. Tell me a bit about your brand and products, and how you'd like your assistant to sound — warm and casual, or more polished? Also, are there any topics or things you'd rather it not say or handle, so I can set the right boundaries?
-5. When a customer needs a real person — whether it's a general question or an after-sales request like a return, refund, or order change — how would you like it routed to you? I can set it up to: (1) transfer the chat straight into your Chatty inbox, (2) collect their details and follow up by email, or (3) simply show your contact info so they can reach you directly.
-6. Would you like the assistant to be able to look up a customer's order status directly, or should that always go to you?
+1. When you picture your AI assistant at work, what do you want it to take off your plate — answering FAQs, recommending products, tracking orders, handling returns, or just covering when you're away? Also, is there a specific pain point or issue you're hoping it'll solve? Pick any option, or tell me something else you have in mind.
+2. Do you currently have a team handling customer support? If so, how many people, and what are their usual working hours? Would you like the AI online 24/7, or only step in when your team is away?
+3. What should we call your assistant, and how should it greet customers?
+4. Where should we notify you of new chats — web push, email, or both?
+5. Tell me about your brand/products and the tone you want (casual vs polished) — and anything it should avoid saying or handling.
+6. When a customer needs a human — general question or after-sales (return/refund/order change) — should we: (1) transfer to your inbox, (2) collect their details and follow up by email, or (3) show your contact info?
+7. Should the AI look up order status directly, or always route that to you?
+
+> Câu 1–2 hỏi trước tiên, bắt buộc — xác định pain point/mục tiêu KH muốn AI giải quyết và bối cảnh team support hiện tại, định hướng cho toàn bộ setup phía sau (Instructions, Scenarios, Handover ở §5).
 
 ---
 
@@ -174,10 +177,11 @@ Khi CS tự phát hiện store eligible trong lúc xử lý chat khác → dùng
 > ⚠️ AI nâng cao (Instructions, Scenarios, Custom Q&A, Data Source mở rộng) chỉ có trên **paid plan**. Check plan KH trước khi setup — Free plan AI rất hạn chế.
 
 *Brand voice & Instructions* (AI Assistant → Instructions) — map câu hỏi §4.2
-- [ ] Bot name + welcome/greeting message + avatar theo brand (thay default "Chatty AI") *(← câu 1: tên + cách chào)*
-- [ ] Custom Instructions — brand tone/voice theo input KH (warm & casual / polished, ngôn ngữ, độ dài câu) *(← câu 4: brand + products + tone)*
+- [ ] Bot name + welcome/greeting message + avatar theo brand (thay default "Chatty AI") *(← câu 3: tên + cách chào)*
+- [ ] Custom Instructions — brand tone/voice theo input KH (warm & casual / polished, ngôn ngữ, độ dài câu) *(← câu 5: brand + products + tone)*
 - [ ] Instruction "Always respond in the same language as the customer" (nếu store đa ngôn ngữ)
-- [ ] **Boundaries** — instruction né các topic/việc KH không muốn bot xử lý hoặc nói *(← câu 4: things you'd rather it not say/handle)*
+- [ ] **Boundaries** — instruction né các topic/việc KH không muốn bot xử lý hoặc nói *(← câu 5: things it should avoid)*
+- [ ] **Scope ưu tiên** — Instructions/Scenarios tập trung đúng nhu cầu KH nêu ở câu 1 (FAQ/product rec/order tracking/returns/pain point cụ thể) *(← câu 1)*
 
 *Data Sources* (AI Assistant → Data Sources)
 - [ ] Sync Products — verify số lượng không vượt giới hạn plan (Free 100 / Basic 500 / Pro 8K / Plus 20K)
@@ -188,15 +192,16 @@ Khi CS tự phát hiện store eligible trong lúc xử lý chat khác → dùng
 
 *Handover & Transfer* (AI Assistant → Transfer) — map câu hỏi §4.2
 - [ ] Contact Support Email đúng (AI lấy email từ đây)
-- [ ] **Routing khi KH cần người** — chốt theo lựa chọn KH ở câu 5 (general Q hoặc after-sales: return/refund/order change): *(← câu 5)*
+- [ ] **Routing khi KH cần người** — chốt theo lựa chọn KH ở câu 6 (general Q hoặc after-sales: return/refund/order change): *(← câu 6)*
   - (1) **Transfer** chat thẳng vào Chatty inbox, hoặc
   - (2) **Collect details** → follow up qua email, hoặc
   - (3) **Show contact info** để KH tự liên hệ
+- [ ] **Human support team hiện tại** — ghi nhận có/không có team, số người, working hours để tham chiếu khi set Handover *(← câu 2)*
 - [ ] **Availability mode** — always-on (bot luôn trả) hay chỉ step-in khi team away; set đúng *(← câu 2)*
 - [ ] Online hours / active hours đã set đúng (để AI báo đúng khi team offline) *(← câu 2)*
-- [ ] **Notification channel** — set nơi KH nhận thông báo khi có chat mới: web push / email / cả hai *(← câu 3)*
+- [ ] **Notification channel** — set nơi KH nhận thông báo khi có chat mới: web push / email / cả hai *(← câu 4)*
 - [ ] Assignment mode — recommend Automatic (round-robin) thay vì Manual
-- [ ] **Order lookup** — bật cho AI tra order status trực tiếp, hoặc route về người (theo lựa chọn KH) *(← câu 6)*
+- [ ] **Order lookup** — bật cho AI tra order status trực tiếp, hoặc route về người (theo lựa chọn KH) *(← câu 7)*
 
 *Scenarios* (Instructions → Assistant Skills → Custom Scenarios)
 - [ ] Tạo scenario cho flow đặc thù store (returns, order lookup, discount, size guide…) theo input KH
