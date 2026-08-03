@@ -1,8 +1,8 @@
 # Chatty DFY Monthly KPI — 2026-07
 
-Total: 143 tickets across 10 CS (only dueDateDone=true counted)
+Total: 153 tickets across 10 CS (only dueDateDone=true counted)
 
-## LinhTLK (40 tickets)
+## LinhTLK (42 tickets)
 
 | Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
 |---|---|---|---|---|---|---|---|
@@ -45,10 +45,12 @@ Total: 143 tickets across 10 CS (only dueDateDone=true counted)
 | 2026-07-26 | [CHAT-260726-28mZ2m](https://avada-ts-a9cb0.web.app/t/CHAT-260726-28mZ2m) | 4hvz12-k8.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | DFY-video, ai agent, DFY-no-adopt, DFY-following-up | 100 |
 | 2026-07-27 | [CHAT-260727-9nL7GG](https://avada-ts-a9cb0.web.app/t/CHAT-260727-9nL7GG) | tixfpm-ny.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-no-adopt, DFY-following-up | 100 |
 | 2026-07-27 | [CHAT-260727-EYpsfq](https://avada-ts-a9cb0.web.app/t/CHAT-260727-EYpsfq) | yq071c-tx.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-no-adopt | 100 |
-| 2026-07-28 | [CHAT-260728-LCcmE8](https://avada-ts-a9cb0.web.app/t/CHAT-260728-LCcmE8) | ogawa-coffee-store.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, review-yes, DFY-adopted | 100 |
-| **Total** | | | | | | | **3138** |
+| 2026-07-28 | [CHAT-260728-LCcmE8](https://avada-ts-a9cb0.web.app/t/CHAT-260728-LCcmE8) | ogawa-coffee-store.myshopify.com | 50 (9/9) | 0 (0/4) | 0 | ai agent, review-yes, DFY-adopted | 50 |
+| 2026-07-29 | [CHAT-260729-Tzv3GN](https://avada-ts-a9cb0.web.app/t/CHAT-260729-Tzv3GN) | 382fcb.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-video, DFY-following-up, DFY-no-adopt | 100 |
+| 2026-07-30 | [CHAT-260730-KFvV6C](https://avada-ts-a9cb0.web.app/t/CHAT-260730-KFvV6C) | natural-skin-care-den.myshopify.com | 50 (9/9) | 0 (0/4) | 50 | ai agent, DFY-adopted, DFY-following-up | 100 |
+| **Total** | | | | | | | **3288** |
 
-## AnhBD (29 tickets)
+## AnhBD (37 tickets)
 
 | Date | Ticket | Store | AI (50) | Chatbox (30) | Video (50) | Tags | Point |
 |---|---|---|---|---|---|---|---|
@@ -81,7 +83,15 @@ Total: 143 tickets across 10 CS (only dueDateDone=true counted)
 | 2026-07-18 | [CHAT-260718-Pb3Kj4](https://avada-ts-a9cb0.web.app/t/CHAT-260718-Pb3Kj4) | jercri-0g.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-no-adopt | 44 |
 | 2026-07-18 | [CHAT-260718-yfGVJ5](https://avada-ts-a9cb0.web.app/t/CHAT-260718-yfGVJ5) | gue001-t2.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | DFY-adopted, ai agent, review-yes, DFY-feedback | 44 |
 | 2026-07-20 | [CHAT-260720-8DK8pS](https://avada-ts-a9cb0.web.app/t/CHAT-260720-8DK8pS) | atyxex-z7.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 44 |
-| **Total** | | | | | | | **1639** |
+| 2026-07-21 | [CHAT-260721-pk6Lvu](https://avada-ts-a9cb0.web.app/t/CHAT-260721-pk6Lvu) | fgrnki-ih.myshopify.com | 0 (0/9) | 30 (4/4) | 0 | DFY-adopted, chatbox | 30 |
+| 2026-07-21 | [CHAT-260721-qfMPDA](https://avada-ts-a9cb0.web.app/t/CHAT-260721-qfMPDA) | tb4f1k-eu.myshopify.com | 39 (7/9) | 0 (0/4) | 0 | DFY-adopted, ai agent | 39 |
+| 2026-07-21 | [CHAT-260721-jV2Ve6](https://avada-ts-a9cb0.web.app/t/CHAT-260721-jV2Ve6) | jr1804-au.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-adopted, DFY-feedback | 44 |
+| 2026-07-23 | [CHAT-260723-S7g9jG](https://avada-ts-a9cb0.web.app/t/CHAT-260723-S7g9jG) | bys-store-3315432-664351.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 44 |
+| 2026-07-23 | [CHAT-260723-33Spmq](https://avada-ts-a9cb0.web.app/t/CHAT-260723-33Spmq) | p787gd-en.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-adopted | 44 |
+| 2026-07-25 | [CHAT-260725-9BFFrk](https://avada-ts-a9cb0.web.app/t/CHAT-260725-9BFFrk) | enveseur-sl.myshopify.com | 44 (8/9) | 0 (0/4) | 0 | ai agent, DFY-feedback, DFY-adopted | 44 |
+| 2026-07-26 | [CHAT-260726-42M4sE](https://avada-ts-a9cb0.web.app/t/CHAT-260726-42M4sE) | 4hvz12-k8.myshopify.com | 0 (0/9) | 22 (3/4) | 0 | DFY-adopted, chatbox | 22 |
+| 2026-07-27 | [CHAT-260727-ukTARM](https://avada-ts-a9cb0.web.app/t/CHAT-260727-ukTARM) | tixfpm-ny.myshopify.com | 0 (0/9) | 15 (2/4) | 0 | chatbox, DFY-adopted | 15 |
+| **Total** | | | | | | | **1921** |
 
 ## PhuongTTM (20 tickets)
 
@@ -205,4 +215,4 @@ Total: 143 tickets across 10 CS (only dueDateDone=true counted)
 | 2026-07-30 | [CHAT-260730-Rju9vX](https://avada-ts-a9cb0.web.app/t/CHAT-260730-Rju9vX) | fhkiyg-q1.myshopify.com | 0 (0/9) | 0 (0/4) | 0 | ai agent | 0 |
 | **Total** | | | | | | | **0** |
 
-**Grand Total: 9027p**
+**Grand Total: 9459p**
