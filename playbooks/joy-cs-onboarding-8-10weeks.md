@@ -507,6 +507,7 @@
 **Mục tiêu:** biết xử lý ticket/chat theo đúng quy trình công ty, không chỉ biết app.
 
 **To-do:**
+- [ ] Đọc Notion **[Joy Loyalty — Khách hàng & ICP](https://app.notion.com/p/avadagroup/3b2b0da449f180ccb42ad4230ef21eb2)** — biết Joy bán cho ai, vì sao, và nhận ra một merchant có phải khách của mình không, TRƯỚC khi học quy trình xử lý ticket bên dưới
 - [ ] Đọc toàn bộ process docs trong Notion **[Joy Process](https://www.notion.so/avadagroup/Joy-Process-280b0da449f1800098c4f194260f387f)** (nguồn chính thức, cập nhật liên tục — không copy vào repo vì dễ lỗi thời):
   - [1 số lưu ý về escalation ở Joy Loyalty](https://www.notion.so/280b0da449f1802b81a9e4427967d507)
   - [Joy live chat flow - Demo store](https://www.notion.so/294b0da449f18057b0b0df5d5efdfac6)
@@ -520,6 +521,14 @@
 📎 **Kết quả/Proof:**
 
 **Câu hỏi (điền câu trả lời vào bảng — verify CS đã nắm process, không chỉ đọc lướt):**
+
+*Khách hàng & ICP:*
+
+| Question | Answer |
+|---|---|
+| ICP chính của Joy là merchant quy mô bao nhiêu đơn/tháng? Kể 1-2 dấu hiệu merchant "khỏe" (dễ trả tiền, ở lại lâu)? | |
+| "Plus Poster" là gì, khác ICP chính (mid-market) ở điểm nào — đo bằng gì? | |
+| Kể 2-3 nhóm KHÔNG phải khách của Joy | |
 
 *Escalation:*
 
