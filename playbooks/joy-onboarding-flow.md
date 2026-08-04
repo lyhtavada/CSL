@@ -277,6 +277,7 @@ Sheet gồm các tab: Program Setup (store info + launch date + program config +
 **Quy tắc vàng:** mỗi KH = **1 ticket onboarding sống**. Mọi issue liên quan onboarding (bug, câu hỏi, report tiến độ) → note thẳng vào **cùng thread ticket đó**, không tách lẻ.
 
 ### 5.1 Checklist trong ticket chính
+- [ ] **Business của KH & vấn đề muốn Joy xử lý** — *(CS chủ động hỏi ngay trong chat, note lại)*
 - [ ] **Launch date**
 - [ ] **Detail program** — *(paste link Google Sheet của KH)*
 - [ ] **Earning / Redeeming rule** — đã chốt & setup?
@@ -284,7 +285,9 @@ Sheet gồm các tab: Program Setup (store info + launch date + program config +
 - [ ] **Migration hoặc Import** — data export chưa / import xong chưa
 - [ ] **Guest vs Member** — đã config phân quyền/hiển thị?
 - [ ] **Test one full loop** (earn → redeem) OK — cho KH xem & xác nhận
-- [ ] **Widget customize** — *(ticket con riêng → insert link vào đây)*
+- [ ] **Widget customize** (bao gồm cả **Loyalty page**) — *(ticket con riêng → insert link vào đây)*
+- [ ] **Nếu Shopify Plus** — gợi ý MC thay Shopify account login hiện tại thành login qua Joy ([hướng dẫn](https://avadagroup.notion.site/How-to-make-Account-icon-opening-Joy-36db0da449f180eaa946de4ea542cac8?source=copy_link))
+- [ ] **Customer account** — nếu Store còn dùng **Legacy**, rec đổi sang **Customer Account** (Shopify sắp sunset hoàn toàn Legacy)
 - [ ] Get merchant OK → **switch sandbox → live** 🚀
 
 ### 5.2 Widget = ticket con, link về ticket chính
