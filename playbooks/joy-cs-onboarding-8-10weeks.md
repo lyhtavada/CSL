@@ -517,8 +517,31 @@
   - [Joy DFY - Best practices](https://www.notion.so/37bb0da449f18074b03df9a48832e6d7)
 - [ ] Tự phân loại thử 10 case mẫu (mentor đưa) theo đúng case-classification + escalation matrix
 - [ ] Viết thử 1 escalation note mẫu theo đúng format
+- [ ] Đọc 15 chat Crisp thật đã xử lý xong (mentor gửi link), trải đều theo plan merchant: **5 chat KH Free + 5 chat KH Essential + 5 chat KH Advanced** — note lại vào bảng "CS Training Journal" bên dưới
 
 📎 **Kết quả/Proof:**
+
+**CS Training Journal — đọc chat theo plan (15 chat, note lại tất cả chat đã đọc + takeaways từ chat đó):**
+
+| Date | App | Chat link | Chat type (plan: Free/Essential/Advanced) | Issues/Questions | Steps taken | Takeaways |
+|---|---|---|---|---|---|---|
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+
+Đếm lại đủ 5/5/5 trước khi qua Tuần 5: Free ⬜⬜⬜⬜⬜ · Essential ⬜⬜⬜⬜⬜ · Advanced ⬜⬜⬜⬜⬜
 
 **Câu hỏi (điền câu trả lời vào bảng — verify CS đã nắm process, không chỉ đọc lướt):**
 
