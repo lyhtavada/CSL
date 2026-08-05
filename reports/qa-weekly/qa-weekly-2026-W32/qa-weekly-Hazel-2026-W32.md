@@ -1,0 +1,39 @@
+# 📋 QA TUẦN — BÁO CÁO CỦA Hazel
+🗓️ Tuần 2026-W32 · 29/07 – 04/08/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 **Điểm tuần:** 80/100 — Tốt  (— 0 so với tuần trước)
+🔍 Đã QA: 29 chat (loại 1 chat không đủ điều kiện)
+🧠 Mindset: 27.4/34 · 📚 Kiến thức: 26.3/33 · 🛠️ Xử lý: 26.1/33
+
+📝 **Nhận xét chung**
+Tuần này bạn xử lý chắc tay và có trách nhiệm rõ rệt — đặc biệt với case Enveseur (#1) kéo dài nhiều ngày, cực kỳ khó tính, bạn vẫn kiên nhẫn theo tới cùng và tóm tắt đầy đủ trước khi hết ca, không đẩy việc lửng cho đồng nghiệp. Case refund #20 xử lý đúng quy trình, không tự ý hứa hẹn khi chưa chắc chính sách — đây là điểm cần giữ vững. Điểm cần tập trung tuần tới: (1) giảm lỗi gõ lặp lại (tỉme, turrn, ỉt...) vì nó làm tin nhắn thiếu chuyên nghiệp dù nội dung đúng; (2) khi chưa chắc câu trả lời đừng chỉ nói "để team check" chung chung — luôn kèm bước tiếp theo cụ thể để khách không cảm thấy bị treo. Nhìn chung là một tuần ổn định, không có lỗi nặng hay thiếu chuyên nghiệp nào đáng lo.
+
+✅ **Điểm tốt tuần này**
+- [P1] Ownership rất tốt — theo case tới cùng, luôn tạo ticket rõ ràng và chủ động tóm tắt lại tình trạng trước khi hết ca thay vì bỏ lửng cho ca sau (VD chat #1: "Alright, let me summarize everything for you before my shift ends" kèm liệt kê đầy đủ các ticket đang mở). (#1, #16, #23)
+- [P2] Giữ bình tĩnh, chuyên nghiệp kể cả với khách khó/nóng nảy — không đôi co, không mất kiểm soát (chat #12 khách chửi thề tiếng Tây Ban Nha vẫn xử lý điềm tĩnh). Xử lý case refund #20 đúng quy trình: hỏi Liz xác nhận policy hoàn tiền trước khi hứa với khách, không tự ý cam kết. (#12, #20)
+- [P3] Giải thích nguyên nhân kỹ thuật rõ ràng kèm hướng xử lý cụ thể thay vì chỉ báo "đã fix" — case #14 tìm đúng root cause (cookie banner chặn widget) và hướng dẫn từng bước; case #23 minh bạch giải thích đây là workflow hiện tại (pre-chat form chặn AI trả lời) chứ không né tránh gọi là bug khi thực tế không phải. (#14, #23)
+
+🔧 **Cần cải thiện**
+- **[KN1] Low** — Lỗi gõ/chính tả lặp lại nhiều lần qua các chat, làm tin nhắn thiếu chuyên nghiệp (#1, #5, #6)
+  - Dẫn chứng: "Let me check ỉt for you" (chat #6); "Please give us a bit of tỉme" (chat #1); "Let me help you turrn it on" (chat #5)
+  - → Đọc lại tin nhắn trước khi gửi, đặc biệt các cụm hay lặp lại (time, it, turn) — có thể do gõ nhanh, nên chậm lại 1-2 giây trước khi Enter.
+- **[KN7] Moderate** — Khi chưa chắc câu trả lời, đôi lúc chỉ nói chung chung "để team check" mà không kèm bước tiếp theo hay ETA cụ thể, dễ khiến khách cảm thấy bị bỏ lửng (#1)
+  - Dẫn chứng: "I am not sure but our tech team will check" (chat #1, khi khách hỏi vì sao product bị mark inactive)
+  - → Dù chưa chắc câu trả lời, luôn kèm 1 câu cụ thể hoá bước tiếp theo, VD: "Mình sẽ hỏi team kỹ thuật lý do sync bị dừng ở 200 sản phẩm, dự kiến có update trong X giờ nhé" thay vì chỉ nói sẽ check.
+
+🌟 **Xin review (chỉ ghi nhận, không tính điểm)**
+- Đã xin review ở **6/6** chat phù hợp (đúng lúc: 6, sai lúc: 0)
+- Xin review đúng lúc và đầy đủ ở tất cả 6/6 chat khách vừa hài lòng/vấn đề vừa xong (chat #1, #2, #3, #21, #22, #29) — timing rất tốt, không có case xin sai lúc.
+
+📈 **So với tuần trước**
+- Điểm 80 → 80 (— 0)
+- Trục: Mindset 27.1→27.4, Kiến thức 26.8→26.3, Kỹ năng 26.4→26.1
+- Lỗi lặp lại từ tuần trước: KN7
+- Lỗi tuần trước đã hết: QT25 👏
+- Lỗi mới tuần này: KN1
+
+🔗 **Chat đã QA (30):**
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cefa0af9-d403-4582-894f-4bbe543bf790|#1 Enveseur> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_7c1ec06d-3b5d-4c7a-9662-59ce471febb1|#2 Ice Blankie> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_71a70ad3-a111-494c-bd1b-3109eeca20ff|#3 Le clair lingerie> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_acfe7af2-423c-4a84-ad6a-62ff86c92904|#4 magaela> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_ecd4fbef-17e7-4f48-8013-13ac74956eb2|#5 Golden Key Rent Car LLC> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_32d99dcb-cf29-4394-80a1-3e2c63fff254|#6 ALKYN> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9fab7992-39b0-4af7-ad19-955536fd7b81|#7 HappyLaulea> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cb20b221-fadb-4541-b59c-3f916617876a|#8 Fuchaexotics> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_989c9550-b0cf-4a8d-875a-ccc36bbe9521|#9 D2P Autoparts> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_08c7f946-751c-4593-8822-b8eb6dd13fbd|#10 TIME TALES> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9f483cc7-4a93-4c00-9b18-cd07e33e33c8|#11 Slate-Lite> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_510c6294-31a9-41a3-8859-a31c12dda708|#12 Titaniumflame> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4e1f0a3f-b31e-4760-b8a5-6c14c65deccb|#13 Diva Goddess> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f23c1358-5382-4b03-9fe9-cb7c39fb072b|#14 VARON-FR> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_510619d7-e827-4b3b-aadc-620695a9d270|#15 Healthytiffin-dev> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3c7f686a-b664-4537-975a-664f1f67cf54|#16 Modern Shade> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d5cf1fcd-3ce6-4ed3-bb1a-8aca00fd1cb9|#17 Bersache Footwear2022> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3330fb52-95da-4472-9324-1a38a5f804bb|#18 Nicecnc> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e98fd9e3-d6de-4409-9544-3b88fadd05f4|#19 Nakluea> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_bfb61f13-8c91-4610-9723-318ce2f08a7e|#20 Anarilla> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_05b3d75c-6c44-47ab-8ac3-b028130cd781|#21 Daixidreadology> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a2b01c75-e126-476b-bd39-9b6bcf3abf16|#22 Vertical Doors Direct > · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_99e9b4b1-9e86-43eb-a6c5-689a56fb3b9b|#23 Umicellar> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_01efc7df-4351-4a97-9893-98947d58e840|#24 AUSmoke> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_7ed75446-feb7-4629-bb11-bfefdb27e7b7|#25 Lasercyber-tech> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5f30835d-1531-4bdb-8137-e8ce99416f51|#26 VARON | Sauerstofftherapie> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f18f267b-8ea7-4a30-88fd-c711c9275fd4|#27 ITS Technologies> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b1009ccc-4e56-43eb-aba8-895851ece238|#28 Tesery Official Store> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_474d9d42-a373-4a1e-b6dd-825c5e7e4279|#29 Newking Store> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_775507e2-cc84-4f40-a417-810805989b88|#30 Stakich>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
