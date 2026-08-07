@@ -1,6 +1,6 @@
-# Roadmap: CS Lead → Customer Success / Business Partner (1 tháng, AI-era)
+# Roadmap: Customer Success Mindset cho CS Lead — học để training lại team (1 tháng, AI-era)
 
-> Tạo 2026-08-07. Mục tiêu: chuyển Liz + team từ "trả lời ticket" sang "Customer Success / Business Partner", chuẩn bị nền lên CSM/AM. 5-7h/tuần, áp dụng trực tiếp vào Joy/Chatty.
+Mục đích: Liz tự học Customer Success mindset (business thinking, data thinking, RCA, consultant mindset) để **training lại cho team CS**, chuyển team từ "trả lời ticket" sang tư duy "Customer Success / Business Partner". Mọi mini project trong roadmap đều thiết kế để dùng luôn làm tài liệu coaching/SOP cho team, không phải portfolio cá nhân. 5-7h/tuần, áp dụng trực tiếp vào Joy/Chatty.
 
 Format: 4 tuần, mỗi tuần 5-7h, mỗi chủ đề có 80/20 + tài liệu + bài tập gắn thẳng vào Joy/Chatty. Bỏ những thứ không cần thiết ngay bây giờ, ghi rõ vì sao.
 
@@ -18,7 +18,7 @@ Trong 5 nhóm ban đầu (Business Thinking, Data Thinking, Customer Success, AI
 **Cắt bớt/hoãn:**
 - SQL nâng cao (window functions, JOIN phức tạp) — hoãn tháng 2. Tháng này chỉ cần đọc-hiểu SQL cơ bản.
 - Prompt engineering học thuật (chain-of-thought theory, RAG architecture) — không cần, chỉ cần *dùng* AI để làm SOP/RCA.
-- Account Management formal training (quota, forecasting, sales skills) — quá sớm, chưa có role AM. Để lại roadmap tháng 3-6.
+- Account Management formal training (quota, forecasting, sales skills) — không cần, role vẫn là CS Lead, không phải lộ trình chuyển sang AM.
 
 **Đọc song song cả tháng (15 phút/ngày):** [Lenny's Newsletter](https://www.lennysnewsletter.com/) — chỉ 1 nguồn, không dàn trải nhiều blog cùng lúc (đúng nguyên tắc "không học lan man"). Nội dung về SaaS/product/growth giúp củng cố business thinking xuyên suốt 4 tuần mà không tốn thêm block học riêng.
 
@@ -184,6 +184,8 @@ Tuần quan trọng nhất — phần "khó bị AI thay thế".
 | Thiết kế AI workflow cho team | Tuần 4.1-4.2 |
 | Coaching theo Customer Success | Tuần 4.3, tích hợp vào `/qa-weekly` |
 | Consultant mindset (hỏi đúng, được tin tưởng) | Tuần 3.4 (*The Mom Test*) + Tuần 4 (*The Trusted Advisor*) |
-| Nền tảng CSM/AM | Toàn bộ — nhưng là *nền*, không phải đủ. Roadmap tháng 2 nên đào sâu SQL + đọc book "Customer Success" (Dan Steinman, gợi ý Tuần 3) |
+| Có tài liệu sẵn sàng để training lại team | Mini project mỗi tuần đều ra artifact dùng được ngay cho team: Merchant Business Snapshot Template (T1), Data-backed vs Gut-feel report (T2), Health Score sheet 10 merchant (T3), Transformation Brief + trục coaching thứ 4 tích hợp `/qa-weekly` (T4) |
+
+**Lưu ý:** roadmap tháng 2 (nếu có) nên đào sâu SQL hơn (JOIN, window functions) và đọc thêm book "Customer Success" (Dan Steinman, gợi ý Tuần 3) — vẫn để **nâng chất lượng training team**, không phải chuẩn bị chuyển vai trò cá nhân.
 
 **Đọc song song cả tháng:** Lenny's Newsletter, 15 phút/ngày.
