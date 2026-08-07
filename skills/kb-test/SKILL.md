@@ -2,10 +2,12 @@
 name: kb-test
 description: >
   Generate test questions from a recent KB change (kb-sync patch, or any
-  described change), batch-run them against the live bot (Joyce/Ivy) via
-  /api/chat, then Betty reads every answer against the source-of-truth and
-  reports verdict + suggestion. Use right after a kb-sync push, or any time
-  Liz wants to sanity-check what the bot is actually saying on a topic.
+  described change), batch-run them against the live bot (Joyce/Ivy) through
+  the real pipeline via a local sim-crisp process (falls back to /api/chat
+  if sim isn't set up), then Betty reads every answer against the
+  source-of-truth and reports verdict + suggestion. Use right after a
+  kb-sync push, or any time Liz wants to sanity-check what the bot is
+  actually saying on a topic.
 ---
 
 # /kb-test — generate test questions, run them live, Betty judges
