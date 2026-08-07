@@ -20,6 +20,8 @@ Trong 5 nhóm ban đầu (Business Thinking, Data Thinking, Customer Success, AI
 - Prompt engineering học thuật (chain-of-thought theory, RAG architecture) — không cần, chỉ cần *dùng* AI để làm SOP/RCA.
 - Account Management formal training (quota, forecasting, sales skills) — quá sớm, chưa có role AM. Để lại roadmap tháng 3-6.
 
+**Đọc song song cả tháng (15 phút/ngày):** [Lenny's Newsletter](https://www.lennysnewsletter.com/) — chỉ 1 nguồn, không dàn trải nhiều blog cùng lúc (đúng nguyên tắc "không học lan man"). Nội dung về SaaS/product/growth giúp củng cố business thinking xuyên suốt 4 tuần mà không tốn thêm block học riêng.
+
 ---
 
 ## TUẦN 1 — Business Thinking (Merchant Journey, Ecommerce, Metrics)
@@ -112,14 +114,15 @@ Tuần quan trọng nhất — phần "khó bị AI thay thế".
 
 ### 3.3 Root Cause Analysis — làm sâu hơn (2h)
 **Vì sao:** Đã có project `joy_bot_escalate_kb_fixes` — chính là RCA thực chiến, làm hệ thống hơn.
-**80/20:** 5 Whys + phân loại root cause thành 4 nhóm: Product bug / Product gap / KB gap / Process gap. Phân đúng nhóm quan trọng hơn tìm ra nguyên nhân — quyết định ai fix.
-**Tài liệu miễn phí:** [Atlassian "5 Whys" guide](https://www.atlassian.com/team-playbook/plays/5-whys).
-**Bài tập:** 3 ticket escalate tuần này → chạy 5 Whys → phân vào 1 trong 4 nhóm → nếu KB gap, patch qua `/kb-sync`.
+**80/20:** 5 Whys + phân loại root cause thành 4 nhóm: Product bug / Product gap / KB gap / Process gap. Phân đúng nhóm quan trọng hơn tìm ra nguyên nhân — quyết định ai fix. Dùng thêm **Fishbone Diagram** khi 1 issue có nhiều nguyên nhân đan xen cùng lúc (VD: escalate rate tăng — có thể vừa do KB gap, vừa do process, vừa do bug — 5 Whys một đường thẳng không đủ, Fishbone giúp nhìn được nhiều nhánh nguyên nhân song song trước khi chốt root cause chính).
+**Tài liệu miễn phí:** [Atlassian "5 Whys" guide](https://www.atlassian.com/team-playbook/plays/5-whys), [Atlassian "Fishbone/Ishikawa" guide](https://www.atlassian.com/team-playbook/plays/fishbone-ishikawa-diagram).
+**Bài tập:** 3 ticket escalate tuần này → chạy 5 Whys → phân vào 1 trong 4 nhóm → nếu KB gap, patch qua `/kb-sync`. Với 1 case phức tạp nhất (nhiều nguyên nhân), thử vẽ Fishbone để so sánh.
 
 ### 3.4 Consultant Mindset & Upsell tự nhiên (1.5h)
 **Vì sao:** Bước chuyển từ "người trả lời câu hỏi" sang "người tư vấn giải pháp". Upsell không phải bán hàng — là nhận ra khi merchant đang dùng sai/thiếu công cụ.
 **80/20:** "Merchant nói X (triệu chứng) → hỏi Y (mục tiêu thật) → đề xuất Z (giải pháp, không nhất thiết trả phí)". Không recommend nếu không đúng nhu cầu — tin cậy quan trọng hơn 1 lần upsell.
 **Tài liệu miễn phí:** [Winning by Design — "Bowtie model"](https://winningbydesign.com/resources/).
+**Book:** *The Mom Test* — Rob Fitzgerald (thực ra tác giả là Rob Fitzpatrick) — cách hỏi khách để lộ ra nhu cầu thật thay vì câu trả lời lịch sự vô nghĩa. Đọc nhanh (~2-3h), áp dụng trực tiếp vào câu hỏi Y ở trên.
 **Bài tập:** Trong 5 chat gần nhất, tìm 1 case merchant hỏi A nhưng thực ra cần B → viết cách nên hỏi để lộ "goal thật".
 
 ### Bảng tài liệu Tuần 3
@@ -128,8 +131,10 @@ Tuần quan trọng nhất — phần "khó bị AI thay thế".
 |---|---|---|---|
 | Gainsight Health Score guide | Guide | Free | Đọc trước |
 | Atlassian 5 Whys | Guide | Free | Áp dụng ngay |
+| Atlassian Fishbone/Ishikawa guide | Guide | Free | Dùng cho case phức tạp |
 | ProfitWell Churn guide | Blog | Free | Đọc bổ trợ |
 | Winning by Design Bowtie model | Framework | Free | Nên đọc |
+| Book: *The Mom Test* — Rob Fitzpatrick | Book | ~$15 | ⭐ Đáng đọc trong tháng này — ngắn, sát với 3.4 |
 | Book: "Customer Success" — Nick Mehta, Dan Steinman, Lincoln Murphy | Book | ~$20-30 | Không bắt buộc tháng này — để tháng 2 |
 
 **Mini project cuối tuần:** Health Score sheet cho 10 merchant Plus/Pro (Red/Yellow/Green, 4 tín hiệu) — dùng làm input cho Chatty Proactive Care.
@@ -156,12 +161,14 @@ Tuần quan trọng nhất — phần "khó bị AI thay thế".
 **80/20:** Đã có `/api/obs/metrics` (verify/correction rate) — thiếu quy trình định kỳ tổng hợp "top 3 pattern lỗi AI" → chuyển thành feature request cho product, không chỉ patch KB. Đây là bước "Business Partner" thật — đóng góp roadmap, không chỉ support.
 **Bài tập:** Từ data bot-corrections tuần gần nhất → chọn 1 pattern lặp nhiều nhất → viết 1 feature request ngắn (format JTBD Tuần 1) gửi PM.
 
+**Book:** *The Trusted Advisor* — David H. Maister, Charles H. Green, Robert M. Galford. Sát nhất với toàn bộ mạch chuyển đổi roadmap: từ "support trả lời đúng" sang "được merchant tin tưởng như consultant". Đọc trong tuần 4 để tổng kết mindset, không cần đọc hết — tập trung phần "Trust Equation".
+
 ### Bảng tài liệu Tuần 4
 
 | Nguồn | Loại | Chi phí | Ưu tiên |
 |---|---|---|---|
 | Hạ tầng sẵn có trong CSL (`/kb-sync`, `/qa-weekly`, `/api/obs/metrics`) | Tool | Đã có | Dùng trực tiếp |
-| Không cần thêm course/book ngoài — tuần này là tổng hợp + áp dụng | — | — | — |
+| Book: *The Trusted Advisor* — Maister, Green, Galford | Book | ~$15-20 | ⭐ Đáng đọc — tổng kết mindset cả tháng |
 
 **Mini project cuối tuần (= mini project tổng kết cả tháng):** "CS → Customer Success Transformation Brief" gửi anh Sam — gồm: Health Score framework đã build, 1 SOP mới từ AI-assisted RCA, 1 feature request rút ra từ correction data, đề xuất thêm trục coaching thứ 4.
 
@@ -173,7 +180,10 @@ Tuần quan trọng nhất — phần "khó bị AI thay thế".
 |---|---|
 | Phân tích merchant dưới góc nhìn business | Tuần 1 (lifecycle, metrics) + Tuần 3 (Health Score) |
 | Đọc/giải thích metric merchant | Tuần 1.4 + Tuần 2 |
-| RCA tốt hơn | Tuần 3.3, áp dụng trực tiếp vào `joy_bot_escalate_kb_fixes` |
+| RCA tốt hơn | Tuần 3.3 (5 Whys + phân loại 4 nhóm + Fishbone cho case phức tạp), áp dụng trực tiếp vào `joy_bot_escalate_kb_fixes` |
 | Thiết kế AI workflow cho team | Tuần 4.1-4.2 |
 | Coaching theo Customer Success | Tuần 4.3, tích hợp vào `/qa-weekly` |
-| Nền tảng CSM/AM | Toàn bộ — nhưng là *nền*, không phải đủ. Roadmap tháng 2 nên đào sâu SQL + đọc book "Customer Success" (gợi ý Tuần 3) |
+| Consultant mindset (hỏi đúng, được tin tưởng) | Tuần 3.4 (*The Mom Test*) + Tuần 4 (*The Trusted Advisor*) |
+| Nền tảng CSM/AM | Toàn bộ — nhưng là *nền*, không phải đủ. Roadmap tháng 2 nên đào sâu SQL + đọc book "Customer Success" (Dan Steinman, gợi ý Tuần 3) |
+
+**Đọc song song cả tháng:** Lenny's Newsletter, 15 phút/ngày.
