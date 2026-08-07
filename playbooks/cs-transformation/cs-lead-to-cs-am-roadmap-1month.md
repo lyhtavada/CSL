@@ -30,35 +30,35 @@ Trong 5 nhóm ban đầu (Business Thinking, Data Thinking, Customer Success, AI
 **Vì sao:** Xử lý ticket theo "vấn đề" thay vì theo giai đoạn merchant đang ở đâu. Merchant mới cài app khác hoàn toàn merchant Plus đã dùng 2 năm.
 **Khi nào dùng:** Ngay khi đọc bất kỳ Crisp chat nào — hỏi "merchant này đang ở lifecycle stage nào?" trước khi trả lời.
 **80/20:** 5 giai đoạn — Awareness → Onboarding → Adoption → Expansion → Renewal/Churn. Cùng 1 câu hỏi có ý nghĩa khác nhau tùy stage (VD: câu hỏi setup ở Onboarding = bình thường; ở tháng thứ 6 = red flag adoption thất bại).
-**Tài liệu miễn phí tốt nhất:** [HubSpot — Customer Journey Map guide](https://blog.hubspot.com/service/customer-journey-map).
-**YouTube:** kênh "SaaStr" — video về customer journey SaaS.
+**Tài liệu miễn phí tốt nhất:** [HubSpot — "What is a customer journey map? The complete overview"](https://blog.hubspot.com/service/customer-journey-map) (có kèm 7 template free).
+**YouTube:** [SaaStr — More SaaStr channel](https://www.youtube.com/channel/UCwu8dTcy-YNJqAsQQ1OjRWw) — không có 1 video "customer journey" duy nhất, nội dung là phỏng vấn CEO/CRO SaaS theo chủ đề lifecycle/retention rải rác; lọc bằng search trong channel thay vì xem tuần tự.
 **Bài tập:** Chọn 5 ticket Joy/Chatty gần nhất → gắn mỗi ticket vào 1 giai đoạn lifecycle → viết 1 dòng "nếu biết stage này sớm hơn, đã trả lời khác thế nào".
 
 ### 1.2 Ecommerce Fundamentals cho Shopify apps (2h)
 **Vì sao:** Chatty và Joy đều ăn theo hành vi mua hàng Shopify. Không hiểu AOV, conversion funnel, cart abandonment thì không tư vấn được merchant về giá trị app.
 **80/20:** 5 con số merchant Shopify quan tâm nhất — Conversion Rate, AOV, Repeat Purchase Rate, CAC, LTV. Joy tác động Repeat Purchase Rate + LTV; Chatty tác động Conversion Rate qua tốc độ support.
-**Tài liệu miễn phí:** [Shopify — Ecommerce Metrics guide](https://www.shopify.com/blog/ecommerce-metrics).
-**Blog:** Shopify Plus blog, Baremetrics blog.
+**Tài liệu miễn phí:** [Shopify — "Essential Ecommerce KPIs to Track for Growth"](https://www.shopify.com/blog/7365564-32-key-performance-indicators-kpis-for-ecommerce) (đúng 5 con số nêu ở 80/20 trên).
+**Blog:** [Shopify — "Ecommerce Analytics: A Beginner's Guide"](https://www.shopify.com/blog/marketing-analytics) (đọc thêm nếu muốn hiểu cách track, không bắt buộc).
 **Bài tập:** Lấy 1 merchant Joy đang dùng → ước lượng AOV và Repeat Purchase Rate trước/sau khi cài Joy (dùng `dash_merchant_360` hoặc analytics MCP).
 
 ### 1.3 Product Thinking cơ bản (1.5h)
 **Vì sao:** Chuyển từ "trả lời câu hỏi" sang "hiểu tại sao merchant hỏi câu đó" — thường là feature gap hoặc UX confusing.
 **80/20:** Framework Jobs to be Done — merchant không mua Joy vì "loyalty program", họ "thuê" Joy để "giữ khách quay lại mà không giảm giá mù quáng".
-**Tài liệu miễn phí:** [Intercom — "Intercom on Jobs-to-be-Done"](https://www.intercom.com/books) (ebook free).
+**Tài liệu miễn phí:** [Intercom — "Intercom on Jobs-to-be-Done"](https://www.intercom.com/books/jobs-to-be-done) (ebook free, link trực tiếp trang sách).
 **Bài tập:** 3 feature request gần nhất từ ticket → viết lại theo JTBD: "Khi [tình huống], merchant muốn [job], để [outcome]".
 
 ### 1.4 Business Metrics tổng quan SaaS (1h)
 **80/20:** MRR, Churn Rate, NRR — chỉ cần hiểu định nghĩa và đọc được, chưa cần tính tay.
-**Tài liệu:** [ProfitWell/Paddle metrics glossary](https://www.paddle.com/resources).
+**Tài liệu:** [Paddle — "SaaS metrics: what are they, why they're important and how to use them"](https://www.paddle.com/learn/metrics).
 
 ### Bảng tài liệu Tuần 1
 
-| Nguồn | Loại | Chi phí | Ưu tiên |
-|---|---|---|---|
-| HubSpot Customer Journey Map guide | Blog | Free | Đọc trước |
-| Shopify Ecommerce Metrics guide | Blog | Free | Đọc trước |
-| Intercom JTBD ebook | Ebook | Free | Nên đọc |
-| ProfitWell metrics glossary | Reference | Free | Tra cứu khi cần |
+| Nguồn | Link | Loại | Chi phí | Ưu tiên |
+|---|---|---|---|---|
+| HubSpot Customer Journey Map guide | [blog.hubspot.com/service/customer-journey-map](https://blog.hubspot.com/service/customer-journey-map) | Blog | Free | Đọc trước |
+| Shopify Essential Ecommerce KPIs | [shopify.com/blog/...kpis-for-ecommerce](https://www.shopify.com/blog/7365564-32-key-performance-indicators-kpis-for-ecommerce) | Blog | Free | Đọc trước |
+| Intercom JTBD ebook | [intercom.com/books/jobs-to-be-done](https://www.intercom.com/books/jobs-to-be-done) | Ebook | Free | Nên đọc |
+| Paddle SaaS metrics guide | [paddle.com/learn/metrics](https://www.paddle.com/learn/metrics) | Reference | Free | Tra cứu khi cần |
 
 **Mini project cuối tuần:** Viết 1 trang "Merchant Business Snapshot Template" — form Liz điền khi review 1 merchant lớn (lifecycle stage, AOV, repeat rate, top job-to-be-done). Dùng ngay cho Chatty Proactive Care.
 
@@ -87,11 +87,11 @@ Trong 5 nhóm ban đầu (Business Thinking, Data Thinking, Customer Success, AI
 
 ### Bảng tài liệu Tuần 2
 
-| Nguồn | Loại | Chi phí | Ưu tiên |
-|---|---|---|---|
-| Mode Analytics SQL Tutorial | Interactive | Free | Học trước — có sandbox |
-| ExcelJet Pivot Tables | Reference | Free | Tra cứu khi làm bài tập |
-| Google Sheets (đã có quyền) | Tool | Free | Dùng ngay |
+| Nguồn | Link | Loại | Chi phí | Ưu tiên |
+|---|---|---|---|---|
+| Mode Analytics SQL Tutorial | [mode.com/sql-tutorial](https://mode.com/sql-tutorial/) — cần tạo account free | Interactive | Free | Học trước — có sandbox |
+| ExcelJet Pivot Tables | [exceljet.net/pivot-tables](https://exceljet.net/pivot-tables) | Reference | Free | Tra cứu khi làm bài tập |
+| Google Sheets (đã có quyền) | — | Tool | Free | Dùng ngay |
 
 **Mini project cuối tuần:** Báo cáo 1 trang "Data-backed vs Gut-feel" — chọn 2 giả định tin là đúng về team/merchant, verify bằng data thật, ghi kết quả thật (kể cả khi sai).
 
@@ -104,38 +104,38 @@ Tuần quan trọng nhất — phần "khó bị AI thay thế".
 ### 3.1 Customer Health Score (2h)
 **Vì sao:** AI trả lời được ticket, nhưng không tự quyết định "merchant này sắp churn, cần can thiệp trước khi họ hỏi". Đó là việc của Liz.
 **80/20:** Health score = Usage (login/tương tác feature chính) + Engagement (support ticket sentiment) + Value realization (đạt outcome mong đợi chưa) + Relationship (phản hồi outreach không). 4 tín hiệu, mỗi cái Red/Yellow/Green.
-**Tài liệu miễn phí:** [Gainsight "Customer Health Score" guide](https://www.gainsight.com/guides/the-essential-guide-to-customer-health-scores/).
+**Tài liệu miễn phí:** [Gainsight — "Customer Health Score Explained: Metrics, Models & Tools"](https://www.gainsight.com/blog/customer-health-scores/).
 **Bài tập:** Áp dụng 4 tín hiệu cho 5 merchant Plus/Pro trong Chatty Proactive Care — chấm Red/Yellow/Green tay.
 
 ### 3.2 Churn & Retention (1.5h)
 **80/20:** Phân biệt Churn dự đoán được (usage giảm dần, có warning signal) vs Churn bất ngờ (bug/billing/support tệ). Support ảnh hưởng trực tiếp loại 2 — đòn bẩy lớn nhất.
-**Tài liệu miễn phí:** [ProfitWell Churn Rate guide](https://www.profitwell.com/recur/all/what-is-churn-rate).
+**Tài liệu miễn phí:** [ProfitWell — "The Complete SaaS Guide to Calculating Churn Rate"](https://blog.profitwell.com/the-complete-saas-guide-to-calculating-churn-rate-and-keeping-it-simple).
 **Bài tập:** Rà 3 case churn/downgrade gần nhất → phân loại predictable vs sudden → với sudden, hỏi "support có ngăn được không".
 
 ### 3.3 Root Cause Analysis — làm sâu hơn (2h)
 **Vì sao:** Đã có project `joy_bot_escalate_kb_fixes` — chính là RCA thực chiến, làm hệ thống hơn.
 **80/20:** 5 Whys + phân loại root cause thành 4 nhóm: Product bug / Product gap / KB gap / Process gap. Phân đúng nhóm quan trọng hơn tìm ra nguyên nhân — quyết định ai fix. Dùng thêm **Fishbone Diagram** khi 1 issue có nhiều nguyên nhân đan xen cùng lúc (VD: escalate rate tăng — có thể vừa do KB gap, vừa do process, vừa do bug — 5 Whys một đường thẳng không đủ, Fishbone giúp nhìn được nhiều nhánh nguyên nhân song song trước khi chốt root cause chính).
-**Tài liệu miễn phí:** [Atlassian "5 Whys" guide](https://www.atlassian.com/team-playbook/plays/5-whys), [Atlassian "Fishbone/Ishikawa" guide](https://www.atlassian.com/team-playbook/plays/fishbone-ishikawa-diagram).
+**Tài liệu miễn phí:** [Atlassian — "Complete Guide to the 5 Whys Exercise"](https://www.atlassian.com/team-playbook/plays/5-whys), [TeamRetro — "Fishbone (Ishikawa) root cause analysis"](https://www.teamretro.com/retrospectives/fishbone-diagram/) (Atlassian không có play riêng cho Fishbone, dùng nguồn này thay).
 **Bài tập:** 3 ticket escalate tuần này → chạy 5 Whys → phân vào 1 trong 4 nhóm → nếu KB gap, patch qua `/kb-sync`. Với 1 case phức tạp nhất (nhiều nguyên nhân), thử vẽ Fishbone để so sánh.
 
 ### 3.4 Consultant Mindset & Upsell tự nhiên (1.5h)
 **Vì sao:** Bước chuyển từ "người trả lời câu hỏi" sang "người tư vấn giải pháp". Upsell không phải bán hàng — là nhận ra khi merchant đang dùng sai/thiếu công cụ.
 **80/20:** "Merchant nói X (triệu chứng) → hỏi Y (mục tiêu thật) → đề xuất Z (giải pháp, không nhất thiết trả phí)". Không recommend nếu không đúng nhu cầu — tin cậy quan trọng hơn 1 lần upsell.
-**Tài liệu miễn phí:** [Winning by Design — "Bowtie model"](https://winningbydesign.com/resources/).
+**Tài liệu miễn phí:** [Winning by Design — "Customer Success Operating Model" (Blueprint, gồm Bowtie framework)](https://winningbydesign.com/resources/blueprints/customer-success-operating-model/).
 **Book:** *The Mom Test* — Rob Fitzgerald (thực ra tác giả là Rob Fitzpatrick) — cách hỏi khách để lộ ra nhu cầu thật thay vì câu trả lời lịch sự vô nghĩa. Đọc nhanh (~2-3h), áp dụng trực tiếp vào câu hỏi Y ở trên.
 **Bài tập:** Trong 5 chat gần nhất, tìm 1 case merchant hỏi A nhưng thực ra cần B → viết cách nên hỏi để lộ "goal thật".
 
 ### Bảng tài liệu Tuần 3
 
-| Nguồn | Loại | Chi phí | Ưu tiên |
-|---|---|---|---|
-| Gainsight Health Score guide | Guide | Free | Đọc trước |
-| Atlassian 5 Whys | Guide | Free | Áp dụng ngay |
-| Atlassian Fishbone/Ishikawa guide | Guide | Free | Dùng cho case phức tạp |
-| ProfitWell Churn guide | Blog | Free | Đọc bổ trợ |
-| Winning by Design Bowtie model | Framework | Free | Nên đọc |
-| Book: *The Mom Test* — Rob Fitzpatrick | Book | ~$15 | ⭐ Đáng đọc trong tháng này — ngắn, sát với 3.4 |
-| Book: "Customer Success" — Nick Mehta, Dan Steinman, Lincoln Murphy | Book | ~$20-30 | Không bắt buộc tháng này — để tháng 2 |
+| Nguồn | Link | Loại | Chi phí | Ưu tiên |
+|---|---|---|---|---|
+| Gainsight Health Score guide | [gainsight.com/blog/customer-health-scores](https://www.gainsight.com/blog/customer-health-scores/) | Guide | Free | Đọc trước |
+| Atlassian 5 Whys | [atlassian.com/team-playbook/plays/5-whys](https://www.atlassian.com/team-playbook/plays/5-whys) | Guide | Free | Áp dụng ngay |
+| TeamRetro Fishbone/Ishikawa guide | [teamretro.com/retrospectives/fishbone-diagram](https://www.teamretro.com/retrospectives/fishbone-diagram/) | Guide | Free | Dùng cho case phức tạp |
+| ProfitWell Churn guide | [blog.profitwell.com/...churn-rate](https://blog.profitwell.com/the-complete-saas-guide-to-calculating-churn-rate-and-keeping-it-simple) | Blog | Free | Đọc bổ trợ |
+| Winning by Design CS Operating Model (Bowtie) | [winningbydesign.com/resources/blueprints/customer-success-operating-model](https://winningbydesign.com/resources/blueprints/customer-success-operating-model/) | Framework | Free | Nên đọc |
+| Book: *The Mom Test* — Rob Fitzpatrick | tìm trên Amazon/sách nói | Book | ~$15 | ⭐ Đáng đọc trong tháng này — ngắn, sát với 3.4 |
+| Book: "Customer Success" — Nick Mehta, Dan Steinman, Lincoln Murphy | tìm trên Amazon/sách nói | Book | ~$20-30 | Không bắt buộc tháng này — để tháng 2 |
 
 **Mini project cuối tuần:** Health Score sheet cho 10 merchant Plus/Pro (Red/Yellow/Green, 4 tín hiệu) — dùng làm input cho Chatty Proactive Care.
 
