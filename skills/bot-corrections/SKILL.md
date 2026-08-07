@@ -74,7 +74,13 @@ python3 prep_kb.py <app>            # cache KB + tìm report mới nhất của 
 Với mỗi OUTDATED/GAP/PARTIAL, soạn full nội dung file mới (giữ voice/frontmatter
 hiện có, viết ĐÚNG 1 ví dụ — KHÔNG viết negative example "đừng nói X" vì bot có thể
 copy ra cho khách, xem [[feedback_kb_no_negative_examples]]). Gộp nhiều correction
-cùng 1 file KB thành 1 entry. Ghi payloads:
+cùng 1 file KB thành 1 entry.
+
+**Patch vào `flows/*.md` hay `kb/case`/`kb/faq`/`kb/reference`?** Mặc định case/faq/
+reference (Chatty chỉ). Chỉ patch thêm vào `flows/` (Chatty) khi correction liên quan
+tới **hành động hệ thống bot phải quyết định** (ticket/escalate/consult_ts) VÀ đã có
+sẵn 1 flow khớp chủ đề — thêm vào causes list / "Never create a ticket when" của flow
+đó, đừng tự tạo flow mới. Xem [[flow_vs_case_patch_rule]]. Ghi payloads:
 ```
 reports/analysis/bot-corrections-<app>-<YYYY-MM-DD thứ-2>-payloads.json   # {agent,path,content}[]
 ```

@@ -103,6 +103,23 @@ string is gone. Confirm the reindex returned `partial:false`. Report what change
 - Payload files (`reports/analysis/kb-sync-*-payloads.json`) are temporary: built
   → reviewed → pushed. They are gitignored (never committed) and `push_kb.py`
   deletes each one after a successful push. Pass `--keep` to retain it.
-- `case/` = how-to-handle flows, `faq/` = customer-facing answers, `reference/` =
-  internal CS guidance, `persona/` = identity (rarely touch). Put content where it fits.
+- KB layout (Chatty only has `flows/`; Joy/Wishlist don't): `flows/` = bot's live
+  routing scripts (YAML `triggers` + action tags `<ticket>`/`<escalate>`/
+  `<consult_ts>`, matched deterministically by keyword), `kb/case/` = deeper
+  reference for a case type, `kb/faq/` = customer-facing answers, `kb/reference/`
+  = internal CS guidance, `persona/` = identity (rarely touch).
+- **Where to patch a finding (flow vs case/faq/reference):** default to
+  `kb/case`, `kb/faq`, or `kb/reference` — that's where nearly everything from
+  `/bot-corrections` and `/mine-chat-faqs` belongs (factual/knowledge fixes).
+  Only also patch a `flows/*.md` file when BOTH: (1) the finding is about what
+  **system action** the bot should take (create a ticket, escalate, or consult
+  TS) rather than just what it should say, AND (2) an existing flow already
+  covers that topic — add the new root-cause/exception to its causes list or
+  "Never create a ticket when" section. Do not create a brand-new flow file for
+  a routine correction/mined-FAQ finding — a new flow is only worth it when the
+  bot can actually execute the action itself for a recurring request pattern,
+  and its trigger keywords don't collide with the existing flows. When a topic
+  has both a matching flow and a case file, patch both — the flow controls
+  what the bot does, the case is what RAG retrieves for detail, and patching
+  only the case still leaves the flow ignorant of the new known-cause.
 - Both apps: run the flow once per app. Reindex is per-agent.
