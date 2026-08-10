@@ -153,8 +153,12 @@ def collect(app, frm, to):
     human = sess.get("human_active") or 0
     resolve_pct = round((total - human) / total * 100, 1) if total else None
 
-    reviews = fetch_all(base, tok, "reviews", agent)
+    review_sessions = fetch_all(base, tok, "reviews", agent)
     corrections = fetch_all(base, tok, "corrections", agent)
+
+    # /api/reviews groups by session_id: each row's own created_at/note live
+    # nested per-review inside row["reviews"], NOT on the row itself.
+    reviews = [rv for row in review_sessions for rv in row.get("reviews", [])]
 
     rv_week = [r for r in reviews if in_week(r.get("created_at"), frm, to)]
     cr_week = [c for c in corrections if in_week(c.get("created_at"), frm, to)]
