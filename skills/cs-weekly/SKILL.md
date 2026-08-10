@@ -258,7 +258,7 @@ python3 skills/cs-weekly/scripts/notify_slack.py \
   if the week has no onboarding tickets (new or backlog).
 - **CS channel IDs:**
   - Chatty: `C07LZNWEUUD`   (`chatty-cs`)
-  - Joy:    `C0BFFET5V9V`
+  - Joy:    `C020QJ7F7RN` (`1-joy-loyalty-support`, private)
 - Auth: `SLACK_BOT_TOKEN_AVADA` (bot = `avada_bot`). The bot must be a member of the
   channel — if posting fails with `not_in_channel`, invite `@avada_bot` there once.
   (Both channels already have the bot.)
@@ -322,7 +322,7 @@ is no .md file in the repo.
   parent pages (re-share if push 404s). Notion API, not MCP — survives headless cron.
 - **Slack digest (step 8)** runs AFTER the Notion push and links to it — Notion is the
   source of truth, Slack is just the ping. Posts AS LIZ (name + avatar) via the Avada
-  bot to `chatty-cs` (`C07LZNWEUUD`) / `C0BFFET5V9V` (Joy). If the Notion
+  bot to `chatty-cs` (`C07LZNWEUUD`) / `1-joy-loyalty-support` (`C020QJ7F7RN`, Joy). If the Notion
   push fails, skip the Slack post for that app (don't ping a broken link). Bot must
-  be a member of `C0BFFET5V9V` — invite `@avada_bot` if posting fails with
+  be a member of the channel — invite `@avada_bot` if posting fails with
   `not_in_channel`.
