@@ -88,8 +88,17 @@ Lưu ý thêm: số trên dashboard **thay đổi sau khi report chạy** do ses
   `/api/obs/sessions` phải phân trang
 - `skills/cs-weekly/scripts/notify_slack.py` — Slack block hiển thị 2 số + gap, thêm tên Wendy
 - `reports/scripts/gen-ceo-weekly.py` — `resolve_rate()` → `bot_rates()`, cập nhật TL;DR
+- `skills/cs-weekly/cron/prompt.txt` — **quan trọng**: prompt cron T2 9AM vẫn đang mô tả
+  key `resolveRatePct` cũ (đã xoá khỏi script) → nếu không sửa thì cron tuần này gãy
 - `skills/cs-weekly/SKILL.md`, `reports/weekly-cs/TEMPLATE.md`,
-  `templates/ceo-weekly-template.md`, `CLAUDE.md`
+  `templates/ceo-weekly-template.md`, `CLAUDE.md`, `_identity/responsibilities.md`
+- `reports/scripts/gen-ceo-weekly.sh`, `reports/scripts/cron/run-weekly.sh` — docstring
+- `playbooks/cs-transformation/{chatty,joy}-transformation.md` +
+  `cs-transformation-plan.md` — **trigger Phase 3/4 nói rõ đo bằng `aiResolvedPct`**.
+  Với số cũ Ivy 68% trông như đã vượt mốc ≥60% để scale down remote outsource; số đúng
+  là 46.3% → **chưa đạt**. Joyce 13.3%, còn rất xa.
+- Reports cũ trong `reports/weekly/ceo-weekly-*.md` **giữ nguyên** — là bản ghi lịch sử
+  của những gì đã báo cáo, không sửa lại.
 
 **Khi report tuần đầu tiên**: nói rõ một câu là đổi cách đo, kèm số cũ để đối chiếu — tránh
 bị đọc thành "bot rớt". Bảng backfill ở §2 dùng luôn cho việc này.
