@@ -126,11 +126,14 @@ Returns `handle`, `qa`, and (with `--compare`) `prevWeek` (same shape, prior Mon
   (`created_by` email). Emails → display names via `_identity/team-g2.md`.
 
 Agent ids: Chatty = `chatty-agent` (bot **Ivy**), Joy = `joy-loyalty-agent` (bot
-**Joyce**). Auth: `CS2_API_URL` + `CS2_API_TOKEN` from `.env`.
+**Joyce**), Wishlist = `wishlist-agent` (bot **Wendy** — script chạy được nhưng
+volume 0–12 session/tuần, chưa đủ mẫu để report %, chưa wire vào bulletin tuần).
+Auth: `CS2_API_URL` + `CS2_API_TOKEN` from `.env`.
 
 Fill the report's **🤖 Bot performance section** (right after TL;DR) — Handle table +
-QA table, mỗi metric có cột tuần trước (▲▼) từ `prevWeek`. **If `qa.verifyCoveragePct`
-< 30%** → add the ⚠️ "verify coverage thấp" line. If a top-list is empty →
+QA table, mỗi metric có cột tuần trước (▲▼) từ `prevWeek`. **Luôn để `AI resolved` và
+`CS không phải đụng tay` cạnh nhau** — 2 số trả lời 2 câu hỏi khác nhau, đừng gộp hay
+chọn một. **If `qa.verifyCoveragePct` < 30%** → add the ⚠️ "verify coverage thấp" line. If a top-list is empty →
 `_(chưa có lượt nào tuần này)_`.
 
 ### 4c. Pull TS Elite usage (team G2 dùng agent investigate ntn)

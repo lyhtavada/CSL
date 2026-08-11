@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Gen CEO Weekly report (CS Group 2 / Retention — gửi anh Sam) bằng cách TỔNG HỢP
-2 bản CS Weekly (Chatty + Joy) đã push Notion sáng thứ 2 + resolve rate obs metrics.
+2 bản CS Weekly (Chatty + Joy) đã push Notion sáng thứ 2 + bot metrics từ obs.
 
 Phân biệt:
   - CS Weekly  = skill /cs-weekly, 2 bản team-facing push Notion, gửi nhóm CS từng app.
@@ -9,7 +9,8 @@ Phân biệt:
 
 Volume/reviews/top-issues KHÔNG tự tính lại — nguồn sự thật là 2 bản /cs-weekly trên
 Notion. Lấy subpage MỚI NHẤT của mỗi parent page, parse số từ TL;DR + Top issues,
-ghép resolve rate (tuần này vs tuần trước) từ cs2.avada.net /api/obs/metrics.
+ghép 2 chỉ số bot AI resolved + CS không phải đụng tay (tuần này vs tuần trước)
+từ cs2.avada.net /api/obs/metrics + /api/obs/sessions.
 DFY (ticket/adopt%/review%/install%) là ngoại lệ — fetch LIVE cùng tuần Mon-Sun
 qua fetch_dfy_week.py (Ticket API + BigQuery), không lấy từ Notion.
 
@@ -127,7 +128,7 @@ def parse_cs_weekly(lines):
     return out
 
 
-# ── obs metrics (resolve rate) ────────────────────────────────────────────────
+# ── obs metrics (AI resolved + CS không phải đụng tay) ────────────────────────
 def obs(agent, frm, to):
     base = env("CS2_API_URL").rstrip("/")
     req = urllib.request.Request(

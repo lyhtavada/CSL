@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # CEO Weekly run — invoked by launchd (com.avada.ceo-weekly), Mondays 13:00.
-# Gộp 2 bản CS Weekly (Chatty + Joy) MỚI NHẤT trên Notion + resolve rate obs
+# Gộp 2 bản CS Weekly (Chatty + Joy) MỚI NHẤT trên Notion + bot metrics obs
 # metrics + DFY tuần (ticket/adopt%/review%/install%, live qua fetch_dfy_week.py)
 # → reports/weekly/ceo-weekly-<DATE>.md. Chạy SAU cs-weekly (09:00) để 2 bản
 # nguồn đã push xong.

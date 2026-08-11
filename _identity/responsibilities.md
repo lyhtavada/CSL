@@ -168,7 +168,7 @@ This document describes Liz's responsibilities as **Customer Success Leader** fo
 **Examples of tasks**
 - Review AI agent conversations, corrections, and escalations to find gaps.
 - Update KB/training data based on real cases, corrections, and reindex.
-- Track AI agent performance metrics (verify coverage, correction rate, resolve rate, escalation rate) and act on drops.
+- Track AI agent performance metrics (verify coverage, correction rate, AI resolved, CS-không-phải-đụng-tay, escalation rate) and act on drops.
 - Decide which topics the AI agent should/shouldn't handle as it evolves.
 
 **How Betty can help**
