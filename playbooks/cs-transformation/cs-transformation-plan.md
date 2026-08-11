@@ -56,8 +56,12 @@ Current setup: 4h shifts, max 2 shifts/day on weekdays (1 on weekends), 4 FT + 3
 |-------|---------|-------|
 | **Phase 1 — Preparation** | After AI assessed ready | CS onboarding: learn AI, training data format, escalation criteria |
 | **Phase 2 — AI Pilot** | AI go live | Measure AI, CS as safety net, full shifts |
-| **Phase 3 — Scale Down** | AI self-resolve ≥ 60% | Reduce remote, shift to async monitor |
-| **Phase 4 — Steady State** | AI self-resolve ≥ 75% | New roles fully operating, KPIs switched |
+| **Phase 3 — Scale Down** | AI resolved ≥ 60% | Reduce remote, shift to async monitor |
+| **Phase 4 — Steady State** | AI resolved ≥ 75% | New roles fully operating, KPIs switched |
+
+> **AI resolved** = `aiResolvedPct` trên cs2 (`/api/obs/metrics`). Công thức cũ
+> `(total − human_active)/total` đã bỏ 11/08/2026 vì cao hơn ~15 điểm — đừng dùng số cũ
+> để xét trigger. Chi tiết: `reports/analysis/bot-resolution-rate-2026-08-11.md`.
 
 See app-specific plans for details:
 - [chatty-transformation.md](chatty-transformation.md)
@@ -79,7 +83,7 @@ See app-specific plans for details:
 
 ## Shared Principles
 
-- **Don't cut remote outsource early** — keep as buffer until AI self-resolve rate is confirmed stable
+- **Don't cut remote outsource early** — keep as buffer until **AI resolved** (`aiResolvedPct` trên cs2, không phải công thức cũ đã bỏ 11/08/2026) is confirmed stable. Tuần 03–09/08/2026: Ivy 46.3%, Joyce 13.3% — chưa chạm trigger Phase 3 (≥60%)
 - **Call only when needed** — async-first (chat/email), escalate to call for ICP merchants or unresolved issues
 - **AM role is new for everyone including Liz** — learn from Avada AM team before running solo
 - **AI Monitor role is new for everyone** — Liz leads onboarding, agents execute

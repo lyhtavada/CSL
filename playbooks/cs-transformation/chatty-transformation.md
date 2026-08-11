@@ -76,7 +76,7 @@
 
 | Metric | Target |
 |--------|--------|
-| AI self-resolve rate | Establish baseline |
+| AI resolved (`aiResolvedPct`, cs2) | Establish baseline |
 | Escalation rate | Establish baseline |
 | Escalation pickup time (FT hours) | ≤ 5 min |
 | Escalation pickup time (overnight) | ≤ 15 min |
@@ -111,7 +111,11 @@
 ---
 
 ## Phase 3 — Scale Down (Month 3–6)
-> Trigger: AI self-resolve rate ≥ 60%
+> Trigger: **AI resolved ≥ 60%**
+> ⚠️ Đo bằng **`aiResolvedPct`** trên cs2 (`/api/obs/metrics`) — KHÔNG phải công thức cũ
+> `(total − human_active)/total` (đã bỏ 11/08/2026, số đó cao hơn ~15 điểm).
+> Xem `reports/analysis/bot-resolution-rate-2026-08-11.md`.
+> Hiện tại (tuần 03–09/08/2026): Ivy **46.3%** → **chưa đạt**.
 
 - Hazel/Phoebe: shift from real-time monitor → async (respond to escalations within SLA)
 - Andy/Jade: increase call volume, begin handling expansion/upsell conversations
@@ -120,7 +124,11 @@
 ---
 
 ## Phase 4 — Steady State (Month 6+)
-> Trigger: AI self-resolve rate ≥ 75%, escalation rate stable
+> Trigger: **AI resolved ≥ 75%** + escalation rate ổn định
+> ⚠️ Đo bằng **`aiResolvedPct`** trên cs2 (`/api/obs/metrics`) — KHÔNG phải công thức cũ
+> `(total − human_active)/total` (đã bỏ 11/08/2026, số đó cao hơn ~15 điểm).
+> Xem `reports/analysis/bot-resolution-rate-2026-08-11.md`.
+> Hiện tại (tuần 03–09/08/2026): Ivy **46.3%** → **chưa đạt**.
 
 - Hazel/Phoebe fully async — no fixed shift for monitoring
 - Andy/Jade fully in AM role

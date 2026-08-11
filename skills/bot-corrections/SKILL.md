@@ -98,8 +98,8 @@ Tự POST từng file (auto git commit bên v2) + reindex agent liên quan.
 
 ## Cron
 
-`com.avada.bot-corrections` — **T2 11:00** hàng tuần (lệch cs-weekly 09:00 để không
-chạy chồng). Chạy 2 bước:
+`com.avada.bot-corrections` — **T5 10:00** hàng tuần (tách khỏi cụm job T2 để không
+chạy chồng và né quota). Chạy 2 bước:
 1. Script thuần: fetch → ghi report → git commit (repo CSL).
 2. Claude headless (`--dangerously-skip-permissions`, subscription OAuth): diff cả
    2 app vs KB v2 → soạn payload patch → DM Telegram Liz để duyệt. KHÔNG tự push.
