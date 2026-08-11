@@ -3,9 +3,15 @@
 fetch_bot_qa.py — Bot performance metrics cho CS weekly report (Joyce/Joy + Ivy/Chatty).
 
 Trả 2 nhóm (output JSON: {handle, qa, [prevWeek]}):
-  HANDLE (vận hành) — từ GET /api/obs/metrics?agent=<id>&from=&to= (dashboard "chỉ số vận hành"):
-    - resolveRatePct = (sessions.total - sessions.human_active)/total
-      = % session bot tự xử, human KHÔNG nhảy vào (cách A)
+  HANDLE (vận hành) — từ GET /api/obs/metrics?agent=<id>&from=&to= (dashboard "chỉ số vận hành")
+  + GET /api/obs/sessions (cùng range) để tự tính take-only. Report 2 chỉ số song song:
+    - aiResolvedPct  = kpi.aiResolvedPct của API = ai_resolved/ai_replied.
+      ĐO CHẤT LƯỢNG BOT. Khớp đúng số dashboard cs2 nên đối chiếu được.
+    - takeOnlyPct    = % session bot chạy trọn mà CS không phải đụng tay
+      = (session không human_active, không escalated, không no_ai, bot có reply)/ai_replied.
+      ĐO TẢI NHÂN SỰ. Cùng mẫu số ai_replied để so trực tiếp với aiResolvedPct.
+    - unclearGapPct  = takeOnlyPct − aiResolvedPct = vùng merchant im lặng, không rõ
+      có được giúp không. Phình ra = bot nói nhiều mà không chốt được vấn đề.
     - aiReplyCoveragePct / humanTakeoverPct / escalationRatePct (lấy thẳng kpi)
     - sessions / inbound / botReplies (volume)
   QA (chất lượng) — verify/correction do human CS làm:
@@ -18,7 +24,7 @@ Creds đọc từ ~/CSL/.env: CS2_API_URL + CS2_API_TOKEN.
 Map email -> tên hiển thị đọc từ ~/CSL/_identity/team-g2.md.
 
 Usage:
-  fetch_bot_qa.py <app> <from> <to> [--compare]   # app = chatty|joy ; date = YYYY-MM-DD (Mon..Sun)
+  fetch_bot_qa.py <app> <from> <to> [--compare]   # app = chatty|joy|wishlist ; date = YYYY-MM-DD (Mon..Sun)
   fetch_bot_qa.py chatty 2026-06-09 2026-06-15 --compare
   # --compare: tự pull tuần trước (lùi 7 ngày) vào key "prevWeek" để tính ▲▼.
 Output: JSON ra stdout.
@@ -27,13 +33,18 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 import urllib.parse
 from collections import Counter
 
 ENV_PATH = os.path.expanduser("~/CSL/.env")
 TEAM_PATH = os.path.expanduser("~/CSL/_identity/team-g2.md")
-APP_AGENTS = {"chatty": "chatty-agent", "joy": "joy-loyalty-agent"}
+APP_AGENTS = {
+    "chatty": "chatty-agent",
+    "joy": "joy-loyalty-agent",
+    "wishlist": "wishlist-agent",
+}
 
 
 def env(key):
@@ -73,12 +84,19 @@ def email_to_name():
     return out
 
 
-def get(base, tok, path):
-    req = urllib.request.Request(base + path)
-    req.add_header("Authorization", f"Bearer {tok}")
-    req.add_header("User-Agent", "cs-weekly/1.0")
-    with urllib.request.urlopen(req, timeout=40) as r:
-        return json.loads(r.read().decode())
+def get(base, tok, path, tries=4):
+    """GET + retry: /api/obs/sessions phải phân trang nên hay timeout lẻ tẻ."""
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(base + path)
+            req.add_header("Authorization", f"Bearer {tok}")
+            req.add_header("User-Agent", "cs-weekly/1.0")
+            with urllib.request.urlopen(req, timeout=120) as r:
+                return json.loads(r.read().decode())
+        except Exception:
+            if i == tries - 1:
+                raise
+            time.sleep(3 * (i + 1))
 
 
 def fetch_all(base, tok, endpoint, agent):
@@ -86,6 +104,21 @@ def fetch_all(base, tok, endpoint, agent):
     while True:
         q = urllib.parse.urlencode({"agent": agent, "page": page})
         d = get(base, tok, f"/api/{endpoint}?{q}")
+        rows += d.get("rows", [])
+        if len(rows) >= d.get("total", 0) or not d.get("rows"):
+            break
+        page += 1
+    return rows
+
+
+def session_rows(base, tok, agent, frm, to):
+    """Mọi session trong range, mỗi row có cờ escalated / human_active / no_ai.
+    Endpoint bỏ qua filter param nên phải kéo hết rồi tự lọc."""
+    rows, page = [], 1
+    while True:
+        q = urllib.parse.urlencode({"agent": agent, "from": frm, "to": to,
+                                    "page": page, "pageSize": 50})
+        d = get(base, tok, f"/api/obs/sessions?{q}")
         rows += d.get("rows", [])
         if len(rows) >= d.get("total", 0) or not d.get("rows"):
             break
