@@ -5,15 +5,15 @@
 **Nguồn**: tổng hợp 2 bản CS Weekly (Chatty + Joy) trên Notion + dashboard `cs2.avada.net /api/obs/metrics`
 
 > CEO Weekly = bản gửi anh Sam (gộp từ 2 bản CS Weekly team-facing). Khớp generator `reports/scripts/gen-ceo-weekly.py` (chạy qua `gen-ceo-weekly.sh`).
-> Auto-fill: TL;DR (tóm tắt toàn bộ report bên dưới), Volume (tickets từ Notion, chats fetch live qua `fetch_chats_week.py` — CÙNG cách đếm `chat_count()` mà `/cs-weekly` dùng, không parse text Notion nữa), Bot performance (resolve rate), DFY (ticket/adopt%/review%/install% — fetch live qua `fetch_dfy_week.py`, cùng tuần Mon-Sun với report), Top Issues.
+> Auto-fill: TL;DR (tóm tắt toàn bộ report bên dưới), Volume (tickets từ Notion, chats fetch live qua `fetch_chats_week.py` — CÙNG cách đếm `chat_count()` mà `/cs-weekly` dùng, không parse text Notion nữa), Bot performance (AI resolved + CS không phải đụng tay), DFY (ticket/adopt%/review%/install% — fetch live qua `fetch_dfy_week.py`, cùng tuần Mon-Sun với report), Top Issues.
 > Liz điền tay: Response time, Crisis (nếu có bad review ≤3★), CEO decision.
 
 ---
 
 ## ⚡ TL;DR
 Tóm tắt tuần:
-- **Chatty**: X tickets (▲/▼Y%), Z chats, bot resolve X%, DFY adopt X%.
-- **Joy**: X tickets (▲/▼Y%), Z chats, bot resolve X%, DFY adopt X%.
+- **Chatty**: X tickets (▲/▼Y%), Z chats, AI resolved X% (CS không đụng tay Z%), DFY adopt X%.
+- **Joy**: X tickets (▲/▼Y%), Z chats, AI resolved X% (CS không đụng tay Z%), DFY adopt X%.
 - Crisis: không có bad review (≤3★) tuần này ở cả 2 app.
 
 ---
@@ -25,8 +25,10 @@ Tóm tắt tuần:
 ---
 
 ## 🤖 Bot performance
-- **Ivy (Chatty)**: resolve rate **X%** (tuần trước Y%). AI take-only ~X% session bot tự đóng, human không vào.
-- **Joyce (Joy)**: resolve rate **X%** (tuần trước Y%). AI take-only ~X% session bot tự đóng, human không vào.
+- **Ivy (Chatty)**: AI resolved **X%** (tuần trước Y%) · CS không phải đụng tay **Z%** (tuần trước W%), N session.
+- **Joyce (Joy)**: AI resolved **X%** (tuần trước Y%) · CS không phải đụng tay **Z%** (tuần trước W%), N session.
+
+> AI resolved = bot xử xong (số khớp dashboard cs2) → chất lượng bot. CS không phải đụng tay = session bot chạy trọn, không escalate → tải nhân sự. Chênh giữa 2 số = merchant im lặng, chưa rõ kết quả.
 
 ---
 

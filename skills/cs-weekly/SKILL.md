@@ -101,12 +101,24 @@ Hiệu quả của AI bot tuần qua — **Handle** (vận hành: bot xử đư�
 python3 skills/cs-weekly/scripts/fetch_bot_qa.py {chatty|joy} {start} {end} --compare > /tmp/{app}-botqa-{YYYY-W##}.json
 ```
 Returns `handle`, `qa`, and (with `--compare`) `prevWeek` (same shape, prior Mon→Sun):
-- **`handle`** — pulled live from `GET /api/obs/metrics?agent=<id>&from=&to=` (same
-  numbers as the dashboard cards):
-  - `resolveRatePct` = **% session bot tự xử, human KHÔNG nhảy vào** =
-    `(sessions.total − sessions.human_active)/total` (cách A, Liz chốt 2026-06-18). Số chủ đạo.
+- **`handle`** — từ `GET /api/obs/metrics?agent=<id>&from=&to=` + `GET /api/obs/sessions`
+  (cùng range). **Report 2 chỉ số song song** (Liz chốt 2026-08-11) — chúng trả lời 2
+  câu hỏi khác nhau, đừng gộp thành một:
+  - `aiResolvedPct` = `kpi.aiResolvedPct` của API = `ai_resolved/ai_replied`.
+    **Đo chất lượng bot.** Khớp đúng con số dashboard cs2 nên team/anh Sam đối chiếu được.
+  - `takeOnlyPct` = **% session bot chạy trọn mà CS không phải đụng tay** = (session
+    không `human_active`, không `escalated`, không `no_ai`, `bot_reply_count`>0) /
+    `ai_replied`. **Đo tải nhân sự** — dùng cho quyết định headcount. Cùng mẫu số
+    `ai_replied` để so trực tiếp với `aiResolvedPct`. Đây là **cận trên**: session
+    merchant im lặng sau khi bot nudge vẫn được tính.
+  - `unclearGapPct` = `takeOnlyPct − aiResolvedPct` = vùng merchant im lặng, không rõ
+    có được giúp không. Khoảng này phình ra = bot nói nhiều mà không chốt được vấn đề.
   - `aiReplyCoveragePct` / `humanTakeoverPct` / `escalationRatePct` — bổ trợ (lấy thẳng từ kpi).
-  - `sessions` / `inbound` / `botReplies` — volume.
+  - `sessions` / `aiReplied` / `takeOnlySessions` / `inbound` / `botReplies` — volume.
+  - ⚠️ Công thức cũ `(total − human_active)/total` đã **bỏ** (2026-08-11): nó đếm cả
+    session bot đã escalate (CS xử qua ticket nên `human_active` vẫn false) lẫn session
+    `no_ai` vào tử số → thổi phồng ~15 điểm và lệch dashboard ở cả tử lẫn mẫu. Số cũ
+    trong report trước 08/2026 KHÔNG so sánh trực tiếp được với số mới.
 - **`qa`** — `verifyCoveragePct` / `correctionRatePct` /
   `verifiedInWeek` / `correctionsInWeek` / `botReplies`, plus `topVerifiers` /
   `topCorrectors` = **top 3 of THIS WEEK** (lọc `created_at`): verifiers từ
@@ -249,9 +261,9 @@ python3 skills/cs-weekly/scripts/notify_slack.py \
   --notion-url {the URL printed by push_notion.py in step 7}
 ```
 - **`--botqa-file`** (the JSON from step 4b) adds a "🤖 Bot performance tuần này" block
-  to the Slack digest — Handle (resolve rate + AI coverage + human takeover +
-  escalation + volume, with ▲▼ vs last week) + QA (verify coverage / correction rate /
-  + top verify + top correction), ⚠️ flag if verify coverage < 30%.
+  to the Slack digest — Handle (AI resolved + CS không phải đụng tay + gap + AI coverage
+  + human takeover + escalation + volume, with ▲▼ vs last week) + QA (verify coverage /
+  correction rate / + top verify + top correction), ⚠️ flag if verify coverage < 30%.
 - **`--onboarding-file`** (the JSON from step 4d, **Joy only** — omit this flag
   for Chatty) adds a "🚀 Onboarding tickets tuần này" block: new/open/go-live
   counts + avg checklist % + up to 5 delayed (>14d) tickets. Hidden automatically
@@ -278,9 +290,9 @@ is no .md file in the repo.
 1. **TL;DR** — 2-3 sentences from the data: lead with the §2 numbers + the hottest
    ticket-based theme/bug of the week. Do NOT phrase it as "merchant vào hỏi…" (that's
    the old chat framing) — chat is only a count metric now.
-1b. **🤖 Bot performance** (right after TL;DR) — **Handle** (resolve rate + AI coverage
-   + human takeover + escalation + volume) and **QA** (verify coverage / correction
-   rate + top 3 verify + top 3 correction), each vs last week (▲▼). From
+1b. **🤖 Bot performance** (right after TL;DR) — **Handle** (AI resolved + CS không phải
+   đụng tay + AI coverage + human takeover + escalation + volume) and **QA** (verify
+   coverage / correction rate + top 3 verify + top 3 correction), each vs last week (▲▼). From
    step 4b's JSON (`--compare`). ⚠️ flag if verify coverage < 30%. This whole block also
    goes into the Slack digest.
 2. **📊 Tình hình support** — table: tickets / chats / DFY / reviews, vs last week (▲▼).

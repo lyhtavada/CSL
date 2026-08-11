@@ -13,12 +13,16 @@ _Nguồn: dashboard chỉ số vận hành `cs2.avada.net` (`/api/obs/metrics`) 
 
 | Chỉ số | Tuần này | Tuần trước | |
 |---|---|---|---|
-| Bot resolve rate | {RESOLVE}% | {N-1}% | {▲▼} |
+| AI resolved | {RESOLVED}% | {N-1}% | {▲▼} |
+| CS không phải đụng tay | {TAKEONLY}% | {N-1}% | {▲▼} |
 | AI reply coverage | {AICOV}% | {N-1}% | {▲▼} |
 | Human takeover | {TAKEOVER}% | {N-1}% | {▲▼} |
 | Escalation rate | {ESCAL}% | {N-1}% | {▲▼} |
 
-_Resolve rate = % session bot tự xử, human KHÔNG nhảy vào = (total − human_active)/total. Volume: {INBOUND} tin vào · {REPLY} reply bot._
+_**AI resolved** = bot xử xong (`ai_resolved/ai_replied`, khớp dashboard cs2) → đo chất lượng bot._
+_**CS không phải đụng tay** = session bot chạy trọn, không escalate, human không vào ({TAKEONLYN}/{AIREPLIED}) → đo tải nhân sự. Là cận trên: merchant im lặng sau khi bot nudge vẫn được tính._
+_Chênh {GAP}đ giữa 2 số = vùng merchant im lặng, chưa rõ có được giúp không._
+_Volume: {INBOUND} tin vào · {REPLY} reply bot._
 
 **QA (chất lượng — human CS verify / correct)**
 

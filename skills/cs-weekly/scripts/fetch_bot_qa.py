@@ -181,10 +181,32 @@ def collect(app, frm, to):
     sess = kpi.get("sessions", {})
     msgs = kpi.get("messages", {})
 
-    # Bot resolve rate = session bot tự xử, human KHÔNG nhảy vào (cách A, Liz chốt).
     total = sess.get("total") or 0
-    human = sess.get("human_active") or 0
-    resolve_pct = round((total - human) / total * 100, 1) if total else None
+    ai_replied = sess.get("ai_replied") or 0
+
+    # Hai chỉ số song song, trả lời hai câu hỏi khác nhau (Liz chốt 2026-08-11):
+    #   aiResolvedPct → chất lượng bot   | takeOnlyPct → tải nhân sự
+    #
+    # Công thức cũ (total − human_active)/total đã BỎ vì thổi phồng ~15 điểm: nó
+    # đếm cả session bot đã escalate (CS xử qua ticket/email nên human_active vẫn
+    # false — Chatty 57 ca, Joy 17 ca tuần 03–09/08) lẫn session no_ai (bot không
+    # chạy) vào tử số. Nó cũng chia cho total trong khi API chia cho ai_replied,
+    # nên lệch dashboard cs2 ở cả tử lẫn mẫu.
+    #
+    # takeOnlyPct dùng CHUNG mẫu số ai_replied với aiResolvedPct để 2 số so trực
+    # tiếp được. Nó là CẬN TRÊN, không phải ước lượng đúng: session merchant im
+    # lặng sau khi bot nudge vẫn được tính (tuần 03–09/08: 54% session trong bucket
+    # này của Ivy kết thúc bằng câu bỏ ngỏ kiểu "Still there?" không ai trả lời).
+    rows = session_rows(base, tok, agent, frm, to)
+    take_only = [r for r in rows
+                 if not r.get("human_active")
+                 and not r.get("escalated")
+                 and not r.get("no_ai")
+                 and (r.get("bot_reply_count") or 0) > 0]
+    take_only_pct = round(len(take_only) / ai_replied * 100, 1) if ai_replied else None
+    ai_resolved_pct = k.get("aiResolvedPct")
+    gap = (round(take_only_pct - ai_resolved_pct, 1)
+           if take_only_pct is not None and ai_resolved_pct is not None else None)
 
     review_sessions = fetch_all(base, tok, "reviews", agent)
     corrections = fetch_all(base, tok, "corrections", agent)
@@ -207,7 +229,11 @@ def collect(app, frm, to):
         "agent": agent,
         "range": {"from": frm, "to": to},
         "handle": {
-            "resolveRatePct": resolve_pct,          # session bot tự xử, human không vào
+            "aiResolvedPct": ai_resolved_pct,       # API — chất lượng bot, khớp dashboard
+            "takeOnlyPct": take_only_pct,           # tự tính — CS không phải đụng tay
+            "unclearGapPct": gap,                   # vùng merchant im lặng, không rõ kết quả
+            "takeOnlySessions": len(take_only),
+            "aiReplied": ai_replied,
             "aiReplyCoveragePct": k.get("aiReplyCoveragePct"),
             "humanTakeoverPct": k.get("humanTakeoverPct"),
             "escalationRatePct": k.get("escalationRatePct"),
@@ -232,7 +258,7 @@ def main():
     args = [a for a in sys.argv[1:] if a != "--compare"]
     compare = "--compare" in sys.argv
     if len(args) != 3:
-        sys.exit("usage: fetch_bot_qa.py <chatty|joy> <from YYYY-MM-DD> <to YYYY-MM-DD> [--compare]")
+        sys.exit("usage: fetch_bot_qa.py <chatty|joy|wishlist> <from YYYY-MM-DD> <to YYYY-MM-DD> [--compare]")
     app, frm, to = args[0].lower(), args[1], args[2]
 
     out = collect(app, frm, to)

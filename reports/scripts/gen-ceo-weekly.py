@@ -137,17 +137,47 @@ def obs(agent, frm, to):
     return json.load(urllib.request.urlopen(req, timeout=60))
 
 
-def resolve_rate(agent, frm, to):
-    """resolve rate = (total - human_active)/total, theo cách A Liz đã chốt."""
+def bot_rates(agent, frm, to):
+    """2 chỉ số song song (Liz chốt 2026-08-11) — xem docstring fetch_bot_qa.py:
+      resolved = kpi.aiResolvedPct của API (chất lượng bot, khớp dashboard cs2)
+      takeonly = % session bot chạy trọn, CS không đụng tay (tải nhân sự), cùng
+                 mẫu số ai_replied để so trực tiếp với resolved.
+    Công thức cũ (total − human_active)/total đã bỏ: đếm nhầm cả session escalated
+    lẫn no_ai nên thổi phồng ~15 điểm."""
     try:
-        s = obs(agent, frm, to).get("sessions", {})
-        tot, hum = s.get("total") or 0, s.get("human_active") or 0
-        if not tot:
-            return None, 0
-        return round((tot - hum) / tot * 100), tot
+        d = obs(agent, frm, to)
+        s = d.get("sessions", {})
+        ai_replied = s.get("ai_replied") or 0
+        resolved = d.get("kpi", {}).get("aiResolvedPct")
+        takeonly = take_only_pct(agent, frm, to, ai_replied)
+        return {"resolved": resolved, "takeonly": takeonly, "sessions": s.get("total") or 0}
     except Exception as e:
         print(f"  obs metrics fail {agent}: {e}", file=sys.stderr)
-        return None, 0
+        return {"resolved": None, "takeonly": None, "sessions": 0}
+
+
+def take_only_pct(agent, frm, to, ai_replied):
+    """Session bot chạy trọn: không human_active, không escalated, không no_ai,
+    bot có reply. Phải kéo hết /api/obs/sessions vì endpoint bỏ qua filter param."""
+    if not ai_replied:
+        return None
+    base = env("CS2_API_URL").rstrip("/")
+    rows, page = [], 1
+    while True:
+        req = urllib.request.Request(
+            f"{base}/api/obs/sessions?agent={agent}&from={frm}&to={to}"
+            f"&page={page}&pageSize=50")
+        req.add_header("Authorization", f"Bearer {env('CS2_API_TOKEN')}")
+        req.add_header("User-Agent", "ceo-weekly/1.0")
+        d = json.load(urllib.request.urlopen(req, timeout=120))
+        rows += d.get("rows", [])
+        if len(rows) >= d.get("total", 0) or not d.get("rows"):
+            break
+        page += 1
+    n = sum(1 for r in rows
+            if not r.get("human_active") and not r.get("escalated")
+            and not r.get("no_ai") and (r.get("bot_reply_count") or 0) > 0)
+    return round(n / ai_replied * 100)
 
 
 # ── build report ──────────────────────────────────────────────────────────────
@@ -218,9 +248,9 @@ def main():
 
     rates = {}
     for app, agent in OBS_AGENTS.items():
-        cur, tot = resolve_rate(agent, mon.isoformat(), sun.isoformat())
-        prev, _ = resolve_rate(agent, prev_mon.isoformat(), prev_sun.isoformat())
-        rates[app] = {"cur": cur, "prev": prev, "sessions": tot}
+        cur = bot_rates(agent, mon.isoformat(), sun.isoformat())
+        prev = bot_rates(agent, prev_mon.isoformat(), prev_sun.isoformat())
+        rates[app] = {"cur": cur, "prev": prev}
 
     print("  fetching DFY week (ticket/adopt/review/install)...")
     dfy_week = fetch_dfy_week(mon, sun)
@@ -252,9 +282,11 @@ def main():
 
     def bot_line(app):
         b, r = BOT_NAME[app], rates[app]
-        cur, prev = fmt_rate(r["cur"]), fmt_rate(r["prev"])
-        return (f"- **{b} ({app.capitalize()})**: resolve rate **{cur}** "
-                f"(tuần trước {prev}). AI take-only ~{cur} session bot tự đóng, human không vào.")
+        c, p = r["cur"], r["prev"]
+        return (f"- **{b} ({app.capitalize()})**: AI resolved **{fmt_rate(c['resolved'])}** "
+                f"(tuần trước {fmt_rate(p['resolved'])}) · CS không phải đụng tay "
+                f"**{fmt_rate(c['takeonly'])}** (tuần trước {fmt_rate(p['takeonly'])}), "
+                f"{c['sessions']} session.")
 
     def dfy_line(app):
         d = dfy_week.get(app)
@@ -278,8 +310,9 @@ def main():
             if cb:
                 vol_bits.append(cb)
             vol = ", ".join(vol_bits) if vol_bits else "_(chưa có số)_"
-            r = rates[app]
-            bot_bit = f"bot resolve {fmt_rate(r['cur'])}"
+            c = rates[app]["cur"]
+            bot_bit = (f"AI resolved {fmt_rate(c['resolved'])} "
+                       f"(CS không đụng tay {fmt_rate(c['takeonly'])})")
             d = dfy_week.get(app)
             dfy_bit = f"DFY adopt {d['adopt_pct']}%" if d else "DFY _(chưa fetch)_"
             lines.append(f"- **{app.capitalize()}**: {vol}, {bot_bit}, {dfy_bit}.")

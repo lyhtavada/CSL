@@ -55,7 +55,7 @@ def _delta(cur, prev):
 def botqa_block(qa):
     """qa = output của fetch_bot_qa.py (có handle + qa, optional prevWeek).
     Trả 1 section block: Bot performance (Handle) + Bot QA (phần con)."""
-    bot = {"chatty": "Ivy", "joy": "Joyce"}.get(qa.get("app"), "Bot")
+    bot = {"chatty": "Ivy", "joy": "Joyce", "wishlist": "Wendy"}.get(qa.get("app"), "Bot")
     h, q = qa.get("handle", {}), qa.get("qa", {})
     prev = qa.get("prevWeek", {})
     ph, pq = prev.get("handle", {}), prev.get("qa", {})
@@ -67,7 +67,10 @@ def botqa_block(qa):
     lines = [
         f"🤖 *Bot performance tuần này ({bot})*",
         f"*Handle*",
-        f"• Bot resolve rate: *{h.get('resolveRatePct')}%*{_delta(h.get('resolveRatePct'), ph.get('resolveRatePct'))} — {h.get('sessions')} session, bot tự xử (human không vào)",
+        f"• AI resolved: *{h.get('aiResolvedPct')}%*{_delta(h.get('aiResolvedPct'), ph.get('aiResolvedPct'))} — bot xử xong, số khớp dashboard cs2",
+        f"• CS không phải đụng tay: *{h.get('takeOnlyPct')}%*{_delta(h.get('takeOnlyPct'), ph.get('takeOnlyPct'))} ({h.get('takeOnlySessions')}/{h.get('aiReplied')} session bot chạy trọn, không escalate)",
+        *([f"   _Chênh {h.get('unclearGapPct')}đ = merchant im lặng, chưa rõ có được giúp không_"]
+          if h.get("unclearGapPct") else []),
         f"   _AI coverage {h.get('aiReplyCoveragePct')}% · Human takeover {h.get('humanTakeoverPct')}% · Escalation {h.get('escalationRatePct')}%_",
         f"• Volume: {h.get('inbound')} tin vào · {h.get('botReplies')} reply bot",
         f"*QA*",
