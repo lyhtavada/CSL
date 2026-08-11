@@ -1,0 +1,35 @@
+{
+  "_doc": "Ngưỡng cho /cs-daily-brief exception mode. Liz sửa trực tiếp file này, không cần đụng code — evaluate.py đọc lại mỗi lần chạy.",
+
+  "checkin": {
+    "lateMinutes": 10,
+    "_lateMinutes": "Chỉ báo checkin muộn từ N phút trở lên. fetch_checkin.py trả về mọi ca muộn >5p; lọc ở đây.",
+    "reportMissCheckin": true,
+    "reportMissCheckout": true
+  },
+
+  "aiTickets": {
+    "flagTsStatus": ["pending", "doing"],
+    "_flagTsStatus": "Ticket AI tạo mà tsStatus nằm trong list này = chưa ai đẩy tiến độ. Vocabulary đầy đủ: waiting_customer, done, done_for_you, dev_done, dev_fixing, pending, doing, onb, sale_request, feature_request, customization, waiting_permission, billing. Thêm/bớt ở đây nếu báo quá ồn hoặc lọt case.",
+    "requireDueDateNotDone": true,
+    "_requireDueDateNotDone": "AND thêm điều kiện dueDateDone chưa phải True. LƯU Ý: dueDate là timestamp (createdAt + 2 ngày, tự set) — KHÔNG phải cờ true/false. Cờ thật là dueDateDone, và 'chưa xong' được biểu diễn bằng key VẮNG MẶT chứ không phải False. Đặt false để bỏ điều kiện này nếu thấy lọt case."
+  },
+
+  "lizTickets": {
+    "reportAll": true,
+    "_reportAll": "Mọi ticket tạo cho Liz đều báo, kèm tóm tắt nội dung (title + description + tóm tắt chat).",
+    "summarizeChat": true,
+    "_summarizeChat": "Đọc chat qua chatLink (BigQuery, xem skills/read-crisp) để viết 1-2 câu 'đã xử lý tới đâu'. Đặt false nếu chỉ muốn dùng title + description cho nhanh."
+  },
+
+  "conversations": {
+    "alwaysShow": true,
+    "_alwaysShow": "Volume luôn hiện 1 dòng số, không xét bất thường (không cần baseline/lịch sử)."
+  },
+
+  "sanity": {
+    "minTotalConversations": 1,
+    "minBotHandled": 1,
+    "_doc": "Chặn kịch bản nguy hiểm nhất của exception mode: pipeline hỏng trông y hệt ngày yên ắng. Mọi số về 0 => coi là LỖI và báo Liz, tuyệt đối không im lặng."
+  }
+}

@@ -1,6 +1,6 @@
 ---
 name: cs-daily-brief
-description: Daily CS report posted to #cs-2-daily — conversation volume per app (Joy/Chatty/Wishlist) for the previous 24h, Team G2 check-in/checkout (late/miss), chats the app AI bot (Joyce/Ivy/Wendy) took and which ones it turned into a ticket, and tickets created for Liz — all over a rolling 08:30-to-08:30 window.
+description: Daily CS report posted to #cs-2-daily — conversation volume per app (Joy/Chatty/Wishlist) for the previous 24h, Team G2 check-in/checkout (late/miss), AI-created tickets with no progress, and tickets created for Liz with a summary of what each is about — all over a rolling 08:30-to-08:30 window. Runs in exception mode: short on a quiet day, expands only for what needs Liz, full report in a thread.
 ---
 
 # /cs-daily-brief
@@ -20,6 +20,43 @@ moved from DM to team channel, then added tickets created for Liz); section
 ③ was originally a neglected/stale-ticket watch and was replaced 2026-07-31
 with an AI-ticket section per Liz's request (assignee-based stale tracking
 dropped in favor of "what did the bot actually resolve into a ticket").
+
+## Exception mode (2026-08-11)
+
+The brief used to print all 4 sections in full every morning. It now posts a
+**short message** and expands only the sections that actually fired; the full
+4-section report goes out as a **thread reply** under it, so nothing is lost
+but the channel stays scannable. #cs-2-daily is Liz's own tracking channel,
+not a team broadcast, so there is no team-visibility cost to shortening it.
+
+Rules live in `cron/thresholds.json` (Liz edits it directly, no code change);
+`scripts/evaluate.py` runs all 4 fetchers, applies them, and returns
+`quiet` / `sanity` / `flags`. The fetchers stay pure data — every threshold is
+in the JSON, every rule is in evaluate.py.
+
+| Section | Fires when | Otherwise |
+|---|---|---|
+| ① Volume | never — always one line of numbers | (no baseline, no history needed) |
+| ② Checkin | late **≥10 min**, miss checkin, or miss checkout | `✅ OK` |
+| ③ AI ticket | `tsStatus` ∈ {pending, doing} **and** `dueDateDone is not True` | `✅ Không có` |
+| ④ Ticket Liz | any ticket created for her | `Không có` |
+
+**Why ① has no anomaly rule:** three of Liz's four rules are absolute, so only
+volume would have needed a trailing baseline — and that meant a history file
+plus a 14-day backfill for one soft signal. Dropped; volume is just shown.
+
+**Sanity over silence.** The failure mode this design has to survive is a
+broken pipeline looking exactly like a calm day. `evaluate.py` therefore
+treats an all-zeros result (total conversations 0, or all three bots at 0
+handled) as *suspected breakage*, forces `quiet=false`, and the message leads
+with ⚠️ instead of reporting calm. A fetcher exiting non-zero aborts the run
+with nothing sent.
+
+**Tuning if ③ gets noisy:** widen the skip list or drop the `dueDateDone`
+condition in `thresholds.json`. A 14-day probe put the rate at ~0.5
+tickets/day, but that measured *current* status on old tickets; checked at
+08:45 the morning after creation the real rate is higher, since tickets TS
+hasn't picked up yet still sit in pending/doing. Expect to retune.
 
 ## Sections
 
@@ -67,32 +104,66 @@ joined by app:
 
 Like ①, ② and ④, this section is scoped to the window (not a live snapshot).
 
+Since 2026-08-11 the fetcher also carries the ticket's **progress fields** so
+`evaluate.py` can flag AI tickets nobody has moved. Three things were
+confirmed against 486 live tickets and are easy to get wrong:
+
+- **`dueDate` is a timestamp, not a flag** — present on every ticket and
+  always exactly `createdAt + 2 days`, auto-set at creation. A "dueDate is
+  false" filter can never fire. It carries no signal at all.
+- **`dueDateDone` is the real completion flag**, and "not done" shows up as
+  the key being **absent** (140/486), not as `False` (1/486). The test must be
+  `is not True`.
+- **`ticketStatus` is only open/closed** — the working state is `tsStatus`
+  (waiting_customer, done, done_for_you, dev_done, dev_fixing, pending, doing,
+  onb, sale_request, feature_request, customization, waiting_permission,
+  billing).
+
+Also from that probe: **all 75 AI-created tickets in 14 days were Chatty** —
+Joyce and Wendy created none, so empty joy/wishlist blocks are real, not a
+bug. Worth revisiting whether those two bots create tickets under a different
+member id.
+
 **④ Ticket tạo cho Liz trong ngày** — tickets created in the window where
 Liz is a member (`scripts/fetch_liz_tickets.py`, matches any member whose
 `displayName` contains "liz" case-insensitive — covers both "Liz" and
 "liz_avada" seen live). Separate from ③: this is "what landed on her in the
 window", not a staleness check.
 
+Each one gets a **1-2 sentence Vietnamese summary** built from three sources
+together: `subject`, the full `description` (now kept untruncated), and the
+actual chat transcript via `scripts/fetch_chat_transcripts.py`. The transcript
+matters most for `[DFY]` tickets, whose description is a generic checklist
+template and says nothing case-specific.
+
 ## How it runs
 
 ```
-python3 skills/cs-daily-brief/scripts/fetch_conversations.py --date <target> --json
-python3 skills/cs-daily-brief/scripts/fetch_checkin.py --date <target> --json
-python3 skills/cs-daily-brief/scripts/fetch_ai_tickets.py --date <target> --json
-python3 skills/cs-daily-brief/scripts/fetch_liz_tickets.py --date <target> --json
+python3 skills/cs-daily-brief/scripts/evaluate.py --date <target> --json > /tmp/cs_daily_eval.json
+python3 skills/cs-daily-brief/scripts/fetch_chat_transcripts.py --from-json /tmp/cs_daily_eval.json --json
 ```
-Compose one Vietnamese Slack message (see `cron/prompt.txt` for exact shape),
-live-fetch Liz's name/avatar via `users.info`, then send via
-`../qa-weekly/scripts/send_dm.py` targeting channel `C0B8042TXQ9`
-(`chat.postMessage`'s `channel` field takes a channel ID the same way it
-takes a user ID — same script, no code change) with the `sender` override.
+`evaluate.py` runs the 4 fetchers itself — one command instead of five, and
+the sanity checks can't be skipped. Compose the short Vietnamese message (see
+`cron/prompt.txt` for the exact three shapes: broken / quiet / có việc),
+live-fetch Liz's name+avatar via `users.info`, send via
+`../qa-weekly/scripts/send_dm.py` to channel `C0B8042TXQ9` with `--out` to
+capture the message `ts`, then post the full report as a thread reply using
+`thread_ts`. (`send_dm.py` gained optional `thread_ts` + `--out` for this;
+both are backwards-compatible, so /qa-weekly, /cs-weekly and
+/dfy-weekly-chatty are unaffected.)
+
+The individual fetchers still run standalone with `--date <target> --json` if
+you want to inspect one section by hand.
 
 ## Manual run
 
 ```
 bash skills/cs-daily-brief/cron/run-cs-daily-brief.sh
 ```
-or run the 3 fetch scripts individually and compose by hand.
+To see the verdict without sending anything:
+```
+python3 skills/cs-daily-brief/scripts/evaluate.py --date <target>
+```
 
 ## Cron
 

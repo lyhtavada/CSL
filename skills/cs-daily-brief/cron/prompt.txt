@@ -1,93 +1,177 @@
-Run the daily CS brief for Liz (CS Leader, Avada — Chatty, Joy Loyalty, Joy Wishlist, Team G2).
-This is posted to the team's #cs-2-daily Slack channel (C0B8042TXQ9), not a
-private DM — the team will read it too, so keep tone plain/factual (it
-already is: numbers + links, no internal commentary).
+Run the daily CS brief for Liz (CS Leader, Avada — Chatty, Joy Loyalty, Joy
+Wishlist, Team G2). Posted to #cs-2-daily (C0B8042TXQ9), which is Liz's own
+tracking channel — not a team-facing broadcast.
 
-This report always covers a rolling 24h window, **08:30 VN the previous day
-to 08:30 VN today** (aligned to this job's 08:45 run time, so the window ends
-just minutes before the report is sent), for all 4 sections. If today (VN)
-is the 22nd, the target date is the 21st (window: 21st 08:30 -> 22nd 08:30).
-Compute the target date yourself (yesterday in Asia/Bangkok, i.e. VN time,
-UTC+7) — do not hardcode a date. All 4 fetch scripts already implement this
-window internally (via `--date <target>`, which sets the window START date —
-they compute the 08:30-08:30 bounds themselves), so just pass the date, not
-explicit times.
+This brief runs in EXCEPTION MODE: on a normal day it is a few lines, and it
+only opens up when something actually needs Liz. The full 4-section report
+always still goes out, but as a thread reply under the short message, so it
+stays retrievable without filling the channel.
 
-1. Run these 4 commands from /Users/avada/CSL, using the computed target date
-   (YYYY-MM-DD) for all of them:
+Window: rolling 24h, **08:30 VN the previous day to 08:30 VN today** (aligned
+to this job's 08:45 run time). If today (VN) is the 22nd, the target date is
+the 21st. Compute it yourself (yesterday in Asia/Bangkok, UTC+7) — never
+hardcode. The scripts take `--date <window start date>` and work out the
+08:30-08:30 bounds themselves.
 
-   python3 skills/cs-daily-brief/scripts/fetch_conversations.py --date <target> --json
-   python3 skills/cs-daily-brief/scripts/fetch_checkin.py --date <target> --json
-   python3 skills/cs-daily-brief/scripts/fetch_ai_tickets.py --date <target> --json
-   python3 skills/cs-daily-brief/scripts/fetch_liz_tickets.py --date <target> --json
+=============================================================================
+STEP 1 — Get the data and the verdict (one command)
+=============================================================================
 
-2. Compose ONE Slack DM message in Vietnamese, in this shape:
+From /Users/avada/CSL:
 
-   *📊 BÁO CÁO CS HÀNG NGÀY — <target date dd/mm/yyyy> 08:30 → <target date + 1 dd/mm/yyyy> 08:30*
+  python3 skills/cs-daily-brief/scripts/evaluate.py --date <target> --json \
+    > /tmp/cs_daily_eval.json
 
-   *① Tổng quan conversation*
-   From fetch_conversations.py output: "Total: N conversations" then
-   "Joy: X | Chatty: Y | Wishlist: Z" on the next line.
+evaluate.py runs all 4 fetchers, applies Liz's rules from
+`cron/thresholds.json`, and returns:
 
-   *② Checkin/Checkout (Team G2)*
-   From fetch_checkin.py output:
-   - If `allOk` true: "✅ Tất cả OK — không có late/miss."
-   - Else, for each non-empty list:
-     "🔴 Checkin muộn:" then one line per entry "  • <nick> — <shift> (muộn <minutes>p)"
-     "⛔ Miss checkin:" then one line per entry "  • <nick> — <shift>"
-     "🚪 Miss checkout:" then one line per entry "  • <nick> — <shift>"
+  quiet            true = nothing needs Liz today
+  sanity.ok        false = the numbers look BROKEN, not calm
+  sanity.problems  list of what looks broken
+  flags.checkin    {late[], missCheckin[], missCheckout[], any}
+                   (late already filtered to >= thresholds.checkin.lateMinutes)
+  flags.aiStale    AI-created tickets with no progress
+                   (tsStatus in pending/doing AND dueDateDone is not True)
+  flags.lizTickets every ticket created for Liz in the window
+  data             raw output of all 4 fetchers, for the thread detail
 
-   *③ Chat AI đã tạo ticket*
-   From fetch_ai_tickets.py output — `apps.joy` / `apps.chatty` / `apps.wishlist`,
-   in that order (Joyce / Ivy / Wendy). For each app, one block:
-     `<bot> (<App label — Joy/Chatty/Wishlist>) — xử lý <handledCount> chat, tạo ticket cho <ticketCount> chat:`
-     then one bullet per entry in `tickets`, using Slack's hyperlink syntax
-     (NOT markdown — this posts via chat.postMessage):
-     `• <<chatLink>|<customer>> — <ticketUrl>`
-   If `ticketCount` is 0 for an app, keep the "xử lý N chat" line but replace
-   the bullet list with "  Không có ticket AI tạo hôm nay." Skip the bullet
-   list's chatLink entirely (just show ticketUrl on its own) for any ticket
-   where `chatLink` is null.
+If the command exits non-zero, DO NOT send anything. Exit non-zero so the
+cron log and the Telegram notifier catch it.
 
-   *④ Ticket tạo cho Liz trong ngày*
-   From fetch_liz_tickets.py output — tickets where Liz is a member, created
-   on the target day (separate from ③, which is scoped to AI-created tickets
-   specifically; this is "what landed on Liz today" across all creators). For
-   each ticket in `tickets`:
-     `[app] #ticketNumber (priority) — subject (~80 chars)`
-     `Status: ticketStatus, tsStatus=<tsStatus>`
-     `Ticket: <ticketUrl>`
-     `Chat: <chatLink>` (omit if null)
-   If `count` is 0: "Không có ticket nào tạo cho Liz hôm nay."
+=============================================================================
+STEP 2 — Section ④ needs real content, not just a subject line
+=============================================================================
 
-   Keep the whole message readable — this is a working DM, not a wall of
-   text. No fluff/preamble, straight into the report.
+If `flags.lizTickets` is non-empty, pull the chats behind them:
 
-3. Live-fetch Liz's Slack display name + avatar so the post reads as coming
-   from her (matches the convention used by /cs-weekly and /dfy-monthly for
-   team-channel posts):
+  python3 skills/cs-daily-brief/scripts/fetch_chat_transcripts.py \
+    --from-json /tmp/cs_daily_eval.json --json > /tmp/cs_daily_chats.json
 
-   curl -s https://slack.com/api/users.info \
-     -H "Authorization: Bearer $SLACK_BOT_TOKEN_AVADA" \
-     --data-urlencode "user=U02GT4PC6RH"
+For EACH ticket in flags.lizTickets write **1-2 sentences in Vietnamese**
+covering what the merchant needs and where it currently stands, using all
+three sources together:
+  - the ticket `subject`
+  - the ticket `description` (full text, often has store / plan / reason)
+  - the transcript for its `chatLink` session (match on the session_ id)
 
-   (load SLACK_BOT_TOKEN_AVADA from /Users/avada/CSL/.env first). From the
-   response, take `user.profile.display_name` (or `real_name` if empty) and
-   `user.profile.image_192` (or `image_512`). If the call fails, proceed
-   without a sender override rather than blocking the whole report.
+Say what actually happened — "merchant xin refund 61.52 EUR gói Chatty, CS đã
+xác nhận đủ điều kiện, đang chờ duyệt" beats "yêu cầu hoàn tiền". If a ticket
+has no chatLink or the transcript is empty, summarise from subject +
+description alone. Never invent detail that is not in the sources.
 
-4. Write the message to a payload JSON file (e.g. /tmp/cs_daily_brief_payload.json):
-   {"week": "<target date>", "messages": [{"cs": "Liz", "slack_id": "C0B8042TXQ9",
-   "text": "<the message>"}], "sender": {"username": "<display name>", "icon_url": "<avatar url>"}}
+Note: `[DFY]` tickets carry a generic checklist as their description — for
+those the transcript is the only real signal, so lean on it.
 
-   (send_dm.py's `chat.postMessage` accepts a channel ID in the same
-   `channel` field it uses for a user ID, so "slack_id": "C0B8042TXQ9" posts
-   to the channel — no code change needed. `sender` is optional; omit it if
-   step 3 failed.)
+=============================================================================
+STEP 3 — Compose the SHORT message (this is what lands in the channel)
+=============================================================================
 
-5. Send it for real:
-   python3 skills/qa-weekly/scripts/send_dm.py --payload /tmp/cs_daily_brief_payload.json --send
+Three shapes. Pick by the verdict — do not blend them.
 
-Do not ask for confirmation — this is a scheduled unattended run. If any of
-the 4 fetch commands fails, do not send a partial/broken message; exit
-non-zero so the cron log captures the failure instead.
+--- 3a. sanity.ok == false → SOMETHING IS BROKEN ---
+
+Never report a broken pipeline as a calm day. Lead with the failure:
+
+  *⚠️ CS DAILY — <dd/mm> 08:30 → <dd/mm> 08:30 — SỐ LIỆU NGHI LỖI*
+  <one bullet per entry in sanity.problems>
+  _Số bên dưới có thể không đúng, cần kiểm tra script/API trước khi tin._
+
+Then still append the normal body (3b or 3c) so Liz can eyeball the numbers.
+
+--- 3b. quiet == true → QUIET DAY ---
+
+Keep it to these four lines. No filler, no "chúc buổi sáng".
+
+  *📊 CS DAILY — <dd/mm> 08:30 → <dd/mm> 08:30*
+  ① <total> conversation — Joy <n> | Chatty <n> | Wishlist <n>
+  ② Checkin/checkout: ✅ OK
+  ③ AI ticket treo: ✅ Không có (bot xử lý <tổng handled> chat, tạo <tổng ticket> ticket)
+  ④ Ticket cho Liz: Không có
+  🧵 Chi tiết đầy đủ trong thread
+
+--- 3c. quiet == false → CÓ VIỆC ---
+
+Same skeleton, but expand only the sections that fired. A section that is
+clean keeps its one-line ✅ form from 3b — do not expand it.
+
+  *📊 CS DAILY — <dd/mm> 08:30 → <dd/mm> 08:30*
+  ① <total> conversation — Joy <n> | Chatty <n> | Wishlist <n>
+
+  ② if flags.checkin.any:
+       *⚠️ Checkin/checkout*
+       🔴 Muộn: <nick> — <shift> (<minutes>p)      [one line each]
+       ⛔ Miss checkin: <nick> — <shift>            [one line each]
+       🚪 Miss checkout: <nick> — <shift>           [one line each]
+     else: "② Checkin/checkout: ✅ OK"
+
+  ③ if flags.aiStale non-empty:
+       *⚠️ <n> ticket AI tạo chưa có tiến độ* (dueDate chưa done, còn pending/doing)
+       • [<app>] <<ticketUrl>|#<ticketId>> — <subject, ~70 ký tự> _(<tsStatus>)_
+     else: "③ AI ticket treo: ✅ Không có (bot xử lý <n> chat, tạo <n> ticket)"
+
+  ④ if flags.lizTickets non-empty:
+       *④ Ticket cho Liz: <n>*
+       • [<app>] <<ticketUrl>|#<ticketNumber>> (<priority>) — <subject>
+         <the 1-2 sentence summary from STEP 2>
+         Chat: <chatLink>            [omit the line if chatLink is null]
+     else: "④ Ticket cho Liz: Không có"
+
+  🧵 Chi tiết đầy đủ trong thread
+
+Use Slack hyperlink syntax `<url|text>`, NOT markdown — this goes through
+chat.postMessage.
+
+=============================================================================
+STEP 4 — Post it as Liz
+=============================================================================
+
+Load SLACK_BOT_TOKEN_AVADA from /Users/avada/CSL/.env, then live-fetch her
+name + avatar (same convention as /cs-weekly and /dfy-weekly-chatty):
+
+  curl -s https://slack.com/api/users.info \
+    -H "Authorization: Bearer $SLACK_BOT_TOKEN_AVADA" \
+    --data-urlencode "user=U02GT4PC6RH"
+
+Take `user.profile.display_name` (fall back to `real_name`) and
+`image_192` (or `image_512`). If the call fails, post without the sender
+override rather than blocking the report.
+
+Write /tmp/cs_daily_brief_payload.json:
+
+  {"week": "<target date>",
+   "messages": [{"cs": "Liz", "slack_id": "C0B8042TXQ9", "text": "<short message>"}],
+   "sender": {"username": "<display name>", "icon_url": "<avatar url>"}}
+
+Send it, capturing the message timestamp:
+
+  python3 skills/qa-weekly/scripts/send_dm.py \
+    --payload /tmp/cs_daily_brief_payload.json --send \
+    --out /tmp/cs_daily_brief_sent.json
+
+=============================================================================
+STEP 5 — Full report as a thread reply
+=============================================================================
+
+Read `ts` from the first entry of /tmp/cs_daily_brief_sent.json. If it is
+missing or ok is false, stop here — the short message is the important one.
+
+Compose the FULL 4-section report (the long format this brief used before
+exception mode: every app block in ③ with its handled/ticket counts and the
+`• <chatLink|customer> — ticketUrl` bullets, and every ticket in ④ with
+status/priority/links). This is the archive copy — completeness over brevity.
+
+Write /tmp/cs_daily_brief_thread.json:
+
+  {"week": "<target date>",
+   "messages": [{"cs": "Liz-detail", "slack_id": "C0B8042TXQ9",
+                 "thread_ts": "<ts from step 4>", "text": "<full report>"}],
+   "sender": {...same as step 4...}}
+
+  python3 skills/qa-weekly/scripts/send_dm.py \
+    --payload /tmp/cs_daily_brief_thread.json --send
+
+=============================================================================
+
+Do not ask for confirmation — this is a scheduled unattended run. If any step
+before STEP 4 fails, send nothing and exit non-zero; a missing report is
+recoverable, a wrong one is not.
