@@ -48,6 +48,10 @@ def slim(t, app_key):
         "app": app_key,
         "ticketNumber": t.get("ticketNumber"),
         "subject": (t.get("subject") or "").strip()[:200],
+        # Full description — the daily brief summarises each of Liz's tickets
+        # from title + description + the chat itself, so keep it untruncated
+        # (AI-created tickets carry a well-structured problem/store/plan blob).
+        "description": (t.get("description") or "").strip(),
         "priority": t.get("priority"),
         "tsStatus": t.get("tsStatus"),
         "ticketStatus": t.get("ticketStatus"),

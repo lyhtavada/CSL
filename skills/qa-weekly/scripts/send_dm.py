@@ -18,14 +18,23 @@ Payload file (JSON):
        "text": "*QA Tuần W22 — Hazel* ...markdown..."},
       {"cs": "cs-2-daily", "slack_id": "C0B8042TXQ9",         // or a channel id (C...)
        "text": "..."},
+      {"cs": "cs-2-daily-detail", "slack_id": "C0B8042TXQ9",  // reply in a thread
+       "thread_ts": "1754899200.123456", "text": "..."},
       ...
     ]
   }
+
+`--out <path>` writes the send results as JSON — [{cs, ok, ts, channel,
+error}] — so a caller can grab the parent message's `ts` and post a follow-up
+into its thread (used by /cs-daily-brief to hang the full report off the
+short summary). `ts` is the FIRST chunk's timestamp when a long message gets
+split, so the thread always hangs off the top of the message.
 
 Usage:
   python3 send_dm.py --payload /tmp/qa_dm_payload.json            # dry-run
   python3 send_dm.py --payload /tmp/qa_dm_payload.json --send     # real send
   python3 send_dm.py --payload ... --send --only Hazel,Andy       # subset
+  python3 send_dm.py --payload ... --send --out /tmp/result.json  # capture ts
 """
 import argparse
 import json
@@ -81,9 +90,11 @@ def load_env(path):
     return env
 
 
-def _post_one(token, slack_id, text, sender=None):
+def _post_one(token, slack_id, text, sender=None, thread_ts=None):
     msg = {"channel": slack_id, "text": text,
            "unfurl_links": False, "unfurl_media": False}
+    if thread_ts:
+        msg["thread_ts"] = thread_ts
     if sender:
         # Requires chat:write.customize scope (Avada bot has it).
         # Note: Slack still shows an APP badge next to the name — unavoidable.
@@ -100,20 +111,26 @@ def _post_one(token, slack_id, text, sender=None):
         return json.loads(resp.read().decode())
 
 
-def post_dm(token, slack_id, text, sender=None):
+def post_dm(token, slack_id, text, sender=None, thread_ts=None):
     """Send a DM, splitting long text into multiple sequential messages.
 
-    Returns the result of the LAST chunk (or the first failure). A long
-    report is delivered as several DMs in order, each labelled (part N/M).
+    Returns the result of the LAST chunk (or the first failure), with
+    `_first_ts` added — the ts of the FIRST chunk, which is the one a thread
+    should hang off when a long message got split. A long report is delivered
+    as several DMs in order, each labelled (part N/M).
     """
     chunks = split_message(text)
     total = len(chunks)
-    last = None
+    last, first_ts = None, None
     for i, chunk in enumerate(chunks, 1):
         body = chunk if total == 1 else f"{chunk}\n\n_(phần {i}/{total})_"
-        last = _post_one(token, slack_id, body, sender)
+        last = _post_one(token, slack_id, body, sender, thread_ts)
         if not last.get("ok"):
             return last  # stop on first failure
+        if first_ts is None:
+            first_ts = last.get("ts")
+    if last is not None:
+        last["_first_ts"] = first_ts
     return last
 
 
@@ -123,6 +140,7 @@ def main():
     ap.add_argument("--send", action="store_true",
                     help="actually send (default is dry-run)")
     ap.add_argument("--only", help="comma-separated CS names to send to")
+    ap.add_argument("--out", help="write send results (incl. message ts) as JSON")
     ap.add_argument("--env", default=os.path.join(
         os.path.dirname(__file__), "..", "..", "..", ".env"))
     args = ap.parse_args()
@@ -145,34 +163,50 @@ def main():
           f"— gửi dưới tên: {as_who}\n")
 
     sent, skipped, failed = 0, 0, 0
+    results = []
     for m in msgs:
         cs = m.get("cs")
         sid = m.get("slack_id")
+        thread_ts = m.get("thread_ts")
         if only and cs not in only:
             skipped += 1
             continue
         if not sid or not sid.startswith(("U", "C")):
             print(f"  ✗ {cs}: invalid slack_id ({sid}) — SKIP")
+            results.append({"cs": cs, "ok": False, "error": f"invalid slack_id {sid}"})
             failed += 1
             continue
         preview = m["text"].split("\n")[0][:70]
         nparts = len(split_message(m["text"]))
         if not args.send:
             parts_note = f" [{nparts} phần]" if nparts > 1 else ""
-            print(f"  • {cs} → {sid}{parts_note}: {preview}…")
+            thread_note = " [thread reply]" if thread_ts else ""
+            print(f"  • {cs} → {sid}{parts_note}{thread_note}: {preview}…")
+            results.append({"cs": cs, "ok": True, "dryRun": True})
             sent += 1
             continue
         try:
-            res = post_dm(token, sid, m["text"], sender)
+            res = post_dm(token, sid, m["text"], sender, thread_ts)
             if res.get("ok"):
-                print(f"  ✓ {cs} → DM sent ({res.get('channel')})")
+                ts = res.get("_first_ts") or res.get("ts")
+                where = "thread" if thread_ts else "DM"
+                print(f"  ✓ {cs} → {where} sent ({res.get('channel')}) ts={ts}")
+                results.append({"cs": cs, "ok": True, "ts": ts,
+                                "channel": res.get("channel")})
                 sent += 1
             else:
                 print(f"  ✗ {cs}: Slack error — {res.get('error')}")
+                results.append({"cs": cs, "ok": False, "error": res.get("error")})
                 failed += 1
         except Exception as e:
             print(f"  ✗ {cs}: {e}")
+            results.append({"cs": cs, "ok": False, "error": str(e)})
             failed += 1
+
+    if args.out:
+        with open(args.out, "w") as f:
+            json.dump(results, f, ensure_ascii=False, indent=2)
+        print(f"\nresults → {args.out}")
 
     print(f"\n{mode} done — {sent} sent, {skipped} skipped, {failed} failed")
     if not args.send:

@@ -28,6 +28,25 @@ to domain, then "Khách") — the Ticket API has no Crisp nickname field, and
 chatLink already carries the session_id straight from Crisp so no BigQuery
 join is needed to get the chat link itself.
 
+Progress fields (added 2026-08-11 for the exception-based brief). Probed live
+over 486 tickets / 14 days:
+  - `dueDate` is a TIMESTAMP, not a flag: present on 486/486 and always
+    exactly `createdAt + 2 days` — auto-set at creation, never edited. It
+    carries no progress signal; a "dueDate is false/empty" filter can never
+    fire. Do not use it as a completion check.
+  - `dueDateDone` is the real completion flag: True=345, key absent=140,
+    False=1. "Not done" is expressed by the key being ABSENT, not by False —
+    so the rule must be `dueDateDone is not True`, never `== False`.
+  - `ticketStatus` is only open/closed. The working state lives in `tsStatus`:
+    waiting_customer, done, done_for_you, dev_done, dev_fixing, pending,
+    doing, onb, sale_request, feature_request, customization,
+    waiting_permission, billing.
+  - The two are not redundant — 5 tickets in the probe were dueDateDone=True
+    with tsStatus=pending, so ANDing them filters more than either alone.
+Also noted: all 75 AI-created tickets in that 14-day probe were Chatty —
+Joyce/Wendy created none, so the joy/wishlist blocks are legitimately empty
+rather than broken.
+
 Usage:
   python3 fetch_ai_tickets.py --json                # yesterday 08:30 -> today 08:30 (VN)
   python3 fetch_ai_tickets.py --date 2026-07-30 --json
@@ -101,8 +120,18 @@ def customer_name(t):
 def slim_ticket(t, app_key):
     return {
         "app": app_key,
+        "ticketId": t.get("ticketId"),
         "ticketNumber": t.get("ticketNumber"),
+        "subject": (t.get("subject") or "").strip()[:200],
         "customer": customer_name(t),
+        # Progress fields — consumed by evaluate.py's "AI ticket chưa có tiến
+        # độ" rule. See the module docstring for why dueDateDone (not dueDate)
+        # is the one that carries signal.
+        "tsStatus": t.get("tsStatus"),
+        "ticketStatus": t.get("ticketStatus"),
+        "dueDate": t.get("dueDate"),
+        "dueDateDone": t.get("dueDateDone"),  # None when the key is absent
+        "createdAt": t.get("createdAt"),
         "chatLink": t.get("chatLink"),
         "ticketUrl": "https://avada-ts-a9cb0.web.app" + t["shortUrl"] if t.get("shortUrl") else None,
     }
