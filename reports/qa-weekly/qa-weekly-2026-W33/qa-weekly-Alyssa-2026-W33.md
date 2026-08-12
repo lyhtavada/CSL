@@ -1,0 +1,41 @@
+# 📋 QA TUẦN — BÁO CÁO CỦA Alyssa
+🗓️ Tuần 2026-W33 · 05/08 – 11/08/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 **Điểm tuần:** 80/100 — Tốt  (— 0 so với tuần trước)
+🔍 Đã QA: 30 chat
+🧠 Mindset: 27.5/34 · 📚 Kiến thức: 26.7/33 · 🛠️ Xử lý: 25.5/33
+
+📝 **Nhận xét chung**
+Tuần này bạn xử lý một khối lượng chat rất lớn và phức tạp — nhiều case Joy DFY onboarding kéo dài nhiều ngày với hàng loạt bug kỹ thuật (point/tier calculation, widget, translation) — và xử lý đàng hoàng, không bỏ cuộc giữa chừng. Điểm mạnh rõ nhất là mindset: kiên nhẫn và chuyên nghiệp ngay cả khi khách bực dọc hay chửi thẳng, chủ động tư vấn chiến lược thay vì chỉ trả lời đúng câu hỏi, và trung thực nhận sai khi giải thích nhầm. Điểm cần tập trung: ở vài case setting phức tạp (loyalty hub/dashboard, tier logic) bạn để khách phải hỏi lại nhiều lần mới hiểu đúng ý — hãy tóm tắt rõ ràng và có hệ thống hơn ngay từ đầu để rút ngắn thời gian chat, vì sự lòng vòng này là thứ khiến khách dễ nản nhất trong các case DFY dài hơi.
+
+✅ **Điểm tốt tuần này**
+- [P1] Chủ động tư vấn chiến lược cá nhân hoá vượt xa câu hỏi khách — chat #2, tự phân tích AOV và đề xuất earn/redeem/VIP tier cụ thể ('Based on your AOV of ~15,600 HUF... Optimized Earning Structure... VIP Tier Configuration...') thay vì chỉ trả lời đúng yêu cầu setup ban đầu. (#2, #6)
+- [P2] Giữ bình tĩnh và chuyên nghiệp khi khách chửi thẳng ('真是狗屎！你们总是把问题复杂化！' — chat #9), không đôi co, còn chủ động làm hộ phần việc copy FAQ cho khách đang mệt mỏi thay vì chỉ hướng dẫn suông. (#9, #10)
+- [P3] Trung thực nhận sai và sửa ngay khi phát hiện mình giải thích nhầm ('啊等等，我上面给你看的信用部分其实是积分部分。积分的名称让我搞混了，抱歉。' — chat #1), không lấp liếm. (#1)
+- [P4] Kiến thức plan-gating chính xác, khớp KB (vd. checkout-redemption chỉ có ở Ultimate + Shopify Plus — chat #3), không thấy case nào trả sai giá/tính năng hiện hành. (#3, #28)
+- [P5] Chủ động đánh dấu urgent + theo tới cùng khi khách gặp bug nghiêm trọng (tạo ticket 🚨 Urgent, tự test lại nhiều lần trước khi báo khách — chat #3, #30). (#3, #30)
+
+🔧 **Cần cải thiện**
+- **[KN3] Low** — Giải thích các tính năng gần giống nhau (Loyalty Hub vs Loyalty Dashboard) rời rạc từng phần khiến khách phải hỏi lại nhiều lần mới hiểu đúng, kéo dài chat không cần thiết. (#16)
+  - Dẫn chứng: "The Loyalty Hub and Loyalty Dashboard are different features in Customer Account" — khách vẫn confuse sau đó và phải hỏi lại thêm vài lượt (chat #16).
+  - → Khi 2 khái niệm dễ nhầm, tóm tắt bằng 1 bảng so sánh ngắn hoặc 1 câu chốt rõ ràng ngay từ tin đầu tiên, kèm ảnh minh hoạ cả 2 để khách phân biệt ngay, tránh hỏi đáp lặp lại.
+- **[KN1] Low** — Tự giới thiệu nhầm tên trong 1 tin nhắn, có thể gây bối rối cho khách khi thấy 2 tên khác nhau trong cùng session (label CS Alyssa nhưng tự xưng 'Ly'). (#28)
+  - Dẫn chứng: "Dạ chào bạn, mình là Ly." (label hiển thị CS (Alyssa)) — chat #28.
+  - → Kiểm tra lại template mở đầu để luôn xưng đúng tên hiển thị, tránh gây hiểu lầm nếu khách đối chiếu lại tên CS sau này.
+
+🌟 **Xin review (chỉ ghi nhận, không tính điểm)**
+- Đã xin review ở **0/3** chat phù hợp (đúng lúc: 0, sai lúc: 0)
+- Chỉ có 3 chat đủ điều kiện gán riêng cho Alyssa (khách hài lòng rõ ràng ở đúng đoạn Alyssa xử lý + segment chưa có review) — chat #6, #17, #19 — và cả 3 đều chưa xin. Vì phần lớn chat của Alyssa là case kỹ thuật/DFY kéo dài nhiều ngày (khách chưa xong hẳn), số case thực sự phù hợp để xin review khá ít; tuần tới có thể tận dụng những khoảnh khắc khách cảm ơn ngắn gọn (như #6, #19) để mời review nhẹ nhàng.
+
+📈 **So với tuần trước**
+- Điểm 80 → 80 (— 0)
+- Trục: Mindset 28→27.5, Kiến thức 26→26.7, Kỹ năng 26→25.5
+- Lỗi lặp lại từ tuần trước: KN1
+- Lỗi tuần trước đã hết: KN6, KT2, QT25 👏
+- Lỗi mới tuần này: KN3
+
+🔗 **Chat đã QA (30):**
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d6da2437-39b6-4851-a412-52cf58c3936e|#1 Mi tienda Admin> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_894f5998-cde6-47bf-b4d6-840bc8bd1deb|#2 Orsolya Lele> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4c3a5a1f-6e04-4670-a88d-dd033abc84b3|#3 BLAEK Coffee> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_67706346-c712-4655-9117-738429a672d9|#4 ZU SHAN> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c8c964d6-fe22-42a5-8f51-d076501065ce|#5 OpenRoad OPR> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_2191463d-57c4-4ba1-a765-ad1c6949b696|#6 Kuo-Hung Liang> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_6e677956-c60d-46e4-a487-bdeda2191f89|#7 Nicolas Skovby> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_abafd80a-c5be-497a-8347-bea67facd4ae|#8 Ahmed AlMahmoud> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d0ddbe0a-997b-4532-9177-e112a72aec85|#9 Animeoffic Com> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b46cd734-920b-454a-98cb-ddbed261018a|#10 創造 富川> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e3bb84e3-5044-448b-9146-832a565dff80|#11 TBOF middle east food trading llc Tapia> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_14bc8e63-e2d1-4f6b-8b6d-9f3dc823faa1|#12 ZHANHAO MAI> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_2a253970-8f11-4aa2-ae22-422f235cde96|#13 mentor cosmetics> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_89a35c35-5b38-4427-acca-98ad892eb180|#14 J R Hansford> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_bf2f933e-147f-4943-9d5b-6ed900f20a91|#15 Gagandeep Singh Suri> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_631fd237-1c43-456b-960e-db3279b6fdac|#16 Healez Beauty> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_30d341ef-5469-4e41-82d4-e79bbd436b36|#17 visitor3656235> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_46674ce7-189a-4ab2-b600-ddb5fd903b95|#18 Marco Belotti> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9c7210ba-2852-43fd-9bd9-ae851349ef24|#19 Manon del Bubba> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c403a918-d180-4472-9fcf-294aeafbfd8a|#20 thomas agarate> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_958eae46-ec70-4330-befa-a5a5215122a5|#21 CHENG ZHAO> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e660a144-d9cf-43f7-b129-3cafc5c3dd6e|#22 Luck Khng Tan> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_821d8687-95d3-425b-b6d7-6a163ebec6bf|#23 My Store Admin> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c1e00a79-3249-4f0b-b89b-ca9d162c7e21|#24 Mercedes Johnson> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_8ffef94c-f073-44aa-9834-cf4e5ad8b1cf|#25 stephen dimaggio> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_11a7563a-a459-4766-9cc1-aa81a71c99c9|#26 Francisco Tormo> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9e2e2158-e67d-4a0f-9c9d-a58ed3fa60d4|#27 HARUO SUZUKI> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_ea121b06-cd1f-4fc9-8544-f5935132a78d|#28 Allen Pham> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cd81ac62-b4ee-4256-bc43-62aa3059b5e1|#29 Nissoplus> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f60eeb07-e923-46b7-8285-f63715c553b1|#30 SwitchBot Global>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_

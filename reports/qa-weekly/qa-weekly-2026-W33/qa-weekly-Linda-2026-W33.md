@@ -1,0 +1,43 @@
+# 📋 QA TUẦN — BÁO CÁO CỦA Linda
+🗓️ Tuần 2026-W33 · 05/08 – 11/08/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 **Điểm tuần:** 79/100 — Đạt  (▼ -4 so với tuần trước)
+🔍 Đã QA: 30 chat
+🧠 Mindset: 27.3/34 · 📚 Kiến thức: 25.4/33 · 🛠️ Xử lý: 26.1/33
+
+📝 **Nhận xét chung**
+Bạn xử lý chat rất chắc tay về mặt kỹ thuật (CSS, notifications, troubleshooting đa bước) và có tinh thần phục vụ tốt — kiên nhẫn với khách khó, theo tới cùng thay vì đóng chat lửng (case cart tự mở, case refund tiếng Pháp là ví dụ rõ). Nhưng điểm cần nói thẳng: kiến thức về giá/limit gói bị sai lặp lại 2 lần trong cùng 1 tuần (chat #8 và #15) — cả hai lần đều nói sai số sản phẩm sync của Basic/Pro so với KB, và ở chat #15 còn đảo ngược khiến Pro nghe có vẻ ít tính năng hơn Basic. Đây không phải lỗi ngẫu nhiên một lần mà là dấu hiệu bạn đang nhớ nhầm bảng giá — cần tra lại KB pricing trước khi báo số cho khách, vì khách dựa vào đó để quyết định nâng cấp, sai là mất tiền/niềm tin của khách. Ưu tiên tuần tới: KHÔNG tự tin trả lời số liệu gói từ trí nhớ, luôn mở KB hoặc hỏi lại trước khi confirm.
+
+✅ **Điểm tốt tuần này**
+- [P1] Ownership tốt, theo tới cùng vấn đề kỹ thuật phức tạp thay vì đóng chat lửng — case cart tự mở do xung đột với app BOGOS, kiên trì test và escalate đến khi tìm ra root cause thật (không chấp nhận 'không tái hiện được' là xong) (#5)
+- [P2] Xử lý case refund tiếng Pháp rất chuyên nghiệp và có tâm — hỏi lý do cụ thể, xin đúng bằng chứng cần thiết, nhắc khách downgrade để tránh bị charge tiếp, không né tránh hay đẩy việc (#28)
+- [P4] Kiên nhẫn rõ rệt với khách khó/khách hoang mang nhiều yêu cầu dồn dập (khách Thổ Nhĩ Kỳ mới dùng Shopify, khách Hà Lan hỏi liên tục nhiều chủ đề) — không tỏ ra khó chịu, vẫn giải thích lại nhiều lần (#1, #30)
+- [P2] Giải thích kỹ thuật rõ ràng, có bước, khách xác nhận hài lòng ngay ('Perfect thank you', 'perfect thankyou') (#10, #17)
+
+🔧 **Cần cải thiện**
+- **[KT1] Critical** — Báo sai số lượng sản phẩm sync của gói Basic — lặp lại 2 lần trong tuần với 2 con số khác nhau, cả hai đều sai so với KB (Basic = 500 sản phẩm) (#8, #15)
+  - Dẫn chứng: Chat #8: "I'm so sorry for the incorrect information I shared earlier. For the Basic Plan, you can sync up to 1,500 products with the AI." — Chat #15: "💼 Basic Plan * Supports up to 1,500 products... 🚀 Pro Plan * Supports up to 500 products for AI learning" (đảo ngược, KB thật: Basic=500, Pro=8,000)
+  - → Trước khi confirm bất kỳ con số giá/limit nào cho khách, luôn mở KB pricing (kb/faq/pricing.md) để tra lại, không trả lời từ trí nhớ — đặc biệt khi đang 'sửa lại' câu trả lời của bot vì lần sửa sai còn tệ hơn để bot trả lời
+- **[KN1] Low** — Gửi tin nhắn bị cắt ngang, chưa hoàn chỉnh câu cho khách (#27)
+  - Dẫn chứng: "After checking due to this customer inqueries hasn't had information on AI's datas yet so I just add a Q&A for an expample so AI  can" (câu bỏ lửng, không có kết)
+  - → Đọc lại tin trước khi gửi, đặc biệt khi đang trả lời song song nhiều case — tránh gửi câu dở dang khiến khách phải đoán ý
+- **[QT9] Moderate** — Xin review G2 khi task khách yêu cầu vẫn còn đang xử lý dở (chưa xác nhận xong), gây cảm giác vội và không đúng lúc (#17)
+  - Dẫn chứng: Khách vừa nhờ đổi font search bar ('could you please also change the font in the search bar'), Linda trả lời 'Sure, no problem. Let us process it.' rồi ngay sau đó chuyển sang mời xin review G2 trước khi việc đổi font hoàn tất
+  - → Chỉ mời xin review SAU KHI đã confirm task hiện tại xong và khách đã cảm ơn/hài lòng rõ ràng, không chen vào giữa lúc task đang dang dở
+
+🌟 **Xin review (chỉ ghi nhận, không tính điểm)**
+- Đã xin review ở **13/15** chat phù hợp (đúng lúc: 12, sai lúc: 1)
+- Xin review khá đều tay — đã xin 13/15 chat khách hài lòng phù hợp, đa số đúng lúc (ngay sau khi khách cảm ơn/xác nhận xong việc). Bỏ lỡ 2 chat khách đã hài lòng mà chưa kịp xin (#3, #9) — có thể do gần hết ca. 1 lần xin hơi vội khi task khách yêu cầu còn đang xử lý dở (#17).
+
+📈 **So với tuần trước**
+- Điểm 83 → 79 (▼ -4)
+- Trục: Mindset 27.8→27.3, Kiến thức 28.2→25.4, Kỹ năng 27.5→26.1
+- Lỗi lặp lại từ tuần trước: KN1
+- Lỗi tuần trước đã hết: không có
+- Lỗi mới tuần này: KT1, QT9
+
+🔗 **Chat đã QA (30):**
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_aac04ead-e704-4d7a-a278-c704f22798f8|#1 Mağazam> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5565a212-a862-4a4f-afdb-f123c66b7b33|#2 Hairy Pony> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_31aa6880-2623-4ce0-bc5f-2b1bf09caa75|#3 PHYMAT Official> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_be92535e-d715-4d4c-ab0d-40f17b7ad6cb|#4 Tymo Beauty> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_579d4d29-50b7-4486-a87a-82e9c20832cb|#5 VELVET GLOW> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_67ec4048-6c7f-470f-bc0d-6f318750e3b2|#6 Monenjoy> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_df6ee161-d689-483f-8c66-14c2457d8114|#7 American Crane & Equipment Corporation> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_42624307-8d25-4f19-963f-e47021f6187a|#8 GP Lawnmowers> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9c7aa96c-521d-4db7-a15d-37dfda85689a|#9 hevna> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e8929d78-b190-4309-a545-8a685892c5d7|#10 Hugsback> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_01bf1aba-45b4-4eef-b612-39a316ac0671|#11 Cornerstone Academics> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_23540336-3c8b-4fab-be22-2a9e513cf34b|#12 Carverall> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_aa2c081f-982e-445a-aaed-f7e363d3e1b8|#13 Kuriosis Fine Art GmbH> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_ba3e1a53-f3a7-4a4b-af79-a343bea40d1a|#14 TENGA USA Sandbox> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a60f2734-6475-43a6-a074-61b4ef25cfe6|#15 MontVooRugs> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_755aff43-4519-42a2-9e36-ee53efcee6ec|#16 Phairfrancecontact> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d1486ea5-a035-4f89-aae8-bede58636a95|#17 sound-merch.com.au> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_7f0ff348-c02d-4519-872b-37f63130ae1c|#18 Living.Fit> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3993f20d-ac30-45be-b552-f6e7972d7d84|#19 Cartabule> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_af930999-9d31-42e0-81c0-f3007cd8d9ae|#20 Cycoly> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_ccd983b4-adcd-4d5c-966f-b0ce1fe772ac|#21 Maison RHB> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c5b880b5-b55a-4c43-81a3-d15b0147395c|#22 Grace> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4acda93f-6fb9-4e28-8b3e-7e9291476049|#23 BoxAnime> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3d5b7ee4-4f20-4353-a483-d1dc46659f2a|#24 TUKUSWHEELS> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f4598f56-36b3-4374-87f3-c4a2023b54a0|#25 PawLuxe> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_989c9550-b0cf-4a8d-875a-ccc36bbe9521|#26 D2P Autoparts> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cbefcaf2-38ba-462b-950c-2bd1477716f7|#27 Yeasound: Explore the Best OTC Hearing Aids for You and Your Loved Ones> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_13a4c794-3c6b-427e-aa5d-0fc26fd77a15|#28 visitor3650290> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5239f9d5-1a30-4df5-a39c-30a900520d70|#29 COVERARY> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_53807806-75a5-4506-bc81-9e60571e7088|#30 Lege Capsules>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_

@@ -1,0 +1,40 @@
+# 📋 QA TUẦN — BÁO CÁO CỦA Hazel
+🗓️ Tuần 2026-W33 · 05/08 – 11/08/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 **Điểm tuần:** 80/100 — Tốt  (— 0 so với tuần trước)
+🔍 Đã QA: 30 chat
+🧠 Mindset: 26.7/34 · 📚 Kiến thức: 26.7/33 · 🛠️ Xử lý: 26.4/33
+
+📝 **Nhận xét chung**
+Tuần này Hazel làm việc chắc tay và có tâm — điểm nổi bật nhất là ownership: luôn tự test lại trước khi trả lời thay vì đoán, theo case tới cùng bằng ticket cụ thể và quay lại xác nhận kết quả, giữ bình tĩnh tốt với khách khó (chat #18 hỏi lặp liên tục). Đây là nền tảng để lên mức xuất sắc. Điểm cần sửa ngay: ở chat #15 bạn báo sai giới hạn ngôn ngữ theo plan (thấp hơn KB 1 bậc ở cả Basic và Pro) — dạng lỗi này nếu lặp lại sẽ khiến khách nghĩ nhầm là app giới hạn hơn thực tế, có thể đẩy khách sang cân nhắc app khác hoặc downgrade oan. Trước khi báo số cụ thể về plan/giới hạn, luôn tra lại KB thay vì nhớ áng chừng. Ngoài ra bỏ lỡ vài chat vàng để xin review — việc nhỏ nhưng nên tranh thủ vì bạn đã làm tốt ở nhiều chat khác trong tuần.
+
+✅ **Điểm tốt tuần này**
+- [P1] Ownership rõ rệt khi nhận bàn giao ca: luôn báo 'cho mình xin chút thời gian đọc lại tin nhắn trước' rồi mới trả lời, không trả lời bừa. Đặc biệt hay tự test lại trên hệ thống trước khi kết luận thay vì đoán ('I tested it again, and it looks like the AI is currently providing information about a different product' — chat #2; quay video hướng dẫn riêng cho KH — chat #9), theo tới cùng bằng cách tạo ticket cụ thể và follow-up có kết quả (chat #10, #19, #23). (#2, #9, #10, #19, #23)
+- [P2] Kỹ năng xử lý bug tốt — chat #23, KH nghi ngờ Chatty tự bịa số liệu doanh thu hỗ trợ, Hazel không cãi mà escalate ngay, theo dõi và quay lại xác nhận đã sửa xong kèm bằng chứng ảnh chụp. (#23)
+- [P3] Kiên nhẫn với khách khó tính/hỏi lặp lại nhiều lần (chat #18, KH Living.Fit hỏi đi hỏi lại 'why didn't it do that' hơn 5 lần) — Hazel vẫn giữ giọng bình tĩnh, giải thích lại có ảnh minh hoạ thay vì tỏ ra khó chịu. (#18)
+- [P4] Luôn dùng đúng quy trình bảo mật — xin collaborator request code (4 số) thay vì hỏi mật khẩu admin khi cần vào theme/store để debug (chat #3, #4, #10). (#3, #4, #10)
+
+🔧 **Cần cải thiện**
+- **[KT1] Moderate** — Trả lời sai giới hạn ngôn ngữ theo plan, thấp hơn số thật trong KB (không phải trường hợp legacy pricing). (#15)
+  - Dẫn chứng: [08:18:26] CS (Hazel): "基础计划：最多支持 2 种语言。 - 专业计划：最多支持 9 种语言。" — KB (kb/faq/translation.md) ghi rõ Basic = 3 ngôn ngữ tổng (2 được auto-translate), Pro = 10 ngôn ngữ tổng (9 auto-translate), tức Hazel báo thiếu 1 ngôn ngữ ở cả 2 plan.
+  - → Trước khi báo số giới hạn plan (đặc biệt translation/language), tra lại đúng bảng trong KB — lưu ý phân biệt 'tổng số ngôn ngữ hiển thị được' và 'số ngôn ngữ được auto-translate', đây là 2 con số khác nhau dễ nhầm.
+- **[review-ask] Low** — Bỏ lỡ 2 chat KH đã cảm ơn/hài lòng, chat chưa có review nhưng không mời xin review. (#16, #17)
+  - Dẫn chứng: Chat #16: "谢谢你告诉我" ... "祝你今天愉快!" — Hazel không xin review. Chat #17: "haode" (KH ok, xong việc) — Hazel chỉ hỏi 'còn gì nữa không', không xin review.
+  - → Khi vừa xử lý xong và KH cảm ơn, tranh thủ chèn câu mời review ngay (như đã làm tốt ở chat #5, #6, #7) — đừng bỏ qua các case đã resolved rõ ràng.
+
+🌟 **Xin review (chỉ ghi nhận, không tính điểm)**
+- Đã xin review ở **4/6** chat phù hợp (đúng lúc: 3, sai lúc: 1)
+- Xin review khá chủ động: 4/6 chat phù hợp có mời KH để lại review, đa số đúng lúc — ngay sau khi KH vừa cảm ơn/hài lòng (chat #5, #6, #7). Có 1 lần hơi sớm (chat #9) khi KH nói còn sẽ quay lại review thêm vài case chưa hài lòng mà Hazel đã mời review liền. Bỏ lỡ 2 chat vàng (#16, #17) KH đã cảm ơn xong mà không mời.
+
+📈 **So với tuần trước**
+- Điểm 80 → 80 (— 0)
+- Trục: Mindset 27.4→26.7, Kiến thức 26.3→26.7, Kỹ năng 26.1→26.4
+- Lỗi lặp lại từ tuần trước: không có
+- Lỗi tuần trước đã hết: KN1, KN7 👏
+- Lỗi mới tuần này: KT1, review-ask
+
+🔗 **Chat đã QA (30):**
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_aac04ead-e704-4d7a-a278-c704f22798f8|#1 Mağazam> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cefa0af9-d403-4582-894f-4bbe543bf790|#2 Enveseur> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_481d8789-b868-42b8-b3d4-b58e47ee8fa3|#3 Ambiance Haarden> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_022dbe88-83b8-4e87-a950-33acc4699878|#4 Her Royal Hair> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_767d0e07-b2de-4d6e-81b8-8a2409b9c48b|#5 Lenovra> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_82d3973c-5bd1-462d-85cf-bd0e88f670c1|#6 Ruvo Pro> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5e487e33-5690-4b86-bf88-981ab94265e1|#7 COSMETICS XPERT> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9c48305a-f987-45d8-b413-dd1ef45cd92c|#8 GYM SUPPLEMENTS U.S> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a0f9f336-422f-4d5e-a377-72136127298a|#9 Mosha> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_189c71d5-be72-456b-a44d-0016c47fd38c|#10 Phos & Gaia> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4a239300-cc41-4e38-9b52-5fa111be3a99|#11 PhixClothing.com> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_387ab569-3f8e-45c8-a0e3-6db7ed4c2411|#12 Senno> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c6a432d1-06ab-408a-b3d7-564f3a2fa32d|#13 Salt Sand Swim> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_50e4b6d6-aefd-4533-938e-2e10c63a3794|#14 RHITOU> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b163478d-f63e-424d-a2ca-88385ae2555c|#15 OAS Mobility EU> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d3378ef1-289c-4ae5-bed9-792dd77d7e8d|#16 Snode Fitness EU> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a4339ca4-1155-478d-bc1d-1458e7aa2c6f|#17 Shallprinting> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_7f0ff348-c02d-4519-872b-37f63130ae1c|#18 Living.Fit> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f07ac23a-0912-4f3f-b1cc-afbd5b04ba5d|#19 Garrison Dental> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d4256f27-560c-43fb-bd8b-c55f30af46e8|#20 Nexorial> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4e1f0a3f-b31e-4760-b8a5-6c14c65deccb|#21 Diva Goddess> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b1f6bb35-0281-451d-ab60-bfe5698caa5c|#22 Dr.Chicks> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5ad72cb7-d67d-4657-95d9-4e6d45e8eef2|#23 Lotus Imports Ltd> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f7702f76-39a7-43c2-a3e2-963573dcc583|#24 HoesjesPunt> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_6e45d071-ed13-408b-9dc3-1665cb86a944|#25 Cherry Rouge> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cd46df6a-d648-4924-88ee-635bd1d04790|#26 Wheelie Good Wood - Melbourne> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e1f265d2-d054-4171-9fc3-fc4a6060eb24|#27 ENCUERADOS> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b16a8829-6971-49db-8613-a47cf231a3cf|#28 The SportScreen Ltd.> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_2a839073-768d-4b7e-a6d3-dfb919a3ada6|#29 liv bergen> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_41f9427b-e1b2-4017-8b82-4cc8cf96f018|#30 Johnny saint>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
