@@ -6,7 +6,7 @@
     }
   },
   "joy": {
-    "last_slack_ts": null,
+    "last_slack_ts": "1786359166.655649",
     "last_gitlab_commit": {
       "avada%2Fstarlink-team%2Fjoy": "dba2c7d3ff87366afb1606c5bee91f9cd5372317"
     }
