@@ -17,22 +17,25 @@ On-demand data-driven ICP scoring for one Chatty merchant. Spec: `playbooks/chat
 ## Steps
 
 1. **Pull merchant data:**
-   - `mcp__avada-analytic__merchant_profile(shop_domain, app_id="avadaFaq")` → primary source (`dash_merchant_360` fields: `current_mrr`, `mrr`, `is_paying_now`, `days_since_install`, `trial_flag`, `chatty_conversations_30d`, `usage_segment`, `ticket_count`, `dfy_ticket_count`)
-   - `mcp__avada-analytic__shop_profile(shop_domain, app_id="avadaFaq")` → use `primary_plan` (normalized plan, e.g. `plus`/`advanced`/`grow`/`basic` — do NOT use the raw `shopify_plan` field, it mixes legacy codes like `professional`/`unlimited` with new ones) and `storeleads_profile.{estimated_visits, employee_count}` for store scale. `storeleads_profile` can be `null` if StoreLeads has no match — that counts against confidence, don't guess a value.
+   - `mcp__avada-analytic__merchant_profile(shop_domain, app_id="avadaFaq")` → primary source (`dash_merchant_360` fields: `current_mrr`, `mrr`, `is_paying_now`, `days_since_install`, `trial_flag`, `chatty_conversations_30d`, `usage_segment`, `ticket_count`, `dfy_ticket_count`, `latest_subject`)
+   - `mcp__avada-analytic__shop_profile(shop_domain, app_id="avadaFaq")` → use `primary_plan` (normalized plan, e.g. `plus`/`advanced`/`grow`/`basic` — do NOT use the raw `shopify_plan` field, it mixes legacy codes like `professional`/`unlimited` with new ones) and `storeleads_profile.{estimated_visits, employee_count, estimated_sales, monthly_app_spend, app_names, technology_names}`. `storeleads_profile` can be `null` if StoreLeads has no match — that counts against confidence, don't guess a value.
+   - `mcp__avada-analytic__merchant_cs_history(shop_domain, app_id="avadaFaq", limit=5)` → recent ticket subjects, to check for a recurring unresolved topic (not just the count)
    - If `merchant_profile` returns nothing for this shop_domain, stop and report "no data — cannot score" rather than guessing.
 
-2. **Compute score (0-100)** using the weighted formula in `playbooks/chatty-icp-scoring-spec.md` §2:
+2. **Compute score (0-100)** using the weighted formula in `playbooks/chatty-icp-scoring-spec.md` §2 — all 8 criteria feed into one combined score (no separate "context-only" group):
 
    | Tiêu chí | Weight |
    |---|---|
-   | Shopify plan tier (`primary_plan`) | 25% |
-   | Chatty MRR / investment (`current_mrr`) | 20% |
-   | Store scale (`storeleads_profile.estimated_visits` + `employee_count`) | 20% |
-   | Chatty engagement (`chatty_conversations_30d`, `usage_segment`) | 15% |
-   | Support relationship (`ticket_count`, `dfy_ticket_count`) | 10% |
-   | Business maturity (`days_since_install`, `trial_flag`) | 10% |
+   | Shopify plan (`primary_plan`) | 20% |
+   | Traffic (`estimated_visits`) | 12% |
+   | Quy mô doanh nghiệp (`employee_count`, `estimated_sales`, `monthly_app_spend`) | 13% |
+   | Đang trả tiền (`current_mrr`, `is_paying_now`, `trial_flag`) | 20% |
+   | Đã dùng bao lâu (`days_since_install`, `trial_flag`) | 8% |
+   | Đang thực sự dùng (`activation_status`, `usage_segment`, `chatty_conversations_30d`) | 15% |
+   | Lịch sử ticket (`ticket_count`, `dfy_ticket_count`, recurring topic?) | 6% |
+   | Đối thủ/tool stack (`app_names`/`technology_names`, đếm tool trả phí) | 6% |
 
-3. **Compute confidence %** = share of the above fields that actually had real data (not null/missing). If confidence < 60%, segment is forced to `ICP-Unknown` regardless of score.
+3. **Compute confidence %** = share of the 8 criteria above that actually had real data (not null/missing). If confidence < 60%, segment is forced to `ICP-Unknown` regardless of score.
 
 4. **Segment:**
    - Confidence < 60% → `ICP-Unknown`
@@ -48,12 +51,14 @@ Always show the score breakdown, not just the tag — this is the whole point vs
 [shop_domain]
 ICP Score: 87/100 → ICP-High (confidence: 92%)
 
-- Shopify plan: Plus (100)
-- Chatty MRR: $118/mo (100)
-- Store scale: [từ StoreLeads hoặc fallback, ghi rõ nguồn]
-- Engagement: high_usage, 34 conversations/30d (100)
-- Support: 1 DFY ticket (100)
-- Maturity: 210 days, not trial (100)
+- Shopify plan: plus (100)
+- Traffic: 120K visits/tháng (100)
+- Quy mô DN: 60 nhân viên (100)
+- Đang trả tiền: $118/mo, không trial (100)
+- Đã dùng bao lâu: 210 ngày, không trial (100)
+- Đang thực sự dùng: high_usage, 34 conversations/30d (100)
+- Lịch sử ticket: 1 DFY ticket, không recurring (100)
+- Đối thủ/tool stack: Gorgias + Klaviyo (100)
 
 Gợi ý: [routing action theo segment, §3 trong spec — vd "ICP-High → ưu tiên SLA, cân nhắc offer discovery call"]
 ```

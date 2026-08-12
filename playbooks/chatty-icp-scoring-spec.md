@@ -18,24 +18,25 @@ Spec này **thay thế hoàn toàn** taxonomy đó bằng: **score 0-100 tính t
 
 ---
 
-## 1. Nguồn data — đã verify field thật (BigQuery `avada-crm.avada_product_dash.dash_merchant_360`, `app_id='avadaFaq'`)
+## 1. Nguồn data — 8 tiêu chí theo note Nexus, đã verify field thật 2026-08-12 (test trên `99bikescomau.myshopify.com`, Shopify Plus, $449 MRR)
 
-| Field | Ý nghĩa | Dùng cho |
+Note Nexus liệt kê 8 tiêu chí. Test lại từng cái bằng `merchant_profile` / `shop_profile` / `merchant_cs_history` (MCP `avada-analytic`) — **tất cả field đều tồn tại thật**, không cái nào phải bỏ. Gộp cả 8 vào **1 công thức duy nhất** để ra score sơ bộ ngay từ đầu (không tách riêng context-only) — 2 tiêu chí cuối (lịch sử ticket, đối thủ đang dùng) vẫn cộng vào điểm, nhưng weight thấp hơn vì bản chất là tín hiệu "cách trả lời cho đúng" hơn là "KH lớn hay nhỏ".
+
+| Tiêu chí | Field (đã verify) | Đọc thế nào |
 |---|---|---|
-| `shopify_plan` | Basic / Shopify / Advanced / Plus | Quy mô business |
-| `current_mrr`, `mrr`, `is_paying_now` | Đang trả Chatty bao nhiêu | Mức đầu tư vào Chatty |
-| `days_since_install`, `trial_flag` | Cài bao lâu, còn trial không | Độ trưởng thành quan hệ |
-| `chatty_conversations_30d`, `chatty_chat_to_sales_rate_30d`, `key_action_count_30d`, `usage_segment` | Mức dùng thật | Engagement |
-| `ticket_count`, `has_contacted_cs`, `dfy_ticket_count` | Lịch sử tương tác CS | Mức đầu tư quan hệ |
-| `gross_revenue_30d`, `net_revenue_30d`, `total_revenue` | Doanh thu Chatty tạo ra cho store (sales-attributed) | Giá trị Chatty đang tạo |
+| Shopify plan | `primary_plan` (từ `shop_profile`, giá trị chuẩn hoá `plus`/`advanced`/`grow`/`basic`) | `shopify_plan` thô có cả legacy code (`professional`/`unlimited`/`shopify_plus`) lẫn value mới — **dùng `primary_plan`**, không dùng field thô |
+| Traffic của store | `storeleads_profile.estimated_visits` | Visit/tháng. Traffic lớn = nhu cầu thực, mọi lỗi đều ảnh hưởng doanh thu họ |
+| Quy mô doanh nghiệp | `storeleads_profile.{employee_count, estimated_sales, monthly_app_spend}` | Chi cho app hằng tháng cao → có ngân sách, quen trả tiền cho công cụ tốt |
+| Đang trả tiền hay chưa | `current_mrr`/`mrr`, `is_paying_now`, `trial_flag` | Có MRR → khách thật. Đang trial → xử lý sớm, đừng dồn người vào ngay |
+| Đã dùng bao lâu | `days_since_install`, `installed_at` | Install <30 ngày mà plan cao → nhóm cần onboarding. Install lâu mà vẫn hỏi cơ bản → dấu hiệu chưa activate |
+| Đang thực sự dùng không | `activation_status`, `usage_segment`, `chatty_conversations_30d` | Có usage → yêu cầu xuất phát từ vận hành thật, không phải hỏi thăm dò |
+| Đã hỏi gì trước đây | `ticket_count`, `latest_subject` (từ `merchant_profile`) + full history qua `merchant_cs_history(shop_domain, app_id)` | Nhiều ticket cùng chủ đề chưa giải quyết → đừng trả lời như lần đầu. Có lịch sử tương tác (nhất là DFY) = mức đầu tư quan hệ cao hơn. `merchant_cs_history` trả `subject`, `description`, `ts_status`, `ticket_status`, `created_at` — đủ để so trùng chủ đề gần đây |
+| Đang dùng đối thủ/tool nào | `storeleads_profile.{app_names, technology_names}` | Trả cả list app đang cài (vd `Gorgias`, `Zendesk`, `BetterDocs`) — biết mình đang đứng cạnh ai khi tư vấn/offer, đồng thời số lượng tool trả phí đang dùng là tín hiệu phụ về mức trưởng thành vận hành |
 
-**Đã verify (test live 2026-08-12 trên `99bikescomau.myshopify.com`, Shopify Plus, $449 MRR):**
-- `shop_profile(shop_domain, app_id)` trả về `storeleads_profile.{estimated_sales, estimated_sales_yearly, estimated_visits, estimated_page_views, employee_count, monthly_app_spend, rank}` — traffic/quy mô store thật, dùng được cho tiêu chí "Store scale" ở §2.
-- `shop_profile` cũng trả `primary_plan` (giá trị chuẩn hoá: `plus`/`advanced`/`grow`/`basic`...) — sạch hơn field `shopify_plan` thô (có cả legacy value như `professional`/`unlimited`/`shopify_plus` lẫn value mới `Advanced`/`Grow`/`Plus`). **Dùng `primary_plan` làm nguồn chính cho tiêu chí Shopify plan tier**, không dùng `shopify_plan` thô.
-- ⚠️ `storeleads_profile` có thể null nếu StoreLeads không match được domain (`match_source` cho biết độ tin — không có nghĩa là luôn có data) → tính vào confidence %, không giả định luôn có.
+⚠️ `storeleads_profile` (dùng cho Traffic, Quy mô DN, và 2 tiêu chí cuối) có thể `null` nếu StoreLeads không match được domain — tính vào confidence %, không giả định luôn có data.
 
-**Không có, đã bỏ khỏi công thức:**
-- Ads spend (~"$3K+/month Meta/Google" mà SOP cũ hỏi qua chat) — không có trong data warehouse, không có nguồn data-driven thay thế → giữ lại như câu hỏi verify thủ công khi confidence thấp (ICP-Unknown), không đưa vào scoring tự động.
+**Không có, đã bỏ khỏi công thức (không tự động hoá được):**
+- Ads spend (~"$3K+/month Meta/Google" mà SOP cũ hỏi qua chat) — không có trong data warehouse, không có nguồn data-driven thay thế → giữ lại như câu hỏi verify thủ công khi confidence thấp (ICP-Unknown).
 
 ---
 
@@ -43,16 +44,18 @@ Spec này **thay thế hoàn toàn** taxonomy đó bằng: **score 0-100 tính t
 
 | Tiêu chí | Weight | Cách tính điểm (0-100 từng tiêu chí) |
 |---|---|---|
-| Shopify plan tier (`primary_plan`, KHÔNG dùng `shopify_plan` thô) | 25% | plus=100, advanced=75, grow=50, basic=25, không rõ=0 |
-| Mức đầu tư vào Chatty (`current_mrr`) | 20% | ≥$100=100, $40-99=70, $1-39=40, free/trial=10 |
-| Store scale (`storeleads_profile.estimated_visits` + `employee_count`) | 20% | visits ≥100k HOẶC employee ≥50=100; visits 10k-100k HOẶC employee 10-49=65; visits <10k HOẶC employee <10=35; `storeleads_profile` null=0 (tính vào confidence, không đoán) |
-| Engagement với Chatty (`chatty_conversations_30d`, `usage_segment`) | 15% | `usage_segment='high_usage'`=100, `active_usage`=60, `inactive_30d`=10 |
-| Support relationship (`ticket_count`, `dfy_ticket_count`) | 10% | có DFY ticket=100, có ticket thường (≥1)=60, chưa từng liên hệ=30 |
-| Business maturity (`days_since_install`, `trial_flag`) | 10% | ≥90 ngày & không trial=100, 30-89 ngày=60, <30 ngày hoặc đang trial=30 |
+| Shopify plan (`primary_plan`) | 20% | plus=100, advanced=75, grow=50, basic=25, không rõ=0 |
+| Traffic (`estimated_visits`) | 12% | ≥100k/tháng=100, 10k-100k=65, <10k=35, không có data=0 |
+| Quy mô doanh nghiệp (`employee_count`, `estimated_sales`, `monthly_app_spend`) | 13% | employee ≥50 HOẶC monthly_app_spend cao=100; employee 10-49=65; employee <10=35; không có data=0 |
+| Đang trả tiền (`current_mrr`, `is_paying_now`, `trial_flag`) | 20% | MRR ≥$100=100, $40-99=70, $1-39=40, trial/free=10 |
+| Đã dùng bao lâu (`days_since_install`, `trial_flag`) | 8% | ≥90 ngày & không trial=100, 30-89 ngày=60, <30 ngày hoặc đang trial=30 |
+| Đang thực sự dùng (`activation_status`, `usage_segment`, `chatty_conversations_30d`) | 15% | `usage_segment='high_usage'`=100, `active_usage`=60, `inactive_30d`=10 |
+| Lịch sử ticket (`ticket_count`, `dfy_ticket_count`, có recurring unresolved không) | 6% | có DFY ticket=100, có ticket đã resolve bình thường=70, có ticket đang lặp lại chưa xong=40, chưa từng liên hệ=50 (trung tính, không đủ tín hiệu) |
+| Đối thủ/tool stack (`app_names`/`technology_names` — đếm tool CS/marketing trả phí) | 6% | ≥2 tool trả phí (vd Gorgias/Zendesk/Klaviyo)=100, có 1=65, không thấy tool nào=35, không có `storeleads_profile`=0 |
 
-**Score tổng** = Σ(điểm tiêu chí × weight)
+**Score tổng** = Σ(điểm tiêu chí × weight) — cả 8 tiêu chí, không tách riêng nữa.
 
-**Confidence %** = tỷ lệ field có data thật / tổng field cần (nếu thiếu StoreLeads enrichment hoặc row `dash_merchant_360` không tồn tại → confidence thấp)
+**Confidence %** = tỷ lệ tiêu chí có data thật / 8 (thiếu StoreLeads enrichment hoặc row `dash_merchant_360` không tồn tại → confidence thấp)
 
 **Segment:**
 - Confidence < 60% → **`ICP-Unknown`** (bất kể score bao nhiêu — thiếu data không được đoán liều)
