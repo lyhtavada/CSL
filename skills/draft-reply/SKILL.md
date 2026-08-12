@@ -6,7 +6,7 @@ version: 1.0.0
 
 # Draft Reply Skill
 
-Draft customer-facing replies for Avada Support Team in Liz's voice.
+Draft customer-facing replies for Liz's voice. Always sign as the specific app's Support Team (Chatty or Joy) matching the case, never "Avada Support Team".
 
 ## Context
 
@@ -58,7 +58,7 @@ Do not use a subject line unless asked.
 ## Escalation Takeover (CS Leader stepping in)
 
 When Liz is stepping in on a difficult case:
-- Open: "Hi there, This is Liz from Avada Support Team. I've reviewed your case and I understand your frustration."
+- Open: "Hi there, This is Liz from [app] Support Team. I've reviewed your case and I understand your frustration." — [app] = Chatty or Joy, matching the app the case is about, never "Avada Support Team"
 - Take clear ownership: "Here's what we're going to do..."
 - Be specific about the resolution path — do not leave it vague
 - If refund is involved: only commit if Liz has already decided to approve it
