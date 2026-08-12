@@ -1,0 +1,20 @@
+{
+  "chatty": {
+    "last_slack_ts": null,
+    "last_gitlab_commit": {
+      "avada%2Favada-helpcenter-faqs": "537273ef34d471ba052acad6c69f3ff0f7b6bad8"
+    }
+  },
+  "joy": {
+    "last_slack_ts": null,
+    "last_gitlab_commit": {
+      "avada%2Fstarlink-team%2Fjoy": "dba2c7d3ff87366afb1606c5bee91f9cd5372317"
+    }
+  },
+  "wishlist": {
+    "last_slack_ts": null,
+    "last_gitlab_commit": {
+      "avada%2Fstarlink-team%2Fwishlist": "e370f6daaa34ae317b7888a3680a4f76ac58716e"
+    }
+  }
+}

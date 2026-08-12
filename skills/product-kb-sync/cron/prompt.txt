@@ -1,0 +1,34 @@
+Run the /product-kb-sync skill in DIFF-ONLY mode for chatty and joy (skip
+wishlist — pre-launch, low priority, only run it if Liz explicitly asks).
+
+For each app:
+1. cd ~/CSL/skills/product-kb-sync/scripts
+2. python3 fetch_slack.py <app>
+3. python3 fetch_gitlab.py <app>
+4. Read the fetched signals. For GitLab diffs on a noisy path (see `notes`
+   field in config.py per app), filter out non-copy/nav changes first.
+5. Run ~/CSL/skills/kb-sync/scripts/prep.py <app> to cache the live KB.
+6. Classify each surviving item COVERED / OUTDATED / GAP / PARTIAL against
+   the cached KB (verify every discrepancy against the real cached file).
+7. Build payloads for OUTDATED/GAP/PARTIAL items at
+   reports/analysis/product-kb-sync-<app>-<date>-payloads.json
+   (full new file content per entry, English, per-Heading self-contained,
+   default kb/case or kb/faq — see SKILL.md for the full patch rules).
+
+DO NOT push to v2, DO NOT reindex, DO NOT update state/last_sync.json — this
+is a review-gate run only. State advances after Liz reviews (manual step,
+see SKILL.md step 7), not automatically here.
+
+When both apps are done, send Liz a Telegram digest per app via the shared
+notifier:
+  python3 ~/CSL/skills/_shared/notify_tele.py --job "Product KB Sync — {App}" --status ok --summary "<digest text>"
+<digest text> = # OUTDATED / # GAP / # PARTIAL, the top items with a 1-line
+reason each, and the payloads file path — end with the push command for her
+to run after review:
+  python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>
+If nothing worth patching this run, say so plainly (don't send a digest
+implying there's something to review) and still leave a note that Betty will
+advance state for both apps.
+
+Keep each digest under ~1200 characters. Do not commit anything to the repo
+except the payloads + a brief note under reports/analysis/.

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.avada.product-kb-sync</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/avada/CSL/skills/product-kb-sync/cron/run-twice-weekly.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/avada/CSL</string>
+
+  <!-- Tuesday and Friday at 10:00 local — spread across the week, avoids
+       Monday (already loaded with cs-weekly/ceo-weekly/kb-sync) and doesn't
+       collide with mine-faqs (Tue 11:00) or dfy-weekly-chatty (Fri 16:30).
+       StartCalendarInterval accepts an array of dicts for multiple firings. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict>
+      <key>Weekday</key>
+      <integer>2</integer>
+      <key>Hour</key>
+      <integer>10</integer>
+      <key>Minute</key>
+      <integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key>
+      <integer>5</integer>
+      <key>Hour</key>
+      <integer>10</integer>
+      <key>Minute</key>
+      <integer>0</integer>
+    </dict>
+  </array>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/product-kb-sync.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/product-kb-sync.log</string>
+</dict>
+</plist>
