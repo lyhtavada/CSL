@@ -13,6 +13,12 @@ participation, and internal communication issues, plus repeated late
 check-ins. Tracker sheet:
 https://docs.google.com/spreadsheets/d/1-KrG3RlFaSLDGKVJWWm3nK-Ow48lHuiwSUanBYlg_zI/edit
 
+**Pass/fail bar (set 2026-08-15):** Criteria 1, 2, 4, 5, 6 (SLA, Ticket
+Follow-up, Team Participation, Internal Communication, Check-in muộn) are
+basic job requirements — must hit **100%, zero errors**, no partial credit.
+Criteria 3 (DFY) and 7 (ONB) are flexible/lenient — Liz's read is these
+depend on merchant situation, not purely on VanCT's effort.
+
 The sheet has **one tab, "Overview"** — a flat table where each target is its
 own row (grouped/merged by criterion), and 4 columns (Tuần 1–4) hold weekly
 actuals. **7 criteria total; 4 of them have a data source** and are
