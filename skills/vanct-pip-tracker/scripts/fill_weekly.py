@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Weekly auto-fill for VanCT's 1-month PIP tracker (Google Sheet "Overview" tab).
-Pulls data-backed metrics for the CURRENT challenge week (Mon of that week ->
-run time) and writes them into the matching Tuần-N column:
+Runs Monday morning, reports the FULL week that just ended (Mon->Sun), and
+writes into the matching Tuần-N column:
 
   - SLA / first response time     <- BigQuery avada_cs.crisp_chats (agentEmail=vanct)
   - DFY task completion (count)   <- Avada Ticket API (dueDateDone=true, creator=VanCT)
@@ -88,9 +88,11 @@ def api_get(env, path, retries=3):
     raise last
 
 
-def week_index_for(today):
+def completed_week_index(today):
+    """Runs Monday morning -> report the week that ended yesterday (Sunday)."""
+    yesterday = today - dt.timedelta(days=1)
     for i, (s, e) in enumerate(WEEKS):
-        if s <= today <= e:
+        if e == yesterday:
             return i
     return None
 
@@ -265,13 +267,13 @@ def fetch_checkin(env, week_start, week_end_capped):
 def main():
     env = load_env()
     today = dt.datetime.now(VN).date()
-    idx = week_index_for(today)
+    idx = completed_week_index(today)
     if idx is None:
-        print(f"Today {today} is outside the 4-week challenge window (2026-08-17 -> 2026-09-13) — nothing to fill.")
+        print(f"Today {today} is not the Monday right after a challenge week ended — nothing to fill.")
         return
 
     week_start, week_end = WEEKS[idx]
-    week_end_capped = min(today, week_end)
+    week_end_capped = week_end  # full week already elapsed by Monday
     col = WEEK_COL[idx]
 
     dfy_count, dfy_task_pct, dfy_followup_ok, dfy_followup_total = fetch_dfy(env, week_start, week_end_capped)

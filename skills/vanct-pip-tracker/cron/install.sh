@@ -27,12 +27,12 @@ launchctl unload "$DEST" 2>/dev/null || true
 ln -sf "$SRC" "$DEST"
 launchctl load "$DEST"
 
-echo "Installed $LABEL → runs every Friday at 09:00 local."
+echo "Installed $LABEL → runs every Monday at 11:00 local (reports the week that just ended)."
 echo "  plist (source): $SRC"
 echo "  symlink:        $DEST"
 echo "  log:            /tmp/vanct-pip-tracker-weekly.log"
 echo
-echo "Test now without waiting for Friday:"
+echo "Test now without waiting for Monday:"
 echo "  launchctl start $LABEL"
 echo "  # or run the script directly:"
 echo "  bash $HERE/run-weekly.sh"

@@ -1,8 +1,9 @@
 #!/bin/bash
 #
 # Weekly VanCT PIP tracker run — invoked by launchd (com.avada.vanct-pip-tracker-weekly).
-# Pulls SLA / DFY / check-in muộn for the current challenge week and writes
-# them straight into the Google Sheet ("Overview" tab), no LLM step needed.
+# Runs Monday 11:00, reports the FULL week that just ended (SLA / DFY / ONB /
+# check-in muộn), and writes straight into the Google Sheet ("Overview" tab),
+# no LLM step needed.
 #
 # Manual run: bash run-weekly.sh
 #

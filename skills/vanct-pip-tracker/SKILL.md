@@ -1,7 +1,7 @@
 ---
 name: vanct-pip-tracker
-description: Weekly auto-fill for VanCT's 1-month performance improvement tracker (Google Sheet). Pulls SLA/response time (BigQuery crisp_chats), DFY task completion (Avada Ticket API), and check-in muộn (Admin shifts API) for the current challenge week and writes them into the "Overview" tab. Runs every Friday 09:00 via launchd.
-version: 1.0.0
+description: Weekly auto-fill for VanCT's 1-month performance improvement tracker (Google Sheet). Pulls SLA/response time (BigQuery crisp_chats), DFY task completion + ONB tickets (Avada Ticket API), and check-in muộn (Admin shifts API) for the week that just ended and writes them into the "Overview" tab. Runs every Monday 11:00 via launchd.
+version: 1.1.0
 ---
 
 # VanCT PIP Tracker (Weekly)
@@ -55,16 +55,23 @@ on `DFY-following-up`.
 - **DFY count** = tickets with `subject` starting `[DFY]`, `appName="JOY Loyalty"`,
   `dueDateDone=true`, creator=VanCT (`displayName` normalizes to `audrey`/`Audrey`),
   `tsStatus != "sale_request"`, created within the week's date range. Since
-  `dueDate` = createdAt + 2 days, a ticket created right before the Friday
-  run may not show `dueDateDone=true` yet even if VanCT is on track — this is
-  a rolling/partial-week snapshot, not a final count until the week is over.
+  `dueDate` = createdAt + 2 days, a ticket created right at the end of the
+  week could in theory still flip to `dueDateDone=true` a day or two after
+  the Monday run — a small lag, but the run happens a full week after the
+  week started so almost all of it has already settled by then.
+- **Follow-up target changed 2026-08-15**: `DFY-following-up` now also counts
+  as "có tag rõ ràng" (not just `DFY-adopted`/`DFY-no-adopt`) — the bar is
+  "has a tracked follow-up status at all", not "fully resolved".
+- **DFY ticket-count target changed 2026-08-15**: flat numbers, not a
+  ticket/week rate — Tuần 1: 2 ticket, Tuần 2–4: 3 ticket/tuần each.
 
 ## Weekly run (launchd)
 
-Runs every **Friday at 09:00** local time (`com.avada.vanct-pip-tracker-weekly`),
-computing metrics for **Monday of the current challenge week through the run
-time** (a partial-week snapshot, since Friday morning is before the week ends
-Sunday) and writing them into that week's column.
+Runs every **Monday at 11:00** local time (`com.avada.vanct-pip-tracker-weekly`),
+reporting the **full week that just ended** (Mon→Sun) and writing it into
+that week's column. The first run that produces data is the Monday right
+after Tuần 1 ends (i.e. 2026-08-24, reporting 17–23/08) — running on
+2026-08-17 itself has nothing to report yet and is a no-op.
 
 - Script: `skills/vanct-pip-tracker/scripts/fill_weekly.py` — no LLM step,
   pure Python (BigQuery + REST + Sheets API), run directly via `.venv-crisp/bin/python`.

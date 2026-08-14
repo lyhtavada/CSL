@@ -14,13 +14,13 @@
   <key>WorkingDirectory</key>
   <string>/Users/avada/CSL</string>
 
-  <!-- Every Friday at 09:00 local time. -->
+  <!-- Every Monday at 11:00 local time — reports the week that just ended. -->
   <key>StartCalendarInterval</key>
   <dict>
     <key>Weekday</key>
-    <integer>5</integer>
+    <integer>1</integer>
     <key>Hour</key>
-    <integer>9</integer>
+    <integer>11</integer>
     <key>Minute</key>
     <integer>0</integer>
   </dict>
