@@ -164,7 +164,7 @@ def fetch_dfy(env, week_start, week_end_capped):
     followup_ok = 0
     for t in done:
         names = {tag_map.get(tid) for tid in t.get("tagIds", [])}
-        if "DFY-adopted" in names or "DFY-no-adopt" in names:
+        if names & {"DFY-following-up", "DFY-adopted", "DFY-no-adopt"}:
             followup_ok += 1
 
     return count, avg_task_pct, followup_ok, count
@@ -283,7 +283,7 @@ def main():
     sla_over30_str = f"{sla_over30} case >30p"
     dfy_str = f"{dfy_count} ticket dueDateDone"
     dfy_task_pct_str = f"{dfy_task_pct}% task hoàn thành TB ({dfy_count} ticket)" if dfy_task_pct is not None else "Chưa có ticket dueDateDone tuần này"
-    dfy_followup_str = f"{dfy_followup_ok}/{dfy_followup_total} ticket có follow-up tag đầy đủ" if dfy_followup_total else "Chưa có ticket dueDateDone tuần này"
+    dfy_followup_str = f"{dfy_followup_ok}/{dfy_followup_total} ticket có tag follow-up rõ ràng" if dfy_followup_total else "Chưa có ticket dueDateDone tuần này"
     onb_str = f"{onb_count} ticket ONB"
     checkin_str = f"{late10} lần muộn >10p (raw check-in, chưa qua duyệt penalty log)"
     checkin_ss11b_str = f"{late20} lần >20p (~SS11b)" if late20 else "0 lần >20p"
