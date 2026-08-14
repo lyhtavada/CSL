@@ -52,9 +52,10 @@ ROW_SLA_30P = 7
 ROW_DFY_BASE = 10  # +week_idx -> row for that week's DFY ticket-count target (rows 10-13)
 ROW_DFY_TASK_PCT = 14
 ROW_DFY_FOLLOWUP = 15
-ROW_CHECKIN_10P = 19
-ROW_CHECKIN_20P = 20
-ROW_ONB = 21
+# rows 16-18 = Team Participation (3 rows, manual)
+ROW_CHECKIN_10P = 20
+ROW_CHECKIN_20P = 21
+ROW_ONB = 22
 
 
 def load_env():

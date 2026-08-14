@@ -29,12 +29,15 @@ auto-filled:
 | 1 | SLA / Response Time | BigQuery `avada-crm.avada_cs.crisp_chats` | 6 (first-msg ≤2p %), 7 (ongoing-msg ≤10p %) |
 | 2 | Product Knowledge | **LLM step** (headless Claude), reuses `/qa-weekly`'s Knowledge axis, verified against live Joy KB on cs2.avada.net | 8 |
 | 4 | DFY Task Completion | Avada Ticket API `/api/external/tickets/by-date` | 10–13 (ticket count, one row per challenge week — only the matching week's row+column gets filled), 14 (avg % checklist tasks done per dueDateDone ticket), 15 (% tickets with a follow-up tag) |
-| 8 | ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 21 |
-| 7 | Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 19 (>10p count), 20 (>20p count, ~SS11b proxy) |
+| 8 | ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 22 |
+| 7 | Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 20 (>10p count), 21 (>20p count, ~SS11b proxy) |
 
-The other 3 (Ticket Follow-up row 9, Team Participation rows 16–17, Internal
-Communication row 18) are **qualitative — Liz fills by hand**, no API/log
-exists for "leader had to follow up" or "missed a Slack message".
+The other 3 (Ticket Follow-up row 9, Team Participation rows 16–18, Internal
+Communication row 19) are **qualitative — Liz fills by hand**, no API/log
+exists for "leader had to follow up" or "missed a Slack message". Team
+Participation is 3 rows as of 2026-08-15: 100% meeting attendance, ≥1h
+advance notice to leader if can't attend, and react/respond to relevant
+announcements within 24h.
 
 **Product Knowledge (criterion #2) is not a pure data pull** — it needs an
 LLM to actually read VanCT's chat transcripts and judge whether what she
