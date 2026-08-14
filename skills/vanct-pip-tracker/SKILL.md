@@ -1,7 +1,7 @@
 ---
 name: vanct-pip-tracker
-description: Weekly auto-fill for VanCT's 1-month performance improvement tracker (Google Sheet). Pulls SLA/response time (BigQuery crisp_chats), DFY task completion + ONB tickets (Avada Ticket API), and check-in muộn (Admin shifts API) for the week that just ended and writes them into the "Overview" tab. Runs every Monday 11:00 via launchd.
-version: 1.1.0
+description: Weekly auto-fill for VanCT's 1-month performance improvement tracker (Google Sheet). Pulls SLA/response time (BigQuery crisp_chats), DFY task completion + ONB tickets (Avada Ticket API), and check-in muộn (Admin shifts API) for the week that just ended and writes them into the "Overview" tab. Runs every Monday 11:00 via launchd. Product Knowledge is a separate manual step Liz runs herself (not on cron).
+version: 1.2.0
 ---
 
 # VanCT PIP Tracker (Weekly)
@@ -50,19 +50,33 @@ Participation is 3 rows as of 2026-08-15: 100% meeting attendance, ≥1h
 advance notice to leader if can't attend, and react/respond to relevant
 announcements within 24h.
 
-**Product Knowledge (criterion #2) is not a pure data pull** — it needs an
-LLM to actually read VanCT's chat transcripts and judge whether what she
-told merchants matches the live KB, so it can't live in `fill_weekly.py`.
-It runs as a separate headless-Claude step (`prompt_knowledge_check.txt`),
-reusing `skills/qa-weekly/scripts/fetch_sessions.py` +
-`fetch_transcripts.py` + `fetch_kb.py` to pull VanCT's week and the relevant
-Joy KB docs, then grading for factual errors only (not tone/process — those
-are separate criteria) and writing the error count + a one-line note per
-error straight into row 7 of the matching week's column. The sheet's target
-cell text was shortened 2026-08-15 to just "0 lỗi kiến thức sai/tuần trong
-chat" (dropped the "chấm bằng KB cs2.avada.net..." explainer as redundant
-with this doc) — **the cron prompt still grades against the KB exactly as
-before**, only the sheet's displayed target text got shorter.
+**Product Knowledge (criterion #2) is not a pure data pull, and is NOT on
+cron (changed 2026-08-15).** It needs an LLM to actually read VanCT's chat
+transcripts and judge whether what she told merchants matches the live KB —
+Liz decided this should stay a manual, reviewed step rather than run
+unsupervised every Monday: a misread would silently land in the sheet with
+no one checking it same-day, and the run itself burns real subscription
+quota (not API billing, but it counts against the weekly Claude Code usage
+cap) at a time Liz doesn't control. So `run-weekly.sh` (the cron job) only
+runs `fill_weekly.py` — it does NOT touch row 7.
+
+To grade Product Knowledge, Liz (or Betty in a live session) runs it by hand
+whenever convenient, e.g. during the Monday review:
+
+```
+claude -p "$(cat skills/vanct-pip-tracker/cron/prompt_knowledge_check.txt)"
+```
+
+The prompt (`prompt_knowledge_check.txt`) reuses
+`skills/qa-weekly/scripts/fetch_sessions.py` + `fetch_transcripts.py` +
+`fetch_kb.py` to pull VanCT's week and the relevant Joy KB docs, grades for
+factual errors only (not tone/process — those are separate criteria), and
+writes the error count + a one-line note per error straight into row 7 of
+the matching week's column — same logic as before, just triggered by hand
+instead of by launchd. The sheet's target cell text was shortened 2026-08-15
+to just "0 lỗi kiến thức sai/tuần trong chat" (dropped the "chấm bằng KB
+cs2.avada.net..." explainer as redundant with this doc) — the grading logic
+itself is unchanged, only the sheet's displayed target text got shorter.
 
 Added 2026-08-14, after the team launched a new Joy onboarding flow: Liz
 wants VanCT to create ≥1 `[ONB]` ticket/week for a new merchant (criterion
@@ -114,15 +128,13 @@ that week's column. The first run that produces data is the Monday right
 after Tuần 1 ends (i.e. 2026-08-24, reporting 17–23/08) — running on
 2026-08-17 itself has nothing to report yet and is a no-op.
 
-`run-weekly.sh` does two steps:
-1. `fill_weekly.py` — pure Python (BigQuery + REST + Sheets API), no LLM,
-   fills SLA / DFY / ONB / check-in muộn.
-2. `prompt_knowledge_check.txt` via headless `claude -p` — reads VanCT's
-   chats for the week and grades Product Knowledge against the live KB
-   (cs2.avada.net, same source `/qa-weekly` uses), writes directly to row 7.
+`run-weekly.sh` only runs `fill_weekly.py` — pure Python (BigQuery + REST +
+Sheets API), no LLM, fills SLA / DFY / ONB / check-in muộn (rows 5–6, 9–14,
+19, 20). **Product Knowledge (row 7) is intentionally NOT part of this cron**
+— see the section above, run `prompt_knowledge_check.txt` by hand instead.
 
-- Cron source: `skills/vanct-pip-tracker/cron/` (plist + `run-weekly.sh` + `prompt_knowledge_check.txt` + `install.sh`)
-- Install once (Liz runs in Terminal): `bash ~/CSL/skills/vanct-pip-tracker/cron/install.sh`
+- Cron source: `skills/vanct-pip-tracker/cron/` (plist + `run-weekly.sh` + `install.sh`; `prompt_knowledge_check.txt` lives here too but is run manually, not by launchd)
+- Installed (2026-08-15): `com.avada.vanct-pip-tracker-weekly` is loaded — confirm with `launchctl list | grep vanct`
 - Log: `/tmp/vanct-pip-tracker-weekly.log`
 - After the challenge ends (2026-09-13), unload the job: `bash ~/CSL/skills/vanct-pip-tracker/cron/install.sh --remove`
 
