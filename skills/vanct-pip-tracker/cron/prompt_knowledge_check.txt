@@ -92,7 +92,7 @@ identifiable snippet), what she said, what the KB actually says.
 === Step 5: write the result into the sheet ===
 
 Sheet ID: 1-KrG3RlFaSLDGKVJWWm3nK-Ow48lHuiwSUanBYlg_zI, tab "Overview".
-The Product Knowledge target row is **row 8**. The column is whatever
+The Product Knowledge target row is **row 7**. The column is whatever
 Step 1 printed as `col` (one of E/F/G/H for Tuần 1-4).
 
 Write a short cell value like:
@@ -106,7 +106,7 @@ from gapi.client import sheets
 svc = sheets()
 svc.spreadsheets().values().update(
     spreadsheetId='1-KrG3RlFaSLDGKVJWWm3nK-Ow48lHuiwSUanBYlg_zI',
-    range='Overview!<col>8',
+    range='Overview!<col>7',
     valueInputOption='USER_ENTERED',
     body={'values': [['<your written value here>']]}
 ).execute()

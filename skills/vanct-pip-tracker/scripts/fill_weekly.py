@@ -45,17 +45,17 @@ WEEKS = [
 ]
 WEEK_COL = ["E", "F", "G", "H"]
 
-ROW_SLA_10P = 6
-ROW_SLA_30P = 7
-# Row 8 = Product Knowledge — graded by an LLM step (qa-weekly Knowledge-axis
-# reused, scoped to VanCT), NOT this script. See knowledge_check.py.
-ROW_DFY_BASE = 10  # +week_idx -> row for that week's DFY ticket-count target (rows 10-13)
-ROW_DFY_TASK_PCT = 14
-ROW_DFY_FOLLOWUP = 15
-# rows 16-18 = Team Participation (3 rows, manual)
-# row 19 = Internal Communication (manual)
-ROW_CHECKIN = 20  # single row since 2026-08-15 (SS11b breakout row was dropped)
-ROW_ONB = 21
+ROW_SLA_10P = 5
+ROW_SLA_30P = 6
+# Row 7 = Product Knowledge — graded by an LLM step (qa-weekly Knowledge-axis
+# reused, scoped to VanCT), NOT this script. See prompt_knowledge_check.txt.
+ROW_DFY_BASE = 9  # +week_idx -> row for that week's DFY ticket-count target (rows 9-12)
+ROW_DFY_TASK_PCT = 13
+ROW_DFY_FOLLOWUP = 14
+# rows 15-17 = Team Participation (3 rows, manual)
+# row 18 = Internal Communication (manual)
+ROW_CHECKIN = 19  # single row since 2026-08-15 (SS11b breakout row was dropped)
+ROW_ONB = 20
 
 
 def load_env():
