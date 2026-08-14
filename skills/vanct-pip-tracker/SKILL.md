@@ -13,42 +13,54 @@ participation, and internal communication issues, plus repeated late
 check-ins. Tracker sheet:
 https://docs.google.com/spreadsheets/d/1-KrG3RlFaSLDGKVJWWm3nK-Ow48lHuiwSUanBYlg_zI/edit
 
-Row 2 ("Bối cảnh:") was deleted 2026-08-15 — Liz dropped the free-text
-context blurb, keeping just row 1 (title) and the "Kỳ thử thách:" row before
-the header row. **This shifted every row below up by 1** — if you're
-resuming from an older version of this doc or a stale memory, the row
-numbers below are the current ones; anything referencing the pre-2026-08-15
-numbering is off by one.
+Row numbering has moved twice on 2026-08-15 — once when the "Bối cảnh:" row
+was deleted (everything shifted up 1), again when criterion #4 (Số
+chat/ca trực) was inserted (everything from DFY down shifted down 1). **The
+numbers below are current as of that second change.** If resuming from a
+stale memory/doc snapshot, don't trust old row numbers — re-read the sheet.
 
-**Pass/fail bar (set 2026-08-15, all in ONE merged cell, row 22 —
+**Pass/fail bar (all in ONE merged cell, row 23 —
 `Ngưỡng đạt/không đạt: ...`, referenced by criterion number only, no full
-names):** Criteria **1, 3, 5, 6, 7** (SLA, Ticket Follow-up, Team
-Participation, Internal Communication, Check-in muộn) are basic job
-requirements — must hit **100%, zero errors**, no partial credit. Criteria
-**4, 8** (DFY, ONB) are flexible/lenient — depend on merchant situation, not
-purely on VanCT's effort. Criterion **2** (Product Knowledge) — a wrong
-answer is serious and should trend to 0, but judge it with context (hard
-case / new topic), not a strict pass/fail like the others.
+names):** Criteria **1, 3, 4, 6, 7, 8** (SLA, Ticket Follow-up, Số chat/ca
+trực, Team Participation, Internal Communication, Check-in muộn) are basic
+job requirements — must hit **100%, zero errors**, no partial credit.
+Criteria **5, 9** (DFY, ONB) are flexible/lenient — depend on merchant
+situation, not purely on VanCT's effort. Criterion **2** (Product Knowledge)
+— a wrong answer is serious and should trend to 0, but judge it with context
+(hard case / new topic), not a strict pass/fail like the others.
 
 The sheet has **one tab, "Overview"** — a flat table where each target is its
 own row (grouped/merged by criterion), and 4 columns (Tuần 1–4) hold weekly
-actuals. **8 criteria total; 5 of them have a data source** and are
+actuals. **9 criteria total; 5 of them have a data source** and are
 auto-filled:
 
 | # | Criterion | Source | Row(s) |
 |---|---|---|---|
 | 1 | SLA / Response Time | BigQuery `avada-crm.avada_cs.crisp_chats` | 5 (first-msg ≤2p %), 6 (ongoing-msg ≤10p %) |
-| 2 | Product Knowledge | **LLM step** (headless Claude), reuses `/qa-weekly`'s Knowledge axis, verified against live Joy KB on cs2.avada.net | 7 |
-| 4 | DFY Task Completion | Avada Ticket API `/api/external/tickets/by-date` | 9–12 (ticket count, one row per challenge week — only the matching week's row+column gets filled), 13 (avg % checklist tasks done per dueDateDone ticket, within the 48h SLA), 14 (% tickets with a follow-up tag) |
-| 7 | Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 19 (single row since 2026-08-15 — the SS11b >20p breakout row was dropped; if late20 > 0 it's appended as a suffix inside the same cell text instead) |
-| 8 | ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 20 |
+| 2 | Product Knowledge | **LLM step** (headless Claude, run BY HAND — see below), reuses `/qa-weekly`'s Knowledge axis, verified against live Joy KB on cs2.avada.net | 7 |
+| 5 | DFY Task Completion | Avada Ticket API `/api/external/tickets/by-date` | 10–13 (ticket count, one row per challenge week — only the matching week's row+column gets filled), 14 (avg % checklist tasks done per dueDateDone ticket, within the 48h SLA), 15 (% tickets with a follow-up tag) |
+| 8 | Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 20 (single row since 2026-08-15 — the SS11b >20p breakout row was dropped; if late20 > 0 it's appended as a suffix inside the same cell text instead) |
+| 9 | ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 21 |
 
-The other 3 (Ticket Follow-up row 8, Team Participation rows 15–17, Internal
-Communication row 18) are **qualitative — Liz fills by hand**, no API/log
-exists for "leader had to follow up" or "missed a Slack message". Team
-Participation is 3 rows as of 2026-08-15: 100% meeting attendance, ≥1h
-advance notice to leader if can't attend, and react/respond to relevant
-announcements within 24h.
+The other 4 (Ticket Follow-up row 8, **Số chat/ca trực row 9** — see below,
+Team Participation rows 16–18, Internal Communication row 19) are
+**qualitative/manual — Liz fills by hand**, no automated source (or none
+usable in an unattended cron). Team Participation is 3 rows as of
+2026-08-15: 100% meeting attendance, ≥1h advance notice to leader if can't
+attend, and react/respond to relevant announcements within 24h.
+
+**Số chat/ca trực (criterion #4, added 2026-08-15) is manual, not on cron.**
+Target: hit `minRequirementPct` (a per-shift dynamic threshold based on how
+many CS were on that shift) every shift, i.e. never flagged `belowMin`.
+Real source exists — `GET https://crm.avada.net/api/conversations/shiftSummary
+?startDate=...&endDate=...&groupId=j4qbHFJqlBRL4R3aIzYT&env=production&appType=joy`
+(found via Chrome DevTools Network tab on crm.avada.net/conversation > Shift
+Summary tab) — but it authenticates via an `X-Auth-Token` header that is a
+short-lived Firebase ID token tied to Liz's own browser session (~1h expiry),
+**not** a stable service credential like `AVD_TOKEN`. Cannot be hardcoded
+into a weekly cron script. Liz checks this manually in the CRM UI each week
+until dev/backend issues a proper service-level API key for this endpoint —
+worth asking for if this criterion proves durable past the PIP.
 
 **Product Knowledge (criterion #2) is not a pure data pull, and is NOT on
 cron (changed 2026-08-15).** It needs an LLM to actually read VanCT's chat
@@ -80,7 +92,7 @@ itself is unchanged, only the sheet's displayed target text got shorter.
 
 Added 2026-08-14, after the team launched a new Joy onboarding flow: Liz
 wants VanCT to create ≥1 `[ONB]` ticket/week for a new merchant (criterion
-#8), plus deeper DFY tracking beyond the raw dueDateDone count — how much of
+#9), plus deeper DFY tracking beyond the raw dueDateDone count — how much of
 each ticket's checklist actually got done, and whether merchant follow-up
 was closed out (tagged `DFY-adopted`/`DFY-no-adopt`) rather than left hanging
 on `DFY-following-up`.
@@ -129,9 +141,12 @@ after Tuần 1 ends (i.e. 2026-08-24, reporting 17–23/08) — running on
 2026-08-17 itself has nothing to report yet and is a no-op.
 
 `run-weekly.sh` only runs `fill_weekly.py` — pure Python (BigQuery + REST +
-Sheets API), no LLM, fills SLA / DFY / ONB / check-in muộn (rows 5–6, 9–14,
-19, 20). **Product Knowledge (row 7) is intentionally NOT part of this cron**
-— see the section above, run `prompt_knowledge_check.txt` by hand instead.
+Sheets API), no LLM, fills SLA / DFY / ONB / check-in muộn (rows 5–6, 10–15,
+20, 21). **Product Knowledge (row 7) and Số chat/ca trực (row 9) are
+intentionally NOT part of this cron** — Product Knowledge because it needs
+LLM judgment Liz wants reviewed, Số chat/ca trực because its only known API
+needs a login-session token that expires in ~1h. Both are manual, checked by
+Liz (or Betty on request) each week — see the sections above.
 
 - Cron source: `skills/vanct-pip-tracker/cron/` (plist + `run-weekly.sh` + `install.sh`; `prompt_knowledge_check.txt` lives here too but is run manually, not by launchd)
 - Installed (2026-08-15): `com.avada.vanct-pip-tracker-weekly` is loaded — confirm with `launchctl list | grep vanct`
