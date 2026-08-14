@@ -47,12 +47,14 @@ WEEK_COL = ["E", "F", "G", "H"]
 
 ROW_SLA_10P = 6
 ROW_SLA_30P = 7
-ROW_DFY_BASE = 9  # +week_idx -> row for that week's DFY ticket-count target (rows 9-12)
-ROW_DFY_TASK_PCT = 13
-ROW_DFY_FOLLOWUP = 14
-ROW_CHECKIN_10P = 18
-ROW_CHECKIN_20P = 19
-ROW_ONB = 20
+# Row 8 = Product Knowledge — graded by an LLM step (qa-weekly Knowledge-axis
+# reused, scoped to VanCT), NOT this script. See knowledge_check.py.
+ROW_DFY_BASE = 10  # +week_idx -> row for that week's DFY ticket-count target (rows 10-13)
+ROW_DFY_TASK_PCT = 14
+ROW_DFY_FOLLOWUP = 15
+ROW_CHECKIN_10P = 19
+ROW_CHECKIN_20P = 20
+ROW_ONB = 21
 
 
 def load_env():

@@ -21,19 +21,30 @@ depend on merchant situation, not purely on VanCT's effort.
 
 The sheet has **one tab, "Overview"** — a flat table where each target is its
 own row (grouped/merged by criterion), and 4 columns (Tuần 1–4) hold weekly
-actuals. **7 criteria total; 4 of them have a data source** and are
+actuals. **8 criteria total; 5 of them have a data source** and are
 auto-filled:
 
-| Criterion | Source | Row(s) |
-|---|---|---|
-| SLA / Response Time | BigQuery `avada-crm.avada_cs.crisp_chats` | 6 (≤10p %), 7 (>30p count) |
-| DFY Task Completion | Avada Ticket API `/api/external/tickets/by-date` | 9–12 (ticket count, one row per challenge week — only the matching week's row+column gets filled), 13 (avg % checklist tasks done per dueDateDone ticket), 14 (% tickets with a resolved follow-up tag) |
-| ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 20 |
-| Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 18 (>10p count), 19 (>20p count, ~SS11b proxy) |
+| # | Criterion | Source | Row(s) |
+|---|---|---|---|
+| 1 | SLA / Response Time | BigQuery `avada-crm.avada_cs.crisp_chats` | 6 (first-msg ≤2p %), 7 (ongoing-msg ≤10p %) |
+| 2 | Product Knowledge | **LLM step** (headless Claude), reuses `/qa-weekly`'s Knowledge axis, verified against live Joy KB on cs2.avada.net | 8 |
+| 4 | DFY Task Completion | Avada Ticket API `/api/external/tickets/by-date` | 10–13 (ticket count, one row per challenge week — only the matching week's row+column gets filled), 14 (avg % checklist tasks done per dueDateDone ticket), 15 (% tickets with a follow-up tag) |
+| 8 | ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 21 |
+| 7 | Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 19 (>10p count), 20 (>20p count, ~SS11b proxy) |
 
-The other 3 (Ticket Follow-up row 8, Team Participation rows 15–16, Internal
-Communication row 17) are **qualitative — Liz fills by hand**, no API/log
+The other 3 (Ticket Follow-up row 9, Team Participation rows 16–17, Internal
+Communication row 18) are **qualitative — Liz fills by hand**, no API/log
 exists for "leader had to follow up" or "missed a Slack message".
+
+**Product Knowledge (criterion #2) is not a pure data pull** — it needs an
+LLM to actually read VanCT's chat transcripts and judge whether what she
+told merchants matches the live KB, so it can't live in `fill_weekly.py`.
+It runs as a separate headless-Claude step (`prompt_knowledge_check.txt`),
+reusing `skills/qa-weekly/scripts/fetch_sessions.py` +
+`fetch_transcripts.py` + `fetch_kb.py` to pull VanCT's week and the relevant
+Joy KB docs, then grading for factual errors only (not tone/process — those
+are separate criteria) and writing the error count + a one-line note per
+error straight into row 8 of the matching week's column.
 
 Added 2026-08-14, after the team launched a new Joy onboarding flow: Liz
 wants VanCT to create ≥1 `[ONB]` ticket/week for a new merchant (criterion
@@ -85,9 +96,14 @@ that week's column. The first run that produces data is the Monday right
 after Tuần 1 ends (i.e. 2026-08-24, reporting 17–23/08) — running on
 2026-08-17 itself has nothing to report yet and is a no-op.
 
-- Script: `skills/vanct-pip-tracker/scripts/fill_weekly.py` — no LLM step,
-  pure Python (BigQuery + REST + Sheets API), run directly via `.venv-crisp/bin/python`.
-- Cron source: `skills/vanct-pip-tracker/cron/` (plist + `run-weekly.sh` + `install.sh`)
+`run-weekly.sh` does two steps:
+1. `fill_weekly.py` — pure Python (BigQuery + REST + Sheets API), no LLM,
+   fills SLA / DFY / ONB / check-in muộn.
+2. `prompt_knowledge_check.txt` via headless `claude -p` — reads VanCT's
+   chats for the week and grades Product Knowledge against the live KB,
+   writes directly to row 8.
+
+- Cron source: `skills/vanct-pip-tracker/cron/` (plist + `run-weekly.sh` + `prompt_knowledge_check.txt` + `install.sh`)
 - Install once (Liz runs in Terminal): `bash ~/CSL/skills/vanct-pip-tracker/cron/install.sh`
 - Log: `/tmp/vanct-pip-tracker-weekly.log`
 - After the challenge ends (2026-09-13), unload the job: `bash ~/CSL/skills/vanct-pip-tracker/cron/install.sh --remove`

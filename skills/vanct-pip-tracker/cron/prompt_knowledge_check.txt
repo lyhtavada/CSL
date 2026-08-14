@@ -1,0 +1,117 @@
+You are grading VanCT's (email vanct@avadagroup.com) Product Knowledge for
+her weekly PIP tracker. This reuses the same "Knowledge" axis /qa-weekly
+already grades the team on (see skills/qa-weekly/SKILL.md §Knowledge) —
+correct advice, verified against the LIVE KB on cs2.avada.net — but scoped to
+just VanCT, just this one completed week, and written into her tracker sheet
+instead of the team QA report.
+
+=== Step 1: figure out which week to grade ===
+
+Run:
+  cd /Users/avada/CSL && .venv-crisp/bin/python -c "
+import sys, datetime as dt
+sys.path.insert(0, 'skills/vanct-pip-tracker/scripts')
+import fill_weekly as fw
+today = dt.datetime.now(fw.VN).date()
+idx = fw.completed_week_index(today)
+if idx is None:
+    print('NONE')
+else:
+    s, e = fw.WEEKS[idx]
+    print(idx, s.isoformat(), e.isoformat(), fw.WEEK_COL[idx])
+"
+
+If it prints `NONE`, there is nothing to grade this run — stop here, print
+"No completed challenge week to grade today" and exit successfully (do not
+write anything to the sheet).
+
+Otherwise you now have: week index (0-based), week_start, week_end (the
+Mon->Sun range of the week that just ended), and the sheet column letter
+(col) to write into.
+
+=== Step 2: pull VanCT's chats for that week ===
+
+Use skills/qa-weekly/scripts/fetch_sessions.py to get VanCT's real chats for
+the week (it already filters to sessions a CS actually handled, >=3 in-week
+operator messages — reuse it, don't reinvent):
+
+  .venv-crisp/bin/python skills/qa-weekly/scripts/fetch_sessions.py \
+    --start <week_start> --end <week_end> \
+    --out /tmp/vanct_knowledge_sessions.json --sample 20
+
+This returns sessions for ALL in-house CS grouped by nickname — you only
+care about the "VanCT" entry (or "Audrey", check both — the CS's Crisp
+display name may differ from the KPI nickname; the file's by_cs keys should
+make this clear). If VanCT has zero sessions this week, print
+"VanCT had 0 chats this week — nothing to grade" and write "0 lỗi (0 chat
+tuần này)" into the Product Knowledge row/column (see Step 5 for the exact
+cell) and stop.
+
+Then pull full transcripts for her sampled sessions:
+
+  .venv-crisp/bin/python skills/qa-weekly/scripts/fetch_transcripts.py \
+    --sessions-file /tmp/vanct_knowledge_sessions.json --cs VanCT \
+    --out /tmp/vanct_knowledge_transcripts.txt
+
+(If the by_cs key turns out to be "Audrey" instead of "VanCT", use that.)
+
+=== Step 3: pull the KB VanCT should have been working from ===
+
+VanCT is Joy CS. Use skills/qa-weekly/scripts/fetch_kb.py (or
+skills/kb-sync/scripts/kb_api.py directly) to list and read the relevant
+live Joy KB docs from cs2.avada.net — the SAME source Joyce (the Joy bot)
+and the rest of the team are graded against. Start with:
+
+  .venv-crisp/bin/python skills/qa-weekly/scripts/fetch_kb.py joy --list
+
+Pull whichever files are relevant to the topics VanCT actually discussed in
+her chats (pricing, features, plans, DFY/onboarding flow, etc.) — don't pull
+the whole KB blindly, read the transcript first to know what to check.
+
+=== Step 4: grade for Product Knowledge errors only ===
+
+Read every transcript. For each thing VanCT told a merchant that is a
+factual/product claim (pricing, plan limits, feature behavior, policy,
+timelines, etc.), check it against the KB content you pulled.
+
+Count it as a **Knowledge error** if:
+  - She stated something that directly contradicts the KB, OR
+  - She stated something as fact that the KB does not support and isn't
+    common sense / general Shopify knowledge (i.e., she likely guessed).
+
+Do NOT count:
+  - Tone, process, or SLA issues (those are separate tracker criteria).
+  - A lower price a merchant already has (grandfathered/legacy pricing) —
+    only count it wrong if she asserts it as the CURRENT price.
+  - Cases where she correctly said "let me check" / escalated instead of
+    guessing.
+
+For each error found, write one line: which chat (session_id or a short
+identifiable snippet), what she said, what the KB actually says.
+
+=== Step 5: write the result into the sheet ===
+
+Sheet ID: 1-KrG3RlFaSLDGKVJWWm3nK-Ow48lHuiwSUanBYlg_zI, tab "Overview".
+The Product Knowledge target row is **row 8**. The column is whatever
+Step 1 printed as `col` (one of E/F/G/H for Tuần 1-4).
+
+Write a short cell value like:
+  "0 lỗi (12 chat chấm)"          — if no errors found
+  "2 lỗi (12 chat chấm): <1-line summary of each>"   — if errors found
+
+Use gapi to write it (from /Users/avada/CSL):
+
+  .venv-crisp/bin/python -c "
+from gapi.client import sheets
+svc = sheets()
+svc.spreadsheets().values().update(
+    spreadsheetId='1-KrG3RlFaSLDGKVJWWm3nK-Ow48lHuiwSUanBYlg_zI',
+    range='Overview!<col>8',
+    valueInputOption='USER_ENTERED',
+    body={'values': [['<your written value here>']]}
+).execute()
+print('written')
+"
+
+Print a final summary: week graded, number of chats sampled, number of
+knowledge errors found, and the exact cell you wrote to.
