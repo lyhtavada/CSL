@@ -53,9 +53,9 @@ ROW_DFY_BASE = 10  # +week_idx -> row for that week's DFY ticket-count target (r
 ROW_DFY_TASK_PCT = 14
 ROW_DFY_FOLLOWUP = 15
 # rows 16-18 = Team Participation (3 rows, manual)
-ROW_CHECKIN_10P = 20
-ROW_CHECKIN_20P = 21
-ROW_ONB = 22
+# row 19 = Internal Communication (manual)
+ROW_CHECKIN = 20  # single row since 2026-08-15 (SS11b breakout row was dropped)
+ROW_ONB = 21
 
 
 def load_env():
@@ -332,7 +332,8 @@ def main():
     dfy_followup_str = f"{dfy_followup_ok}/{dfy_followup_total} ticket có tag follow-up rõ ràng" if dfy_followup_total else "Chưa có ticket dueDateDone tuần này"
     onb_str = f"{onb_count} ticket ONB"
     checkin_str = f"{late10} lần muộn >10p (raw check-in, chưa qua duyệt penalty log)"
-    checkin_ss11b_str = f"{late20} lần >20p (~SS11b)" if late20 else "0 lần >20p"
+    if late20:
+        checkin_str += f", trong đó {late20} lần >20p"
 
     svc = gsheets()
     updates = [
@@ -341,8 +342,7 @@ def main():
         {"range": f"Overview!{col}{ROW_DFY_BASE + idx}", "values": [[dfy_str]]},
         {"range": f"Overview!{col}{ROW_DFY_TASK_PCT}", "values": [[dfy_task_pct_str]]},
         {"range": f"Overview!{col}{ROW_DFY_FOLLOWUP}", "values": [[dfy_followup_str]]},
-        {"range": f"Overview!{col}{ROW_CHECKIN_10P}", "values": [[checkin_str]]},
-        {"range": f"Overview!{col}{ROW_CHECKIN_20P}", "values": [[checkin_ss11b_str]]},
+        {"range": f"Overview!{col}{ROW_CHECKIN}", "values": [[checkin_str]]},
         {"range": f"Overview!{col}{ROW_ONB}", "values": [[onb_str]]},
     ]
     svc.spreadsheets().values().batchUpdate(
@@ -354,7 +354,7 @@ def main():
         f"  SLA: {sla_pct_str} | {sla_over30_str}\n"
         f"  DFY: {dfy_str} | {dfy_task_pct_str} | {dfy_followup_str}\n"
         f"  ONB: {onb_str}\n"
-        f"  Check-in: {checkin_str} | {checkin_ss11b_str}"
+        f"  Check-in: {checkin_str}"
     )
 
 

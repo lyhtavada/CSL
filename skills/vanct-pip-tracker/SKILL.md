@@ -13,11 +13,15 @@ participation, and internal communication issues, plus repeated late
 check-ins. Tracker sheet:
 https://docs.google.com/spreadsheets/d/1-KrG3RlFaSLDGKVJWWm3nK-Ow48lHuiwSUanBYlg_zI/edit
 
-**Pass/fail bar (set 2026-08-15):** Criteria 1, 2, 4, 5, 6 (SLA, Ticket
-Follow-up, Team Participation, Internal Communication, Check-in muộn) are
-basic job requirements — must hit **100%, zero errors**, no partial credit.
-Criteria 3 (DFY) and 7 (ONB) are flexible/lenient — Liz's read is these
-depend on merchant situation, not purely on VanCT's effort.
+**Pass/fail bar (set 2026-08-15, all in ONE merged cell, row 23 —
+`Ngưỡng đạt/không đạt: ...`, referenced by criterion number only, no full
+names):** Criteria **1, 3, 5, 6, 7** (SLA, Ticket Follow-up, Team
+Participation, Internal Communication, Check-in muộn) are basic job
+requirements — must hit **100%, zero errors**, no partial credit. Criteria
+**4, 8** (DFY, ONB) are flexible/lenient — depend on merchant situation, not
+purely on VanCT's effort. Criterion **2** (Product Knowledge) — a wrong
+answer is serious and should trend to 0, but judge it with context (hard
+case / new topic), not a strict pass/fail like the others.
 
 The sheet has **one tab, "Overview"** — a flat table where each target is its
 own row (grouped/merged by criterion), and 4 columns (Tuần 1–4) hold weekly
@@ -29,8 +33,8 @@ auto-filled:
 | 1 | SLA / Response Time | BigQuery `avada-crm.avada_cs.crisp_chats` | 6 (first-msg ≤2p %), 7 (ongoing-msg ≤10p %) |
 | 2 | Product Knowledge | **LLM step** (headless Claude), reuses `/qa-weekly`'s Knowledge axis, verified against live Joy KB on cs2.avada.net | 8 |
 | 4 | DFY Task Completion | Avada Ticket API `/api/external/tickets/by-date` | 10–13 (ticket count, one row per challenge week — only the matching week's row+column gets filled), 14 (avg % checklist tasks done per dueDateDone ticket), 15 (% tickets with a follow-up tag) |
-| 8 | ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 22 |
-| 7 | Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 20 (>10p count), 21 (>20p count, ~SS11b proxy) |
+| 7 | Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 20 (single row since 2026-08-15 — the SS11b >20p breakout row was dropped; if late20 > 0 it's appended as a suffix inside the same cell text instead) |
+| 8 | ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 21 |
 
 The other 3 (Ticket Follow-up row 9, Team Participation rows 16–18, Internal
 Communication row 19) are **qualitative — Liz fills by hand**, no API/log
@@ -47,11 +51,15 @@ reusing `skills/qa-weekly/scripts/fetch_sessions.py` +
 `fetch_transcripts.py` + `fetch_kb.py` to pull VanCT's week and the relevant
 Joy KB docs, then grading for factual errors only (not tone/process — those
 are separate criteria) and writing the error count + a one-line note per
-error straight into row 8 of the matching week's column.
+error straight into row 8 of the matching week's column. The sheet's target
+cell text was shortened 2026-08-15 to just "0 lỗi kiến thức sai/tuần trong
+chat" (dropped the "chấm bằng KB cs2.avada.net..." explainer as redundant
+with this doc) — **the cron prompt still grades against the KB exactly as
+before**, only the sheet's displayed target text got shorter.
 
 Added 2026-08-14, after the team launched a new Joy onboarding flow: Liz
 wants VanCT to create ≥1 `[ONB]` ticket/week for a new merchant (criterion
-#7), plus deeper DFY tracking beyond the raw dueDateDone count — how much of
+#8), plus deeper DFY tracking beyond the raw dueDateDone count — how much of
 each ticket's checklist actually got done, and whether merchant follow-up
 was closed out (tagged `DFY-adopted`/`DFY-no-adopt`) rather than left hanging
 on `DFY-following-up`.
@@ -103,8 +111,8 @@ after Tuần 1 ends (i.e. 2026-08-24, reporting 17–23/08) — running on
 1. `fill_weekly.py` — pure Python (BigQuery + REST + Sheets API), no LLM,
    fills SLA / DFY / ONB / check-in muộn.
 2. `prompt_knowledge_check.txt` via headless `claude -p` — reads VanCT's
-   chats for the week and grades Product Knowledge against the live KB,
-   writes directly to row 8.
+   chats for the week and grades Product Knowledge against the live KB
+   (cs2.avada.net, same source `/qa-weekly` uses), writes directly to row 8.
 
 - Cron source: `skills/vanct-pip-tracker/cron/` (plist + `run-weekly.sh` + `prompt_knowledge_check.txt` + `install.sh`)
 - Install once (Liz runs in Terminal): `bash ~/CSL/skills/vanct-pip-tracker/cron/install.sh`
