@@ -206,41 +206,82 @@ def fetch_sla(env, week_start, week_end_capped):
     start_ts = dt.datetime.combine(week_start, dt.time(0, 0), tzinfo=VN).astimezone(dt.timezone.utc)
     end_ts = dt.datetime.combine(week_end_capped, dt.time(23, 59, 59), tzinfo=VN).astimezone(dt.timezone.utc)
 
-    q = """
-    WITH visitor_first AS (
-      SELECT session_id, MIN(timestamp) AS first_visitor_ts
-      FROM `avada-crm.avada_cs.crisp_chats`
-      WHERE fromType = 'user'
-      GROUP BY session_id
-    ),
-    agent_first AS (
-      SELECT session_id, MIN(timestamp) AS first_agent_ts
-      FROM `avada-crm.avada_cs.crisp_chats`
-      WHERE agentEmail = @email AND fromType = 'operator'
-      GROUP BY session_id
-    )
-    SELECT
-      TIMESTAMP_DIFF(a.first_agent_ts, v.first_visitor_ts, MINUTE) AS response_min
-    FROM visitor_first v
-    JOIN agent_first a USING(session_id)
-    WHERE a.first_agent_ts > v.first_visitor_ts
-      AND a.first_agent_ts BETWEEN @start_ts AND @end_ts
+    # Step 1: sessions where VanCT replied at least once within the window.
+    q_sessions = """
+    SELECT DISTINCT session_id
+    FROM `avada-crm.avada_cs.crisp_chats`
+    WHERE agentEmail = @email AND fromType = 'operator'
+      AND timestamp BETWEEN @start_ts AND @end_ts
     """
-    job_config = bigquery.QueryJobConfig(
+    job1 = bigquery.QueryJobConfig(
         query_parameters=[
             bigquery.ScalarQueryParameter("email", "STRING", VANCT_EMAIL),
             bigquery.ScalarQueryParameter("start_ts", "TIMESTAMP", start_ts),
             bigquery.ScalarQueryParameter("end_ts", "TIMESTAMP", end_ts),
         ]
     )
-    rows = [r.response_min for r in client.query(q, job_config=job_config).result()]
-    total = len(rows)
-    if total == 0:
-        return None, 0, 0
-    within10 = sum(1 for m in rows if m <= 10)
-    over30 = sum(1 for m in rows if m > 30)
-    pct = round(within10 / total * 100)
-    return pct, total, over30
+    session_ids = [r.session_id for r in client.query(q_sessions, job_config=job1).result()]
+    if not session_ids:
+        return None, 0, None, 0
+
+    # Step 2: pull the full user/operator message sequence for those sessions,
+    # then walk each session in Python to classify each user message as
+    # "first message of the session" vs "ongoing" and find VanCT's reply gap.
+    q_msgs = """
+    SELECT session_id, timestamp, fromType, agentEmail
+    FROM `avada-crm.avada_cs.crisp_chats`
+    WHERE session_id IN UNNEST(@session_ids)
+      AND fromType IN ('user', 'operator')
+    ORDER BY session_id, timestamp
+    """
+    job2 = bigquery.QueryJobConfig(
+        query_parameters=[bigquery.ArrayQueryParameter("session_ids", "STRING", session_ids)]
+    )
+    rows = list(client.query(q_msgs, job_config=job2).result())
+
+    by_session = {}
+    for r in rows:
+        by_session.setdefault(r.session_id, []).append((r.timestamp, r.fromType, r.agentEmail))
+
+    first_times = []
+    ongoing_times = []
+
+    for msgs in by_session.values():
+        msgs.sort(key=lambda x: x[0])
+        user_seen = 0
+        for i, (ts, ftype, aemail) in enumerate(msgs):
+            if ftype != "user":
+                continue
+            user_seen += 1
+            reply_ts = None
+            reply_is_vanct = False
+            for j in range(i + 1, len(msgs)):
+                ts2, ftype2, aemail2 = msgs[j]
+                if ftype2 == "user":
+                    break  # next user message arrived before any reply
+                if ftype2 == "operator":
+                    reply_ts = ts2
+                    reply_is_vanct = aemail2 == VANCT_EMAIL
+                    break
+            if reply_ts is None or not reply_is_vanct:
+                continue
+            if not (start_ts <= reply_ts <= end_ts):
+                continue
+            delta_min = (reply_ts - ts).total_seconds() / 60
+            if user_seen == 1:
+                first_times.append(delta_min)
+            else:
+                ongoing_times.append(delta_min)
+
+    def pct_within(times, threshold):
+        if not times:
+            return None, 0
+        within = sum(1 for m in times if m <= threshold)
+        return round(within / len(times) * 100), len(times)
+
+    first_pct, first_total = pct_within(first_times, 2)
+    ongoing_pct, ongoing_total = pct_within(ongoing_times, 10)
+    return first_pct, first_total, ongoing_pct, ongoing_total
 
 
 def fetch_checkin(env, week_start, week_end_capped):
@@ -278,11 +319,11 @@ def main():
 
     dfy_count, dfy_task_pct, dfy_followup_ok, dfy_followup_total = fetch_dfy(env, week_start, week_end_capped)
     onb_count = fetch_onb_count(env, week_start, week_end_capped)
-    sla_pct, sla_total, sla_over30 = fetch_sla(env, week_start, week_end_capped)
+    sla_first_pct, sla_first_total, sla_ongoing_pct, sla_ongoing_total = fetch_sla(env, week_start, week_end_capped)
     late10, late20 = fetch_checkin(env, week_start, week_end_capped)
 
-    sla_pct_str = f"{sla_pct}% ≤10p ({sla_total} case)" if sla_pct is not None else "0 case (chưa có data tuần này)"
-    sla_over30_str = f"{sla_over30} case >30p"
+    sla_pct_str = f"{sla_first_pct}% ≤2p ({sla_first_total} case mới)" if sla_first_pct is not None else "0 case mới (chưa có data tuần này)"
+    sla_over30_str = f"{sla_ongoing_pct}% ≤10p ({sla_ongoing_total} tin nhắn ongoing)" if sla_ongoing_pct is not None else "0 tin nhắn ongoing (chưa có data tuần này)"
     dfy_str = f"{dfy_count} ticket dueDateDone"
     dfy_task_pct_str = f"{dfy_task_pct}% task hoàn thành TB ({dfy_count} ticket)" if dfy_task_pct is not None else "Chưa có ticket dueDateDone tuần này"
     dfy_followup_str = f"{dfy_followup_ok}/{dfy_followup_total} ticket có tag follow-up rõ ràng" if dfy_followup_total else "Chưa có ticket dueDateDone tuần này"

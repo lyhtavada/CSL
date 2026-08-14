@@ -53,11 +53,17 @@ on `DFY-following-up`.
   count. The written value says "raw check-in, chưa qua duyệt penalty log" —
   Liz should still glance at the Penalty log for the official approved count
   before the end-of-challenge decision.
-- **SLA metric** = time between a session's first `fromType='user'` message
-  and VanCT's first `fromType='operator'` reply (`agentEmail = vanct@avadagroup.com`),
-  for sessions where that first reply falls inside the week's window. It is a
-  simplification — it does not account for cases where another CS also
-  touched the same session.
+- **SLA target changed 2026-08-15**: now two separate bars — first message of
+  a new case ≤**2 phút**, ongoing messages within an already-open case ≤**10
+  phút**. `fetch_sla()` pulls every session where VanCT replied at least once
+  in the window, walks the full user/operator message sequence per session,
+  and for each user message finds the *next* operator reply — only counted
+  if that reply is from VanCT (`agentEmail = vanct@avadagroup.com`) and lands
+  inside the week's window. The session's 1st user message → "first message"
+  bucket (target ≤2p); every later user message → "ongoing" bucket (target
+  ≤10p). If a different CS replies first (handover), that gap isn't counted
+  against VanCT. Doesn't distinguish message `type` (text vs note/event) —
+  a directional metric, not exact.
 - **DFY count** = tickets with `subject` starting `[DFY]`, `appName="JOY Loyalty"`,
   `dueDateDone=true`, creator=VanCT (`displayName` normalizes to `audrey`/`Audrey`),
   `tsStatus != "sale_request"`, created within the week's date range. Since
