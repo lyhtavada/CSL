@@ -15,17 +15,26 @@ https://docs.google.com/spreadsheets/d/1-KrG3RlFaSLDGKVJWWm3nK-Ow48lHuiwSUanBYlg
 
 The sheet has **one tab, "Overview"** — a flat table where each target is its
 own row (grouped/merged by criterion), and 4 columns (Tuần 1–4) hold weekly
-actuals. Only **3 of the 6 criteria have a data source** and are auto-filled:
+actuals. **7 criteria total; 4 of them have a data source** and are
+auto-filled:
 
 | Criterion | Source | Row(s) |
 |---|---|---|
 | SLA / Response Time | BigQuery `avada-crm.avada_cs.crisp_chats` | 6 (≤10p %), 7 (>30p count) |
-| DFY Task Completion | Avada Ticket API `/api/external/tickets/by-date` | 9–12 (one row per challenge week — only the matching week's row+column gets filled) |
-| Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 16 (>10p count), 17 (>20p count, ~SS11b proxy) |
+| DFY Task Completion | Avada Ticket API `/api/external/tickets/by-date` | 9–12 (ticket count, one row per challenge week — only the matching week's row+column gets filled), 13 (avg % checklist tasks done per dueDateDone ticket), 14 (% tickets with a resolved follow-up tag) |
+| ONB Task (flow mới) | Avada Ticket API, subject starts `[ONB]` | 20 |
+| Check-in muộn | Admin API `/shifts` + `/shifts/:id/checks` | 18 (>10p count), 19 (>20p count, ~SS11b proxy) |
 
-The other 3 (Ticket Follow-up row 8, Team Participation rows 13–14, Internal
-Communication row 15) are **qualitative — Liz fills by hand**, no API/log
+The other 3 (Ticket Follow-up row 8, Team Participation rows 15–16, Internal
+Communication row 17) are **qualitative — Liz fills by hand**, no API/log
 exists for "leader had to follow up" or "missed a Slack message".
+
+Added 2026-08-14, after the team launched a new Joy onboarding flow: Liz
+wants VanCT to create ≥1 `[ONB]` ticket/week for a new merchant (criterion
+#7), plus deeper DFY tracking beyond the raw dueDateDone count — how much of
+each ticket's checklist actually got done, and whether merchant follow-up
+was closed out (tagged `DFY-adopted`/`DFY-no-adopt`) rather than left hanging
+on `DFY-following-up`.
 
 ## Important caveats
 

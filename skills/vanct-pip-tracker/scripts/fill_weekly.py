@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """
 Weekly auto-fill for VanCT's 1-month PIP tracker (Google Sheet "Overview" tab).
-Pulls 3 data-backed metrics for the CURRENT challenge week (Mon of that week ->
+Pulls data-backed metrics for the CURRENT challenge week (Mon of that week ->
 run time) and writes them into the matching Tuần-N column:
 
-  - SLA / first response time  <- BigQuery avada_cs.crisp_chats (agentEmail=vanct)
-  - DFY task completion        <- Avada Ticket API (dueDateDone=true, creator=VanCT)
-  - Check-in muộn              <- Admin API /shifts + /shifts/:id/checks
+  - SLA / first response time     <- BigQuery avada_cs.crisp_chats (agentEmail=vanct)
+  - DFY task completion (count)   <- Avada Ticket API (dueDateDone=true, creator=VanCT)
+  - DFY task completion (detail)  <- avg % of checklist tasks done per dueDateDone ticket
+  - DFY follow-up completeness    <- % dueDateDone tickets tagged DFY-adopted/DFY-no-adopt
+                                      (not left hanging on DFY-following-up)
+  - ONB ticket creation           <- Avada Ticket API, subject starts with [ONB], creator=VanCT
+  - Check-in muộn                 <- Admin API /shifts + /shifts/:id/checks
     (raw check-in data, NOT the same as the "approved" Penalty log — no API
     access to that endpoint was found; flagged in the written value)
 
@@ -43,9 +47,12 @@ WEEK_COL = ["E", "F", "G", "H"]
 
 ROW_SLA_10P = 6
 ROW_SLA_30P = 7
-ROW_DFY_BASE = 9  # +week_idx -> row for that week's DFY target
-ROW_CHECKIN_10P = 16
-ROW_CHECKIN_20P = 17
+ROW_DFY_BASE = 9  # +week_idx -> row for that week's DFY ticket-count target (rows 9-12)
+ROW_DFY_TASK_PCT = 13
+ROW_DFY_FOLLOWUP = 14
+ROW_CHECKIN_10P = 18
+ROW_CHECKIN_20P = 19
+ROW_ONB = 20
 
 
 def load_env():
@@ -95,7 +102,19 @@ def norm_name(disp):
     return s[:-6] if s.endswith("_avada") else s
 
 
-def fetch_dfy_count(env, week_start, week_end_capped):
+def fetch_tag_map(env):
+    import requests
+
+    r = requests.get(
+        "https://avada-ts-a9cb0.web.app/api/external/tags",
+        headers={"X-API-Key": env["AVD_TICKET_API_KEY"]},
+        timeout=30,
+    )
+    r.raise_for_status()
+    return {t["id"]: t.get("name") for t in r.json()["data"]}
+
+
+def fetch_tickets(env, week_start, week_end_capped, app_name):
     import requests
 
     url = "https://avada-ts-a9cb0.web.app/api/external/tickets/by-date"
@@ -103,23 +122,61 @@ def fetch_dfy_count(env, week_start, week_end_capped):
     params = {
         "startDate": week_start.isoformat(),
         "endDate": week_end_capped.isoformat(),
-        "appName": "JOY Loyalty",
+        "appName": app_name,
     }
     r = requests.get(url, params=params, headers=headers, timeout=60)
     r.raise_for_status()
-    tickets = r.json()["data"]["tickets"]
+    return r.json()["data"]["tickets"]
 
-    count = 0
+
+def is_vanct_ticket(t):
+    creator = next((m for m in t.get("members", []) if m.get("isCreate")), None) or t.get("memberUpdate")
+    disp = creator.get("displayName") if creator else None
+    return norm_name(disp) == "audrey"
+
+
+def fetch_dfy(env, week_start, week_end_capped):
+    """Returns (done_count, avg_task_pct_or_None, followup_ok_count, done_count_for_followup)."""
+    tickets = fetch_tickets(env, week_start, week_end_capped, "JOY Loyalty")
+    tag_map = fetch_tag_map(env)
+
+    done = []
     for t in tickets:
         if not t.get("subject", "").startswith("[DFY]"):
             continue
-        if t.get("dueDateDone") is not True:
-            continue
         if t.get("tsStatus") == "sale_request":
             continue
-        creator = next((m for m in t.get("members", []) if m.get("isCreate")), None) or t.get("memberUpdate")
-        disp = creator.get("displayName") if creator else None
-        if norm_name(disp) != "audrey":
+        if not is_vanct_ticket(t):
+            continue
+        if t.get("dueDateDone") is True:
+            done.append(t)
+
+    count = len(done)
+
+    task_pcts = []
+    for t in done:
+        tasks = t.get("tasks", [])
+        if tasks:
+            n_done = sum(1 for x in tasks if x.get("completed"))
+            task_pcts.append(n_done / len(tasks))
+    avg_task_pct = round(sum(task_pcts) / len(task_pcts) * 100) if task_pcts else None
+
+    followup_ok = 0
+    for t in done:
+        names = {tag_map.get(tid) for tid in t.get("tagIds", [])}
+        if "DFY-adopted" in names or "DFY-no-adopt" in names:
+            followup_ok += 1
+
+    return count, avg_task_pct, followup_ok, count
+
+
+def fetch_onb_count(env, week_start, week_end_capped):
+    tickets = fetch_tickets(env, week_start, week_end_capped, "JOY Loyalty")
+    count = 0
+    for t in tickets:
+        if not t.get("subject", "").startswith("[ONB]"):
+            continue
+        if not is_vanct_ticket(t):
             continue
         count += 1
     return count
@@ -217,13 +274,17 @@ def main():
     week_end_capped = min(today, week_end)
     col = WEEK_COL[idx]
 
-    dfy_count = fetch_dfy_count(env, week_start, week_end_capped)
+    dfy_count, dfy_task_pct, dfy_followup_ok, dfy_followup_total = fetch_dfy(env, week_start, week_end_capped)
+    onb_count = fetch_onb_count(env, week_start, week_end_capped)
     sla_pct, sla_total, sla_over30 = fetch_sla(env, week_start, week_end_capped)
     late10, late20 = fetch_checkin(env, week_start, week_end_capped)
 
     sla_pct_str = f"{sla_pct}% ≤10p ({sla_total} case)" if sla_pct is not None else "0 case (chưa có data tuần này)"
     sla_over30_str = f"{sla_over30} case >30p"
     dfy_str = f"{dfy_count} ticket dueDateDone"
+    dfy_task_pct_str = f"{dfy_task_pct}% task hoàn thành TB ({dfy_count} ticket)" if dfy_task_pct is not None else "Chưa có ticket dueDateDone tuần này"
+    dfy_followup_str = f"{dfy_followup_ok}/{dfy_followup_total} ticket có follow-up tag đầy đủ" if dfy_followup_total else "Chưa có ticket dueDateDone tuần này"
+    onb_str = f"{onb_count} ticket ONB"
     checkin_str = f"{late10} lần muộn >10p (raw check-in, chưa qua duyệt penalty log)"
     checkin_ss11b_str = f"{late20} lần >20p (~SS11b)" if late20 else "0 lần >20p"
 
@@ -232,8 +293,11 @@ def main():
         {"range": f"Overview!{col}{ROW_SLA_10P}", "values": [[sla_pct_str]]},
         {"range": f"Overview!{col}{ROW_SLA_30P}", "values": [[sla_over30_str]]},
         {"range": f"Overview!{col}{ROW_DFY_BASE + idx}", "values": [[dfy_str]]},
+        {"range": f"Overview!{col}{ROW_DFY_TASK_PCT}", "values": [[dfy_task_pct_str]]},
+        {"range": f"Overview!{col}{ROW_DFY_FOLLOWUP}", "values": [[dfy_followup_str]]},
         {"range": f"Overview!{col}{ROW_CHECKIN_10P}", "values": [[checkin_str]]},
         {"range": f"Overview!{col}{ROW_CHECKIN_20P}", "values": [[checkin_ss11b_str]]},
+        {"range": f"Overview!{col}{ROW_ONB}", "values": [[onb_str]]},
     ]
     svc.spreadsheets().values().batchUpdate(
         spreadsheetId=SHEET_ID, body={"valueInputOption": "USER_ENTERED", "data": updates}
@@ -242,7 +306,8 @@ def main():
     print(
         f"Week {idx + 1} ({week_start}–{week_end_capped}) written to column {col}:\n"
         f"  SLA: {sla_pct_str} | {sla_over30_str}\n"
-        f"  DFY: {dfy_str}\n"
+        f"  DFY: {dfy_str} | {dfy_task_pct_str} | {dfy_followup_str}\n"
+        f"  ONB: {onb_str}\n"
         f"  Check-in: {checkin_str} | {checkin_ss11b_str}"
     )
 
