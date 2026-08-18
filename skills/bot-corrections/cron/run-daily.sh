@@ -1,16 +1,18 @@
 #!/bin/bash
 #
-# Weekly bot-corrections run — invoked by launchd (com.avada.bot-corrections).
+# Daily bot-corrections run — invoked by launchd (com.avada.bot-corrections),
+# T2-T6 15:00 local.
 #
-# Step 1 (pure script): pull correction (câu bot bị CS sửa) của Joyce + Ivy trong
-# tuần vừa qua (Thứ 5 tuần trước → Thứ 4 tuần này), ghi report markdown vào
-# reports/bot-corrections/, commit.
+# Step 1 (pure script): pull correction (câu bot bị CS sửa) của Joyce + Ivy kể
+# từ lần chạy trước (T2 nhìn ngược về T6 tuần trước), ghi report markdown vào
+# reports/bot-corrections/, commit. App nào 0 correction thì không ghi file.
 #
-# Step 2 (Claude headless): diff report tuần này với KB live trên CS v2 cho cả
-# 2 app, classify COVERED/OUTDATED/GAP/PARTIAL, soạn payload patch, DM Telegram
-# cho Liz. Review-gate — KHÔNG tự push/reindex, Liz duyệt rồi tự chạy push_kb.py.
+# Step 2 (Claude headless, CHỈ chạy khi có correction mới): diff report với KB
+# live trên CS v2 cho app có correction mới, classify COVERED/OUTDATED/GAP/
+# PARTIAL, soạn payload patch, DM Telegram cho Liz. Review-gate — KHÔNG tự
+# push/reindex, Liz duyệt rồi tự chạy push_kb.py.
 #
-# Manual run:  bash run-weekly.sh
+# Manual run:  bash run-daily.sh
 #
 set -uo pipefail
 
@@ -24,8 +26,9 @@ DIFF_PROMPT="$HERE/prompt-diff.txt"
 echo "===== bot-corrections run: $(date) =====" >> "$LOG"
 cd "$REPO" || { echo "cd $REPO failed" >> "$LOG"; exit 1; }
 
-python3 "$SCRIPT" >> "$LOG" 2>&1
+FETCH_OUT="$(python3 "$SCRIPT" 2>&1)"
 rc=$?
+echo "$FETCH_OUT" >> "$LOG"
 if [ $rc -ne 0 ]; then
   echo "fetch_corrections.py exited $rc" >> "$LOG"
   python3 "$REPO/skills/_shared/notify_tele.py" --job "Bot Corrections" \
@@ -33,14 +36,24 @@ if [ $rc -ne 0 ]; then
   exit $rc
 fi
 
-# Commit report mới + prune report cũ (fetch_corrections.py chỉ giữ 2 tuần gần nhất
-# /app -> git add -A để bắt cả file bị xoá, không phải chỉ file mới/sửa)
+TOTAL_NEW="$(echo "$FETCH_OUT" | grep -oE 'TOTAL_NEW=[0-9]+' | cut -d= -f2)"
+TOTAL_NEW="${TOTAL_NEW:-0}"
+
+# Commit report mới (nếu có) + prune report cũ (fetch_corrections.py chỉ giữ
+# ~2 tuần gần nhất/app -> git add -A để bắt cả file bị xoá, không phải chỉ
+# file mới/sửa)
 if [ -n "$(git status --porcelain reports/bot-corrections/ 2>/dev/null)" ]; then
   git add -A reports/bot-corrections/ >> "$LOG" 2>&1
-  git commit -m "bot-corrections: weekly report $(date +%Y-%m-%d)" >> "$LOG" 2>&1
+  git commit -m "bot-corrections: daily report $(date +%Y-%m-%d)" >> "$LOG" 2>&1
   echo "committed report (+ prune)" >> "$LOG"
 else
   echo "no report changes to commit" >> "$LOG"
+fi
+
+if [ "$TOTAL_NEW" -eq 0 ]; then
+  echo "no new corrections today — skip diff/notify" >> "$LOG"
+  echo "===== done: $(date) =====" >> "$LOG"
+  exit 0
 fi
 
 echo "----- diff vs KB v2 (review-gate, no push) -----" >> "$LOG"
@@ -57,7 +70,7 @@ diff_rc=0
 echo "===== done: $(date) =====" >> "$LOG"
 
 if [ $diff_rc -ne 0 ]; then
-  echo "diff step exited $diff_rc (report tuần này vẫn đã commit ở trên)" >> "$LOG"
+  echo "diff step exited $diff_rc (report hôm nay vẫn đã commit ở trên)" >> "$LOG"
   python3 "$REPO/skills/_shared/notify_tele.py" --job "Bot Corrections" \
     --status fail --log "$LOG" >> "$LOG" 2>&1 || true
   exit $diff_rc

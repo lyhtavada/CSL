@@ -1,13 +1,14 @@
 ---
 name: bot-corrections
-description: Weekly report các câu bot CS (Joyce/Ivy) bị human sửa (correction) để Liz update KB/training data cho bot. Period = Thứ 5 tuần trước → Thứ 4 tuần này.
+description: Daily report các câu bot CS (Joyce/Ivy) bị human sửa (correction) để Liz update KB/training data cho bot. Window = kể từ lần chạy trước (T2-T6 15:00, T2 phủ cả cuối tuần).
 ---
 
-# /bot-corrections — Weekly Bot Correction Report
+# /bot-corrections — Daily Bot Correction Report
 
-Pull các **correction** (câu bot trả bị CS sửa) của Joyce (Joy) + Ivy (Chatty) trong
-tuần vừa qua (Thứ 5 tuần trước → Thứ 4 tuần này), gom theo topic, ghi report markdown vào repo để Liz dùng
-**update data cho bot**.
+Pull các **correction** (câu bot trả bị CS sửa) của Joyce (Joy) + Ivy (Chatty) kể
+từ lần chạy trước, gom theo topic, ghi report markdown vào repo để Liz dùng
+**update data cho bot**. Chạy daily (T2-T6) để bắt lỗi bot sớm và fix nhanh hơn
+so với trước (weekly); ngày nào không có correction mới thì im lặng, không noti.
 
 ## Nguồn data
 
@@ -19,7 +20,7 @@ tuần vừa qua (Thứ 5 tuần trước → Thứ 4 tuần này), gom theo top
 ## Chạy
 
 ```bash
-# Mặc định: cả Joy + Chatty, rolling 7 ngày kết thúc hôm qua (Thứ 5 → Thứ 4)
+# Mặc định: cả Joy + Chatty, kể từ lần chạy trước tới giờ (T2 lùi về T6 tuần trước)
 python3 skills/bot-corrections/scripts/fetch_corrections.py
 
 # Chỉ 1 app
@@ -32,7 +33,9 @@ python3 skills/bot-corrections/scripts/fetch_corrections.py --start 2026-06-16 -
 ## Output
 
 File markdown / app trong subfolder theo app `reports/bot-corrections/{app}/`:
-`{app}/{app}-corrections-{YYYY-MM-DD thứ-2-đầu-tuần}.md`
+`{app}/{app}-corrections-{YYYY-MM-DD ngày chạy}.md`. **App nào 0 correction mới
+trong window thì KHÔNG ghi file** (tránh report rỗng mỗi ngày) — script in
+`TOTAL_NEW=<n>` ở cuối để cron biết có cần chạy tiếp bước diff/notify hay không.
 
 Mỗi report có **2 phần** (theo yêu cầu Liz):
 1. **📌 Tóm tắt theo topic** — gom correction theo chủ đề (pricing, points/earning,
@@ -40,12 +43,12 @@ Mỗi report có **2 phần** (theo yêu cầu Liz):
 2. **📋 Chi tiết từng correction** — full `question` / bot trả / CS sửa thành /
    context / session id → đủ để copy thẳng vào KB.
 
-**Retention:** chỉ giữ **2 report gần nhất / app** trong repo — sau khi ghi report
-mới, script tự xoá report cũ hơn (`--keep-weeks`, mặc định `2`, `0` = giữ hết).
-Không lưu report qua nhiều tuần; lịch sử vẫn tra được qua `git log -- reports/bot-corrections/`
+**Retention:** chỉ giữ **10 report gần nhất / app** trong repo (~2 tuần daily) —
+sau khi ghi report mới, script tự xoá report cũ hơn (`--keep-weeks`, mặc định `10`,
+`0` = giữ hết). Lịch sử xa hơn vẫn tra được qua `git log -- reports/bot-corrections/`
 nếu cần.
 
-Sau khi tạo, **commit** vào repo.
+Sau khi tạo, **commit** vào repo (chỉ khi có report mới).
 
 ## Lưu ý xử lý data
 
@@ -98,12 +101,15 @@ Tự POST từng file (auto git commit bên v2) + reindex agent liên quan.
 
 ## Cron
 
-`com.avada.bot-corrections` — **T5 10:00** hàng tuần (tách khỏi cụm job T2 để không
-chạy chồng và né quota). Chạy 2 bước:
-1. Script thuần: fetch → ghi report → git commit (repo CSL).
-2. Claude headless (`--dangerously-skip-permissions`, subscription OAuth): diff cả
-   2 app vs KB v2 → soạn payload patch → DM Telegram Liz để duyệt. KHÔNG tự push.
+`com.avada.bot-corrections` — **T2-T6 15:00** hàng ngày (đổi từ T5 10:00/tuần
+2026-08-18, để bắt lỗi bot sớm hơn và Liz fix KB nhanh hơn). Chạy 2 bước:
+1. Script thuần: fetch (window = kể từ lần chạy trước) → ghi report cho app có
+   correction mới → git commit (repo CSL). App nào 0 correction thì không ghi/commit.
+2. Claude headless (`--dangerously-skip-permissions`, subscription OAuth) — **CHỈ
+   chạy nếu bước 1 có ít nhất 1 correction mới**: diff app đó vs KB v2 → soạn payload
+   patch → DM Telegram Liz để duyệt. KHÔNG tự push. Ngày không có correction mới:
+   im lặng hoàn toàn, không DM.
 
-Source-of-truth: `cron/` (`run-weekly.sh` + `prompt-diff.txt`).
+Source-of-truth: `cron/` (`run-daily.sh` + `prompt-diff.txt`).
 Install: `bash skills/bot-corrections/cron/install.sh` (Liz tự chạy trong Terminal).
 Log: `/tmp/bot-corrections.log`.

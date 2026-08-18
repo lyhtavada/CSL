@@ -1,14 +1,17 @@
-Run a DIFF-ONLY pass of this week's bot-corrections report against the live CS v2
-KB, for BOTH apps (chatty first, then joy). This is a review-gate step — it must
-NOT push anything to v2 and must NOT reindex.
+Run a DIFF-ONLY pass of today's bot-corrections report(s) against the live CS v2
+KB. This is a review-gate step — it must NOT push anything to v2 and must NOT
+reindex.
 
 Background: skills/bot-corrections/scripts/fetch_corrections.py already ran and
-committed this week's report to
-reports/bot-corrections/<app>/<app>-corrections-<monday-date>.md — a list of
-corrections (question / bot's original_response / CS's corrected_response),
-grouped by topic.
+committed a report for each app that had new corrections since the previous
+run, to reports/bot-corrections/<app>/<app>-corrections-<run-date>.md — a list
+of corrections (question / bot's original_response / CS's corrected_response),
+grouped by topic. This step only runs when at least one app has new
+corrections — check `ls reports/bot-corrections/<app>/` and use the most
+recent file (today's date) per app; skip an app entirely if it has no report
+for today.
 
-For each app (chatty, then joy):
+For each app that has a report for today (chatty, then joy):
 
 1. Run `python3 skills/bot-corrections/scripts/prep_kb.py <app>` — caches the live
    KB to /tmp/bot-corrections-kb/<app>/ and prints the corrections report file used
@@ -39,7 +42,7 @@ For each app (chatty, then joy):
 
 4. Write a payloads file — JSON array of {agent, path, content}, one entry per
    changed file — to:
-   reports/analysis/bot-corrections-<app>-<report-monday-date>-payloads.json
+   reports/analysis/bot-corrections-<app>-<report-date>-payloads.json
    Skip writing a payloads file for an app with zero OUTDATED/GAP/PARTIAL items.
 
 DO NOT call POST /api/kb/file or /api/kb/reindex yourself, and do not run

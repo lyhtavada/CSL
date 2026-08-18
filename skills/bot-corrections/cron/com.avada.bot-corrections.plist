@@ -8,26 +8,47 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/avada/CSL/skills/bot-corrections/cron/run-weekly.sh</string>
+    <string>/Users/avada/CSL/skills/bot-corrections/cron/run-daily.sh</string>
   </array>
 
   <key>WorkingDirectory</key>
   <string>/Users/avada/CSL</string>
 
-  <!-- Every Thursday at 10:00 local time.
-       Fetches corrections -> commits report -> Claude headless diffs vs KB v2
-       -> drafts patch payloads -> DMs Liz on Telegram to review (no auto-push). -->
+  <!-- Mon-Fri at 15:00 local time.
+       Fetches corrections since previous run -> commits report (skipped when
+       an app has 0 new corrections) -> if anything new, Claude headless diffs
+       vs KB v2 -> drafts patch payloads -> DMs Liz on Telegram to review (no
+       auto-push). Quiet days (0 new corrections) send nothing. -->
   <key>StartCalendarInterval</key>
-  <dict>
-    <key>Weekday</key>
-    <integer>4</integer>
-    <key>Hour</key>
-    <integer>10</integer>
-    <key>Minute</key>
-    <integer>0</integer>
-  </dict>
+  <array>
+    <dict>
+      <key>Weekday</key><integer>1</integer>
+      <key>Hour</key><integer>15</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>2</integer>
+      <key>Hour</key><integer>15</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>3</integer>
+      <key>Hour</key><integer>15</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>4</integer>
+      <key>Hour</key><integer>15</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>5</integer>
+      <key>Hour</key><integer>15</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+  </array>
 
-  <!-- Nếu Mac ngủ/tắt lúc 10:00 T5, launchd chạy ngay khi máy thức. -->
+  <!-- Nếu Mac ngủ/tắt lúc 15:00, launchd chạy ngay khi máy thức. -->
   <key>RunAtLoad</key>
   <false/>
 

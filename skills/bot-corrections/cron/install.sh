@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Install / reinstall the weekly bot-corrections launchd job.
+# Install / reinstall the daily bot-corrections launchd job.
 # Symlinks the versioned plist (kept in CSL) into ~/Library/LaunchAgents,
 # so the source of truth stays in the repo.
 #
@@ -21,19 +21,19 @@ if [[ "${1:-}" == "--remove" ]]; then
   exit 0
 fi
 
-chmod +x "$HERE/run-weekly.sh"
+chmod +x "$HERE/run-daily.sh"
 
 # Reload cleanly if already installed.
 launchctl unload "$DEST" 2>/dev/null || true
 ln -sf "$SRC" "$DEST"
 launchctl load "$DEST"
 
-echo "Installed $LABEL → runs Thursdays 10:00 local."
+echo "Installed $LABEL → runs Mon-Fri 15:00 local."
 echo "  plist (source): $SRC"
 echo "  symlink:        $DEST"
 echo "  log:            /tmp/bot-corrections.log"
 echo
-echo "Test now without waiting for Monday:"
+echo "Test now without waiting for the next scheduled run:"
 echo "  launchctl start $LABEL"
 echo "  # or run the script directly:"
-echo "  bash $HERE/run-weekly.sh"
+echo "  bash $HERE/run-daily.sh"

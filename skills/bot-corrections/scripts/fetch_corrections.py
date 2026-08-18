@@ -11,17 +11,20 @@ Nguồn: GET /api/corrections?agent=<id>&page=N  (cs2.avada.net)
 Auth: Authorization: Bearer <CS2_API_TOKEN>  (super_admin) + User-Agent header.
 Creds đọc từ ~/CSL/.env (CS2_API_URL, CS2_API_TOKEN).
 
-Cửa sổ mặc định = rolling 7 ngày kết thúc HÔM QUA (Thứ 5 00:00 tuần trước →
-Thứ 4 23:59:59 tuần này, khi chạy đúng lịch Thứ 5). Lọc theo created_at (lúc
-correction được tạo).
+Cửa sổ mặc định = kể từ lần chạy trước (daily, T2-T6 15:00) tới giờ. Thứ 2 nhìn
+ngược về Thứ 6 tuần trước để phủ luôn cuối tuần. Lọc theo created_at (lúc
+correction được tạo). App nào 0 correction trong window thì KHÔNG ghi file (tránh
+report rỗng mỗi ngày).
 
 Usage:
-  python3 fetch_corrections.py                       # cả Joy + Chatty, tuần trước
+  python3 fetch_corrections.py                       # cả Joy + Chatty, từ lần chạy trước
   python3 fetch_corrections.py --apps joy            # chỉ Joy
   python3 fetch_corrections.py --start 2026-06-16 --end 2026-06-22
   python3 fetch_corrections.py --out reports/bot-corrections   # thư mục output
 
-In ra danh sách đường dẫn file đã ghi (1 dòng / app).
+In ra danh sách đường dẫn file đã ghi (1 dòng / app đã ghi) + dòng
+"TOTAL_NEW=<n>" ở cuối (tổng correction mới gộp cả app, để cron biết có cần
+chạy tiếp bước diff/notify hay không).
 """
 import argparse
 import datetime as dt
@@ -141,14 +144,14 @@ def parse_iso(s):
     return d
 
 
-def last_week_window():
-    """Rolling 7 ngày kết thúc hôm qua (local) — vd chạy Thứ 5 thì window là
-    Thứ 5 tuần trước 00:00 → Thứ 4 tuần này 23:59:59."""
-    today = dt.date.today()
-    end = today - dt.timedelta(days=1)
-    start = end - dt.timedelta(days=6)
-    start_dt = dt.datetime.combine(start, dt.time.min)
-    end_dt = dt.datetime.combine(end, dt.time.max)
+def daily_window():
+    """Window kể từ lần chạy trước (cron chạy T2-T6, cùng 1 giờ mỗi ngày) tới
+    bây giờ. Thứ 2 lùi về Thứ 6 tuần trước (3 ngày) để phủ cuối tuần, các ngày
+    khác lùi 1 ngày."""
+    now = dt.datetime.now()
+    days_back = 3 if now.weekday() == 0 else 1  # Monday=0
+    start_dt = now - dt.timedelta(days=days_back)
+    end_dt = now
     return start_dt, end_dt
 
 
@@ -283,22 +286,25 @@ def main():
     ap.add_argument("--start", help="YYYY-MM-DD (mặc định = thứ 2 tuần trước)")
     ap.add_argument("--end", help="YYYY-MM-DD (mặc định = chủ nhật tuần trước)")
     ap.add_argument("--out", default=os.path.join(REPO, "reports", "bot-corrections"))
-    ap.add_argument("--keep-weeks", type=int, default=2, help="số report gần nhất giữ lại / app (mặc định 2, 0 = giữ hết)")
+    ap.add_argument("--keep-weeks", type=int, default=10, help="số report gần nhất giữ lại / app (mặc định 10 ~ 2 tuần daily, 0 = giữ hết)")
     args = ap.parse_args()
 
     if args.start and args.end:
         start_dt = dt.datetime.combine(dt.date.fromisoformat(args.start), dt.time.min)
         end_dt = dt.datetime.combine(dt.date.fromisoformat(args.end), dt.time.max)
+        tag_date = dt.date.fromisoformat(args.start)
     else:
-        start_dt, end_dt = last_week_window()
+        start_dt, end_dt = daily_window()
+        tag_date = dt.date.today()
 
     base, token = load_creds()
     email_map = load_email_map()
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    week_tag = f"{start_dt.date():%Y-%m-%d}"
+    day_tag = f"{tag_date:%Y-%m-%d}"
     written = []
+    total_new = 0
     for app in args.apps:
         app = app.lower().strip()
         if app not in APP_AGENTS:
@@ -307,14 +313,19 @@ def main():
         agent, bot_name = APP_AGENTS[app]
         rows = fetch_all_corrections(base, token, agent)
         md, n = build_report(app, agent, bot_name, rows, start_dt, end_dt, email_map)
+        total_new += n
         app_dir = out_dir / app
+        if n == 0:
+            print(f"{app}: 0 correction(s), skip write")
+            continue
         app_dir.mkdir(parents=True, exist_ok=True)
-        path = app_dir / f"{app}-corrections-{week_tag}.md"
+        path = app_dir / f"{app}-corrections-{day_tag}.md"
         path.write_text(md, encoding="utf-8")
         written.append(str(path))
         print(f"{app}: {n} correction(s) → {path}")
         prune_old_reports(app_dir, app, args.keep_weeks)
 
+    print(f"TOTAL_NEW={total_new}")
     return written
 
 
