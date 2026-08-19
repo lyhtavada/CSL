@@ -14,7 +14,7 @@ diff/patch a specific mined-FAQ file by hand. Just run the skill normally
 | | |
 |---|---|
 | Label | `com.avada.kb-sync` |
-| Schedule (when installed) | Monday 16:30 local |
+| Schedule (when installed) | Tuesday 11:30 local |
 | Script | `run-weekly.sh` → Claude headless, `--dangerously-skip-permissions` |
 | Auth | Claude subscription OAuth (no API bill); reads `CS2_API_TOKEN` from `~/CSL/.env` |
 | Log | `/tmp/kb-sync-weekly.log` |
