@@ -39,6 +39,7 @@ in the JSON, every rule is in evaluate.py.
 | ① Volume | never — always one line of numbers | (no baseline, no history needed) |
 | ② Checkin | late **≥10 min**, miss checkin, or miss checkout | `✅ OK` |
 | ③ AI ticket | `tsStatus` ∈ {pending, doing} **and** `dueDateDone is not True` | `✅ Không có` |
+| ③b DFY chưa nhận | `tsStatus` = `done_for_you` **and** `memberIds` vẫn chỉ có `ai-agent-2` (chưa ai thật assign) | `✅ Không có` |
 | ④ Ticket Liz | any ticket created for her | `Không có` |
 
 **Why ① has no anomaly rule:** three of Liz's four rules are absolute, so only
@@ -123,6 +124,15 @@ Also from that probe: **all 75 AI-created tickets in 14 days were Chatty** —
 Joyce and Wendy created none, so empty joy/wishlist blocks are real, not a
 bug. Worth revisiting whether those two bots create tickets under a different
 member id.
+
+**③b (added 2026-08-19, Liz's request)** — a separate condition from ③,
+checked on the same ticket data: `tsStatus == "done_for_you"` (the bot marked
+the DFY setup itself complete) **and** `memberIds` is still exactly
+`["ai-agent-2"]` — meaning no human CS/TS has ever been added to the ticket.
+A bot-completed DFY ticket nobody picked up is invisible to ③ since
+`done_for_you` isn't in `flagTsStatus`, so this catches it separately.
+Example: `CHAT-260818-7p3UjQ`, flagged by Liz 2026-08-19. Toggle off via
+`aiTickets.flagDfyUnassigned` in `thresholds.json`.
 
 **④ Ticket tạo cho Liz trong ngày** — tickets created in the window where
 Liz is a member (`scripts/fetch_liz_tickets.py`, matches any member whose

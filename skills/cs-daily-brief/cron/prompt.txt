@@ -32,6 +32,8 @@ evaluate.py runs all 4 fetchers, applies Liz's rules from
                    (late already filtered to >= thresholds.checkin.lateMinutes)
   flags.aiStale    AI-created tickets with no progress
                    (tsStatus in pending/doing AND dueDateDone is not True)
+  flags.aiDfyUnassigned AI-created DFY tickets nobody picked up
+                   (tsStatus == done_for_you AND memberIds still just ["ai-agent-2"])
   flags.lizTickets every ticket created for Liz in the window
   data             raw output of all 4 fetchers, for the thread detail
 
@@ -108,6 +110,11 @@ clean keeps its one-line ✅ form from 3b — do not expand it.
        *⚠️ <n> ticket AI tạo chưa có tiến độ* (dueDate chưa done, còn pending/doing)
        • [<app>] <<ticketUrl>|#<ticketId>> — <subject, ~70 ký tự> _(<tsStatus>)_
      else: "③ AI ticket treo: ✅ Không có (bot xử lý <n> chat, tạo <n> ticket)"
+
+  ③b if flags.aiDfyUnassigned non-empty:
+       *⚠️ <n> ticket DFY bot đã đánh dấu xong nhưng chưa ai nhận*
+       • [<app>] <<ticketUrl>|#<ticketId>> — <subject, ~70 ký tự>
+     else: "③b DFY chưa nhận: ✅ Không có"
 
   ④ if flags.lizTickets non-empty:
        *④ Ticket cho Liz: <n>*

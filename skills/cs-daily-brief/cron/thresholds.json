@@ -12,7 +12,9 @@
     "flagTsStatus": ["pending", "doing"],
     "_flagTsStatus": "Ticket AI tạo mà tsStatus nằm trong list này = chưa ai đẩy tiến độ. Vocabulary đầy đủ: waiting_customer, done, done_for_you, dev_done, dev_fixing, pending, doing, onb, sale_request, feature_request, customization, waiting_permission, billing. Thêm/bớt ở đây nếu báo quá ồn hoặc lọt case.",
     "requireDueDateNotDone": true,
-    "_requireDueDateNotDone": "AND thêm điều kiện dueDateDone chưa phải True. LƯU Ý: dueDate là timestamp (createdAt + 2 ngày, tự set) — KHÔNG phải cờ true/false. Cờ thật là dueDateDone, và 'chưa xong' được biểu diễn bằng key VẮNG MẶT chứ không phải False. Đặt false để bỏ điều kiện này nếu thấy lọt case."
+    "_requireDueDateNotDone": "AND thêm điều kiện dueDateDone chưa phải True. LƯU Ý: dueDate là timestamp (createdAt + 2 ngày, tự set) — KHÔNG phải cờ true/false. Cờ thật là dueDateDone, và 'chưa xong' được biểu diễn bằng key VẮNG MẶT chứ không phải False. Đặt false để bỏ điều kiện này nếu thấy lọt case.",
+    "flagDfyUnassigned": true,
+    "_flagDfyUnassigned": "Điều kiện flag thứ 2, độc lập với flagTsStatus/requireDueDateNotDone ở trên: ticket tsStatus = done_for_you (bot đã tạo xong DFY ticket) NHƯNG memberIds vẫn chỉ có mỗi ai-agent-2 — nghĩa là chưa ai (CS/TS người thật) được assign vào, ticket đang bị bỏ quên dù bot đã đánh dấu DFY. Ví dụ: CHAT-260818-7p3UjQ (2026-08-19, Liz phát hiện). Đặt false để tắt."
   },
 
   "lizTickets": {

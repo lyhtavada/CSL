@@ -131,6 +131,7 @@ def slim_ticket(t, app_key):
         "ticketStatus": t.get("ticketStatus"),
         "dueDate": t.get("dueDate"),
         "dueDateDone": t.get("dueDateDone"),  # None when the key is absent
+        "memberIds": t.get("memberIds"),  # who's on the ticket, e.g. still just the AI creator
         "createdAt": t.get("createdAt"),
         "chatLink": t.get("chatLink"),
         "ticketUrl": "https://avada-ts-a9cb0.web.app" + t["shortUrl"] if t.get("shortUrl") else None,

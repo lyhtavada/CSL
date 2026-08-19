@@ -27,6 +27,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SKILL_DIR = os.path.dirname(HERE)
 THRESHOLDS_PATH = os.path.join(SKILL_DIR, "cron", "thresholds.json")
 VN = dt.timezone(dt.timedelta(hours=7))
+AI_MEMBER_ID = "ai-agent-2"  # same id as fetch_ai_tickets.py
 
 FETCHERS = {
     "conversations": "fetch_conversations.py",
@@ -94,21 +95,32 @@ def evaluate(data, cfg):
     ai = cfg["aiTickets"]
     want = set(ai["flagTsStatus"])
     stale = []
+    dfy_unassigned = []
     for app_key, app in data["aiTickets"]["apps"].items():
         for t in app.get("tickets", []):
-            if t.get("tsStatus") not in want:
-                continue
-            if ai["requireDueDateNotDone"] and t.get("dueDateDone") is True:
-                continue
-            stale.append({**t, "bot": app.get("bot")})
+            matched = False
+            if t.get("tsStatus") in want:
+                if not (ai["requireDueDateNotDone"] and t.get("dueDateDone") is True):
+                    stale.append({**t, "bot": app.get("bot")})
+                    matched = True
+            # ③b — tsStatus = done_for_you (bot marked DFY done) but the ticket
+            # still has nobody but the AI creator on it — no human ever
+            # picked it up. Independent condition, checked even if ③a above
+            # didn't match (a ticket can't be both, since done_for_you isn't
+            # in flagTsStatus, but keep this a separate `if` for clarity).
+            if (ai.get("flagDfyUnassigned") and t.get("tsStatus") == "done_for_you"
+                    and (t.get("memberIds") or []) == [AI_MEMBER_ID]):
+                dfy_unassigned.append({**t, "bot": app.get("bot")})
     stale.sort(key=lambda t: t.get("createdAt") or "")
+    dfy_unassigned.sort(key=lambda t: t.get("createdAt") or "")
     flags["aiStale"] = stale
+    flags["aiDfyUnassigned"] = dfy_unassigned
 
     # ④ Ticket cho Liz — báo hết.
     liz = data["lizTickets"]["tickets"] if cfg["lizTickets"]["reportAll"] else []
     flags["lizTickets"] = liz
 
-    quiet = not (flags["checkin"]["any"] or stale or liz)
+    quiet = not (flags["checkin"]["any"] or stale or dfy_unassigned or liz)
     return flags, quiet
 
 
@@ -160,6 +172,7 @@ def main():
         print(f"  ② late>={cfg['checkin']['lateMinutes']}p: {len(ck['late'])}, "
               f"miss in: {len(ck['missCheckin'])}, miss out: {len(ck['missCheckout'])}")
         print(f"  ③ AI ticket chưa tiến độ: {len(flags['aiStale'])}")
+        print(f"  ③b DFY chưa ai nhận: {len(flags['aiDfyUnassigned'])}")
         print(f"  ④ ticket cho Liz: {len(flags['lizTickets'])}")
         for p in problems:
             print(f"  ⚠️  {p}")
