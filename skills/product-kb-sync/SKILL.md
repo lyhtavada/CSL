@@ -79,6 +79,11 @@ For each OUTDATED/GAP/PARTIAL item:
 - Build the same payloads format as `/kb-sync`:
   `reports/analysis/product-kb-sync-<app>-<date>-payloads.json`,
   array of `{agent, path, content}` (full file content per entry).
+  **`agent` must be the real KB-API agent id** — `chatty-agent` for Chatty,
+  `joy-loyalty-agent` for Joy — NOT the short app name (`chatty`/`joy`) used
+  elsewhere in this skill for config/CLI args. Using the short name makes
+  `push_kb.py` fail with HTTP 400 on every entry (found + fixed 2026-08-19,
+  after two silent-fail runs on 14/08 and 18/08 whose payloads sat unpushed).
 
 ### 4. Review gate — STOP and show Liz
 Print: which Slack items and which GitLab paths were used, the
