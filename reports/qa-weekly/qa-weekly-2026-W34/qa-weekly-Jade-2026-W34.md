@@ -1,0 +1,40 @@
+📋 *QA TUẦN — BÁO CÁO CỦA Jade*
+🗓️ Tuần W34 · 12/08 – 18/08/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 *Điểm tuần:* 85/100 — Tốt  (▲ +3 so với tuần trước (82→85))
+🔍 Đã QA: 30 chat
+Breakdown: 🧠 Mindset 28.6/34 · 📚 Kiến thức 29/33 · 🛠️ Xử lý 27.9/33
+
+📝 *Nhận xét chung*
+Tuần này bạn xử lý khối lượng chat rất lớn và nhiều case dài, nhiều ngày (chat #2, #13, #21, #23, #29) mà vẫn theo tới cùng — không đóng lửng, chủ động cập nhật khi team dev/design còn đang xử lý, đây là điểm mạnh rõ nhất. Kỹ năng troubleshoot cũng tốt: nhiều lần bạn tìm đúng root cause thay vì chỉ báo cáo triệu chứng (case currency ở #3, case Thank You page draft ở #6, case cart drawer bên thứ 3 ở #21/#29). Điểm cần siết lại: một số câu trả lời còn dùng công thức lặp lại quá nhiều ("That's the least we could do", "Thank you for your cooperation") khiến khách cảm giác được trả lời theo kịch bản hơn là thật sự cá nhân hóa, và có 1 lần gửi nhầm ngôn ngữ (tiếng Bồ Đào Nha) cho khách Trung Quốc ở chat #1 khiến khách phải chờ bạn tự sửa lại — kiểm tra ngôn ngữ trước khi gửi để tránh lặp lại. Hướng tập trung tuần tới: chủ động xin review nhiều hơn ở đúng thời điểm khách vừa hài lòng — bạn đang bỏ lỡ khá nhiều chat vàng.
+
+✅ *Điểm tốt tuần này*
+• Ownership rất tốt ở các case dài nhiều ngày — không đẩy việc, luôn quay lại cập nhật chủ động dù dev/design chưa xong: "Our team is checking your request carefully... we will provide an update once they are back at work" và tự tay tạo ticket/DFY ticket theo dõi xuyên suốt case. (chat #2, #13, #21, #23, #29)
+• Kỹ năng chẩn đoán đúng root cause thay vì trả lời hời hợt — vd case #3: "I noticed that the Rs. currency format is configured in your Shopify admin Settings... our app pulls this currency symbol directly from your currency formatting" (không đổ lỗi cho app khi không phải lỗi app); case #6: chỉ ra chính xác nguyên nhân do Thank You page còn ở trạng thái Draft trước hạn upgrade Shopify. (chat #3, #6, #21)
+• Thấu cảm & kiên nhẫn với khách khó/áp lực thời gian — vd chat #1 khách liên tục hối "这不就是简单的删除代码和修改文案的工作吗", bạn vẫn trấn an và đẩy tiến độ: "我也注意到了你的时间安排。我们的团队会尽量优先处理你的请求" thay vì phản ứng phòng thủ. (chat #1, #30)
+
+🔧 *Cần cải thiện*
+• [KN3] Gửi nhầm ngôn ngữ cho khách — khách đang chat tiếng Trung nhưng bạn gửi 1 câu tiếng Bồ Đào Nha, khiến khách phải hỏi lại/chờ sửa. (chat #1)
+   → Dẫn chứng: [08:27:10] CS (Jade): Agradeço sua cooperação → [08:29:40] CS (Jade): 很抱歉翻译出现了问题 (tự nhận có lỗi dịch)
+   → Trước khi gửi, liếc nhanh câu trả lời để chắc đúng ngôn ngữ khách đang dùng, đặc biệt khi copy nhanh trong lúc case đang gấp.
+• [KN7] Lạm dụng câu chốt mẫu lặp lại nguyên văn ở nhiều chat khác nhau ("That's the least we could do", "Thank you so much for your cooperation") khiến phản hồi có cảm giác kịch bản hơn là cá nhân hóa cho từng khách. (chat #1, #6, #16, #23)
+   → Dẫn chứng: "That's the least we could do" xuất hiện lặp lại y nguyên ở nhiều case khác nhau (chat #1, #6, #16, #23)
+   → Biến tấu câu cảm ơn/chốt theo đúng bối cảnh case đó thay vì dùng đúng 1 mẫu câu cho mọi khách.
+• [KN1] Lỗi chính tả nhỏ trong câu trả lời khách. (chat #14)
+   → Dẫn chứng: [10:08:00] CS (Jade): Thank youu
+   → Đọc lại tin trước khi gửi, nhất là các câu ngắn hay bị gõ nhanh.
+
+🌟 *Xin review (chỉ ghi nhận, không tính điểm)*
+• Đã xin review đúng lúc ở 4/7 chat khách hài lòng phù hợp.
+   Đã xin review đúng lúc 4/7 chat khách hài lòng phù hợp (chat #3, #5, #6, #14) — timing đều tốt, hỏi ngay sau khi khách vừa cảm ơn/khen. Tuy nhiên bỏ lỡ vài chat vàng, đặc biệt chat #23 (Wishlist) khách cảm ơn nhiều lần suốt case dài mà chưa lần nào mời để lại review — nên tận dụng những khoảnh khắc này.
+
+📈 *So với tuần trước*
+• ▲ +3 so với tuần trước (82→85)
+• Lỗi lặp lại từ tuần trước: KN3 — cần ưu tiên sửa vì đã nhắc tuần trước mà chưa cải thiện.
+• Đã khắc phục so với tuần trước: KN5, KN6 👏
+
+🔗 *Chat đã QA (30):*
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cb7f0b84-9274-4d06-8d75-8f539a19c1e8|#1 Jay Man> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_894f5998-cde6-47bf-b4d6-840bc8bd1deb|#2 Orsolya Lele> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_f0773b2c-8957-4ff6-a74a-4b845c0a4c39|#3 Samata Das> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3ecefe15-7f33-4a41-a09d-3112eb7f3fc7|#4 Victoria Leung> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4595b185-e48e-4c04-a2e5-c1b5188eaf14|#5 TAIMTO> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_28938ca1-ca77-4010-8b3d-86dc955a99dd|#6 Chris Murphy> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_e690ce34-2f56-4393-b799-cc9d0d5a71ce|#7 Data Support> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a00a752f-1a81-423d-aa47-54b0ee00862f|#8 Aurélie et Joséphine HASTKO> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_037e1bb3-71ea-4bdb-bf23-974760cbaa32|#9 JewelryRich> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a30b02ac-4c01-43ca-bf09-14b634f0877c|#10 Michael Skibicki> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c36d8a1e-9634-4f97-a7e2-42c08ce860c4|#11 yihan qi> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_693c02c0-f73a-40cd-aab0-fc010e714364|#12 Dive Bookings> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b46cd734-920b-454a-98cb-ddbed261018a|#13 創造 富川> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_0e94de44-1dde-45e9-a873-1447c79b8c91|#14 TheAct.labs> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b2fd7d23-bcac-41ca-88ee-792fd2f4f418|#15 Kiran K> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_8d8302d0-d5a5-4e1c-91e2-990a315ec613|#16 Power Rich Sports Inc> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_de3b6181-e80c-42e8-bae2-38b58634c08b|#17 Hsiao Fan Chang> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_0a76bfe4-e031-48e3-9237-e3104ceae2bc|#18 Outdoors Lifestyle> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_22de3ebf-e7b0-4420-bb7d-3218e23cc541|#19 ISH ELV> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_c8512d52-8ba1-402c-988e-c66e00aa1200|#20 David Loes> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_14bc8e63-e2d1-4f6b-8b6d-9f3dc823faa1|#21 ZHANHAO MAI> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_631fd237-1c43-456b-960e-db3279b6fdac|#22 Healez Beauty> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_3330fb52-95da-4472-9324-1a38a5f804bb|#23 Nicecnc> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_bd4cc45c-6f2f-456e-9b2f-e930bca1a536|#24 Admin> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_627cb0fa-ae48-493c-a5d8-3c62ed7a3043|#25 Store Manager> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_30d341ef-5469-4e41-82d4-e79bbd436b36|#26 visitor3656235> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_8ded1ddc-e6f2-4e6b-be73-b51fe8bff833|#27 LIVALL RIDING> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_0f0fa547-1619-4c8e-b20a-7594b314780d|#28 Official GMKtec> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_72f38c9b-18d0-4a4d-8416-85018d2f78fb|#29 Kaitlin Johnstone> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_33bafa2c-54dd-4da7-a275-283174c5dc48|#30 Pept Au>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_

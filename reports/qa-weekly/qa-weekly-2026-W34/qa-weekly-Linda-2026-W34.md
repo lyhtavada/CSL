@@ -1,0 +1,41 @@
+📋 *QA TUẦN — BÁO CÁO CỦA Linda*
+🗓️ Tuần W34 · 12/08 – 18/08/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 *Điểm tuần:* 76/100 — Đạt  (▼ -3 so với tuần trước (79→76))
+🔍 Đã QA: 23 chat
+Breakdown: 🧠 Mindset 26.3/34 · 📚 Kiến thức 25.7/33 · 🛠️ Xử lý 24.3/33
+
+📝 *Nhận xét chung*
+Tuần này Linda thể hiện phong cách làm việc có trách nhiệm rõ — chủ động tự tái hiện lỗi trước khi đẩy qua tech team, và nhiều lần chủ động sửa những thứ khách còn chưa kịp hỏi (case #16, #1). Đây là điểm mạnh nhất, đúng tinh thần "vì khách" chứ không chỉ làm cho xong. Tuy nhiên điểm tổng bị kéo xuống mức "Đạt" (không phải "Tốt") vì hai vấn đề rõ ràng cần sửa ngay: (1) một lỗi kiến thức nghiêm trọng — báo sai giới hạn team member gói Pro (nói 5 trong khi đúng là 10), loại lỗi này nếu lặp lại có thể khiến khách hiểu sai giá trị gói và mất niềm tin khi tự kiểm tra lại; (2) lỗi chính tả/ngữ pháp và một câu trả lời lẫn tiếng Việt vào tiếng Anh lặp lại ở nhiều chat trong tuần — không phải lỗi nặng từng cái nhưng cộng dồn làm giảm tính chuyên nghiệp. Tuần tới nên ưu tiên: luôn tra KB trước khi chốt số liệu về plan/limit, và đọc lại câu trước khi gửi để tránh gõ lẫn ngôn ngữ hoặc sai chính tả.
+
+✅ *Điểm tốt tuần này*
+• Chủ động tự tái hiện lỗi trước khi escalate thay vì chỉ chuyển tiếp lời khách — ví dụ tự test lại và xác nhận bug Instagram không phản hồi ('After checking on my end, I was able to reproduce the issue as well') trước khi báo tech team. (chat #16)
+• Chủ động phát hiện và xử lý thêm những điểm khách chưa hỏi tới — tự nhận ra setting 'AI Re-engage After Resolution' chưa bật và bật luôn cho khách ('I noticed that the AI Re-engage After Resolution setting hasn't been enabled yet... I've just turned it on for you'), tương tự việc chủ động hỏi khách có muốn tắt discount cho AI không ở case DFY. (chat #16, #1)
+• Setup DFY kỹ, luôn chốt lại bằng bản tóm tắt đầy đủ trước khi tạo ticket để khách xác nhận, tránh sai sót ('Got it. Just to confirm, here's the AI setup I'll configure for you: ...') — giảm rủi ro làm sai yêu cầu khách. (chat #1, #8)
+• Giữ bình tĩnh, kiên nhẫn với khách khó tính/đòi hỏi nhiều (yêu cầu export dữ liệu tự động hàng ngày không hỗ trợ, khách hỏi đi hỏi lại nhiều lần) mà không tỏ ra mất kiên nhẫn hay đẩy việc. (chat #5, #9, #21)
+
+🔧 *Cần cải thiện*
+• [KT1] Cung cấp sai giới hạn team member của gói Pro cho khách — nói Pro chỉ có 5 người trong khi KB (fetch_kb.py chatty kb/faq/pricing.md) ghi rõ Pro = 10 team members (Basic = 5, trừ store Basic cũ trước 1/2024 mới được giữ 3 — không áp dụng cho Pro). (chat #18)
+   → Dẫn chứng: "基础版允许额外添加2名成员（共3人），而专业版允许额外添加4名成员（共5人）" (dịch: Basic tổng 3 người, Pro tổng 5 người) — trong khi KB xác nhận Pro = 10 team members.
+   → Trước khi trả lời về plan limit (số member, quota conversation, số sản phẩm...), luôn tra lại pricing KB thay vì nhớ theo trí nhớ — sai số này có thể khiến khách chọn nhầm plan hoặc cảm thấy bị lừa khi kiểm tra lại sau.
+• [KN3] Có câu trả lời bị lẫn tiếng Việt vào giữa câu tiếng Anh, làm khách khó hiểu — không phải lỗi ngôn ngữ theo yêu cầu khách (KH hỏi tiếng Anh, CS trả tiếng Anh) mà là lỗi gõ nhầm giữa hai ngôn ngữ trong cùng câu. (chat #2)
+   → Dẫn chứng: "Due to the chatbox on your store, it has already bên adjut to these messages."
+   → Đọc lại câu trước khi gửi, đặc biệt khi đang trả lời song song nhiều case — một câu tối nghĩa như vậy buộc khách phải hỏi lại, kéo dài chat không cần thiết.
+• [KN1] Lỗi chính tả/ngữ pháp lặp lại ở nhiều chat trong tuần, ảnh hưởng đến sự chuyên nghiệp khi giao tiếp bằng văn bản với khách quốc tế. (chat #1, #21, #23)
+   → Dẫn chứng: "Ah, thanks so much fỏ your kindness." (#1); "Hey, I'm come back." (#21); "Is there anything else I cna help you with today?" (#23); "you cna find it in the Settings" (#21)
+   → Đây là lỗi lặp lại nhiều lần trong tuần, cần ưu tiên sửa — dành 2-3 giây đọc lại tin trước khi gửi, nhất là các câu chốt/xác nhận với khách.
+
+🌟 *Xin review (chỉ ghi nhận, không tính điểm)*
+• Đã xin review đúng lúc ở 1/1 chat khách hài lòng phù hợp.
+   Mẫu chat 'chưa có review + KH rõ ràng hài lòng' tuần này khá nhỏ (1/1, đã xin đúng lúc ở #10). Ghi nhận thêm 2 lần xin hơi sớm — vấn đề khách chưa thật sự xong (đang chờ fix ticket) mà đã mời để lại review (#9, #21), nên cân nhắc chờ khách xác nhận vấn đề đã ổn hẳn rồi mới xin. Ở 2 chat đã có review từ trước (#1, #23), bạn vẫn khéo léo xin thêm đúng lúc khách vui và thực sự có thêm review mới — tinh thần chủ động tốt dù không tính vào mẫu chính thức.
+
+📈 *So với tuần trước*
+• ▼ -3 so với tuần trước (79→76)
+• Lỗi lặp lại từ tuần trước: KN1, KT1 — cần ưu tiên sửa vì đã nhắc tuần trước mà chưa cải thiện.
+• Đã khắc phục so với tuần trước: QT9 👏
+
+🔗 *Chat đã QA (23):*
+<https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4444e983-829d-40a2-b6aa-ff9f407ce421|#1 CoreOptimise®> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_9d8e2f73-ba4a-4b1f-84a7-a1f518ae6510|#2 Global Automotive Accessories> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_1f2f9f03-57b6-40fb-b2f1-b1c02429edac|#3 Calzadopre> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_05f6cc56-c868-4ec7-87d9-7ac9462cd3af|#4 Hemani Herbal> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_716820a2-49c7-458a-a78a-44430003c52f|#5 HugFig> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_b552e171-8249-4ec0-b5c2-a6907bb81a2d|#6 Konsolen-Reparatur> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_cbefcaf2-38ba-462b-950c-2bd1477716f7|#7 Yeasound: Explore the Best OTC Hearing Aids for You and Your Loved Ones> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_8f74094c-ae64-472a-b34c-be93ceadf178|#8 visitor3661005> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_1a5445b8-a701-4931-b53c-84be9149e917|#9 Stonehenge Health > · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_8ded1ddc-e6f2-4e6b-be73-b51fe8bff833|#10 LIVALL RIDING> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_0a908f01-b43a-4d91-9b70-4dd25c8540a3|#11 AnimeAim> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_7ed75446-feb7-4629-bb11-bfefdb27e7b7|#12 Lasercyber-tech> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d54bac40-56aa-4ef4-924a-b233e3a939fc|#13 Vellutto> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_428ebdbf-32a5-40d9-9594-b02361efe777|#14 zenliva> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_10d9fef4-ee8f-4952-a594-8d9c722df707|#15 AURA FITNESS> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d5793d88-e811-46af-8290-5d3e11fb4a94|#16 SGI> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_a2f754c3-c880-4b94-bbc7-7694edee9547|#17 Montana West World> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_4ad0a305-09df-421a-8099-b2a002f347d8|#18 VoxMeta> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d3c941d8-9df2-4ffe-91d6-c6ffae24e468|#19 Kingbo Bateria - Brasil> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_d05ce2e0-0013-472e-9f43-f0d90a7a8b51|#20 Chiputt Golf> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_5565a212-a862-4a4f-afdb-f123c66b7b33|#21 Hairy Pony> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_214f053c-30fa-477c-b1fe-7c57ed0684fc|#22 SpeedyOrders> · <https://app.crisp.chat/website/72a663b0-4cda-4e3b-8878-426bdd79364c/inbox/session_23540336-3c8b-4fab-be22-2a9e513cf34b|#23 Carverall>
+
+_Tin tự động từ hệ thống QA của team CS 2. Có gì thắc mắc cứ nhắn lại Liz nhé 💬_
