@@ -74,20 +74,19 @@ enterprise*→Ultimate. 29 conv (3.2%) không match được domain vào dash �
 
 ### Summary — so sánh 5 plan theo khung giờ
 
-| Plan | Total conv | % Total | Human% 08:00–17:59 | Human% 18:00–23:59 | Human% 00:00–07:59 |
+| Plan | Total conv | % Total | % 08:00–17:59 | % 18:00–23:59 | % 00:00–07:59 |
 |---|---|---|---|---|---|
-| Starter | 177 | 19.5% | 60.5% | **46.3%** | 64.0% |
-| Essential | 234 | 25.7% | 72.9% | 66.0% | **48.8%** |
-| Essential+POS | 24 | 2.6% | 80.0% | 66.7% | **42.9%** |
-| Advanced | 377 | 41.4% | 87.8% | 83.8% | 78.0% |
-| Ultimate | 69 | 7.6% | 93.2% | 80.0% | 80.0% |
+| Starter | 177 | 19.5% | 48.6% | 23.2% | 28.2% |
+| Essential | 234 | 25.7% | 61.5% | 20.1% | 18.4% |
+| Essential+POS | 24 | 2.6% | 20.8% | 50.0% | 29.2% |
+| Advanced | 377 | 41.4% | 63.1% | 21.2% | 15.6% |
+| Ultimate | 69 | 7.6% | 63.8% | 21.7% | 14.5% |
 
-**Đọc:** plan càng cao, tỷ lệ cần người thật càng cao — ở cả 3 khung giờ, kể cả đêm sâu
-00:00–07:59. Advanced/Ultimate (446 conv, ~49% total volume tháng) có human% 78–93% ngay
-cả 00:00–07:59, tức bot gần như không tự xử được nhóm này bất kể khung giờ. Ngược lại
-Starter/Essential có human% thấp hơn rõ rệt (46–73%), và ở cả hai tier này khung 00:00–07:59
-hoặc 18:00–23:59 đều có ít nhất 1 khung human% dưới 50% — đây là chỗ bot đang gánh được
-nhiều nhất.
+**Đọc:** Advanced/Ultimate/Essential đều tập trung ~62–64% conv vào khung 08:00–17:59, phần
+còn lại chia khá đều cho tối và đêm. Starter lệch khác — chỉ 48.6% rơi vào giờ hành chính,
+tới 51.4% nằm ngoài 08:00–17:59 (tối 23.2% + đêm 28.2%), tỷ trọng off-hours cao nhất trong 5
+plan. Essential+POS lệch mạnh nhất về khung tối (50.0% conv rơi vào 18:00–23:59) — khác hẳn
+pattern của các plan còn lại, dù sample nhỏ (24 conv) nên chỉ mang tính tham khảo.
 
 ## 3. Off-hours là merchant nào? (geolocation)
 
