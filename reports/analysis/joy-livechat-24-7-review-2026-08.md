@@ -72,6 +72,16 @@ enterprise*→Ultimate. 29 conv (3.2%) không match được domain vào dash �
 | 18:00–23:59 | 15 | 1.6% | 12 | 80.0% |
 | 00:00–07:59 | 10 | 1.1% | 8 | 80.0% |
 
+### Summary — so sánh 5 plan theo khung giờ
+
+| Plan | Total conv | % Total | Human% 08:00–17:59 | Human% 18:00–23:59 | Human% 00:00–07:59 |
+|---|---|---|---|---|---|
+| Starter | 177 | 19.5% | 60.5% | **46.3%** | 64.0% |
+| Essential | 234 | 25.7% | 72.9% | 66.0% | **48.8%** |
+| Essential+POS | 24 | 2.6% | 80.0% | 66.7% | **42.9%** |
+| Advanced | 377 | 41.4% | 87.8% | 83.8% | 78.0% |
+| Ultimate | 69 | 7.6% | 93.2% | 80.0% | 80.0% |
+
 **Đọc:** plan càng cao, tỷ lệ cần người thật càng cao — ở cả 3 khung giờ, kể cả đêm sâu
 00:00–07:59. Advanced/Ultimate (446 conv, ~49% total volume tháng) có human% 78–93% ngay
 cả 00:00–07:59, tức bot gần như không tự xử được nhóm này bất kể khung giờ. Ngược lại
