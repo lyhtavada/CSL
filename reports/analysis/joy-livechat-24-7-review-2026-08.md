@@ -28,18 +28,56 @@ Peak thật: 14:00–17:00. Off-hours không hề "vắng" — hơn 40% volume t
 
 ## 2. Theo app plan
 
-| Plan | Total conv | Human % | Off-hours conv | Off-hours human % |
-|---|---|---|---|---|
-| Advanced | 377 | 89.9% | 108 | 86.1% |
-| Essential | 228 | 75.4% | 78 | 73.1% |
-| Starter | 201 | 69.7% | 87 | 71.3% |
-| Ultimate | 70 | 94.3% | 19 | 94.7% |
-| Essential+POS | 26 | 80.8% | 17 | 70.6% |
+*(plan lấy từ `dash_merchant_360.current_plan` join theo shopifyDomain, map qua bảng
+`getLabelPlan()` — free→Starter, pro*→Essential, pro_4_*→Essential+POS, advanced*→Advanced,
+enterprise*→Ultimate. 29 conv (3.2%) không match được domain vào dash → Unknown.)*
 
-**Đọc:** plan càng cao, tỷ lệ cần người thật càng cao — kể cả ban đêm. Advanced/Ultimate
-(447 conv, gần một nửa volume tháng) có human % 86–95% off-hours, tức bot gần như không tự
-xử được nhóm này. Ngược lại Starter/Essential có human % thấp hơn rõ rệt (~70–75%) cả giờ
-hành chính lẫn ban đêm — bot đang gánh được một phần đáng kể.
+### Starter (177 conv, 19.5% total)
+
+| Khung giờ | Conv | % Conv/Total | Human involved | Human % |
+|---|---|---|---|---|
+| 08:00–17:59 | 86 | 9.5% | 52 | 60.5% |
+| 18:00–23:59 | 41 | 4.5% | 19 | 46.3% |
+| 00:00–07:59 | 50 | 5.5% | 32 | 64.0% |
+
+### Essential (234 conv, 25.7% total)
+
+| Khung giờ | Conv | % Conv/Total | Human involved | Human % |
+|---|---|---|---|---|
+| 08:00–17:59 | 144 | 15.8% | 105 | 72.9% |
+| 18:00–23:59 | 47 | 5.2% | 31 | 66.0% |
+| 00:00–07:59 | 43 | 4.7% | 21 | 48.8% |
+
+### Essential+POS (24 conv, 2.6% total)
+
+| Khung giờ | Conv | % Conv/Total | Human involved | Human % |
+|---|---|---|---|---|
+| 08:00–17:59 | 5 | 0.5% | 4 | 80.0% |
+| 18:00–23:59 | 12 | 1.3% | 8 | 66.7% |
+| 00:00–07:59 | 7 | 0.8% | 3 | 42.9% |
+
+### Advanced (377 conv, 41.4% total)
+
+| Khung giờ | Conv | % Conv/Total | Human involved | Human % |
+|---|---|---|---|---|
+| 08:00–17:59 | 238 | 26.2% | 209 | 87.8% |
+| 18:00–23:59 | 80 | 8.8% | 67 | 83.8% |
+| 00:00–07:59 | 59 | 6.5% | 46 | 78.0% |
+
+### Ultimate (69 conv, 7.6% total)
+
+| Khung giờ | Conv | % Conv/Total | Human involved | Human % |
+|---|---|---|---|---|
+| 08:00–17:59 | 44 | 4.8% | 41 | 93.2% |
+| 18:00–23:59 | 15 | 1.6% | 12 | 80.0% |
+| 00:00–07:59 | 10 | 1.1% | 8 | 80.0% |
+
+**Đọc:** plan càng cao, tỷ lệ cần người thật càng cao — ở cả 3 khung giờ, kể cả đêm sâu
+00:00–07:59. Advanced/Ultimate (446 conv, ~49% total volume tháng) có human% 78–93% ngay
+cả 00:00–07:59, tức bot gần như không tự xử được nhóm này bất kể khung giờ. Ngược lại
+Starter/Essential có human% thấp hơn rõ rệt (46–73%), và ở cả hai tier này khung 00:00–07:59
+hoặc 18:00–23:59 đều có ít nhất 1 khung human% dưới 50% — đây là chỗ bot đang gánh được
+nhiều nhất.
 
 ## 3. Off-hours là merchant nào? (geolocation)
 
