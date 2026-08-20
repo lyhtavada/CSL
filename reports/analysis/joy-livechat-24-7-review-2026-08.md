@@ -203,23 +203,33 @@ cần escalation riêng.
 
 ## 5. Kết luận & đề xuất
 
-1. **Không nên bỏ 24/7 toàn bộ** — 41.2% volume tháng nằm ngoài khung 08:00–17:59 (18:00–23:59
-   22.1% + 00:00–07:59 19.1%), và càng về khuya tỷ trọng merchant US/EU càng tăng rõ
-   (42.5% → 69.8% → 80.3%). Đây là nhu cầu timezone thật của một nhóm merchant cụ thể, không
-   phải noise lẻ tẻ — cắt hẳn sẽ mất coverage đúng giờ làm việc thật của họ.
+*(Cập nhật theo setup thực tế hiện tại: bot đang take toàn bộ chat của Starter/Essential,
+Advanced/Ultimate chỉ bot take một phần nhỏ và có **đội CS riêng đóng vai AM follow-up** cho
+2 tier này — không phụ thuộc live-chat 24/7.)*
 
-2. **Plan quyết định độ cần người hơn là khung giờ** — Advanced/Ultimate (49% volume) giữ
-   human% 78–93% ở CẢ 3 khung, tức bot không gánh nổi nhóm này bất kể giờ nào → giữ nguyên
-   live human 24/7 cho 2 plan này (cũng là nhóm doanh thu cao).
+1. **Rào cản lớn nhất trước đây (Advanced/Ultimate) đã được gỡ bởi cấu trúc AM** — 2 tier
+   này giữ human% 78–93% ở cả 3 khung giờ (49% volume tháng, chủ yếu hỏi redemption/points/
+   data issue bot chưa xử được), nhưng vì đã có AM follow-up riêng nên không cần live-chat
+   24/7 để đỡ nhóm này nữa. Điều kiện để bỏ hẳn 24/7 giờ phụ thuộc vào **Starter/Essential**
+   (đội bot chính) chứ không còn phụ thuộc Advanced/Ultimate.
 
-3. **Nhưng khung giờ yếu nhất khác nhau theo từng plan** — không có một khung "deep-night"
-   chung để cắt giảm cho mọi plan:
+2. **Khung giờ yếu nhất khác nhau theo từng plan** — đây là phần bot sẽ phải gánh 100% khi bỏ
+   hẳn human:
    - **Starter**: yếu nhất là khung **tối** 18:00–23:59 (human% 46.3%, thấp nhất toàn bộ dữ
      liệu) — không phải đêm sâu như giả định ban đầu.
    - **Essential / Essential+POS**: yếu nhất là khung **đêm sâu** 00:00–07:59 (human% 48.8% /
      42.9%).
-   - → Nếu thử bot-first + fallback ticket, nên thiết kế theo plan (Starter thử ở khung tối,
-     Essential thử ở khung đêm sâu) thay vì áp 1 khung giờ chung cho tất cả.
+   - → Nên cải thiện bot + thiết kế fallback riêng theo đúng khung yếu của từng plan (Starter
+     ở khung tối, Essential ở khung đêm sâu) trước khi bỏ hẳn.
+
+3. **2 việc cần chốt trước khi bỏ hẳn 24/7:**
+   - **Fallback mechanism** cho chat Starter/Essential ngoài giờ mà bot không xử được — tạo
+     ticket tự động + SLA trả lời ca sáng, có auto-reply set kỳ vọng cho merchant hay không.
+   - **Escalation path cho case khẩn ban đêm** (VD case billing/finance-chasing như quote ở
+     §4) — cần rule tách riêng khỏi ticket thường, route cho AM/CS xử lý sáng hôm sau thay vì
+     nằm chờ như ticket thường.
+   - Đồng thời xác nhận AM có đủ băng thông đón hết lượng phát sinh ngoài giờ của 446
+     conv/tháng (Advanced/Ultimate) mà không làm chậm phản hồi so với live-chat hiện tại.
 
 4. **Billing/plan question ở Starter (11.4%, cao hơn hẳn tier khác)** — đáng tách riêng theo
    dõi, có thể là tín hiệu upsell hoặc churn tùy cách trả lời; không trực tiếp liên quan đến
@@ -228,4 +238,5 @@ cần escalation riêng.
 5. **Bước tiếp theo nếu muốn quyết định dứt khoát**: pilot "bot + ticket fallback" riêng cho
    Starter ở khung 18:00–23:59 và Essential ở khung 00:00–07:59 (2 khung yếu nhất của mỗi
    plan, 41 và 43 conv/tháng — rủi ro thấp vì volume nhỏ), đo lại human-takeover% và
-   review/churn của nhóm được thử, trước khi mở rộng ra plan/khung khác.
+   review/churn của nhóm được thử; song song theo dõi AM có kịp đỡ lượng Advanced/Ultimate
+   ngoài giờ không, trước khi tuyên bố bỏ hẳn 24/7.
