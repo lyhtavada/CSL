@@ -203,10 +203,6 @@ cần escalation riêng.
 
 ## 5. Kết luận & đề xuất
 
-*(Cập nhật theo setup thực tế hiện tại: bot đang take toàn bộ chat của Starter/Essential,
-Advanced/Ultimate chỉ bot take một phần nhỏ và có **đội CS riêng đóng vai AM follow-up** cho
-2 tier này — không phụ thuộc live-chat 24/7.)*
-
 1. **Rào cản lớn nhất trước đây (Advanced/Ultimate) đã được gỡ bởi cấu trúc AM** — 2 tier
    này giữ human% 78–93% ở cả 3 khung giờ (49% volume tháng, chủ yếu hỏi redemption/points/
    data issue bot chưa xử được), nhưng vì đã có AM follow-up riêng nên không cần live-chat
