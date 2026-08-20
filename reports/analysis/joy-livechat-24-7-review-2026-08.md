@@ -88,6 +88,24 @@ tới 51.4% nằm ngoài 08:00–17:59 (tối 23.2% + đêm 28.2%), tỷ trọng
 plan. Essential+POS lệch mạnh nhất về khung tối (50.0% conv rơi vào 18:00–23:59) — khác hẳn
 pattern của các plan còn lại, dù sample nhỏ (24 conv) nên chỉ mang tính tham khảo.
 
+### Bảng tổng hợp — Conv thực tế theo Plan × Khung giờ (toàn bộ 910 conv)
+
+| Plan | 08:00–17:59 | 18:00–23:59 | 00:00–07:59 | Tổng | % Tổng |
+|---|---|---|---|---|---|
+| Starter | 86 | 41 | 50 | 177 | 19.5% |
+| Essential | 144 | 47 | 43 | 234 | 25.7% |
+| Essential+POS | 5 | 12 | 7 | 24 | 2.6% |
+| Advanced | 238 | 80 | 59 | 377 | 41.4% |
+| Ultimate | 44 | 15 | 10 | 69 | 7.6% |
+| Unknown/no-plan-data | 18 | 6 | 5 | 29 | 3.2% |
+| **Tổng** | **535** | **201** | **174** | **910** | **100%** |
+
+**Đọc nhanh:** khung 08:00–17:59 chiếm 58.8% tổng volume, và riêng Advanced đã chiếm
+238/535 ≈ 44.5% conv của khung này — plan cao tập trung vào giờ hành chính nhiều nhất về số
+tuyệt đối, dù không lệch nhất về tỷ trọng (xem bảng % ở trên, Starter mới là plan lệch tỷ
+trọng off-hours cao nhất). Nói cách khác: **Advanced quyết định tổng khối lượng ban ngày**,
+còn **Starter quyết định phần lớn "hình dạng" off-hours** dù volume tuyệt đối nhỏ hơn nhiều.
+
 ## 3. Merchant ở khung nào? (geolocation)
 
 *(Geo lấy từ `rawConversation.meta.device.geolocation.country` trong Crisp, theo session đầu
