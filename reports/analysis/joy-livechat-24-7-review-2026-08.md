@@ -88,19 +88,28 @@ tới 51.4% nằm ngoài 08:00–17:59 (tối 23.2% + đêm 28.2%), tỷ trọng
 plan. Essential+POS lệch mạnh nhất về khung tối (50.0% conv rơi vào 18:00–23:59) — khác hẳn
 pattern của các plan còn lại, dù sample nhỏ (24 conv) nên chỉ mang tính tham khảo.
 
-## 3. Off-hours là merchant nào? (geolocation)
+## 3. Merchant ở khung nào? (geolocation)
 
-Trong 219 session off-hours có geo data:
+*(Geo lấy từ `rawConversation.meta.device.geolocation.country` trong Crisp, theo session đầu
+mỗi conversation. 904/910 conv có geo data.)*
 
-- **US/EU ≈ 73%** (159/219): US 93, FR 18, CA 16, GB 11, IT 7, DE 6, NL 5, PL 3...
-- **APAC chỉ ≈ 13%**: PK 6, SG 4, IN 4, AU 4, MY 4, JP 3, PH 3...
+| Khung giờ | Conv có geo | US/EU | APAC | Other |
+|---|---|---|---|---|
+| 08:00–17:59 | 532 | 226 (42.5%) | 284 (53.4%) | 22 (4.1%) |
+| 18:00–23:59 | 199 | 139 (69.8%) | 39 (19.6%) | 21 (10.6%) |
+| 00:00–07:59 | 173 | 139 (80.3%) | 28 (16.2%) | 6 (3.5%) |
 
-So sánh: session giờ hành chính (295 mẫu) APAC-mix rõ hơn nhiều (US 54, IN 22, HK 21,
-GB 19, SG 17...).
+Top country mỗi khung:
+- **08:00–17:59**: US 83, SG 49, HK 36, MY 36, DE 34, IN 34, TW 30, JP 30, FR 22, GB 21 — mix APAC rõ, đúng giờ hành chính chung của khu vực.
+- **18:00–23:59**: US 40, FR 23, GB 15, DE 14, IT 11, CA 9, NL 9, IN 8, VN 7, MY 7.
+- **00:00–07:59**: US 88, CA 14, HU 9, FR 6, SG 6, GB 5, PK 5, DE 4, PH 4, VN 3.
 
-**Đọc:** off-hours theo giờ Bangkok gần như là **giờ làm việc ban ngày của merchant US/EU**.
-Đây là nhu cầu timezone thật, không phải vài merchant lẻ tẻ thức khuya — càng củng cố lý do
-cần coverage xuyên đêm nếu muốn phục vụ tốt nhóm US/EU.
+**Đọc:** càng về đêm theo giờ Bangkok, tỷ trọng US/EU càng tăng đều (42.5% → 69.8% → 80.3%),
+và khung 00:00–07:59 gần như là **giờ làm việc ban ngày của merchant US** (US một mình chiếm
+88/173 ≈ 51% conv có geo trong khung này). Khung 08:00–17:59 vẫn là khung đa dạng nhất
+(APAC 53%, US/EU 42.5%) vì đây là giờ hành chính chung của cả khu vực lẫn phần đầu ngày làm
+việc châu Âu. Nhu cầu đêm sâu không phải noise lẻ tẻ — nó là timezone thật của một nhóm
+merchant cụ thể (US), càng về khuya càng rõ.
 
 ## 4. Chủ đề merchant hỏi khi vào live chat
 
@@ -172,24 +181,29 @@ cần escalation riêng.
 
 ## 5. Kết luận & đề xuất
 
-1. **Không nên bỏ 24/7 toàn bộ** — 34% volume tháng nằm off-hours, đa số là merchant US/EU
-   trong giờ làm việc thật của họ, và human vẫn đang xử lý ở tỷ lệ gần bằng ban ngày. Cắt hẳn
-   sẽ mất coverage đúng lúc nhóm merchant giá trị cao (Advanced/Ultimate, human% 86–95%
-   off-hours) cần người nhất.
+1. **Không nên bỏ 24/7 toàn bộ** — 41.2% volume tháng nằm ngoài khung 08:00–17:59 (18:00–23:59
+   22.1% + 00:00–07:59 19.1%), và càng về khuya tỷ trọng merchant US/EU càng tăng rõ
+   (42.5% → 69.8% → 80.3%). Đây là nhu cầu timezone thật của một nhóm merchant cụ thể, không
+   phải noise lẻ tẻ — cắt hẳn sẽ mất coverage đúng giờ làm việc thật của họ.
 
-2. **Có thể phân tầng coverage theo plan** thay vì đồng nhất:
-   - Advanced/Ultimate: giữ nguyên live human 24/7 — bot không gánh nổi nhóm này (chủ yếu
-     hỏi redemption/points/data issue cần check tay), và đây là nhóm doanh thu cao.
-   - Starter/Essential off-hours: bot đã tự xử được 25–29%, chủ đề chủ yếu là setup/widget —
-     có thể thử bot-first + fallback ticket trong X giờ cho riêng khung deep-night
-     (00:00–06:00, chỉ ~4.5 conv/đêm toàn Joy) để giảm tải mà rủi ro thấp, thay vì đụng đến
-     cả dải off-hours 20:00–08:00 (vẫn còn đông merchant US/EU giờ vàng).
+2. **Plan quyết định độ cần người hơn là khung giờ** — Advanced/Ultimate (49% volume) giữ
+   human% 78–93% ở CẢ 3 khung, tức bot không gánh nổi nhóm này bất kể giờ nào → giữ nguyên
+   live human 24/7 cho 2 plan này (cũng là nhóm doanh thu cao).
 
-3. **Billing/plan question ở Starter (11.4%, cao hơn hẳn tier khác)** — đáng tách riêng theo
+3. **Nhưng khung giờ yếu nhất khác nhau theo từng plan** — không có một khung "deep-night"
+   chung để cắt giảm cho mọi plan:
+   - **Starter**: yếu nhất là khung **tối** 18:00–23:59 (human% 46.3%, thấp nhất toàn bộ dữ
+     liệu) — không phải đêm sâu như giả định ban đầu.
+   - **Essential / Essential+POS**: yếu nhất là khung **đêm sâu** 00:00–07:59 (human% 48.8% /
+     42.9%).
+   - → Nếu thử bot-first + fallback ticket, nên thiết kế theo plan (Starter thử ở khung tối,
+     Essential thử ở khung đêm sâu) thay vì áp 1 khung giờ chung cho tất cả.
+
+4. **Billing/plan question ở Starter (11.4%, cao hơn hẳn tier khác)** — đáng tách riêng theo
    dõi, có thể là tín hiệu upsell hoặc churn tùy cách trả lời; không trực tiếp liên quan đến
-   quyết định 24/7 nhưng đáng note lại cho CS follow-up.
+   quyết định coverage nhưng đáng note lại cho CS follow-up.
 
-4. **Bước tiếp theo nếu muốn quyết định dứt khoát**: so khung deep-night (00:00–06:00, thấp
-   nhất, chủ yếu Starter/Essential) — thử pilot "bot + ticket fallback" riêng khung này 2–4
-   tuần, đo lại human-takeover% và review/churn của nhóm được thử, trước khi mở rộng ra cả
-   off-hours.
+5. **Bước tiếp theo nếu muốn quyết định dứt khoát**: pilot "bot + ticket fallback" riêng cho
+   Starter ở khung 18:00–23:59 và Essential ở khung 00:00–07:59 (2 khung yếu nhất của mỗi
+   plan, 41 và 43 conv/tháng — rủi ro thấp vì volume nhỏ), đo lại human-takeover% và
+   review/churn của nhóm được thử, trước khi mở rộng ra plan/khung khác.
