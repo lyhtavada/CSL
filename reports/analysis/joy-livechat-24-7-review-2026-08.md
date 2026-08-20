@@ -14,15 +14,17 @@ Phạm vi: 910 conversation thật (cùng logic đếm với `/cs-weekly`, sessi
 
 ## 1. Volume theo giờ trong ngày
 
-| Khung giờ | Conv | Human involved | Human % |
-|---|---|---|---|
-| Business hours (08:00–19:59) | 598 | 499 | 83.4% |
-| **Off-hours (20:00–07:59)** | **312 (34%)** | 245 | 78.5% |
-| — trong đó deep-night (00:00–05:59) | 140 (~4.5 conv/đêm) | 105 | 75.0% |
+| Khung giờ | Conv | % Conv/Total | Human involved | Human % |
+|---|---|---|---|---|
+| **08:00–17:59** | 535 | 58.8% | 422 | 78.9% |
+| **18:00–23:59** | 201 | 22.1% | 143 | 71.1% |
+| **00:00–07:59** | 174 | 19.1% | 115 | 66.1% |
+| Tổng | 910 | 100% | 680 | 74.7% |
 
-Peak thật: 14:00–17:00. Nhưng off-hours không hề "vắng" — 1/3 volume tháng nằm ngoài giờ
-hành chính, và tỷ lệ human phải vào tay gần bằng giờ hành chính, tức là hiện tại CS trực đêm
-**đang thực sự được dùng**, không phải ngồi không.
+Peak thật: 14:00–17:00. Off-hours không hề "vắng" — hơn 40% volume tháng nằm ngoài khung
+08:00–18:00, và tỷ lệ human vào tay giảm dần theo đêm sâu (78.9% → 71.1% → 66.1%) nhưng vẫn
+ở mức cao, tức CS trực đêm **đang thực sự được dùng**, không phải ngồi không. Khung
+00:00–07:59 có human% thấp nhất — đây là khung khả thi nhất để thử bot-first trước.
 
 ## 2. Theo app plan
 
