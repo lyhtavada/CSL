@@ -1,4 +1,4 @@
-# Joy Live Chat 24/7 — Review nhu cầu thực tế (20/07–20/08/2026)
+# Joy Live Chat 24/7 — Review nhu cầu thực tế (20/07–19/08/2026)
 
 > **Kết luận nhanh**: dữ liệu 1 tháng **không ủng hộ bỏ 24/7** — ngoài khung 08:00–17:59
 > (58.8% volume) còn **41.2% volume** nằm ở khung tối 18:00–23:59 (22.1%) và đêm sâu
@@ -12,7 +12,7 @@
 
 Phạm vi: 910 conversation thật (cùng logic đếm với `/cs-weekly`, session merchant-initiated,
 ≥2 tin, loại traffic nội bộ Avada), BigQuery `avada_cs.crisp_chats`, segment `app_joy`,
-20/07–20/08/2026, giờ Asia/Bangkok (+07).
+20/07–19/08/2026, giờ Asia/Bangkok (+07).
 
 ---
 
@@ -138,6 +138,12 @@ merchant cụ thể (US), càng về khuya càng rõ.
 *(Phân loại theo tin nhắn mở đầu của 910 conversation, keyword/đọc mẫu tay ~250 dòng đa
 ngôn ngữ để hiệu chỉnh rule — mang tính định hướng, không phải khảo sát chính xác tuyệt
 đối. "Other/unclear" ~28% là nhóm câu hỏi 1-lần/không rõ ý hoặc ngôn ngữ ngoài EN.)*
+
+*(⚠️ Số conv theo plan/khung giờ trong mục này tính từ snapshot plan cũ, trước khi §2 đổi
+sang join `dash_merchant_360.current_plan` — dùng để đọc PATTERN nội dung theo plan/khung là
+chính, KHÔNG dùng để đối chiếu số lượng conv với bảng ở §2 (số chính thức, đã match lại
+qua warehouse). Ví dụ Starter ở đây là 201, ở §2 là 177 — chênh lệch do khác nguồn map
+plan, không phải do đếm lại conversation.)*
 
 ### Tổng quan (n=910)
 
