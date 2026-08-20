@@ -1,10 +1,14 @@
 # Joy Live Chat 24/7 — Review nhu cầu thực tế (20/07–20/08/2026)
 
-> **Kết luận nhanh**: dữ liệu 1 tháng **không ủng hộ bỏ 24/7** — off-hours (20:00–08:00 +07)
-> chiếm **34% volume**, human vẫn đang trả lời ở mức tương đương giờ hành chính (78.5% vs
-> 83.4%), và 73% traffic off-hours là merchant **US/EU đang trong giờ làm việc của họ** —
-> nhu cầu timezone thật, không phải noise. Nhưng plan thấp (Starter/Essential) bot đã tự xử
-> được nhiều hơn → có thể phân tầng coverage theo plan thay vì đồng nhất 24/7 cho mọi tier.
+> **Kết luận nhanh**: dữ liệu 1 tháng **không ủng hộ bỏ 24/7** — ngoài khung 08:00–17:59
+> (58.8% volume) còn **41.2% volume** nằm ở khung tối 18:00–23:59 (22.1%) và đêm sâu
+> 00:00–07:59 (19.1%), và ~75% traffic ở 2 khung này là merchant **US/EU đang trong giờ làm
+> việc của họ** (69.8% tối, 80.3% đêm sâu) — nhu cầu timezone thật, không phải noise. Human
+> vẫn đang xử một tỷ lệ đáng kể dù giảm dần theo đêm (78.9% giờ hành chính → 71.1% tối → 66.1%
+> đêm sâu), không phải bot đã gánh gần hết. Plan thấp bot tự xử được nhiều hơn, nhưng **khung
+> giờ yếu nhất khác nhau theo từng plan** — Starter yếu nhất ở khung tối, Essential/
+> Essential+POS yếu nhất ở đêm sâu → nên phân tầng coverage theo plan × khung cụ thể, không
+> phải một khung "off-hours" chung cho mọi tier.
 
 Phạm vi: 910 conversation thật (cùng logic đếm với `/cs-weekly`, session merchant-initiated,
 ≥2 tin, loại traffic nội bộ Avada), BigQuery `avada_cs.crisp_chats`, segment `app_joy`,
