@@ -62,9 +62,12 @@ correction item in it:
       the CS's "correction" is not actually more correct — e.g. a stylistic
       preference, a misunderstanding by the CS, or a correction that
       contradicts the (correct) KB. Do NOT file a bug ticket or KB patch for
-      these.
-      -> `python3 skills/bot-corrections/scripts/verify_correction.py \
-            --id <correction id> --note "<why the original was right>" --live`
+      these. This is a REJECT, not a verify — verify would mean confirming
+      the bot's reply as correct QA-wise; reject means marking the
+      correction row itself as a bad edit so it stops counting as an open
+      bot error / stops leaking into training data.
+      -> `python3 skills/bot-corrections/scripts/reject_correction.py \
+            --id <correction id> --reason "<why the original was right>" --live`
       Read the script's docstring first — the write endpoint is unconfirmed,
       so treat its output carefully and surface failures in the digest
       rather than silently ignoring them.
@@ -89,9 +92,9 @@ The digest (plain text, Telegram truncates ~1500 chars) should have, per app:
   - # system-bug tickets filed/updated today, with links (from TICKET_URL) —
     note explicitly which were "skipped_existing_open" (already tracked, no
     new ticket) vs "created"/"regressed_new"
-  - # corrections auto-verified, with a one-line reason each (or note if
-    verify_correction.py's write call failed — those need Liz to verify
-    manually on the cs2 dashboard)
+  - # corrections auto-rejected (CS's edit was wrong), with a one-line reason
+    each (or note if reject_correction.py's write call failed — those need
+    Liz to reject manually on the cs2 dashboard)
   - # KB patch items (OUTDATED/GAP/PARTIAL) drafted, payloads file path, and
     the exact push command:
     python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>

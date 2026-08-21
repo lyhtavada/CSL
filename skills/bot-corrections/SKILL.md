@@ -58,21 +58,79 @@ Sau khi tạo, **commit** vào repo (chỉ khi có report mới).
   TS Elite), người sửa thật nằm trong `context` (`...by <email>`) → script tự parse +
   map email → tên hiển thị qua `_identity/team-g2.md`.
 
-## Diff vs KB v2 → patch payload (review-gate)
+## Triage từng correction — root cause trước, patch/ticket/verify sau
 
-Sau report, tự động so lại từng correction với **KB live trên `cs2.avada.net`** (2
-app) rồi soạn sẵn patch để Liz duyệt — KHÔNG tự push.
+(Đổi 2026-08-21, thay cho pass diff-only-vs-KB cũ.) Sau report, với **mỗi correction**
+KHÔNG chỉ diff với KB nữa mà trace lại conversation gốc để tìm root cause thật, rồi
+đi đúng 1 trong 3 nhánh — chứ không mặc định coi mọi correction là "KB thiếu".
+
+### 1. Trace conversation gốc
+
+```
+python3 skills/bot-corrections/scripts/cs2_session.py <source_session_id>
+```
+Gọi `GET /api/obs/session/{session_id}` trên `cs2.avada.net` → full conversation +
+per-message `trace`/`debug`/`escalation` (populated ở turn agent thật, null ở message
+backfill). Đây là cách biết agent làm gì ngay trước khi trả lời sai: retrieve đúng/sai
+doc, gọi tool nào, route sai intent, hứa hẹn (handoff) rồi không làm, hay hallucinate
+ngoài mọi doc đã retrieve.
+
+### 2. Phân loại — chọn ĐÚNG 1 nhánh
+
+- **(a) Lỗi hệ thống** — KB đã đúng (hoặc câu hỏi không cần KB) nhưng agent vẫn sai:
+  tool call lỗi, route sai intent, hứa chuyển việc nhưng không escalate, hallucinate.
+  → Tạo ticket cho Fennic:
+  ```
+  python3 skills/bot-corrections/scripts/create_bug_ticket.py \
+    --bug-key <slug ổn định theo root cause> --title "..." --summary "..." \
+    --app chatty|joy [--priority normal|high|urgent]
+  ```
+  `appName` = **"Avada CS Ai"**, member = **Liz + Fennic**. **Dedup**: cùng
+  `--bug-key` (đặt tên theo root cause, không theo correction id, để nhiều correction
+  cùng nguyên nhân gộp về 1 ticket) → script tự check `state/system-bugs.json`, nếu
+  ticket cũ còn mở thì **skip tạo mới** (chỉ tăng occurrence), nếu đã đóng thì coi là
+  regress → tạo ticket mới. Tag `ai-bot-bug` tự áp nếu tag đó đã tồn tại trong
+  helpdesk (script không tự tạo tag).
+
+- **(b) Thiếu/sai KB** — KB thiếu/sai đúng điểm CS sửa, đủ giải thích câu trả lời sai.
+  → Soạn patch, **giữ nguyên cơ chế cũ** (xem chi tiết bên dưới): OUTDATED/GAP/PARTIAL,
+  review-gate, Liz duyệt rồi tự `push_kb.py`.
+
+- **(c) CS sửa sai** — trace ra bot vốn trả lời đúng (hoặc chấp nhận được), correction
+  của CS không đúng hơn (hiểu nhầm, khác style, hoặc trái với KB đúng). → **Reject**
+  correction đó (KHÔNG phải verify — verify là xác nhận 1 câu trả lời bot đúng, còn đây
+  là đánh dấu chính cái correction là sai để nó không bị tính là lỗi bot / không lọt
+  vào training data):
+  ```
+  python3 skills/bot-corrections/scripts/reject_correction.py --id <id> \
+    --reason "..." --live
+  ```
+  ⚠️ Endpoint `PUT /api/corrections/{id}` **chưa confirm 100%** (suy từ field
+  `status/verified_by/verified_at` thấy trên row, chưa test PUT thật — giá trị status
+  `"rejected"` cũng là suy đoán) — lần chạy đầu Liz nên soi kỹ digest, coi kết quả
+  live_ok/live_failed trước khi tin tưởng auto.
+
+**Không chắc (a) hay (b)** → ưu tiên (b), patch KB an toàn hơn dù root cause thật là (a).
+
+Cả (a) và (c) **chạy tự động thẳng, không cần Liz duyệt trước** (Liz chốt
+2026-08-21) — digest Telegram cuối chỉ để báo đã làm gì, không phải xin duyệt. Riêng
+(b) **vẫn giữ review-gate** như cũ.
+
+### KB patch (nhánh b) — chi tiết không đổi
 
 ```
 cd ~/CSL/skills/bot-corrections/scripts
 python3 prep_kb.py <app>            # cache KB + tìm report mới nhất của app
 ```
-Đọc report → với mỗi correction, tìm file KB liên quan trong cache rồi phân loại:
-- **COVERED** — KB đã đúng rồi → KHÔNG cần patch, coi là dấu hiệu **reindex stale**
-  (correction không đồng nghĩa KB sai) — xem [[joy_reindex_stale_root_cause]].
+Với mỗi correction rơi vào nhánh (b), tìm file KB liên quan trong cache rồi phân loại:
 - **OUTDATED** — KB có nội dung cũ/sai, mâu thuẫn với `corrected_response` → patch.
 - **GAP** — KB chưa có nội dung này → thêm section mới.
 - **PARTIAL** — KB có một phần, thiếu đúng điểm CS sửa → bổ sung.
+
+(**COVERED** — KB đã đúng rồi mà vẫn bị sửa — giờ không còn là nhánh riêng: trace ở
+bước 1 sẽ tự lộ ra đây là (a) lỗi hệ thống hoặc (c) CS sửa sai, chứ không dừng ở
+"có thể do reindex stale" như cách cũ nữa. Xem thêm [[joy_reindex_stale_root_cause]]
+nếu trace vẫn không rõ nguyên nhân.)
 
 Với mỗi OUTDATED/GAP/PARTIAL, soạn full nội dung file mới (giữ voice/frontmatter
 hiện có, viết ĐÚNG 1 ví dụ — KHÔNG viết negative example "đừng nói X" vì bot có thể
@@ -90,8 +148,7 @@ reports/analysis/bot-corrections-<app>-<YYYY-MM-DD thứ-2>-payloads.json   # {a
 (gitignored, tạm thời — giống payload của `/kb-sync`).
 
 **Review gate:** dừng lại đây, không tự POST `/api/kb/file` hay reindex. Cron báo
-Liz qua Telegram: số COVERED/OUTDATED/GAP/PARTIAL mỗi app + top items + đường dẫn
-payload.
+Liz qua Telegram: số OUTDATED/GAP/PARTIAL mỗi app + top items + đường dẫn payload.
 
 Sau khi Liz duyệt, push (dùng lại script của `/kb-sync`, cùng format payload):
 ```

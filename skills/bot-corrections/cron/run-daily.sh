@@ -12,7 +12,7 @@
 # rồi 1 trong 3 nhánh: (a) lỗi hệ thống -> tạo ticket cho Fennic
 # (create_bug_ticket.py, dedup qua state/system-bugs.json), (b) thiếu/sai KB
 # -> soạn payload patch (VẪN review-gate, Liz duyệt rồi tự push_kb.py), (c) CS
-# sửa sai -> auto-verify correction (verify_correction.py --live). (a)/(c) tự
+# sửa sai -> auto-reject correction (reject_correction.py --live). (a)/(c) tự
 # động thẳng (Liz chốt 2026-08-21: auto, chỉ cần báo cáo). DM Telegram digest
 # cuối cùng.
 #
