@@ -88,9 +88,12 @@ ngoài mọi doc đã retrieve.
   `appName` = **"Avada CS Ai"**, member = **Liz + Fennic**. **Dedup**: cùng
   `--bug-key` (đặt tên theo root cause, không theo correction id, để nhiều correction
   cùng nguyên nhân gộp về 1 ticket) → script tự check `state/system-bugs.json`, nếu
-  ticket cũ còn mở thì **skip tạo mới** (chỉ tăng occurrence), nếu đã đóng thì coi là
-  regress → tạo ticket mới. Tag `ai-bot-bug` tự áp nếu tag đó đã tồn tại trong
-  helpdesk (script không tự tạo tag).
+  ticket cũ còn mở thì **không tạo ticket mới**, thay vào đó POST comment vào ticket
+  cũ (`POST /api/external/tickets/{internal_id}/comments`, endpoint đã confirm — xem
+  [[avada_ticket_post_comment_endpoint]]) báo occurrence mới + tăng counter, **không
+  tự đổi `tsStatus`** (Liz tự đổi status, xem [[feedback_ticket_progress_comments]]).
+  Nếu ticket cũ đã đóng thì coi là regress → tạo ticket mới. Tag `ai-bot-bug` tự áp
+  nếu tag đó đã tồn tại trong helpdesk (script không tự tạo tag).
 
 - **(b) Thiếu/sai KB** — KB thiếu/sai đúng điểm CS sửa, đủ giải thích câu trả lời sai.
   → Soạn patch, **giữ nguyên cơ chế cũ** (xem chi tiết bên dưới): OUTDATED/GAP/PARTIAL,

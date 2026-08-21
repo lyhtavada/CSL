@@ -19,7 +19,12 @@ maps a stable `bug_key` (kebab-case slug the caller derives from the root
 cause, e.g. "chatty-handoff-promise-no-tag") -> last ticket filed for it. On a
 repeat:
   - GET the existing ticket; if still open (tsStatus not in done/closed states)
-    -> SKIP creating a new one, just bump occurrence count + last_seen.
+    -> SKIP creating a new one, POST a progress comment instead (confirmed
+    endpoint: POST /api/external/tickets/{internal_id}/comments body
+    {content, type:"commentTicket"} — see avada_ticket_post_comment_endpoint
+    memory) noting the new occurrence (correction id/session), and bump
+    occurrence count + last_seen. Do NOT touch tsStatus — Liz changes that
+    herself (feedback_ticket_progress_comments, 2026-08-21).
   - If it's closed/done -> treat as regressed, file a NEW ticket (bug likely
     reintroduced) and update state.
 
@@ -32,8 +37,11 @@ Usage:
       --summary <full description incl. session/correction ids + trace excerpt> \
       --app chatty|joy [--priority normal|high|urgent]
 
-Prints:  TICKET_ACTION=created|skipped_existing_open|regressed_new
-         TICKET_URL=<url>   (empty on skip... no, always the tracked ticket url)
+  On a repeat (existing open ticket), --summary is used as the comment body
+  posted to the existing ticket instead of a new ticket's description.
+
+Prints:  TICKET_ACTION=created|commented_existing_open|regressed_new
+         TICKET_URL=<url>
 """
 import argparse
 import json
@@ -125,13 +133,19 @@ def create_ticket(key, title, summary, app, priority):
     return _req("POST", "/api/external/tickets", key, body)
 
 
-def get_ticket_status(key, ticket_id):
+def get_ticket(key, ticket_id):
+    """Returns (tsStatus_lower, ticketId, internal_id, url) or None on failure."""
     try:
         out = _req("GET", f"/api/external/tickets/{ticket_id}", key)
     except RuntimeError:
         return None
     t = out.get("data", out) if isinstance(out, dict) else out
-    return (t.get("tsStatus") or "").lower(), t.get("ticketId"), t.get("url")
+    return (t.get("tsStatus") or "").lower(), t.get("ticketId"), t.get("id"), t.get("url")
+
+
+def post_comment(key, internal_id, content):
+    return _req("POST", f"/api/external/tickets/{internal_id}/comments", key,
+                {"content": content, "type": "commentTicket"})
 
 
 def main():
@@ -148,18 +162,27 @@ def main():
     entry = state.get(args.bug_key)
 
     if entry:
-        status, ticket_id, url = (None, None, None)
+        info = None
         try:
-            status, ticket_id, url = get_ticket_status(key, entry["ticket_id"])
+            info = get_ticket(key, entry["ticket_id"])
         except Exception as e:
             print(f"WARN: could not re-check existing ticket status: {e}", file=sys.stderr)
-        if status is not None and status not in CLOSED_STATUSES:
-            entry["last_seen_app"] = args.app
-            entry["occurrences"] = entry.get("occurrences", 1) + 1
-            save_state(state)
-            print("TICKET_ACTION=skipped_existing_open")
-            print(f"TICKET_URL={entry.get('ticket_url', '')}")
-            return
+        if info is not None:
+            status, _ticket_id, internal_id, url = info
+            if status not in CLOSED_STATUSES:
+                entry["occurrences"] = entry.get("occurrences", 1) + 1
+                entry["last_seen_app"] = args.app
+                if internal_id:
+                    entry["internal_id"] = internal_id
+                try:
+                    post_comment(key, internal_id or entry.get("internal_id"),
+                                 f"[Betty] New occurrence (#{entry['occurrences']}) — {args.summary}")
+                except RuntimeError as e:
+                    print(f"WARN: could not post comment on existing ticket: {e}", file=sys.stderr)
+                save_state(state)
+                print("TICKET_ACTION=commented_existing_open")
+                print(f"TICKET_URL={url or entry.get('ticket_url', '')}")
+                return
 
     try:
         out = create_ticket(key, args.title, args.summary, args.app, args.priority)
@@ -169,10 +192,12 @@ def main():
 
     t = out.get("data", out) if isinstance(out, dict) else out
     ticket_id = t.get("ticketId") or t.get("id")
-    ticket_url = t.get("url") or f"https://helpdesk.avada.net/tickets/{t.get('id', '')}"
+    internal_id = t.get("id")
+    ticket_url = t.get("url") or f"https://helpdesk.avada.net/tickets/{internal_id or ''}"
 
     state[args.bug_key] = {
         "ticket_id": ticket_id,
+        "internal_id": internal_id,
         "ticket_url": ticket_url,
         "app": args.app,
         "title": args.title,

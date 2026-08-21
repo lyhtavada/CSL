@@ -90,8 +90,9 @@ When both apps are done, send ONE Telegram digest to Liz:
     --status ok --summary "<digest text>"
 The digest (plain text, Telegram truncates ~1500 chars) should have, per app:
   - # system-bug tickets filed/updated today, with links (from TICKET_URL) —
-    note explicitly which were "skipped_existing_open" (already tracked, no
-    new ticket) vs "created"/"regressed_new"
+    note explicitly which were "commented_existing_open" (already tracked,
+    no new ticket — a progress comment was added instead) vs
+    "created"/"regressed_new"
   - # corrections auto-rejected (CS's edit was wrong), with a one-line reason
     each (or note if reject_correction.py's write call failed — those need
     Liz to reject manually on the cs2 dashboard)
