@@ -1,0 +1,103 @@
+Run a per-correction TRIAGE pass of today's bot-corrections report(s) — this
+replaces the old diff-only-vs-KB pass. For EACH correction, trace the real
+conversation, find the root cause, and take ONE of three actions: file a
+system-bug ticket for Fennic, draft a KB patch (review-gate, same as before),
+or auto-verify the correction when the CS's edit was itself wrong.
+
+Background: skills/bot-corrections/scripts/fetch_corrections.py already ran
+and committed a report for each app that had new corrections since the
+previous run, to reports/bot-corrections/<app>/<app>-corrections-<run-date>.md
+— a list of corrections (question / bot's original_response / CS's
+corrected_response / source_session_id / correction id), grouped by topic.
+This step only runs when at least one app has new corrections; skip an app
+entirely if it has no report for today.
+
+For each app that has a report for today (chatty, then joy), for EACH
+correction item in it:
+
+1. TRACE — run `python3 skills/bot-corrections/scripts/cs2_session.py <source_session_id>`
+   to pull the full conversation, including per-message `trace`/`debug`/
+   `escalation` fields (populated on real-time agent turns, null on
+   backfilled ones). Read enough of it to understand what the agent actually
+   did right before the wrong reply: which KB doc(s) it retrieved (or failed
+   to retrieve), which tool/flow it invoked, whether it hallucinated content
+   not in any retrieved doc, or picked the wrong intent/flow entirely.
+
+2. Also run `python3 skills/bot-corrections/scripts/prep_kb.py <app>` (once
+   per app, cache the live KB) and check whether the KB already has the
+   correct content the bot needed.
+
+3. Classify the correction into exactly one bucket:
+
+   a. SYSTEM BUG — the KB already had the right content (or the question
+      didn't need KB content at all — e.g. a promised handoff that never
+      fired, a tool call that errored, wrong intent routing, an escalation
+      that should have fired but didn't) and the agent still got it wrong.
+      This is an agent/pipeline bug, not a content gap.
+      -> File a ticket:
+      `python3 skills/bot-corrections/scripts/create_bug_ticket.py \
+         --bug-key <stable-kebab-slug-of-root-cause> \
+         --title "<short subject>" \
+         --summary "<what happened, why, session id, correction id(s), \
+                     relevant trace/debug excerpt, expected vs actual>" \
+         --app <chatty|joy> --priority normal`
+      Use the SAME --bug-key for every correction that traces to the same
+      root cause (so repeats collapse into one ticket instead of spamming
+      Fennic — the script handles dedup/regression detection itself, just
+      pass a stable, descriptive key). Read the script's own docstring for
+      the exact dedup behavior before calling it.
+
+   b. KB GAP/OUTDATED/PARTIAL — the KB is missing, wrong, or incomplete on
+      exactly the point CS corrected, and that's sufficient explanation for
+      the bad reply. Draft the full new KB file content (same rules as
+      before: start from the cached file, ONE correct example, no "don't say
+      X" negative examples, merge multiple corrections into the same file's
+      draft, match existing voice/frontmatter, add a new `## Section` at a
+      real anchor heading for GAP/PARTIAL). Append `{agent, path, content}` to
+      this app's payloads array (do not write it to disk yet — collect all
+      entries for the app first).
+
+   c. CS CORRECTION WAS WRONG — tracing the conversation shows the bot's
+      original_response was actually accurate (or an acceptable answer) and
+      the CS's "correction" is not actually more correct — e.g. a stylistic
+      preference, a misunderstanding by the CS, or a correction that
+      contradicts the (correct) KB. Do NOT file a bug ticket or KB patch for
+      these.
+      -> `python3 skills/bot-corrections/scripts/verify_correction.py \
+            --id <correction id> --note "<why the original was right>" --live`
+      Read the script's docstring first — the write endpoint is unconfirmed,
+      so treat its output carefully and surface failures in the digest
+      rather than silently ignoring them.
+
+   Only ONE bucket per correction. When genuinely unsure between (a) and (b),
+   prefer (b) — a KB patch is always safe to layer on top even if the real
+   cause turns out to be (a) later, whereas a bug ticket with the wrong root
+   cause wastes Fennic's time.
+
+4. After going through every correction for an app with at least one (b)
+   item, write the payloads file:
+   reports/analysis/bot-corrections-<app>-<report-date>-payloads.json
+   (JSON array of {agent, path, content}). Skip if the app had zero (b) items.
+   DO NOT call POST /api/kb/file or /api/kb/reindex yourself, and do not run
+   push_kb.py — KB patches stay review-gated, Liz pushes herself after
+   reviewing.
+
+When both apps are done, send ONE Telegram digest to Liz:
+  python3 ~/CSL/skills/_shared/notify_tele.py --job "Bot Corrections — triage" \
+    --status ok --summary "<digest text>"
+The digest (plain text, Telegram truncates ~1500 chars) should have, per app:
+  - # system-bug tickets filed/updated today, with links (from TICKET_URL) —
+    note explicitly which were "skipped_existing_open" (already tracked, no
+    new ticket) vs "created"/"regressed_new"
+  - # corrections auto-verified, with a one-line reason each (or note if
+    verify_correction.py's write call failed — those need Liz to verify
+    manually on the cs2 dashboard)
+  - # KB patch items (OUTDATED/GAP/PARTIAL) drafted, payloads file path, and
+    the exact push command:
+    python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>
+If an app had nothing in a bucket, say so in one line for that bucket.
+
+Do not commit reports/analysis/*-payloads.json (gitignored, temporary —
+deleted by push_kb.py after a successful push). DO commit any change to
+skills/bot-corrections/state/system-bugs.json (dedup state — small, meant to
+be tracked in git like other skill state files).

@@ -7,10 +7,14 @@
 # từ lần chạy trước (T2 nhìn ngược về T6 tuần trước), ghi report markdown vào
 # reports/bot-corrections/, commit. App nào 0 correction thì không ghi file.
 #
-# Step 2 (Claude headless, CHỈ chạy khi có correction mới): diff report với KB
-# live trên CS v2 cho app có correction mới, classify COVERED/OUTDATED/GAP/
-# PARTIAL, soạn payload patch, DM Telegram cho Liz. Review-gate — KHÔNG tự
-# push/reindex, Liz duyệt rồi tự chạy push_kb.py.
+# Step 2 (Claude headless, CHỈ chạy khi có correction mới): TRIAGE từng
+# correction — trace lại conversation gốc (cs2_session.py) để tìm root cause,
+# rồi 1 trong 3 nhánh: (a) lỗi hệ thống -> tạo ticket cho Fennic
+# (create_bug_ticket.py, dedup qua state/system-bugs.json), (b) thiếu/sai KB
+# -> soạn payload patch (VẪN review-gate, Liz duyệt rồi tự push_kb.py), (c) CS
+# sửa sai -> auto-verify correction (verify_correction.py --live). (a)/(c) tự
+# động thẳng (Liz chốt 2026-08-21: auto, chỉ cần báo cáo). DM Telegram digest
+# cuối cùng.
 #
 # Manual run:  bash run-daily.sh
 #
@@ -21,7 +25,7 @@ CLAUDE_BIN="/opt/homebrew/bin/claude"
 REPO="/Users/avada/CSL"
 LOG="/tmp/bot-corrections.log"
 SCRIPT="$REPO/skills/bot-corrections/scripts/fetch_corrections.py"
-DIFF_PROMPT="$HERE/prompt-diff.txt"
+DIFF_PROMPT="$HERE/prompt-triage.txt"
 
 echo "===== bot-corrections run: $(date) =====" >> "$LOG"
 cd "$REPO" || { echo "cd $REPO failed" >> "$LOG"; exit 1; }
@@ -56,7 +60,7 @@ if [ "$TOTAL_NEW" -eq 0 ]; then
   exit 0
 fi
 
-echo "----- diff vs KB v2 (review-gate, no push) -----" >> "$LOG"
+echo "----- triage: trace + ticket/patch/verify -----" >> "$LOG"
 
 # Headless: subscription OAuth (no API bill). Unset any repo-injected key.
 unset ANTHROPIC_API_KEY
