@@ -1,1 +1,10 @@
-{}
+{
+  "chatty-greeting-first-after-backfill-proactive": {
+    "ticket_id": "Q4fdFd47kBE6bC01GVYb",
+    "internal_id": "Q4fdFd47kBE6bC01GVYb",
+    "ticket_url": "https://helpdesk.avada.net/tickets/Q4fdFd47kBE6bC01GVYb",
+    "app": "chatty",
+    "title": "Ivy re-greets and drops flow context after backfilled/proactive outbound-only session",
+    "occurrences": 1
+  }
+}
