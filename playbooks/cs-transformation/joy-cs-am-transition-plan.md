@@ -18,8 +18,6 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 **PIC của kế hoạch này (build/design):** chỉ **Liz** và **Daisy**.
 **Người chuyển đổi (subject của transition, không phải PIC):** 4 CS full-time của **Joy** — **Alyssa, Audrey, Sonny, Ethan**.
 
-> ⚠️ Danh sách này khác với bảng "Team Role Assignment" trong `cs-transformation-plan.md` (bản cũ ghi Sonny/Alyssa = Joy AM, Audrey = AI Monitor Lead, không có Ethan). Cần update lại bảng đó cho khớp — xem Next step bên dưới.
-
 ---
 
 ## Workstream A — Salary Structure (AM role)
