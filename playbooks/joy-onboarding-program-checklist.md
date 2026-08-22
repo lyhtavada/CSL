@@ -130,15 +130,8 @@
 
 ---
 
-## Go-live check (CS ticks before going live — record in main ticket)
+## Go-live check
 
-- [ ] Earning active
-- [ ] Redemption active
-- [ ] VIP tier (if any) — correct thresholds/perks
-- [ ] Member/Guest display correct
-- [ ] Migration/import done & verified (if any)
-- [ ] Widget showing on store (separate sub-ticket)
-- [ ] **Test one full loop** (earn → redeem) OK
-- [ ] Get merchant's OK → **switch sandbox → live mode** 🚀
+> Checklist go-live đầy đủ (earning/redeeming/VIP/guest-member/migration/widget/test loop/switch live) sống ở **ticket chính**, không lặp lại ở đây — xem [`joy-onboarding-flow.md` §6.1](./joy-onboarding-flow.md#6-ticket-structure--1-ticket-onboarding-chính--kh). Sheet này chỉ để KH điền **rule** (earning/redeeming/VIP/referral/milestone) trước khi CS chuyển qua bước setup + tick vào ticket.
 
 *(Liz to adjust preset point values per real AOV/industry of the Advanced merchant later.)*
