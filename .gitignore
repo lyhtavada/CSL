@@ -16,6 +16,8 @@ gapi/token.json
 reports/analysis/kb-sync-*-payloads.json
 # bot-corrections KB-diff payloads — same lifecycle as kb-sync payloads above.
 reports/analysis/bot-corrections-*-payloads.json
+# kb-sync manual draft files — same lifecycle, reviewed then pushed to CS v2.
+reports/analysis/kb-sync-*-draft.md
 joy-src/
 
 # cs-daily-brief dedup state — runtime, regenerated each run
