@@ -60,6 +60,14 @@ Read the Slack messages and the GitLab diffs fetched above.
   prep.py <app>` to cache the live KB first — reuse it, don't re-fetch.
 
 ### 3. Draft patches
+Follow `~/CSL/skills/kb-sync/SKILL.md` step 3's **case/faq/reference template**
+(heading = concrete situation, symptom phrasings, scripted blockquote reply,
+Step→WAIT, real `<escalate>` tag, ❌ Do NOT — for `kb/case/`; plain `Q:`/`A:`
+for `kb/faq/`; scripted answers + real escalate tags for `kb/reference/`).
+It applies here too — a GAP written as a feature doc still needs a real
+heading and, if it's a case scenario rather than pure reference info, the
+full case template.
+
 For each OUTDATED/GAP/PARTIAL item:
 - **GAP** (brand-new feature) → write it as a feature-doc-style description
   (what/where/how/conditions), not a guessed Q&A. RAG retrieval matches on

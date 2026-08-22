@@ -69,6 +69,77 @@ fragment): start from the cached file, insert/replace at a real anchor heading,
 match the KB's existing voice (`## Heading`, frontmatter `tags`). Prefer adding a
 new `## Section` over rewriting; for OUTDATED facts, edit in place.
 
+**For `kb/case/*.md` specifically, write each scenario to this template** (learned
+from blog-agent's `kb/reference/billing.md`, applied to Chatty/Joy billing-refund
+rewrites on 2026-08-22 — this is now the default bar, not optional polish):
+
+- **One `## Heading` = one concrete situation**, phrased from the merchant's
+  side (`## Merchant wants to cancel`, not `## Resolution Steps`). Chunking is
+  per-heading, so a generic/repeated heading (`## Resolution Steps` reused
+  across 5 unrelated cases in one file) produces chunks with no topic signal —
+  this was a real bug found in Joy's old `kb/case/billing.md`. Never reuse a
+  heading string across scenarios in the same file.
+- **`**Symptom phrasings (any of):**`** right under the heading — 4-6 natural
+  ways a merchant might actually phrase it. This isn't a keyword whitelist
+  (retrieval is semantic embedding, not exact match) — it enriches the
+  chunk's embedding to catch more phrasing angles.
+- **Scripted reply as a blockquote** (`> ...`), not just an internal
+  instruction — the bot should be able to use it close to verbatim. When a
+  reply needs multiple beats in one turn, split with `<<<SPLIT>>>` on its own
+  line (bridge renders each as a separate bubble).
+- **When you need evidence before acting** (screenshot, confirmation), use the
+  `Step 1 → WAIT for reply → Step 2` pattern explicitly — write "→ **WAIT for
+  ...**" so the bot doesn't escalate before it has what the team needs.
+- **End with the real tag**, not a placeholder — `` `<escalate reason="..."/>` ``
+  (confirm the exact tag/attribute the target agent actually uses — Chatty and
+  Joy both use `<escalate reason="...">`, but check `persona/*.md` and
+  `flows/*.md` per app before assuming). Put a real, specific `reason` (what
+  was collected, not just the case name) — it's the handoff note a human
+  reads, not a label.
+- **`**❌ Do NOT:**` bullet list** closing the scenario — the specific wrong
+  moves for that case (promise a number, argue, self-approve, imply auto-fix).
+  This is what stops the bot from improvising outside its authority.
+- A reusable line (e.g. the screenshot-request template) can live once near
+  the top of the file and be referenced by later scenarios — don't repeat the
+  same paragraph in every case.
+
+This template is for `kb/case/*.md` (bot-facing scripted scenarios).
+`kb/faq/*.md` and `kb/reference/*.md` follow their own, lighter templates:
+
+**`kb/faq/*.md`** — plain factual Q&A, no scenario/escalation logic:
+- Literal `Q: <question>` / `A: <answer>` pairs, one blank line between pairs,
+  no `## Heading` wrapper needed (this is blog-agent's format — see
+  `kb/faq/general.md` on the `blog-agent` — and it's the simpler, more literal
+  cousin of Chatty/Joy's current `kb/faq/*.md`, which mix in `## Heading` +
+  bold-question-as-lead-in prose; either is fine, just match what the target
+  file already does — see step 3's opening rule).
+- Each `A:` should be a **complete, standalone answer** — same "no relying on
+  a sibling section" rule as case files, since FAQ files also chunk per Q/A
+  or per heading.
+- No `<escalate>` tags, no "Symptom phrasings", no Do NOT list — FAQ is pure
+  fact, not a scenario the bot has to navigate. If an item actually needs
+  judgment/escalation, it belongs in `kb/case/`, not `kb/faq/`.
+
+**`kb/reference/*.md`** — longer internal/CS-process docs (playbooks, pricing
+tables, eligibility criteria, routing rules) — not primarily bot scripts, but
+still often retrieved directly by the bot, so the same rules apply where relevant:
+- `## Heading` per topic, same self-contained-per-heading rule as case files.
+- Tables are fine and often clearer than prose for plan/pricing/eligibility
+  data (see blog-agent's `kb/reference/pricing.md` and `billing.md`).
+- **Any FAQ-style sub-section inside a reference file** (a short factual Q
+  answered in a couple sentences) should still get a **scripted blockquote
+  reply** — not just an internal instruction — so the bot can use it near-
+  verbatim. Example: "Common Billing Questions" in Joy's
+  `kb/reference/billing-refund.md`.
+- **Any escalation instruction** inside a reference file must use the real
+  tag (`` `<escalate reason="..."/>` ``), never prose like "escalate to the
+  team" or a placeholder like "Append escalate tag here" — same rule as case
+  files above.
+- Reference files can and should hold things case files shouldn't: internal
+  routing/ownership notes (who handles what), eligibility criteria, and
+  process steps aimed at a human CS agent reading it directly, not just RAG
+  chunks for the bot.
+
 Write a payloads file = JSON array of `{agent, path, content}`:
 ```
 reports/analysis/kb-sync-<app>-<YYYY-MM-DD>-payloads.json
