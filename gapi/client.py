@@ -15,12 +15,14 @@ HERE = Path(__file__).parent
 TOKEN = HERE / "token.json"
 
 # Single source of truth — auth_setup.py imports this list.
-# Read + write on Calendar and Sheets; no Drive scope on purpose, so a buggy
-# script can't touch anything outside the sheets/calendars it is handed.
+# Read + write on Calendar and Sheets, plus drive.file (per-file Drive scope:
+# only files this app created or opened, e.g. to share/rename them — not a
+# general Drive scope, so it still can't browse/search the whole Drive).
 # Changing this list requires rerunning auth_setup.py to re-consent.
 SCOPES = [
     "https://www.googleapis.com/auth/calendar",
     "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
 ]
 
 
@@ -46,6 +48,10 @@ def calendar():
 
 def sheets():
     return build("sheets", "v4", credentials=_creds(), cache_discovery=False)
+
+
+def drive():
+    return build("drive", "v3", credentials=_creds(), cache_discovery=False)
 
 
 if __name__ == "__main__":
