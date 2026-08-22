@@ -27,7 +27,7 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 | A1 | Benchmark salary AM tại các công ty SaaS tương đương (thị trường VN, remote) | Daisy | TBD | Not started | |
 | A2 | Định nghĩa base + biến động (commission/bonus theo retention, upsell, CSAT) | Liz | TBD | Not started | |
 | A3 | Map level (Junior/Senior AM) với band lương hiện tại của CS để tránh lệch thang | Liz | TBD | Not started | |
-| A4 | Trình phê duyệt structure | Liz | TBD | Not started | cần Sam duyệt |
+| A4 | Trình phê duyệt structure | Liz | TBD | Not started | cần Thomas (PM Joy) duyệt |
 | A5 | Communicate structure mới cho Alyssa/Audrey/Sonny/Ethan (4 CS Joy full-time chuyển sang AM) | Liz | TBD | Not started | đối tượng: CS team, không phải PIC |
 
 **Câu hỏi cần chốt trước khi làm A2:** AM có gắn commission theo retention/upsell không, hay giữ fixed salary như CS hiện tại? (ảnh hưởng lớn tới cách tính band)
@@ -41,7 +41,7 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 | B1 | JD cho **AM** (Advanced/Ultimate) — trách nhiệm: onboarding call, health check định kỳ, upsell/renewal, escalation cho merchant tier cao | Daisy | TBD | Not started | |
 | B2 | JD update cho **CS/Ticket handler** (Free/Essential) — trách nhiệm: xử lý ticket + AI monitor, không còn live chat trực | Liz | TBD | Not started | |
 | B3 | Định nghĩa rõ ranh giới: case nào Ticket handler escalate lên AM, case nào AM tự xử lý | Liz | TBD | Not started | |
-| B4 | Review JD trước khi công bố nội bộ | Liz + Daisy | TBD | Not started | cần Sam duyệt |
+| B4 | Review JD trước khi công bố nội bộ | Liz + Daisy | TBD | Not started | cần Thomas (PM Joy) duyệt |
 | B5 | Công bố JD mới cho team, gắn với KPI framework mới (đã note ở cs-transformation-plan.md checklist "Design new KPI framework for each role") | Liz | TBD | Not started | đối tượng công bố: CS team |
 
 ---
@@ -62,7 +62,7 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 
 | # | Task | PIC | Deadline | Status | Note |
 |---|------|-----|----------|--------|------|
-| C2.1 | Chốt tool AM cần: CRM/scheduling cho onboarding call + health check (đã list ở open question trong cs-transformation-plan.md — chưa có answer) | Liz + Daisy | TBD | Not started | cần Sam duyệt budget |
+| C2.1 | Chốt tool AM cần: CRM/scheduling cho onboarding call + health check (đã list ở open question trong cs-transformation-plan.md — chưa có answer) | Liz + Daisy | TBD | Not started | cần Thomas (PM Joy) duyệt budget |
 | C2.2 | Setup call scheduling tool (Calendly/Google Calendar — đã có `gapi` calendar access sẵn, có thể tận dụng) | Daisy | TBD | Not started | |
 | C2.3 | Setup call recording/notes tool nếu cần (tuân thủ policy ghi âm với merchant) | Daisy | TBD | Not started | |
 | C2.4 | Định nghĩa health-check cadence cho AM (vd. touch point mỗi X tuần cho Ultimate, mỗi X tuần cho Advanced) | Liz | TBD | Not started | |
