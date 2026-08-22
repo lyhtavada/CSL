@@ -135,10 +135,13 @@ bước 1 sẽ tự lộ ra đây là (a) lỗi hệ thống hoặc (c) CS sửa
 "có thể do reindex stale" như cách cũ nữa. Xem thêm [[joy_reindex_stale_root_cause]]
 nếu trace vẫn không rõ nguyên nhân.)
 
-Với mỗi OUTDATED/GAP/PARTIAL, soạn full nội dung file mới (giữ voice/frontmatter
-hiện có, viết ĐÚNG 1 ví dụ — KHÔNG viết negative example "đừng nói X" vì bot có thể
-copy ra cho khách, xem [[feedback_kb_no_negative_examples]]). Gộp nhiều correction
-cùng 1 file KB thành 1 entry.
+Với mỗi OUTDATED/GAP/PARTIAL, soạn full nội dung file mới theo template chuẩn ở
+`~/CSL/skills/kb-sync/SKILL.md` step 3 (case: symptom phrasings + scripted reply +
+Step→WAIT + `<escalate reason="..."/>` thật + ❌ Do NOT; faq: Q/A thuần; reference:
+heading tự đủ nghĩa + scripted answer cho phần FAQ-style) — giữ voice/frontmatter
+hiện có của file đang patch, viết ĐÚNG 1 ví dụ — KHÔNG viết negative example "đừng
+nói X" vì bot có thể copy ra cho khách, xem [[feedback_kb_no_negative_examples]]).
+Gộp nhiều correction cùng 1 file KB thành 1 entry.
 
 **Patch vào `flows/*.md` hay `kb/case`/`kb/faq`/`kb/reference`?** Mặc định case/faq/
 reference (Chatty chỉ). Chỉ patch thêm vào `flows/` (Chatty) khi correction liên quan
