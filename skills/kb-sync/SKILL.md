@@ -79,6 +79,20 @@ rewrites on 2026-08-22 — this is now the default bar, not optional polish):
   across 5 unrelated cases in one file) produces chunks with no topic signal —
   this was a real bug found in Joy's old `kb/case/billing.md`. Never reuse a
   heading string across scenarios in the same file.
+- **Never use `### Step N` (H3) to break a procedure into separate headings.**
+  Confirmed in the bridge chunker (`src/content/chunk.ts`): every `##`/`###`
+  starts a new, independent chunk — an H3 does NOT carry its parent H2's
+  heading text or the scenario title into its own chunk/embedding. A file with
+  `## Resolution Steps` → `### Step 1` → `### Step 2` ... gets indexed as N
+  disconnected chunks, each missing the scenario context the earlier steps
+  gave it (found + fixed in 4 Chatty files 2026-08-22:
+  `ai-conversation-limit.md`, `ai-scenario-limit.md`, `ai-product-limit.md`,
+  `chatbox-widget-issues.md`). Keep a numbered procedure as **bold inline
+  labels inside one heading's chunk** — `**Step 1 — ...**` as prose/list
+  items, not `### Step 1`. A `###` sub-heading is only safe when its own text
+  is fully self-contained without the parent (e.g. `### Case A — merchant
+  uses a third-party discount app` reads fine alone; `### Step 1` or
+  `### Pitfalls` does not).
 - **`**Symptom phrasings (any of):**`** right under the heading — 4-6 natural
   ways a merchant might actually phrase it. This isn't a keyword whitelist
   (retrieval is semantic embedding, not exact match) — it enriches the
