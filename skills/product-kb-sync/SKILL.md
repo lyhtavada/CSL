@@ -68,6 +68,16 @@ It applies here too — a GAP written as a feature doc still needs a real
 heading and, if it's a case scenario rather than pure reference info, the
 full case template.
 
+**When patching an existing `kb/faq/*.md` file, match its existing format —
+don't assume `Q:`/`A:`.** Confirmed 2026-08-22: `type: faq` only gets real
+per-question chunking if the body has literal `Q:`/`A:` lines; a file written
+in `## Heading` + prose (true for essentially all of Chatty's current
+`kb/faq/*.md`, which are correctly tagged `type: reference` now) silently
+chunks like a reference doc regardless of its folder. Check the target
+file's frontmatter `type:` before patching — patch a `type: reference` file
+with more headings, not injected `Q:`/`A:` pairs. Only use literal `Q:`/`A:`
+when creating a brand-new file that will carry `type: faq`.
+
 For each OUTDATED/GAP/PARTIAL item:
 - **GAP** (brand-new feature) → write it as a feature-doc-style description
   (what/where/how/conditions), not a guessed Q&A. RAG retrieval matches on
@@ -80,7 +90,15 @@ For each OUTDATED/GAP/PARTIAL item:
   see memory `feedback_kb_files_english_only`.
 - **Every `## Heading` must stand alone** for retrieval — write each section
   so it's answerable on its own, don't rely on context from a sibling
-  section (chunking is per-heading).
+  section (chunking is per-heading — applies to `###` too, and applies
+  equally within one file, not just across files: never reuse the same
+  heading string, at either level, for two different topics/scenarios in the
+  same file — see `kb-sync/SKILL.md` step 3 for the confirmed bugs this
+  causes).
+- **Always real `---` YAML frontmatter — never `<!-- CHUNK -->` / fenced
+  ```` ```yaml ```` metadata comments.** That legacy format isn't parsed at
+  all (see `kb-sync/SKILL.md` step 3); it just becomes noise text inside
+  whatever chunk it lands in.
 - Default target: `kb/case/` or `kb/faq/`. Only touch `flows/*.md` when the
   change is about a **system action** (ticket/escalate/consult_ts) AND a
   matching flow already exists — see `flow_vs_case_patch_rule` in memory.

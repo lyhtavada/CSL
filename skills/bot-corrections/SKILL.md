@@ -137,11 +137,16 @@ nếu trace vẫn không rõ nguyên nhân.)
 
 Với mỗi OUTDATED/GAP/PARTIAL, soạn full nội dung file mới theo template chuẩn ở
 `~/CSL/skills/kb-sync/SKILL.md` step 3 (case: symptom phrasings + scripted reply +
-Step→WAIT + `<escalate reason="..."/>` thật + ❌ Do NOT; faq: Q/A thuần; reference:
+Step→WAIT + `<escalate reason="..."/>` thật + ❌ Do NOT; faq: Q/A thuần **CHỈ khi
+file đang patch thật sự dùng format đó** — check `type:` trong frontmatter file
+gốc trước, đa số `kb/faq/*.md` hiện tại (Chatty) thực chất là `type: reference`
+viết theo `## Heading`, patch theo đúng format đó chứ đừng tự chèn Q:/A:; reference:
 heading tự đủ nghĩa + scripted answer cho phần FAQ-style) — giữ voice/frontmatter
 hiện có của file đang patch, viết ĐÚNG 1 ví dụ — KHÔNG viết negative example "đừng
 nói X" vì bot có thể copy ra cho khách, xem [[feedback_kb_no_negative_examples]]).
-Gộp nhiều correction cùng 1 file KB thành 1 entry.
+Không dùng format cũ `<!-- CHUNK -->`/```yaml``` — không được parser đọc, chỉ
+thành rác trong chunk. Không lặp lại 1 heading string (kể cả `###`) cho 2 tình
+huống khác nhau trong cùng file. Gộp nhiều correction cùng 1 file KB thành 1 entry.
 
 **Patch vào `flows/*.md` hay `kb/case`/`kb/faq`/`kb/reference`?** Mặc định case/faq/
 reference (Chatty chỉ). Chỉ patch thêm vào `flows/` (Chatty) khi correction liên quan

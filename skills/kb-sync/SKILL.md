@@ -78,7 +78,14 @@ rewrites on 2026-08-22 — this is now the default bar, not optional polish):
   per-heading, so a generic/repeated heading (`## Resolution Steps` reused
   across 5 unrelated cases in one file) produces chunks with no topic signal —
   this was a real bug found in Joy's old `kb/case/billing.md`. Never reuse a
-  heading string across scenarios in the same file.
+  heading string across scenarios in the same file — **this applies to `###`
+  as much as `##`**: the chunker splits on both levels equally (see next
+  bullet), so a generic `### Resolution Steps`/`### Related` reused under
+  several `##` scenarios in one file is the exact same bug one level down
+  (found + fixed in Joy's `kb/case/loyalty-page.md`, 2026-08-22 — 3 scenarios
+  A/B/C all reused `### Resolution Steps` and `### Related`). Before patching
+  a multi-scenario file, `grep '^## \|^### '` it and check for repeats at
+  BOTH levels, not just `##`.
 - **Never use `### Step N` (H3) to break a procedure into separate headings.**
   Confirmed in the bridge chunker (`src/content/chunk.ts`): every `##`/`###`
   starts a new, independent chunk — an H3 does NOT carry its parent H2's
@@ -121,23 +128,55 @@ This template is for `kb/case/*.md` (bot-facing scripted scenarios).
 `kb/faq/*.md` and `kb/reference/*.md` follow their own, lighter templates:
 
 **`kb/faq/*.md`** — plain factual Q&A, no scenario/escalation logic:
-- Literal `Q: <question>` / `A: <answer>` pairs, one blank line between pairs,
-  no `## Heading` wrapper needed (this is blog-agent's format — see
-  `kb/faq/general.md` on the `blog-agent` — and it's the simpler, more literal
-  cousin of Chatty/Joy's current `kb/faq/*.md`, which mix in `## Heading` +
-  bold-question-as-lead-in prose; either is fine, just match what the target
-  file already does — see step 3's opening rule).
-- Each `A:` should be a **complete, standalone answer** — same "no relying on
-  a sibling section" rule as case files, since FAQ files also chunk per Q/A
-  or per heading.
-- No `<escalate>` tags, no "Symptom phrasings", no Do NOT list — FAQ is pure
-  fact, not a scenario the bot has to navigate. If an item actually needs
-  judgment/escalation, it belongs in `kb/case/`, not `kb/faq/`.
+- **`type: faq` and literal `Q: <question>` / `A: <answer>` pairs are a package
+  deal — never use one without the other.** Confirmed in the bridge chunker
+  (`src/content/chunk.ts`): `type: faq` only gets the finer per-Q/A chunking
+  (`chunkFaq`) if the body actually contains `Q:`/`A:` lines; if it doesn't,
+  the chunker silently falls back to heading-based chunking (`chunkBody`) —
+  same mechanism as `case`/`reference` files, just mislabeled. Found + fixed
+  2026-08-22: all 46 of Chatty's `kb/faq/*.md` files were written in
+  `## Heading` + prose style (no `Q:`/`A:` at all) but tagged `type: faq` —
+  they were silently being chunked as `reference` this whole time. Converted
+  all 46 to `type: reference` (kept the `kb/faq/` folder path — path doesn't
+  drive chunking, `type:` frontmatter does, and there's no delete API to
+  "move" them cleanly).
+- **Writing a brand-new faq file:** use literal `Q:`/`A:` pairs (one blank
+  line between pairs, no `## Heading` wrapper needed — this is blog-agent's
+  format, see `kb/faq/general.md` on the `blog-agent`) and set `type: faq`.
+  **Patching an existing file:** match its current format — if it already
+  uses `## Heading` + prose (most of Chatty/Joy's do), keep patching it that
+  way and make sure its frontmatter says `type: reference`, not `type: faq`.
+  Don't silently convert an existing heading-style file to `Q:`/`A:` mid-patch
+  — that's a bigger rewrite, flag it instead of doing it as a side effect.
+- Each `A:` (or each heading's answer) should be a **complete, standalone
+  answer** — same "no relying on a sibling section" rule as case files.
+- No `<escalate>` tags, no "Symptom phrasings", no Do NOT list — FAQ/reference
+  is pure fact, not a scenario the bot has to navigate. If an item actually
+  needs judgment/escalation, it belongs in `kb/case/`.
 
 **`kb/reference/*.md`** — longer internal/CS-process docs (playbooks, pricing
 tables, eligibility criteria, routing rules) — not primarily bot scripts, but
 still often retrieved directly by the bot, so the same rules apply where relevant:
 - `## Heading` per topic, same self-contained-per-heading rule as case files.
+- **Always use proper `---`-delimited YAML frontmatter — never the legacy
+  `<!-- CHUNK: id -->` + fenced ```` ```yaml ```` metadata-comment format.**
+  Found in 4 Chatty reference files 2026-08-22 (`ask-for-review.md`,
+  `knowledge-base.md`, + 2 more already clean). The parser (`load.ts`) only
+  recognizes a leading `^---\n...\n---\n` block — it does NOT parse
+  `<!-- CHUNK -->`/```` ```yaml ```` blocks at all. They're not a real,
+  functioning alternate format; they're inert leftover text that gets
+  embedded as noise inside whatever chunk they land in (`chunk_id`, `doc_id`,
+  `tags: [...]` literally becomes part of the embedded content). If a file
+  you're patching still has these, strip them and add real frontmatter as
+  part of the patch — don't propagate the pattern into new content.
+- **`tags:` in frontmatter has no effect on retrieval — confirmed dead in
+  code.** `rag.ts`'s dense (embedding) and sparse (Postgres FTS) search both
+  query only the chunk's `content` field; `tags` lives on `kb_documents` but
+  is never read by the retrieval query, and `chunks` doesn't even have a
+  `tags` column. Don't pad `tags:` with long keyword lists expecting it to
+  help matching (Chatty's old `kb/faq/pricing.md` had 96 tags — pure dead
+  weight). Put real search terms directly in heading text / body prose
+  instead — that's what's actually embedded and indexed.
 - Tables are fine and often clearer than prose for plan/pricing/eligibility
   data (see blog-agent's `kb/reference/pricing.md` and `billing.md`).
 - **Any FAQ-style sub-section inside a reference file** (a short factual Q
