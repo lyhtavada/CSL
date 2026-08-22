@@ -16,7 +16,9 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 3 đầu việc chính cần làm song song: (1) salary structure vị trí AM mới, (2) job description, (3) chuyển đổi tool/process từ live chat sang ticket.
 
 **PIC của kế hoạch này (build/design):** chỉ **Liz** và **Daisy**.
-**Người chuyển đổi (subject của transition, không phải PIC):** các bạn CS hiện tại — theo `cs-transformation-plan.md` là Andy/Jade/Sonny/Alyssa (Chatty + Joy) đang được gán role AM. PIC nào cần duyệt cùng Sam thì đánh dấu riêng ở cột Note.
+**Người chuyển đổi (subject của transition, không phải PIC):** 4 CS full-time của **Joy** — **Alyssa, Audrey, Sonny, Ethan**.
+
+> ⚠️ Danh sách này khác với bảng "Team Role Assignment" trong `cs-transformation-plan.md` (bản cũ ghi Sonny/Alyssa = Joy AM, Audrey = AI Monitor Lead, không có Ethan). Cần update lại bảng đó cho khớp — xem Next step bên dưới.
 
 ---
 
@@ -28,7 +30,7 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 | A2 | Định nghĩa base + biến động (commission/bonus theo retention, upsell, CSAT) | Liz | TBD | Not started | |
 | A3 | Map level (Junior/Senior AM) với band lương hiện tại của CS để tránh lệch thang | Liz | TBD | Not started | |
 | A4 | Trình phê duyệt structure | Liz | TBD | Not started | cần Sam duyệt |
-| A5 | Communicate structure mới cho các CS được chọn chuyển sang AM | Liz | TBD | Not started | đối tượng: CS team, không phải PIC |
+| A5 | Communicate structure mới cho Alyssa/Audrey/Sonny/Ethan (4 CS Joy full-time chuyển sang AM) | Liz | TBD | Not started | đối tượng: CS team, không phải PIC |
 
 **Câu hỏi cần chốt trước khi làm A2:** AM có gắn commission theo retention/upsell không, hay giữ fixed salary như CS hiện tại? (ảnh hưởng lớn tới cách tính band)
 
@@ -83,6 +85,7 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 
 ## Next step
 
-1. Liz điền PIC cụ thể (tên người) + deadline cho từng task ở trên.
-2. Update `cs-transformation-plan.md` → Open Questions section: đánh dấu "Budget/tools for AM" đã có plan chi tiết ở đây (link qua lại).
-3. Sau khi chốt, có thể tách từng workstream (A/B/C) thành ticket/task riêng để track tiến độ nếu cần.
+1. Update bảng "Team Role Assignment — Joy Loyalty" trong `cs-transformation-plan.md` cho khớp danh sách AM mới (Alyssa, Audrey, Sonny, Ethan) — bản hiện tại đang sai (thiếu Ethan, có Audrey là AI Monitor Lead thay vì AM).
+2. Liz + Daisy điền deadline cụ thể cho từng task ở trên.
+3. Update `cs-transformation-plan.md` → Open Questions section: đánh dấu "Budget/tools for AM" đã có plan chi tiết ở đây (link qua lại).
+4. Sau khi chốt, có thể tách từng workstream (A/B/C) thành ticket/task riêng để track tiến độ nếu cần.
