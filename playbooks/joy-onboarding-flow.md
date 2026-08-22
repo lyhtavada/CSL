@@ -308,10 +308,7 @@ Trong lúc onboard, KH hay báo lỗi/hiện tượng (không cộng điểm, co
 
 ## 8. Ownership & SLA (chat trực theo ca)
 
-- **Nhận là own tới cùng.** Nhận case nào chịu trách nhiệm tới khi xong.
-- **Hẹn rõ:** việc cần thời gian (vd import) → hẹn khách **~1 ngày** và làm tới nơi.
-- **Bàn giao ca liền mạch:** hết ca chưa xong → để lại note trạng thái đầy đủ để ca sau nối tiếp, không bắt khách kể lại từ đầu.
-- **Không đá việc** — không assign bạn khác "import hộ" chỉ vì hết ca, trừ khi đã bàn giao rõ.
+> Rule đầy đủ (own tới cùng / hẹn rõ / bàn giao ca / không đá việc) → xem mục **"★ Rule Ownership & SLA"** trong [`joy-dfu-onboarding-playbook.md`](./joy-dfu-onboarding-playbook.md). Áp dụng y hệt cho onboarding flow này, không lặp lại.
 
 ---
 

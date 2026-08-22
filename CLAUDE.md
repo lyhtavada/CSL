@@ -39,8 +39,7 @@ CSL/                               ← Liz's workspace (this repo)
 │   ├── joy-dfu-onboarding-playbook.md ← Module 6 — sổ tay ĐẦY ĐỦ: 7 bước có exit-criteria + decision guides (migration/VIP/guest/Widget-V4) + FAQ 50 case (Phần 3). Nguồn tra cứu chính
 │   ├── joy-onboarding-flow.md     ← CS thao tác trên chat: offer → discovery → tạo 1 ticket → phân nhánh A/B/C → xử lý issue. Chi tiết trỏ sang playbook
 │   ├── joy-onboarding-program-checklist.md ← Google Sheet template KH điền rule (1 sheet/KH)
-│   ├── joy-dfy-flow.md            ← Joy DFY CS flow + checklist (Required/Recommended)
-│   ├── joy-dfy-intro.md           ← Joy DFY tinh thần & mục đích
+│   ├── joy-dfy-flow.md            ← Joy DFY CS flow + checklist (Required/Recommended); §0a có luôn mục đích & tinh thần DFY (đã gộp từ joy-dfy-intro.md, xóa 2026-06-17)
 │   ├── chatty-dfy-flow.md         ← Chatty DFY flow (coming)
 │   └── cs-transformation/         ← CS transformation plan + training materials
 ├── skills/                        ← Claude skills

@@ -70,14 +70,41 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 
 ---
 
-## Gợi ý bổ sung (chưa có trong yêu cầu gốc, nên cân nhắc thêm)
+## Workstream D — Data & Tracking
 
-- **D. Data & tracking:** Cần track được: merchant nào thuộc tier nào (Free/Essential vs Advanced/Ultimate), volume ticket theo tier, AM workload (số account/AM) — nếu chưa có, thêm task xây dashboard/report trước khi go-live.
-- **E. Timeline & rollout plan:** Hiện các task đều "TBD" — nên chốt 1 mốc go-live chung (vd. pilot 1 tháng với 1 AM + subset merchant Ultimate trước khi roll toàn bộ).
-- **F. Training:** AM là role mới cho tất cả (đã note trong cs-transformation-plan.md) — cần lịch training/shadow với Avada AM team trước khi go-live, không chỉ JD suông.
-- **G. Risk/rollback:** Nếu Free/Essential merchant phản ứng tiêu cực với việc mất live chat, cần plan B (vd. tạm thời vẫn cho chat giờ cao điểm).
+| # | Task | PIC | Deadline | Status | Note |
+|---|------|-----|----------|--------|------|
+| D1 | Track merchant nào thuộc tier nào (Free/Essential vs Advanced/Ultimate) | Daisy | TBD | Not started | |
+| D2 | Track volume ticket theo tier | Daisy | TBD | Not started | |
+| D3 | Track AM workload (số account/AM) | Liz | TBD | Not started | cần trước khi go-live để biết capacity |
 
-Đề xuất gộp D–G vào bảng task ở trên sau khi Liz xác nhận scope, và gắn PIC/deadline cụ thể (hiện tại đang để TBD vì cần Liz + Sam chốt).
+---
+
+## Workstream E — Timeline & Rollout
+
+| # | Task | PIC | Deadline | Status | Note |
+|---|------|-----|----------|--------|------|
+| E1 | Chốt 1 mốc go-live chung cho toàn bộ transition | Liz | TBD | Not started | |
+| E2 | Pilot 1 tháng với 1 AM + subset merchant Ultimate | Liz + Daisy | TBD | Not started | |
+| E3 | Review kết quả pilot trước khi roll toàn bộ | Liz | TBD | Not started | phụ thuộc E2 |
+
+---
+
+## Workstream F — Training
+
+| # | Task | PIC | Deadline | Status | Note |
+|---|------|-----|----------|--------|------|
+| F1 | Lên lịch training/shadow với Avada AM team | Liz | TBD | Not started | |
+| F2 | Alyssa/Audrey/Sonny/Ethan shadow thực tế trước khi go-live | Liz | TBD | Not started | AM là role mới cho tất cả, không chỉ JD suông |
+
+---
+
+## Workstream G — Risk & Rollback
+
+| # | Task | PIC | Deadline | Status | Note |
+|---|------|-----|----------|--------|------|
+| G1 | Định nghĩa risk case: Free/Essential merchant phản ứng tiêu cực khi mất live chat | Liz | TBD | Not started | |
+| G2 | Chuẩn bị plan B (vd. tạm giữ live chat giờ cao điểm) | Liz | TBD | Not started | trigger khi G1 xảy ra |
 
 ---
 
@@ -86,4 +113,4 @@ CS team đang chuyển từ live chat 24/7 → mô hình phân tầng theo plan:
 1. Update bảng "Team Role Assignment — Joy Loyalty" trong `cs-transformation-plan.md` cho khớp danh sách AM mới (Alyssa, Audrey, Sonny, Ethan) — bản hiện tại đang sai (thiếu Ethan, có Audrey là AI Monitor Lead thay vì AM).
 2. Liz + Daisy điền deadline cụ thể cho từng task ở trên.
 3. Update `cs-transformation-plan.md` → Open Questions section: đánh dấu "Budget/tools for AM" đã có plan chi tiết ở đây (link qua lại).
-4. Sau khi chốt, có thể tách từng workstream (A/B/C) thành ticket/task riêng để track tiến độ nếu cần.
+4. Sau khi chốt, có thể tách từng workstream (A–G) thành ticket/task riêng để track tiến độ nếu cần.

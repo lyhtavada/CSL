@@ -2,13 +2,27 @@
 
 **Owner:** Liz (CS Leader)
 **Created:** 2026-05-18
-**Updated:** 2026-07-03
-
-> Xem mục đích & tinh thần DFY: [`joy-dfy-intro.md`](./joy-dfy-intro.md)
+**Updated:** 2026-08-22 (gộp `joy-dfy-intro.md` — file gốc đã xóa 2026-06-17, nội dung mục đích/tinh thần được merge thẳng vào đây để tránh link chết)
 
 ---
 
-## 0. Đổi gì ở bản này (2026-07-03)
+## 0a. Mục đích & Tinh thần DFY
+
+**Mục đích.** Joy MC trả phí cần setup widget + loyalty page nhanh để đạt time-to-value sớm. MC tự setup → mất nhiều ngày, dễ bỏ cuộc giữa chừng, churn cao trong 30 ngày đầu. **DFY giải quyết:** CS chủ động audit store (tập trung widget + loyalty page để đảm bảo on-brand) + viết recommendation cụ thể cho MC → MC chỉ cần apply theo checklist → time-to-value rút ngắn còn vài ngày → giảm churn và tạo cơ hội xin review khi MC đã thấy giá trị.
+
+**Tinh thần — tại sao flow này quan trọng:**
+
+> **Support là Core Moat của Joy — không phải feature, không thể copy.** Smile có 100K+ stores. Rivo có UI đẹp. Nhưng không app nào chủ động ngồi audit store của merchant, viết recommendation riêng cho từng store, rồi follow up đến khi họ thực sự thấy giá trị. Joy làm được điều đó vì đây là con người — và đây là thứ không thể ship như một tính năng.
+
+**CS trong DFY không phải support agent — CS là loyalty consultant:**
+- Support agent: chờ MC hỏi → trả lời → đóng ticket
+- Loyalty consultant: chủ động nhìn vào store → hiểu MC đang thiếu gì → đưa ra recommendation cụ thể → đồng hành đến khi MC thấy kết quả
+
+Mỗi DFY ticket là một cơ hội để Joy chứng minh trả phí xứng đáng — không phải qua tính năng, mà qua sự quan tâm thật sự.
+
+---
+
+## 0b. Đổi gì ở bản 2026-07-03
 
 DFY trước đây gần như chỉ xoay quanh **widget customization**. Nhưng widget đẹp mà store **chưa có earning/redeeming active** hoặc **vẫn ở sandbox** thì khách vẫn không tích được điểm → program chưa launch thật. Bản này mở rộng DFY ra **toàn bộ con đường go-live**, và **bám đúng Quickstart checklist có sẵn trong app** (không tự chế phase riêng) để CS và KH nhìn cùng một thứ.
 
