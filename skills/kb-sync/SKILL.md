@@ -140,6 +140,42 @@ still often retrieved directly by the bot, so the same rules apply where relevan
   process steps aimed at a human CS agent reading it directly, not just RAG
   chunks for the bot.
 
+**When writing/patching a technical (bug-class) `kb/case/*.md` scenario,
+consider a `consult_ts` diagnostic step before the escalate tag.** Confirmed
+2026-08-22: `<consult_ts type="diagnostic" summary="..."/>` is a real,
+working automated backend-diagnostic tool (not a human handoff) — see
+`flows/ai_not_responding.md` for the reference pattern: collect specifics →
+emit `<consult_ts type="diagnostic" summary="<what to check + what merchant
+reported>"/>` → the harness relays the result back in a LATER turn → answer
+the merchant directly from it if it resolves things; only fall through to the
+existing `<escalate reason="..."/>` tag if the diagnostic doesn't explain it.
+
+- **Only for agents where this is actually enabled.** Check the agent has a
+  `flows/*.md` file already emitting `<consult_ts>` (e.g. Chatty does — Joy
+  does not have a `flows/` directory at all, and its enablement is unverified
+  as of 2026-08-22: `agent.yaml`'s own comment says "chưa khai ts_app_slug"
+  but a separate reference catalog in the bridge repo lists one anyway —
+  neither is proof of the live DB gate, which is a separately admin-set field
+  not derived from either file. Don't assume it works for an agent without
+  this kind of existing evidence — verify with a dev or via `/kb-test`
+  first, don't add `consult_ts` blind.
+- **ADD `consult_ts`** when the scenario is a technical mystery a backend
+  check could plausibly resolve — sync/job status, whether an integration is
+  actually connected, config state that disagrees with what the UI shows.
+- **KEEP direct escalate** (no consult_ts) when: the root cause is already
+  known/documented in the KB (nothing new to diagnose), it's a business/
+  judgment call (refund, discount, plan approval), it's a request for the
+  team to *do* something rather than diagnose a mystery (write custom CSS,
+  extend a limit), or it's client-side/device-side/third-party-side (browser
+  notification permissions, DNS/email provider, Meta/WhatsApp account state)
+  — a backend check can't see into any of those.
+- Keep the existing `<escalate reason="..."/>` as the fallback — never
+  remove it when adding `consult_ts`, the diagnostic might not resolve it.
+- If the agent already has a dedicated `flows/*.md` for the exact same
+  situation (e.g. Chatty's "AI not responding"), don't duplicate the
+  collect→consult_ts→escalate machinery in the case file — just add a short
+  note pointing to that flow instead.
+
 Write a payloads file = JSON array of `{agent, path, content}`:
 ```
 reports/analysis/kb-sync-<app>-<YYYY-MM-DD>-payloads.json
