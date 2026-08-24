@@ -6,5 +6,22 @@
     "app": "chatty",
     "title": "Ivy re-greets and drops flow context after backfilled/proactive outbound-only session",
     "occurrences": 1
+  },
+  "bot-redundant-regreet-returning-convo": {
+    "ticket_id": "9T14kPKaV0bco603LQyF",
+    "internal_id": "9T14kPKaV0bco603LQyF",
+    "ticket_url": "https://helpdesk.avada.net/tickets/9T14kPKaV0bco603LQyF",
+    "app": "chatty",
+    "title": "Bot re-greets from scratch on returning/reopened chats, ignoring context",
+    "occurrences": 3,
+    "last_seen_app": "joy"
+  },
+  "chatty-dfy-ack-flow-content-ignored": {
+    "ticket_id": "T6qvmMipJ8xENQyPGw6z",
+    "internal_id": "T6qvmMipJ8xENQyPGw6z",
+    "ticket_url": "https://helpdesk.avada.net/tickets/T6qvmMipJ8xENQyPGw6z",
+    "app": "chatty",
+    "title": "Bot ignores injected DFY flow prompt when replying to a bare 'yes' acknowledgment",
+    "occurrences": 1
   }
 }
