@@ -1,4 +1,4 @@
-# Codex trên Zed — Training Plan cho CS Team
+# AI Agent Toolkit cho CS Team
 
 **Đối tượng:** Toàn bộ CS team (Chatty + Joy + Wishlist)
 **Mục tiêu:** CS hiểu được Codex là gì, vì sao nên dùng, và tự tin dùng được trong công việc hàng ngày (không cần biết code)
