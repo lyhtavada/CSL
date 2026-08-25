@@ -1,7 +1,8 @@
 # [Tên của bạn] — Workspace
 
-> File này là "quy tắc cố định" — agent tự đọc mỗi lần bạn mở terminal/IDE ở thư mục này, nên bạn
-> không cần giải thích lại context mỗi lần hỏi. Điền thông tin thật của bạn vào các mục dưới đây.
+> `AGENTS.md` là "file quy tắc cố định" chuẩn của Codex — Codex tự đọc file này mỗi lần bạn mở
+> Zed/terminal ở thư mục này, nên bạn không cần giải thích lại context mỗi lần hỏi. Điền thông tin
+> thật của bạn vào các mục dưới đây.
 
 ## Bạn là ai
 
@@ -12,9 +13,9 @@
 
 ## Cấu trúc thư mục này
 
-- `data/` — nơi bỏ file bạn muốn agent đọc (CSV, export chat log, export ticket...)
-- `reports/` — nơi agent xuất báo cáo/kết quả ra
-- `templates/` — mẫu có sẵn, nhờ agent điền theo đúng format thay vì tạo từ đầu
+- `data/` — nơi bỏ file bạn muốn Codex đọc (CSV, export chat log, export ticket...)
+- `reports/` — nơi Codex xuất báo cáo/kết quả ra
+- `templates/` — mẫu có sẵn, nhờ Codex điền theo đúng format thay vì tạo từ đầu
 - `notes/` — ghi chú/tóm tắt nhanh
 
 ## Quy tắc làm việc
@@ -26,13 +27,13 @@
 
 ## Nguồn dữ liệu tôi hay dùng
 
-> Điền nguồn thật của bạn — càng cụ thể, agent càng đỡ đoán sai.
+> Điền nguồn thật của bạn — càng cụ thể, Codex càng đỡ đoán sai.
 
 - Data ca trực / báo cáo: **[ví dụ: Google Sheet link, hoặc file export ở đâu]**
 - Tra cứu KB / quy trình: **[ví dụ: link cs2.avada.net, hoặc thư mục kb/cs-process/ trong repo CSL]**
 - Case cần tham khảo: **[ví dụ: Crisp, Avada Ticket]**
 
-## Việc tôi thường nhờ agent làm ở đây
+## Việc tôi thường nhờ Codex làm ở đây
 
 > Ví dụ mẫu — sửa lại theo đúng công việc thật của bạn, càng cụ thể càng dễ tái sử dụng lần sau.
 
