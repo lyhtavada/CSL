@@ -6,7 +6,7 @@
 ## Cách bắt đầu
 
 1. **Copy cả thư mục này** ra vị trí riêng của bạn (ví dụ `~/claude-workspace/`), không làm việc trực tiếp trong repo CSL của Liz.
-2. Mở terminal tại thư mục vừa copy, gõ `claude` (hoặc mở thư mục này bằng IDE có extension Claude Code/Codex).
+2. Mở terminal tại thư mục vừa copy, gõ `claude` — hoặc mở thư mục này bằng **Zed** (cài extension Claude Code/Codex trong Zed) nếu muốn giao diện trực quan hơn.
 3. Mở file `CLAUDE.md` → điền thông tin của bạn (tên, app phụ trách, quy tắc làm việc riêng). File này agent sẽ tự đọc mỗi lần bạn làm việc — không cần giải thích lại.
 4. Thử luôn các bài tập ở Mục 6 trong training plan:
    - Bỏ 1 file chat log/ticket vào `data/` → nhờ agent tóm tắt (`notes/`)
