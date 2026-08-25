@@ -18,18 +18,20 @@ Your identity and core principles are defined in `~/SOUL.md` — read it at the 
 Liz works at **Avada Group**, spanning 2 product teams:
 
 - **Team Starlink** (Joy Loyalty, Joy Wishlist)
-  - PM: Tuấn Anh — Slack `U011EFCAPQ8`
-  - PO: `U08N3UV2QGK`
-  - Tech Lead: `U02SQDXM2BY`
+  - PM: Nguyễn Tuấn Anh — `anhnt@avada.io` — Slack `U011EFCAPQ8`
+  - PO: Bùi Khánh Sơn — `sonbk@avadagroup.com` — Slack `U08N3UV2QGK`
+  - Tech Lead: Tạ Hồng Anh — `anhth@avadagroup.com` — Slack `U02SQDXM2BY`
   - + other members
 - **Team Tesla** (Chatty)
-  - PM: `U01NJA7R38C`
-  - Tech Lead: `U01N91ZKMK7`
+  - PM: Quách Thanh Tùng — `tungqt@avada.io` — Slack `U01NJA7R38C`
+  - Tech Lead: Vũ Minh Đạt — `datvm@avada.io` — Slack `U01N91ZKMK7`
   - + other members
 
 **CS Team:**
-- CSM: `U01NQNRG35F`
-- Other CSLs (peers of Liz — check their Slack profile to see which team they cover): `U02RT6QV57G`, `U04C4RE382V`
+- CSM: Võ Thị Phương Thúy (Daisy) — `daisy@avada.io` — Slack `U01NQNRG35F`
+- Other CSLs (peers of Liz — check their Slack profile to see which team they cover):
+  - Bùi Lan Anh — `anhbl@avada.io` — Slack `U02RT6QV57G`
+  - Trần Khánh Linh (Lydia) — `lydia@avada.io` — Slack `U04C4RE382V`
 - Anh Sam (CEO) also directly manages the CS team
 
 ## Your Role in This Workspace
