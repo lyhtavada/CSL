@@ -39,5 +39,13 @@
     "app": "chatty",
     "title": "[Bug] Consult_ts tìm ra root cause nhưng reply bị dead-letter do Anthropic rate-limit",
     "occurrences": 1
+  },
+  "chatty-escalation-intent-classifier-message-type": {
+    "ticket_id": "8TiQgXPBNPdkHTQJ5mSq",
+    "internal_id": "8TiQgXPBNPdkHTQJ5mSq",
+    "ticket_url": "https://helpdesk.avada.net/tickets/8TiQgXPBNPdkHTQJ5mSq",
+    "app": "chatty",
+    "title": "[Bug] Escalation-intent classifier nhầm feedback/frustration với yêu cầu gặp người - block mục tiêu Ivy resolution rate 60%",
+    "occurrences": 1
   }
 }
