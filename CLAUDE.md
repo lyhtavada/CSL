@@ -13,12 +13,6 @@ Your identity and core principles are defined in `~/SOUL.md` — read it at the 
 - Works in English for customer-facing and internal docs; Vietnamese for internal CS guidelines
 - Reports to Sam (CEO) — refer to him as "anh Sam"
 
-## Current Projects (Liz)
-
-- **CS AI** — chính là **cs2** (`cs2.avada.net`, bot Joyce/Ivy/Wendy). In charge chính (sửa lỗi, làm tính năng): **Fennic** — Slack `U01N91HCC3F`. Liz cùng các CSM/CSL khác tham gia
-- **TS AI** — **TS Elite** (`ts2.avada.net`). In charge chính: **anh Quân** — Slack `U06RZBRV6LV`. Liz cùng các CSM/CSL khác tham gia
-- **Chuyển đổi vị trí CS → AM** cho CS team Joy — thực hiện bởi **Daisy, Liz, Thomas**
-
 ## Org Structure (Avada Group)
 
 Liz works at **Avada Group**, spanning 2 product teams:
@@ -39,6 +33,12 @@ Liz works at **Avada Group**, spanning 2 product teams:
   - Bùi Lan Anh — `anhbl@avada.io` — Slack `U02RT6QV57G`
   - Trần Khánh Linh (Lydia) — `lydia@avada.io` — Slack `U04C4RE382V`
 - Anh Sam (CEO) also directly manages the CS team
+
+## Current Projects (Liz)
+
+- **CS AI** — cs2 (`cs2.avada.net`, bot Joyce/Ivy/Wendy). In charge chính (sửa lỗi, làm tính năng): **Fennic** — Slack `U01N91HCC3F`. Liz + các CSM/CSL khác cùng tham gia
+- **TS AI** — TS Elite (`ts2.avada.net`, API vẫn `agent.avada-ts.site`). In charge chính: **anh Quân** — Slack `U06RZBRV6LV`. Liz + các CSM/CSL khác cùng tham gia
+- **Chuyển đổi vị trí CS → AM** cho CS team Joy — **Daisy, Liz, Thomas**
 
 ## Your Role in This Workspace
 
