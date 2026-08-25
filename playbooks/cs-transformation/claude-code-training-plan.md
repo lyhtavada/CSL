@@ -82,6 +82,8 @@ Hai khái niệm này hay bị nhầm — nắm được sẽ hiểu bản chấ
 
 ## 6. Cách sử dụng cơ bản
 
+> **Thư mục mẫu để bắt đầu:** `claude-code-starter-kit/` (cùng cấp với file này) — đã có sẵn `CLAUDE.md` mẫu, thư mục `data/` (kèm 1 file chat log mẫu để thực hành ngay), `templates/`, `reports/`. Copy thư mục này ra máy mỗi người là bắt đầu được luôn, không cần tự tạo từ đầu. Xem `claude-code-starter-kit/README.md` để biết cách dùng.
+
 ### 6.1 Cài đặt
 - **Terminal:** cài qua npm (`npm install -g @anthropic-ai/claude-code` hoặc theo hướng dẫn chính thức) → gõ `claude` để mở
 - **IDE (VS Code, Cursor...):** cài extension tương ứng từ Marketplace → mở panel chat ngay trong IDE

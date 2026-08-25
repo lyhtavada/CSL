@@ -1,0 +1,11 @@
+date,merchant,app,message,sender
+2026-08-18,Store A,Chatty,"Hi, does the AI chatbot support multiple languages?",merchant
+2026-08-18,Store A,Chatty,"Yes! Chatty AI supports multiple languages, you can configure them in Settings > Language.",agent
+2026-08-19,Store B,Joy Loyalty,"How do I set up a referral program?",merchant
+2026-08-19,Store B,Joy Loyalty,"You can set up referral under Loyalty > Programs > Referral, I can guide you step by step.",agent
+2026-08-19,Store C,Chatty,"My widget disappeared after the last update, please help urgently.",merchant
+2026-08-20,Store C,Chatty,"I'm escalating this to our technical team, will update you within 30 minutes.",agent
+2026-08-20,Store D,Joy Wishlist,"Can customers share their wishlist via link?",merchant
+2026-08-20,Store D,Joy Wishlist,"Yes, each wishlist has a shareable link, found under Wishlist > Share.",agent
+2026-08-21,Store A,Chatty,"I want a refund, the AI gave wrong answers to my customers.",merchant
+2026-08-21,Store A,Chatty,"I'm sorry to hear that, let me review the conversations and get back to you with a resolution.",agent
