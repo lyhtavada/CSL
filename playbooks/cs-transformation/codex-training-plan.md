@@ -63,20 +63,29 @@ Codex ban đầu sinh ra cho lập trình viên (nên hay gọi là "coding agen
 
 ---
 
-## 5. Khái niệm nền tảng: AI Agent & Harness
+## 5. Khái niệm nền tảng: AI Agent & 5 tầng kiến trúc
 
-Hai khái niệm này hay bị nhầm — nắm được sẽ hiểu bản chất Codex ở Mục 4 vừa thấy đang làm gì, không "sợ" nó hoặc dùng sai cách.
+Nắm được phần này sẽ hiểu bản chất Codex ở Mục 4 vừa thấy đang làm gì, không "sợ" nó hoặc dùng sai cách — không cần nhớ thuật ngữ, chỉ cần hiểu ý.
 
 ### AI Agent là gì?
 - **Chatbot thường** = hỏi 1 câu, trả lời 1 câu, không tự làm gì thêm.
-- **AI Agent** = AI được cấp "tay chân" (tools) để **tự lên kế hoạch nhiều bước và hành động** cho tới khi xong việc — đọc file này, phân tích, viết file kia, kiểm tra lại kết quả, báo cáo lại cho mình.
+- **AI Agent** = AI được cấp "tay chân" (tools) và **quyền hạn** để **tự lên kế hoạch nhiều bước và hành động** cho tới khi xong việc — đọc file này, phân tích, viết file kia, tự kiểm tra lại kết quả, báo cáo lại cho mình.
 - Ví dụ thực tế: Betty (trợ lý của Liz, chạy trên Claude Code) chính là 1 AI agent — khi Liz nhờ "tổng hợp báo cáo CS tuần này", Betty tự query data, tự phân tích, tự viết file, tự gửi Slack. **Codex hoạt động theo đúng nguyên lý này** — chỉ là "bộ não" và nơi chạy khác nhau.
 
-### Harness là gì?
-- **Harness** = "bộ khung vận hành" bao quanh agent — quy định agent được làm gì, không được làm gì, và cung cấp công cụ (tools) để nó hành động.
-- Ví dụ cụ thể trong Codex: harness cấp cho agent các tool như *đọc file*, *sửa file*, *chạy lệnh terminal*, *tìm kiếm web* — và **cơ chế xin phép** trước khi làm việc rủi ro (xoá file, ghi đè, chạy lệnh nguy hiểm). Khi Codex chạy trong Zed, Zed chính là nơi hiển thị các bước này và cho mình xác nhận/từ chối.
-- Hiểu đơn giản: **Agent = bộ não ra quyết định, Harness = luật chơi + công cụ trong tay nó**. Cùng 1 kiểu "bộ não" agent, nhưng đặt trong harness khác nhau (Zed, terminal thuần, Slack bot...) sẽ có khả năng và giới hạn khác nhau.
-- CS không cần chỉnh harness — chỉ cần biết: **mọi hành động rủi ro (xoá, ghi đè, gửi email thật...) đều sẽ được Zed hỏi xác nhận trước**, trừ khi mình đã tự ý bật chế độ tự động.
+### 5 tầng bên trong 1 AI Agent
+Một agent như Codex vận hành qua 5 tầng, từ cơ bản đến nâng cao — 3 tầng đầu là thứ CS dùng hàng ngày, 2 tầng sau chỉ cần biết là có tồn tại:
+
+| Tầng | Là gì | Ví dụ |
+|---|---|---|
+| **1. Prompt** | Yêu cầu mình đưa ra — rõ nhất khi có đủ 3 phần: **nguồn** + **việc cần làm** + **kết quả mong muốn** (xem Mục 7.2) | "Đọc `chat-log.csv`, đếm chat theo ngày, xuất bảng" |
+| **2. Context** | "Kiến thức" Codex nhìn thấy khi làm việc — file trong thư mục đang mở, nội dung `AGENTS.md`, data mình đưa vào. Context càng đúng, kết quả càng chuẩn, càng ít phải sửa lại | Codex đọc đúng `AGENTS.md` + file trong `data/` trước khi trả lời |
+| **3. Harness** | Bộ công cụ + quyền hạn Codex có: đọc file, sửa file, chạy lệnh, tìm kiếm web — kèm **cơ chế xin phép** trước việc rủi ro (xoá, ghi đè, chạy lệnh nguy hiểm). Khi chạy trong Zed, Zed là nơi hiển thị các bước này và cho mình xác nhận/từ chối | Zed hỏi xác nhận trước khi Codex ghi đè 1 file |
+| **4. Tự kiểm tra lại (nâng cao)** | Agent tự làm xong rồi tự soi lại kết quả, phát hiện sai thì tự sửa tiếp — không cần mình nhắc | Codex tự phát hiện số liệu lệch, tự đối chiếu lại nguồn trước khi trả kết quả cuối |
+| **5. Nhiều agent phối hợp (nâng cao)** | Chia 1 việc lớn cho nhiều agent làm song song rồi gộp lại — chỉ cần cho việc phức tạp, khối lượng lớn | Xem Mục 10 (Nâng cao) |
+
+**Hiểu đơn giản:** **Agent = bộ não ra quyết định** (Tầng 1–2 là mình đưa input cho nó), **Harness = luật chơi + công cụ trong tay nó** (Tầng 3). Cùng 1 kiểu "bộ não" agent, nhưng đặt trong harness khác nhau (Zed, terminal thuần, Slack bot...) sẽ có khả năng và giới hạn khác nhau.
+
+CS không cần chỉnh harness hay tự dựng Tầng 4–5 — chỉ cần biết: **mọi hành động rủi ro (xoá, ghi đè, gửi email thật...) đều sẽ được Zed hỏi xác nhận trước**, trừ khi mình đã tự ý bật chế độ tự động.
 
 ---
 
@@ -88,8 +97,8 @@ Hai khái niệm này hay bị nhầm — nắm được sẽ hiểu bản chấ
 - Đăng nhập bằng tài khoản được cấp (không dùng tài khoản cá nhân cho việc công ty)
 - Ai muốn dùng qua terminal thuần (không qua Zed) vẫn được — cài `codex` CLI theo hướng dẫn chính thức của OpenAI, gõ `codex` để mở — nhưng training/bài thực hành mặc định làm trên Zed
 
-### 6.2 Thư mục mẫu để bắt đầu
-Không cần tự tạo cấu trúc từ đầu — dùng thư mục mẫu `codex-starter-kit/` (cùng cấp với file này):
+### 6.2 Thư mục mẫu để bắt đầu — "bộ não thứ hai" của Codex
+Không cần tự tạo cấu trúc từ đầu — dùng thư mục mẫu `codex-starter-kit/` (cùng cấp với file này). Thư mục này chính là **Context** (Tầng 2 ở Mục 5) — hay còn gọi là **"second brain"**: nơi lưu sẵn quy tắc + data để Codex tự đọc mỗi lần làm việc, không phải giải thích lại từ đầu mỗi phiên:
 
 ```
 codex-starter-kit/
@@ -112,14 +121,14 @@ codex-starter-kit/
 4. Mình **duyệt hoặc chỉnh lại yêu cầu** → Codex tiếp tục
 5. Kiểm tra kết quả cuối — **luôn đọc lại trước khi dùng/gửi đi**, Codex có thể sai
 
-### 7.2 Cách ra yêu cầu (prompt) hiệu quả
-| Yêu cầu mơ hồ | Yêu cầu rõ ràng, hiệu quả |
+### 7.2 Cách ra yêu cầu (prompt) hiệu quả — 3 phần bắt buộc
+Đây chính là **Tầng 1 (Prompt)** ở Mục 5 — 1 yêu cầu tốt luôn có đủ 3 phần: **nguồn** (file/link nào) + **việc cần làm** + **kết quả mong muốn** (bảng? file mới? tóm tắt ngắn?).
+
+| Yêu cầu mơ hồ | Yêu cầu rõ ràng, hiệu quả (đủ 3 phần) |
 |---|---|
 | "phân tích file này" | "Đọc file `chat-log.csv`, đếm số chat theo từng ngày, xuất bảng tổng hợp" |
 | "viết báo cáo" | "Viết báo cáo tuần theo format ở file `report-template.md`, dùng data trong file `data.csv`" |
 | "sửa file" | "Trong file `faq.md`, tìm câu trả lời về refund policy và cập nhật theo nội dung tôi paste bên dưới" |
-
-**Mẹo:** nói rõ **nguồn** (file/link nào), **việc cần làm**, và **kết quả mong muốn** (bảng? file mới? tóm tắt ngắn?).
 
 ### 7.3 Chế độ cấp quyền (permission)
 - Mặc định: Codex sẽ **hỏi trước** mỗi khi định sửa file, chạy lệnh, hoặc gọi ra ngoài (gửi email, post Slack...) — hộp thoại xác nhận hiện ngay trong Zed
