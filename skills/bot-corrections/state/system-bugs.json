@@ -23,5 +23,13 @@
     "app": "chatty",
     "title": "Bot ignores injected DFY flow prompt when replying to a bare 'yes' acknowledgment",
     "occurrences": 1
+  },
+  "chatty-rag-topchunk-ignored-handover-vs-welcome": {
+    "ticket_id": "Oqi1x6mHi7oHOovaKH9W",
+    "internal_id": "Oqi1x6mHi7oHOovaKH9W",
+    "ticket_url": "https://helpdesk.avada.net/tickets/Oqi1x6mHi7oHOovaKH9W",
+    "app": "chatty",
+    "title": "Ivy ignores top-scored RAG chunks, answers from lower-relevance chunk (welcome message vs human handover confusion)",
+    "occurrences": 1
   }
 }
