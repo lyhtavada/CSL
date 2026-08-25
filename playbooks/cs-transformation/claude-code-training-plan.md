@@ -68,21 +68,33 @@ Hai khái niệm này hay bị nhầm — nắm được sẽ hiểu bản chấ
 
 ---
 
-## 5. Cách sử dụng cơ bản
+## 5. Cách Liz đang dùng công cụ này hàng ngày (ví dụ thực tế)
 
-### 5.1 Cài đặt
+Đây là phần quan trọng nhất — để CS thấy công cụ này áp dụng được thật vào việc hàng ngày, không chỉ là lý thuyết.
+
+- **Paste 1 link là xong, không cần hỏi lại:** Liz paste link chat Crisp hoặc link Slack thread vào → agent **tự động** đọc data, tóm tắt nội dung + đề xuất bước tiếp theo, không cần ra lệnh từng bước. CS có thể áp dụng y hệt: paste link ticket/thread dài → nhờ tóm tắt nhanh trước khi xử lý.
+- **Báo cáo tổng hợp từ nhiều nguồn cùng lúc:** báo cáo CS tuần của Liz (`/cs-weekly`) tự kéo data từ ticket, chat log, DFY tracker, App Store review... rồi gộp thành 1 báo cáo, đẩy lên Notion + gửi Slack — việc mà làm tay sẽ mất rất nhiều thời gian mở từng nguồn.
+- **"File quy tắc cố định" — không phải nhắc lại context mỗi lần:** Liz lưu sẵn 1 file quy tắc (`CLAUDE.md`) ghi rõ: ai là ai trong team, tone giọng văn, nguồn data nào dùng cho việc gì, quy trình nào áp dụng khi nào. Agent tự đọc file này mỗi lần làm việc → Liz không phải giải thích lại từ đầu mỗi lần hỏi. **CS có thể áp dụng tương tự:** lưu 1 file ghi rõ quy trình/thông tin mình hay dùng lặp lại, rồi nhờ agent đọc file đó mỗi khi cần.
+- **Agent tự nhớ điều đã học qua các lần làm việc trước:** khi Liz sửa cách làm 1 lần ("đừng làm X, làm Y thay vào đó"), agent tự ghi nhớ để lần sau áp dụng luôn — không cần lặp lại hướng dẫn.
+- **AI làm nháp, người duyệt final:** dù agent tự soạn nội dung/báo cáo/sửa dữ liệu, **mọi việc có tác động ra ngoài** (gửi merchant, đẩy vào hệ thống live, gắn tag hàng loạt) đều dừng lại **chờ Liz duyệt** trước khi thực thi thật. Đây là nguyên tắc cốt lõi CS cần áp dụng theo (xem thêm Mục 9).
+
+---
+
+## 6. Cách sử dụng cơ bản
+
+### 6.1 Cài đặt
 - **Terminal:** cài qua npm (`npm install -g @anthropic-ai/claude-code` hoặc theo hướng dẫn chính thức) → gõ `claude` để mở
 - **IDE (VS Code, Cursor...):** cài extension tương ứng từ Marketplace → mở panel chat ngay trong IDE
 - Đăng nhập bằng tài khoản được cấp (không dùng tài khoản cá nhân cho việc công ty)
 
-### 5.2 Vòng lặp làm việc cơ bản
+### 6.2 Vòng lặp làm việc cơ bản
 1. **Mở terminal/IDE tại đúng thư mục** chứa file mình cần làm việc cùng
-2. **Ra yêu cầu bằng ngôn ngữ tự nhiên** — càng cụ thể càng tốt (xem 5.3)
+2. **Ra yêu cầu bằng ngôn ngữ tự nhiên** — càng cụ thể càng tốt (xem 6.3)
 3. Agent **đọc, phân tích, và đề xuất hành động** — nếu việc rủi ro (sửa/xoá file, chạy lệnh) nó sẽ **hỏi xác nhận** trước khi làm
 4. Mình **duyệt hoặc chỉnh lại yêu cầu** → agent tiếp tục
 5. Kiểm tra kết quả cuối — **luôn đọc lại trước khi dùng/gửi đi**, agent có thể sai
 
-### 5.3 Cách ra yêu cầu (prompt) hiệu quả
+### 6.3 Cách ra yêu cầu (prompt) hiệu quả
 | Yêu cầu mơ hồ | Yêu cầu rõ ràng, hiệu quả |
 |---|---|
 | "phân tích file này" | "Đọc file `chat-log.csv`, đếm số chat theo từng ngày, xuất bảng tổng hợp" |
@@ -91,13 +103,23 @@ Hai khái niệm này hay bị nhầm — nắm được sẽ hiểu bản chấ
 
 **Mẹo:** nói rõ **nguồn** (file/link nào), **việc cần làm**, và **kết quả mong muốn** (bảng? file mới? tóm tắt ngắn?).
 
-### 5.4 Chế độ cấp quyền (permission)
+### 6.4 Chế độ cấp quyền (permission)
 - Mặc định: agent sẽ **hỏi trước** mỗi khi định sửa file, chạy lệnh, hoặc gọi ra ngoài (gửi email, post Slack...)
 - Có thể chọn "auto-accept" cho việc lặp lại nhiều lần trong 1 phiên làm việc — nhưng **không bật auto cho việc gửi đi bên ngoài** (email merchant, Slack channel chung) khi chưa quen công cụ
 
 ---
 
-## 6. Thực hành theo tình huống CS thực tế
+## 7. Nâng cao (tuỳ chọn): đóng gói việc lặp lại thành lệnh riêng
+
+Phần này không bắt buộc trong training cơ bản — dành cho ai muốn đi xa hơn sau khi đã quen dùng hàng ngày.
+
+- **Slash Command / Skill là gì:** 1 quy trình nhiều bước lặp đi lặp lại được đóng gói thành **1 lệnh ngắn gõ ra là chạy hết**, không phải giải thích lại từ đầu mỗi lần. Ví dụ: thay vì mỗi tuần phải tự nhắc "vào lấy data ticket, lấy data chat, so sánh tuần trước, viết báo cáo, đẩy Notion, gửi Slack" — Liz chỉ cần gõ `/cs-weekly` và toàn bộ các bước đó tự chạy.
+- **CS có thể tự làm tương tự** cho việc lặp lại của riêng mình — ví dụ: 1 lệnh tự tổng hợp số liệu ca trực, 1 lệnh tự soạn nháp trả lời theo loại case hay gặp.
+- **Tự động hoá theo lịch (nâng cao hơn nữa):** một số báo cáo của Liz tự chạy đúng giờ mỗi ngày/tuần mà không cần bấm tay (giống hẹn giờ) — chỉ nên làm khi đã dùng thành thạo, có thể nhờ Liz hoặc Betty hỗ trợ setup.
+
+---
+
+## 8. Thực hành theo tình huống CS thực tế
 
 Chọn 3–4 bài theo đúng công việc hàng ngày của CS, làm trực tiếp trên máy trong buổi training:
 
@@ -108,8 +130,9 @@ Chọn 3–4 bài theo đúng công việc hàng ngày của CS, làm trực ti�
 
 ---
 
-## 7. Nguyên tắc an toàn khi dùng
+## 9. Nguyên tắc an toàn khi dùng
 
+- **"AI làm nháp, người duyệt final"** — nguyên tắc cốt lõi: agent chuẩn bị/soạn/phân tích, nhưng **mọi việc có tác động ra ngoài** (gửi merchant, đăng Slack, đẩy dữ liệu vào hệ thống live) đều phải qua **mắt người trước khi thực thi thật** — đúng cách Liz đang vận hành Betty, không có ngoại lệ
 - **Luôn đọc lại kết quả** trước khi gửi cho merchant, đăng lên Slack, hoặc commit vào hệ thống — agent có thể hiểu sai ý hoặc bịa thông tin (hallucination)
 - **Không paste data nhạy cảm bừa bãi** (mật khẩu, token, thông tin thanh toán merchant) vào prompt nếu không cần thiết
 - **Việc khó hoàn tác** (xoá file, ghi đè dữ liệu, gửi email/Slack thật) → luôn để agent hỏi xác nhận, không bật chế độ tự động cho các việc này
@@ -118,23 +141,27 @@ Chọn 3–4 bài theo đúng công việc hàng ngày của CS, làm trực ti�
 
 ---
 
-## 8. Lộ trình training đề xuất
+## 10. Lộ trình training đề xuất
 
 | Buổi | Nội dung | Thời lượng |
 |---|---|---|
 | Buổi 1 | Mục 2–4: Khái niệm (Agent, Harness), vì sao cần học, demo trực tiếp | 45 phút |
-| Buổi 2 | Mục 5: Cài đặt trên máy từng người + làm quen giao diện, ra lệnh cơ bản | 45 phút |
-| Buổi 3 | Mục 6: Thực hành theo tình huống CS thật, mỗi người tự làm 1 bài | 60 phút |
-| Buổi 4 | Mục 7 + Q&A: nguyên tắc an toàn, review case mỗi người đã thử, gỡ vướng | 45 phút |
+| Buổi 2 | Mục 5: Ví dụ thực tế Liz đang dùng hàng ngày (paste link, báo cáo tự tổng hợp, file quy tắc) — để thấy áp dụng được thật | 30 phút |
+| Buổi 3 | Mục 6: Cài đặt trên máy từng người + làm quen giao diện, ra lệnh cơ bản | 45 phút |
+| Buổi 4 | Mục 8: Thực hành theo tình huống CS thật, mỗi người tự làm 1 bài | 60 phút |
+| Buổi 5 | Mục 9 + Q&A: nguyên tắc an toàn, review case mỗi người đã thử, gỡ vướng | 45 phút |
+| Buổi 6 (tuỳ chọn) | Mục 7: Nâng cao — đóng gói lệnh riêng cho ai muốn đi xa hơn | 30 phút |
 
 **Sau training:** mỗi người áp dụng vào 1 việc thật trong tuần (ví dụ: tự tóm tắt data tuần của mình) → chia sẻ lại kết quả trong buổi Coaching để nhân rộng cách dùng hay.
 
 ---
 
-## 9. Đánh giá sau training (self-check)
+## 11. Đánh giá sau training (self-check)
 
 - [ ] Giải thích được sự khác nhau giữa chatbot thường và AI agent
 - [ ] Giải thích được Harness là gì bằng ví dụ của riêng mình
+- [ ] Nêu được ít nhất 1 ví dụ Liz đang dùng công cụ này hàng ngày và áp dụng tương tự cho việc của mình
 - [ ] Tự mở được công cụ và ra được 1 yêu cầu rõ ràng, đúng format
 - [ ] Tự làm được 1 việc thực tế (đọc file, so sánh data, hoặc soạn nội dung) không cần hỗ trợ
 - [ ] Biết khi nào cần dừng lại xác nhận trước khi để agent hành động
+- [ ] Giải thích được nguyên tắc "AI làm nháp, người duyệt final" bằng ví dụ của riêng mình
