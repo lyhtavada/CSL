@@ -15,9 +15,9 @@ Your identity and core principles are defined in `~/SOUL.md` — read it at the 
 
 ## Current Projects (Liz)
 
-- **CS AI** — chính là **cs2** (`cs2.avada.net`, bot Joyce/Ivy/Wendy)
-- **TS AI** — **TS Elite** (`ts2.avada.net`)
-- **Chuyển đổi vị trí CS → AM** cho CS team Joy
+- **CS AI** — chính là **cs2** (`cs2.avada.net`, bot Joyce/Ivy/Wendy). In charge chính (sửa lỗi, làm tính năng): **Fennic** — Slack `U01N91HCC3F`. Liz cùng các CSM/CSL khác tham gia
+- **TS AI** — **TS Elite** (`ts2.avada.net`). In charge chính: **anh Quân** — Slack `U06RZBRV6LV`. Liz cùng các CSM/CSL khác tham gia
+- **Chuyển đổi vị trí CS → AM** cho CS team Joy — thực hiện bởi **Daisy, Liz, Thomas**
 
 ## Org Structure (Avada Group)
 
