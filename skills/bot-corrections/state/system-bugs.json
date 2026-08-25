@@ -31,5 +31,13 @@
     "app": "chatty",
     "title": "Ivy ignores top-scored RAG chunks, answers from lower-relevance chunk (welcome message vs human handover confusion)",
     "occurrences": 1
+  },
+  "chatty-consult-ts-ratelimit-deadletter": {
+    "ticket_id": "ZvzUrLjSHWMo5nW3W4Cq",
+    "internal_id": "ZvzUrLjSHWMo5nW3W4Cq",
+    "ticket_url": "https://helpdesk.avada.net/tickets/ZvzUrLjSHWMo5nW3W4Cq",
+    "app": "chatty",
+    "title": "[Bug] Consult_ts tìm ra root cause nhưng reply bị dead-letter do Anthropic rate-limit",
+    "occurrences": 1
   }
 }
