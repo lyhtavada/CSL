@@ -49,6 +49,8 @@ Codex ban đầu sinh ra cho lập trình viên (nên hay gọi là "coding agen
 
 **Giá trị cụ thể:** việc trước đây mất 1–2 tiếng làm tay (đọc data, gộp báo cáo, rà soát KB) có thể rút xuống 10–15 phút nếu biết ra yêu cầu đúng cách.
 
+**Ví dụ pattern lặp lại có thể áp dụng:** chuyển đổi tài liệu support sang format bot đọc được, kiểm tra lại câu trả lời bot sau khi sửa KB, đồng bộ KB khi sản phẩm có thay đổi — đây đều là các quy trình có sẵn Betty đang chạy cho Liz (`/kb-sync`, `/kb-test`, `/product-kb-sync`, `/bot-corrections`), CS hoàn toàn áp dụng được pattern tương tự cho việc của mình bằng Codex.
+
 ---
 
 ## 4. Ví dụ thực tế: cùng nguyên lý Liz đang dùng hàng ngày
@@ -186,7 +188,8 @@ Phần này không bắt buộc trong training cơ bản — dành cho ai muốn
 ## 12. Đánh giá sau training (self-check)
 
 - [ ] Giải thích được sự khác nhau giữa chatbot thường và AI agent
-- [ ] Giải thích được Harness là gì bằng ví dụ của riêng mình
+- [ ] Nêu được 3 tầng cơ bản (Prompt — Context — Harness) và ví dụ của mỗi tầng
+- [ ] Giải thích được vì sao thư mục `AGENTS.md` được gọi là "second brain"
 - [ ] Nêu được ít nhất 1 ví dụ Liz đang dùng công cụ tương tự hàng ngày và áp dụng được cho Codex
 - [ ] Tự mở được Zed + Codex và ra được 1 yêu cầu rõ ràng, đúng format
 - [ ] Tự làm được 1 việc thực tế (đọc file, so sánh data, hoặc soạn nội dung) không cần hỗ trợ
