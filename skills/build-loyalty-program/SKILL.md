@@ -1,6 +1,6 @@
 ---
 name: build-loyalty-program
-description: Design or optimize a Joy Loyalty program for an EXISTING account (upsell/expansion angle) — new tier, added referral mechanic, higher-plan proposal. Outputs a downloadable Excel (.xlsx) with Points / VIP / Referral / Milestones tabs. Use when Liz says "/build-loyalty-program", "thiết kế lại chương trình loyalty cho [account]", "đề xuất nâng cấp plan cho [account]", "optimize loyalty program cho [account]". Adapted from a sales prospecting skill (build-program) — this version assumes the account is ALREADY a Joy customer, not a cold prospect.
+description: Design or optimize a Joy Loyalty program for an EXISTING account (upsell/expansion angle) — new tier, added referral mechanic, higher-plan proposal. Outputs a live Google Sheet (Points / VIP / Referral / Milestones tabs) Liz can share or co-edit with the account. Use when Liz says "/build-loyalty-program", "thiết kế lại chương trình loyalty cho [account]", "đề xuất nâng cấp plan cho [account]", "optimize loyalty program cho [account]". Adapted from a sales prospecting skill (build-program) — this version assumes the account is ALREADY a Joy customer, not a cold prospect.
 argument-hint: "[account-name-or-shop-domain]"
 allowed-tools: "WebFetch, WebSearch, Bash, Read, Write, Edit, Glob, Grep, TodoWrite, AskUserQuestion"
 ---
@@ -57,22 +57,27 @@ Same math as the original skill — reuse as-is, it's product-agnostic:
 
 If this is an **add-on to an existing program**, don't redesign what's already working — only spec the new piece, and note how it interacts with existing tiers/points so nothing conflicts.
 
-## Step 5: Generate the Excel file
+## Step 5: Generate the Google Sheet
+
+Write the real numbers from Steps 3-4 into a JSON file matching the schema in `scripts/generate_program_sheet.py` (`default_data()` shows the shape — point_valuation, earning_rules, redemption_rules, paid_membership, tiers, demotion_policy, referral, milestones, quest), then:
 
 ```bash
-python3 skills/build-loyalty-program/scripts/generate_program_xlsx.py --brand "<name>" --out <path>
+.venv-crisp/bin/python skills/build-loyalty-program/scripts/generate_program_sheet.py \
+  --account "<account name>" \
+  --data /tmp/<account>-program-data.json
 ```
-(Script scaffolds the 4-tab structure below with placeholder rows — fill in the real numbers as arguments or edit the generated file directly with Write/Edit before handing off.)
 
-Tabs (same structure as the sales version):
+This creates a **new Google Sheet** (not an edit to an existing file) titled `{Account} — Joy Loyalty Program Proposal`, with 4 tabs and header formatting (Joy purple `#6C5CE7`, bold white text, auto-sized columns), and prints the sheet's URL. It's owned by the authed account (`lyht@avada.io`) and shows up in that Drive automatically — no separate save step needed.
+
+Tabs (same structure as the sales version, now live-editable):
 1. **Points Program** — Earning Rules + Redemption Rules tables, valuation summary box at top
-2. **VIP/Membership Program** — Tier Name, Threshold, Earning Multiplier, Entry Reward, Perks
+2. **VIP Membership** — Tier Name, Threshold, Earning Multiplier, Entry Reward, Perks
 3. **Referral Program** — Referrer Reward, Referee Reward, Min Purchase, Sharing Channels, Anti-Cheat, Message Template
 4. **Milestones & Quest** — Individual Milestones + Quest Journey (branded step sequence)
 
-Formatting: bold header row, Joy purple `#6C5CE7` (or brand color if known), min column width 15, "Designed by Joy Loyalty" footer, brand's currency symbol.
+If the numbers aren't final yet, run without `--data` to scaffold the sheet with placeholders, then edit cells directly (or re-run with `--data` — note this creates a **new** sheet each run, it does not update an existing one).
 
-Save to `reports/analysis/{account}-loyalty-program-{YYYY-MM-DD}.xlsx` (not Desktop — keep it in the repo so it's tied to the account's history).
+To give the account or a teammate edit access directly, pass `--share <email>` (uses the `drive.file` scope — only works on sheets this script created).
 
 ## Step 6: Present summary
 
@@ -88,7 +93,7 @@ Save to `reports/analysis/{account}-loyalty-program-{YYYY-MM-DD}.xlsx` (not Desk
 - **Referral:** [new mechanic, or "unchanged"]
 - **Quest:** [if added]
 
-**File:** reports/analysis/{account}-loyalty-program-{date}.xlsx
+**Sheet:** [URL printed by the script]
 ```
 
 ## Step 7: Follow-up (optional)
