@@ -47,5 +47,21 @@
     "app": "chatty",
     "title": "[Bug] Escalation-intent classifier nhầm feedback/frustration với yêu cầu gặp người - block mục tiêu Ivy resolution rate 60%",
     "occurrences": 1
+  },
+  "chatty-answer-guard-passes-known-step-omission": {
+    "ticket_id": "f6JaW6sAhiKRJ74pxI1v",
+    "internal_id": "f6JaW6sAhiKRJ74pxI1v",
+    "ticket_url": "https://helpdesk.avada.net/tickets/f6JaW6sAhiKRJ74pxI1v",
+    "app": "chatty",
+    "title": "Answer-guard flags a KB-path mismatch as an issue but still passes the reply unchanged",
+    "occurrences": 1
+  },
+  "chatty-followup-nudge-not-localized": {
+    "ticket_id": "f32T3X2IilJKSJFxTAT4",
+    "internal_id": "f32T3X2IilJKSJFxTAT4",
+    "ticket_url": "https://helpdesk.avada.net/tickets/f32T3X2IilJKSJFxTAT4",
+    "app": "chatty",
+    "title": "No-response follow-up nudge ('Just checking in...') sent in English regardless of conversation language",
+    "occurrences": 1
   }
 }
