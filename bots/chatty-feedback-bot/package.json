@@ -1,7 +1,7 @@
 {
   "name": "chatty-feedback-bot",
   "version": "1.0.0",
-  "description": "Slack bot: tag on-duty Chatty CS when merchant feedback arrives",
+  "description": "Slack bot: when merchant feedback arrives, find their Crisp chat by email and reply the link in-thread",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
