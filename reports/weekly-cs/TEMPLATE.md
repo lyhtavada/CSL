@@ -110,7 +110,7 @@ _(Không có release/bug mới → ẩn mục này)_
 
 ## 🛠 TS Elite usage tuần này (team G2)
 
-_Agent investigate (`agent.avada-ts.site`) — team dùng để tra case. Mỗi chat = 1 lượt hỏi agent. Nguồn: `/api/v1/chats`, range = tuần report, compare tuần trước._
+_Agent investigate (`ts2.avada.net`) — team dùng để tra case. Mỗi chat = 1 lượt hỏi agent. Nguồn: `/api/v1/chats`, range = tuần report, compare tuần trước._
 
 **{TOTAL} lượt hỏi · {ACTIVE}/{MEMBERS} CS dùng** ({▲▼ vs tuần trước {PREV_TOTAL}})
 

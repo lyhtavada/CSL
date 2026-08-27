@@ -2,7 +2,7 @@
 """
 fetch_ts_elite.py — TS Elite usage cho CS weekly report (team G2, theo app).
 
-TS Elite = agent CS dùng để investigate case (agent.avada-ts.site). Mỗi "chat" = 1
+TS Elite = agent CS dùng để investigate case (ts2.avada.net). Mỗi "chat" = 1
 cuộc hội thoại CS hỏi agent. Report cho team G2 biết: tuần qua ai dùng nhiều / ít,
 và những câu hay được hỏi (cluster từ title chat).
 

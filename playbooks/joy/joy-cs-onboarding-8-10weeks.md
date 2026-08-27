@@ -60,7 +60,7 @@
 
 **Nguồn học:** [help.joy.so](https://help.joy.so/) (help center chính thức của Joy — Reward Programs, Membership, On-Site Content, Customers, Operations, Support/Migration, FAQs) + Notion **"Joy Loyalty program - Training courses"** Module 0-6 (course chính thức, có video + case study Vinamilk, so sánh đối thủ, hướng dẫn setup chi tiết).
 
-**Case thật:** tra qua **TS Elite** (`agent.avada-ts.site`, docs `/api/docs`) — mentor/trainee pull case thật theo chủ đề mỗi ngày qua endpoint `crisp-chat` (đọc 1 chat cụ thể) hoặc `agent-activity`/`app-digest` (quét case gần đây theo domain), thay vì đọc file case tĩnh.
+**Case thật:** tra qua **TS Elite** (`ts2.avada.net`, docs `/api/docs`) — mentor/trainee pull case thật theo chủ đề mỗi ngày qua endpoint `crisp-chat` (đọc 1 chat cụ thể) hoặc `agent-activity`/`app-digest` (quét case gần đây theo domain), thay vì đọc file case tĩnh.
 
 **Khung mỗi buổi học (~4h):** 1h đọc help.joy.so/Module + xem video → 2h thực hành tự setup trên dev store → 0.5h tra case thật qua TS Elite → 0.5h self-check checklist, ghi câu chưa chắc hỏi mentor buổi sau.
 

@@ -138,7 +138,7 @@ chọn một. **If `qa.verifyCoveragePct` < 30%** → add the ⚠️ "verify cov
 
 ### 4c. Pull TS Elite usage (team G2 dùng agent investigate ntn)
 
-**TS Elite** (`agent.avada-ts.site`) = agent CS dùng để investigate case. Mỗi "chat" =
+**TS Elite** (`ts2.avada.net`) = agent CS dùng để investigate case. Mỗi "chat" =
 1 cuộc CS hỏi agent. Report cho team G2 thấy **ai dùng nhiều / ít, ai chưa dùng, và
 những câu hay được hỏi**. Run for EACH app, **with `--compare`**:
 ```bash
