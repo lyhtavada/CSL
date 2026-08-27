@@ -40,6 +40,20 @@ Liz works at **Avada Group**, spanning 2 product teams:
 - **TS AI** — TS Elite (`ts2.avada.net`, API cũng đã chuyển sang `ts2.avada.net` — domain cũ `agent.avada-ts.site` đã chết 2026-08-27). In charge chính: **anh Quân** — Slack `U06RZBRV6LV`. Liz + các CSM/CSL khác cùng tham gia
 - **Chuyển đổi vị trí CS → AM** cho CS team Joy — **Daisy, Liz, Thomas**
 
+### CS AI (cs2) ↔ TS Elite ↔ TS AI Agent — flow tích hợp (đọc 2026-08-27)
+
+**0. TS Elite (v1, production hiện tại) vs TS AI Agent (v2, repo đang xây để thay thế):**
+   - **TS Elite** = sản phẩm **đang chạy thật**, domain `ts2.avada.net` (API `/api/v1/*`, key `tsk_live_...` issue tại `/admin/api-keys`, xem chi tiết endpoint ở memory [[ts_elite_api]]: `app-digest`, `crisp-chat`, `slack-thread`, `escalate`, `escalate/{id}`, `escalate/{id}/outcome`, `ticket-resolve`, `agent-activity`, `chats`). Đây là agent CS team dùng để investigate case tay (Liz + CSM/CSL) — không playbook, không tự động trigger từ CS2.
+   - **TS AI Agent** = repo `git.avada.net/avada/cs-team/avada-ts-ai-agent`, kiến trúc mới **playbook-driven** (`/api/v2/*`), đang ở Phase 0-1, roadmap tự ghi rõ mục tiêu cuối "Phase 5 — Deprecate v1" — tức **sẽ thay thế TS Elite v1**, không phải 1 sản phẩm khác. Cùng domain `ts2.avada.net`, khác namespace API (`v1` cũ vs `v2` mới). README của repo cảnh báo tự stale so với code — trust CLAUDE.md của repo đó hơn.
+   - Liên hệ: anh Quân phụ trách chính cả 2 (đổi domain 2026-08-25, domain cũ `agent.avada-ts.site` chết 2026-08-27).
+
+Hai hệ thống CS2 ↔ TS AI Agent (v2) khác nhau, chỉ chạm nhau ở 2 điểm cụ thể — không dùng chung DB/KB:
+
+1. **CS2 gọi vào TS AI Agent (server-to-server, tự động)** — khi component **answer-guard** của CS2 (gọi tắt "TS relay") phát hiện bot trả lời sai, nó `POST /api/v2/check/send` sang backend TS AI Agent (repo `git.avada.net/avada/cs-team/avada-ts-ai-agent`, auth `X-API-Key`/`X-Service-Token`) kèm `message` dạng `## Context` (`Shop: <domain>`, `Crisp: <url session>`) + `app` slug. TS AI Agent tự route sang playbook chẩn đoán tương ứng (vd `chatty/ai_wrong_answer.md`) — playbook **read-only**, dùng tool riêng (`chatty_chat`, `chatty_traces`, `chatty_trace_detail`, ...) gọi thẳng **agentApi của app đó** (không phải cs2) để đọc trace/span/instructions/settings, rồi tự `crisp_post_note` kết quả `[TS-INSPECT] shop=... app=... issue=...` (Tái hiện/Nguyên nhân/Bằng chứng/Fix/Cần ticket dev) thẳng vào session Crisp đó. CS không phải tự gọi TS, note tự xuất hiện.
+   - Escalation `[answer-guard] TS relay không grounded: operational claim không có event` = 1 lần gọi lỗi của luồng này — nghi liên quan ticket system-bug "answer-guard ETA false-positive" đã file 2026-08-27.
+2. **Extension "Avada TS Debug Chat" (package trong repo TS AI Agent) gọi vào CS2** — Chrome extension nhúng nút Verify/Correct + chip Stop bot lên Crisp dashboard, gọi thẳng `cs2.avada.net` (`/api/crisp-messages/resolve`, `/api/messages/{id}/review`, `/api/corrections`, `/api/obs/session/{id}/{state,botstop,botcontinue}`) — token inline lúc build (`VITE_CS2_BASE`/`VITE_CS2_API_KEY`). Đây là nguồn dữ liệu mà `/bot-corrections` và `qa-weekly`/`cs2_obs_metrics_dashboard` đọc lại sau này.
+3. **Playbook của TS AI Agent KHÔNG liên quan CS2** — Mongo `v2_playbooks` sync 1 chiều sang Firestore `ts2_playbooks` (phục vụ chính `ts2.avada.net`/TS Elite), code tự chặn cứng ghi vào `agent_kb`/`ts2_agent_kb`/`csai_kb` (KB của CS2) — 2 KB tách biệt hoàn toàn.
+
 ## Your Role in This Workspace
 
 You operate at the **CSL level**: team development, research, analysis, strategy, content — things that require judgment, not just lookup.
