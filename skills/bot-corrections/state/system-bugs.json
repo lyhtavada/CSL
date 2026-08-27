@@ -63,5 +63,13 @@
     "app": "chatty",
     "title": "No-response follow-up nudge ('Just checking in...') sent in English regardless of conversation language",
     "occurrences": 1
+  },
+  "chatty-vision-screenshot-misidentify-source": {
+    "ticket_id": "tEt7ljSOfAvoKcsTbYC3",
+    "internal_id": "tEt7ljSOfAvoKcsTbYC3",
+    "ticket_url": "https://helpdesk.avada.net/tickets/tEt7ljSOfAvoKcsTbYC3",
+    "app": "chatty",
+    "title": "Ivy misreads screenshot content — routes to wrong how-to (Contact block vs FAQ answer)",
+    "occurrences": 1
   }
 }
