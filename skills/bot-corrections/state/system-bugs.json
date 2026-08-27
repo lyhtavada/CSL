@@ -71,5 +71,21 @@
     "app": "chatty",
     "title": "Ivy misreads screenshot content — routes to wrong how-to (Contact block vs FAQ answer)",
     "occurrences": 1
+  },
+  "joy-answer-guard-hallucination-not-grounded": {
+    "ticket_id": "l0uRxex05gPN6ls51rZt",
+    "internal_id": "l0uRxex05gPN6ls51rZt",
+    "ticket_url": "https://helpdesk.avada.net/tickets/l0uRxex05gPN6ls51rZt",
+    "app": "joy",
+    "title": "Joyce (Joy AI): answer-guard chặn 43 ca/tháng vì bot bịa path/plan/fact — kể cả khi KB đã có câu trả lời đúng",
+    "occurrences": 1
+  },
+  "joy-handoff-promise-and-envelope-reply-bugs": {
+    "ticket_id": "c3D5rv4kZf3xFa39tWjW",
+    "internal_id": "c3D5rv4kZf3xFa39tWjW",
+    "ticket_url": "https://helpdesk.avada.net/tickets/c3D5rv4kZf3xFa39tWjW",
+    "app": "joy",
+    "title": "Joyce (Joy AI): 2 bug flow gây escalate — hứa chuyển người không bắn tag (2 ca) + LLM trả reply rỗng sau regen (3 ca)",
+    "occurrences": 1
   }
 }
