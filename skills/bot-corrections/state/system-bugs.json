@@ -87,5 +87,13 @@
     "app": "joy",
     "title": "Joyce (Joy AI): 2 bug flow gây escalate — hứa chuyển người không bắn tag (2 ca) + LLM trả reply rỗng sau regen (3 ca)",
     "occurrences": 1
+  },
+  "chatty-answer-guard-eta-false-positive": {
+    "ticket_id": "Oi6vovl83Vyg4qo3hgfd",
+    "internal_id": "Oi6vovl83Vyg4qo3hgfd",
+    "ticket_url": "https://helpdesk.avada.net/tickets/Oi6vovl83Vyg4qo3hgfd",
+    "app": "chatty",
+    "title": "answer-guard chặn nhầm handoff message trong DFY onboarding flow ('operational claim không có event: ETA')",
+    "occurrences": 1
   }
 }
