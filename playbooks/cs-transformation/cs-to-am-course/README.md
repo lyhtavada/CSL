@@ -59,5 +59,6 @@ Arc: **model → diagnosis → domain → judgement**. Joy chỉ xuất hiện S
 | [block-2-joy-logic.md](block-2-joy-logic.md) | Notes — Joy on screen (sau graduation) |
 | [build-track.md](build-track.md) | Tiến độ real store của Liz cho build track |
 | [applied-to-cs-team.md](applied-to-cs-team.md) | Chỗ nào từ course nên đưa vào training-data/playbook/JD của AM |
+| [references.md](references.md) | Tài liệu tham khảo thêm Liz tự sưu tầm (brand, video) — ngoài textbook chính thức |
 
 Thêm file mới trong folder này khi cần (vd. teardown thực hành 1 brand cụ thể, câu hỏi cho Thomas) — nhớ link vào bảng trên.
