@@ -2,7 +2,7 @@
 
 **Source:** [thomasavada/cs-to-am](https://github.com/thomasavada/cs-to-am) — course by Thomas (anh Sam's team), "Joy CS → AM: from app support to retention service."
 **Status:** Liz đang tham gia course.
-**Liên quan:** [joy-cs-am-transition-plan.md](joy-cs-am-transition-plan.md) — plan execution org-level (salary/JD/tooling) của Liz+Daisy. Course này là training curriculum (Liz là học viên), khác với plan đó (Liz là PIC thiết kế). Dùng file này để note lại research/insight rút ra từ course, áp dụng ngược vào transition plan khi cần.
+**Liên quan:** [../joy-cs-am-transition-plan.md](../joy-cs-am-transition-plan.md) — plan execution org-level (salary/JD/tooling) của Liz+Daisy. Course này là training curriculum (Liz là học viên), khác với plan đó (Liz là PIC thiết kế). Note trong folder này dùng để áp ngược insight vào transition plan khi cần.
 
 ---
 
@@ -28,7 +28,7 @@ BLOCK 2: Joy lên màn hình (reps 5-6) → 5-joy-logic.md
 
 Arc: **model → diagnosis → domain → judgement**. Joy chỉ xuất hiện SAU graduation gate.
 
-**Nguyên tắc khóa (locked, từ README):**
+**Nguyên tắc khóa (locked, từ README gốc):**
 - Joy là **SaaS = service** (ecom + retention expertise), không phải "1 app trên App Store"
 - Merchant là **1 business** — muốn **kiếm thêm**, không phải "học cách dùng app"
 - AI đã lấy phần "execution" (click ở đâu) → phần còn lại cho người là **judgement** — đây là lý do CS→AM tồn tại, không phải promotion path
@@ -36,7 +36,7 @@ Arc: **model → diagnosis → domain → judgement**. Joy chỉ xuất hiện S
 - Loyalty program là **multiplier trên base có sẵn**, không phải growth engine — "**Not yet**" là câu trả lời hợp lệ
 - Không bao giờ trả lời "làm sao để bật tính năng" trước khi trả lời "có nên bật không"
 
-**File chính trong repo (đọc khi cần):**
+**File chính trong repo gốc (đọc khi cần):**
 | File | Nội dung |
 |---|---|
 | `1-talk.md` | bài talk mở đầu |
@@ -48,27 +48,16 @@ Arc: **model → diagnosis → domain → judgement**. Joy chỉ xuất hiện S
 
 ---
 
-## Research & Notes của Liz
+## File trong folder này
 
-*(điền dần khi học từng session — insight, câu hỏi, chỗ áp dụng được vào CS team / transition plan)*
+| File | Nội dung |
+|---|---|
+| [session-1-money.md](session-1-money.md) | Notes — How a shop makes money |
+| [session-2-troubleshoot.md](session-2-troubleshoot.md) | Notes — What is wrong with this shop? |
+| [session-3-retention.md](session-3-retention.md) | Notes — Why people come back |
+| [session-4-together.md](session-4-together.md) | Notes — Bring it together |
+| [block-2-joy-logic.md](block-2-joy-logic.md) | Notes — Joy on screen (sau graduation) |
+| [build-track.md](build-track.md) | Tiến độ real store của Liz cho build track |
+| [applied-to-cs-team.md](applied-to-cs-team.md) | Chỗ nào từ course nên đưa vào training-data/playbook/JD của AM |
 
-### Session 1 — How a shop makes money
-
-
-### Session 2 — What is wrong with this shop?
-
-
-### Session 3 — Why people come back
-
-
-### Session 4 — Bring it together
-
-
-### Block 2 — Joy logic
-
-
----
-
-## Áp dụng vào CS team
-
-*(chỗ nào từ course này nên đưa vào training-data / playbook / JD của AM — link ngược [joy-cs-am-transition-plan.md](joy-cs-am-transition-plan.md) Workstream F Training)*
+Thêm file mới trong folder này khi cần (vd. teardown thực hành 1 brand cụ thể, câu hỏi cho Thomas) — nhớ link vào bảng trên.
