@@ -673,7 +673,7 @@
 
 **To-do:**
 - [ ] Tự xử lý chat/ticket thật cả tuần, không cần duyệt trước
-- [ ] Mentor review lại toàn bộ chat trong ngày (sau giờ), chấm theo `playbooks/qa-weekly-rubric.md` (Mindset/Knowledge/Skill)
+- [ ] Mentor review lại toàn bộ chat trong ngày (sau giờ), chấm theo `playbooks/qa/qa-weekly-rubric.md` (Mindset/Knowledge/Skill)
 - [ ] Feedback 1-1 mỗi cuối ngày hoặc cách ngày, tùy khối lượng lỗi phát sinh
 
 📎 **Kết quả/Proof:** (link chat/ticket + điểm QA từng ngày)

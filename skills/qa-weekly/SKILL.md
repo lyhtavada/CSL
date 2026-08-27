@@ -7,8 +7,8 @@ description: Weekly QA review of in-house Team G2 CS chats. Pulls each CS's real
 
 Run a coaching-focused weekly QA pass for Team G2 and DM each CS a personal report.
 
-This is **coaching, not penalty** — different from the monthly QA (`playbooks/qa-policy.md`).
-Scoring follows `playbooks/qa-weekly-rubric.md`.
+This is **coaching, not penalty** — different from the monthly QA (`playbooks/qa/qa-policy.md`).
+Scoring follows `playbooks/qa/qa-weekly-rubric.md`.
 
 ## Scoring model (3 axes)
 
@@ -172,7 +172,7 @@ One folder per week — `reports/qa-weekly/qa-weekly-<YYYY-Www>/`:
 
 ## Files
 
-- Rubric: `playbooks/qa-weekly-rubric.md`
+- Rubric: `playbooks/qa/qa-weekly-rubric.md`
 - Roster (CS → Slack ID): `_identity/team-g2.md`
 - Scripts: `skills/qa-weekly/scripts/`
 - Workflow: `skills/qa-weekly/qa-weekly.workflow.js`

@@ -63,12 +63,12 @@ CSL/                               ← Liz's workspace (this repo)
 │       └── shared-cs-process/     ← Shared processes (escalation, billing, etc.)
 ├── bots/                          ← Slack bots & automations
 ├── playbooks/                     ← Specs, SOPs, PRDs
-│   ├── joy-dfu-onboarding-playbook.md ← Module 6 — sổ tay ĐẦY ĐỦ: 7 bước có exit-criteria + decision guides (migration/VIP/guest/Widget-V4) + FAQ 50 case (Phần 3). Nguồn tra cứu chính
-│   ├── joy-onboarding-flow.md     ← CS thao tác trên chat: offer → discovery → tạo 1 ticket → phân nhánh A/B/C → xử lý issue. Chi tiết trỏ sang playbook
-│   ├── joy-onboarding-program-checklist.md ← Google Sheet template KH điền rule (1 sheet/KH)
-│   ├── joy-dfy-flow.md            ← Joy DFY CS flow + checklist (Required/Recommended); §0a có luôn mục đích & tinh thần DFY (đã gộp từ joy-dfy-intro.md, xóa 2026-06-17)
-│   ├── chatty-dfy-flow.md         ← Chatty DFY flow (coming)
-│   └── cs-transformation/         ← CS transformation plan + training materials
+│   ├── joy/                       ← Joy onboarding/DFY playbooks (joy-dfu-onboarding-playbook.md = Module 6, sổ tay ĐẦY ĐỦ 7 bước + decision guides + FAQ 50 case, nguồn tra cứu chính; joy-onboarding-flow.md, joy-onboarding-program-checklist.md, joy-dfy-flow.md)
+│   ├── chatty/                    ← Chatty playbooks (chatty-dfy-flow.md, chatty-feedback-bot.md, chatty-icp-scoring-spec.md, chatty-proactive-care.md, chatty-proactive-dfy-pilot.md)
+│   ├── qa/                        ← QA policy (tháng, penalty) + rubric (tuần, coaching)
+│   ├── cs-remind-bot.md           ← Playbook bot remind CS chưa ack @channel
+│   ├── liz-linkedin-playbook.md   ← LinkedIn voice/content playbook của Liz
+│   └── cs-transformation/         ← CS transformation plan + training materials (gồm cs-to-am-course/ — notes course Thomas)
 ├── skills/                        ← Claude skills
 ├── gapi/                          ← Google Calendar + Sheets + Gmail access (OAuth as lyht@avada.io)
 ├── cs-test/                       ← QA test data

@@ -51,7 +51,7 @@ Data lấy live qua Avada Ticket API (`GET /api/external/tickets/by-date`, app `
 
 ## 4. DFY tickets — KHÔNG thuộc flow dev pull ở trên
 
-Ticket subject `[DFY]` có `tsStatus = done_for_you` xuyên suốt cho tới khi xong — đây là chương trình CS chủ động setup hộ merchant (checklist AI Agent/Chatbox/Video), **không phải bug**, không cần dev pull theo flow trên. Chi tiết xem `playbooks/chatty-dfy-flow.md` và skill `/dfy-tracker`.
+Ticket subject `[DFY]` có `tsStatus = done_for_you` xuyên suốt cho tới khi xong — đây là chương trình CS chủ động setup hộ merchant (checklist AI Agent/Chatbox/Video), **không phải bug**, không cần dev pull theo flow trên. Chi tiết xem `playbooks/chatty/chatty-dfy-flow.md` và skill `/dfy-tracker`.
 
 ## 5. Phân loại issue theo tiền tố subject
 

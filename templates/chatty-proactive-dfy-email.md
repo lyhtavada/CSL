@@ -106,12 +106,12 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 > [Tên CS]
 > Chatty Support Team
 
-**Ghi chú khi điền:** nếu không đủ 3 finding rõ ràng, chỉ ghi 2 — không thêm cho đủ vì sẽ mất tính cụ thể. Số liệu conversations/revenue/rate lấy từ audit dashboard (theo SOP `playbooks/chatty-proactive-dfy-pilot.md`); nếu store quá mới không có đủ 30 ngày data, dùng Template A/B thay vì D.
+**Ghi chú khi điền:** nếu không đủ 3 finding rõ ràng, chỉ ghi 2 — không thêm cho đủ vì sẽ mất tính cụ thể. Số liệu conversations/revenue/rate lấy từ audit dashboard (theo SOP `playbooks/chatty/chatty-proactive-dfy-pilot.md`); nếu store quá mới không có đủ 30 ngày data, dùng Template A/B thay vì D.
 
 ---
 
 ## Cách dùng
-1. Audit store trước (theo SOP `playbooks/chatty-proactive-dfy-pilot.md` Bước 1 + tool audit).
+1. Audit store trước (theo SOP `playbooks/chatty/chatty-proactive-dfy-pilot.md` Bước 1 + tool audit).
 2. Chọn template theo tình huống: A (mới cài chưa setup) / B (đang trial sắp hết) / C (đã trả tiền, usage thấp) / **D (có số liệu conversations/revenue — ưu tiên dùng D nếu có data, số liệu cụ thể thu hút attention tốt hơn liệt kê lỗi)**.
 3. Điền các `[...]` bằng đúng cái thấy được từ audit — cụ thể, không chung chung. **Không copy nguyên văn câu mở/kết giữa các store khác nhau** — đổi cách diễn đạt, chỉ giữ cấu trúc.
 4. Thay `[Store name]` / `[Pro/Plus]` cho đúng.
@@ -119,4 +119,4 @@ Tone: theo `_identity/tone-and-voice.md` — mở đầu "Hi there, This is ... 
 6. Gửi + tạo DFY ticket ngay (tag `DFY-new` + `proactive`), lưu nội dung email vào ticket.
 7. Kiểm tra ngôn ngữ gửi trước khi gửi (đã có case gửi nhầm tiếng Estonia cho KH không đọc được — nếu không chắc locale của merchant, mặc định gửi tiếng Anh).
 
-> Nếu KH reply "yes" hoặc book call → vào flow làm DFY theo `playbooks/chatty-dfy-flow.md` (M1 → M2 → M3).
+> Nếu KH reply "yes" hoặc book call → vào flow làm DFY theo `playbooks/chatty/chatty-dfy-flow.md` (M1 → M2 → M3).

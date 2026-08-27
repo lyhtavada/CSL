@@ -6,7 +6,7 @@ version: 1.0.0
 
 # ICP Score Skill (Chatty)
 
-On-demand data-driven ICP scoring for one Chatty merchant. Spec: `playbooks/chatty-icp-scoring-spec.md` — read it once for the full scoring rationale; this file is the operational checklist.
+On-demand data-driven ICP scoring for one Chatty merchant. Spec: `playbooks/chatty/chatty-icp-scoring-spec.md` — read it once for the full scoring rationale; this file is the operational checklist.
 
 **This replaces the old 4-tier tags** (`icp-solo`/`icp-growing`/`icp-scaling`/`icp-midmarket` from `kb/cs-process/chatty/handle-icp-qualification.md`) with a score 0-100 → `ICP-High` / `ICP-Medium` / `ICP-Low` / `ICP-Unknown` + confidence %. Do not mix the two tag systems in output.
 
@@ -22,7 +22,7 @@ On-demand data-driven ICP scoring for one Chatty merchant. Spec: `playbooks/chat
    - `mcp__avada-analytic__merchant_cs_history(shop_domain, app_id="avadaFaq", limit=5)` → recent ticket subjects, to check for a recurring unresolved topic (not just the count)
    - If `merchant_profile` returns nothing for this shop_domain, stop and report "no data — cannot score" rather than guessing.
 
-2. **Compute score (0-100)** using the weighted formula in `playbooks/chatty-icp-scoring-spec.md` §2 — all 8 criteria feed into one combined score (no separate "context-only" group):
+2. **Compute score (0-100)** using the weighted formula in `playbooks/chatty/chatty-icp-scoring-spec.md` §2 — all 8 criteria feed into one combined score (no separate "context-only" group):
 
    | Tiêu chí | Weight |
    |---|---|

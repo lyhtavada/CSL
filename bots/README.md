@@ -16,7 +16,7 @@ Tổng hợp các bot automation của CS team. Mỗi bot có folder riêng ch�
 
 **Config:** Sửa `chatty-feedback-bot/config.json` (message, CS list, timing) — không cần restart bot.
 
-**Spec chi tiết:** [playbooks/chatty-feedback-bot.md](../playbooks/chatty-feedback-bot.md)
+**Spec chi tiết:** [playbooks/chatty/chatty-feedback-bot.md](../playbooks/chatty/chatty-feedback-bot.md)
 
 **Run:** `cd chatty-feedback-bot && npm start`
 
