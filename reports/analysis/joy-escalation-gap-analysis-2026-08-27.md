@@ -82,5 +82,37 @@ Patch cũ (`widget.md` page-restriction, `pricing.md`, `persona/facts.md`, `migr
 3. **Retrieval/grounding fix** cho answer-guard (43 ca, đặc biệt 2 ca Launcher lộ rõ retrieval có nhưng bot vẫn bịa) — cần Fennic xem lại vì đây là generation-layer, Liz/Betty không patch được bằng KB.
 4. Sample đọc full transcript nhóm holistic-judge (8 ca) khi có thời gian — thấp ưu tiên.
 
+## Update — rà lại KB live cho toàn bộ 23 ca (15 "not covered in KB" + 8 kb-cannot-answer), 2026-08-27
+
+Đọc trực tiếp KB live trên `cs2.avada.net` (`kb_api.py get joy <path>`) cho từng chủ đề, không đoán.
+
+### Xác nhận GAP thật — patch được ngay (8)
+1. Phân biệt template `{{earned_points}}` vs `{{loyalty_point}}` — `kb/reference/notifications.md` không có dòng nào nhắc 2 param này.
+2. Thu thập gender/age lúc signup — không có trong `earning-programs.md`/`account-page.md`.
+3. Tích hợp Froonze (customer accounts app) — 0 nhắc tới trong toàn bộ KB.
+4. Data/coupon còn giữ gì sau khi uninstall Joy — `billing-refund.md` chỉ nói về billing cycle khi uninstall, không nói về số phận data/coupon.
+5. Translate text **Sign-Up Block ở Thank-you page** — `translations.md` liệt kê "Surfaces translated" (widget, loyalty page, account page, checkout, wallet) nhưng **thiếu hẳn Thank-you page** — đúng là gap, không phải bot không tìm ra.
+6. Đường dẫn xem **VIP tier perks list** trong Unified widget (góc nhìn member) — `widget.md` có label "Tier perks" (chỉ để merchant sửa TEXT) nhưng không nói member xem ở đâu (tab nào trong footer/Rewards).
+7. Free Gift/perk khi sản phẩm **thật sự unpublished/out-of-stock** (không phải case) — `kb/case/errors.md` chỉ có case "stale variant ID", chưa có case sản phẩm thật sự hết hàng/unpublish.
+8. **Đổi shape nút Wishlist** trên product page — thuộc app **Joy Wishlist** (agent khác), không phải Joy Loyalty. Check `wishlist-design.md`: không có mục nào về shape/style nút. Cần patch bên KB Wishlist (agent `wishlist-agent`), không phải Joy.
+
+### Partial — bổ sung nhỏ, không cần bài mới (3)
+- Birthday storefront entry point: đã có 1 câu "customers add it in their Joy profile online" (`birthday.md`) nhưng chưa nói rõ đường dẫn cụ thể trong widget/account page — nên thêm 1 dòng path chính xác.
+- Appstle: `integrations-subscription.md` đã gắn tag `appstle` nhưng thân bài chỉ nói chung "any other selling-plans-compliant app" — nên thêm 1 dòng gọi thẳng tên Appstle để bot tự tin trả lời thay vì escalate.
+- Instagram handle collection: KB đã có flow "customer link IG username trong widget" nhưng câu hỏi merchant là muốn **link/trang riêng** để thu thập — nên làm rõ Joy không có trang riêng, chỉ qua widget.
+
+### Không phải gap — KB đã có sẵn câu trả lời đúng (1)
+- Member-exclusive deal (B2B) activation/validity date — `membership-b2b.md` mục "Active dates" đã trả lời đầy đủ (Static/Dynamic). Bot lẽ ra trả lời được, đây là ca lẻ (retrieval miss 1 lần), không cần patch.
+
+### Không patch bằng KB được — giới hạn sản phẩm thật / feasibility (3)
+- Free shipping làm reward type cho **Sign Up program**: earning program chỉ trả points/store credit, free shipping là loại reward của redemption/tier-perk — đây là feature request thật, không phải thiếu doc.
+- Loại trừ earning điểm trên order đã dùng redeem discount: Rule Engine không có loại "Advanced condition" nào check được việc này (`rule-engine.md` không có) — feasibility thật, cần team xác nhận có làm được không trước khi viết KB.
+- REST API v2 cho redemption/coupon qua mobile: KB đã nói chung là Ultimate có REST API v2 quản lý "point transactions, rewards..." + link `devdocs.joy.so` — đủ để trả lời không bịa, không cần thêm.
+
+### 8 ca kb-cannot-answer — đọc lại tin nhắn gần lúc escalate
+Không phải case sản phẩm cụ thể như tưởng — đa số là small talk/off-topic (hỏi giờ làm việc, chào hỏi, đổi email liên hệ...) khiến classifier không đủ tự tin trả lời (đúng hành vi, không phải KB thiếu). 2 ca đáng chú ý:
+- 1 ca feature request thật (tăng mức tối thiểu đổi gift card lên hơn $10/lần) — không phải KB gap.
+- 1 ca **có vẻ là bug**: merchant chọn giới hạn trang hiện popup nhưng checkbox không lưu khi rời trang — nên báo Fennic kèm, không phải patch KB.
+
 ## Giới hạn của phân tích này
 Phân loại dựa trên field `escalation_reason` (tag tự động của hệ thống) trên toàn bộ 384 ca, KHÔNG đọc full transcript từng ca như lần phân tích tuần 06 (107 ca đọc tay). Field này đủ chi tiết để phân loại legitimate/avoidable và liệt kê KB gap cụ thể, nhưng 2 case Launcher retrieval-fail là phát hiện phụ (đọc kỹ nội dung reason), không phải audit đầy đủ tầng retrieval.
