@@ -98,18 +98,18 @@ async function poll() {
       let replyText;
 
       if (!email) {
-        replyText = `⚠️ Không tìm thấy Shop Email trong feedback này — ${config.message}`;
+        replyText = `⚠️ Không tìm thấy Shop Email trong feedback này.`;
       } else {
         try {
           const sessionId = await findCrispSessionByEmail(email);
           if (sessionId) {
-            replyText = `🔗 Chat Crisp của KH (${email}): ${crispChatLink(sessionId)}\n${config.message}`;
+            replyText = `🔗 Chat Crisp của KH (${email}): ${crispChatLink(sessionId)}`;
           } else {
-            replyText = `⚠️ Không tìm thấy chat Crisp nào của KH (${email}) — cần tạo chat mới để fu. ${config.message}`;
+            replyText = `⚠️ Không tìm thấy chat Crisp nào của KH (${email}) — cần tạo chat mới để fu.`;
           }
         } catch (err) {
           console.error(`[${new Date().toISOString()}] Crisp lookup error for ${msg.ts}:`, err.message);
-          replyText = `⚠️ Lỗi tra chat Crisp cho KH (${email}) — ${err.message}. ${config.message}`;
+          replyText = `⚠️ Lỗi tra chat Crisp cho KH (${email}) — ${err.message}.`;
         }
       }
 
