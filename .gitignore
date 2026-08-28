@@ -10,6 +10,7 @@ bq/sa.json
 # Google OAuth — client secret + refresh token for the account Betty acts as.
 gapi/credentials.json
 gapi/token.json
+gapi/gmail_token.json
 
 # kb-sync payloads — temporary: built → Liz reviews → push_kb.py đẩy lên CS v2.
 # Không phải audit artifact (KB lưu ở v2), nên không commit vào repo.
