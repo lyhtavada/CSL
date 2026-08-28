@@ -158,6 +158,7 @@ Skills live in `skills/[name]/SKILL.md`. Use the Skill tool to invoke them.
 | `/qa-weekly` | Weekly coaching QA cho Team G2 — fan-out chấm 3 trục (Mindset/Knowledge/Skill) từ chat BigQuery → DM từng CS sau khi Liz duyệt. **Knowledge check verify KB từ KB LIVE trên `cs2.avada.net`** (qua `skills/qa-weekly/scripts/fetch_kb.py`, cùng nguồn Joyce/Ivy) — KHÔNG đọc repo claw cũ. |
 | `/faq-to-training` | Convert CS FAQ (Notion format) into AI training data |
 | `/chatty-test-grader` | Grade Chatty AI knowledge test from Google Form CSV |
+| `/grade-joy-trainee` | **Chấm test Joy trainee trên Notion** — Liz đưa 1+ Notion URL (page tự luận hoặc page ôm child_database nhiều ngày/topic) → tự fetch + expand toàn bộ (kèm block ID) → chỉ chấm câu đã trả lời, verify theo thứ tự nguồn: tài liệu đính kèm ngay trong task → KB live `cs2.avada.net` → help.joy.so → joy.so → GitLab source → soi mâu thuẫn giữa các câu trong cùng bài → report verdict trong chat trước → **chỉ sau khi Liz duyệt** mới append callout `🔍 CSL Review` màu theo verdict (✅/⚠️/❌/📝) ngay sau bảng/câu trả lời trên chính Notion. Scripts: `skills/grade-joy-trainee/scripts/{notion_fetch,notion_append_review}.py` |
 | `/bot-status` | Check which bots are running, restart if down |
 | `/read-crisp` | Auto-triggered when Liz pastes a Crisp chat URL — fetch + summarize conversation |
 | `/ai-perf` | Given a list of session IDs (Joy + Chatty), fetch full transcripts from BigQuery → classify sessions → generate daily AI agent performance report |
