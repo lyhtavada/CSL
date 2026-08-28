@@ -95,5 +95,21 @@
     "app": "chatty",
     "title": "answer-guard chặn nhầm handoff message trong DFY onboarding flow ('operational claim không có event: ETA')",
     "occurrences": 1
+  },
+  "chatty-prechat-form-not-retrieved-custom-instruction-workaround": {
+    "ticket_id": "tgsJYB4UKTnd8Ft3RyjX",
+    "internal_id": "tgsJYB4UKTnd8Ft3RyjX",
+    "ticket_url": "https://helpdesk.avada.net/tickets/tgsJYB4UKTnd8Ft3RyjX",
+    "app": "chatty",
+    "title": "Ivy invents custom-instruction workaround instead of pointing to existing Pre-chat form feature",
+    "occurrences": 1
+  },
+  "chatty-tsdiagnostic-injected-inbound-wrong-language": {
+    "ticket_id": "TzsYUG9XKj25dwLNHn2E",
+    "internal_id": "TzsYUG9XKj25dwLNHn2E",
+    "ticket_url": "https://helpdesk.avada.net/tickets/TzsYUG9XKj25dwLNHn2E",
+    "app": "chatty",
+    "title": "TS-relay diagnostic result injected as inbound message, bot replies to it in English breaking Spanish conversation",
+    "occurrences": 1
   }
 }
