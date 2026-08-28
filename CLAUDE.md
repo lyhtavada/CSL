@@ -106,7 +106,7 @@ Key references:
 - Liz's responsibilities: `_identity/responsibilities.md`
 - **Product knowledge (Chatty/Joy features, plans, FAQ, ICP)** → KB LIVE on `cs2.avada.net` — same source Ivy/Joyce use. Fetch via `skills/kb-sync/scripts/kb_api.py` or `skills/qa-weekly/scripts/fetch_kb.py <chatty|joy> <path>`. Agent ids: `chatty-agent`, `joy-loyalty-agent`. Do NOT keep a local product-KB copy — it drifts.
 - **CS processes** (escalation, refund, billing, support flows) → `kb/cs-process/`
-- **Google Calendar / Sheets** → `from gapi.client import calendar, sheets` (run with `.venv-crisp/bin/python`). Authed as **`lyht@avada.io`** via OAuth, read+write, works in cron. **No Drive scope** — can't search sheets by name, so Liz must give a sheet link/ID. Re-auth if revoked: `.venv-crisp/bin/python gapi/auth_setup.py`.
+- **Google Calendar / Sheets / Drive** → `from gapi.client import calendar, sheets, drive` (run with `.venv-crisp/bin/python`). Authed as **`lyht@avada.io`** via OAuth, read+write, works in cron. Full Drive scope (since 2026-08-28) — can search/read/edit any file in the account's Drive, not just files this app created; a sheet/doc name is enough, no link/ID needed. Re-auth if revoked or scopes change: `.venv-crisp/bin/python gapi/auth_setup.py`.
 - **Gmail** → `from gapi.gmail_client import gmail` (run with `.venv-crisp/bin/python`). Authed as **`lyht@avada.io`** via its own OAuth token (separate from Calendar/Sheets), scope `gmail.modify` (read/send/reply/label/trash, no permanent delete). Re-auth if revoked: `.venv-crisp/bin/python gapi/gmail_auth_setup.py`. Set up 2026-08-21 to replace the `claude.ai Gmail` MCP connector, which was tied to the shared claude.ai login rather than scoped to this workspace.
 
 ## Working Style

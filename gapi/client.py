@@ -15,14 +15,14 @@ HERE = Path(__file__).parent
 TOKEN = HERE / "token.json"
 
 # Single source of truth — auth_setup.py imports this list.
-# Read + write on Calendar and Sheets, plus drive.file (per-file Drive scope:
-# only files this app created or opened, e.g. to share/rename them — not a
-# general Drive scope, so it still can't browse/search the whole Drive).
+# Read + write on Calendar, Sheets, and full Drive (search/read/edit any file
+# in the account's Drive, not just files this app created — upgraded from
+# drive.file 2026-08-28 so Liz can hand over a file name instead of a link/ID).
 # Changing this list requires rerunning auth_setup.py to re-consent.
 SCOPES = [
     "https://www.googleapis.com/auth/calendar",
     "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive",
 ]
 
 
