@@ -2,15 +2,27 @@
 __pycache__/
 *.pyc
 .env
+.env.*
+!*.env.example
 
 # Obsidian vault — personal knowledge base, not tracked in repo
 liz-vault/
-bq/sa.json
 
-# Google OAuth — client secret + refresh token for the account Betty acts as.
-gapi/credentials.json
-gapi/token.json
-gapi/gmail_token.json
+# Secrets / API keys / OAuth tokens & credentials — anywhere in the repo.
+# Deliberately broad: better to over-ignore than leak another token like
+# gapi/gmail_token.json (2026-08-28, purged from history + rotated).
+*token*.json
+*credential*.json
+*secret*.json
+*apikey*.json
+*api-key*.json
+*api_key*.json
+sa.json
+service-account*.json
+*.pem
+*.p12
+*.key
+!skills/**/scripts/*.key.example
 
 # kb-sync payloads — temporary: built → Liz reviews → push_kb.py đẩy lên CS v2.
 # Không phải audit artifact (KB lưu ở v2), nên không commit vào repo.
