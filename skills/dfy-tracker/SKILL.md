@@ -63,6 +63,8 @@ Map `tagIds` on each ticket to tag names.
 
 Use `members[].isCreate === true` → `displayName`. Fallback to `memberUpdate.displayName`.
 
+> **Exclude bot members from attribution.** Some tickets are auto-created by a bot member (`memberId` starting with `ai-agent`, or `displayName` containing "AI Agent", e.g. `TS AI Agent 2 (Team 2)`) — it shows `isCreate === true` but is not a real CS. When the `isCreate` member is a bot, skip it and attribute the ticket to the first non-bot member in `members[]` instead (that's the CS who actually did the DFY work); fall back to `memberUpdate.displayName` only if no human member exists. Never count a bot as a CS in the KPI grouping/report.
+
 Then **map the CS to their KPI nickname** (the abbreviated name used for KPI, e.g. `VanCT`, `HangHM`). The report and grouping must use the **nickname**, not the raw `displayName`/`trello username`.
 
 Map via the `trello username` the API returns (or `displayName` as fallback):
