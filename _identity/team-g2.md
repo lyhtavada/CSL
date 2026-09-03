@@ -13,7 +13,7 @@
 | 41 | Trương Cảnh Huy | CS | Joy | Fulltime | HuyTC | U07HTBW4CRX | sonny_avada | Sonny | huytc@avadagroup.com | 2000 | 0915964123 | công ty | in-house |
 | 47 | Lê Ngọc Anh | Remote | Joy | Partime | AnhLN | U07Q8PL08E4 | alicia_avada | Alicia | anhln.ctv@avadagroup.com | 1998 | | cá nhân | remote |
 | 56 | Bùi Tuyết Minh | Remote | Chatty | Partime | MinhBT | U08GX75N5CZ | mirra_avada | Mirra | minhbt.ctv@avadagroup.com | 2001 | | | remote |
-| 65 | Bùi Đức Anh | CS | Chatty | Partime | AnhBD | U09DC212XN0 | andy_avada | Andy | anhbd@avadagroup.com | 1995 | | công ty | in-house |
+| 65 | Bùi Đức Anh | CS | Chatty | Fulltime | AnhBD | U09DC212XN0 | andy_avada | Andy | anhbd@avadagroup.com | 1995 | | công ty | in-house |
 | 66 | Phạm Thu Hiền | CS | Chatty | Fulltime | HienPT | U09FYACFH2T | hazel_avada | Hazel | hienpt@avadagroup.com | 2003 | | công ty | in-house |
 | 69 | Lê Thị Thu Thảo | Remote | Joy | Partime | ThaoLTT | U09M3EHCGE6 | rosie_avada | Rosie | thaoltt.ctv@avadagroup.com | 2001 | | | remote |
 | 80 | Hoàng Minh Châu | CS | Chatty | Partime | ChauHM | U08TZM2LL74 | cody_avada | Cody | chauhm@avadagroup.com | 1998 | | cá nhân | remote |
