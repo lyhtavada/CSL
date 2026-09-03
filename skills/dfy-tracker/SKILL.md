@@ -94,6 +94,7 @@ Map via the `trello username` the API returns (or `displayName` as fallback):
 - Exclude Liz's tickets (`liz_avada`) that have no tags (test tickets)
 - Exclude tickets with `tsStatus = "sale_request"`
 - **Only count tickets with `dueDateDone === true`** (completed on/before their due date — the green check icon next to the ticket title in the UI). Tickets still open past due date or closed without ever hitting the due date are excluded from scoring entirely.
+- **Only score Fulltime CS** (2026-09-03 rule) — check the **State** column in `_identity/team-g2.md`; a CS listed `Partime` or `Training` gets 0 KPI points. If a ticket's `members[]` has **only** non-fulltime CS, drop the ticket from scoring entirely. If a ticket has **both** a fulltime and a non-fulltime member (e.g. a partime CS working alongside a fulltime one), attribute the whole ticket to the fulltime member instead — don't split or drop it.
 
 ### 6. Group by CS (nickname) and generate markdown table
 
