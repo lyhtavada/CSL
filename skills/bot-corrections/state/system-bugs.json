@@ -111,5 +111,21 @@
     "app": "chatty",
     "title": "TS-relay diagnostic result injected as inbound message, bot replies to it in English breaking Spanish conversation",
     "occurrences": 1
+  },
+  "chatty-answer-guard-grounding-hallucination": {
+    "ticket_id": "BA2CCVN7pSkmUaI4Z7wy",
+    "internal_id": "BA2CCVN7pSkmUaI4Z7wy",
+    "ticket_url": "https://helpdesk.avada.net/tickets/BA2CCVN7pSkmUaI4Z7wy",
+    "app": "chatty",
+    "title": "[Bug] Ivy bịa cụ thể (UI path/setting/số liệu) bị answer-guard chặn — 78 ca/tháng, lever chính cho mục tiêu resolution rate 60%",
+    "occurrences": 1
+  },
+  "chatty-handoff-promise-no-tag": {
+    "ticket_id": "UAUZu7KPm7VOGQ55F1zu",
+    "internal_id": "UAUZu7KPm7VOGQ55F1zu",
+    "ticket_url": "https://helpdesk.avada.net/tickets/UAUZu7KPm7VOGQ55F1zu",
+    "app": "chatty",
+    "title": "[Bug] Ivy hứa chuyển người ('I'll get our team...') nhưng không phát escalate tag ngay — 27 ca thật/tháng, watchdog cứu trễ",
+    "occurrences": 1
   }
 }
