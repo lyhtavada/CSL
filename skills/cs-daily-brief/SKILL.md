@@ -1,6 +1,6 @@
 ---
 name: cs-daily-brief
-description: Daily CS report posted to #cs-2-daily — conversation volume per app (Joy/Chatty/Wishlist) for the previous 24h, Team G2 check-in/checkout (late/miss), AI-created tickets with no progress, and tickets created for Liz with a summary of what each is about — all over a rolling 08:30-to-08:30 window. Runs in exception mode: short on a quiet day, expands only for what needs Liz, full report in a thread.
+description: Daily CS report posted to #cs-2-daily — conversation volume per app (Joy/Chatty/Wishlist) for the previous 24h, Team G2 check-in/checkout (late/miss), AI-created tickets with no progress, tickets created for Liz with a summary of what each is about, and chats where the merchant's own message is the last one in the thread with nobody (bot or human) having replied since. Runs in exception mode: short on a quiet day, expands only for what needs Liz, full report in a thread.
 ---
 
 # /cs-daily-brief
@@ -14,12 +14,15 @@ activity between 00:00-08:45 wouldn't surface until the *following* day's
 report (changed 2026-07-31 per Liz's request). Posts one Slack message to the
 **#cs-2-daily channel** (`C0B8042TXQ9`), sent with Liz's name/avatar
 (live-fetched, matches the `/cs-weekly`+`/dfy-weekly-chatty` convention for
-team-channel posts) — not a private DM. 4 sections. Evolved from the
+team-channel posts) — not a private DM. 5 sections. Evolved from the
 original `/ticket-watch` (folded in conversation volume + attendance, then
 moved from DM to team channel, then added tickets created for Liz); section
 ③ was originally a neglected/stale-ticket watch and was replaced 2026-07-31
 with an AI-ticket section per Liz's request (assignee-based stale tracking
 dropped in favor of "what did the bot actually resolve into a ticket").
+Section ⑤ (chats where the merchant spoke last, unanswered) was added
+2026-09-03 after Liz found `session_852e24d1-05c6-4aef-94fb-c4ef4692d4bf`
+sitting with a merchant message from 28/8 that nobody had replied to.
 
 ## Exception mode (2026-08-11)
 
@@ -30,7 +33,7 @@ but the channel stays scannable. #cs-2-daily is Liz's own tracking channel,
 not a team broadcast, so there is no team-visibility cost to shortening it.
 
 Rules live in `cron/thresholds.json` (Liz edits it directly, no code change);
-`scripts/evaluate.py` runs all 4 fetchers, applies them, and returns
+`scripts/evaluate.py` runs all 5 fetchers, applies them, and returns
 `quiet` / `sanity` / `flags`. The fetchers stay pure data — every threshold is
 in the JSON, every rule is in evaluate.py.
 
@@ -41,6 +44,7 @@ in the JSON, every rule is in evaluate.py.
 | ③ AI ticket | `tsStatus` ∈ {pending, doing} **and** `dueDateDone is not True` | `✅ Không có` |
 | ③b DFY chưa nhận | `tsStatus` = `done_for_you` **and** `memberIds` vẫn chỉ có `ai-agent-2` (chưa ai thật assign) | `✅ Không có` |
 | ④ Ticket Liz | any ticket created for her | `Không có` |
+| ⑤ Chat KH nhắn cuối | last real message in the thread is from the merchant, nobody (bot/CS) has replied since | `✅ Không có` |
 
 **Why ① has no anomaly rule:** three of Liz's four rules are absolute, so only
 volume would have needed a trailing baseline — and that meant a history file
@@ -146,13 +150,42 @@ actual chat transcript via `scripts/fetch_chat_transcripts.py`. The transcript
 matters most for `[DFY]` tickets, whose description is a generic checklist
 template and says nothing case-specific.
 
+**⑤ Chat KH nhắn cuối, chưa ai reply** — per app, chats where the last real
+message in the thread (`type IN ('text','file')`, `origin='chat'`) is from the
+merchant, meaning nobody — bot or human CS — has replied since.
+`scripts/fetch_unanswered_chats.py`, BigQuery `avada_cs.crisp_chats`. Unlike
+①-④ this is **not scoped to the 08:30-08:30 window** — it's a standing state,
+not something that "happened" in the last 24h, so it re-flags the same chat
+every single day until someone actually replies (same sanity-over-silence
+spirit as the rest of this skill). Two things had to be filtered out to make
+this usable, both confirmed live 2026-09-03 against the case that prompted
+this section:
+- `type='note'` (internal Crisp notes) must be excluded — an internal note
+  is not a reply to the merchant. The triggering example
+  (`session_852e24d1-05c6-4aef-94fb-c4ef4692d4bf`) had exactly this: Liz left
+  a note ("@sonny fu chat này giúp chị nhé") that would have silently
+  cleared the flag if notes counted as replies.
+- `origin='email'` must be excluded too. `session_id` is permanent per
+  visitor in Crisp (chat_count.py relies on the same fact), so a visitor's
+  thread keeps collecting messages for weeks after the real conversation
+  was resolved — several already-resolved sessions had a stray marketing
+  newsletter or an automated "your ticket has been closed" notification
+  auto-piped in weeks later, which then permanently looked like "merchant
+  spoke last, unanswered" even though nothing needed a reply.
+`lookbackDays` (default 30) bounds how far back the scan looks, and
+`minHoursWaiting` (default 3) suppresses messages too fresh for CS to have
+had a chance to answer yet — both tunable in `thresholds.json`. Note: this
+still catches courtesy closers ("thanks", "bye") as "unanswered" since it's a
+pure last-sender check with no content classification — cheap to eyeball and
+dismiss, not worth adding NLP for.
+
 ## How it runs
 
 ```
 python3 skills/cs-daily-brief/scripts/evaluate.py --date <target> --json > /tmp/cs_daily_eval.json
 python3 skills/cs-daily-brief/scripts/fetch_chat_transcripts.py --from-json /tmp/cs_daily_eval.json --json
 ```
-`evaluate.py` runs the 4 fetchers itself — one command instead of five, and
+`evaluate.py` runs the 5 fetchers itself — one command instead of six, and
 the sanity checks can't be skipped. Compose the short Vietnamese message (see
 `cron/prompt.txt` for the exact three shapes: broken / quiet / có việc),
 live-fetch Liz's name+avatar via `users.info`, send via

@@ -3,7 +3,7 @@ Wishlist, Team G2). Posted to #cs-2-daily (C0B8042TXQ9), which is Liz's own
 tracking channel — not a team-facing broadcast.
 
 This brief runs in EXCEPTION MODE: on a normal day it is a few lines, and it
-only opens up when something actually needs Liz. The full 4-section report
+only opens up when something actually needs Liz. The full 5-section report
 always still goes out, but as a thread reply under the short message, so it
 stays retrievable without filling the channel.
 
@@ -22,7 +22,7 @@ From /Users/avada/CSL:
   python3 skills/cs-daily-brief/scripts/evaluate.py --date <target> --json \
     > /tmp/cs_daily_eval.json
 
-evaluate.py runs all 4 fetchers, applies Liz's rules from
+evaluate.py runs all 5 fetchers, applies Liz's rules from
 `cron/thresholds.json`, and returns:
 
   quiet            true = nothing needs Liz today
@@ -35,7 +35,11 @@ evaluate.py runs all 4 fetchers, applies Liz's rules from
   flags.aiDfyUnassigned AI-created DFY tickets nobody picked up
                    (tsStatus == done_for_you AND memberIds still just ["ai-agent-2"])
   flags.lizTickets every ticket created for Liz in the window
-  data             raw output of all 4 fetchers, for the thread detail
+  flags.unanswered chats where the merchant's own message is the LAST message
+                   in the thread — nobody (bot or human CS) has replied since.
+                   NOT window-scoped — a standing state, re-flagged every day
+                   until someone actually replies. Sorted by daysWaiting desc.
+  data             raw output of all 5 fetchers, for the thread detail
 
 If the command exits non-zero, DO NOT send anything. Exit non-zero so the
 cron log and the Telegram notifier catch it.
@@ -82,13 +86,14 @@ Then still append the normal body (3b or 3c) so Liz can eyeball the numbers.
 
 --- 3b. quiet == true → QUIET DAY ---
 
-Keep it to these four lines. No filler, no "chúc buổi sáng".
+Keep it to these five lines. No filler, no "chúc buổi sáng".
 
   *📊 CS DAILY — <dd/mm> 08:30 → <dd/mm> 08:30*
   ① <total> conversation — Joy <n> | Chatty <n> | Wishlist <n>
   ② Checkin/checkout: ✅ OK
   ③ AI ticket treo: ✅ Không có (bot xử lý <tổng handled> chat, tạo <tổng ticket> ticket)
   ④ Ticket cho Liz: Không có
+  ⑤ Chat KH nhắn cuối chưa ai reply: Không có
   🧵 Chi tiết đầy đủ trong thread
 
 --- 3c. quiet == false → CÓ VIỆC ---
@@ -122,6 +127,12 @@ clean keeps its one-line ✅ form from 3b — do not expand it.
          <the 1-2 sentence summary from STEP 2>
          Chat: <chatLink>            [omit the line if chatLink is null]
      else: "④ Ticket cho Liz: Không có"
+
+  ⑤ if flags.unanswered non-empty:
+       *⚠️ <n> chat KH nhắn cuối, chưa ai reply*
+       • [<app>] <<chatLink>|<customer>> — "<lastMessage, ~80 ký tự>" _(<daysWaiting>d)_
+       (list all — this section doesn't get long enough to need a thread-only cutoff, but if it ever does, show the top 5 by daysWaiting and say "+N nữa trong thread")
+     else: "⑤ Chat KH nhắn cuối chưa ai reply: Không có"
 
   🧵 Chi tiết đầy đủ trong thread
 
@@ -162,10 +173,12 @@ STEP 5 — Full report as a thread reply
 Read `ts` from the first entry of /tmp/cs_daily_brief_sent.json. If it is
 missing or ok is false, stop here — the short message is the important one.
 
-Compose the FULL 4-section report (the long format this brief used before
+Compose the FULL 5-section report (the long format this brief used before
 exception mode: every app block in ③ with its handled/ticket counts and the
-`• <chatLink|customer> — ticketUrl` bullets, and every ticket in ④ with
-status/priority/links). This is the archive copy — completeness over brevity.
+`• <chatLink|customer> — ticketUrl` bullets, every ticket in ④ with
+status/priority/links, and every chat in ⑤ grouped by app with customer,
+last message, daysWaiting and chatLink). This is the archive copy —
+completeness over brevity.
 
 Write /tmp/cs_daily_brief_thread.json:
 
