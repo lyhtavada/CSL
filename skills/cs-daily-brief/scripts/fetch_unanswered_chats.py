@@ -20,6 +20,16 @@ Detection, per session_id:
     giúp chị nhé") that is NOT a reply to the merchant — if notes counted as
     replies this fetcher would have silently cleared the flag the moment
     someone left an internal comment. Confirmed live 2026-09-03.
+  - Also require `origin = 'chat'` — EXCLUDES `origin='email'`. session_id is
+    permanent per visitor in Crisp (same fact chat_count.py relies on), so a
+    visitor's inbox keeps collecting messages for weeks after their real
+    conversation was resolved. Confirmed live 2026-09-03: several sessions
+    with a long, already-resolved chat history had a stray `origin='email'`
+    message weeks later — a marketing newsletter or an automated "your
+    ticket has been closed" notification auto-piped into the same thread —
+    which then permanently looked like "merchant spoke last, unanswered"
+    even though nobody needed to reply to it. `origin='chat'` is the real
+    live-chat channel and is what actually needs a reply.
   - Take the single latest such message per session (ROW_NUMBER, not just
     MAX(timestamp), since we need the row's fromType too).
   - Flag if that latest message has fromType = 'user' (merchant) — meaning
@@ -69,6 +79,7 @@ def fetch_unanswered(client, segments, cutoff_str, lookback_start_str):
       FROM `avada-crm.avada_cs.crisp_chats`
       WHERE ({seg_clause})
         AND type IN ('text', 'file')
+        AND origin = 'chat'
         AND timestamp >= TIMESTAMP(@lookback_start)
         AND timestamp <  TIMESTAMP(@cutoff)
         {internal_clause}

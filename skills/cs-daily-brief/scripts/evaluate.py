@@ -34,6 +34,7 @@ FETCHERS = {
     "checkin": "fetch_checkin.py",
     "aiTickets": "fetch_ai_tickets.py",
     "lizTickets": "fetch_liz_tickets.py",
+    "unanswered": "fetch_unanswered_chats.py",
 }
 
 
@@ -42,11 +43,12 @@ def load_thresholds(path=THRESHOLDS_PATH):
         return json.load(f)
 
 
-def run_fetch(script, date):
+def run_fetch(script, date, extra_args=None):
     """Run one fetcher, return its parsed JSON. Raises on any failure —
     a partial brief is worse than a loud one."""
     p = subprocess.run(
-        [sys.executable, os.path.join(HERE, script), "--date", date, "--json"],
+        [sys.executable, os.path.join(HERE, script), "--date", date, "--json"]
+        + (extra_args or []),
         capture_output=True, text=True, timeout=600)
     if p.returncode != 0:
         raise RuntimeError(f"{script} exited {p.returncode}: "
@@ -120,7 +122,17 @@ def evaluate(data, cfg):
     liz = data["lizTickets"]["tickets"] if cfg["lizTickets"]["reportAll"] else []
     flags["lizTickets"] = liz
 
-    quiet = not (flags["checkin"]["any"] or stale or dfy_unassigned or liz)
+    # ⑤ Chat KH nhắn cuối, chưa ai (bot/CS) reply — báo hết, mỗi app kèm list.
+    unanswered = []
+    if cfg["unanswered"]["report"]:
+        for app_key, app in data["unanswered"]["apps"].items():
+            for c in app.get("chats", []):
+                unanswered.append({**c, "app": app_key})
+    unanswered.sort(key=lambda c: -c["daysWaiting"])
+    flags["unanswered"] = unanswered
+
+    quiet = not (flags["checkin"]["any"] or stale or dfy_unassigned or liz
+                 or unanswered)
     return flags, quiet
 
 
@@ -142,7 +154,15 @@ def main():
     date_str = start.strftime("%Y-%m-%d")
 
     cfg = load_thresholds(a.thresholds)
-    data = {name: run_fetch(script, date_str) for name, script in FETCHERS.items()}
+    unanswered_args = [
+        "--lookback-days", str(cfg["unanswered"]["lookbackDays"]),
+        "--min-hours-waiting", str(cfg["unanswered"]["minHoursWaiting"]),
+    ]
+    data = {
+        name: run_fetch(script, date_str,
+                         unanswered_args if name == "unanswered" else None)
+        for name, script in FETCHERS.items()
+    }
 
     problems = sanity_problems(data, cfg)
     flags, quiet = evaluate(data, cfg)
@@ -174,6 +194,7 @@ def main():
         print(f"  ③ AI ticket chưa tiến độ: {len(flags['aiStale'])}")
         print(f"  ③b DFY chưa ai nhận: {len(flags['aiDfyUnassigned'])}")
         print(f"  ④ ticket cho Liz: {len(flags['lizTickets'])}")
+        print(f"  ⑤ chat KH nhắn cuối chưa ai reply: {len(flags['unanswered'])}")
         for p in problems:
             print(f"  ⚠️  {p}")
 

@@ -24,6 +24,15 @@
     "_summarizeChat": "Đọc chat qua chatLink (BigQuery, xem skills/read-crisp) để viết 1-2 câu 'đã xử lý tới đâu'. Đặt false nếu chỉ muốn dùng title + description cho nhanh."
   },
 
+  "unanswered": {
+    "report": true,
+    "_report": "Chat mà tin nhắn cuối cùng (type text/file, origin=chat — loại note nội bộ và email/newsletter tự động piped vào) là của KH, chưa bot/CS nào reply lại. KHÔNG scoped theo window 24h — là trạng thái đứng yên, báo lại MỖI NGÀY tới khi có người reply thật (matching sanity-over-silence). Ví dụ phát hiện: session_852e24d1 (2026-09-03) — KH nhắn 28/8, không ai reply tới 3/9.",
+    "lookbackDays": 30,
+    "_lookbackDays": "Chỉ quét session có tin nhắn trong N ngày gần đây — tránh resurect chat bỏ hoang vĩnh viễn.",
+    "minHoursWaiting": 3,
+    "_minHoursWaiting": "Bỏ qua tin nhắn quá mới — KH nhắn vài phút trước giờ chạy cron (08:45) chưa chắc CS đã có cơ hội trả lời."
+  },
+
   "conversations": {
     "alwaysShow": true,
     "_alwaysShow": "Volume luôn hiện 1 dòng số, không xét bất thường (không cần baseline/lịch sử)."
