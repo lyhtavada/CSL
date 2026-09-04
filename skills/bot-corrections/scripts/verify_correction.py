@@ -9,15 +9,13 @@ filed, or (b) KB patch drafted, whenever the correction that triggered it was
 itself confirmed correct during trace. Do NOT call this for branch (c)
 (CS was wrong) — use reject_correction.py there instead.
 
-⚠️ UNCONFIRMED CONTRACT: same caveat as reject_correction.py — the
-PUT /api/corrections/{id} write route has not been confirmed against the
-live cs2 API (only GET is documented/tested as of 2026-08-21). Row schema
-exposes `status` ("draft" seen so far), `reviewed_by`, `verified_by`,
-`verified_at` — best guess is a PUT with a status-style body, "verified" as
-the status value is also a guess. Defaults to --dry-run (prints the payload,
-sends nothing). Pass --live to actually PUT. On the FIRST live run, check the
-result against the cs2.avada.net dashboard by hand before trusting this
-unattended in cron.
+Confirmed contract (from avada-cs-api-docs, 2026-09-04): POST
+/api/corrections/{id}/verify — permission `training.corrections`, idempotent
+(retrying does not replace the original verifier/time). Body only takes an
+optional `verifiedBy` (omit to use the API token's own actor — set to
+"betty" here). Batch equivalent for up to 100 ids in one call: POST
+/api/corrections/verify with {"ids": [...], "verifiedBy": ...} — use that
+instead when verifying a whole day's worth of (a)/(b) corrections at once.
 
 Usage:
   python3 verify_correction.py --id 1655 --reason "Traced session, CS's fix matches KB / correct answer" [--live]
@@ -57,18 +55,19 @@ def main():
     args = ap.parse_args()
 
     base, token = load_creds()
-    body = {"status": "verified", "reviewed_by": "betty", "reviewed_note": args.reason}
+    body = {"verifiedBy": "betty"}
 
     if not args.live:
-        print("DRY-RUN — would PUT", f"{base}/api/corrections/{args.id}")
+        print("DRY-RUN — would POST", f"{base}/api/corrections/{args.id}/verify")
         print(json.dumps(body, indent=2, ensure_ascii=False))
+        print(f"(reason, not sent to API — for the bot-corrections report only: {args.reason})")
         print("VERIFY_ACTION=dry_run")
         return
 
     req = urllib.request.Request(
-        f"{base}/api/corrections/{args.id}",
+        f"{base}/api/corrections/{args.id}/verify",
         data=json.dumps(body).encode(),
-        method="PUT",
+        method="POST",
         headers={
             "Authorization": f"Bearer {token}",
             "User-Agent": "bot-corrections/1.0",

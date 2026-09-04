@@ -108,10 +108,10 @@ ngoài mọi doc đã retrieve.
   python3 skills/bot-corrections/scripts/reject_correction.py --id <id> \
     --reason "..." --live
   ```
-  ⚠️ Endpoint `PUT /api/corrections/{id}` **chưa confirm 100%** (suy từ field
-  `status/verified_by/verified_at` thấy trên row, chưa test PUT thật — giá trị status
-  `"rejected"` cũng là suy đoán) — lần chạy đầu Liz nên soi kỹ digest, coi kết quả
-  live_ok/live_failed trước khi tin tưởng auto.
+  Endpoint đã **confirm** (avada-cs-api-docs, 2026-09-04): `POST
+  /api/corrections/{id}/reject`, không cần body. (Có endpoint đối xứng
+  `POST /api/corrections/{id}/approve` — script này chưa dùng vì approve khác
+  verify.)
 
 **Không chắc (a) hay (b)** → ưu tiên (b), patch KB an toàn hơn dù root cause thật là (a).
 
@@ -134,9 +134,14 @@ nhận correction đúng, không đổi KB/data gì). Riêng nhánh (b) vẫn ph
 duyệt patch KB — verify correction và push KB là 2 việc độc lập, verify không
 cần chờ Liz duyệt patch.
 
-⚠️ Cùng caveat với `reject_correction.py`: endpoint `PUT /api/corrections/{id}`
-chưa confirm 100% — lần chạy đầu Liz nên soi kỹ digest, coi kết quả
-`VERIFY_ACTION=live_ok`/`live_failed` trước khi tin tưởng auto.
+Endpoint đã **confirm** (avada-cs-api-docs, 2026-09-04): `POST
+/api/corrections/{id}/verify` — idempotent (verify lại không đổi verifier/thời
+gian gốc), body chỉ có `verifiedBy` (optional, script set `"betty"`). Có bản
+batch `POST /api/corrections/verify` (`{ids:[...], verifiedBy}`, tối đa
+100 id/lần, trả về `verified_ids`/`already_verified_ids`/`missing_ids`) — dùng
+khi verify nhiều correction cùng lúc thay vì gọi từng id qua
+`verify_correction.py`. Đối xứng: `POST /api/corrections/{id}/unverify` để
+gỡ verify nếu lỡ verify nhầm.
 
 Không verify cho nhánh (c) — (c) là reject, không phải verify (xem giải thích
 ở nhánh c trên).
