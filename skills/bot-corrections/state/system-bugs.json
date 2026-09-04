@@ -127,5 +127,13 @@
     "app": "chatty",
     "title": "[Bug] Ivy hứa chuyển người ('I'll get our team...') nhưng không phát escalate tag ngay — 27 ca thật/tháng, watchdog cứu trễ",
     "occurrences": 1
+  },
+  "chatty-ivy-duplicate-async-ticket-dfy-mistag": {
+    "ticket_id": "7S5Tqim78CscHTYMyyTK",
+    "internal_id": "7S5Tqim78CscHTYMyyTK",
+    "ticket_url": "https://helpdesk.avada.net/tickets/7S5Tqim78CscHTYMyyTK",
+    "app": "chatty",
+    "title": "Ivy tạo ticket trùng lặp + gắn sai type DFY cho follow-up request",
+    "occurrences": 1
   }
 }
