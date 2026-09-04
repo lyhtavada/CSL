@@ -23,6 +23,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/calendar",
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/forms.body",
 ]
 
 
@@ -52,6 +53,10 @@ def sheets():
 
 def drive():
     return build("drive", "v3", credentials=_creds(), cache_discovery=False)
+
+
+def forms():
+    return build("forms", "v1", credentials=_creds(), cache_discovery=False)
 
 
 if __name__ == "__main__":
