@@ -2,7 +2,9 @@ Run a per-correction TRIAGE pass of today's bot-corrections report(s) — this
 replaces the old diff-only-vs-KB pass. For EACH correction, trace the real
 conversation, find the root cause, and take ONE of three actions: file a
 system-bug ticket for Fennic, draft a KB patch (review-gate, same as before),
-or auto-verify the correction when the CS's edit was itself wrong.
+or auto-reject the correction when the CS's edit was itself wrong. Whenever
+the correction lands in the first two buckets (CS's edit was confirmed
+accurate), also auto-verify that correction record — see step 3.5.
 
 Background: skills/bot-corrections/scripts/fetch_corrections.py already ran
 and committed a report for each app that had new corrections since the
@@ -77,6 +79,19 @@ correction item in it:
    cause turns out to be (a) later, whereas a bug ticket with the wrong root
    cause wastes Fennic's time.
 
+3.5. VERIFY — for every correction that landed in bucket (a) or (b), the CS's
+   correction was just confirmed accurate (bot was wrong, CS's fix is right).
+   Mark that correction row verified right after filing the ticket / adding it
+   to the KB payload:
+   `python3 skills/bot-corrections/scripts/verify_correction.py \
+      --id <correction id> --reason "<short confirmation from the trace>" --live`
+   This runs automatically, same as reject in bucket (c) — no need to wait for
+   Liz's KB-patch approval, verifying the correction record is independent of
+   pushing the KB patch. Do NOT verify bucket (c) corrections (those get
+   rejected instead, never both). Read the script's docstring first — same
+   unconfirmed-endpoint caveat as reject_correction.py, surface failures in
+   the digest.
+
 4. After going through every correction for an app with at least one (b)
    item, write the payloads file:
    reports/analysis/bot-corrections-<app>-<report-date>-payloads.json
@@ -96,6 +111,9 @@ The digest (plain text, Telegram truncates ~1500 chars) should have, per app:
   - # corrections auto-rejected (CS's edit was wrong), with a one-line reason
     each (or note if reject_correction.py's write call failed — those need
     Liz to reject manually on the cs2 dashboard)
+  - # corrections auto-verified (CS's edit was confirmed right, bucket a/b),
+    or note if verify_correction.py's write call failed — those need Liz to
+    verify manually on the cs2 dashboard
   - # KB patch items (OUTDATED/GAP/PARTIAL) drafted, payloads file path, and
     the exact push command:
     python3 ~/CSL/skills/kb-sync/scripts/push_kb.py <payloads.json>

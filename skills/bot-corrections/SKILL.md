@@ -119,6 +119,28 @@ Cả (a) và (c) **chạy tự động thẳng, không cần Liz duyệt trướ
 2026-08-21) — digest Telegram cuối chỉ để báo đã làm gì, không phải xin duyệt. Riêng
 (b) **vẫn giữ review-gate** như cũ.
 
+### Verify — khi CS sửa đúng (nhánh a hoặc b)
+
+(Thêm 2026-09-04, theo yêu cầu Liz.) Correction rơi vào nhánh (a) hoặc (b) nghĩa
+là trace đã xác nhận: bot trả lời sai, **CS sửa đúng**. Ngay sau khi filed
+ticket (a) hoặc thêm vào payload patch (b) cho correction đó, verify luôn để
+đánh dấu đây là training signal tốt (chứ không để mặc định `status: draft`):
+```
+python3 skills/bot-corrections/scripts/verify_correction.py --id <id> \
+  --reason "..." --live
+```
+Verify chạy **tự động thẳng** như (a)/(c) — không cần Liz duyệt (verify chỉ xác
+nhận correction đúng, không đổi KB/data gì). Riêng nhánh (b) vẫn phải chờ Liz
+duyệt patch KB — verify correction và push KB là 2 việc độc lập, verify không
+cần chờ Liz duyệt patch.
+
+⚠️ Cùng caveat với `reject_correction.py`: endpoint `PUT /api/corrections/{id}`
+chưa confirm 100% — lần chạy đầu Liz nên soi kỹ digest, coi kết quả
+`VERIFY_ACTION=live_ok`/`live_failed` trước khi tin tưởng auto.
+
+Không verify cho nhánh (c) — (c) là reject, không phải verify (xem giải thích
+ở nhánh c trên).
+
 ### KB patch (nhánh b) — chi tiết không đổi
 
 ```
