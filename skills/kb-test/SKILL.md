@@ -3,11 +3,11 @@ name: kb-test
 description: >
   Generate test questions from a recent KB change (kb-sync patch, or any
   described change), batch-run them against the live bot (Joyce/Ivy) through
-  the real pipeline via a local sim-crisp process (falls back to /api/chat
-  if sim isn't set up), then Betty reads every answer against the
-  source-of-truth and reports verdict + suggestion. Use right after a
-  kb-sync push, or any time Liz wants to sanity-check what the bot is
-  actually saying on a topic.
+  the real pipeline via the hosted sim gateway at sim.avada.net (falls back
+  to /api/chat if sim access isn't set up), then Betty reads every answer
+  against the source-of-truth and reports verdict + suggestion. Use right
+  after a kb-sync push, or any time Liz wants to sanity-check what the bot
+  is actually saying on a topic.
 ---
 
 # /kb-test — generate test questions, run them live, Betty judges
@@ -26,27 +26,31 @@ Two ways to run step 2:
 
 - **Sim mode (`run_tests_sim.py`, default)** — sends questions through the
   REAL bridge pipeline (webhook -> gate -> worker -> `process.ts` -> agent)
-  against a local sim-crisp process. Catches things a raw API call can't:
-  multi-turn context, the `human_active` gate, greeting behavior. See
-  `docs/sim-crisp.md` in the bridge repo
-  (`avada/cs-team/avada-cs-ai-agent-crisp-chat`, cloned locally at
-  `~/avada-cs-ai-agent-crisp-chat`) for how the sim works.
+  against the hosted sim gateway at **sim.avada.net** (stood up by
+  Quảng/Fennic, 2026-09-04). Catches things a raw API call can't: multi-turn
+  context, the `human_active` gate, greeting behavior. API reference:
+  https://notes.avada.net/NsrlpDfTTa.md?name=api-cong-sim. The sim has its
+  **own database**, separate from prod — reindexing or testing against it
+  never touches real merchant data.
 - **Direct mode (`run_tests.py`, fallback)** — calls `/api/chat` directly.
-  Faster/cheaper, single-turn only, skips gates. Use when the sim bridge
-  isn't set up yet, or for a quick one-off sanity check.
+  Faster/cheaper, single-turn only, skips gates. Use when sim access isn't
+  set up yet, or for a quick one-off sanity check.
 
-**One-time sim setup** (skip if already done):
+**One-time sim setup** (skip if already done): no VPN/Tailscale needed —
+sim.avada.net is reachable over the open internet. Ask **Quảng** (Fennic,
+Slack `U01N91HCC3F`) for a sim gateway API token (needs `console.chat`
+permission — separate token from the prod `CS2_API_TOKEN`), then set in
+`~/CSL/.env`:
 ```
-tailscale up   # must reach prod Postgres via HAProxy
-cp skills/kb-test/scripts/sim.env.example ~/avada-cs-ai-agent-crisp-chat/.env.sim
-# fill in DATABASE_URL password, ANTHROPIC_API_KEY, a random CRISP_WEBHOOK_SECRET
+SIM_API_TOKEN=<token from Quảng>
+SIM_BASE_URL=https://sim.avada.net   # optional, this is already the default
 ```
-`run_tests_sim.py` auto-starts the sim process if it isn't already running
-(via `start_sim.sh`); you can also start it manually first. It shares prod
-Postgres (agents/KB/personas) but only ever writes rows under
-`website_id='sim-crisp'` — no real merchant data touched. If auth fails
-(403), the reused `CS2_API_TOKEN` may lack `console.chat` permission — ask
-for a token that has it.
+If auth fails (403), the token may be missing `console.chat` — ask Quảng to
+add it. `run_tests_sim.py` prints the sim's running code version
+(`/api/sim/version`) on each run — useful to confirm a `sim-xxx` branch
+deploy actually landed before trusting a test result (see
+https://notes.avada.net/SWYfgsus4U.md?name=lam-viec-tren-nhanh-rieng-va-deploy-len-cong-sim
+for how to push a branch to sim before it goes to prod).
 
 ## Inputs
 

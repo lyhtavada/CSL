@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 run_tests_sim.py — batch-run kb-test questions through the REAL bridge
-pipeline via the local sim-crisp process, instead of the /api/chat shortcut
-used by run_tests.py. Catches things /api/chat can't: multi-turn context,
-the human_active gate, greeting behavior.
+pipeline via the hosted sim gateway (sim.avada.net), instead of the
+/api/chat shortcut used by run_tests.py. Catches things /api/chat can't:
+multi-turn context, the human_active gate, greeting behavior.
 
 Usage:
     python3 run_tests_sim.py <app> <questions.json> [output.json]
@@ -69,8 +69,6 @@ def run_one(base, token, app, agent, item):
         }
     except Exception as e:
         return {"id": item["id"], "turns": turn_results, "final_reply": None, "error": str(e)}
-    finally:
-        sc.delete_session(base, token, session_id)
 
 
 def main():
@@ -86,7 +84,7 @@ def main():
     items = normalize(raw)
 
     base, token = sc.load_sim_creds()
-    sc.ensure_sim_up(base)
+    sc.ensure_sim_up(base, token)
     agent = agent_id(app)
 
     results = []
