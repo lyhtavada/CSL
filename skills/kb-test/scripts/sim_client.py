@@ -100,12 +100,20 @@ def _req(method, url, token, body=None, timeout=125):
 
 
 def ensure_sim_up(base, token):
-    """Hosted sim gateway — no local process to start. Just check it's
-    reachable and report which code version is running (useful to confirm a
-    sim-xxx branch deploy actually landed before trusting a test result)."""
+    """Hosted sim gateway — no local process to start. Just check auth/
+    reachability. Tries /api/sim/version first (docs say it reports the
+    running code version — useful to confirm a sim-xxx branch deploy landed
+    before trusting a test result), but that route 404s on the current
+    deploy (confirmed 2026-09-04) so fall back to /api/sim/sessions, which
+    is live, to prove the token + endpoint both work."""
     try:
         out = _req("GET", f"{base}/api/sim/version", token, timeout=10)
         print(f"sim gateway version: {json.dumps(out)}", file=sys.stderr)
+        return
+    except Exception:
+        pass
+    try:
+        _req("GET", f"{base}/api/sim/sessions", token, timeout=10)
     except Exception as e:
         sys.exit(f"ERROR: sim gateway not reachable at {base}: {e}")
 
