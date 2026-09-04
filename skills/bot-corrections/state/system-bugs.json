@@ -144,5 +144,13 @@
     "app": "chatty",
     "title": "answer_guard downgrades a correct specific KB answer to a generic one, ignoring a matching lower-ranked chunk",
     "occurrences": 1
+  },
+  "chatty-hallucinate-nonexistent-search-block-toggle": {
+    "ticket_id": "klevoyIiZxJ44sdtfg0I",
+    "internal_id": "klevoyIiZxJ44sdtfg0I",
+    "ticket_url": "https://helpdesk.avada.net/tickets/klevoyIiZxJ44sdtfg0I",
+    "app": "chatty",
+    "title": "Ivy bịa ra setting 'Search block' trong Chatbox → General → Blocks không tồn tại",
+    "occurrences": 1
   }
 }
