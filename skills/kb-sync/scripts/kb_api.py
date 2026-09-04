@@ -1,29 +1,15 @@
 #!/usr/bin/env python3
 """
-kb_api.py — thin client for the CS v2 KB API. Same API surface exists on
-TWO environments (confirmed 2026-09-04, sim runs the same app code as
-prod, just a separate DB — no data crossover):
-  - prod: cs2.avada.net  (real merchants, real bots)
-  - sim:  sim.avada.net  (own DB, edit/reindex freely, zero prod impact —
-    stood up by Quảng/Fennic; no VPN/Tailscale needed)
+kb_api.py — thin client for the CS v2 KB API (cs2.avada.net).
 
-Routes (confirmed from the v2 API catalog, present on both):
+Routes (confirmed from the v2 API catalog):
   GET  /api/kb/files?agent=<id>            -> ["agent.yaml", "kb/faq/...md", ...]
   GET  /api/kb/file?agent=<id>&path=<p>    -> {"content": "..."}
   POST /api/kb/file   body {agent,path,content}  -> {"ok":true}   (auto git commit)
   POST /api/kb/reindex body {agent}              -> {"ok":true,"chunks":N,"partial":false}
 
-Auth: Authorization: Bearer <token> (super_admin token — separate tokens
-per environment, do not reuse one for the other).
-Creds read from ~/CSL/.env: CS2_API_URL + CS2_API_TOKEN (prod), or
-SIM_BASE_URL + SIM_API_TOKEN (sim). `load_creds(target="sim")` picks sim.
-
-**Recommended flow for a KB patch, safest first** (2026-09-04): push to sim
-→ reindex sim → test (kb-test, direct or sim mode against sim.avada.net) →
-if OK → push same content to prod → reindex prod. Sim's KB is a frozen
-snapshot as of whenever it was last synced — it will NOT auto-reflect a
-prod patch pushed without also pushing to sim, so don't assume sim is
-already current.
+Auth: Authorization: Bearer <CS2_API_TOKEN>  (super_admin token).
+Creds read from ~/CSL/.env keys CS2_API_URL + CS2_API_TOKEN.
 
 Agent ids: chatty-agent (Chatty/Ivy), joy-loyalty-agent (Joy), wishlist-agent (Joy Wishlist/Wendy).
 """
@@ -41,29 +27,20 @@ APP_AGENTS = {
 }
 
 
-TARGET_KEYS = {
-    "prod": ("CS2_API_URL=", "CS2_API_TOKEN=", "CS2_API_URL / CS2_API_TOKEN"),
-    "sim": ("SIM_BASE_URL=", "SIM_API_TOKEN=", "SIM_BASE_URL / SIM_API_TOKEN"),
-}
-
-
-def load_creds(target="prod"):
-    if target not in TARGET_KEYS:
-        sys.exit(f"ERROR: unknown target {target!r}, must be 'prod' or 'sim'")
-    url_key, token_key, names = TARGET_KEYS[target]
+def load_creds():
     url = token = None
     try:
         with open(ENV_PATH) as f:
             for line in f:
                 line = line.strip()
-                if line.startswith(url_key):
+                if line.startswith("CS2_API_URL="):
                     url = line.split("=", 1)[1].strip()
-                elif line.startswith(token_key):
+                elif line.startswith("CS2_API_TOKEN="):
                     token = line.split("=", 1)[1].strip()
     except FileNotFoundError:
         sys.exit(f"ERROR: {ENV_PATH} not found")
     if not url or not token:
-        sys.exit(f"ERROR: {names} missing in ~/CSL/.env (target={target})")
+        sys.exit("ERROR: CS2_API_URL / CS2_API_TOKEN missing in ~/CSL/.env")
     return url.rstrip("/"), token
 
 
@@ -121,22 +98,16 @@ def chat(base, token, agent, message):
 
 
 if __name__ == "__main__":
-    # quick CLI: kb_api.py list <app> | get <app> <path> | reindex <app> [--target sim|prod]
-    args = sys.argv[1:]
-    target = "prod"
-    if "--target" in args:
-        i = args.index("--target")
-        target = args[i + 1]
-        del args[i:i + 2]
-    base, token = load_creds(target)
-    if len(args) < 2:
-        sys.exit("usage: kb_api.py {list|get|reindex} <app> [path] [--target sim|prod]")
-    cmd, app = args[0], args[1]
+    # quick CLI: kb_api.py list <app> | get <app> <path> | reindex <app>
+    base, token = load_creds()
+    if len(sys.argv) < 3:
+        sys.exit("usage: kb_api.py {list|get|reindex} <app> [path]")
+    cmd, app = sys.argv[1], sys.argv[2]
     agent = agent_id(app)
     if cmd == "list":
         print("\n".join(list_files(base, token, agent)))
     elif cmd == "get":
-        print(get_file(base, token, agent, args[2]))
+        print(get_file(base, token, agent, sys.argv[3]))
     elif cmd == "reindex":
         print(json.dumps(reindex(base, token, agent)))
     else:

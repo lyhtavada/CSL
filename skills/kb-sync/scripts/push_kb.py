@@ -1,27 +1,19 @@
 #!/usr/bin/env python3
 """
-push_kb.py — push reviewed KB patches to CS v2 (prod) or the sim gateway,
-then reindex.
+push_kb.py — push reviewed KB patches to CS v2, then reindex.
 
 Input: a payloads JSON file = array of {agent, path, content} objects
 (produced after the diff/review step). Each entry is POSTed to /api/kb/file
 (auto git commit), then the agent is reindexed once at the end.
 
 Usage:
-  python3 push_kb.py <payloads.json>                    # push to PROD (cs2.avada.net)
-  python3 push_kb.py <payloads.json> --target sim        # push to SIM (sim.avada.net) instead
-  python3 push_kb.py <payloads.json> --no-reindex        # write only, reindex later
-  python3 push_kb.py <payloads.json> --keep              # don't delete payload after push
+  python3 push_kb.py <payloads.json>
+  python3 push_kb.py <payloads.json> --no-reindex   # write only, reindex later
+  python3 push_kb.py <payloads.json> --keep         # don't delete payload after push
 
 Safe to re-run: writes are idempotent (same path+content overwrites).
 After a fully successful push (+ reindex unless --no-reindex), the payload file
 is deleted — it only exists to be pushed. Pass --keep to retain it.
-
-**Recommended safer flow (2026-09-04):** push to sim first
-(`--target sim --keep`), reindex, run kb-test against it, and only once that
-looks right, push the SAME kept payload file to prod (drop --target, drop
---keep on the final run). Sim has its own DB/KB snapshot — it does not
-auto-track prod, so pushing to sim never substitutes for the prod push.
 """
 import json
 import os
@@ -32,16 +24,13 @@ import kb_api
 
 def main():
     if len(sys.argv) < 2:
-        sys.exit("usage: push_kb.py <payloads.json> [--target sim|prod] [--no-reindex] [--keep]")
+        sys.exit("usage: push_kb.py <payloads.json> [--no-reindex]")
     payloads_path = sys.argv[1]
     flags = sys.argv[2:]
     do_reindex = "--no-reindex" not in flags
     do_cleanup = "--keep" not in flags
-    target = "prod"
-    if "--target" in flags:
-        target = flags[flags.index("--target") + 1]
 
-    base, token = kb_api.load_creds(target)
+    base, token = kb_api.load_creds()
     ops = json.load(open(payloads_path))
     if not ops:
         sys.exit("no payloads to push")
