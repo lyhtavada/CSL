@@ -118,7 +118,8 @@
     "ticket_url": "https://helpdesk.avada.net/tickets/BA2CCVN7pSkmUaI4Z7wy",
     "app": "chatty",
     "title": "[Bug] Ivy bịa cụ thể (UI path/setting/số liệu) bị answer-guard chặn — 78 ca/tháng, lever chính cho mục tiêu resolution rate 60%",
-    "occurrences": 1
+    "occurrences": 2,
+    "last_seen_app": "chatty"
   },
   "chatty-handoff-promise-no-tag": {
     "ticket_id": "UAUZu7KPm7VOGQ55F1zu",
@@ -134,6 +135,14 @@
     "ticket_url": "https://helpdesk.avada.net/tickets/7S5Tqim78CscHTYMyyTK",
     "app": "chatty",
     "title": "Ivy tạo ticket trùng lặp + gắn sai type DFY cho follow-up request",
+    "occurrences": 1
+  },
+  "chatty-answer-guard-degrades-correct-specific-to-generic": {
+    "ticket_id": "wUMGjVS23pCEZKCY8kZL",
+    "internal_id": "wUMGjVS23pCEZKCY8kZL",
+    "ticket_url": "https://helpdesk.avada.net/tickets/wUMGjVS23pCEZKCY8kZL",
+    "app": "chatty",
+    "title": "answer_guard downgrades a correct specific KB answer to a generic one, ignoring a matching lower-ranked chunk",
     "occurrences": 1
   }
 }
