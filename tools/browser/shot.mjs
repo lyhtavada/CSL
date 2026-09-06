@@ -71,6 +71,19 @@ const ctx = launched ? await browser.newContext({ viewport: { width: vw, height:
                      : browser.contexts()[0];
 const pages = ctx.pages();
 
+// Khi ATTACH vào Chrome của Liz: tuyệt đối không browser.close() — nó đóng luôn
+// mọi tab Liz đang mở. Chỉ dọn đúng tab do script này tạo ra rồi ngắt kết nối.
+let ownPage = null;
+async function finish(code) {
+  try {
+    if (launched) await browser.close();
+    // Attach: chỉ đóng tab do chính script mở ra. Không đụng browser —
+    // process.exit() bên dưới tự ngắt kết nối CDP, Chrome của Liz nguyên vẹn.
+    else if (ownPage) await ownPage.close().catch(() => {});
+  } catch {}
+  process.exit(code);
+}
+
 if (!launched && (has('--list') || (!has('--tab') && !has('--url')))) {
   console.log('Tab đang mở:');
   for (const [i, p] of pages.entries()) {
@@ -78,16 +91,17 @@ if (!launched && (has('--list') || (!has('--tab') && !has('--url')))) {
     console.log(`  [${i}] ${t}\n      ${p.url()}`);
   }
   if (!has('--list')) console.error('\nThiếu --tab <n> hoặc --url <link>.');
-  await browser.close(); process.exit(0);
+  await finish(0);
 }
 
 let page;
 if (has('--url')) {
   page = await ctx.newPage();
+  if (!launched) ownPage = page;
   await page.goto(val('--url'), { waitUntil: 'networkidle', timeout: 60000 });
 } else {
   page = pages[Number(val('--tab'))];
-  if (!page) { console.error('Không có tab số đó — chạy --list để xem.'); process.exit(1); }
+  if (!page) { console.error('Không có tab số đó — chạy --list để xem.'); await finish(1); }
   await page.bringToFront();
   if (has('--viewport')) await page.setViewportSize({ width: vw, height: vh });
 }
@@ -121,7 +135,7 @@ for (const step of vals('--do')) {
     }
   } catch (e) {
     console.error(`--do '${step}' thất bại: ${e.message.split('\n')[0]}`);
-    process.exit(1);
+    await finish(1);
   }
   console.error(`  ✓ ${step}`);
 }
@@ -173,4 +187,4 @@ if (!has('--no-upload')) {
   const out = execFileSync('python3', [path.join(import.meta.dirname, 'upload.py'), file], { encoding: 'utf8' });
   process.stdout.write(out);
 }
-await browser.close();
+await finish(0);
