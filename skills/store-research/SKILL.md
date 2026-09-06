@@ -62,68 +62,28 @@ là nguyên liệu duy nhất để dựng nhánh Problem.
 
 ## Bước 2 — Viết page
 
-**Một cấu trúc chung cho mọi store.** Section nào không có data thì vẫn giữ heading và
-ghi một dòng lý do (`Không lấy được: MCP storeleads từ chối quyền`), **không xoá section** —
-để các store so sánh được với nhau về sau.
+Cấu trúc report nằm ở 2 file riêng, **đọc file tương ứng trước khi viết**:
 
-Độ dài co giãn theo lượng data thật, không độn chữ. Store mới cài 2 tuần thì phần
-"Trạng thái sản phẩm" ngắn là đúng.
+| App | Template |
+|---|---|
+| Joy Loyalty | `skills/store-research/templates/joy.md` |
+| Chatty | `skills/store-research/templates/chatty.md` |
 
-```markdown
-## TL;DR
-3-5 gạch đầu dòng. Câu đầu luôn là: call ngày nào, với ai, mục đích gì, và Liz cần
-đạt được gì. Sau đó là 2-3 phát hiện đắt nhất.
+Hai file dùng **chung một bộ section, chung thứ tự** — để các store so sánh được với nhau —
+chỉ khác phần app-specific: "Trạng thái sản phẩm thật", checklist trong "Gap & cơ hội",
+và cụm demo mapping trong "Kịch bản call".
 
-## Account
-Bảng: Shop domain | Contact (tên, email, chức danh) | Ngành | Shopify plan | App plan +
-MRR | Ngày install | Doanh thu lifetime | Billing health | Nguồn (organic/referral/sale)
-| Stack app khác
+Ba luật chung, áp cho cả hai:
 
-## Bối cảnh merchant
-Ngành hàng, USP, đối tượng khách, quy mô, khoảng giá. Retention hiện có ngoài app mình.
-Nếu là prospect: vì sao họ đi tìm giải pháp (lấy từ form book demo / Crisp).
+- **Section không có data thì vẫn giữ heading**, ghi một dòng lý do
+  (`Không lấy được: MCP storeleads từ chối quyền`). Không xoá section.
+- **Không lấy được ≠ không có.** Phần nào script/MCP lỗi thì phải ghi đúng là không lấy
+  được, kèm lý do.
+- **Tách dữ kiện khỏi suy luận.** Số đọc từ hệ thống ghi thẳng; suy đoán mở đầu bằng
+  "đọc như là", "nhiều khả năng". Page Bloomable đã làm đúng chỗ này
+  ("đọc như 'cài rồi để mặc định'") — giữ thói quen đó.
 
-## Timeline
-Ngày → chuyện gì → ai. Gộp cả Crisp, ticket, call đã diễn ra, thao tác merchant tự làm
-trong app. Nhìn vào phải thấy được "ai đang chờ ai".
-
-## Trạng thái sản phẩm thật
-Joy → earning rules / redeem rules / VIP tier (bật hay tắt) / referral / widget, kèm
-%hoàn tính được và tổng điểm free không cần mua hàng.
-Chatty → chatbox config, AI resolution, coverage, human takeover, volume chat.
-Luôn ghi rõ số nào đọc từ storefront, số nào từ DB — hai nguồn có thể lệch.
-
-## Gap & cơ hội
-Đánh số. Mỗi gap: **hiện trạng (số cụ thể) → rủi ro/chi phí → đề xuất**. Mỗi đề xuất
-phải có bằng chứng đi kèm; không có số thì ghi là giả định.
-
-## Kịch bản call
-1. Mở đầu — 1 câu hỏi mở để họ tự nói ra vấn đề thật (đừng đoán trước hộ họ)
-2. Đào sâu — 2-3 nhánh follow-up, chỉ dùng nhánh khớp câu trả lời của họ
-3. Demo mapping — feature nào giải quyết vấn đề nào họ vừa nêu, kèm câu nói mẫu (tiếng Anh)
-4. Need-payoff — câu chốt để họ tự phát biểu KPI thành công 90 ngày
-5. Objection — objection dự đoán được + cách trả lời
-6. Đóng call — chốt bước tiếp theo + timeline
-
-Câu nói với merchant viết **tiếng Anh** (xem `_identity/tone-and-voice.md`).
-Ghi chú cho Liz viết tiếng Việt.
-
-## Câu hỏi cần hỏi
-Chỉ những câu **không tra được** bằng data. Thứ nào research ra rồi thì đừng hỏi lại
-merchant — mất uy tín.
-
-## Việc cần làm
-- [ ] Trước call
-- [ ] Sau call
-
-## Nguồn & khoảng trống
-Đã pull từ đâu, phần nào không lấy được và vì sao. Không có mục này thì người đọc
-sau không biết chỗ nào đáng nghi.
-```
-
-**Nguyên tắc:** phần suy luận phải tách khỏi phần dữ kiện. Con số đọc từ hệ thống ghi
-thẳng; suy đoán phải mở đầu bằng "đọc như là", "nhiều khả năng". Bloomable page đã làm
-đúng chỗ này ("đọc như 'cài rồi để mặc định'") — giữ thói quen đó.
+Độ dài co giãn theo lượng data thật, không độn chữ.
 
 ## Bước 3 — Push Notion + lưu repo
 

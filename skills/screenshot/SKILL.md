@@ -79,6 +79,25 @@ Output in ra 2 link: `page:` (gửi người khác) và `direct:` (nhúng Notion
    (Shopify admin, cs2) hay ra ảnh trắng hoặc lỗi 500 — đưa link mà không xem là
    đưa nhầm ảnh hỏng.
 
+## Chạy trên máy khác (mac mini)
+
+`start-chrome.sh` tự preflight, thiếu gì nó in ra. Chạy nó là biết ngay.
+
+Sync sẵn qua git: `shot.mjs`, `upload.py`, `start-chrome.sh`, **và cả
+`node_modules/`** (cố ý commit, 13MB, playwright-core thuần JS) → không cần
+`npm install` trên máy mới.
+
+Hai thứ **không** sync, phải làm lại trên từng máy:
+
+1. **Upload token** — đọc từ `~/.config/flameshot/flameshot.ini` (theo máy) hoặc
+   `CAPTURE_TOKEN`/`CAPTURE_URL` trong `~/CSL/.env` (`.env` bị gitignore nên không
+   sync). Máy mới chưa có Flameshot của Avada thì copy 2 dòng token sang `.env`.
+   Thiếu token vẫn chụp được, chỉ không ra link — thêm `--no-upload`.
+2. **Đăng nhập trong `~/.betty-chrome`** — profile nằm ngoài repo, máy mới phải
+   đăng nhập Shopify/Crisp lại một lần (kể cả 2FA).
+
+Ngoài ra máy đó cần Chrome và Node >= 20.11 (preflight tự kiểm tra).
+
 ## Bẫy đã gặp (đừng đạp lại)
 
 - **Chrome 136+ chặn `--remote-debugging-port` trên profile mặc định.** Lệnh cũ

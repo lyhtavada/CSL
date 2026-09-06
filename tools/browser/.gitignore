@@ -1,2 +1,4 @@
-node_modules/
-package-lock.json
+# CỐ Ý commit node_modules (13MB, playwright-core thuần JS, chạy được cả 2 máy).
+# Lý do: repo này sync giữa MacBook và mac mini bằng auto-sync git — commit sẵn
+# thì máy kia dùng được ngay, không cần npm install / không cần mạng npm.
+# Đừng thêm node_modules/ vào đây trừ khi đổi cách deploy.
