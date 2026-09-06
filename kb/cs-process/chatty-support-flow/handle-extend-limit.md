@@ -9,6 +9,17 @@ Khi merchant yêu cầu tăng limit cho Products, Custom Answers, URL & File, AI
 
 ## Plan Limits
 
+> ⚠️ **Số đang lệch giữa 3 nguồn — cần Tùng (PM Tesla) chốt trước khi dùng để trả lời MC** *(Betty rà 2026-09-06)*
+>
+> | Nguồn | URL & File (Free/Basic/Pro/Plus) | Custom answers / Questions |
+> |---|---|---|
+> | File này (cập nhật 2026-06-26) | 20 / 50 / 500 / Unlimited | 100 / 1,000 / Unlimited / Unlimited |
+> | help.chatty.net → Knowledge base | 20 / **200** / **2,000** / Unlimited | 100 / **5,000** / Unlimited / Unlimited |
+> | chatty.net/pricing | lệch tiếp, cột không khớp | — |
+>
+> Help center cũng ghi thêm 2 luật chưa có trong file này: **Questions chỉ tính vào limit khi ở trạng thái Live**, và **FAQs sync từ store không tính vào limit**.
+
+
 | Feature | Free | Basic ($19.99) | Pro ($68.99) | Plus ($199) |
 |---------|------|----------------|--------------|-------------|
 | AI conversations | 50/month | 100/month | 500/month | 1,000/month |
