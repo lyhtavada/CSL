@@ -7,13 +7,22 @@ nó attach vào Chrome mà Liz đang đăng nhập sẵn qua CDP.
 ## Bật 1 lần mỗi khi khởi động máy
 
 ```bash
-# 1) Thoát hẳn Chrome: Cmd+Q  (bắt buộc, không chỉ đóng cửa sổ)
-# 2) Mở lại ở chế độ debug:
-open -a "Google Chrome" --args --remote-debugging-port=9222
+~/CSL/tools/browser/start-chrome.sh
 ```
 
-Rồi đăng nhập Shopify / mở app Chatty như bình thường. Chrome vẫn dùng đúng
-profile, bookmark, session cũ — chỉ khác là có mở cổng debug ở localhost.
+Mở ra một cửa sổ Chrome **riêng của Betty** (profile `~/.betty-chrome`), có cổng
+debug. Chrome thường của Liz không bị đụng tới — chạy song song, không phải Cmd+Q.
+Script tự phát hiện nếu đã chạy sẵn thì thôi.
+
+Lần đầu: đăng nhập Shopify / Chatty / Crisp trong cửa sổ đó. Sau đó profile giữ
+session, khởi động lại máy vẫn còn đăng nhập.
+
+> **Vì sao phải profile riêng, không dùng profile chính?**
+> Từ Chrome 136, Google chặn `--remote-debugging-port` khi chạy trên profile mặc
+> định — vá lỗ hổng cho phép trang web bất kỳ đọc cookie qua cổng debug. Cách cũ
+> `open -a "Google Chrome" --args --remote-debugging-port=9222` giờ mở lên nhưng
+> cổng câm, không attach được. Đổi lại: Betty chỉ thấy được những gì Liz đăng nhập
+> trong profile của nó, không mò được vào toàn bộ session cá nhân.
 
 ## Dùng
 
