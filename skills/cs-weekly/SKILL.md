@@ -1,7 +1,7 @@
 ---
 name: cs-weekly
-description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created (Ticket API), chats (BigQuery crisp_chats), DFY created, App Store reviews (Shopify, sort_by=newest), and (Joy only) onboarding tickets ([ONB] prefix, 10-step checklist) — each compared vs the prior week — then clusters top issues from tickets (Ticket API, [dfy] excluded), scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
-version: 1.7.0
+description: Generate the weekly CS bulletin for the CS team of an app (Chatty or Joy) to read and stay on top of the week. Period = Monday→Sunday of LAST week. Pulls tickets created AND still open (Ticket API, [dfy] excluded from the ticket count/clustering unless noted), chats (BigQuery crisp_chats), DFY created, App Store reviews (Shopify, sort_by=newest), and (Joy only) onboarding tickets ([ONB] prefix, 10-step checklist) — each compared vs the prior week — then clusters top issues from those open tickets, scans the #product-release Slack channel for releases, publishes a team-facing report as a new sub-page at the TOP of the app's Notion page (title includes the date range), and posts a TL;DR digest (as Liz, with a Notion button) to the app's CS Slack channel. Coaching + recognition sections are left for Liz to fill/review. Use when Liz says "/cs-weekly", "CS weekly", "report tuần cho team", or it runs via cron Mon 9AM.
+version: 1.8.0
 ---
 
 # CS Weekly Skill
@@ -42,6 +42,11 @@ from an old file** (reports live in Notion only). Each block has `tickets_create
 `dfy_created`, `chats`. Sources: Ticket API (`AVD_TICKET_API_KEY`), BigQuery
 `avada_cs.crisp_chats` (Chatty = segments `app_chatty,app_faqs`; Joy = `app_joy`).
 
+**`tickets_created` = ticket created in the window AND still `ticketStatus == "open"`**
+(Liz's rule, 2026-09-07) — a ticket created in the window but already closed by the
+time of the pull is excluded from the count. `dfy_created` is the `[dfy]` subset of
+that same open set, not a separate total.
+
 **`chats` = real merchant conversations — NOT DISTINCT session_id.** Logic lives in
 `skills/_shared/chat_count.py` (shared with `/count-chats`, full rationale + validation
 numbers in its docstring): sessionize on merchant (`fromType='user'`) text messages only
@@ -69,8 +74,11 @@ Top issues come from **tickets** (Ticket API), NOT chats. Run for EACH app (chat
 python3 skills/cs-weekly/scripts/fetch_tickets.py --app {chatty|joy} --start {start} --end {end} --json
 ```
 Returns each ticket's `subject` + `description` + `priority` + `status` for the period.
-`[dfy]` tickets are **excluded by default** (they have their own row in §2 and aren't
-support issues) — pass `--include-dfy` only if Liz wants them counted.
+Only tickets still **`ticketStatus == "open"`** are returned by default (a ticket
+created in the window but already closed is excluded — pass `--include-closed` if
+Liz wants those back). `[dfy]` tickets are **excluded by default** (they have their
+own row in §2 and aren't support issues) — pass `--include-dfy` only if Liz wants
+them counted.
 
 Read the subjects + descriptions, cluster the asks into 3-5 themes. For EACH theme,
 **actually count** how many of the pulled tickets belong to it — do not eyeball or
@@ -306,7 +314,7 @@ is no .md file in the repo.
    last week (▲▼ on new), avg checklist %, table of open tickets, delayed (>14d) flag.
    From step 4d's JSON (`--compare`). Hidden if the week has no onboarding tickets
    (new or backlog). This block also goes into the Slack digest (Joy only).
-3. **🔥 Top issues** — 3-5 themes from tickets (Ticket API, `[dfy]` excluded), each with
+3. **🔥 Top issues** — 3-5 themes from open tickets (Ticket API, `ticketStatus == "open"` + `[dfy]` excluded), each with
    a real counted `{n}/{total}` (not a guessed fraction), a fix/KB pointer, and 2-3
    proof ticket links (`https://avada-ts-a9cb0.web.app` + `shortUrl`).
 4. **🆕 Cập nhật sản phẩm & policy** — releases from #product-release + known bugs open.
@@ -326,6 +334,13 @@ is no .md file in the repo.
   release feed `C07RNAY9ZC6` (§5) and bad-review feed `G019ZF7GM7H` (§5b).
 - **Bad-review scan triggers only for ≤3★** (Liz's rule). The feed is sparse
   (not every review) — no match ≠ error; just note it and skip the link.
+- **Ticket count = created in window AND `ticketStatus == "open"` at pull time**
+  (Liz's rule, 2026-09-07) — a ticket created and closed within the same window is
+  excluded from both the §2 volume number and §3 top-issue clustering. This applies
+  to `fetch_metrics.py`'s `tickets_created`/`dfy_created` and `fetch_tickets.py`'s
+  ticket list (both default to open-only; `--include-closed` on `fetch_tickets.py`
+  overrides for a one-off pull). `/dfy-tracker` (monthly KPI scoring) is unaffected —
+  it already pulled open-only and has its own `verified-by-csl` + `dueDateDone` rule.
 - Chatty has no DFY program yet → `dfy_created` is 0; keep the row but it's expected.
 - Chatty has no onboarding-ticket flow (`[ONB]`) → skip step 4d and the §2b section
   entirely for Chatty (don't show a 0 row).

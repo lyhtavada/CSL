@@ -6,6 +6,8 @@ weekly bulletin can cluster TOP ISSUES from tickets (not from chats).
 Returns each ticket's subject + description + priority + status so the caller can
 read the asks and cluster them into 3-5 themes. [dfy] tickets are EXCLUDED by
 default (they already have their own row in §2; they are not support issues).
+Only tickets still OPEN (ticketStatus == "open") are counted by default — a ticket
+created in the window and already closed is excluded (use --include-closed to keep it).
 
 Window is INCLUSIVE [start, end] in local time (Asia/Bangkok, +07).
 
@@ -60,6 +62,8 @@ def main():
     ap.add_argument("--end", required=True, help="YYYY-MM-DD inclusive")
     ap.add_argument("--include-dfy", action="store_true",
                     help="keep [dfy] tickets (default: excluded)")
+    ap.add_argument("--include-closed", action="store_true",
+                    help="keep tickets already closed (default: only ticketStatus == open)")
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
 
@@ -70,6 +74,8 @@ def main():
     if not a.include_dfy:
         tks = [t for t in tks
                if not (t.get("subject", "").strip().lower().startswith("[dfy]"))]
+    if not a.include_closed:
+        tks = [t for t in tks if t.get("ticketStatus") == "open"]
     rows = [slim(t) for t in tks]
 
     out = {"app": a.app, "start": a.start, "end": a.end,
@@ -78,7 +84,8 @@ def main():
     if a.json:
         print(json.dumps(out, ensure_ascii=False, indent=2))
     else:
-        print(f"{a.app} {a.start}–{a.end}: {len(rows)} tickets (dfy excluded={not a.include_dfy})")
+        print(f"{a.app} {a.start}–{a.end}: {len(rows)} tickets "
+              f"(dfy excluded={not a.include_dfy}, closed excluded={not a.include_closed})")
         for r in rows:
             print(f"  #{r['ticketNumber']} [{r['priority']}] {r['subject']}")
 

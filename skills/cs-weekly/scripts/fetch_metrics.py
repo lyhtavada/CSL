@@ -32,6 +32,8 @@ APP_CFG = {
 
 
 def ticket_counts(app_name, start, end, key):
+    """Tickets created in the window AND still open (ticketStatus == 'open').
+    A ticket created + already closed within the same window is excluded."""
     r = requests.get(
         f"{TICKET_BASE}/tickets/by-date",
         headers={"X-API-Key": key},
@@ -40,8 +42,8 @@ def ticket_counts(app_name, start, end, key):
     )
     r.raise_for_status()
     d = r.json().get("data", {})
-    tks = d.get("tickets", [])
-    total = d.get("total", len(tks))
+    tks = [t for t in d.get("tickets", []) if t.get("ticketStatus") == "open"]
+    total = len(tks)
     dfy = sum(1 for t in tks if t.get("subject", "").strip().lower().startswith("[dfy]"))
     return total, dfy
 
