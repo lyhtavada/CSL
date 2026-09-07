@@ -152,5 +152,13 @@
     "app": "chatty",
     "title": "Ivy bịa ra setting 'Search block' trong Chatbox → General → Blocks không tồn tại",
     "occurrences": 1
+  },
+  "ivy-ticket-type-misclassify-dfy": {
+    "ticket_id": "fXltZB1SArdQrQOHFRtZ",
+    "internal_id": "fXltZB1SArdQrQOHFRtZ",
+    "ticket_url": "https://helpdesk.avada.net/tickets/fXltZB1SArdQrQOHFRtZ",
+    "app": "chatty",
+    "title": "Ivy tạo nhầm ticket type: gắn 'DFY Chatbox setup' cho case không liên quan (bug email verification)",
+    "occurrences": 1
   }
 }
