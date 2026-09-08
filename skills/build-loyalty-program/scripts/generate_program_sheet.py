@@ -107,7 +107,7 @@ class TabBuilder:
     """Accumulates rows + tracks which row/col indices need which format,
     so formatting stays in sync with content without hardcoded row numbers."""
 
-    def __init__(self):
+    def __init__(self, status_default=True):
         self.rows = []
         self.title_idx = None
         self.note_idxs = []
@@ -116,6 +116,8 @@ class TabBuilder:
         self.editable = []  # (row_idx, col_idx)
         self.status_cells = []  # (row_idx, col_idx)
         self.max_cols = 1
+        self.status_default = status_default
+        self._content_width = 0  # column count of the current section, excluding Status
 
     def title(self, text):
         self.title_idx = len(self.rows)
@@ -133,16 +135,24 @@ class TabBuilder:
         self.section_idxs.append(len(self.rows))
         self.rows.append([text])
 
-    def colheader(self, cols, status=True):
-        cols = list(cols) + (["Status"] if status else [])
-        self.colheader_idxs[len(self.rows)] = len(cols)
-        self.rows.append(cols)
-        self.max_cols = max(self.max_cols, len(cols))
+    def colheader(self, cols, status=None):
+        show_status = self.status_default if status is None else status
+        self._content_width = len(cols)
+        full_cols = list(cols) + (["Status"] if show_status else [])
+        self.colheader_idxs[len(self.rows)] = len(full_cols)
+        self.rows.append(full_cols)
+        self.max_cols = max(self.max_cols, len(full_cols))
 
-    def data(self, row_values, editable_cols=(), status=True):
+    def data(self, row_values, editable_cols=(), status=None):
+        show_status = self.status_default if status is None else status
         values = list(row_values)
         idx = len(self.rows)
-        if status:
+        if show_status:
+            # pad to the current section's content width so Status always
+            # lands in its own column, even when trailing reference cells
+            # (Suggested/Note) are omitted for this row
+            while len(values) < self._content_width:
+                values.append("")
             self.status_cells.append((idx, len(values)))
             values.append(STATUS_DEFAULT)
         self.rows.append(values)
@@ -155,7 +165,7 @@ class TabBuilder:
 
 
 def build_setup(d):
-    t = TabBuilder()
+    t = TabBuilder(status_default=False)
     t.title("Program Setup")
     t.note(FILL_NOTE)
     t.blank()
