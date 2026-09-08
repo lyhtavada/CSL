@@ -101,7 +101,7 @@ def evaluate(data, cfg):
     for app_key, app in data["aiTickets"]["apps"].items():
         for t in app.get("tickets", []):
             matched = False
-            if t.get("tsStatus") in want:
+            if t.get("tsStatus") in want and t.get("ticketStatus") != "closed":
                 if not (ai["requireDueDateNotDone"] and t.get("dueDateDone") is True):
                     stale.append({**t, "bot": app.get("bot")})
                     matched = True
@@ -110,7 +110,12 @@ def evaluate(data, cfg):
             # picked it up. Independent condition, checked even if ③a above
             # didn't match (a ticket can't be both, since done_for_you isn't
             # in flagTsStatus, but keep this a separate `if` for clarity).
+            # Skip closed tickets: closing a ticket doesn't add the closer to
+            # memberIds (confirmed live 2026-09-08 — CHAT-260908-FYrRmH was
+            # closed by a human per memberUpdate but memberIds stayed
+            # [ai-agent-2] only, so ticketStatus is the real signal here).
             if (ai.get("flagDfyUnassigned") and t.get("tsStatus") == "done_for_you"
+                    and t.get("ticketStatus") != "closed"
                     and (t.get("memberIds") or []) == [AI_MEMBER_ID]):
                 dfy_unassigned.append({**t, "bot": app.get("bot")})
     stale.sort(key=lambda t: t.get("createdAt") or "")
