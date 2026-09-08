@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """
 generate_program_sheet.py — create a Google Sheet loyalty program proposal
-(4 tabs: Points Program / VIP Membership / Referral Program / Milestones & Quest).
+using Liz's standard build template (6 tabs: Setup, Earning, Redemption,
+VIP, Referral, Launch & Bootstrap).
 
 Usage:
   .venv-crisp/bin/python skills/build-loyalty-program/scripts/generate_program_sheet.py \
       --account "Acme Skincare" [--data path/to/data.json] [--share someone@avada.io]
 
-Prints the spreadsheet URL on success. Data schema matches the placeholder
-structure below — pass --data to fill real numbers, or edit the sheet
-directly afterward (values().update / batchUpdate) with real figures.
+Prints the spreadsheet URL on success. Pass --data with a JSON file matching
+the flat key schema in `default_data()` to pre-fill the Value cells with real
+numbers — otherwise the sheet is created blank (Value cells empty, pink) for
+Liz to fill in directly or hand to the account.
 
 Auth: uses gapi.client.sheets() (and drive() if --share is passed), authed
 as lyht@avada.io per gapi/auth_setup.py. The created sheet is owned by that
@@ -25,83 +27,384 @@ sys.path.insert(0, ROOT)
 
 from gapi.client import sheets as gsheets, drive as gdrive  # noqa: E402
 
-BRAND_PURPLE = {"red": 0.424, "green": 0.361, "blue": 0.902}  # #6C5CE7
+DARK = {"red": 0.10980392, "green": 0.05490196, "blue": 0.07058824}
+RED = {"red": 0.8980392, "green": 0.22352941, "blue": 0.20784314}
 WHITE = {"red": 1, "green": 1, "blue": 1}
+PINK = {"red": 0.9882353, "green": 0.88235295, "blue": 0.87058824}
 
-TAB_POINTS = "Points Program"
-TAB_VIP = "VIP Membership"
-TAB_REFERRAL = "Referral Program"
-TAB_MILESTONES = "Milestones & Quest"
-TABS = [TAB_POINTS, TAB_VIP, TAB_REFERRAL, TAB_MILESTONES]
+TAB_SETUP = "Setup"
+TAB_EARNING = "Earning"
+TAB_REDEMPTION = "Redemption"
+TAB_VIP = "VIP"
+TAB_REFERRAL = "Referral"
+TAB_LAUNCH = "Launch & Bootstrap"
+TABS = [TAB_SETUP, TAB_EARNING, TAB_REDEMPTION, TAB_VIP, TAB_REFERRAL, TAB_LAUNCH]
+
+FILL_NOTE = "Fill in the Value column (red cells). Suggested / Preset are defaults — adjust as needed."
+PLUS_ROW = "➕  Add your own — fill in the blank rows below"
 
 
 def default_data():
+    """Flat key -> value. Every key here maps to one editable Value cell.
+    Leave a key out (or empty string) to keep that cell blank in the sheet."""
     return {
-        "point_valuation": {
-            "point_value": "1 pt = $0.01",
-            "earning_rate": "X pts per $1",
-            "purchases_to_reward": "~2-3 orders",
-            "liability_estimate": "TBD",
-        },
-        "earning_rules": [["Purchase", "$1 spent", "TBD", ""]],
-        "redemption_rules": [["First reward", "% off", "TBD", "TBD", "TBD", ""]],
-        "paid_membership": False,
-        "tiers": [
-            ["Tier 1", "0", "1x", "Welcome bonus", "TBD"],
-            ["Tier 2", "3-5 purchases", "1.25x", "TBD", "TBD"],
-            ["Tier 3", "8-12 purchases", "1.5x", "TBD", "TBD"],
-            ["Tier 4 (VIP)", "15-20+ purchases", "2x", "TBD", "TBD"],
-        ],
-        "demotion_policy": "TBD",
-        "referral": [
-            ["Referrer Reward", "TBD (≈1 purchase worth of points)", ""],
-            ["Referee Reward", "10-20% off or $10-15 off", ""],
-            ["Min Purchase", "At or slightly above AOV", ""],
-            ["Sharing Channels", "Email, SMS, social", ""],
-            ["Anti-Cheat Settings", "TBD", ""],
-            ["Referral Message Template", "TBD", ""],
-        ],
-        "milestones": [["First order", "Order count", "1", "TBD", "TBD"]],
-        "quest": [[1, "TBD", "TBD", "TBD", "TBD"]],
+        # Setup
+        "store_domain": "", "app_plan": "Advanced/ Ultimate", "industry": "",
+        "program_goal": "", "desired_cashback_rate": "", "aov": "",
+        "target_launch_date": "", "used_loyalty_before": "", "migrating": "",
+        "program_name": "", "point_currency_name": "", "point_value": "",
+        "base_earn_rate": "", "point_expiry": "", "coupon_expiry": "",
+        "integ_email_sms": "", "integ_reviews": "", "integ_pos": "",
+        "integ_flow": "", "integ_subscriptions": "",
+        "migration_data": "", "migration_date": "",
+        # Earning
+        "earn_purchase": "", "earn_welcome": "", "earn_newsletter": "",
+        "earn_birthday": "", "earn_review": "", "earn_review_media": "",
+        "earn_google_review": "", "earn_ig": "", "earn_tiktok": "",
+        "earn_social_share": "",
+        "earn_birthday_tier1": "", "earn_birthday_tier2": "", "earn_birthday_tier3": "",
+        # Redemption
+        "redeem_min_points": "", "redeem_coupon_expiry": "",
+        "discount_fixed1_cost": "", "discount_fixed1_min": "", "discount_fixed1_combo": "",
+        "discount_fixed2_cost": "", "discount_fixed2_min": "", "discount_fixed2_combo": "",
+        "discount_pct_cost": "", "discount_pct_min": "", "discount_pct_combo": "",
+        "gift_product": "", "gift_cost": "", "gift_min": "", "gift_combo": "",
+        "shipping_cost": "", "shipping_min": "", "shipping_combo": "",
+        # VIP
+        "vip_calc_by": "", "vip_eval_window": "", "vip_multiplier_applies": "",
+        "vip_reeval_cycle": "",
+        "tier1_condition": "", "tier1_multiplier": "", "tier1_entry": "",
+        "tier1_entry_combo": "", "tier1_perk": "", "tier1_perk_combo": "",
+        "tier2_condition": "", "tier2_multiplier": "", "tier2_entry": "",
+        "tier2_entry_combo": "", "tier2_perk": "", "tier2_perk_combo": "",
+        "tier3_condition": "", "tier3_multiplier": "", "tier3_entry": "",
+        "tier3_entry_combo": "", "tier3_perk": "", "tier3_perk_combo": "",
+        # Referral
+        "referrer_gets": "", "referred_gets": "", "referral_condition": "",
+        "referral_by_tier": "", "referral_banner": "",
+        "referral_tier1": "", "referral_tier2": "", "referral_tier3": "",
+        # Launch & Bootstrap
+        "launch_widget": "", "launch_terms_page": "", "launch_email_templates": "",
+        "launch_staff_training": "", "launch_faq_doc": "",
+        "bootstrap_soft_launch_group": "", "bootstrap_signup_bonus": "",
+        "bootstrap_retroactive_points": "", "bootstrap_migration": "", "bootstrap_promo": "",
+        "public_launch_date": "", "public_announcement_channels": "", "public_launch_owner": "",
+        "monitor_redemption_target": "", "monitor_liability_checkin": "", "monitor_winback_email": "",
     }
+
+
+class TabBuilder:
+    """Accumulates rows + tracks which row/col indices need which format,
+    so formatting stays in sync with content without hardcoded row numbers."""
+
+    def __init__(self):
+        self.rows = []
+        self.title_idx = None
+        self.note_idxs = []
+        self.section_idxs = []
+        self.colheader_idxs = {}  # row_idx -> ncols
+        self.editable = []  # (row_idx, col_idx)
+        self.max_cols = 1
+
+    def title(self, text):
+        self.title_idx = len(self.rows)
+        self.rows.append([text])
+        self.max_cols = max(self.max_cols, 1)
+
+    def note(self, text):
+        self.note_idxs.append(len(self.rows))
+        self.rows.append([text])
+
+    def blank(self):
+        self.rows.append([])
+
+    def section(self, text):
+        self.section_idxs.append(len(self.rows))
+        self.rows.append([text])
+
+    def colheader(self, cols):
+        self.colheader_idxs[len(self.rows)] = len(cols)
+        self.rows.append(list(cols))
+        self.max_cols = max(self.max_cols, len(cols))
+
+    def data(self, row_values, editable_cols=()):
+        idx = len(self.rows)
+        self.rows.append(list(row_values))
+        for c in editable_cols:
+            self.editable.append((idx, c))
+        self.max_cols = max(self.max_cols, len(row_values))
+
+    def plus(self):
+        self.rows.append([PLUS_ROW])
+
+
+def build_setup(d):
+    t = TabBuilder()
+    t.title("Program Setup")
+    t.note(FILL_NOTE)
+    t.blank()
+    t.section("STORE INFO")
+    t.colheader(["Item", "Value", "Notes"])
+    t.data(["Store / domain", d.get("store_domain", "")], [1])
+    t.data(["App plan", d.get("app_plan", "")], [1])
+    t.data(["Industry", d.get("industry", "")], [1])
+    t.data(["Program goal", d.get("program_goal", ""), "e.g. retention/ higher AOV/ repeat purchase"], [1])
+    t.data(["Desired cashback rate", d.get("desired_cashback_rate", ""), "e.g. ~5% (point value x earn rate)"], [1])
+    t.data(["AOV (avg order value)", d.get("aov", "")], [1])
+    t.data(["Target launch date", d.get("target_launch_date", "")], [1])
+    t.data(["Used a loyalty app before?", d.get("used_loyalty_before", ""), "app name / no"], [1])
+    t.data(["Migrating?", d.get("migrating", ""), "yes → old app / no"], [1])
+    t.blank()
+    t.section("PROGRAM CONFIG")
+    t.colheader(["Item", "Value", "Suggested / Preset", "Notes"])
+    t.data(["Program name", d.get("program_name", ""), "\"[Brand] Club\" / \"[Brand] Rewards\""], [1])
+    t.data(["Point currency name", d.get("point_currency_name", ""), "\"[Brand] Points\" (e.g. Koko Points)", "branded currency = feels owned"], [1])
+    t.data(["Point value", d.get("point_value", ""), "1 pt = $0.01", "~5% rebate rate"], [1])
+    t.data(["Base earn rate", d.get("base_earn_rate", ""), "1 pt / $1 spent", "tier multipliers added in VIP tab"], [1])
+    t.data(["Point expiry", d.get("point_expiry", ""), "12 months inactivity", "win-back email before expiry"], [1])
+    t.data(["Coupon expiry", d.get("coupon_expiry", ""), "45 days from issue", "gives customers time to use"], [1])
+    t.blank()
+    t.section("APP INTEGRATIONS")
+    t.colheader(["Item", "Value", "Suggested / Preset", "Notes"])
+    t.data(["Email / SMS", d.get("integ_email_sms", ""), "Klaviyo / Omnisend — sync points & tier", "reward + win-back emails"], [1])
+    t.data(["Reviews", d.get("integ_reviews", ""), "Judge.me / Loox / Yotpo — points for reviews", "links to Earning tab"], [1])
+    t.data(["Shopify POS", d.get("integ_pos", ""), "earn & redeem in-store", "omnichannel"], [1])
+    t.data(["Shopify Flow", d.get("integ_flow", ""), "custom triggers (e.g. social share)", "used in Earning tab"], [1])
+    t.data(["Subscriptions", d.get("integ_subscriptions", ""), "Recharge / Loop / Appstle — earn on recurring orders", "reward subscribers"], [1])
+    t.plus()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.section("MIGRATION / IMPORT  (migrating only)")
+    t.colheader(["Item", "Value", "Suggested / Preset", "Notes"])
+    t.data(["Data to import", d.get("migration_data", ""), "points balance + tier + expiry", "export CSV from old app"], [1])
+    t.data(["Import date", d.get("migration_date", ""), "before launch", "freeze old app after export"], [1])
+    return t
+
+
+def build_earning(d):
+    t = TabBuilder()
+    t.title("Earning (how customers earn points)")
+    t.blank()
+    t.colheader(["Rule", "Action (Joy)", "Points Earned", "Suggested / Preset", "Note"])
+    t.data(["Purchase Reward", "Place Order", d.get("earn_purchase", ""), "1 pt / $1"], [2])
+    t.data(["Welcome Bonus", "Sign-Up", d.get("earn_welcome", ""), "200 pts"], [2])
+    t.data(["Newsletter Sign-Up", "Newsletter Sign-Up", d.get("earn_newsletter", ""), "50 pts"], [2])
+    t.data(["Birthday Gift", "Birthday Reward", d.get("earn_birthday", ""), "200–300 pts"], [2])
+    t.data(["Product Review", "Write Review", d.get("earn_review", ""), "50 pts"], [2])
+    t.data(["Photo/Video Review", "Write Review (media)", d.get("earn_review_media", ""), "150 pts"], [2])
+    t.data(["Google Review", "Google Reviews", d.get("earn_google_review", ""), "150 pts (limit 1/customer)"], [2])
+    t.data(["Follow Instagram", "Social Activity", d.get("earn_ig", ""), "30 pts"], [2])
+    t.data(["Follow TikTok", "Social Activity", d.get("earn_tiktok", ""), "30 pts"], [2])
+    t.data(["Social Share", "Custom (Shopify Flow)", d.get("earn_social_share", ""), "100 pts"], [2])
+    t.plus()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.section("BIRTHDAY REWARD (BY TIER - OPTIONAL)")
+    t.colheader(["Tier", "Reward", "Value", "Suggested / Preset", "Note"])
+    t.data(["Tier 1 (base)", "Points", d.get("earn_birthday_tier1", ""), "200 pts"], [2])
+    t.data(["Tier 2", "Points + gift", d.get("earn_birthday_tier2", ""), "300 pts + birthday gift"], [2])
+    t.data(["Tier 3", "Points + gift + perk", d.get("earn_birthday_tier3", ""), "300 pts + gift + free shipping"], [2])
+    t.plus()
+    return t
+
+
+def build_redemption(d):
+    t = TabBuilder()
+    t.title("Redemption (how customers redeem points)")
+    t.blank()
+    t.section("GENERAL RULE")
+    t.colheader(["General Rule", "Value", "Suggested"])
+    t.data(["Min points to redeem", d.get("redeem_min_points", ""), "100 pts"], [1])
+    t.data(["Coupon expiration", d.get("redeem_coupon_expiry", ""), "45 days from issue"], [1])
+    t.blank()
+    t.section("REWARDS — DISCOUNT (AMOUNT / PERCENTAGE)")
+    t.colheader(["Reward", "Type", "Cost (Points)", "Min purchase amount", "Discount combination", "Suggested / Preset", "Note"])
+    t.data(["Fixed amount off", "Amount off", d.get("discount_fixed1_cost", ""), d.get("discount_fixed1_min", ""), d.get("discount_fixed1_combo", ""), "100 pts = $5 off"], [2, 3, 4])
+    t.data(["Fixed amount off", "Amount off", d.get("discount_fixed2_cost", ""), d.get("discount_fixed2_min", ""), d.get("discount_fixed2_combo", ""), "500 pts = $30 off"], [2, 3, 4])
+    t.data(["Percentage off", "% off", d.get("discount_pct_cost", ""), d.get("discount_pct_min", ""), d.get("discount_pct_combo", ""), "500 pts = 10% off"], [2, 3, 4])
+    t.plus()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.section("REWARDS — FREE GIFT")
+    t.colheader(["Reward", "Product (names or links)", "Cost (Points)", "Min purchase amount", "Discount combination", "Suggested / Preset", "Note"])
+    t.data(["Free product", d.get("gift_product", ""), d.get("gift_cost", ""), d.get("gift_min", ""), d.get("gift_combo", ""), "(store dependent)"], [1, 2, 3, 4])
+    t.plus()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.section("REWARDS — FREE SHIPPING")
+    t.colheader(["Reward", "Type", "Cost (Points)", "Min purchase amount", "Discount combination", "Suggested / Preset", "Note"])
+    t.data(["Free shipping", "Free ship", d.get("shipping_cost", ""), d.get("shipping_min", ""), d.get("shipping_combo", ""), "300 pts"], [2, 3, 4])
+    t.plus()
+    return t
+
+
+def build_vip(d):
+    t = TabBuilder()
+    t.title("VIP Membership (if tiers used)")
+    t.blank()
+    t.note("Skip if the program is simple. Example (Maison Koko): Sipper → Steeper → Master.")
+    t.blank()
+    t.section("TIER CONFIG")
+    t.colheader(["Tier Config", "Value", "Suggested"])
+    t.data(["Tier calculated by", d.get("vip_calc_by", ""), "Amount spent OR points earned — pick one"], [1])
+    t.data(["Evaluation window", d.get("vip_eval_window", ""), "over 12 months"], [1])
+    t.data(["Point earn multiplied by tier?", d.get("vip_multiplier_applies", ""), "Yes — applies to Purchase Reward points only (e.g. 1x / 1.5x / 2x)"], [1])
+    t.data(["Re-evaluation cycle", d.get("vip_reeval_cycle", ""), "12 months"], [1])
+    t.blank()
+    t.section("TIERS")
+    t.colheader(["Tier", "Condition to Reach", "Earn Multiplier (purchase only - optional) ", "Entry rewards", "Entry reward combo", "Perk", "Perk combo", "Suggested / Preset"])
+    t.data(["Tier 1 (e.g. Silver / Sipper)", d.get("tier1_condition", ""), d.get("tier1_multiplier", ""), d.get("tier1_entry", ""), d.get("tier1_entry_combo", ""), d.get("tier1_perk", ""), d.get("tier1_perk_combo", ""), "1x — base earn"], [1, 2, 3, 4, 5, 6])
+    t.data(["Tier 2 (e.g. Gold / Steeper)", d.get("tier2_condition", ""), d.get("tier2_multiplier", ""), d.get("tier2_entry", ""), d.get("tier2_entry_combo", ""), d.get("tier2_perk", ""), d.get("tier2_perk_combo", ""), "1.5x — +earn, birthday gift"], [1, 2, 3, 4, 5, 6])
+    t.data(["Tier 3 (e.g. Platinum / Master)", d.get("tier3_condition", ""), d.get("tier3_multiplier", ""), d.get("tier3_entry", ""), d.get("tier3_entry_combo", ""), d.get("tier3_perk", ""), d.get("tier3_perk_combo", ""), "2x — early access, free shipping"], [1, 2, 3, 4, 5, 6])
+    t.plus()
+    return t
+
+
+def build_referral(d):
+    t = TabBuilder()
+    t.title("Referral")
+    t.blank()
+    t.colheader(["Item", "Value", "Suggested / Preset"])
+    t.data(["Referrer gets", d.get("referrer_gets", ""), "+200 pts after friend's first order"], [1])
+    t.data(["Referred friend gets", d.get("referred_gets", ""), "$10 off first order"], [1])
+    t.data(["Condition", d.get("referral_condition", ""), "min order $X"], [1])
+    t.data(["Referral points multiplied by tier?", d.get("referral_by_tier", ""), "Yes / No — higher tiers get bigger reward"], [1])
+    t.data(["Referral banner (widget)", d.get("referral_banner", ""), "on-brand image"], [1])
+    t.plus()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.blank()
+    t.section("REFERRAL REWARD BY TIER (OPTIONAL)")
+    t.colheader(["Tier", "Referrer gets", "Suggested"])
+    t.data(["Tier 1 (base)", d.get("referral_tier1", ""), "+200 pts"], [1])
+    t.data(["Tier 2", d.get("referral_tier2", ""), "+250 pts"], [1])
+    t.data(["Tier 3", d.get("referral_tier3", ""), "+300 pts"], [1])
+    return t
+
+
+def build_launch(d):
+    t = TabBuilder()
+    t.title("Launch & Bootstrap")
+    t.note(FILL_NOTE)
+    t.blank()
+    t.section("PRE-LAUNCH CHECKLIST")
+    t.colheader(["Item", "Value", "Suggested / Preset", "Notes"])
+    t.data(["Widget installed & on-brand", d.get("launch_widget", ""), "colors/logo match store", "check on desktop + mobile"], [1])
+    t.data(["Program name & T&C page live", d.get("launch_terms_page", ""), "", "link in footer"], [1])
+    t.data(["Email/SMS templates connected", d.get("launch_email_templates", ""), "welcome, points earned, birthday, expiry, redeem", "via Klaviyo/Omnisend"], [1])
+    t.data(["Staff/POS trained", d.get("launch_staff_training", ""), "", "skip if online-only"], [1])
+    t.data(["Terms & FAQ help doc published", d.get("launch_faq_doc", ""), "", "reduces CS tickets at launch"], [1])
+    t.plus()
+    t.blank()
+    t.blank()
+    t.section("BOOTSTRAP / SEEDING")
+    t.colheader(["Item", "Value", "Suggested / Preset", "Notes"])
+    t.data(["Soft launch group", d.get("bootstrap_soft_launch_group", ""), "VIPs / repeat customers first, 1-2 weeks", "test before public launch"], [1])
+    t.data(["Sign-up bonus for existing customers", d.get("bootstrap_signup_bonus", ""), "200-300 pts (match Welcome Bonus)", "rewards signing up during bootstrap window"], [1])
+    t.data(["Retroactive points for past purchases", d.get("bootstrap_retroactive_points", ""), "e.g. 1 pt/$1 on last 90 days orders", "optional, boosts perceived value at day 1"], [1])
+    t.data(["Migration import (if migrating)", d.get("bootstrap_migration", ""), "points balance + tier + expiry", "see Setup tab → Migration/Import"], [1])
+    t.data(["Launch promo", d.get("bootstrap_promo", ""), "double points week / referral boost", "drives first-week engagement"], [1])
+    t.plus()
+    t.blank()
+    t.blank()
+    t.section("PUBLIC LAUNCH")
+    t.colheader(["Item", "Value", "Suggested / Preset", "Notes"])
+    t.data(["Public launch date", d.get("public_launch_date", ""), "", ""], [1])
+    t.data(["Announcement channels", d.get("public_announcement_channels", ""), "email blast + on-site banner + social", ""], [1])
+    t.data(["Launch day monitoring owner", d.get("public_launch_owner", ""), "", "who watches for issues"], [1])
+    t.plus()
+    t.blank()
+    t.blank()
+    t.section("POST-LAUNCH MONITORING (30/60/90 DAYS)")
+    t.colheader(["Item", "Value", "Suggested / Preset", "Notes"])
+    t.data(["Redemption rate target", d.get("monitor_redemption_target", ""), ">20% of earned points redeemed", "too low = low perceived value"], [1])
+    t.data(["Point liability check-in", d.get("monitor_liability_checkin", ""), "30/60/90 days after launch", "catch runaway earn rate early"], [1])
+    t.data(["Follow-up win-back email", d.get("monitor_winback_email", ""), "to non-redeemers at 60 days", ""], [1])
+    t.plus()
+    return t
+
+
+BUILDERS = {
+    TAB_SETUP: build_setup,
+    TAB_EARNING: build_earning,
+    TAB_REDEMPTION: build_redemption,
+    TAB_VIP: build_vip,
+    TAB_REFERRAL: build_referral,
+    TAB_LAUNCH: build_launch,
+}
 
 
 def sheet_id_map(spreadsheet):
     return {s["properties"]["title"]: s["properties"]["sheetId"] for s in spreadsheet["sheets"]}
 
 
-def header_format_request(sheet_id, row_index, ncols):
-    return {
-        "repeatCell": {
-            "range": {
-                "sheetId": sheet_id,
-                "startRowIndex": row_index,
-                "endRowIndex": row_index + 1,
-                "startColumnIndex": 0,
-                "endColumnIndex": ncols,
-            },
-            "cell": {
-                "userEnteredFormat": {
-                    "backgroundColor": BRAND_PURPLE,
-                    "textFormat": {"bold": True, "foregroundColor": WHITE},
-                }
-            },
-            "fields": "userEnteredFormat(backgroundColor,textFormat)",
-        }
-    }
+def format_requests_for(sheet_id, builder):
+    reqs = []
 
-
-def autoresize_request(sheet_id, ncols):
-    return {
-        "autoResizeDimensions": {
-            "dimensions": {
-                "sheetId": sheet_id,
-                "dimension": "COLUMNS",
-                "startIndex": 0,
-                "endIndex": ncols,
+    def repeat(row_idx, ncols, bg, fg, size, bold=False, italic=False):
+        tf = {"foregroundColor": fg, "fontFamily": "Calibri", "fontSize": size}
+        if bold:
+            tf["bold"] = True
+        if italic:
+            tf["italic"] = True
+        reqs.append({
+            "repeatCell": {
+                "range": {
+                    "sheetId": sheet_id,
+                    "startRowIndex": row_idx,
+                    "endRowIndex": row_idx + 1,
+                    "startColumnIndex": 0,
+                    "endColumnIndex": ncols,
+                },
+                "cell": {"userEnteredFormat": {"backgroundColor": bg, "textFormat": tf}},
+                "fields": "userEnteredFormat(backgroundColor,textFormat)",
             }
+        })
+
+    ncols = builder.max_cols
+    if builder.title_idx is not None:
+        repeat(builder.title_idx, ncols, DARK, WHITE, 15, bold=True)
+    for idx in builder.note_idxs:
+        repeat(idx, ncols, RED, WHITE, 10, italic=True)
+    for idx in builder.section_idxs:
+        repeat(idx, ncols, RED, WHITE, 11, bold=True)
+    for idx, hcols in builder.colheader_idxs.items():
+        repeat(idx, hcols, DARK, WHITE, 10, bold=True)
+    for row_idx, col_idx in builder.editable:
+        reqs.append({
+            "repeatCell": {
+                "range": {
+                    "sheetId": sheet_id,
+                    "startRowIndex": row_idx,
+                    "endRowIndex": row_idx + 1,
+                    "startColumnIndex": col_idx,
+                    "endColumnIndex": col_idx + 1,
+                },
+                "cell": {"userEnteredFormat": {"backgroundColor": PINK}},
+                "fields": "userEnteredFormat(backgroundColor)",
+            }
+        })
+    reqs.append({
+        "autoResizeDimensions": {
+            "dimensions": {"sheetId": sheet_id, "dimension": "COLUMNS", "startIndex": 0, "endIndex": ncols}
         }
-    }
+    })
+    reqs.append({
+        "updateSheetProperties": {
+            "properties": {"sheetId": sheet_id, "gridProperties": {"hideGridlines": True}},
+            "fields": "gridProperties.hideGridlines",
+        }
+    })
+    return reqs
 
 
 def build(account, data, share_email):
@@ -111,7 +414,7 @@ def build(account, data, share_email):
         svc.spreadsheets()
         .create(
             body={
-                "properties": {"title": f"{account} — Joy Loyalty Program Proposal"},
+                "properties": {"title": f"{account} — Joy Loyalty Program"},
                 "sheets": [{"properties": {"title": t}} for t in TABS],
             }
         )
@@ -120,86 +423,19 @@ def build(account, data, share_email):
     spreadsheet_id = spreadsheet["spreadsheetId"]
     sheet_ids = sheet_id_map(spreadsheet)
 
-    value_updates = []
-    format_requests = []
-    max_cols = {}
+    builders = {tab: BUILDERS[tab](data) for tab in TABS}
 
-    # --- Tab 1: Points Program ---
-    pv = data.get("point_valuation", {})
-    rows = [
-        ["Point Valuation"],
-        ["Point value", pv.get("point_value", "")],
-        ["Earning rate", pv.get("earning_rate", "")],
-        ["Purchases to first reward", pv.get("purchases_to_reward", "")],
-        ["Annual point liability estimate", pv.get("liability_estimate", "")],
-        [],
-        ["Earning Rules"],
+    value_updates = [
+        {"range": f"'{tab}'!A1", "values": builders[tab].rows} for tab in TABS
     ]
-    earning_header_row = len(rows)
-    rows.append(["Rule Name", "Action", "Points Earned", "Notes/Details"])
-    rows.extend(data.get("earning_rules", []))
-    rows.append([])
-    rows.append(["Redemption Rules"])
-    redemption_header_row = len(rows)
-    rows.append(["Reward Name", "Type", "Points Required", "Discount Value", "Min Order", "Notes"])
-    rows.extend(data.get("redemption_rules", []))
-    rows.append(["Designed by Joy Loyalty"])
-
-    value_updates.append({"range": f"'{TAB_POINTS}'!A1", "values": rows})
-    format_requests.append(header_format_request(sheet_ids[TAB_POINTS], earning_header_row, 4))
-    format_requests.append(header_format_request(sheet_ids[TAB_POINTS], redemption_header_row, 6))
-    max_cols[TAB_POINTS] = 6
-
-    # --- Tab 2: VIP Membership ---
-    is_paid = data.get("paid_membership", False)
-    tier_header = (
-        ["Tier Name", "Subscription Trigger", "Earning Multiplier", "Entry Reward", "Perks/Benefits"]
-        if is_paid
-        else ["Tier Name", "Threshold (pts/$/orders)", "Earning Multiplier", "Entry Reward", "Perks/Benefits"]
-    )
-    rows2 = [tier_header]
-    rows2.extend(data.get("tiers", []))
-    rows2.append([])
-    rows2.append(["Demotion policy", data.get("demotion_policy", "")])
-    rows2.append(["Designed by Joy Loyalty"])
-
-    value_updates.append({"range": f"'{TAB_VIP}'!A1", "values": rows2})
-    format_requests.append(header_format_request(sheet_ids[TAB_VIP], 0, 5))
-    max_cols[TAB_VIP] = 5
-
-    # --- Tab 3: Referral Program ---
-    rows3 = [["Element", "Configuration", "Notes"]]
-    rows3.extend(data.get("referral", []))
-    rows3.append(["Designed by Joy Loyalty"])
-
-    value_updates.append({"range": f"'{TAB_REFERRAL}'!A1", "values": rows3})
-    format_requests.append(header_format_request(sheet_ids[TAB_REFERRAL], 0, 3))
-    max_cols[TAB_REFERRAL] = 3
-
-    # --- Tab 4: Milestones & Quest ---
-    rows4 = [["Individual Milestones"]]
-    milestone_header_row = len(rows4)
-    rows4.append(["Milestone Name", "Type", "Target", "Reward", "Customer Message"])
-    rows4.extend(data.get("milestones", []))
-    rows4.append([])
-    rows4.append(["Quest Journey"])
-    quest_header_row = len(rows4)
-    rows4.append(["Step #", "Action", "Target", "Reward", "Description"])
-    rows4.extend(data.get("quest", []))
-    rows4.append(["Designed by Joy Loyalty"])
-
-    value_updates.append({"range": f"'{TAB_MILESTONES}'!A1", "values": rows4})
-    format_requests.append(header_format_request(sheet_ids[TAB_MILESTONES], milestone_header_row, 5))
-    format_requests.append(header_format_request(sheet_ids[TAB_MILESTONES], quest_header_row, 5))
-    max_cols[TAB_MILESTONES] = 5
-
     svc.spreadsheets().values().batchUpdate(
         spreadsheetId=spreadsheet_id,
         body={"valueInputOption": "USER_ENTERED", "data": value_updates},
     ).execute()
 
-    for tab, ncols in max_cols.items():
-        format_requests.append(autoresize_request(sheet_ids[tab], ncols))
+    format_requests = []
+    for tab in TABS:
+        format_requests.extend(format_requests_for(sheet_ids[tab], builders[tab]))
 
     svc.spreadsheets().batchUpdate(
         spreadsheetId=spreadsheet_id, body={"requests": format_requests}
@@ -218,7 +454,7 @@ def build(account, data, share_email):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--account", required=True)
-    ap.add_argument("--data", help="path to JSON matching the schema (optional; placeholders used otherwise)")
+    ap.add_argument("--data", help="path to JSON matching the flat key schema in default_data() (optional; blank template otherwise)")
     ap.add_argument("--share", help="optional email to share the sheet with (drive.file scope, writer role)")
     args = ap.parse_args()
 

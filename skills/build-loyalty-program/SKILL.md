@@ -1,6 +1,6 @@
 ---
 name: build-loyalty-program
-description: Design or optimize a Joy Loyalty program for an EXISTING account (upsell/expansion angle) — new tier, added referral mechanic, higher-plan proposal. Outputs a live Google Sheet (Points / VIP / Referral / Milestones tabs) Liz can share or co-edit with the account. Use when Liz says "/build-loyalty-program", "thiết kế lại chương trình loyalty cho [account]", "đề xuất nâng cấp plan cho [account]", "optimize loyalty program cho [account]". Adapted from a sales prospecting skill (build-program) — this version assumes the account is ALREADY a Joy customer, not a cold prospect.
+description: Design or optimize a Joy Loyalty program for an EXISTING account (upsell/expansion angle) — new tier, added referral mechanic, higher-plan proposal. Outputs a live Google Sheet (Liz's standard template — Setup / Earning / Redemption / VIP / Referral / Launch & Bootstrap tabs) Liz can share or co-edit with the account. Use when Liz says "/build-loyalty-program", "thiết kế lại chương trình loyalty cho [account]", "đề xuất nâng cấp plan cho [account]", "optimize loyalty program cho [account]". Adapted from a sales prospecting skill (build-program) — this version assumes the account is ALREADY a Joy customer, not a cold prospect.
 argument-hint: "[account-name-or-shop-domain]"
 allowed-tools: "WebFetch, WebSearch, Bash, Read, Write, Edit, Glob, Grep, TodoWrite, AskUserQuestion"
 ---
@@ -59,7 +59,7 @@ If this is an **add-on to an existing program**, don't redesign what's already w
 
 ## Step 5: Generate the Google Sheet
 
-Write the real numbers from Steps 3-4 into a JSON file matching the schema in `scripts/generate_program_sheet.py` (`default_data()` shows the shape — point_valuation, earning_rules, redemption_rules, paid_membership, tiers, demotion_policy, referral, milestones, quest), then:
+Write the real numbers from Steps 3-4 into a JSON file with flat keys matching `default_data()` in `scripts/generate_program_sheet.py` (e.g. `program_name`, `point_value`, `base_earn_rate`, `earn_purchase`, `tier1_condition`, `referrer_gets`, `public_launch_date`... — every key maps to one Value cell; leave a key out to keep that cell blank), then:
 
 ```bash
 .venv-crisp/bin/python skills/build-loyalty-program/scripts/generate_program_sheet.py \
@@ -67,15 +67,17 @@ Write the real numbers from Steps 3-4 into a JSON file matching the schema in `s
   --data /tmp/<account>-program-data.json
 ```
 
-This creates a **new Google Sheet** (not an edit to an existing file) titled `{Account} — Joy Loyalty Program Proposal`, with 4 tabs and header formatting (Joy purple `#6C5CE7`, bold white text, auto-sized columns), and prints the sheet's URL. It's owned by the authed account (`lyht@avada.io`) and shows up in that Drive automatically — no separate save step needed.
+This creates a **new Google Sheet** (not an edit to an existing file) titled `{Account} — Joy Loyalty Program`, using Liz's standard build template — 6 tabs, dark/red header formatting with pink "Value" cells to fill, auto-sized columns — and prints the sheet's URL. It's owned by the authed account (`lyht@avada.io`) and shows up in that Drive automatically — no separate save step needed.
 
-Tabs (same structure as the sales version, now live-editable):
-1. **Points Program** — Earning Rules + Redemption Rules tables, valuation summary box at top
-2. **VIP Membership** — Tier Name, Threshold, Earning Multiplier, Entry Reward, Perks
-3. **Referral Program** — Referrer Reward, Referee Reward, Min Purchase, Sharing Channels, Anti-Cheat, Message Template
-4. **Milestones & Quest** — Individual Milestones + Quest Journey (branded step sequence)
+Tabs (Liz's standard template — same as the manually-built sheets she works from):
+1. **Setup** — store info, program config (name, point currency/value, earn rate, expiry), app integrations, migration/import
+2. **Earning** — how customers earn points (purchase, sign-up, review, social...) + birthday reward by tier
+3. **Redemption** — min points to redeem, discount rewards (amount/%), free gift, free shipping
+4. **VIP** — tier config (calculated by, evaluation window, multiplier) + tiers (condition, multiplier, entry reward, perks)
+5. **Referral** — referrer/referee reward, condition, tier-based referral bonus
+6. **Launch & Bootstrap** — pre-launch checklist, bootstrap/seeding (soft launch, sign-up bonus, retroactive points, migration, promo), public launch, post-launch monitoring (30/60/90 days)
 
-If the numbers aren't final yet, run without `--data` to scaffold the sheet with placeholders, then edit cells directly (or re-run with `--data` — note this creates a **new** sheet each run, it does not update an existing one).
+If the numbers aren't final yet, run without `--data` to scaffold the blank template, then edit cells directly (or re-run with `--data` — note this creates a **new** sheet each run, it does not update an existing one).
 
 To give the account or a teammate edit access directly, pass `--share <email>` (uses the `drive.file` scope — only works on sheets this script created).
 
@@ -91,7 +93,7 @@ To give the account or a teammate edit access directly, pass `--share <email>` (
 - **Points:** [unchanged / new rate]
 - **Tiers:** [new tier names + thresholds, or "unchanged"]
 - **Referral:** [new mechanic, or "unchanged"]
-- **Quest:** [if added]
+- **Launch plan:** [soft launch group + date, or "unchanged"]
 
 **Sheet:** [URL printed by the script]
 ```
