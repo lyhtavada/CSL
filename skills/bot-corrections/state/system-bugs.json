@@ -168,5 +168,29 @@
     "app": "chatty",
     "title": "Ivy falsely claims AI display-name change is 'not confirmed in KB'",
     "occurrences": 1
+  },
+  "chatty-rag-topmatch-ignored-in-generation": {
+    "ticket_id": "xdO7VHNahoCUmoDKjOBA",
+    "internal_id": "xdO7VHNahoCUmoDKjOBA",
+    "ticket_url": "https://helpdesk.avada.net/tickets/xdO7VHNahoCUmoDKjOBA",
+    "app": "chatty",
+    "title": "Ivy answers contradict top-scoring RAG chunk (email settings, mobile app)",
+    "occurrences": 1
+  },
+  "chatty-bug-route-skips-selfserve-kb-before-escalation": {
+    "ticket_id": "x2HdfaBe6BfixTtBTqKp",
+    "internal_id": "x2HdfaBe6BfixTtBTqKp",
+    "ticket_url": "https://helpdesk.avada.net/tickets/x2HdfaBe6BfixTtBTqKp",
+    "app": "chatty",
+    "title": "Ivy skips self-serve KB step and jumps to consult_ts diagnostic for 'no access to product catalog'",
+    "occurrences": 1
+  },
+  "chatty-proactive-nudge-ignores-session-language": {
+    "ticket_id": "KweKutpQhOWnFhgzgJNf",
+    "internal_id": "KweKutpQhOWnFhgzgJNf",
+    "ticket_url": "https://helpdesk.avada.net/tickets/KweKutpQhOWnFhgzgJNf",
+    "app": "chatty",
+    "title": "Ivy proactive/inactivity nudge reverts to English after session already switched to French",
+    "occurrences": 1
   }
 }
