@@ -497,11 +497,22 @@ def format_requests_for(sheet_id, builder):
             "innerVertical": BORDER_STYLE,
         }
     })
-    reqs.append({
-        "autoResizeDimensions": {
-            "dimensions": {"sheetId": sheet_id, "dimension": "COLUMNS", "startIndex": 0, "endIndex": ncols}
-        }
-    })
+    # Character-based column widths instead of autoResizeDimensions: a column
+    # that's blank in every row (e.g. "Note") auto-resizes down to ~30px and
+    # visually disappears, even though the header/column is really there.
+    for col in range(ncols):
+        maxlen = 0
+        for row in builder.rows:
+            if col < len(row) and row[col]:
+                maxlen = max(maxlen, len(str(row[col])))
+        pixel_size = max(90, min(420, maxlen * 7 + 24))
+        reqs.append({
+            "updateDimensionProperties": {
+                "range": {"sheetId": sheet_id, "dimension": "COLUMNS", "startIndex": col, "endIndex": col + 1},
+                "properties": {"pixelSize": pixel_size},
+                "fields": "pixelSize",
+            }
+        })
     reqs.append({
         "updateSheetProperties": {
             "properties": {"sheetId": sheet_id, "gridProperties": {"hideGridlines": True}},
