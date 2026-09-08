@@ -32,6 +32,8 @@ RED = {"red": 0.8980392, "green": 0.22352941, "blue": 0.20784314}
 WHITE = {"red": 1, "green": 1, "blue": 1}
 PINK = {"red": 0.9882353, "green": 0.88235295, "blue": 0.87058824}
 STATUS_COLOR = {"red": 0.85, "green": 0.92, "blue": 0.98}
+BORDER_COLOR = {"red": 0.9607843, "green": 0.8392157, "blue": 0.827451}
+BORDER_STYLE = {"style": "SOLID", "width": 1, "color": BORDER_COLOR}
 
 STATUS_OPTIONS = ["Not started", "In progress", "Live", "Skipped"]
 STATUS_DEFAULT = "Not started"
@@ -477,6 +479,24 @@ def format_requests_for(sheet_id, builder):
             }
         })
 
+    grid_range = {
+        "sheetId": sheet_id,
+        "startRowIndex": 0,
+        "endRowIndex": len(builder.rows),
+        "startColumnIndex": 0,
+        "endColumnIndex": ncols,
+    }
+    reqs.append({
+        "updateBorders": {
+            "range": grid_range,
+            "top": BORDER_STYLE,
+            "bottom": BORDER_STYLE,
+            "left": BORDER_STYLE,
+            "right": BORDER_STYLE,
+            "innerHorizontal": BORDER_STYLE,
+            "innerVertical": BORDER_STYLE,
+        }
+    })
     reqs.append({
         "autoResizeDimensions": {
             "dimensions": {"sheetId": sheet_id, "dimension": "COLUMNS", "startIndex": 0, "endIndex": ncols}
