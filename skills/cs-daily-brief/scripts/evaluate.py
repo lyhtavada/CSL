@@ -123,8 +123,10 @@ def evaluate(data, cfg):
     flags["aiStale"] = stale
     flags["aiDfyUnassigned"] = dfy_unassigned
 
-    # ④ Ticket cho Liz — báo hết.
-    liz = data["lizTickets"]["tickets"] if cfg["lizTickets"]["reportAll"] else []
+    # ④ Ticket cho Liz — báo hết, trừ ticket đã closed (đã xử lý xong, không
+    # cần Liz để mắt tới nữa).
+    liz = ([t for t in data["lizTickets"]["tickets"] if t.get("ticketStatus") != "closed"]
+           if cfg["lizTickets"]["reportAll"] else [])
     flags["lizTickets"] = liz
 
     # ⑤ Chat KH nhắn cuối, chưa ai (bot/CS) reply — báo hết, mỗi app kèm list.
