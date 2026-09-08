@@ -75,7 +75,8 @@ Tabs (Liz's standard template — same as the manually-built sheets she works fr
 3. **Redemption** — min points to redeem, discount rewards (amount/%), free gift, free shipping
 4. **VIP** — tier config (calculated by, evaluation window, multiplier) + tiers (condition, multiplier, entry reward, perks)
 5. **Referral** — referrer/referee reward, condition, tier-based referral bonus
-6. **Launch & Bootstrap** — pre-launch checklist, bootstrap/seeding (soft launch, sign-up bonus, retroactive points, migration, promo), public launch, post-launch monitoring (30/60/90 days)
+6. **Milestone** — individual achievement rewards (first order, loyal customer / order count, big spender / total spend, anniversary / account age)
+7. **Launch & Bootstrap** — pre-launch checklist, bootstrap/seeding (soft launch, sign-up bonus, retroactive points, migration, promo), public launch, post-launch monitoring (30/60/90 days)
 
 If the numbers aren't final yet, run without `--data` to scaffold the blank template, then edit cells directly (or re-run with `--data` — note this creates a **new** sheet each run, it does not update an existing one).
 

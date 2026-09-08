@@ -37,8 +37,9 @@ TAB_EARNING = "Earning"
 TAB_REDEMPTION = "Redemption"
 TAB_VIP = "VIP"
 TAB_REFERRAL = "Referral"
+TAB_MILESTONE = "Milestone"
 TAB_LAUNCH = "Launch & Bootstrap"
-TABS = [TAB_SETUP, TAB_EARNING, TAB_REDEMPTION, TAB_VIP, TAB_REFERRAL, TAB_LAUNCH]
+TABS = [TAB_SETUP, TAB_EARNING, TAB_REDEMPTION, TAB_VIP, TAB_REFERRAL, TAB_MILESTONE, TAB_LAUNCH]
 
 FILL_NOTE = "Fill in the Value column (red cells). Suggested / Preset are defaults — adjust as needed."
 PLUS_ROW = "➕  Add your own — fill in the blank rows below"
@@ -83,6 +84,11 @@ def default_data():
         "referrer_gets": "", "referred_gets": "", "referral_condition": "",
         "referral_by_tier": "", "referral_banner": "",
         "referral_tier1": "", "referral_tier2": "", "referral_tier3": "",
+        # Milestone
+        "milestone_first_order_target": "", "milestone_first_order_reward": "",
+        "milestone_loyal_target": "", "milestone_loyal_reward": "",
+        "milestone_big_spender_target": "", "milestone_big_spender_reward": "",
+        "milestone_anniversary_target": "", "milestone_anniversary_reward": "",
         # Launch & Bootstrap
         "launch_widget": "", "launch_terms_page": "", "launch_email_templates": "",
         "launch_staff_training": "", "launch_faq_doc": "",
@@ -291,6 +297,19 @@ def build_referral(d):
     return t
 
 
+def build_milestone(d):
+    t = TabBuilder()
+    t.title("Milestone (individual achievement rewards)")
+    t.blank()
+    t.colheader(["Milestone", "Type", "Target", "Reward", "Suggested / Preset", "Note"])
+    t.data(["First order", "Order count", d.get("milestone_first_order_target", ""), d.get("milestone_first_order_reward", ""), "1 order → welcome badge + bonus pts"], [2, 3])
+    t.data(["Loyal customer", "Order count", d.get("milestone_loyal_target", ""), d.get("milestone_loyal_reward", ""), "5 orders → 200 pts + badge"], [2, 3])
+    t.data(["Big spender", "Total spend", d.get("milestone_big_spender_target", ""), d.get("milestone_big_spender_reward", ""), "$500 lifetime → 300 pts"], [2, 3])
+    t.data(["Anniversary", "Account age", d.get("milestone_anniversary_target", ""), d.get("milestone_anniversary_reward", ""), "1 year → 100 pts + gift"], [2, 3])
+    t.plus()
+    return t
+
+
 def build_launch(d):
     t = TabBuilder()
     t.title("Launch & Bootstrap")
@@ -339,6 +358,7 @@ BUILDERS = {
     TAB_REDEMPTION: build_redemption,
     TAB_VIP: build_vip,
     TAB_REFERRAL: build_referral,
+    TAB_MILESTONE: build_milestone,
     TAB_LAUNCH: build_launch,
 }
 
