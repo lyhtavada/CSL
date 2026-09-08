@@ -31,6 +31,10 @@ DARK = {"red": 0.10980392, "green": 0.05490196, "blue": 0.07058824}
 RED = {"red": 0.8980392, "green": 0.22352941, "blue": 0.20784314}
 WHITE = {"red": 1, "green": 1, "blue": 1}
 PINK = {"red": 0.9882353, "green": 0.88235295, "blue": 0.87058824}
+STATUS_COLOR = {"red": 0.85, "green": 0.92, "blue": 0.98}
+
+STATUS_OPTIONS = ["Not started", "In progress", "Live", "Skipped"]
+STATUS_DEFAULT = "Not started"
 
 TAB_SETUP = "Setup"
 TAB_EARNING = "Earning"
@@ -110,6 +114,7 @@ class TabBuilder:
         self.section_idxs = []
         self.colheader_idxs = {}  # row_idx -> ncols
         self.editable = []  # (row_idx, col_idx)
+        self.status_cells = []  # (row_idx, col_idx)
         self.max_cols = 1
 
     def title(self, text):
@@ -128,17 +133,22 @@ class TabBuilder:
         self.section_idxs.append(len(self.rows))
         self.rows.append([text])
 
-    def colheader(self, cols):
+    def colheader(self, cols, status=True):
+        cols = list(cols) + (["Status"] if status else [])
         self.colheader_idxs[len(self.rows)] = len(cols)
-        self.rows.append(list(cols))
+        self.rows.append(cols)
         self.max_cols = max(self.max_cols, len(cols))
 
-    def data(self, row_values, editable_cols=()):
+    def data(self, row_values, editable_cols=(), status=True):
+        values = list(row_values)
         idx = len(self.rows)
-        self.rows.append(list(row_values))
+        if status:
+            self.status_cells.append((idx, len(values)))
+            values.append(STATUS_DEFAULT)
+        self.rows.append(values)
         for c in editable_cols:
             self.editable.append((idx, c))
-        self.max_cols = max(self.max_cols, len(row_values))
+        self.max_cols = max(self.max_cols, len(values))
 
     def plus(self):
         self.rows.append([PLUS_ROW])
@@ -413,6 +423,50 @@ def format_requests_for(sheet_id, builder):
                 "fields": "userEnteredFormat(backgroundColor)",
             }
         })
+
+    # Status column: group contiguous same-column cells into ranges so each
+    # block gets one background fill + one dropdown validation, not one per cell.
+    cells = sorted(builder.status_cells, key=lambda rc: (rc[1], rc[0]))
+    blocks = []
+    i = 0
+    while i < len(cells):
+        row0, col0 = cells[i]
+        row1 = row0
+        j = i + 1
+        while j < len(cells) and cells[j][1] == col0 and cells[j][0] == row1 + 1:
+            row1 = cells[j][0]
+            j += 1
+        blocks.append((row0, row1, col0))
+        i = j
+    for row0, row1, col0 in blocks:
+        rng = {
+            "sheetId": sheet_id,
+            "startRowIndex": row0,
+            "endRowIndex": row1 + 1,
+            "startColumnIndex": col0,
+            "endColumnIndex": col0 + 1,
+        }
+        reqs.append({
+            "repeatCell": {
+                "range": rng,
+                "cell": {"userEnteredFormat": {"backgroundColor": STATUS_COLOR}},
+                "fields": "userEnteredFormat(backgroundColor)",
+            }
+        })
+        reqs.append({
+            "setDataValidation": {
+                "range": rng,
+                "rule": {
+                    "condition": {
+                        "type": "ONE_OF_LIST",
+                        "values": [{"userEnteredValue": v} for v in STATUS_OPTIONS],
+                    },
+                    "showCustomUi": True,
+                    "strict": False,
+                },
+            }
+        })
+
     reqs.append({
         "autoResizeDimensions": {
             "dimensions": {"sheetId": sheet_id, "dimension": "COLUMNS", "startIndex": 0, "endIndex": ncols}
@@ -450,7 +504,7 @@ def build(account, data, share_email):
     ]
     svc.spreadsheets().values().batchUpdate(
         spreadsheetId=spreadsheet_id,
-        body={"valueInputOption": "USER_ENTERED", "data": value_updates},
+        body={"valueInputOption": "RAW", "data": value_updates},
     ).execute()
 
     format_requests = []

@@ -67,7 +67,7 @@ Write the real numbers from Steps 3-4 into a JSON file with flat keys matching `
   --data /tmp/<account>-program-data.json
 ```
 
-This creates a **new Google Sheet** (not an edit to an existing file) titled `{Account} — Joy Loyalty Program`, using Liz's standard build template — 6 tabs, dark/red header formatting with pink "Value" cells to fill, auto-sized columns — and prints the sheet's URL. It's owned by the authed account (`lyht@avada.io`) and shows up in that Drive automatically — no separate save step needed.
+This creates a **new Google Sheet** (not an edit to an existing file) titled `{Account} — Joy Loyalty Program`, using Liz's standard build template — 7 tabs, dark/red header formatting with pink "Value" cells to fill, a **Status** column on every table (dropdown: Not started / In progress / Live / Skipped, defaults to "Not started", light-blue cells) for tracking rollout progress after the proposal is approved, auto-sized columns — and prints the sheet's URL. It's owned by the authed account (`lyht@avada.io`) and shows up in that Drive automatically — no separate save step needed.
 
 Tabs (Liz's standard template — same as the manually-built sheets she works from):
 1. **Setup** — store info, program config (name, point currency/value, earn rate, expiry), app integrations, migration/import
@@ -76,7 +76,9 @@ Tabs (Liz's standard template — same as the manually-built sheets she works fr
 4. **VIP** — tier config (calculated by, evaluation window, multiplier) + tiers (condition, multiplier, entry reward, perks)
 5. **Referral** — referrer/referee reward, condition, tier-based referral bonus
 6. **Milestone** — individual achievement rewards (first order, loyal customer / order count, big spender / total spend, anniversary / account age)
-7. **Launch & Bootstrap** — pre-launch checklist, bootstrap/seeding (soft launch, sign-up bonus, retroactive points, migration, promo), public launch, post-launch monitoring (30/60/90 days)
+7. **Launch & Bootstrap** — pre-launch checklist, bootstrap/seeding, public launch, post-launch monitoring (30/60/90 days)
+
+Every table row across all 7 tabs also gets a **Status** column (dropdown, defaults "Not started") — use it after the proposal is approved to track which pieces are configured/live vs still pending, instead of a separate tracker doc.
 
 If the numbers aren't final yet, run without `--data` to scaffold the blank template, then edit cells directly (or re-run with `--data` — note this creates a **new** sheet each run, it does not update an existing one).
 
