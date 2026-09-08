@@ -34,6 +34,8 @@ PINK = {"red": 0.9882353, "green": 0.88235295, "blue": 0.87058824}
 STATUS_COLOR = {"red": 0.85, "green": 0.92, "blue": 0.98}
 BORDER_COLOR = {"red": 0.9607843, "green": 0.8392157, "blue": 0.827451}
 BORDER_STYLE = {"style": "SOLID", "width": 1, "color": BORDER_COLOR}
+BAND_WHITE = {"red": 1, "green": 1, "blue": 1}
+BAND_PINK = {"red": 0.99215686, "green": 0.95686275, "blue": 0.9529412}
 
 STATUS_OPTIONS = ["Not started", "In progress", "Live", "Skipped"]
 STATUS_DEFAULT = "Not started"
@@ -117,9 +119,11 @@ class TabBuilder:
         self.colheader_idxs = {}  # row_idx -> ncols
         self.editable = []  # (row_idx, col_idx)
         self.status_cells = []  # (row_idx, col_idx)
+        self.band_rows = []  # (row_idx, color) - alternating white/pink per data row
         self.max_cols = 1
         self.status_default = status_default
         self._content_width = 0  # column count of the current section, excluding Status
+        self._band_toggle = 0
 
     def title(self, text):
         self.title_idx = len(self.rows)
@@ -140,6 +144,7 @@ class TabBuilder:
     def colheader(self, cols, status=None):
         show_status = self.status_default if status is None else status
         self._content_width = len(cols)
+        self._band_toggle = 0  # banding restarts (white) after every new table
         full_cols = list(cols) + (["Status"] if show_status else [])
         self.colheader_idxs[len(self.rows)] = len(full_cols)
         self.rows.append(full_cols)
@@ -147,6 +152,8 @@ class TabBuilder:
 
     def data(self, row_values, editable_cols=(), status=None):
         show_status = self.status_default if status is None else status
+        self.band_rows.append((len(self.rows), BAND_WHITE if self._band_toggle == 0 else BAND_PINK))
+        self._band_toggle ^= 1
         values = list(row_values)
         idx = len(self.rows)
         if show_status:
@@ -421,6 +428,20 @@ def format_requests_for(sheet_id, builder):
         repeat(idx, ncols, RED, WHITE, 11, bold=True)
     for idx, hcols in builder.colheader_idxs.items():
         repeat(idx, hcols, DARK, WHITE, 10, bold=True)
+    for row_idx, color in builder.band_rows:
+        reqs.append({
+            "repeatCell": {
+                "range": {
+                    "sheetId": sheet_id,
+                    "startRowIndex": row_idx,
+                    "endRowIndex": row_idx + 1,
+                    "startColumnIndex": 0,
+                    "endColumnIndex": ncols,
+                },
+                "cell": {"userEnteredFormat": {"backgroundColor": color}},
+                "fields": "userEnteredFormat(backgroundColor)",
+            }
+        })
     for row_idx, col_idx in builder.editable:
         reqs.append({
             "repeatCell": {
