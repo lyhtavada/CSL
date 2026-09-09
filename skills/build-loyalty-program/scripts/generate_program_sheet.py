@@ -120,6 +120,8 @@ class TabBuilder:
         self.editable = []  # (row_idx, col_idx)
         self.status_cells = []  # (row_idx, col_idx)
         self.band_rows = []  # (row_idx, color) - alternating white/pink per data row
+        self.data_rows = []  # (row_idx, width) - data rows, for base font size
+        self.label_cells = []  # row_idx - column-0 label gets bold+larger text
         self.max_cols = 1
         self.status_default = status_default
         self._content_width = 0  # column count of the current section, excluding Status
@@ -167,6 +169,8 @@ class TabBuilder:
         self.rows.append(values)
         for c in editable_cols:
             self.editable.append((idx, c))
+        self.data_rows.append((idx, len(values)))  # for base fontSize
+        self.label_cells.append(idx)  # column 0 gets bold+larger label styling
         self.max_cols = max(self.max_cols, len(values))
 
     def plus(self):
@@ -426,8 +430,8 @@ def format_requests_for(sheet_id, builder):
         repeat(idx, ncols, RED, WHITE, 10, italic=True)
     for idx in builder.section_idxs:
         repeat(idx, ncols, RED, WHITE, 11, bold=True)
-    for idx, hcols in builder.colheader_idxs.items():
-        repeat(idx, hcols, DARK, WHITE, 10, bold=True)
+    for idx in builder.colheader_idxs:
+        repeat(idx, ncols, DARK, WHITE, 10, bold=True)  # full tab width, not just this table's own columns
     for row_idx, color in builder.band_rows:
         reqs.append({
             "repeatCell": {
@@ -440,6 +444,34 @@ def format_requests_for(sheet_id, builder):
                 },
                 "cell": {"userEnteredFormat": {"backgroundColor": color}},
                 "fields": "userEnteredFormat(backgroundColor)",
+            }
+        })
+    for row_idx, width in builder.data_rows:
+        reqs.append({
+            "repeatCell": {
+                "range": {
+                    "sheetId": sheet_id,
+                    "startRowIndex": row_idx,
+                    "endRowIndex": row_idx + 1,
+                    "startColumnIndex": 0,
+                    "endColumnIndex": width,
+                },
+                "cell": {"userEnteredFormat": {"textFormat": {"fontSize": 10}}},
+                "fields": "userEnteredFormat.textFormat.fontSize",
+            }
+        })
+    for row_idx in builder.label_cells:
+        reqs.append({
+            "repeatCell": {
+                "range": {
+                    "sheetId": sheet_id,
+                    "startRowIndex": row_idx,
+                    "endRowIndex": row_idx + 1,
+                    "startColumnIndex": 0,
+                    "endColumnIndex": 1,
+                },
+                "cell": {"userEnteredFormat": {"textFormat": {"bold": True, "fontSize": 11}}},
+                "fields": "userEnteredFormat.textFormat(bold,fontSize)",
             }
         })
     for row_idx, col_idx in builder.editable:
