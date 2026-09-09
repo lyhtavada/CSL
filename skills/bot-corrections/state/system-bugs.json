@@ -78,7 +78,8 @@
     "ticket_url": "https://helpdesk.avada.net/tickets/l0uRxex05gPN6ls51rZt",
     "app": "joy",
     "title": "Joyce (Joy AI): answer-guard chặn 43 ca/tháng vì bot bịa path/plan/fact — kể cả khi KB đã có câu trả lời đúng",
-    "occurrences": 1
+    "occurrences": 2,
+    "last_seen_app": "joy"
   },
   "joy-handoff-promise-and-envelope-reply-bugs": {
     "ticket_id": "c3D5rv4kZf3xFa39tWjW",
@@ -191,6 +192,14 @@
     "ticket_url": "https://helpdesk.avada.net/tickets/KweKutpQhOWnFhgzgJNf",
     "app": "chatty",
     "title": "Ivy proactive/inactivity nudge reverts to English after session already switched to French",
+    "occurrences": 1
+  },
+  "chatty-whatsapp-known-gap-masks-documented-content": {
+    "ticket_id": "kxnWP9z8DQmnVipNPQac",
+    "internal_id": "kxnWP9z8DQmnVipNPQac",
+    "ticket_url": "https://helpdesk.avada.net/tickets/kxnWP9z8DQmnVipNPQac",
+    "app": "chatty",
+    "title": "Ivy refuses to confirm WhatsApp migration steps it had already given minutes earlier in the same session",
     "occurrences": 1
   }
 }
