@@ -113,6 +113,10 @@ Key references:
 
 When Liz asks you to do something, execute it directly. Don't explore the codebase or ask clarifying questions unless truly ambiguous. Bias toward action.
 
+## Secret Sharing
+
+Từ 2026-09-10: chia sẻ password/token/credential trong team dùng **secret.avada.net** (public = link + Google login; private = chỉ email Avada được chỉ định; có expiry + giới hạn view; mỗi view log tên/email/thời gian/IP). Skill `/share-secret`, `/share-password` hoặc `/share-pass`. KHÔNG paste credential thẳng vào Slack hoặc commit vào git nữa — kể cả khi trả lời nhanh cho đồng nghiệp.
+
 ## Deployment
 
 Always read project config files (render.yaml, package.json, docker-compose.yml, etc.) BEFORE giving deployment or environment advice. Never give generic instructions — use project-specific context.
