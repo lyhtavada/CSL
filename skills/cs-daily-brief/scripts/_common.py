@@ -40,7 +40,7 @@ NICK2NAME = {
     "HangHM": "Hana", "VanCT": "Audrey", "LyPK": "Alyssa", "PhuongNT": "Jade",
     "HuyTC": "Sonny", "AnhLN": "Alicia", "MinhBT": "Mirra", "AnhBD": "Andy",
     "HienPT": "Hazel", "TrangNTH": "Megan", "ThaoLTT": "Rosie", "ChauHM": "Cody",
-    "PhuongTTM": "Phoebe", "LinhTLK": "Linda", "LyHT": "Liz", "HieuNM": "Hiếu",
+    "PhuongTTM": "Phoebe", "LinhTLK": "Linda", "LyHT": "Liz", "HieuNM": "Ethan",
 }
 TEAM = set(NICK2NAME.keys())
 

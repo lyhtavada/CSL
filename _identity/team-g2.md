@@ -18,7 +18,7 @@
 | 80 | Hoàng Minh Châu | CS | Chatty | Partime | ChauHM | U08TZM2LL74 | cody_avada | Cody | chauhm@avadagroup.com | 1998 | | cá nhân | remote |
 | 87 | Trần Thị Mai Phương | CTV | Chatty | Fulltime | PhuongTTM | U0A84BE00FK | phoebe_avada | Phoebe | phuongttm.ctv@avadagroup.com | 1998 | | | in-house |
 | 90 | Trương Lê Khánh Linh | CS | Chatty | Fulltime | LinhTLK | U0AHSHQU59T | linda1_avada | Linda | linhtlk@avadagroup.com | 2002 | 0942795456 | | in-house |
-| — | Nguyễn Minh Hiếu | CS | | Fulltime | HieuNM | U09SNTWE3KJ | | | hieunm02@avadagroup.com | | | | in-house |
+| — | Nguyễn Minh Hiếu | CS | Joy | Fulltime | HieuNM | U09SNTWE3KJ | | Ethan | hieunm02@avadagroup.com | | | | in-house |
 
 **Offboarded:** Nguyễn Thị Huyền Trang (#68, Megan) — offboarded 2026-07-20. Hoàng Mỹ Hằng (#9, Hana) — offboarded 2026-08-17.
 
