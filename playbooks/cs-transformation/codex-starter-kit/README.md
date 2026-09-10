@@ -32,3 +32,4 @@ codex-starter-kit/
 - Đây là workspace luyện tập — **không bỏ data thật nhạy cảm của merchant** (thông tin thanh toán, mật khẩu) vào `data/` nếu chưa cần thiết.
 - Mọi output ở đây là **nháp để luyện tập** — không gửi thẳng cho merchant hay đăng lên Slack team nếu chưa qua review.
 - Xem đầy đủ nguyên tắc an toàn ở Mục 9 trong `../codex-training-plan.md`.
+- **Thực hành với data thật (Crisp/Helpdesk):** chỉ làm sau khi đã quen thao tác cơ bản. API key **không bao giờ** paste vào chat với Codex — làm theo `notes/setup-api-access.md` để tạo file `.env`.

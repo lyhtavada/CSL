@@ -160,6 +160,27 @@ Chọn 3–4 bài theo đúng công việc hàng ngày của CS, làm trực ti�
 
 ---
 
+## 9.5 Thực hành với data thật — API Crisp & Helpdesk
+
+Chỉ mở phần này **sau khi** mỗi người đã có "second brain" riêng (`codex-starter-kit/`
+đã copy ra, `AGENTS.md` đã điền, làm quen Mục 6-8) — đây là bước nâng lên
+data thật thay vì file mẫu.
+
+- **Trước khi cấp key:** rotate/scope key Crisp + Helpdesk riêng cho training
+  (đọc-only nếu tool hỗ trợ), không phát key admin/production thật đang dùng
+  cho hệ thống live.
+- **Cấp key cho từng người:** dùng `secret.avada.net` (link riêng từng người,
+  private mode, hết hạn sau vài ngày) — **không** dán key vào nhóm Slack chung
+  dưới mọi hình thức.
+- **CS tự setup:** làm theo `codex-starter-kit/notes/setup-api-access.md` —
+  tạo file `.env`, điền key vào đó, **không paste key vào chat với Codex**.
+- **An toàn:** `.gitignore` trong `codex-starter-kit/` đã tự chặn `.env` khỏi
+  git — nhắc CS kiểm tra `git status` trước khi push lên `git.avada.net`.
+- **Bài thực hành gợi ý:** tóm tắt ticket Helpdesk mới nhất của mình, tóm tắt
+  đoạn chat Crisp gần nhất, so sánh workload tuần này vs tuần trước.
+
+---
+
 ## 10. Nâng cao (tuỳ chọn): đóng gói việc lặp lại thành lệnh riêng
 
 Phần này không bắt buộc trong training cơ bản — dành cho ai muốn đi xa hơn sau khi đã quen dùng hàng ngày (Mục 6–9).
