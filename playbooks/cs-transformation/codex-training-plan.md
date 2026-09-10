@@ -160,24 +160,35 @@ Chọn 3–4 bài theo đúng công việc hàng ngày của CS, làm trực ti�
 
 ---
 
-## 9.5 Thực hành với data thật — API Crisp & Helpdesk
+## 9.5 Thực hành với data thật — BigQuery (Crisp) & Avada Ticket API, Slack cá nhân
 
 Chỉ mở phần này **sau khi** mỗi người đã có "second brain" riêng (`codex-starter-kit/`
 đã copy ra, `AGENTS.md` đã điền, làm quen Mục 6-8) — đây là bước nâng lên
 data thật thay vì file mẫu.
 
-- **Trước khi cấp key:** rotate/scope key Crisp + Helpdesk riêng cho training
-  (đọc-only nếu tool hỗ trợ), không phát key admin/production thật đang dùng
-  cho hệ thống live.
-- **Cấp key cho từng người:** dùng `secret.avada.net` (link riêng từng người,
-  private mode, hết hạn sau vài ngày) — **không** dán key vào nhóm Slack chung
-  dưới mọi hình thức.
-- **CS tự setup:** làm theo `codex-starter-kit/notes/setup-api-access.md` —
-  tạo file `.env`, điền key vào đó, **không paste key vào chat với Codex**.
+- **Nguồn data:** đọc chat Crisp qua **BigQuery** (`avada-crm.avada_cs.crisp_chats`),
+  **không** dùng Crisp API trực tiếp — cùng cách Betty đang dùng cho Liz.
+  Ticket dùng chung **Avada Ticket API** Liz đang dùng hàng ngày.
+- **Cấp credential cho toàn team CS:** dùng `secret.avada.net`, private mode,
+  liệt kê email tất cả CS trong `recipientEmails` — **không** dán key vào
+  nhóm Slack chung dưới mọi hình thức. 1 link chung cho BigQuery SA key +
+  Ticket API key.
+- **Slack cá nhân:** mỗi người tự lấy **personal token của riêng mình**
+  (không dùng chung) để Codex hành động như chính họ trên Slack — làm theo
+  `codex-starter-kit/notes/setup-slack-personal-token.md`.
+- **CS tự setup:** làm theo `codex-starter-kit/notes/setup-api-access.md`
+  (BigQuery + Ticket) — tạo file `.env`, điền credential vào đó, **không**
+  paste vào chat với Codex.
 - **An toàn:** `.gitignore` trong `codex-starter-kit/` đã tự chặn `.env` khỏi
   git — nhắc CS kiểm tra `git status` trước khi push lên `git.avada.net`.
-- **Bài thực hành gợi ý:** tóm tắt ticket Helpdesk mới nhất của mình, tóm tắt
-  đoạn chat Crisp gần nhất, so sánh workload tuần này vs tuần trước.
+  Credential dùng chung cho cả team — lộ 1 chỗ ảnh hưởng tất cả, rotate ngay
+  nếu nghi ngờ.
+- **Lưu trữ:** sau khi setup xong, mỗi người tự tạo 1 repo riêng trên
+  `git.avada.net` để backup workspace của mình — không cần dùng chung 1 repo
+  mẫu, mỗi người lưu bản của mình.
+- **Bài thực hành gợi ý:** tóm tắt ticket Avada Ticket mới nhất của mình, tóm
+  tắt đoạn chat Crisp gần nhất qua BigQuery, so sánh workload tuần này vs
+  tuần trước.
 
 ---
 
