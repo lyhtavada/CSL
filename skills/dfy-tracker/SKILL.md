@@ -85,6 +85,7 @@ Map via the `trello username` the API returns (or `displayName` as fallback):
 | megan_avada | Megan | TrangNTH |
 | cody_avada | Cody | ChauHM |
 | phoebe_avada | Phoebe | PhuongTTM |
+| TODO | Hiếu | HieuNM |
 | linda1_avada | Linda | LinhTLK |
 
 > Source of truth: `_identity/team-g2.md` (columns "Nickname (KPI)" + "Trello username"). If a new CS appears in the API but not in this table, fall back to the raw `displayName` and flag it in the output so the table here can be updated.

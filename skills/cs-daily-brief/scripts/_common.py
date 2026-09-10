@@ -34,12 +34,13 @@ EMAIL2NICK = {
     "trangnth.ctv@avadagroup.com": "TrangNTH", "thaoltt.ctv@avadagroup.com": "ThaoLTT",
     "chauhm@avadagroup.com": "ChauHM", "phuongttm.ctv@avadagroup.com": "PhuongTTM",
     "linhtlk@avadagroup.com": "LinhTLK", "lyht@avada.io": "LyHT",
+    "hieunm02@avadagroup.com": "HieuNM",
 }
 NICK2NAME = {
     "HangHM": "Hana", "VanCT": "Audrey", "LyPK": "Alyssa", "PhuongNT": "Jade",
     "HuyTC": "Sonny", "AnhLN": "Alicia", "MinhBT": "Mirra", "AnhBD": "Andy",
     "HienPT": "Hazel", "TrangNTH": "Megan", "ThaoLTT": "Rosie", "ChauHM": "Cody",
-    "PhuongTTM": "Phoebe", "LinhTLK": "Linda", "LyHT": "Liz",
+    "PhuongTTM": "Phoebe", "LinhTLK": "Linda", "LyHT": "Liz", "HieuNM": "Hiếu",
 }
 TEAM = set(NICK2NAME.keys())
 

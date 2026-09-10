@@ -70,7 +70,7 @@ weekly. The "Loại" column in `_identity/team-g2.md` marks each CS as
 code change. (Liz the CSL is `csl` and never in `in-house`, so she's excluded
 automatically; no need for `--exclude Liz`.)
 
-Current in-house (9): Hana, Audrey, Alyssa, Jade, Sonny, Andy, Hazel, Phoebe, Linda.
+Current in-house (9): Audrey, Alyssa, Jade, Sonny, Andy, Hazel, Phoebe, Linda, Hiếu.
 
 **Source = BigQuery, NOT the Crisp `assigned` field.** The API's `agentUser`
 only marks ONE owner per session and misses 70-90% of the chats a CS actually
