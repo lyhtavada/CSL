@@ -24,7 +24,6 @@
 - Khi tạo nội dung (báo cáo, FAQ, email), **làm trực tiếp trong session**, không cần viết script
 - **Luôn để mình duyệt trước khi gửi bất cứ thứ gì ra ngoài** (merchant, Slack, hệ thống live) — đây là nguyên tắc bắt buộc, không có ngoại lệ
 - Không paste/lưu data nhạy cảm của merchant (thanh toán, mật khẩu) vào workspace này nếu không thật sự cần
-- **Không bao giờ paste API key/token (BigQuery, Avada Ticket, Slack...) trực tiếp vào chat với Codex** — key chỉ để trong file `.env` (xem `notes/setup-api-access.md` và `notes/setup-slack-personal-token.md`)
 
 ## Nguồn dữ liệu tôi hay dùng
 
