@@ -201,5 +201,21 @@
     "app": "chatty",
     "title": "Ivy refuses to confirm WhatsApp migration steps it had already given minutes earlier in the same session",
     "occurrences": 1
+  },
+  "after-sales-support-scenarios-vs-skills-toggle-confusion": {
+    "ticket_id": "6yaTNkWPEd8HwEVQ5Sgl",
+    "internal_id": "6yaTNkWPEd8HwEVQ5Sgl",
+    "ticket_url": "https://helpdesk.avada.net/tickets/6yaTNkWPEd8HwEVQ5Sgl",
+    "app": "chatty",
+    "title": "Ivy: tells merchant to toggle After-sales support skill via Scenarios page, should be Skills page",
+    "occurrences": 1
+  },
+  "screenshot-vision-not-grounded": {
+    "ticket_id": "mkfrscyN1VkFXvI4mMAk",
+    "internal_id": "mkfrscyN1VkFXvI4mMAk",
+    "ticket_url": "https://helpdesk.avada.net/tickets/mkfrscyN1VkFXvI4mMAk",
+    "app": "chatty",
+    "title": "Ivy: claims visual confirmation from merchant screenshots without grounded image analysis",
+    "occurrences": 1
   }
 }
