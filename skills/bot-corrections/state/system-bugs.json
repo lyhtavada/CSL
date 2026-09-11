@@ -217,5 +217,37 @@
     "app": "chatty",
     "title": "Ivy: claims visual confirmation from merchant screenshots without grounded image analysis",
     "occurrences": 1
+  },
+  "chatty-dfy-stale-intake-misapplied-topic-switch": {
+    "ticket_id": "F1OhMJmQPBhmph3OoCT8",
+    "internal_id": "F1OhMJmQPBhmph3OoCT8",
+    "ticket_url": "https://helpdesk.avada.net/tickets/F1OhMJmQPBhmph3OoCT8",
+    "app": "chatty",
+    "title": "Ivy misapplies stale DFY intake context to unrelated request after topic switch",
+    "occurrences": 1
+  },
+  "chatty-tsrelay-faq-page-vs-ai-instructions-misdiagnosis": {
+    "ticket_id": "mf1lPp7OqtNuGX7RsnGo",
+    "internal_id": "mf1lPp7OqtNuGX7RsnGo",
+    "ticket_url": "https://helpdesk.avada.net/tickets/mf1lPp7OqtNuGX7RsnGo",
+    "app": "chatty",
+    "title": "TS-relay diagnosis targets wrong feature: FAQ-page translation vs AI-chat language instructions",
+    "occurrences": 1
+  },
+  "chatty-ai-toggle-label-stale-vs-current-kb": {
+    "ticket_id": "bTDqg58FMvkok0trFpU7",
+    "internal_id": "bTDqg58FMvkok0trFpU7",
+    "ticket_url": "https://helpdesk.avada.net/tickets/bTDqg58FMvkok0trFpU7",
+    "app": "chatty",
+    "title": "Ivy relays stale 'AI Assistant toggle in Settings' label instead of KB's current 'Activate' button",
+    "occurrences": 1
+  },
+  "joy-widget-version-not-disambiguated-color-settings": {
+    "ticket_id": "erxGpH8rY0gHefNsx40K",
+    "internal_id": "erxGpH8rY0gHefNsx40K",
+    "ticket_url": "https://helpdesk.avada.net/tickets/erxGpH8rY0gHefNsx40K",
+    "app": "joy",
+    "title": "Joyce answers with Unified-widget (v4) path when merchant is on Classic widget (v3)",
+    "occurrences": 1
   }
 }
