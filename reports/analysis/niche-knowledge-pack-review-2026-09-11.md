@@ -6,17 +6,6 @@ proposed_by: Anthony (BA), Tùng (PM Team Tesla)
 status: feedback đã soạn, chờ Liz gửi
 ---
 
-# Niche Knowledge Pack — Review & Feedback
-
-## Bối cảnh
-
-BA team Chatty (Anthony/Tùng) đề xuất pipeline "niche knowledge pack" — 1 tầng KB dùng chung theo ngành hàng (pilot: **furniture**) cho **Chatty AI Agent** (bot chat widget nhúng trên storefront, trả lời **buyer thật** về sản phẩm/chính sách của từng store) — khác với Ivy/Joyce (trả lời **merchant** về sản phẩm Chatty/Joy).
-
-Vấn đề gốc: median chỉ 5 FAQ/store → 45% conversation kết thúc sau 1 tin, 34% response thiếu data, 12.7% phải handoff người (baseline 180 ngày).
-
-Pipeline: S1 acquisition (Agent API + BigQuery) → S2 sanitize (Presidio/spaCy PII, dedup, không LLM) → S3 pattern mining (BGE-small + HDBSCAN, GPT-5.5 gán tên, ≥2 store mới tính pattern) → S4 pack generation (3 variant A/B/C, tách `merchant_fill` khỏi shared KB) → S5 eval (Claude Opus judge trên 300 câu holdout, hard-gate chặn fabricate giá/PII) → S6 deploy (push Agent API, merchant approve, pilot 30 ngày ở 3 store furniture).
-
-Timeline: demo 11/09, sample 1 (furniture) 15/09, sample 2 (apparel) 17/09, deploy pilot 18/09–30/09.
 
 ## Điểm mạnh của đề xuất
 
