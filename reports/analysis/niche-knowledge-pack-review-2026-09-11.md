@@ -27,10 +27,4 @@ status: feedback đã soạn, chờ Liz gửi
 ## Điểm bổ sung (Betty, ngoài bảng risk của Liz)
 
 1. **Brand/tên store leakage** — S2 chỉ audit PII (0 leak/200 sample), không rõ có lọc tên thương hiệu/sản phẩm cụ thể không. Giữ nguyên phrasing gốc (đúng, để tránh over-summarization) thì dễ làm brand của store A lọt nguyên câu vào pack rồi bot đưa cho buyer store B.
-2. **Đa ngôn ngữ** — bot nói thẳng với buyer cuối (khác Ivy/Joyce chủ yếu English với merchant). Furniture/Apparel buyer có thể nhiều thị trường/ngôn ngữ — đề xuất chưa nhắc tới.
-3. **Review từ phía eng** — đây là thay đổi kiến trúc retrieval (thêm tầng KB chung cross-store), nên có review từ eng (kiểu Fennic — code owner retrieval/guard Chatty core, xem [[cs_ai_bot_code_owner_fennic]]) trước go-live, không chỉ BA tự chấm bằng Opus judge.
-
-## Next step
-
-- Feedback đã soạn thành message gửi Anthony (cc Tùng) qua `/draft-message` — nội dung ủng hộ hướng đi, không block, đề nghị đưa 6+3 điểm trên vào checklist trước khi push pilot 3 store thật (18/09).
-- Theo dõi: nếu BA phản hồi/pilot chạy, cập nhật file này hoặc tạo follow-up note.
+2. **Review từ phía eng** — đây là thay đổi kiến trúc retrieval (thêm tầng KB chung cross-store), nên có review từ eng (kiểu Fennic — code owner retrieval/guard Chatty core, xem [[cs_ai_bot_code_owner_fennic]]) trước go-live, không chỉ BA tự chấm bằng Opus judge.
