@@ -1,0 +1,11 @@
+{
+  "apps": {
+    "chatty": {
+      "name": "Chatty AI Sales Assistant",
+      "ios_app_id": "6757209541",
+      "android_package": "com.chatty.chattyai"
+    }
+  },
+  "ignore_reviewers": ["Truongnq", "Datvm"],
+  "_ignore_reviewers_note": "Review nội bộ (trùng tên Admin trong account) — không draft, không reply. Liz sửa trực tiếp list này."
+}

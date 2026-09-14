@@ -78,7 +78,7 @@
     "ticket_url": "https://helpdesk.avada.net/tickets/l0uRxex05gPN6ls51rZt",
     "app": "joy",
     "title": "Joyce (Joy AI): answer-guard chặn 43 ca/tháng vì bot bịa path/plan/fact — kể cả khi KB đã có câu trả lời đúng",
-    "occurrences": 2,
+    "occurrences": 3,
     "last_seen_app": "joy"
   },
   "joy-handoff-promise-and-envelope-reply-bugs": {
@@ -248,6 +248,30 @@
     "ticket_url": "https://helpdesk.avada.net/tickets/erxGpH8rY0gHefNsx40K",
     "app": "joy",
     "title": "Joyce answers with Unified-widget (v4) path when merchant is on Classic widget (v3)",
+    "occurrences": 1
+  },
+  "joy-my-rewards-block-loyaltypage-widget-retrieval-miss": {
+    "ticket_id": "Onep3ZJWYjregootlJbv",
+    "internal_id": "Onep3ZJWYjregootlJbv",
+    "ticket_url": "https://helpdesk.avada.net/tickets/Onep3ZJWYjregootlJbv",
+    "app": "joy",
+    "title": "Joyce (Joy AI): RAG misses 'My rewards' block doc, bot gives misleading upgrade-required answer contradicting its own prior reply",
+    "occurrences": 1
+  },
+  "joy-referral-popup-vs-legacy-popup-misretrieval": {
+    "ticket_id": "rSvWNv4JPllNNJi5FIac",
+    "internal_id": "rSvWNv4JPllNNJi5FIac",
+    "ticket_url": "https://helpdesk.avada.net/tickets/rSvWNv4JPllNNJi5FIac",
+    "app": "joy",
+    "title": "Joyce (Joy AI): identifies blank classic-widget popup as legacy Visit-website/Reward-reminder instead of Referral popup",
+    "occurrences": 1
+  },
+  "joy-pos-tile-failed-to-load-misrouted-shopify-flow": {
+    "ticket_id": "sMFNuqNSqChZRRiuOpoz",
+    "internal_id": "sMFNuqNSqChZRRiuOpoz",
+    "ticket_url": "https://helpdesk.avada.net/tickets/sMFNuqNSqChZRRiuOpoz",
+    "app": "joy",
+    "title": "Joyce (Joy AI): 'app failed to load' on POS tile misrouted to Shopify Flow integration, never retrieves dedicated POS case doc",
     "occurrences": 1
   }
 }
