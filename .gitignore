@@ -35,3 +35,7 @@ joy-src/
 
 # cs-daily-brief dedup state — runtime, regenerated each run
 skills/cs-daily-brief/state/
+
+# App Store Connect API keys
+.secrets/
+*.p8
