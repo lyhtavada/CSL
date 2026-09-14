@@ -34,6 +34,14 @@ cd "$REPO"
 # accidentally switch into paid-API mode.
 unset ANTHROPIC_API_KEY
 
+# TẠM THỜI (Liz chốt 2026-09-14): tài khoản mặc định (~/.claude) hết quota tuần,
+# reset 13:00 15/09 → riêng ngày 15/09 chạy bằng ~/.claude-tsl. Tự hết hạn: từ
+# 16/09 quay về mặc định. Xoá block này khi tiện.
+if [ "$(date +%Y-%m-%d)" = "2026-09-15" ]; then
+  export CLAUDE_CONFIG_DIR="/Users/avada/.claude-tsl"
+  echo "(temp override: CLAUDE_CONFIG_DIR=~/.claude-tsl)" >> "$LOG"
+fi
+
 PROMPT="$(cat "$PROMPT_FILE")
 WINDOW (use these EXACT dates): --start $WEEK_START --end $WEEK_END (last full Mon→Sun week).
 Output filename dates = $WEEK_START to $WEEK_END."

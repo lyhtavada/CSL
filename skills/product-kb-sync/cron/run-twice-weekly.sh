@@ -22,6 +22,14 @@ cd "$REPO"
 
 unset ANTHROPIC_API_KEY
 
+# TẠM THỜI (Liz chốt 2026-09-14): tài khoản mặc định (~/.claude) hết quota tuần,
+# reset 13:00 15/09 → riêng ngày 15/09 chạy bằng ~/.claude-tsl. Tự hết hạn: từ
+# 16/09 quay về mặc định. Xoá block này khi tiện.
+if [ "$(date +%Y-%m-%d)" = "2026-09-15" ]; then
+  export CLAUDE_CONFIG_DIR="/Users/avada/.claude-tsl"
+  echo "(temp override: CLAUDE_CONFIG_DIR=~/.claude-tsl)" >> "$LOG"
+fi
+
 rc=0
 "$CLAUDE_BIN" -p "$(cat "$PROMPT_FILE")" \
   --model claude-sonnet-5 \
