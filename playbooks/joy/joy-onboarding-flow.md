@@ -176,7 +176,7 @@ Gửi Setup Sheet  →  3 câu migration  →  confirm on Shopify  →  KH đi�
 ```
 
 **Template:**
-> *(Gửi sheet)* *"No worries — I'll send you a quick setup sheet so we can shape your program together. Just fill in the Value column; if you're unsure on anything, follow the Suggested column or leave it blank and we'll figure it out. Here you go: [link bản copy]"*
+> *(Gửi sheet)* *"No worries — I'll send you a quick setup sheet so we can shape your program together. Just fill in the Value column; if you're unsure on anything, leave it blank and we'll figure it out. Here you go: [link bản copy]"*
 >
 > *(Nếu KH bí)* *"If you're not sure what values to pick, our in-app AI can look at your store's AOV and industry and suggest earn/redeem rates — want me to run that for you?"*
 >
@@ -204,7 +204,7 @@ Xin plan  →  review + setup  →  test full loop  →  KH OK  →  Sandbox →
 **Flow:** gửi Setup Sheet → KH điền → CS review + setup → test → launch.
 
 **Template:**
-> *(Gửi sheet)* *"Since you've run a program before, this'll be quick — I'll send a setup sheet, just fill in the Value column with your rules. Suggested values are there if you want a starting point: [link bản copy]"*
+> *(Gửi sheet)* *"Since you've run a program before, this'll be quick — I'll send a setup sheet, just fill in the Value column with your rules: [link bản copy]"*
 >
 > *(Sau khi KH điền)* *"Thanks! I'll review these and set it all up on Sandbox, then loop you in to check before we go live."*
 
@@ -215,7 +215,7 @@ Xin plan  →  review + setup  →  test full loop  →  KH OK  →  Sandbox →
 **Flow:** KH cần **được gợi ý nhiều nhất** — CS đề xuất preset theo ngành/AOV, dùng AI agent, chốt rule cùng KH → setup → test → launch.
 
 ```
-Gợi ý preset (industry/AOV) + AI agent  →  gửi Setup Sheet có preset  →  chốt rule cùng KH
+Gợi ý preset (industry/AOV) + AI agent  →  gửi Setup Sheet (CS điền sẵn cột Value)  →  chốt rule cùng KH
    →  setup  →  test  →  launch
 ```
 
@@ -224,7 +224,7 @@ Gợi ý preset (industry/AOV) + AI agent  →  gửi Setup Sheet có preset  �
 >
 > *(AI agent)* *"Our in-app AI can read your store's AOV and industry and propose earn/redeem rates and tiers — want me to generate a starting plan you can tweak?"*
 >
-> *(Gửi sheet có preset)* *"Here's a setup sheet with suggested values already filled in as a starting point — adjust anything you like, and I'll set it up: [link bản copy]"*
+> *(Gửi sheet — CS điền sẵn cột Value)* *"Here's a setup sheet with suggested values already filled in as a starting point — adjust anything you like, and I'll set it up: [link bản copy]"*
 >
 > *(Chốt cùng KH)* *"Here's what I'd recommend to start: earn 1 point per $1, 100 points = $5 off, plus a welcome bonus. Simple and proven — happy to adjust. Sound good?"*
 
@@ -263,7 +263,7 @@ Sau launch:
 
 **Cách dùng — clone 1 bản / KH:**
 1. Mở master → **File → Make a copy** → đặt tên `[Store] — Joy Setup`.
-2. Gửi bản copy cho KH → KH điền cột **Value** (ô đỏ). Chỗ chưa chắc → theo cột **Suggested / Preset**, hoặc để trống, hoặc dùng **AI agent trong app** (đọc AOV/industry sinh gợi ý).
+2. Gửi bản copy cho KH → KH điền cột **Value** (ô đỏ). Chỗ chưa chắc → để trống, hoặc dùng **AI agent trong app** (đọc AOV/industry sinh gợi ý).
 3. **Paste link bản copy** vào field "Detail program" của ticket chính.
 
 > ⚠️ **Không cho nhiều KH điền chung 1 sheet** — clone riêng từng bản để data tách bạch, KH không thấy data của nhau.
