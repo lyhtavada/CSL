@@ -41,3 +41,5 @@ Produce message as clean text, ready to copy-paste vào Slack.
 - Đề xuất tiêu đề nếu cần (dùng làm subject hoặc pin message)
 - Nếu cần thiết, gợi ý thêm emoji hoặc formatting cho Slack
 - Nếu message dài, gợi ý cách chia thành 2 tin nhắn riêng
+
+**Luôn copy bản cuối vào clipboard** — copy từ terminal sẽ dính ngắt dòng cứng + thụt đầu dòng. Ghi message ra file trong scratchpad rồi chạy `python3 tools/clipboard/copy_rich.py <file>` → báo Liz "đã copy vào clipboard".

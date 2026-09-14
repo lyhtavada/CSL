@@ -84,3 +84,6 @@ Produce the reply as clean text, ready to copy-paste.
 - For chat: no opener needed, start with empathy or answer
 - If multiple variants are useful, offer 2 options labeled Option A / Option B
 - Add a short note after the reply if there's something Liz should be aware of (e.g., "Note: if merchant pushes back, escalate via Slack")
+
+**Always put the final draft on the clipboard** — text copied from the terminal carries soft wraps as hard newlines + indentation and breaks mid-sentence when pasted into Gmail/Crisp. After showing the draft, write it (reply body only, markdown: blank-line paragraphs, `**bold**`, `- ` bullets) to a file in the scratchpad and run:
+`python3 tools/clipboard/copy_rich.py <file>` → tell Liz "đã copy vào clipboard, Cmd+V là dán". With Option A/B, copy the one Liz picks (default: the latest one shown).
