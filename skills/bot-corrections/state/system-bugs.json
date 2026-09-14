@@ -49,11 +49,11 @@
     "occurrences": 1
   },
   "chatty-answer-guard-passes-known-step-omission": {
-    "ticket_id": "f6JaW6sAhiKRJ74pxI1v",
-    "internal_id": "f6JaW6sAhiKRJ74pxI1v",
-    "ticket_url": "https://helpdesk.avada.net/tickets/f6JaW6sAhiKRJ74pxI1v",
+    "ticket_id": "O3zzRTc7Zk48BStEIb9x",
+    "internal_id": "O3zzRTc7Zk48BStEIb9x",
+    "ticket_url": "https://helpdesk.avada.net/tickets/O3zzRTc7Zk48BStEIb9x",
     "app": "chatty",
-    "title": "Answer-guard flags a KB-path mismatch as an issue but still passes the reply unchanged",
+    "title": "Ivy chọn sai flow cho 'sync products sau khi upgrade plan' + answer_guard flag nhưng vẫn pass",
     "occurrences": 1
   },
   "chatty-followup-nudge-not-localized": {
@@ -280,6 +280,14 @@
     "ticket_url": "https://helpdesk.avada.net/tickets/sTuWijqCXh3A82JU1zvH",
     "app": "chatty",
     "title": "Ivy trả lời đúng nhưng bỏ sót điều kiện/caveat quan trọng đã có trong chunk retrieved",
+    "occurrences": 1
+  },
+  "chatty-ai-not-responding-flow-ignored-consult-ts": {
+    "ticket_id": "A8B1kJD7LsySqzANCYGa",
+    "internal_id": "A8B1kJD7LsySqzANCYGa",
+    "ticket_url": "https://helpdesk.avada.net/tickets/A8B1kJD7LsySqzANCYGa",
+    "app": "chatty",
+    "title": "Ivy bỏ qua flow ai_not_responding (không collect facts / không gọi consult_ts), tự đoán nguyên nhân",
     "occurrences": 1
   }
 }
