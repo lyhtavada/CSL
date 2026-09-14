@@ -1,0 +1,33 @@
+Draft replies for new, unreplied Chatty mobile app reviews (App Store + Google Play) and send them to Liz on Telegram for approval. NEVER post a reply — this run only drafts.
+
+Background: skills/reply-reviews/cron/run.sh already ran
+`.venv-crisp/bin/python -W ignore skills/reply-reviews/scripts/reviews.py fetch --out /tmp/reply-reviews-new.json`
+and there is at least one new review in that file.
+
+1. Read skills/reply-reviews/SKILL.md (section "Soạn reply") and _identity/tone-and-voice.md. Follow those rules exactly.
+
+2. Read /tmp/reply-reviews-new.json. For EACH review write one reply:
+   - Reply in the language the review text is written in.
+   - Google Play (store "android") replies MUST be ≤ 350 characters — count them.
+   - Add a short `flag` (Vietnamese, one line) whenever the SKILL.md flag rules apply — especially: bug report where you cannot confirm it's fixed, review that doesn't seem to be about Chatty (live chat / AI sales assistant for Shopify stores), likely internal/seeding review. Omit `flag` otherwise.
+
+3. Write the drafts to /tmp/reply-reviews-drafts.json as a JSON array of
+   {"review_id", "store", "app", "reply", "flag"?} and run
+   `.venv-crisp/bin/python -W ignore skills/reply-reviews/scripts/reviews.py save /tmp/reply-reviews-drafts.json`
+   If it errors on length, shorten that reply and retry.
+
+4. Run `.venv-crisp/bin/python -W ignore skills/reply-reviews/scripts/reviews.py list` to get ALL pending drafts with their short ids (new ones + older ones Liz hasn't decided on).
+
+5. Send ONE Telegram message to Liz:
+   python3 ~/CSL/skills/_shared/notify_tele.py --job "Reply Reviews" --status ok --summary "<digest>"
+   Digest is plain text, Vietnamese framing, keep the draft replies verbatim. Per pending draft:
+     #<id> · iOS|Android · <rating>⭐ · <author>
+     Review: <1-line summary of the review>
+     Draft: <reply text>
+     ⚠️ <flag>   (only if present)
+   Mark drafts that were already pending from a previous run with "(chờ từ lần trước)".
+   End with: Nhắn bot: "post review 1,2" · "skip review 3" · "sửa reply 1: <nội dung>"
+   If the digest is longer than ~3500 characters, send it as several notify_tele.py calls, splitting between drafts.
+
+6. Commit only skills/reply-reviews/state/drafts.json:
+   git add skills/reply-reviews/state/drafts.json && git commit -m "reply-reviews: drafts $(date +%Y-%m-%d)"

@@ -273,5 +273,13 @@
     "app": "joy",
     "title": "Joyce (Joy AI): 'app failed to load' on POS tile misrouted to Shopify Flow integration, never retrieves dedicated POS case doc",
     "occurrences": 1
+  },
+  "chatty-answer-guard-blind-to-omitted-caveats": {
+    "ticket_id": "sTuWijqCXh3A82JU1zvH",
+    "internal_id": "sTuWijqCXh3A82JU1zvH",
+    "ticket_url": "https://helpdesk.avada.net/tickets/sTuWijqCXh3A82JU1zvH",
+    "app": "chatty",
+    "title": "Ivy trả lời đúng nhưng bỏ sót điều kiện/caveat quan trọng đã có trong chunk retrieved",
+    "occurrences": 1
   }
 }
