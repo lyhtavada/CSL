@@ -8,8 +8,8 @@
 
 ## ⚡ TL;DR
 Tóm tắt tuần:
-- **Chatty**: 313 chats, AI resolved 54.2% (CS không đụng tay 48%), DFY adopt 32%.
-- **Joy**: 182 chats, AI resolved 25.5% (CS không đụng tay 16%), DFY adopt 33%.
+- **Chatty**: 313 chats, AI resolved 54.5% (CS không đụng tay 49%), DFY adopt 32%.
+- **Joy**: 182 chats, AI resolved 26.2% (CS không đụng tay 17%), DFY adopt 33%.
 - Crisis: không có bad review (≤3★) tuần này ở cả 2 app.
 
 ---
@@ -21,8 +21,8 @@ Tóm tắt tuần:
 ---
 
 ## 🤖 Bot performance
-- **Ivy (Chatty)**: AI resolved **54.2%** (tuần trước 60.3%) · CS không phải đụng tay **48%** (tuần trước 66%), 340 session.
-- **Joyce (Joy)**: AI resolved **25.5%** (tuần trước 33.3%) · CS không phải đụng tay **16%** (tuần trước 25%), 153 session.
+- **Ivy (Chatty)**: AI resolved **54.5%** (tuần trước 60.5%) · CS không phải đụng tay **49%** (tuần trước 66%), 338 session.
+- **Joyce (Joy)**: AI resolved **26.2%** (tuần trước 33.6%) · CS không phải đụng tay **17%** (tuần trước 25%), 149 session.
 
 ---
 
@@ -33,9 +33,9 @@ Tóm tắt tuần:
 ---
 
 ## 🔥 Top Issues tuần này
-**Chatty**: Customization / UI tweak requests (màu sắc, vị trí, kích thước widget/chatbox/FAQ block, price display...) · Widget/FAQ không hiển thị hoặc hiển thị lỗi (desktop/chung) (mất hẳn, blank page/Firebase error, FAQ block lỗi) · Widget hiển thị lỗi riêng trên mobile (che nội dung, flicker, cắt nút, đè UI khác, rung lắc vị trí) · AI không phản hồi / phản hồi cực chậm / bị stuck ("processing" kẹt, timeout, không phải trả lời sai nội dung) · Email/notification issues (chat transcript vào spam/junk, forwarding không nhận được, verify email lỗi, reset password không nhận mail).
+**Chatty**: Yêu cầu tùy chỉnh vị trí/hiển thị chatbox widget (ẩn/di chuyển icon, custom CSS, ẩn nút cụ thể) · AI trả lời sai ngôn ngữ (bug rewrite_query misdetect language) · Billing/plan · AI product search/recommendation không chính xác.
 
-**Joy**: Customize / vị trí, màu sắc, layout widget & point calculator · Điểm thưởng không được cấp / hiển thị sai (0, sai giá trị, không real-time) · Coupon/redeem/discount code lỗi (không tạo được mã, prefix sai, sync lỗi, member deal không work) · Widget/chương trình không hiển thị đúng (section biến mất, Ways to Earn/Redeem trống, nút Reward biến mất khi click) · Lỗi bản dịch (translation).
+**Joy**: Điểm/Reward/Redeem không hoạt động đúng (earning không trigger, discount double-use, store credit thiếu, birthday reward không auto, points không update) · Yêu cầu chỉnh vị trí/hiển thị widget (move widget up, mobile position) · Point calculator/widget hiển thị lỗi (2 dòng, font conflict, icon size, decimal) · VIP Tier perk/discount không tự động apply đúng.
 
 ---
 
