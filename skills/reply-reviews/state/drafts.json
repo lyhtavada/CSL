@@ -1,0 +1,22 @@
+{
+  "next_id": 3,
+  "drafts": {
+    "1": {
+      "review_id": "00000192-c2d5-c503-61f0-cf1f00000000",
+      "store": "ios",
+      "app": "chatty",
+      "reply": "Hi Hạt dẻ cườii, thank you so much for the kind words! We're really glad our CS team came across as patient and clear, and that the interface feels smooth to use. Totally get that Chatty has a lot going on at first — feel free to reach out via live chat anytime if you'd like a hand exploring any of the features!",
+      "status": "pending",
+      "drafted_at": "2026-09-15T10:00:32+00:00"
+    },
+    "2": {
+      "review_id": "7defaaf6-1c77-4401-9843-3410634ea425",
+      "store": "android",
+      "app": "chatty",
+      "reply": "Hi Tuấn Anh, thanks so much for the 5 stars and for sharing your experience! We're glad Chatty has been helpful for you. If you ever need support or have questions, our live chat team is here to help anytime.",
+      "flag": "Review mô tả app luyện nói tiếng Anh (24/7 practice, sửa ngữ pháp...), không giống Chatty (live chat/AI cho Shopify store) — có thể nhầm app hoặc review seeding, Liz kiểm tra trước khi post.",
+      "status": "pending",
+      "drafted_at": "2026-09-15T10:00:32+00:00"
+    }
+  }
+}
