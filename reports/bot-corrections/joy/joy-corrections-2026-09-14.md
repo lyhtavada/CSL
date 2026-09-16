@@ -1,105 +1,63 @@
 # Bot Corrections — Joyce (Joy)
 
-**Tuần:** 11/09/2026 → 14/09/2026  ·  **Tổng correction:** 4
+**Tuần:** 14/09/2026 → 16/09/2026  ·  **Tổng correction:** 2
 
 > Đây là các câu bot trả bị CS sửa trong tuần. Dùng để update KB/training data cho bot.
 
 ## 📌 Tóm tắt theo topic
 
-### khác — 2 câu
-- would that override it? if so how so i let both discounts work
-- it is showing "app failed to load" on the tile
+### khác — 1 câu
+- hello i will find it that was a few weeks ago
 
 ### chat/inbox — 1 câu
-- [Image: https://storage.crisp.chat/users/upload-1/session/-/1/9/e/7/19e7d5e1c4e99f00/screenshot-2026-09-11-at-12134_1x2017o.png]
+- [Image: https://storage.crisp.chat/users/upload-1/session/-/6/7/8/c/678c854a3e6c5800/image_13frsu2.png]
 
-### loyalty page/widget — 1 câu
-- hello, i have the classic widget on my storefront. a pop up keeps showing but it has no text. i cant figure out how to remove this pop up
-
-**Người sửa:** Jade (4)
+**Người sửa:** Jade (1), Liz (1)
 
 ---
 
 ## 📋 Chi tiết từng correction
 
-### 1. [khác] — Jade · 11/09 23:12
+### 1. [khác] — Jade · 15/09 05:52
 
-**Q:** would that override it? if so how so i let both discounts work
+**Q:** hello i will find it that was a few weeks ago
 
 **Bot trả (sai/thiếu):**
 
 ```
-Thanks for the detail, Maria! A free gift added at $100 spend is typically a Product-level discount, and Joy's redeem coupons are also usually Product-level.
+Hi! I'm Joyce, your AI assistant! How can I help?
 ```
 
 **CS sửa thành:**
 
 ```
-Thanks for the detail, Maria! A free gift added at $100 spend is typically a Product-level discount, and Joy's redeem coupons are usually Product or Order-level.
+Hi! I'm Joyce, your AI assistant! 
+
+Thank you for your cooperation, and feel free to share the link with us once you find it.
 ```
 
-**Context:** Submitted via TS Elite by phuongnt01@avadagroup.com · ref=crisp:session_d0632cca-dfc3-4d8a-ba48-9fdb59af12e0
+**Context:** Submitted via TS Elite by phuongnt01@avadagroup.com · ref=crisp:session_c077d7ce-a47f-4f67-be1f-1d1482e010c7
 
-_session: `session_d0632cca-dfc3-4d8a-ba48-9fdb59af12e0`_
+_session: `session_c077d7ce-a47f-4f67-be1f-1d1482e010c7`_
 
-### 2. [chat/inbox] — Jade · 11/09 23:22
+### 2. [chat/inbox] — Liz · 15/09 08:51
 
-**Q:** [Image: https://storage.crisp.chat/users/upload-1/session/-/1/9/e/7/19e7d5e1c4e99f00/screenshot-2026-09-11-at-12134_1x2017o.png]
+**Q:** [Image: https://storage.crisp.chat/users/upload-1/session/-/6/7/8/c/678c854a3e6c5800/image_13frsu2.png]
 
 **Bot trả (sai/thiếu):**
 
 ```
-Thanks for the screenshot, Maria! That bottom right card is the "My Rewards" block, and it shows "Available on Advanced" with an Upgrade now button.
+Thanks for flagging this! Once a reward is redeemed, the code generated becomes a standard Shopify discount code, so it can be applied at checkout regardless of whether the customer is logged in, the same as any other coupon code.
 ```
 
 **CS sửa thành:**
 
 ```
-Thanks for the screenshot, Maria! The "My rewards" block you are referring to is the block shown on the Loyalty page, and it is true that it is only available on the Advanced and Ultimate plans.
+Your reward settings actually have two restrictions in place: "Who can use discount" is set to only the customer who redeemed, so the code is meant to work only for the account that spent the points on it, and "Limit number of times each code can be used in total" is set to 1, so once it's used it stops working entirely.
 
-However, on your current plan, customers can surely view their coupons right on the loyalty widget.
+As for why the code still applied while you were logged out: Shopify only checks who the customer is once an email is entered or they log in at checkout. Before that point, the discount can still show on the order summary, which is what you saw in your screenshot. Once a checkout email is entered that doesn't match the customer who redeemed the code, Shopify removes the discount and the order can't go through with it, so a shared code won't actually work for someone else.
 ```
 
-**Context:** Submitted via TS Elite by phuongnt01@avadagroup.com · ref=crisp:session_d0632cca-dfc3-4d8a-ba48-9fdb59af12e0
+**Context:** Submitted via TS Elite by lyht@avada.io · ref=crisp:session_0c84871d-0b0c-4e52-83ba-0175da1845fc
 
-_session: `session_d0632cca-dfc3-4d8a-ba48-9fdb59af12e0`_
-
-### 3. [loyalty page/widget] — Jade · 12/09 00:03
-
-**Q:** hello, i have the classic widget on my storefront. a pop up keeps showing but it has no text. i cant figure out how to remove this pop up
-
-**Bot trả (sai/thiếu):**
-
-```
-That blank pop-up is likely one of the two legacy popups from Joy: "Visit website" or "Reward reminder". You can check and turn it off under On-site content → Popups.
-```
-
-**CS sửa thành:**
-
-```
-The pop-up you are referring to is the "Referral claim popup" and you can find its settings under the Onsite section > Widget. You can turn it off right there.
-```
-
-**Context:** Submitted via TS Elite by phuongnt01@avadagroup.com · ref=crisp:session_b7a231a9-2d3f-4b6a-b5b7-3e16665bc79e
-
-_session: `session_b7a231a9-2d3f-4b6a-b5b7-3e16665bc79e`_
-
-### 4. [khác] — Jade · 12/09 12:13
-
-**Q:** it is showing "app failed to load" on the tile
-
-**Bot trả (sai/thiếu):**
-
-```
-Could you check in Joy Admin → Integrations → Shopify Flow and confirm if the toggle there is switched on?
-```
-
-**CS sửa thành:**
-
-```
-Could you please try removing Joy extension from the POS app, and then go through the setup steps again from the beginning?
-```
-
-**Context:** Submitted via TS Elite by phuongnt01@avadagroup.com · ref=crisp:session_c8e655d4-338c-4b2f-ac4a-7419f3240eb4
-
-_session: `session_c8e655d4-338c-4b2f-ac4a-7419f3240eb4`_
+_session: `session_0c84871d-0b0c-4e52-83ba-0175da1845fc`_
