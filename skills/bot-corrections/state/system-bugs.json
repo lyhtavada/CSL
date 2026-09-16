@@ -66,9 +66,9 @@
     "occurrences": 1
   },
   "chatty-vision-screenshot-misidentify-source": {
-    "ticket_id": "tEt7ljSOfAvoKcsTbYC3",
-    "internal_id": "tEt7ljSOfAvoKcsTbYC3",
-    "ticket_url": "https://helpdesk.avada.net/tickets/tEt7ljSOfAvoKcsTbYC3",
+    "ticket_id": "C1W0rNeTEYozf0So5gcC",
+    "internal_id": "C1W0rNeTEYozf0So5gcC",
+    "ticket_url": "https://helpdesk.avada.net/tickets/C1W0rNeTEYozf0So5gcC",
     "app": "chatty",
     "title": "Ivy misreads screenshot content — routes to wrong how-to (Contact block vs FAQ answer)",
     "occurrences": 1
@@ -107,11 +107,11 @@
     "occurrences": 1
   },
   "chatty-tsdiagnostic-injected-inbound-wrong-language": {
-    "ticket_id": "TzsYUG9XKj25dwLNHn2E",
-    "internal_id": "TzsYUG9XKj25dwLNHn2E",
-    "ticket_url": "https://helpdesk.avada.net/tickets/TzsYUG9XKj25dwLNHn2E",
+    "ticket_id": "7HmjkW8lQXDTGRmfYNbj",
+    "internal_id": "7HmjkW8lQXDTGRmfYNbj",
+    "ticket_url": "https://helpdesk.avada.net/tickets/7HmjkW8lQXDTGRmfYNbj",
     "app": "chatty",
-    "title": "TS-relay diagnostic result injected as inbound message, bot replies to it in English breaking Spanish conversation",
+    "title": "TS-relay diagnostic result injected as inbound message, bot replies to it in wrong language",
     "occurrences": 1
   },
   "chatty-answer-guard-grounding-hallucination": {
@@ -290,5 +290,5 @@
     "app": "chatty",
     "title": "Ivy bỏ qua flow ai_not_responding (không collect facts / không gọi consult_ts), tự đoán nguyên nhân",
     "occurrences": 1
-  },
+  }
 }
