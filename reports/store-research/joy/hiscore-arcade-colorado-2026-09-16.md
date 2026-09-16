@@ -46,6 +46,41 @@ Mapped from their business model (collector/repeat-purchase catalog + physical a
 6. Have you run a loyalty/rewards program before — on Square, in-store punch cards, or anywhere else? What worked, what didn't?
 7. Do you have a plan in mind already — budget range, which Shopify/Joy plan tier, or a rough go-live timeline?
 
+## Call script (SPIN-style)
+
+**Opening (1-2 min)**
+> "Thanks for taking the time — before we jump in, I did a bit of homework on Hi-Score Arcade. Looks like you've got a great niche going — the arcade plus the manga/figures/model-kit shop. Mind if I ask a few questions first so I can make sure whatever we talk about today is actually useful for you, not just a generic pitch?"
+
+**Situation (confirm what we found, don't assume)**
+- "You're running the online shop on Square right now, is that right?"
+- "About how much of your business is the online retail side vs. in-person arcade/foot traffic?"
+- Q1 (migration): *Are you currently planning to migrate from Square Online to Shopify? What's driving that, and what's the timeline?*
+- Q6 (history): *Have you run any loyalty or rewards program before — on Square, punch cards in-store, anything?*
+
+**Problem (surface pain, let them say it, don't lead too hard)**
+- "With ~400 SKUs of figures, model kits, and manga — categories people tend to collect and come back for — how are you currently keeping past customers coming back for the next drop?"
+- "Anything about Square's ecosystem that's pushing you to look elsewhere, especially around apps like loyalty/rewards?"
+- If they mention no current program: "So right now a repeat collector buying their 10th figure gets treated the same as a first-time visitor?"
+
+**Implication (make the cost of doing nothing concrete)**
+- "If a chunk of revenue is coming from a small group of repeat collectors, what happens to LTV if there's no reason for them to choose you over another shop with the same stock?"
+- "When you do migrate, if loyalty isn't part of the stack from day one, is that something you'd have to circle back and retrofit later — with all your historical purchase data not carried over?"
+
+**Need-payoff (let them articulate the win before you pitch)**
+- Q5 (goal): *What's the main outcome you're hoping a loyalty program would drive — more repeat purchases, higher order value, competing with other collectible shops, something else?*
+- "If customers earned points every time they bought a figure or model kit, and hit a VIP tier for early access to new drops — would that change how often they come back?"
+
+**Position Joy (only after they've named the need — tie back to their own words)**
+- Points-per-purchase framed as "earn toward your next figure"
+- VIP tiers for top collectors — early access / exclusive perks
+- Referral — "your customers already talk to each other in collector communities, referral rewards tend to do well there"
+- **Be upfront on the gap:** "One honest caveat — Joy runs on Shopify transactions, so out of the box it rewards purchases, not arcade play itself. If you want points tied to game credits too, we'd need to scope that against how those go through Shopify POS — I don't want to overpromise that today."
+
+**Close / next steps**
+- Q7 (plan): *Do you already have a rough plan — budget, which Shopify/Joy tier, or a timeline in mind?*
+- If migration isn't confirmed/near-term: "Since Joy only works once you're on Shopify, the useful next step today is nailing down your migration timeline — I can follow up right when you're ready to set up loyalty as part of that move."
+- If migration is imminent: propose a follow-up config session once their Shopify store is live, using their real catalog (Gundam/Pokémon kits, figures, manga) as the worked example.
+
 ## Key takeaway for Liz
 
 Since the store isn't on Shopify, Joy Loyalty can't be configured live on their site. This call should function as a discovery/needs conversation + migration-plan validation, not a live-config demo on their real store.
