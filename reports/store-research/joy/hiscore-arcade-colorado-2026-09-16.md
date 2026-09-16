@@ -32,6 +32,9 @@ No direct evidence found (no Shopify beta/coming-soon site, no public announceme
 2. Do you currently run any loyalty/membership/punch-card program — for merch purchases, arcade play, or both (even offline)?
 3. Would loyalty apply only to the online retail side, or should it also connect to in-store arcade play/spend (POS)? That's the biggest difference from a typical pure-online Joy prospect.
 4. Your catalog (figures, model kits, manga) is a classic repeat-purchase/collector category — great fit for a points + tier mechanic. Worth using as a live example when demoing.
+5. What's the main goal you're hoping a loyalty program achieves (repeat purchases, higher AOV, tying arcade visits to retail spend, competing with other collectible shops, something else)?
+6. Have you run a loyalty/rewards program before — on Square, in-store punch cards, or anywhere else? What worked, what didn't?
+7. Do you have a plan in mind already — budget range, which Shopify/Joy plan tier, or a rough go-live timeline?
 
 ## Key takeaway for Liz
 
