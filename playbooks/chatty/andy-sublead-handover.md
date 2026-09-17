@@ -13,18 +13,19 @@
 - **Chat volume:** đếm conversation thật (sessionize theo merchant, loại traffic nội bộ Avada).
 - **Install:** lấy từ data warehouse merchant (`dash_merchant_360`), đang dùng làm mẫu số cho tỷ lệ DFY/install.
 
-### 2.2 CS Performance
-- **QA:** chấm 3 trục Mindset/Knowledge/Skill cho từng CS Chatty từ chat thật, feedback sau khi Liz duyệt. Có bản QA tháng riêng theo policy/penalty (`playbooks/qa/`).
-- **Bot corrections (để đo CS có đang train bot đúng không):** gom câu Ivy bị CS sửa theo topic + người sửa, feed vào KB/training.
-- **DFY point (KPI tháng):** Chatty tính theo % task hoàn thành/block (AI 50 + Chatbox 30 + Video 50 = max 130p).
-- **Bot performance (context để hiểu tải CS):** AI resolved % (`aiResolvedPct`, cs2 `/api/obs/metrics`) — mốc cần theo dõi: **≥60%** để chuyển Phase 3 CS Transformation (Hazel/Phoebe async hoá, Andy/Jade tăng tải AM). Hiện tại (tuần 07–13/09): Ivy **54.5%** — chưa đạt.
+### 2.2 CS human/AI Performance
+- **QA** 
+- **Bot corrections (để đo CS có đang verify/correct bot đúng không)** 
+- **DFY point (KPI tháng)** 
+- **AI agent performance** 
 
 ### 2.3 Project đang triển khai
 
 **DFY**
 - **Proactive DFY Pilot** — Andy đang chạy trực tiếp (từ 2026-06-23, 4 ca/tuần): lấy list KH mới cài ≤14 ngày + Pro/Plus từ bảng analytics public (`https://analytics.avada.net/public/views/sytCf8kfby3J5Yknohqa`, tự refresh 1h) → audit store → viết email cá nhân hoá → tạo ticket ngay (tag `DFY-new` + `proactive`). Full SOP: `playbooks/chatty/chatty-proactive-dfy-pilot.md`.
-- **DFY thường (reactive)**: flow + checklist ở `playbooks/chatty/chatty-dfy-flow.md`.
 - Andy đã nắm rõ mảng này — có thể cân nhắc nhân rộng pilot sang Jade/Hazel/Linda khi phù hợp.
+- **DFY thường (reactive)**: flow + checklist ở `playbooks/chatty/chatty-dfy-flow.md`.
+
 
 **CS AI agent** (Ivy/Joyce trên `cs2.avada.net`)
 - Liz sẽ gửi doc chi tiết riêng hoặc trao đổi trực tiếp 1-1 để Andy nắm kiến trúc/flow đầy đủ.
@@ -34,11 +35,7 @@
 - Liz sẽ gửi doc chi tiết riêng hoặc trao đổi trực tiếp 1-1. Đầu mối chính bên product: anh Quân.
 
 ### 2.4 Weekly/Monthly report liên quan
-- **CS Weekly (Chatty)** — volume, bot performance, DFY, top issues → Notion + Slack digest nhóm CS.
-- **DFY Weekly (Chatty)** — report cho lãnh đạo (PM + anh Sam) — Inbound vs Proactive, adopt rate, DFY/install.
-- **DFY Tracker (tháng)** — KPI Point theo CS.
-- **CEO Weekly** (gộp Chatty+Joy) — gửi anh Sam trước họp thứ 2.
-- **CS Daily brief** — báo Liz hàng ngày, chỉ bung khi có gì bất thường.
+
 
 ### 2.5 Crisis management khi có bad review
 - Process gốc: `kb/cs-process/shared-cs-process/handle-complaints.md` — SLA phản hồi **2 giờ**, 7 bước (respond nhanh → professional → tìm root cause → nhận trách nhiệm → đề xuất giải pháp/compensation → follow through → document).
@@ -46,9 +43,7 @@
 - Report tuần có mục riêng theo dõi bad review (≤3★) trong tuần, so với tuần trước.
 
 ### 2.6 Training CS Chatty
-- Onboarding CS mới + đào tạo kỹ năng theo 2 track đã định nghĩa trong CS Transformation Plan (`playbooks/cs-transformation/chatty-transformation.md`): **AI Monitor** (Hazel/Phoebe — đọc AI trả lời, sửa training data) và **AM/Onboarding Call** (Andy/Jade — call, proactive check-in).
-- Andy đã tự đi qua track AM nên có thể trực tiếp đào tạo CS mới ở track này; track AI Monitor Liz vẫn dẫn dắt chính.
-- Hiện Chatty chưa có skill chấm test/grading riêng cho trainee (Joy đã có `/grade-joy-trainee`, Chatty chưa) — phần này để Liz cân nhắc có cần build tương tự hay không.
+- Onboarding CS mới + đào tạo kỹ năng theo plan training.
 
 ### 2.7 Họp team hàng tuần
 - Andy tham gia điều phối cùng Liz — chuẩn bị nội dung từ các mục 2.1–2.6 (chỉ số app, CS performance, tiến độ project, crisis nếu có, training) để đưa vào agenda họp team Chatty.
