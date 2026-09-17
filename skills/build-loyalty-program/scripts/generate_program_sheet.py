@@ -39,6 +39,16 @@ BAND_PINK = {"red": 0.99215686, "green": 0.95686275, "blue": 0.9529412}
 
 STATUS_OPTIONS = ["Not started", "In progress", "Live", "Skipped"]
 STATUS_DEFAULT = "Not started"
+# Matches the colored dropdown chips Liz set up by hand in the Data validation
+# panel (Sheets API can't read/write chip colors directly — see
+# ~/.claude/projects/-Users-avada-CSL/memory/build_loyalty_program_status_chip_colors.md —
+# so we replicate the same look with conditional formatting instead).
+STATUS_CHIP_COLORS = {
+    "Not started": {"bg": {"red": 0.9490196, "green": 0.9490196, "blue": 0.9490196}},
+    "In progress": {"bg": {"red": 0.7921569, "green": 0.88235295, "blue": 0.9529412}},
+    "Live": {"bg": {"red": 0.7529412, "green": 0.9019608, "blue": 0.79607844}},
+    "Skipped": {"bg": {"red": 0.2627451, "green": 0.2627451, "blue": 0.2627451}, "fg": WHITE},
+}
 
 TAB_SETUP = "Setup"
 TAB_EARNING = "Earning"
@@ -503,6 +513,7 @@ def format_requests_for(sheet_id, builder):
             j += 1
         blocks.append((row0, row1, col0))
         i = j
+    status_ranges = []
     for row0, row1, col0 in blocks:
         rng = {
             "sheetId": sheet_id,
@@ -511,6 +522,7 @@ def format_requests_for(sheet_id, builder):
             "startColumnIndex": col0,
             "endColumnIndex": col0 + 1,
         }
+        status_ranges.append(rng)
         reqs.append({
             "repeatCell": {
                 "range": rng,
@@ -531,6 +543,31 @@ def format_requests_for(sheet_id, builder):
                 },
             }
         })
+    # Color each status value like the dropdown chips in the template (can't
+    # set native chip colors via API, so a conditional format per value gives
+    # the same look: cell background flips color the moment the value changes).
+    if status_ranges:
+        for value in STATUS_OPTIONS:
+            colors = STATUS_CHIP_COLORS[value]
+            text_format = {"foregroundColor": colors["fg"]} if "fg" in colors else {}
+            reqs.append({
+                "addConditionalFormatRule": {
+                    "rule": {
+                        "ranges": status_ranges,
+                        "booleanRule": {
+                            "condition": {
+                                "type": "TEXT_EQ",
+                                "values": [{"userEnteredValue": value}],
+                            },
+                            "format": {
+                                "backgroundColor": colors["bg"],
+                                **({"textFormat": text_format} if text_format else {}),
+                            },
+                        },
+                    },
+                    "index": 0,
+                }
+            })
 
     grid_range = {
         "sheetId": sheet_id,
