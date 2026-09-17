@@ -12,7 +12,7 @@
 - **Review App Store (Shopify):** đếm theo tháng/khoảng ngày.
 - **Review mobile app (iOS/Play Store):** theo dõi review chưa reply, draft phản hồi theo tone
 - **Chat volume:** đếm conversation thật (sessionize theo merchant, loại traffic nội bộ Avada).
-- **Install:** lấy từ data warehouse merchant (`dash_merchant_360`), đang dùng làm mẫu số cho tỷ lệ DFY/install.
+- **Install:** lấy từ data warehouse merchant, đang dùng làm mẫu số cho tỷ lệ DFY/install.
 
 ### 2.2 CS human/AI Performance
 - **QA**
@@ -23,14 +23,14 @@
 ### 2.3 Project đang triển khai
 
 **DFY**
-- **Proactive DFY Pilot** — Andy đang chạy trực tiếp (từ 2026-06-23, 4 ca/tuần): lấy list KH mới cài ≤14 ngày + Pro/Plus từ bảng analytics public (`https://analytics.avada.net/public/views/sytCf8kfby3J5Yknohqa`, tự refresh 1h) → audit store → viết email cá nhân hoá → tạo ticket ngay (tag `DFY-new` + `proactive`). Full SOP: `playbooks/chatty/chatty-proactive-dfy-pilot.md`.
+- **Proactive DFY Pilot** — Andy đang chạy trực tiếp (từ 2026-06-23, 4 ca/tuần): lấy list KH mới cài ≤14 ngày + Pro/Plus từ bảng analytics public (tự refresh mỗi 1h) → audit store → viết email cá nhân hoá → tạo ticket ngay.
 - Andy đã nắm rõ mảng này — có thể cân nhắc nhân rộng pilot sang Jade/Hazel/Linda khi phù hợp.
-- **DFY thường (reactive)**: flow + checklist ở `playbooks/chatty/chatty-dfy-flow.md`.
+- **DFY thường (reactive)**: theo flow + checklist DFY hiện có.
 
-**CS AI agent** (Ivy/Joyce trên `cs2.avada.net`)
+**CS AI agent** (Ivy/Joyce)
 - Liz sẽ gửi doc chi tiết riêng hoặc trao đổi trực tiếp 1-1 để Andy nắm kiến trúc/flow đầy đủ.
 
-**TS AI agent** (`ts2.avada.net` — TS Elite v1 đang chạy thật, TS AI Agent v2 đang xây để thay thế)
+**TS AI agent** (TS Elite v1 đang chạy thật, TS AI Agent v2 đang xây để thay thế)
 - Liz sẽ gửi doc chi tiết riêng hoặc trao đổi trực tiếp 1-1. Đầu mối chính bên product: anh Quân.
 
 ### 2.4 Weekly/Monthly report liên quan
@@ -40,7 +40,7 @@
 - **CEO Weekly** (gộp Chatty + Joy) — gửi anh Sam.
 
 ### 2.5 Crisis management khi có bad review
-- SLA phản hồi **2 giờ**, xử lý theo quy trình complaint (`kb/cs-process/shared-cs-process/handle-complaints.md`).
+- SLA phản hồi **2 giờ**, xử lý theo quy trình complaint chung của team.
 - Escalate CS Leader khi: đã thử 2 lần vẫn còn giận · đe doạ pháp lý / để review xấu công khai · liên quan refund · merchant VIP.
 - Theo dõi bad review (≤3★) hàng tuần, so với tuần trước.
 
