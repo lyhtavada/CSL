@@ -57,8 +57,13 @@ Liz là CS Leader phụ trách 3 app (Chatty, Joy Loyalty, Joy Wishlist), báo c
 - **Escalate lên CS Leader (Slack) khi:** đã thử 2 lần vẫn còn giận · merchant đe doạ pháp lý · đe doạ để lại review xấu công khai · liên quan refund/compensation · merchant VIP.
 - Report tuần có mục riêng theo dõi bad review (≤3★) trong tuần, so với tuần trước.
 
-### 2.6 Họp team hàng tuần
-- Andy tham gia điều phối cùng Liz — chuẩn bị nội dung từ các mục 2.1–2.5 (chỉ số app, CS performance, tiến độ project, crisis nếu có) để đưa vào agenda họp team Chatty.
+### 2.6 Training CS Chatty
+- Onboarding CS mới + đào tạo kỹ năng theo 2 track đã định nghĩa trong CS Transformation Plan (`playbooks/cs-transformation/chatty-transformation.md`): **AI Monitor** (Hazel/Phoebe — đọc AI trả lời, sửa training data) và **AM/Onboarding Call** (Andy/Jade — call, proactive check-in).
+- Andy đã tự đi qua track AM nên có thể trực tiếp đào tạo CS mới ở track này; track AI Monitor Liz vẫn dẫn dắt chính.
+- Hiện Chatty chưa có skill chấm test/grading riêng cho trainee (Joy đã có `/grade-joy-trainee`, Chatty chưa) — phần này để Liz cân nhắc có cần build tương tự hay không.
+
+### 2.7 Họp team hàng tuần
+- Andy tham gia điều phối cùng Liz — chuẩn bị nội dung từ các mục 2.1–2.6 (chỉ số app, CS performance, tiến độ project, crisis nếu có, training) để đưa vào agenda họp team Chatty.
 
 ---
 
@@ -68,7 +73,8 @@ Liz là CS Leader phụ trách 3 app (Chatty, Joy Loyalty, Joy Wishlist), báo c
 1. **Theo dõi chỉ số app nói chung** — review, chat, install (2.1)
 2. **CS performance** — QA, bot corrections, DFY point, bot resolved % (2.2)
 3. **Crisis management** khi có bad review (2.5)
-4. **Họp team hàng tuần** (2.6)
+4. **Training CS Chatty** — riêng track AM (2.6)
+5. **Họp team hàng tuần** (2.7)
 
 **Chưa nhận vội — chờ doc/meeting riêng:**
 - **CS AI agent** và **TS AI agent** (2.3) — Liz sẽ gửi doc chi tiết hơn hoặc set 1-1 để Andy nắm kiến trúc/flow trước khi nhận việc liên quan.
