@@ -1,23 +1,11 @@
 # Chatty CS — Handover cho Andy (Sublead)
 
-**Mục đích:** Andy lên làm sublead hỗ trợ Liz quản lý CS team Chatty. Doc này tổng hợp toàn bộ task Liz đang follow up cho Chatty — để Andy pick up dần, không cần hỏi lại từ đầu.
+**Mục đích:** Andy lên làm sublead hỗ trợ Liz quản lý CS team Chatty. Doc này tổng hợp toàn bộ task Liz đang follow up cho Chatty — để Andy pick up dần.
 
-**Ngày viết:** 2026-09-17 | **Owner gốc:** Liz (CSL) | **Scope:** Chatty only (Joy Andy không cần theo)
-
+**Ngày viết:** 2026-09-17 | **Owner gốc:** Liz (CSL) | **Scope:** Chatty only 
 ---
 
-## 1. Bối cảnh nhanh
-
-Liz là CS Leader phụ trách 3 app (Chatty, Joy Loyalty, Joy Wishlist), báo cáo anh Sam (CEO). Andy đã quen Chatty từ **CS Transformation Plan** — track **AM/Onboarding Call** cùng Jade (xem `playbooks/cs-transformation/chatty-transformation.md`), và là CS đầu tiên chạy pilot **Proactive DFY** từ 2026-06-23. Việc lên sublead là mở rộng từ track đó, không phải bắt đầu lại.
-
-**Đầu mối product Chatty (Team Tesla):**
-- PM: Quách Thanh Tùng (`tungqt@avada.io`, Slack U01NJA7R38C)
-- Tech Lead: Vũ Minh Đạt (`datvm@avada.io`, Slack U01N91ZKMK7)
-- Bug report AI (classifier/guard/retrieval trên cs2) → gửi **Fennic** (Slack U01N91HCC3F), KHÔNG gửi Đạt/PM.
-
----
-
-## 2. Đầu việc đang follow up cho Chatty
+Đầu việc đang follow up cho Chatty
 
 ### 2.1 Theo dõi chỉ số app nói chung — review, chat, install
 - **Review App Store (Shopify):** đếm theo tháng/khoảng ngày.
@@ -65,6 +53,13 @@ Liz là CS Leader phụ trách 3 app (Chatty, Joy Loyalty, Joy Wishlist), báo c
 ### 2.7 Họp team hàng tuần
 - Andy tham gia điều phối cùng Liz — chuẩn bị nội dung từ các mục 2.1–2.6 (chỉ số app, CS performance, tiến độ project, crisis nếu có, training) để đưa vào agenda họp team Chatty.
 
+### 2.8 Xử lý tình huống khó, KH high-risk, refund/billing escalation
+- **Escalation matrix** (`kb/cs-process/shared-cs-process/escalation-matrix.md`): refund request, merchant giận sau 2 lần xử lý, VIP merchant, policy exception → escalate CS Leader ngay qua Slack/Trello. Andy là điểm nhận escalation đầu tiên thay Liz cho các case này; case vượt thẩm quyền (số tiền lớn, VIP đặc biệt, policy exception chưa có tiền lệ) vẫn cần Liz duyệt cuối.
+- **Billing/refund:** theo `kb/cs-process/shared-cs-process/handle-billing-refund.md` + `handle-billing.md`.
+- **Tình huống nhạy cảm khác:** `handle-sensitive-situations.md` / `sensitive-situations.md`.
+- **Discount request (xin giảm giá):** theo `handle-discount-requests.md` — có promotion đang chạy thì CS tự xử lý; không có promotion thì escalate xin duyệt.
+- **Tạo discount code:** thao tác tạo code thật (Shopify/billing system) — Liz sẽ hướng dẫn trực tiếp/thao tác mẫu cho Andy vì hiện chưa có doc ghi lại quy trình kỹ thuật, chỉ có policy khi nào được tạo.
+
 ---
 
 ## 3. Việc Andy nhận trước (đã chốt với Liz)
@@ -75,11 +70,12 @@ Liz là CS Leader phụ trách 3 app (Chatty, Joy Loyalty, Joy Wishlist), báo c
 3. **Crisis management** khi có bad review (2.5)
 4. **Training CS Chatty** — riêng track AM (2.6)
 5. **Họp team hàng tuần** (2.7)
+6. **Xử lý tình huống khó, KH high-risk, refund/billing escalation** — kể cả tạo discount code (2.8, Liz hướng dẫn thao tác tạo code trực tiếp trước khi Andy tự làm)
 
 **Chưa nhận vội — chờ doc/meeting riêng:**
 - **CS AI agent** và **TS AI agent** (2.3) — Liz sẽ gửi doc chi tiết hơn hoặc set 1-1 để Andy nắm kiến trúc/flow trước khi nhận việc liên quan.
 
-**Andy KHÔNG cần đụng vào** (Liz vẫn giữ): điều phối cross-team (PM/Tech Lead Tesla), quyết định escalation VIP/refund cuối cùng.
+**Andy KHÔNG cần đụng vào** (Liz vẫn giữ): điều phối cross-team (PM/Tech Lead Tesla), duyệt cuối các case vượt thẩm quyền (refund/policy exception lớn, VIP đặc biệt).
 
 ---
 
